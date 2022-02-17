@@ -4,8 +4,31 @@ using UnityEngine;
 
 public class Player : Unit
 {
+    public static Player Instance;
     private Vector3 direction = Vector3.forward;// 캐릭터가 바라보는 방향, 스킬 사용시 사용 
-    float moveSpeed = 5.0f;
+    [SerializeField]float moveSpeed = 5.0f;
+    public static int Row
+    {
+        get 
+        {
+            int temp = (Instance.transform.position.z < 0f) ? -20 : 20;
+            return ((int)Instance.transform.position.z + temp) / 40; 
+        }
+    }
+
+    public static int Column
+    {
+        get 
+        {
+            int temp = (Instance.transform.position.x < 0f) ? -20 : 20;
+            return ((int)Instance.transform.position.x + temp) / 40; 
+        }
+    }
+
+    private void Awake()
+    {
+        Instance = this;
+    }
     protected override void Start()
     {
         base.Start();
@@ -15,8 +38,10 @@ public class Player : Unit
     {
         base.Update();
         Move();
+        //Debug.Log($"{Column},{Row} / {transform.position}");
         
     }
+
 
     void Move()
     {

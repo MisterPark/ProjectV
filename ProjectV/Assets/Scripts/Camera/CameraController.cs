@@ -12,15 +12,25 @@ public enum CameraMode
 
 public class CameraController : MonoBehaviour
 {
+    public static CameraController Instance;
+
     public const float minZoom = 3f;
     public const float maxZoom = 10f;
     [SerializeField] GameObject target;
     [SerializeField] CameraMode mode;
     [SerializeField] Vector3 offset;
+    [SerializeField] Vector3 topViewOffset;
     [SerializeField] float zoom;
     [SerializeField] float zoomSpeed = 1.2f;
     [SerializeField] float rotateSpeed = 2.5f;
     private float xRotate = 0f;
+
+    public float Zoom { get { return zoom; } }
+
+    private void Awake()
+    {
+        Instance = this;
+    }
     void Start()
     {
         mode = CameraMode.TopView;
@@ -28,11 +38,7 @@ public class CameraController : MonoBehaviour
 
     private void Update()
     {
-        
-    }
-    private void LateUpdate()
-    {
-        Zoom();
+        ProcessZoom();
         FollowTarget();
     }
 
@@ -51,7 +57,7 @@ public class CameraController : MonoBehaviour
 
     }
 
-    private void Zoom()
+    private void ProcessZoom()
     {
         float wheel = Input.GetAxis("Mouse ScrollWheel") * zoomSpeed;
         float zoom = this.zoom;
@@ -73,8 +79,7 @@ public class CameraController : MonoBehaviour
                 break;
             case CameraMode.TopView:
                 {
-                    offset = new Vector3(-1, 2, 1);
-                    transform.position = target.transform.position + offset - (transform.forward * zoom);
+                    transform.position = target.transform.position + topViewOffset - (transform.forward * zoom);
                     transform.LookAt(target.transform.position);
                     break;
                 }
@@ -105,12 +110,12 @@ public class CameraController : MonoBehaviour
 
     public void ZoomIn()
     {
-        offset += transform.forward * Time.deltaTime;
+        zoom -= zoomSpeed * Time.deltaTime;
     }
 
     public void ZoomOut()
     {
-        offset -= transform.forward * Time.deltaTime;
+        zoom += zoomSpeed * Time.deltaTime;
     }
 
 }

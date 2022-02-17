@@ -4,17 +4,16 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] GameObject objectPoolPrefab;
-    ObjectPool objectPool;
-    public ObjectPool ObjectPool { get { return objectPool; } }
+    public static GameManager Instance;
+
+
+    private bool initZoomFlag = false;
+
     private void Awake()
     {
+        Instance = this;
         // 커서 숨김
         Cursor.visible = false;
-        // 오브젝트 풀 생성
-        GameObject poolObj = Instantiate(objectPoolPrefab);
-        poolObj.name = "ObjectPool";
-        objectPool = poolObj.GetComponent<ObjectPool>();
     }
     void Start()
     {
@@ -26,6 +25,19 @@ public class GameManager : MonoBehaviour
         if(Input.GetKeyUp(KeyCode.Escape))
         {
             Cursor.visible = !Cursor.visible;
+        }
+
+        InitZoom();
+    }
+
+    void InitZoom()
+    {
+        if (initZoomFlag) return;
+
+        CameraController.Instance.ZoomOut();
+        if(CameraController.Instance.Zoom >= CameraController.maxZoom)
+        {
+            initZoomFlag = true;
         }
     }
 }
