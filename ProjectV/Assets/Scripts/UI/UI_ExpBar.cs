@@ -11,7 +11,6 @@ public class UI_ExpBar : MonoBehaviour
     private float Exp;
     private float maxExp;
     private RectTransform rectTransform;
-    private RectTransform screenRT;
     private RectTransform barRT;
     private RectTransform backRT;
     private Image barImage;
@@ -22,7 +21,6 @@ public class UI_ExpBar : MonoBehaviour
         barRT = transform.GetChild(1).GetComponent<RectTransform>();
         backRT = transform.GetChild(0).GetComponent<RectTransform>();
         rectTransform = transform.GetComponent<RectTransform>();
-        screenRT = transform.parent.GetComponent<RectTransform>();
     }
 
     // Update is called once per frame
@@ -36,9 +34,8 @@ public class UI_ExpBar : MonoBehaviour
 
     void UpdateSize()
     {
-        Vector2 screen = screenRT.sizeDelta;
-        float width = screen.x;
-        float height = screen.y * 0.05f;
+        float width = Screen.width;
+        float height = Screen.height * 0.05f;
         rectTransform.sizeDelta = new Vector2(0f, height);
         backRT.sizeDelta = new Vector2(width, height);
         barRT.sizeDelta = new Vector2(width - width * 0.023f, height * 0.73f);
