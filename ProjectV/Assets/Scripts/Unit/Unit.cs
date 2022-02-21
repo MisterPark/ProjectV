@@ -27,6 +27,7 @@ public class Unit : MonoBehaviour
         Gold,           // 소지 머니
         END
     }
+
     [SerializeField]
     public float[] origin_stats = new float[(int)StatType.END];
     public float[] growth_stats = new float[(int)StatType.END];
@@ -57,7 +58,7 @@ public class Unit : MonoBehaviour
 
     }
 
-    public void stat_LevelUp()
+    public virtual void stat_LevelUp()
     {
         final_stats[(int)StatType.Level] += 1;
         final_stats[(int)StatType.Exp] -= final_stats[(int)StatType.MaxExp];
@@ -66,6 +67,10 @@ public class Unit : MonoBehaviour
     public void stat_Increase(StatType _statType)
     {
         final_stats[(int)_statType] += growth_stats[(int)_statType];
+    }
+    public void stat_Increases(StatType _statType, int _Count)
+    {
+        final_stats[(int)_statType] += (growth_stats[(int)_statType] * _Count);
     }
 
     public float stat_GetFinal(StatType _statType)
@@ -77,4 +82,6 @@ public class Unit : MonoBehaviour
     {
         final_stats[(int)_statType] = _value;
     }
+
+    
 }
