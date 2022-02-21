@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Unit : MonoBehaviour
 {
+    public UnityEvent OnDead;
     Stat stat;
     public float moveSpeed;
     Vector3 oldPosition;
@@ -29,13 +31,8 @@ public class Unit : MonoBehaviour
 
     protected virtual void Update()
     {
-        bool isRun = oldPosition != transform.position;
-        if(isRun)
-        {
-            oldPosition = transform.position;
-        }
-        animator.SetBool("IsRun", isRun);
-        
+        Animation();
+
     }
 
 
@@ -46,6 +43,20 @@ public class Unit : MonoBehaviour
         
         transform.position += moveSpeed * direction * Time.deltaTime;
         transform.LookAt(target);
+    }
+
+
+
+
+    void Animation()
+    {
+        bool isRun = oldPosition != transform.position;
+        if (isRun)
+        {
+            oldPosition = transform.position;
+        }
+        animator.SetBool("IsRun", isRun);
+
     }
 
     
