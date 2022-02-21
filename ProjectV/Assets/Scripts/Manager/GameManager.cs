@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
+    CameraController cameraController;
 
     private bool initZoomFlag = false;
 
@@ -17,7 +18,8 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
-        
+        cameraController = Camera.main.GetComponent<CameraController>();
+        cameraController.SetTarget(Player.Instance.gameObject);
     }
 
     void Update()
