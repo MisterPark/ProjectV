@@ -47,27 +47,27 @@ public class Stat : MonoBehaviour
 
     }
 
-    public virtual void stat_LevelUp()
+    public virtual void LevelUp()
     {
         final_Stat[(int)StatType.Level] += 1;
         final_Stat[(int)StatType.Exp] -= final_Stat[(int)StatType.MaxExp];
         final_Stat[(int)StatType.MaxExp] += growth_Stat[(int)StatType.MaxExp];
     }
-    public void stat_Increase(StatType _statType)
+    public void StatIncrease(StatType _statType)
     {
         final_Stat[(int)_statType] += growth_Stat[(int)_statType];
     }
-    public void stat_Increases(StatType _statType, int _Count)
+    public void StatIncreases(StatType _statType, int _Count)
     {
         final_Stat[(int)_statType] += (growth_Stat[(int)_statType] * _Count);
     }
 
-    public float stat_GetFinal(StatType _statType)
+    public float StatGetFinal(StatType _statType)
     {
         return final_Stat[(int)_statType];
     }
 
-    public void stat_SetFinal(StatType _statType, float _value)
+    public void StatSetFinal(StatType _statType, float _value)
     {
         final_Stat[(int)_statType] = _value;
     }

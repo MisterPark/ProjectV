@@ -17,5 +17,6 @@ public class ExpJewel_01 : Item
     protected override void OnTriggerEnter(Collider other)
     {
         base.OnTriggerEnter(other);
+        Stat stat = other.GetComponent<Stat>();
     }
 }

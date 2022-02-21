@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum ItemType { HpPotion, ExpSmall, ExpNormal,ExpBig };
+
 public class Item : MonoBehaviour
-{   
+{
     // Start is called before the first frame update
     protected virtual void Start()
     {

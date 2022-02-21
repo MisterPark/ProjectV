@@ -18,6 +18,6 @@ public class HpPotion : Item
     protected override void OnTriggerEnter(Collider other)
     {
         base.OnTriggerEnter(other);
-        
+        Stat stat = other.GetComponent<Stat>();
     }
 }
