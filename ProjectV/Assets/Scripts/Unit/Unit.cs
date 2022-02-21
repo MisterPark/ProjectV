@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Unit : MonoBehaviour
 {
-    Stat stat;
-    public float moveSpeed;
+    public Stat stat;
+    public float moveSpeed; //삭제예정
     Vector3 oldPosition;
 
     protected Animator animator;
@@ -44,7 +44,7 @@ public class Unit : MonoBehaviour
         Vector3 to = target - transform.position;
         Vector3 direction = to.normalized;
         
-        transform.position += moveSpeed * direction * Time.deltaTime;
+        transform.position += /*stat.stat_GetFinal(StatType.MoveSpeed)*/moveSpeed * direction * Time.deltaTime;
         transform.LookAt(target);
     }
 
