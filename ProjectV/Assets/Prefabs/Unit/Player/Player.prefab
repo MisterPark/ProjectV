@@ -61,66 +61,83 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c120dbd8dd9773a408f51821e5bd3d0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  origin_Stat:
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  growth_Stat:
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  final_Stat:
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
+  stats:
+  - statType: 0
+    origin_Stat: 1
+    growth_Stat: 1
+    final_Stat: 0
+  - statType: 1
+    origin_Stat: 0
+    growth_Stat: 5
+    final_Stat: 0
+  - statType: 2
+    origin_Stat: 0
+    growth_Stat: 1
+    final_Stat: 0
+  - statType: 3
+    origin_Stat: 100
+    growth_Stat: 20
+    final_Stat: 0
+  - statType: 4
+    origin_Stat: 0
+    growth_Stat: 0
+    final_Stat: 0
+  - statType: 5
+    origin_Stat: 0
+    growth_Stat: 0.2
+    final_Stat: 0
+  - statType: 6
+    origin_Stat: 0
+    growth_Stat: 10
+    final_Stat: 0
+  - statType: 7
+    origin_Stat: 0
+    growth_Stat: 10
+    final_Stat: 0
+  - statType: 8
+    origin_Stat: 0
+    growth_Stat: 10
+    final_Stat: 0
+  - statType: 9
+    origin_Stat: 0
+    growth_Stat: 10
+    final_Stat: 0
+  - statType: 10
+    origin_Stat: 0
+    growth_Stat: 1
+    final_Stat: 0
+  - statType: 11
+    origin_Stat: 0
+    growth_Stat: 10
+    final_Stat: 0
+  - statType: 12
+    origin_Stat: 0
+    growth_Stat: 10
+    final_Stat: 0
+  - statType: 13
+    origin_Stat: 0
+    growth_Stat: 10
+    final_Stat: 0
+  - statType: 14
+    origin_Stat: 0
+    growth_Stat: 10
+    final_Stat: 0
+  - statType: 15
+    origin_Stat: 100
+    growth_Stat: 10
+    final_Stat: 0
+  - statType: 16
+    origin_Stat: 0
+    growth_Stat: 0
+    final_Stat: 0
+  - statType: 17
+    origin_Stat: 0
+    growth_Stat: 10
+    final_Stat: 0
+  - statType: 18
+    origin_Stat: 0
+    growth_Stat: 0
+    final_Stat: 0
 --- !u!136 &8662588988864378225
 CapsuleCollider:
   m_ObjectHideFlags: 0

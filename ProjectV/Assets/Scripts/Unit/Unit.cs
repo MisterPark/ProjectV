@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class Unit : MonoBehaviour
 {
     public UnityEvent OnDead;
-    Stat stat;
+    public Stat stat;
     public float moveSpeed;
     Vector3 oldPosition;
 
@@ -41,7 +41,7 @@ public class Unit : MonoBehaviour
         Vector3 to = target - transform.position;
         Vector3 direction = to.normalized;
         
-        transform.position += moveSpeed * direction * Time.deltaTime;
+        transform.position += /*stat.stat_GetFinal(StatType.MoveSpeed)*/moveSpeed * direction * Time.deltaTime;
         transform.LookAt(target);
     }
 
