@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Unit : MonoBehaviour
 {
+    Stat stat;
     public float moveSpeed;
     Vector3 oldPosition;
 
@@ -12,6 +13,7 @@ public class Unit : MonoBehaviour
     public CapsuleCollider capsuleCollider;
     protected virtual void Start()
     {
+        stat = GetComponent<Stat>();
         animator = GetComponentInChildren<Animator>();
         if(animator == null)
         {
