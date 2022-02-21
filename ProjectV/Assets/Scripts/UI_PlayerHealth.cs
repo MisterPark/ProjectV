@@ -24,7 +24,6 @@ public class UI_PlayerHealth : MonoBehaviour
             height = target.GetComponent<CapsuleCollider>().height;
     }
 
-    // Update is called once per frame
     void Update()
     {
         Hp = tempHp;

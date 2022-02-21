@@ -6,7 +6,7 @@ public class Player : Unit
 {
     public static Player Instance;
     private Vector3 direction = Vector3.forward;// 캐릭터가 바라보는 방향, 스킬 사용시 사용 
-    [SerializeField]float moveSpeed = 5.0f;
+    
     public static int Row
     {
         get 
@@ -76,7 +76,5 @@ public class Player : Unit
         // Rotate
         transform.LookAt(transform.position + direction);
 
-        bool isRun = moveDirection.magnitude > 0.01f ? true : false;
-        animator.SetBool("IsRun", isRun);
     }
 }
