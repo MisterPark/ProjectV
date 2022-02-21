@@ -12,21 +12,29 @@ public class UI_PlayerHealth : MonoBehaviour
 
     private float Hp;
     private float maxHp;
+    private float height = 0f;
     // Start is called before the first frame update
     void Start()
     {
-
+        if(target == null)
+        {
+            Debug.Log("Not Find Target");
+        }
+        else 
+            height = target.GetComponent<CapsuleCollider>().height;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (target == null)
-            return;
         Hp = tempHp;
         maxHp = tempMaxHp;
         barImage.fillAmount = Hp / maxHp;
-        transform.position = target.transform.position + new Vector3(0f, target.GetComponent<CapsuleCollider>().height, 0f);
         transform.LookAt(Camera.main.transform);
+    }
+
+    void LateUpdate()
+    {
+        transform.position = target.transform.position + new Vector3(0f, height, 0f);
     }
 }
