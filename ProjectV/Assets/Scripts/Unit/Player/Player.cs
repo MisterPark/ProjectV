@@ -32,6 +32,9 @@ public class Player : Unit
     protected override void Start()
     {
         base.Start();
+
+        // TODO : юс╫ц
+        gameObject.AddComponent<Skill_IceBalt>();
     }
 
     protected override void Update()
