@@ -2,8 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public enum ItemType { HpPotion, ExpSmall, ExpNormal, ExpBig };
 public class ItemManager : MonoBehaviour
 {
+    public ItemType type;
     public static ItemManager Instance;
 
     [SerializeField] GameObject[] prefabs;
