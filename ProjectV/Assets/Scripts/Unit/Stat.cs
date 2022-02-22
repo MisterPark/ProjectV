@@ -39,14 +39,14 @@ public class Stats
 
 public class Stat : MonoBehaviour
 {
+    [SerializeField] private UnitStatData statsData;
     [ArrayElementTitle("statType")]
-    [SerializeField] protected Stats[] stats = new Stats[(int)StatType.END];
-
+    [SerializeField] protected Stats[] stats;
     // Start is called before the first frame update
     void Start()
     {
+        stats = statsData.stats;
         Init_FinalStat();
-        
     }
 
     // Update is called once per frame
