@@ -72,7 +72,7 @@ public class Player : Unit
         // Move
         direction.Normalize();
         moveDirection.Normalize();
-        transform.position += /*stat.stat_GetFinal(StatType.MoveSpeed)*/moveSpeed * moveDirection * Time.deltaTime;
+        transform.position += stat.Get_FinalStat(StatType.MoveSpeed) * moveDirection * Time.deltaTime;
         // Rotate
         transform.LookAt(transform.position + direction);
 

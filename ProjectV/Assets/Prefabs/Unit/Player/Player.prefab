@@ -47,6 +47,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89cceeaddf514e944a7785dd40f06fcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnDead:
+    m_PersistentCalls:
+      m_Calls: []
+  stat: {fileID: 0}
   moveSpeed: 10
   capsuleCollider: {fileID: 0}
 --- !u!114 &4332327263199531574
@@ -64,79 +68,98 @@ MonoBehaviour:
   stats:
   - statType: 0
     origin_Stat: 1
-    growth_Stat: 1
+    origin_Percent_Stat: 100
+    growth_Percent_Stat: 100
     final_Stat: 0
   - statType: 1
-    origin_Stat: 0
-    growth_Stat: 5
+    origin_Stat: 10
+    origin_Percent_Stat: 100
+    growth_Percent_Stat: 10
     final_Stat: 0
   - statType: 2
-    origin_Stat: 0
-    growth_Stat: 1
+    origin_Stat: 1
+    origin_Percent_Stat: 100
+    growth_Percent_Stat: 100
     final_Stat: 0
   - statType: 3
     origin_Stat: 100
-    growth_Stat: 20
+    origin_Percent_Stat: 100
+    growth_Percent_Stat: 20
     final_Stat: 0
   - statType: 4
     origin_Stat: 0
-    growth_Stat: 0
+    origin_Percent_Stat: 0
+    growth_Percent_Stat: 30
     final_Stat: 0
   - statType: 5
-    origin_Stat: 0
-    growth_Stat: 0.2
+    origin_Stat: 1
+    origin_Percent_Stat: 100
+    growth_Percent_Stat: 20
     final_Stat: 0
   - statType: 6
-    origin_Stat: 0
-    growth_Stat: 10
+    origin_Stat: 100
+    origin_Percent_Stat: 100
+    growth_Percent_Stat: -8
     final_Stat: 0
   - statType: 7
-    origin_Stat: 0
-    growth_Stat: 10
+    origin_Stat: 100
+    origin_Percent_Stat: 100
+    growth_Percent_Stat: 10
     final_Stat: 0
   - statType: 8
-    origin_Stat: 0
-    growth_Stat: 10
+    origin_Stat: 100
+    origin_Percent_Stat: 100
+    growth_Percent_Stat: 10
     final_Stat: 0
   - statType: 9
-    origin_Stat: 0
-    growth_Stat: 10
+    origin_Stat: 100
+    origin_Percent_Stat: 100
+    growth_Percent_Stat: 10
     final_Stat: 0
   - statType: 10
-    origin_Stat: 0
-    growth_Stat: 1
+    origin_Stat: 1
+    origin_Percent_Stat: 100
+    growth_Percent_Stat: 100
     final_Stat: 0
   - statType: 11
-    origin_Stat: 0
-    growth_Stat: 10
+    origin_Stat: 10
+    origin_Percent_Stat: 100
+    growth_Percent_Stat: 10
     final_Stat: 0
   - statType: 12
-    origin_Stat: 0
-    growth_Stat: 10
+    origin_Stat: 30
+    origin_Percent_Stat: 100
+    growth_Percent_Stat: 50
     final_Stat: 0
   - statType: 13
-    origin_Stat: 0
-    growth_Stat: 10
+    origin_Stat: 100
+    origin_Percent_Stat: 100
+    growth_Percent_Stat: 10
     final_Stat: 0
   - statType: 14
-    origin_Stat: 0
-    growth_Stat: 10
+    origin_Stat: 100
+    origin_Percent_Stat: 100
+    growth_Percent_Stat: 8
     final_Stat: 0
   - statType: 15
     origin_Stat: 100
-    growth_Stat: 10
+    origin_Percent_Stat: 100
+    growth_Percent_Stat: 30
     final_Stat: 0
   - statType: 16
     origin_Stat: 0
-    growth_Stat: 0
+    origin_Percent_Stat: 0
+    growth_Percent_Stat: 0
     final_Stat: 0
   - statType: 17
-    origin_Stat: 0
-    growth_Stat: 10
+    origin_Stat: 100
+    origin_Percent_Stat: 100
+    growth_Percent_Stat: 10
     final_Stat: 0
   - statType: 18
     origin_Stat: 0
-    growth_Stat: 0
+    origin_Percent_Stat: 0
+    growth_Percent_Stat: 0
     final_Stat: 0
 --- !u!136 &8662588988864378225
 CapsuleCollider:
