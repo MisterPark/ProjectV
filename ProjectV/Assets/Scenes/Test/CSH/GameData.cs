@@ -8,6 +8,9 @@ using UnityEngine;
 public class GameData 
 { 
     // 각 챕터의 잠금여부
-    public bool[] unLock_Character = new bool[(int)CharacterName.END];
-    public bool[] unLock_Stage = new bool[3];
+    public bool[] unLockCharacter = new bool[(int)CharacterName.END];
+    public bool[] unLockStage = new bool[3];
+
+    public int totalGold;
+    public int possessGold;
 }
