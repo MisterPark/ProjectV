@@ -7,6 +7,7 @@ public class Unit : MonoBehaviour
 {
     // 이벤트
     public UnityEvent OnDead;
+    public UnityEvent OnTakeDamage;
     // 스탯
     [HideInInspector] public Stat stat;
 
@@ -17,6 +18,7 @@ public class Unit : MonoBehaviour
     // 내부
     Vector3 oldPosition;
     public Vector3 skillOffsetPosition;
+    public Team team;
 
     protected virtual void Start()
     {
@@ -63,8 +65,6 @@ public class Unit : MonoBehaviour
         animator.SetBool("IsRun", isRun);
 
     }
-
-    
 
     
 }

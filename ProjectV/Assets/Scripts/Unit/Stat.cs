@@ -42,9 +42,11 @@ public class Stat : MonoBehaviour
     [SerializeField] private UnitStatData statsData;
     [ArrayElementTitle("statType")]
     [SerializeField] protected Stats[] stats;
+    Unit owner;
     // Start is called before the first frame update
     void Start()
     {
+        owner = GetComponent<Unit>();
         stats = statsData.stats;
         Init_FinalStat();
     }
@@ -181,20 +183,32 @@ public class Stat : MonoBehaviour
     /// <summary>
     /// 데미지를 입는
     /// </summary>
-    public float Damaged(float _value)
+    public float TakeDamage(float _value)
     {
         _value -= stats[(int)StatType.Armor].final_Stat;
         if(_value > 0f)
+        {
             stats[(int)StatType.Health].final_Stat -= _value;
+
+            float hp = Get_FinalStat(StatType.Health);
+            if (hp <= 0f)
+            {
+                owner.OnDead?.Invoke();
+            }
+        }
+
+        
+
         return _value;
     }
 
     /// <summary>
     /// 상대에게 데미지를 주는
     /// </summary>
-    public float TakeDamage(Stat otherStat)
+    public float ApplyDamage(Stat otherStat)
     {
-        return otherStat.Damaged(stats[(int)StatType.Might].final_Stat);
+        return otherStat.TakeDamage(stats[(int)StatType.Might].final_Stat);
     }
+
 
 }

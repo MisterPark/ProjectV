@@ -11,7 +11,7 @@ public enum SkillType
 public abstract class Skill : MonoBehaviour
 {
     public SkillType Type;
-    public float Cooltime = 1;
+    public float Cooltime = 0.5f;
 
     float tick = 0f;
     //public float 

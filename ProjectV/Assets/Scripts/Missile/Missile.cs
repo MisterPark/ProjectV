@@ -10,11 +10,13 @@ public enum MissileType
 
 public class Missile : MonoBehaviour
 {
+    public Team team;
     [SerializeField]public MissileType type;
     [SerializeField]public float duration;
     [SerializeField]public float speed;
     [SerializeField]public float damage;
 
+    public Unit owner;
     GameObject target;
     Vector3 targetDirection;
     float tick = 0f;
@@ -35,6 +37,27 @@ public class Missile : MonoBehaviour
 
         ProcessMove();
         ProcessRotate();
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        Unit unit = other.gameObject.GetComponent<Unit>();
+        if(unit != null)
+        {
+            if (unit.team == Team.Neutral) return;
+
+            if(team != unit.team)
+            {
+                unit.stat.TakeDamage(damage);
+                // юс╫ц
+                ObjectPool.Instance.Free(gameObject);
+            }
+        }
+    }
+
+    public void Initialize()
+    {
+        tick = 0f;
     }
 
     void ProcessMove()

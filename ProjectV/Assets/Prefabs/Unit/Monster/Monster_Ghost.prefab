@@ -2736,9 +2736,13 @@ MonoBehaviour:
   OnDead:
     m_PersistentCalls:
       m_Calls: []
+  OnTakeDamage:
+    m_PersistentCalls:
+      m_Calls: []
   stat: {fileID: 0}
-  moveSpeed: 5
   capsuleCollider: {fileID: 0}
+  skillOffsetPosition: {x: 0, y: 0, z: 0}
+  team: 2
 --- !u!114 &3162408537039354262
 MonoBehaviour:
   m_ObjectHideFlags: 0
