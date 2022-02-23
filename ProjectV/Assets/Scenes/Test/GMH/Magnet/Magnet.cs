@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GoldCoin_01 : Item
+public class Magnet : Item
 {
-    [SerializeField] float rotationSpeed = 1f;
+    // Start is called before the first frame update
     protected override void Start()
     {
         base.Start();
@@ -18,6 +18,6 @@ public class GoldCoin_01 : Item
     {
         base.OnTriggerEnter(other);
         Stat stat = other.GetComponent<Stat>();
-        stat.Increase_FinalStat(StatType.Gold, 1);
+        stat.Increase_FinalStat(StatType.Exp, 1);
     }
 }

@@ -8,14 +8,13 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Liquid
-  m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: ed3eecec77a6bc349bc15d17b386c2f4, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2000
-  stringTagMap:
-    RenderType: Opaque
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
@@ -77,6 +76,8 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - Vector1_291226272a55437aa7ba32d0e1d99d0e: 0.51
+    - Vector1_392f53f58e2f49dfa7f55fe9d5e9790d: 0.37
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -101,9 +102,14 @@ Material:
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _Surface: 0
+    - _WobbleX: -0.282
+    - _WobbleZ: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
+    - Color_55ca3542cd5247f5ab4df846d5ef56a9: {r: 0.97900003, g: 0.13430531, b: 0.015622368, a: 0}
+    - Color_6080ef1ae41f4e928b8b1cd79353ca29: {r: 1, g: 0.012549145, b: 0, a: 1}
+    - Color_c96c4f01abdd40aa853ac7b1e2ff8741: {r: 0.96999997, g: 0.23667997, b: 0.18429998, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
