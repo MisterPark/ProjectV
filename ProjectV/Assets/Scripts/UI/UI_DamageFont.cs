@@ -76,7 +76,9 @@ public class UI_DamageFont : MonoBehaviour
 
     private void LookAtCamera()
     {
-        transform.LookAt(Camera.main.transform.position);
-        transform.Rotate(0f, 180f, 0f);
+        //transform.LookAt(Camera.main.transform.position);
+        //transform.Rotate(0f, 180f, 0f);
+
+        transform.forward = Camera.main.transform.forward;
     }
 }
