@@ -32,6 +32,9 @@ public class Player : Unit
     protected override void Start()
     {
         base.Start();
+        OnDead.AddListener(OnDeadCallback);
+        // TODO : юс╫ц
+        gameObject.AddComponent<Skill_IceBalt>();
     }
 
     protected override void Update()
@@ -75,6 +78,11 @@ public class Player : Unit
         transform.position += stat.Get_FinalStat(StatType.MoveSpeed) * moveDirection * Time.deltaTime;
         // Rotate
         transform.LookAt(transform.position + direction);
+
+    }
+
+    void OnDeadCallback()
+    {
 
     }
 }
