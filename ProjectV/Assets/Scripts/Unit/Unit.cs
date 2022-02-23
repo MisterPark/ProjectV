@@ -5,14 +5,21 @@ using UnityEngine.Events;
 
 public class Unit : MonoBehaviour
 {
+    // 이벤트
     public UnityEvent OnDead;
-    public Stat stat;
-    public float moveSpeed;
-    Vector3 oldPosition;
+    public UnityEvent OnTakeDamage;
+    // 스탯
+    [HideInInspector] public Stat stat;
 
+    // 컴포넌트
     protected Animator animator;
-
     public CapsuleCollider capsuleCollider;
+    
+    // 내부
+    Vector3 oldPosition;
+    public Vector3 skillOffsetPosition;
+    public Team team;
+
     protected virtual void Start()
     {
         stat = GetComponent<Stat>();
@@ -41,7 +48,7 @@ public class Unit : MonoBehaviour
         Vector3 to = target - transform.position;
         Vector3 direction = to.normalized;
         
-        transform.position += /*stat.stat_GetFinal(StatType.MoveSpeed)*/moveSpeed * direction * Time.deltaTime;
+        transform.position += stat.Get_FinalStat(StatType.MoveSpeed) * direction * Time.deltaTime;
         transform.LookAt(target);
     }
 
@@ -58,8 +65,6 @@ public class Unit : MonoBehaviour
         animator.SetBool("IsRun", isRun);
 
     }
-
-    
 
     
 }

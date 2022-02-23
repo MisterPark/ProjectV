@@ -8,6 +8,7 @@ public class Monster : Unit
     protected override void Start()
     {
         base.Start();
+        OnDead.AddListener(OnDeadCallback);
     }
 
     protected override void Update()
@@ -27,5 +28,10 @@ public class Monster : Unit
         Vector3 direction = to.normalized;
         float dist = target.capsuleCollider.radius + capsuleCollider.radius;
         target.transform.position += direction * dist * Time.deltaTime;
+    }
+
+    void OnDeadCallback()
+    {
+        ObjectPool.Instance.Free(gameObject);
     }
 }

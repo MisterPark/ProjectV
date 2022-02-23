@@ -8,6 +8,8 @@ public class SpawnManager : MonoBehaviour
 
     public int MaxSpawnCount = 100;
 
+    public GameObject NearestEnemy { get; private set; }
+
     [SerializeField] List<GameObject> monsterList = new List<GameObject>();
 
     List<GameObject> spawnList = new List<GameObject>();
@@ -31,6 +33,7 @@ public class SpawnManager : MonoBehaviour
     {
         ProcessSpawn();
         ProcessRemove();
+        PrecessSetNearestEnemy();
     }
 
     public void Spawn(GameObject prefab, Vector3 position)
@@ -94,4 +97,29 @@ public class SpawnManager : MonoBehaviour
             Remove(monster);
         }
     }
+
+    private void PrecessSetNearestEnemy()
+    {
+        NearestEnemy = null;
+        if (Player.Instance == null) return;
+
+        Vector3 playerPos = Player.Instance.transform.position;
+        float minDIst = float.MaxValue;
+        float dist;
+
+        foreach (var monster in spawnList)
+        {
+            if (monster == null) continue;
+            if (monster.activeSelf == false) continue;
+            
+            dist = (playerPos - monster.transform.position).magnitude;
+            if(dist < minDIst)
+            {
+                minDIst = dist;
+                NearestEnemy = monster;
+            }
+        }
+    }
+
+
 }

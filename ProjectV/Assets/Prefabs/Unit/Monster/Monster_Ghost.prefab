@@ -2696,6 +2696,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3552130756440157394}
   - component: {fileID: 5138044777156888119}
+  - component: {fileID: 3162408537039354262}
   - component: {fileID: 4654845090531573692}
   - component: {fileID: -1728800724901627208}
   m_Layer: 0
@@ -2732,8 +2733,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd75a23d814cd1246b7270052cee05db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  OnDead:
+    m_PersistentCalls:
+      m_Calls: []
+  OnTakeDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  stat: {fileID: 0}
   capsuleCollider: {fileID: 0}
+  skillOffsetPosition: {x: 0, y: 0, z: 0}
+  team: 2
+--- !u!114 &3162408537039354262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3552130756440157395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c120dbd8dd9773a408f51821e5bd3d0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  statsData: {fileID: 11400000, guid: c748184b9c8655d4ab44d1620c80aaac, type: 2}
+  stats: []
 --- !u!136 &4654845090531573692
 CapsuleCollider:
   m_ObjectHideFlags: 0
