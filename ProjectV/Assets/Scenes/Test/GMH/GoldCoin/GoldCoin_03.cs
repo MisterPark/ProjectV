@@ -17,6 +17,6 @@ public class GoldCoin_03 : Item
     {
         base.OnTriggerEnter(other);
         Stat stat = other.GetComponent<Stat>();
-        stat.StatIncreases(StatType.Gold, 100);
+        stat.Increase_FinalStat(StatType.Gold, 100);
     }
 }

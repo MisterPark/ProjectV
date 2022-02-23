@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ExpJewel_02 : Item
+public class Magnet : Item
 {
     // Start is called before the first frame update
     protected override void Start()
@@ -18,6 +18,6 @@ public class ExpJewel_02 : Item
     {
         base.OnTriggerEnter(other);
         Stat stat = other.GetComponent<Stat>();
-        stat.Increase_FinalStat(StatType.Exp, 10);
+        stat.Increase_FinalStat(StatType.Exp, 1);
     }
 }

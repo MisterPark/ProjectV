@@ -19,6 +19,6 @@ public class HpPotion : Item
     {
         base.OnTriggerEnter(other);
         Stat stat = other.GetComponent<Stat>();
-        stat.StatIncreases(StatType.Health, 30);
+        stat.Increase_FinalStat(StatType.Health, 30);
     }
 }

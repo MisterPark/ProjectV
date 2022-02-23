@@ -18,6 +18,6 @@ public class ExpJewel_03 : Item
     {
         base.OnTriggerEnter(other);
         Stat stat = other.GetComponent<Stat>();
-        stat.StatIncreases(StatType.Exp, 100);
+        stat.Increase_FinalStat(StatType.Exp, 100);
     }
 }

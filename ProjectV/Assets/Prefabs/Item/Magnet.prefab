@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2009982007598702799}
   - component: {fileID: 3191706787931221866}
   - component: {fileID: 842119392287726496}
-  - component: {fileID: 6893956495536900151}
+  - component: {fileID: 9038959583889687696}
   m_Layer: 0
   m_Name: Magnet
   m_TagString: Untagged
@@ -84,7 +84,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &6893956495536900151
+--- !u!114 &9038959583889687696
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -93,6 +93,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1202236044580797045}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a232da2a69e2704091769fc13c2b375, type: 3}
+  m_Script: {fileID: 11500000, guid: 9cb4a25da22e9b646af21c6d4d6ed6ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotationSpeed: 0.5
