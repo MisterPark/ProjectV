@@ -189,15 +189,8 @@ public class Stat : MonoBehaviour
         if(_value > 0f)
         {
             stats[(int)StatType.Health].final_Stat -= _value;
-
-            float hp = Get_FinalStat(StatType.Health);
-            if (hp <= 0f)
-            {
-                owner.OnDead?.Invoke();
-            }
+            owner.OnTakeDamage?.Invoke(_value);
         }
-
-        
 
         return _value;
     }

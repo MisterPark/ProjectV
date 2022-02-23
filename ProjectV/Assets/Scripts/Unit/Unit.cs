@@ -7,7 +7,7 @@ public class Unit : MonoBehaviour
 {
     // ¿Ã∫•∆Æ
     public UnityEvent OnDead;
-    public UnityEvent OnTakeDamage;
+    public UnityEvent<float> OnTakeDamage;
     // Ω∫≈»
     [HideInInspector] public Stat stat;
 
@@ -34,6 +34,7 @@ public class Unit : MonoBehaviour
             Debug.LogError("CapsuleCollider Not Found");
         }
         oldPosition = transform.position;
+        OnTakeDamage.AddListener(OnTakeDamageCallback);
     }
 
     protected virtual void Update()
@@ -63,6 +64,22 @@ public class Unit : MonoBehaviour
             oldPosition = transform.position;
         }
         animator.SetBool("IsRun", isRun);
+
+    }
+
+    void OnTakeDamageCallback(float damage)
+    {
+
+        GameObject temp = ObjectPool.Instance.Allocate("UI_DamageFont");
+        UI_DamageFont font = temp.transform.GetChild(0).GetComponent<UI_DamageFont>();
+        font.Init((int)damage, UI_DamageFont.FontColor.WHITE, transform.position + (Vector3.up * 2f));
+
+        // ªÁ∏¡√≥∏Æ
+        float hp = stat.Get_FinalStat(StatType.Health);
+        if (hp <= 0f)
+        {
+            OnDead?.Invoke();
+        }
 
     }
 

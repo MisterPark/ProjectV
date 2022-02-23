@@ -32,6 +32,6 @@ public class Monster : Unit
 
     void OnDeadCallback()
     {
-        ObjectPool.Instance.Free(gameObject);
+        SpawnManager.Instance.Remove(gameObject);
     }
 }
