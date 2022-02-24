@@ -16,7 +16,9 @@ public class GoldCoin_01 : Item
     
     public override void Use()
     {
+
         Stat stat = Player.Instance.GetComponent<Stat>();
         stat.Increase_FinalStat(StatType.Gold, 1);
+        
     }
 }
