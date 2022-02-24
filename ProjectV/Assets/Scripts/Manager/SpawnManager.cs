@@ -13,7 +13,7 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] List<GameObject> monsterList = new List<GameObject>();
 
     List<GameObject> spawnList = new List<GameObject>();
-
+    public List<GameObject> SpawnList{ get { return spawnList; } }
     float spawnDelay = 1f;
     float spawnTick = 0f;
 
@@ -70,7 +70,7 @@ public class SpawnManager : MonoBehaviour
         {
             int index = Random.Range(0, monsterList.Count - 1);
             float angle = Random.Range(-180, 180);
-            float dist = 20f;
+            float dist = 30f;
             Vector3 pos = new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle)) * dist;
             pos += Player.Instance.transform.position;
             Spawn(monsterList[index], pos);
@@ -86,7 +86,7 @@ public class SpawnManager : MonoBehaviour
         {
             Vector3 to = Player.Instance.transform.position - monster.transform.position;
             float dist = to.magnitude;
-            if(dist > 25f)
+            if(dist > 35f)
             {
                 removes.Add(monster);
             }
