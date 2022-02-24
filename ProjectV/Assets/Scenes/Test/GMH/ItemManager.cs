@@ -17,7 +17,7 @@ public class ItemManager : MonoBehaviour
 
     [SerializeField] GameObject[] prefabs;
 
-    List<GameObject> itemList = new List<GameObject>();
+    public List<GameObject> itemList = new List<GameObject>();
     private void Awake()
     {
         if (Instance == null)
@@ -49,40 +49,55 @@ public class ItemManager : MonoBehaviour
         item.SetActive(true);
         itemObjectCom.Item = itemCom;
 
+        
         bool isRotate=false;
         switch (type)
         {
         case ItemType.ExpJewel_Big:
-                isRotate = true;
-            break;
+                itemObjectCom.isRotate = true;
+                itemObjectCom.isMagnetism = true;
+                break;
         case ItemType.ExpJewel_Normal:
-                isRotate = true;
+                itemObjectCom.isRotate = true;
+                itemObjectCom.isMagnetism = true;
                 break;
         case ItemType.ExpJewel_Small:
-                isRotate = true;
+                itemObjectCom.isRotate = true;
+                itemObjectCom.isMagnetism = true;
                 break;
         case ItemType.Glass:
-                isRotate = true;
+                itemObjectCom.isRotate = true;
+                itemObjectCom.isMagnetism = false;
                 break;
         case ItemType.GoldCoin_Big:
-            break;
+                itemObjectCom.isRotate = false;
+                itemObjectCom.isMagnetism = false;
+                break;
         case ItemType.GoldCoin_Normal:
-            break;
+                itemObjectCom.isRotate = false;
+                itemObjectCom.isMagnetism = false;
+                break;
         case ItemType.GoldCoin_Small:
-            break;
+                itemObjectCom.isRotate = false;
+                itemObjectCom.isMagnetism = false;
+                break;
         case ItemType.HpPotion:
-            break;
+                itemObjectCom.isRotate = false;
+                itemObjectCom.isMagnetism = false;
+                break;
         case ItemType.Magnet:
-                isRotate = true;
+                itemObjectCom.isRotate = true;
+                itemObjectCom.isMagnetism = false;
                 break;
             default:
-                isRotate = false;
+                itemObjectCom.isRotate = true;
+                itemObjectCom.isMagnetism = false;
                 break;
         }
         itemObject.GetComponent<ItemObject>().SetRotate(isRotate);
         //GameObject item = ObjectPool.Instance.Allocate(prefabs[(int)type].name);
         //item.transform.position = position;
-        //itemList.Add(item);
+        itemList.Add(itemObject);
     }
     public void Remove(GameObject target)
     {
