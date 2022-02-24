@@ -128,7 +128,7 @@ public class Stat : MonoBehaviour
                 }
             case StatType.Exp:
                 {
-                    return stats[(int)StatType.Health].final_Stat += _count;
+                    return stats[(int)StatType.Exp].final_Stat += _count;
                 }
             default:
                 {
