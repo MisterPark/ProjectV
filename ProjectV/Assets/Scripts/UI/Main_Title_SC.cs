@@ -9,7 +9,6 @@ public class Main_Title_SC : MonoBehaviour
 {
     public float KeyboardCursor_Xpos;
     public Image KeyboardCursor_Image;
-    public Image Start_Image;
     public string StartScene_Name;
     public EventSystem Event_Handle;
     private int Money { get; set; }
@@ -60,8 +59,4 @@ public class Main_Title_SC : MonoBehaviour
     public void OnClickPowerup()
     { }
 
-    public void OnKeyCursor()
-    {
-        Start_Image.color = Color.green;
-    }
 }

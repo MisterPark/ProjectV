@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class UI_PowerupTemplate : MonoBehaviour
 {
+    private Powerup_DataType m_DataType;
+
+    public Powerup_DataType DataType => m_DataType;
     [SerializeField] private Image m_Powerup_Image;
     [SerializeField] private Image m_Powerup_Rank_Image;
     [SerializeField] private Image m_RankPanel;
@@ -27,6 +30,7 @@ public class UI_PowerupTemplate : MonoBehaviour
 
     public void Init(Powerup_DataType data)
     {
+        m_DataType = data;
         m_Powerup_Image.sprite = data.Powerup_Image;
         m_Powerup_Name.text = data.Powerup_Name;
         float columnstart = -(m_RankPanel.GetComponent<RectTransform>().rect.width/2);

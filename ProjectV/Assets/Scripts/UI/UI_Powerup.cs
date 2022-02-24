@@ -1,13 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class UI_Powerup : MonoBehaviour
 {
-    public UI_Powerup_statDB m_PowerupDB;
-    public GameObject m_PowerupTemplate;
-    public GameObject m_ContentView;
-
+    [SerializeField] private UI_Powerup_statDB m_PowerupDB;
+    [SerializeField] private GameObject m_PowerupTemplate;
+    [SerializeField] private GameObject m_ContentView;
+    [SerializeField] private EventSystem m_EventHandle;
+    [SerializeField] private GameObject m_UnderPanel;
+    [SerializeField] private Image m_aaa;
+    [SerializeField] private TMPro.TextMeshProUGUI m_bbb;
+    [SerializeField] private TMPro.TextMeshProUGUI m_ccc;
 
     //TemplateUI Ver,Ho Rect
 
@@ -28,7 +34,6 @@ public class UI_Powerup : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
 
     private void InitPowerupTemplate()
@@ -57,6 +62,25 @@ public class UI_Powerup : MonoBehaviour
             tempobject.transform.localPosition = new Vector3((tempcolumncount * (ColumnInterval + ColumnPadding)) + ColumnPivot, -(temprowcount * (RowInterval + RowPadding) + RowPivot), 0f);
             UI_PowerupTemplate tempPUT = (UI_PowerupTemplate)(tempobject.transform.GetComponent("UI_PowerupTemplate"));
             tempPUT.Init(m_PowerupDB.Powerup_Type_List[repeat]);
+        }
+    }
+
+    public void Powerup_OnCursor()
+    {
+        m_EventHandle = EventSystem.current;
+        if (m_EventHandle != null)
+        {
+            GameObject tep = m_EventHandle.currentSelectedGameObject;
+            if (tep != null)
+            {
+                GameObject tempobject = m_EventHandle.currentSelectedGameObject;
+
+                m_UnderPanel.GetComponent<UI_PowerupUnderPanel>().PowerupExplanInit(tempobject.GetComponent<UI_PowerupTemplate>().DataType);
+                m_aaa.sprite = tempobject.GetComponent<UI_PowerupTemplate>().DataType.Powerup_Image;
+                m_bbb.text = tempobject.GetComponent<UI_PowerupTemplate>().DataType.Powerup_Name;
+                m_ccc.text = tempobject.GetComponent<UI_PowerupTemplate>().DataType.Powerup_Tip;
+                LayoutRebuilder.ForceRebuildLayoutImmediate(m_UnderPanel.GetComponent<RectTransform>());
+            }
         }
     }
 }
