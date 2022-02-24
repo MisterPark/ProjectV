@@ -36,13 +36,17 @@ public class ItemManager : MonoBehaviour
     public void Drop(ItemType type, Vector3 position)
     {
         GameObject itemObject =ObjectPool.Instance.Allocate("ItemObject");
+        ItemObject itemObjectCom = itemObject.GetComponent<ItemObject>();
         itemObject.transform.position = position;
         int childCount = itemObject.transform.childCount;
         for(int i = 0; i < childCount; i++)
         {
             itemObject.transform.GetChild(i).gameObject.SetActive(false);
         }
-        itemObject.transform.GetChild((int)type).gameObject.SetActive(true);
+        GameObject item = itemObject.transform.GetChild((int)type).gameObject;
+        Item itemCom = item.GetComponent<Item>();
+        item.SetActive(true);
+        itemObjectCom.Item = itemCom;
 
         bool isRotate=false;
         switch (type)
