@@ -47,12 +47,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89cceeaddf514e944a7785dd40f06fcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 0
   OnDead:
+    m_PersistentCalls:
+      m_Calls: []
+  OnTakeDamage:
     m_PersistentCalls:
       m_Calls: []
   stat: {fileID: 0}
   capsuleCollider: {fileID: 0}
   skillOffsetPosition: {x: 0, y: 1, z: 0}
+  team: 1
 --- !u!114 &4332327263199531574
 MonoBehaviour:
   m_ObjectHideFlags: 0

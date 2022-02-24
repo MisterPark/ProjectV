@@ -36,7 +36,8 @@ public class ProjectileMoveTutScript : MonoBehaviour
         if(impactPrefab!=null)
         {
             var impactVFX = Instantiate(impactPrefab, pos, rot) as GameObject;
-            Destroy(impactVFX,5);
+            Destroy(impactVFX, 5);
+
         }
 
         if(trails.Count >0)
