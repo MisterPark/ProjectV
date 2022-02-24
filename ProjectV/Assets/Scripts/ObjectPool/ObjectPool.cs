@@ -38,6 +38,25 @@ public class ObjectPool : MonoBehaviour
         
         return gameObject;
     }
+
+    public GameObject Allocate(string key, Vector3 position)
+    {
+        if (!_pools.ContainsKey(key))
+        {
+            Debug.LogError($"can't find key : {key}");
+        }
+
+        if (_pools[key].Count == 0)
+        {
+            UpSizing(key);
+        }
+        GameObject gameObject = _pools[key].Pop();
+        gameObject.name = key;
+        gameObject.transform.position = position;  
+        gameObject.SetActive(true);
+
+        return gameObject;
+    }
     public void Free(GameObject _gameObject)
     {
         string key = _gameObject.name.Split('(')[0];
