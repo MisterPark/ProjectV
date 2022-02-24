@@ -32,9 +32,11 @@ public class Player : Unit
     protected override void Start()
     {
         base.Start();
+        type = UnitType.Player;
         OnDead.AddListener(OnDeadCallback);
-        // TODO : юс╫ц
-        gameObject.AddComponent<Skill_IceBalt>();
+
+        AddSkill(SkillType.IceBolt);
+        
     }
 
     protected override void Update()

@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class ItemObject : MonoBehaviour
 {
-    [SerializeField] float rotationSpeed = 1f;
-    // Start is called before the first frame update
+    [SerializeField] float rotationSpeed = 0f;
+    public bool isRotate=false;
+    Item item;
+
     void Start()
     {
         
@@ -14,6 +16,20 @@ public class ItemObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(Vector3.up, rotationSpeed);
+        if(isRotate)
+        transform.Rotate(Vector3.up, rotationSpeed,Space.World);
     }
+
+    protected virtual void OnTriggerEnter(Collider other)
+    {
+        if (!other.gameObject.IsPlayer())
+            return;
+        item?.Use();
+        if(item != null)
+        {
+            Destroy(gameObject.GetComponent<Item>());
+        }
+        ItemManager.Instance.Remove(gameObject);
+    }
+    public void SetRotate(bool _isRotate) { isRotate = _isRotate; }
 }

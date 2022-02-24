@@ -5,7 +5,8 @@ using UnityEngine;
 public enum SkillType
 {
     None,
-    IceBalt,
+    IceBolt,
+    FireBolt,
 }
 
 public abstract class Skill : MonoBehaviour

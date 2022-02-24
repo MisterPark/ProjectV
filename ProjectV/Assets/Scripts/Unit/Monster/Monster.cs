@@ -8,6 +8,7 @@ public class Monster : Unit
     protected override void Start()
     {
         base.Start();
+        type = UnitType.Monster;
         OnDead.AddListener(OnDeadCallback);
     }
 
@@ -32,6 +33,8 @@ public class Monster : Unit
 
     void OnDeadCallback()
     {
-        ObjectPool.Instance.Free(gameObject);
+        int rand = Random.Range(0, 8);
+        ItemManager.Instance.Drop((ItemType)rand, transform.position);
+        SpawnManager.Instance.Remove(gameObject);
     }
 }
