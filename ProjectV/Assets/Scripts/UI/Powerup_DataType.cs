@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Powerup_DataType", menuName = "Powerup_DataType")]
 public class Powerup_DataType : ScriptableObject
 {
-    [SerializeField] private Stat.StatType m_PowerType;
+    [SerializeField] private StatType m_PowerType;
     [SerializeField] private string m_Powerup_Name;
     [SerializeField] private Sprite m_Powerup_Image;
     [SerializeField] private string m_Powerup_Tip;
