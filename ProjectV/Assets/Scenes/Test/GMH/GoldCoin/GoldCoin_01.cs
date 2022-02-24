@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class GoldCoin_01 : Item
 {
-    [SerializeField] float rotationSpeed = 1f;
     protected override void Start()
     {
         base.Start();
