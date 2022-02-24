@@ -118,6 +118,18 @@ public class Stat : MonoBehaviour
                 {
                     return stats[(int)StatType.Amount].final_Stat += _count;
                 }
+            case StatType.Gold:
+                {
+                    return stats[(int)StatType.Gold].final_Stat += _count;
+                }
+            case StatType.Health:
+                {
+                    return stats[(int)StatType.Health].final_Stat += _count;
+                }
+            case StatType.Exp:
+                {
+                    return stats[(int)StatType.Exp].final_Stat += _count;
+                }
             default:
                 {
                     return stats[(int)_statType].final_Stat += stats[(int)_statType].origin_Stat * (stats[(int)_statType].growth_Stat * _count);

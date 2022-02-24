@@ -6,7 +6,7 @@ public class ItemObject : MonoBehaviour
 {
     [SerializeField] float rotationSpeed = 0f;
     public bool isRotate=false;
-    Item item;
+    public Item Item { get; set; }
 
     void Start()
     {
@@ -24,11 +24,9 @@ public class ItemObject : MonoBehaviour
     {
         if (!other.gameObject.IsPlayer())
             return;
-        item?.Use();
-        if(item != null)
-        {
-            Destroy(gameObject.GetComponent<Item>());
-        }
+
+        Item?.Use();
+
         ItemManager.Instance.Remove(gameObject);
     }
     public void SetRotate(bool _isRotate) { isRotate = _isRotate; }

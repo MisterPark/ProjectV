@@ -13,23 +13,19 @@ public class ObjectPool : MonoBehaviour
     {
         if(Instance == null)
             _instance = this;
+        Initialize();
     }
 
     private void Start()
     {
-        Initialize();
+        
     }
 
-    public GameObject Allocate(string key) {
-        if (!_pools.ContainsKey(key))
+    public GameObject Allocate(string key) 
+    {
+        if(!_pools.ContainsKey(key))
         {
-            Debug.LogError($"can't find key : {key}");   
-            string items = string.Empty;
-            foreach(var pool in _pools)
-            {
-                items += pool.Key + " ";
-            }
-            Debug.Log(items);
+            Debug.LogError($"can't find key : {key}");
         }
 
         if (_pools[key].Count == 0)

@@ -36,6 +36,7 @@ public class Player : Unit
         OnDead.AddListener(OnDeadCallback);
 
         AddSkill(SkillType.IceBolt);
+        AddSkill(SkillType.FireBolt);
         
     }
 
@@ -44,7 +45,7 @@ public class Player : Unit
         base.Update();
         Move();
         //Debug.Log($"{Column},{Row} / {transform.position}");
-        
+        //Debug.Log($"{s}")
     }
 
 

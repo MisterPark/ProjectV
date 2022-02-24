@@ -16,6 +16,7 @@ public class UI_PlayerHealth : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        target = Player.Instance.gameObject;
         if(target == null)
         {
             Debug.Log("Not Find Target");

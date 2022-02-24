@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class UI_ExpBar : MonoBehaviour
 {
-    public float tempExp = 0f;
-    public float tempMaxExp = 100f;
 
     private float Exp;
     private float maxExp;
@@ -26,8 +24,8 @@ public class UI_ExpBar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Exp = tempExp;
-        maxExp = tempMaxExp;
+        Exp = Player.Instance.stat.Get_FinalStat(StatType.Exp);
+        maxExp = Player.Instance.stat.Get_FinalStat(StatType.MaxExp);
         UpdateSize();
         barImage.fillAmount = Exp / maxExp;
     }

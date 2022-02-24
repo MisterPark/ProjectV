@@ -131,9 +131,21 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2104248979163277510, guid: 3b298b9bd85a54c4784e7354e24adf59, type: 3}
+      propertyPath: prefabs.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2104248979163277510, guid: 3b298b9bd85a54c4784e7354e24adf59, type: 3}
       propertyPath: prefabs.Array.data[0]
       value: 
       objectReference: {fileID: 5796270571177720367, guid: 6f419dd093475a141b38ae8f1a35d5b0, type: 3}
+    - target: {fileID: 2104248979163277510, guid: 3b298b9bd85a54c4784e7354e24adf59, type: 3}
+      propertyPath: prefabs.Array.data[3]
+      value: 
+      objectReference: {fileID: 8839612370934199639, guid: 7e319bd39b5cbff47ac0d073937eb9be, type: 3}
+    - target: {fileID: 2104248979163277510, guid: 3b298b9bd85a54c4784e7354e24adf59, type: 3}
+      propertyPath: prefabs.Array.data[5]
+      value: 
+      objectReference: {fileID: 6818292206054792440, guid: 24443c06ea1b3fb40bcf407c8b489960, type: 3}
     - target: {fileID: 3762323045427801353, guid: 3b298b9bd85a54c4784e7354e24adf59, type: 3}
       propertyPath: m_Name
       value: ObjectPool
@@ -877,6 +889,63 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+--- !u!1001 &850798843
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 470796676754102573, guid: 95470897d5766bf49a8217783e48850b, type: 3}
+      propertyPath: m_Name
+      value: ItemManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 1538004153329605845, guid: 95470897d5766bf49a8217783e48850b, type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 1538004153329605845, guid: 95470897d5766bf49a8217783e48850b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.8898296
+      objectReference: {fileID: 0}
+    - target: {fileID: 1538004153329605845, guid: 95470897d5766bf49a8217783e48850b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.107415
+      objectReference: {fileID: 0}
+    - target: {fileID: 1538004153329605845, guid: 95470897d5766bf49a8217783e48850b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 10.3982935
+      objectReference: {fileID: 0}
+    - target: {fileID: 1538004153329605845, guid: 95470897d5766bf49a8217783e48850b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1538004153329605845, guid: 95470897d5766bf49a8217783e48850b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1538004153329605845, guid: 95470897d5766bf49a8217783e48850b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1538004153329605845, guid: 95470897d5766bf49a8217783e48850b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1538004153329605845, guid: 95470897d5766bf49a8217783e48850b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1538004153329605845, guid: 95470897d5766bf49a8217783e48850b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1538004153329605845, guid: 95470897d5766bf49a8217783e48850b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 95470897d5766bf49a8217783e48850b, type: 3}
 --- !u!1 &898669771
 GameObject:
   m_ObjectHideFlags: 0
@@ -971,7 +1040,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 0.5707547, g: 0.61115426, b: 1, a: 1}
+  m_Color: {r: 0.5764507, g: 0.6118465, b: 0.9622642, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30

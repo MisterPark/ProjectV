@@ -68,7 +68,7 @@ public class Unit : MonoBehaviour
 
         switch (type)
         {
-            case SkillType.IceBolt: gameObject.AddComponent<Skill_FireBolt>(); break;
+            case SkillType.IceBolt: gameObject.AddComponent<Skill_IceBolt>(); break;
             case SkillType.FireBolt: gameObject.AddComponent<Skill_FireBolt>(); break;
             default:
                 break;
