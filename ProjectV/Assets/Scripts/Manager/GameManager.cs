@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
         Cursor.visible = false;
         objectPool = Instantiate(objectPoolPrefab);
         objectPool.transform.position = Vector3.zero;
+        objectPool.name = "ObjectPool";
 
     }
     void Start()
