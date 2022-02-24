@@ -38,6 +38,7 @@ public class ItemManager : MonoBehaviour
         GameObject itemObject =ObjectPool.Instance.Allocate("ItemObject");
         ItemObject itemObjectCom = itemObject.GetComponent<ItemObject>();
         itemObject.transform.position = position;
+        itemObjectCom.MagnetFlag = false;
         int childCount = itemObject.transform.childCount;
         for(int i = 0; i < childCount; i++)
         {

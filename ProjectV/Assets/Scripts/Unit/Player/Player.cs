@@ -46,6 +46,8 @@ public class Player : Unit
         Move();
         //Debug.Log($"{Column},{Row} / {transform.position}");
         //Debug.Log($"{s}")
+        
+
     }
 
 

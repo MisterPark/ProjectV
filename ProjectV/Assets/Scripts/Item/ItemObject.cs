@@ -5,8 +5,10 @@ using UnityEngine;
 public class ItemObject : MonoBehaviour
 {
     [SerializeField] float rotationSpeed = 0f;
+    float moveSpeed = 15f;
     public bool isRotate=false;
     public Item Item { get; set; }
+    public bool MagnetFlag { get; set; } = false;
 
     void Start()
     {
@@ -18,6 +20,24 @@ public class ItemObject : MonoBehaviour
     {
         if(isRotate)
         transform.Rotate(Vector3.up, rotationSpeed,Space.World);
+
+        Vector3 to = Player.Instance.transform.position - transform.position;
+
+        if (MagnetFlag == false)
+        {
+            float radius = Player.Instance.stat.Get_FinalStat(StatType.Magnet);
+            float dist = to.magnitude;
+            if (dist <= radius)
+            {
+                MagnetFlag = true;
+            }
+        }
+
+        if(MagnetFlag)
+        {
+            transform.position += to.normalized * moveSpeed * Time.deltaTime;
+        }
+       
     }
 
     protected virtual void OnTriggerEnter(Collider other)
