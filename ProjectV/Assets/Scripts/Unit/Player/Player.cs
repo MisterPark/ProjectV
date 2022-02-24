@@ -2,6 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public enum PlayerCharacterName
+{
+    Character_01,
+    Character_02,
+    Character_03,
+    END
+}
+[System.Serializable]
+public class PlayerCharacterNode
+{
+    [SerializeField] public PlayerCharacterName name;
+    [SerializeField] public UnitStatData statsData;
+}
+
 public class Player : Unit
 {
     public static Player Instance;
@@ -28,6 +43,7 @@ public class Player : Unit
     private void Awake()
     {
         Instance = this;
+        Init_Stat();
     }
     protected override void Start()
     {
@@ -89,5 +105,16 @@ public class Player : Unit
     void OnDeadCallback()
     {
 
+    }
+
+    private void Init_Stat()
+    {
+        DataManager dataManager = DataManager.Instance;
+        Stat _stat = GetComponent<Stat>();
+        _stat.Set_Stats(dataManager.playerCharacterData[(int)dataManager.currentPlayerCharacter].statsData.stats);
+        for (int i = 0; i < (int)StatType.END; i++)
+        {
+            _stat.Set_PowerUpStat(i, dataManager.powerUpStat[i]);
+        }
     }
 }
