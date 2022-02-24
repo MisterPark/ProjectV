@@ -365,6 +365,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2104248979163277510, guid: 3b298b9bd85a54c4784e7354e24adf59, type: 3}
+      propertyPath: prefabs.Array.data[3]
+      value: 
+      objectReference: {fileID: 8839612370934199639, guid: 7e319bd39b5cbff47ac0d073937eb9be, type: 3}
     - target: {fileID: 3762323045427801353, guid: 3b298b9bd85a54c4784e7354e24adf59, type: 3}
       propertyPath: m_Name
       value: ObjectPool
@@ -938,6 +942,10 @@ PrefabInstance:
     - target: {fileID: 8662588988864378238, guid: 1435550fc504d374b8bb9beb23e59113, type: 3}
       propertyPath: m_Constraints
       value: 126
+      objectReference: {fileID: 0}
+    - target: {fileID: 8662588988864378239, guid: 1435550fc504d374b8bb9beb23e59113, type: 3}
+      propertyPath: team
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8662588988864378239, guid: 1435550fc504d374b8bb9beb23e59113, type: 3}
       propertyPath: moveSpeed
