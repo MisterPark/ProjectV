@@ -3,8 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+public enum UnitType
+{
+    None,
+    Player,
+    Monster,
+}
+
+
 public class Unit : MonoBehaviour
 {
+    public UnitType type;
     // 이벤트
     public UnityEvent OnDead;
     public UnityEvent<float> OnTakeDamage;
@@ -58,6 +67,9 @@ public class Unit : MonoBehaviour
 
     void Animation()
     {
+        // 유닛 타입 세팅
+        animator.SetInteger("UnitType", (int)type);
+        // 달리기
         bool isRun = oldPosition != transform.position;
         if (isRun)
         {
