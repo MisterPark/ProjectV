@@ -103,9 +103,17 @@ public class Unit : MonoBehaviour
         float hp = stat.Get_FinalStat(StatType.Health);
         if (hp <= 0f)
         {
+            Death();
             OnDead?.Invoke();
         }
 
+    }
+
+    void Death()
+    {
+        GameObject deathObject = ObjectPool.Instance.Allocate($"{gameObject.name}_Death");
+        deathObject.transform.position = transform.position;
+        deathObject.transform.rotation = transform.rotation;
     }
 
     
