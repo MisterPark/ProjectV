@@ -13,23 +13,19 @@ public class ObjectPool : MonoBehaviour
     {
         if(Instance == null)
             _instance = this;
+        Initialize();
     }
 
     private void Start()
     {
-        Initialize();
+        
     }
 
-    public GameObject Allocate(string key) {
-        if (!_pools.ContainsKey(key))
+    public GameObject Allocate(string key) 
+    {
+        if(!_pools.ContainsKey(key))
         {
-            Debug.LogError($"can't find key : {key}");   
-            string items = string.Empty;
-            foreach(var pool in _pools)
-            {
-                items += pool.Key + " ";
-            }
-            Debug.Log(items);
+            Debug.LogError($"can't find key : {key}");
         }
 
         if (_pools[key].Count == 0)
@@ -40,6 +36,25 @@ public class ObjectPool : MonoBehaviour
         gameObject.name = key;
         gameObject.SetActive(true);
         
+        return gameObject;
+    }
+
+    public GameObject Allocate(string key, Vector3 position)
+    {
+        if (!_pools.ContainsKey(key))
+        {
+            Debug.LogError($"can't find key : {key}");
+        }
+
+        if (_pools[key].Count == 0)
+        {
+            UpSizing(key);
+        }
+        GameObject gameObject = _pools[key].Pop();
+        gameObject.name = key;
+        gameObject.transform.position = position;  
+        gameObject.SetActive(true);
+
         return gameObject;
     }
     public void Free(GameObject _gameObject)

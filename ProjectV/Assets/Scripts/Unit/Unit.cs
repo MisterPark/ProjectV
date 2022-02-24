@@ -68,7 +68,7 @@ public class Unit : MonoBehaviour
 
         switch (type)
         {
-            case SkillType.IceBolt: gameObject.AddComponent<Skill_FireBolt>(); break;
+            case SkillType.IceBolt: gameObject.AddComponent<Skill_IceBolt>(); break;
             case SkillType.FireBolt: gameObject.AddComponent<Skill_FireBolt>(); break;
             default:
                 break;
@@ -103,9 +103,17 @@ public class Unit : MonoBehaviour
         float hp = stat.Get_FinalStat(StatType.Health);
         if (hp <= 0f)
         {
+            Death();
             OnDead?.Invoke();
         }
 
+    }
+
+    void Death()
+    {
+        GameObject deathObject = ObjectPool.Instance.Allocate($"{gameObject.name}_Death");
+        deathObject.transform.position = transform.position;
+        deathObject.transform.rotation = transform.rotation;
     }
 
     

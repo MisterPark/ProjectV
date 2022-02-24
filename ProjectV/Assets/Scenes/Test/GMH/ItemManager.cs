@@ -8,7 +8,9 @@ public enum ItemType { ExpJewel_Big, ExpJewel_Normal, ExpJewel_Small,
                        GoldCoin_Big, GoldCoin_Normal, GoldCoin_Small,
                        HpPotion,
                        //Level01, Level02, Level03, Level04, Level05,
-                       Magnet
+                       Magnet,
+                       Pentagram,
+                       ItemEnd
 };
 public class ItemManager : MonoBehaviour
 {
@@ -17,7 +19,7 @@ public class ItemManager : MonoBehaviour
 
     [SerializeField] GameObject[] prefabs;
 
-    List<GameObject> itemList = new List<GameObject>();
+    public List<GameObject> itemList = new List<GameObject>();
     private void Awake()
     {
         if (Instance == null)
@@ -36,48 +38,71 @@ public class ItemManager : MonoBehaviour
     public void Drop(ItemType type, Vector3 position)
     {
         GameObject itemObject =ObjectPool.Instance.Allocate("ItemObject");
+        ItemObject itemObjectCom = itemObject.GetComponent<ItemObject>();
         itemObject.transform.position = position;
+        itemObjectCom.MagnetFlag = false;
         int childCount = itemObject.transform.childCount;
         for(int i = 0; i < childCount; i++)
         {
             itemObject.transform.GetChild(i).gameObject.SetActive(false);
         }
-        itemObject.transform.GetChild((int)type).gameObject.SetActive(true);
+        GameObject item = itemObject.transform.GetChild((int)type).gameObject;
+        Item itemCom = item.GetComponent<Item>();
+        item.SetActive(true);
+        itemObjectCom.Item = itemCom;
 
-        bool isRotate=false;
+     
         switch (type)
         {
         case ItemType.ExpJewel_Big:
-                isRotate = true;
-            break;
+                itemObjectCom.isRotate = true;
+                itemObjectCom.isMagnetism = true;
+                break;
         case ItemType.ExpJewel_Normal:
-                isRotate = true;
+                itemObjectCom.isRotate = true;
+                itemObjectCom.isMagnetism = true;
                 break;
         case ItemType.ExpJewel_Small:
-                isRotate = true;
+                itemObjectCom.isRotate = true;
+                itemObjectCom.isMagnetism = true;
                 break;
         case ItemType.Glass:
-                isRotate = true;
+                itemObjectCom.isRotate = true;
+                itemObjectCom.isMagnetism = false;
                 break;
         case ItemType.GoldCoin_Big:
-            break;
+                itemObjectCom.isRotate = false;
+                itemObjectCom.isMagnetism = false;
+                break;
         case ItemType.GoldCoin_Normal:
-            break;
+                itemObjectCom.isRotate = false;
+                itemObjectCom.isMagnetism = false;
+                break;
         case ItemType.GoldCoin_Small:
-            break;
+                itemObjectCom.isRotate = false;
+                itemObjectCom.isMagnetism = false;
+                break;
         case ItemType.HpPotion:
-            break;
+                itemObjectCom.isRotate = false;
+                itemObjectCom.isMagnetism = false;
+                break;
         case ItemType.Magnet:
-                isRotate = true;
+                itemObjectCom.isRotate = true;
+                itemObjectCom.isMagnetism = false;
                 break;
-            default:
-                isRotate = false;
-                break;
+        case ItemType.Pentagram:
+            itemObjectCom.isRotate = true;
+            itemObjectCom.isMagnetism = false;
+            break;
+        default:
+            itemObjectCom.isRotate = true;
+            itemObjectCom.isMagnetism = false;
+            break;
         }
-        itemObject.GetComponent<ItemObject>().SetRotate(isRotate);
+        
         //GameObject item = ObjectPool.Instance.Allocate(prefabs[(int)type].name);
         //item.transform.position = position;
-        //itemList.Add(item);
+        itemList.Add(itemObject);
     }
     public void Remove(GameObject target)
     {

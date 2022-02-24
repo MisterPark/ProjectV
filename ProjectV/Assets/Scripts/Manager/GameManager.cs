@@ -6,7 +6,10 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
+    [SerializeField] GameObject objectPoolPrefab;
     CameraController cameraController;
+
+    GameObject objectPool;
 
     private bool initZoomFlag = false;
 
@@ -15,6 +18,10 @@ public class GameManager : MonoBehaviour
         Instance = this;
         // Ä¿¼­ ¼û±è
         Cursor.visible = false;
+        objectPool = Instantiate(objectPoolPrefab);
+        objectPool.transform.position = Vector3.zero;
+        objectPool.name = "ObjectPool";
+
     }
     void Start()
     {
