@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1202236044580797045
+--- !u!1 &8191600010093347149
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,46 +8,46 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2009982007598702799}
-  - component: {fileID: 3191706787931221866}
-  - component: {fileID: 842119392287726496}
-  - component: {fileID: 9038959583889687696}
+  - component: {fileID: 8191600010093608949}
+  - component: {fileID: 8191600010090133171}
+  - component: {fileID: 8191600010091217087}
+  - component: {fileID: 6657130209387637807}
   m_Layer: 0
-  m_Name: Magnet
+  m_Name: GoldCoin_Small
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2009982007598702799
+--- !u!4 &8191600010093608949
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1202236044580797045}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: -0, y: 0.3, z: 0}
-  m_LocalScale: {x: 22.596628, y: 21.493553, z: 100}
+  m_GameObject: {fileID: 8191600010093347149}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &3191706787931221866
+--- !u!33 &8191600010090133171
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1202236044580797045}
-  m_Mesh: {fileID: 5036211334292771574, guid: ef3c4aedf8a49824dad3f38933aab55f, type: 3}
---- !u!23 &842119392287726496
+  m_GameObject: {fileID: 8191600010093347149}
+  m_Mesh: {fileID: 4300000, guid: 2a3a11e7d510d4545879b33f66dcf447, type: 3}
+--- !u!23 &8191600010091217087
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1202236044580797045}
+  m_GameObject: {fileID: 8191600010093347149}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -57,12 +57,10 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 257
+  m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ef424b6f8ac34d841947e0dae4890d51, type: 2}
-  - {fileID: 2100000, guid: 74bae65c9bafedf4abcec09b8b8a1885, type: 2}
-  - {fileID: 2100000, guid: 3b0cc76e2dbcc9f4a9e19749f08f8cfe, type: 2}
+  - {fileID: 2100000, guid: 42b64fdb315e3054ea757d8d1c4bcfa7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -74,7 +72,7 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -84,15 +82,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &9038959583889687696
+--- !u!114 &6657130209387637807
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1202236044580797045}
+  m_GameObject: {fileID: 8191600010093347149}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9cb4a25da22e9b646af21c6d4d6ed6ae, type: 3}
+  m_Script: {fileID: 11500000, guid: 3e0e3de7a29ad1c42b625c47d26f9349, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotationSpeed: 1
