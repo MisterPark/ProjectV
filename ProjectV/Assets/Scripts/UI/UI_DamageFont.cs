@@ -11,7 +11,7 @@ public class UI_DamageFont : MonoBehaviour
     private float curTime = 0f;
     private float alpha = 1f;
     [SerializeField] private Text text;
-    private RectTransform rectTransform;
+    [SerializeField] private Outline outline;
 
     public enum FontColor { WHITE, RED }
 
@@ -23,7 +23,6 @@ public class UI_DamageFont : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rectTransform = transform.GetComponent<RectTransform>();
         Canvas temp = transform.parent.GetComponent<Canvas>();
         temp.worldCamera = Camera.main;
         text.fontSize = 50;
@@ -63,12 +62,15 @@ public class UI_DamageFont : MonoBehaviour
         {
             case FontColor.WHITE:
                 text.color = Color.white;
+                outline.effectColor = Color.black;
                 break;
             case FontColor.RED:
                 text.color = Color.red;
+                outline.effectColor = Color.black;
                 break;
             default:
                 text.color = Color.white;
+                outline.effectColor = Color.black;
                 break;
         }
         LookAtCamera();
