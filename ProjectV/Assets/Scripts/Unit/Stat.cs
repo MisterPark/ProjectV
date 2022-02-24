@@ -263,9 +263,9 @@ public class Stat : MonoBehaviour
     /// <summary>
     /// 상대에게 데미지를 주는
     /// </summary>
-    public float ApplyDamage(Stat otherStat)
+    public float ApplyDamage(Stat otherStat, float _value)
     {
-        return otherStat.TakeDamage(stats[(int)StatType.Might].final_Stat);
+        return otherStat.TakeDamage(_value);
     }
 
 
