@@ -33,6 +33,8 @@ public class Monster : Unit
 
     void OnDeadCallback()
     {
+        int rand = Random.Range(0, 8);
+        ItemManager.Instance.Drop((ItemType)rand, transform.position);
         SpawnManager.Instance.Remove(gameObject);
     }
 }

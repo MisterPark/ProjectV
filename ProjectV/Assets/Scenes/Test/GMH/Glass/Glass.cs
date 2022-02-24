@@ -14,10 +14,11 @@ public class Glass : Item
     {
         base.Update();
     }
-    protected override void OnTriggerEnter(Collider other)
+
+
+    public override void Use()
     {
-        base.OnTriggerEnter(other);
-        Stat stat = other.GetComponent<Stat>();
+        Stat stat = Player.Instance.GetComponent<Stat>();
         stat.Increase_FinalStat(StatType.Exp, 1);
     }
 }
