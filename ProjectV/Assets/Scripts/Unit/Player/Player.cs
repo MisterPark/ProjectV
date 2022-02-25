@@ -6,7 +6,7 @@ public class Player : Unit
 {
     public static Player Instance;
     private Vector3 direction = Vector3.forward;// 캐릭터가 바라보는 방향, 스킬 사용시 사용 
-    [SerializeField]float moveSpeed = 5.0f;
+    
     public static int Row
     {
         get 
@@ -32,6 +32,12 @@ public class Player : Unit
     protected override void Start()
     {
         base.Start();
+        type = UnitType.Player;
+        OnDead.AddListener(OnDeadCallback);
+
+        AddSkill(SkillType.IceBolt);
+        AddSkill(SkillType.FireBolt);
+        
     }
 
     protected override void Update()
@@ -39,7 +45,9 @@ public class Player : Unit
         base.Update();
         Move();
         //Debug.Log($"{Column},{Row} / {transform.position}");
+        //Debug.Log($"{s}")
         
+
     }
 
 
@@ -72,11 +80,14 @@ public class Player : Unit
         // Move
         direction.Normalize();
         moveDirection.Normalize();
-        transform.position += moveSpeed * moveDirection * Time.deltaTime;
+        transform.position += stat.Get_FinalStat(StatType.MoveSpeed) * moveDirection * Time.deltaTime;
         // Rotate
         transform.LookAt(transform.position + direction);
 
-        bool isRun = moveDirection.magnitude > 0.01f ? true : false;
-        animator.SetBool("IsRun", isRun);
+    }
+
+    void OnDeadCallback()
+    {
+
     }
 }

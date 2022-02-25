@@ -17,14 +17,6 @@ public class Board : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.IsPlayer())
-        {
-            Debug.Log($"{Row},{Column}");
-        }
-    }
-
     public bool IsFarFromThePlayer()
     {
         if (Row < Player.Row - 2) return true;

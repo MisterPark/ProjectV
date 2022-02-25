@@ -36,7 +36,7 @@ public class CameraController : MonoBehaviour
         mode = CameraMode.TopView;
     }
 
-    private void Update()
+    private void LateUpdate()
     {
         ProcessZoom();
         FollowTarget();

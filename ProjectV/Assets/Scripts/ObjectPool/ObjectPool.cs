@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ObjectPool : MonoBehaviour
 {
-    
     private static ObjectPool _instance;
 
     public static ObjectPool Instance { get { return _instance; } }
@@ -14,12 +13,19 @@ public class ObjectPool : MonoBehaviour
     {
         if(Instance == null)
             _instance = this;
+        Initialize();
     }
 
-    public GameObject Allocate(string key) {
-        if (!_pools.ContainsKey(key))
+    private void Start()
+    {
+        
+    }
+
+    public GameObject Allocate(string key) 
+    {
+        if(!_pools.ContainsKey(key))
         {
-            throw new System.Exception($"can't find key : {key}");            
+            Debug.LogError($"can't find key : {key}");
         }
 
         if (_pools[key].Count == 0)
@@ -27,6 +33,7 @@ public class ObjectPool : MonoBehaviour
             UpSizing(key);
         }
         GameObject gameObject = _pools[key].Pop();
+        gameObject.name = key;
         gameObject.SetActive(true);
         
         return gameObject;
@@ -45,15 +52,13 @@ public class ObjectPool : MonoBehaviour
     {
         if (!_pools.ContainsKey(key))
         {
-            Debug.LogError($"can't find key : {key}");
-            throw new System.Exception($"can't find key : {key}");            
+            Debug.LogError($"can't find key : {key}");           
         }
 
         GameObject prefab =  GetPrefab(key);
         
         for (int i = 0; i < 10; i++)
         {
-
             GameObject go = Instantiate(prefab, transform);
             go.SetActive(false);
             _pools[key].Push(go);
@@ -89,8 +94,5 @@ public class ObjectPool : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
-        Initialize();
-    }
+    
 }
