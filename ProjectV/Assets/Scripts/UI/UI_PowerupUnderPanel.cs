@@ -9,6 +9,7 @@ public class UI_PowerupUnderPanel : MonoBehaviour
     [SerializeField] private TMPro.TextMeshProUGUI m_PowerupName;
     [SerializeField] private Image m_PowerupImage;
     [SerializeField] private TMPro.TextMeshProUGUI m_PowerupExplan;
+    [SerializeField] private TMPro.TextMeshProUGUI m_MoneyText;
     private Powerup_DataType m_CurrentPowerupDB;
 
     private string Name;
@@ -16,7 +17,7 @@ public class UI_PowerupUnderPanel : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        m_MoneyText.text = DataManager.Instance.currentSaveData.currentGold.ToString();
     }
 
     // Update is called once per frame

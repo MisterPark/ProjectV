@@ -61,21 +61,4 @@ public class UI_Powerup : MonoBehaviour
             tempPUT.Init(m_PowerupDB.Powerup_Type_List[repeat]);
         }
     }
-
-    public void Powerup_OnCursor()
-    {
-        m_EventHandle = EventSystem.current;
-        if (m_EventHandle != null)
-        {
-            GameObject tep = m_EventHandle.currentSelectedGameObject;
-            if (tep != null)
-            {
-                GameObject tempobject = m_EventHandle.currentSelectedGameObject;
-
-                m_UnderPanel.GetComponent<UI_PowerupUnderPanel>().PowerupExplanInit(tempobject.GetComponent<UI_PowerupTemplate>().DataType);
-
-                LayoutRebuilder.ForceRebuildLayoutImmediate(m_UnderPanel.GetComponent<RectTransform>());
-            }
-        }
-    }
 }
