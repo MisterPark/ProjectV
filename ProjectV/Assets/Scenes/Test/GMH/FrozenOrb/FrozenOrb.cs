@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ExpJewel_02 : Item
+public class FrozenOrb : Item
 {
     // Start is called before the first frame update
     protected override void Start()
@@ -14,12 +14,10 @@ public class ExpJewel_02 : Item
     {
         base.Update();
     }
-    
+
 
     public override void Use()
     {
-        Stat stat = Player.Instance.GetComponent<Stat>();
-        int rand = Random.Range(10, 50);
-        stat.Increase_FinalStat(StatType.Exp, rand);
+        
     }
 }
