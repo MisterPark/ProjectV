@@ -4,7 +4,7 @@ using System.IO;
 using UnityEngine;
 
 public enum CharacterName { Char1, Char2, Char3, END}
-public class DataController : MonoBehaviour
+public class SaveDataManager : MonoBehaviour
 {
     // ---싱글톤으로 선언--- 
     static GameObject _container;
@@ -15,8 +15,8 @@ public class DataController : MonoBehaviour
             return _container;
         }
     }
-    static DataController _instance; 
-    public static DataController Instance 
+    static SaveDataManager _instance; 
+    public static SaveDataManager Instance 
     { 
         get 
         { 
@@ -24,7 +24,7 @@ public class DataController : MonoBehaviour
             { 
                 _container = new GameObject();
                 _container.name = "DataController"; 
-                _instance = _container.AddComponent(typeof(DataController)) as DataController; 
+                _instance = _container.AddComponent(typeof(SaveDataManager)) as SaveDataManager; 
                 DontDestroyOnLoad(_container); 
             } 
             return _instance; 
@@ -35,18 +35,22 @@ public class DataController : MonoBehaviour
     public string GameDataFileName = "StarfishData.json"; 
     
     // "원하는 이름(영문).json"
-    public GameData _gameData; 
-    public GameData gameData 
+    public SaveData _saveData; 
+    public SaveData saveData 
     {
         get 
         { 
             // 게임이 시작되면 자동으로 실행되도록
-            if(_gameData == null)
+            if(_saveData == null)
             { 
                 LoadGameData(); 
                 SaveGameData();
             }
-            return _gameData;
+            return _saveData;
+        }
+        set
+        {
+
         }
     } 
     
@@ -66,32 +70,35 @@ public class DataController : MonoBehaviour
         { 
             print("불러오기 성공"); 
             string FromJsonData = File.ReadAllText(filePath); 
-            _gameData = JsonUtility.FromJson<GameData>(FromJsonData);
+            _saveData = JsonUtility.FromJson<SaveData>(FromJsonData);
         }
         
         // 저장된 게임이 없다면
         else 
         { 
             print("새로운 파일 생성");            
-            _gameData = new GameData();
-        } 
+            _saveData = new SaveData();
+        }
+
+        //////
+        DataManager dataManager = DataManager.Instance;
+        dataManager.currentSaveData = saveData;
     } 
     
     // 게임 저장하기
     public void SaveGameData() 
-    { 
-        string ToJsonData = JsonUtility.ToJson(gameData); 
+    {
+        saveData = DataManager.Instance.currentSaveData;
+
+        //
+        string ToJsonData = JsonUtility.ToJson(saveData); 
         string filePath = Application.persistentDataPath + GameDataFileName; 
 
         // 이미 저장된 파일이 있다면 덮어쓰기
         File.WriteAllText(filePath, ToJsonData);
         
-        // 올바르게 저장됐는지 확인 (자유롭게 변형)
         print("저장완료"); 
-        //print("2는 " + gameData.isClear2); 
-        //print("3는 " + gameData.isClear3); 
-        //print("4는 " + gameData.isClear4);
-        //print("5는 " + gameData.isClear5); 
+
         
     } 
     

@@ -7,7 +7,7 @@ using UnityEngine;
     Level,          // 레벨
     Might,          // 괴력 (Might): 랭크당 공격력 10% 증가
     Armor,          // 방어력 (Armor): 랭크당 피격 데미지 1 감소
-    MaxHealth,      // 최대 체력 (Max Health): 랭크당 체력 20% 증가
+    MaxHealth,      // 최대 체력 (Max Health): 랭크당 최대 체력 20% 증가
     Health,         // 현재 체력
     Recovery,       // 회복 (Recovery): 랭크당 체력 회복 0.2 증가
     Cooldown,       // 쿨타임 (Cooldown): 랭크당 쿨타임 8% 감소
@@ -46,8 +46,11 @@ public class Stat : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (statsData != null)
+        {
+            stats = statsData.stats;
+        }
         owner = GetComponent<Unit>();
-        stats = statsData.stats;
         Init_FinalStat();
     }
 
@@ -61,7 +64,31 @@ public class Stat : MonoBehaviour
     {
         for (int i = 0; i < (int)StatType.END; i++)
         {
-            stats[i].final_Stat = stats[i].origin_Stat + (stats[i].powerUp_Stat);
+            stats[i].final_Stat = stats[i].origin_Stat + (stats[i].origin_Stat * stats[i].powerUp_Stat);
+
+            switch ((StatType)i)
+            {
+                case StatType.Armor:
+                    {
+                        stats[(int)StatType.Armor].final_Stat = stats[i].origin_Stat + stats[i].powerUp_Stat;
+                        break;
+                    }
+                case StatType.Recovery:
+                    {
+                        stats[(int)StatType.Recovery].final_Stat = stats[i].origin_Stat + stats[i].powerUp_Stat;
+                        break;
+                    }
+                case StatType.Amount:
+                    {
+                        stats[(int)StatType.Amount].final_Stat = stats[i].origin_Stat + stats[i].powerUp_Stat;
+                        break;
+                    }
+                default:
+                    {
+                        stats[i].final_Stat = stats[i].origin_Stat + (stats[i].origin_Stat * stats[i].powerUp_Stat);
+                        break;
+                    }
+            }
         }
         stats[(int)StatType.Health].final_Stat = stats[(int)StatType.MaxHealth].final_Stat;
     }
@@ -76,28 +103,28 @@ public class Stat : MonoBehaviour
     /// <summary>
     /// 게임시작 이전 상점에서 아이템 구입시 능력치 증가
     /// </summary>
-    public float Increase_PowerUpStat(StatType _statType)
-    {
-        switch (_statType)
-        {
-            case StatType.Armor:
-                {
-                    return stats[(int)StatType.Armor].powerUp_Stat += 1f;
-                }
-            case StatType.Recovery:
-                {
-                    return stats[(int)StatType.Recovery].powerUp_Stat += 1f;
-                }
-            case StatType.Amount:
-                {
-                    return stats[(int)StatType.Amount].powerUp_Stat += 1f;
-                }
-            default:
-                {
-                    return stats[(int)_statType].powerUp_Stat += stats[(int)_statType].powerUp_Stat * 0.5f;
-                }
-        }
-    }
+    //public float Increase_PowerUpStat(StatType _statType)
+    //{
+    //    switch (_statType)
+    //    {
+    //        case StatType.Armor:
+    //            {
+    //                return stats[(int)StatType.Armor].powerUp_Stat += 1f;
+    //            }
+    //        case StatType.Recovery:
+    //            {
+    //                return stats[(int)StatType.Recovery].powerUp_Stat += 1f;
+    //            }
+    //        case StatType.Amount:
+    //            {
+    //                return stats[(int)StatType.Amount].powerUp_Stat += 1f;
+    //            }
+    //        default:
+    //            {
+    //                return stats[(int)_statType].powerUp_Stat += stats[(int)_statType].powerUp_Stat * 0.5f;
+    //            }
+    //    }
+    //}
 
     /// <summary>
     /// 게임 시작 한후 보조장비 획득후 능력치 증가
@@ -120,15 +147,27 @@ public class Stat : MonoBehaviour
                 }
             case StatType.Gold:
                 {
+                    DataManager.Instance.currentSaveData.totalGold += _count;
+                    DataManager.Instance.currentSaveData.currentGold += _count;
                     return stats[(int)StatType.Gold].final_Stat += _count;
                 }
             case StatType.Health:
                 {
-                    return stats[(int)StatType.Health].final_Stat += _count;
+                    stats[(int)StatType.Health].final_Stat += _count;
+                    if (stats[(int)StatType.Health].final_Stat > stats[(int)StatType.MaxHealth].final_Stat)
+                    {
+                        stats[(int)StatType.Health].final_Stat = stats[(int)StatType.MaxHealth].final_Stat;
+                    }
+                    return stats[(int)StatType.Health].final_Stat;
                 }
             case StatType.Exp:
                 {
-                    return stats[(int)StatType.Exp].final_Stat += _count;
+                    stats[(int)StatType.Exp].final_Stat += _count;
+                    if (stats[(int)StatType.Exp].final_Stat > stats[(int)StatType.MaxExp].final_Stat)
+                    {
+                        LevelUp();
+                    }
+                    return stats[(int)StatType.Exp].final_Stat;
                 }
             default:
                 {
@@ -136,6 +175,7 @@ public class Stat : MonoBehaviour
                 }
         }
     }
+
 
     public float Get_OriginStat(StatType _statType)
     {
@@ -185,12 +225,29 @@ public class Stat : MonoBehaviour
     }
 
     /// <summary>
+    /// 플레이어 데이터 로드용
+    /// </summary>
+    public void Set_Stats(Stats[] _stat)
+    {
+        stats = _stat;
+        statsData = DataManager.Instance.playerCharacterData[(int)DataManager.Instance.currentPlayerCharacter].statsData;
+    }
+    public void Set_PowerUpStat(StatType _statType, float _value)
+    {
+        stats[(int)_statType].powerUp_Stat = _value;
+    }
+    public void Set_PowerUpStat(int _statType, float _value)
+    {
+        stats[_statType].powerUp_Stat = _value;
+    }
+    /// <summary>
     /// 체력회복용
     /// </summary>
     public void Set_FinalStat(StatType _statType, float _value)
     {
         stats[(int)_statType].final_Stat = _value;
     }
+
 
     /// <summary>
     /// 데미지를 입는
@@ -210,9 +267,9 @@ public class Stat : MonoBehaviour
     /// <summary>
     /// 상대에게 데미지를 주는
     /// </summary>
-    public float ApplyDamage(Stat otherStat)
+    public float ApplyDamage(Stat otherStat, float _value)
     {
-        return otherStat.TakeDamage(stats[(int)StatType.Might].final_Stat);
+        return otherStat.TakeDamage(_value);
     }
 
 
