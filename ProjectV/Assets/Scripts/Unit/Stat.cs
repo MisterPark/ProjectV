@@ -7,7 +7,7 @@ using UnityEngine;
     Level,          // 레벨
     Might,          // 괴력 (Might): 랭크당 공격력 10% 증가
     Armor,          // 방어력 (Armor): 랭크당 피격 데미지 1 감소
-    MaxHealth,      // 최대 체력 (Max Health): 랭크당 체력 20% 증가
+    MaxHealth,      // 최대 체력 (Max Health): 랭크당 최대 체력 20% 증가
     Health,         // 현재 체력
     Recovery,       // 회복 (Recovery): 랭크당 체력 회복 0.2 증가
     Cooldown,       // 쿨타임 (Cooldown): 랭크당 쿨타임 8% 감소
@@ -147,6 +147,8 @@ public class Stat : MonoBehaviour
                 }
             case StatType.Gold:
                 {
+                    DataManager.Instance.currentSaveData.totalGold += _count;
+                    DataManager.Instance.currentSaveData.currentGold += _count;
                     return stats[(int)StatType.Gold].final_Stat += _count;
                 }
             case StatType.Health:
@@ -173,6 +175,7 @@ public class Stat : MonoBehaviour
                 }
         }
     }
+
 
     public float Get_OriginStat(StatType _statType)
     {
@@ -227,6 +230,7 @@ public class Stat : MonoBehaviour
     public void Set_Stats(Stats[] _stat)
     {
         stats = _stat;
+        statsData = DataManager.Instance.playerCharacterData[(int)DataManager.Instance.currentPlayerCharacter].statsData;
     }
     public void Set_PowerUpStat(StatType _statType, float _value)
     {

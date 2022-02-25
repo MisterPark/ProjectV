@@ -17,7 +17,8 @@ public class DataManager : MonoBehaviour
     // SaveData 에서 가져온 데이터들
     public SaveData currentSaveData;
 
-    
+    [SerializeField]
+    private UI_Powerup_statDB powerStatDB;
 
     private void Awake()
     {
@@ -35,5 +36,13 @@ public class DataManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void Setting_PowerStat()
+    {
+        foreach(Powerup_DataType _powerUp in powerStatDB.Powerup_Type_List)
+        {
+            powerUpStat[(int)_powerUp.PowerType] = _powerUp.Powerup_Value * _powerUp.Rank;
+        }
     }
 }

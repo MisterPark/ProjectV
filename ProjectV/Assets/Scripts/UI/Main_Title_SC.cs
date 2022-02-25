@@ -43,6 +43,7 @@ public class Main_Title_SC : MonoBehaviour
 
     public void OnClickStart()
     {
+        DataManager.Instance.Setting_PowerStat();
         SceneManager.LoadScene(StartScene_Name);
     }
 

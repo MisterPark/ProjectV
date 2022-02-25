@@ -72,6 +72,12 @@ MonoBehaviour:
   - 0
   - 0
   - 0
+  currentSaveData:
+    unLockCharacter: 000000
+    unLockStage: 000000
+    totalGold: 0
+    currentGold: 0
+  powerStatDB: {fileID: 11400000, guid: 11befcd1b5e803d4cafdb70aa31e6f66, type: 2}
 --- !u!114 &2716088676406518505
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -85,8 +91,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameDataFileName: StarfishData.json
-  _gameData:
+  _saveData:
     unLockCharacter: 000000
     unLockStage: 000000
     totalGold: 0
-    possessGold: 0
+    currentGold: 0

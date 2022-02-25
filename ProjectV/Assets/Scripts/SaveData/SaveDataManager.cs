@@ -48,6 +48,10 @@ public class SaveDataManager : MonoBehaviour
             }
             return _saveData;
         }
+        set
+        {
+
+        }
     } 
     
     private void Start() 
@@ -83,19 +87,18 @@ public class SaveDataManager : MonoBehaviour
     
     // 게임 저장하기
     public void SaveGameData() 
-    { 
+    {
+        saveData = DataManager.Instance.currentSaveData;
+
+        //
         string ToJsonData = JsonUtility.ToJson(saveData); 
         string filePath = Application.persistentDataPath + GameDataFileName; 
 
         // 이미 저장된 파일이 있다면 덮어쓰기
         File.WriteAllText(filePath, ToJsonData);
         
-        // 올바르게 저장됐는지 확인 (자유롭게 변형)
         print("저장완료"); 
-        //print("2는 " + gameData.isClear2); 
-        //print("3는 " + gameData.isClear3); 
-        //print("4는 " + gameData.isClear4);
-        //print("5는 " + gameData.isClear5); 
+
         
     } 
     
