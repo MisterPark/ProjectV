@@ -11,7 +11,10 @@ public class Skill_FireBolt : Skill
     }
     protected override void Active()
     {
-        GameObject nearest = SpawnManager.Instance.NearestEnemy;
+
+        GameObject nearest = null;
+        SpawnManager.Instance.SpawnQueue.Dequeue(out nearest);
+
         if (nearest == null)
         {
             // 적이 없으면 공격 안함.

@@ -2,32 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-public class Monster : Unit
+public class Torchlight : Unit
 {
     protected override void Start()
     {
         base.Start();
-        type = UnitType.Monster;
+        type = UnitType.Prop;
         OnDead.AddListener(OnDeadCallback);
     }
 
     protected override void Update()
     {
         base.Update();
-        MoveTo(Player.Instance.transform.position);
     }
 
     protected void OnTriggerStay(Collider other)
     {
-        
         Unit target = other.gameObject.GetComponent<Unit>();
         if (target == null) return;
-
-        if (target.type != UnitType.Monster)
-        {
-            return;
-        }
 
         Vector3 to = other.transform.position - transform.position;
         Vector3 direction = to.normalized;
@@ -37,9 +29,9 @@ public class Monster : Unit
 
     void OnDeadCallback()
     {
-        int rand = Random.Range((int)ItemType.ExpJewel_Big, (int)ItemType.ExpJewel_Small);
+        int rand = Random.Range((int)ItemType.Glass, (int)ItemType.ItemEnd);
         ItemManager.Instance.Drop((ItemType)rand, transform.position);
 
-        SpawnManager.Instance.Remove(gameObject);
+        PropManager.Instance.Remove(gameObject);
     }
 }

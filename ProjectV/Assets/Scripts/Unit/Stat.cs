@@ -98,6 +98,7 @@ public class Stat : MonoBehaviour
         stats[(int)StatType.Level].final_Stat += 1;
         stats[(int)StatType.Exp].final_Stat -= stats[(int)StatType.MaxExp].final_Stat;
         stats[(int)StatType.MaxExp].final_Stat += stats[(int)StatType.MaxExp].origin_Stat * stats[(int)StatType.MaxExp].growth_Stat;
+        owner.OnLevelUp?.Invoke(Mathf.RoundToInt(stats[(int)StatType.Level].final_Stat));
     }
 
     /// <summary>

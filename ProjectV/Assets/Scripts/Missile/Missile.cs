@@ -41,12 +41,11 @@ public class Missile : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
+        if (other.gameObject.IsPlayer()) return;
         Unit unit = other.gameObject.GetComponent<Unit>();
         if(unit != null)
         {
-            if (unit.team == Team.Neutral) return;
-
-            if(team != unit.team)
+            if( team != unit.team)
             {
                 unit.stat.TakeDamage(damage);
                 // юс╫ц

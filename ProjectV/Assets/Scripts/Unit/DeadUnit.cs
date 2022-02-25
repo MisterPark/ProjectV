@@ -5,7 +5,7 @@ using UnityEngine;
 public class DeadUnit : MonoBehaviour
 {
     Material material;
-    float cutoff;
+    [SerializeField] float cutoff;
     void Start()
     {
         material = GetComponentInChildren<Renderer>().material;
