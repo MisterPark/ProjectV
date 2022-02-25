@@ -18,6 +18,7 @@ public class ExpJewel_01 : Item
     public override void Use()
     {
         Stat stat = Player.Instance.GetComponent<Stat>();
-        stat.Increase_FinalStat(StatType.Exp, 1);
+        int rand = Random.Range(1, 5);
+        stat.Increase_FinalStat(StatType.Exp, rand);
     }
 }

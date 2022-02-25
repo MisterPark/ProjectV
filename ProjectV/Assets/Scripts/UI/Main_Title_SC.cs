@@ -9,7 +9,6 @@ public class Main_Title_SC : MonoBehaviour
 {
     public float KeyboardCursor_Xpos;
     public Image KeyboardCursor_Image;
-    public Image Start_Image;
     public string StartScene_Name;
     public EventSystem Event_Handle;
     private int Money { get; set; }
@@ -43,25 +42,33 @@ public class Main_Title_SC : MonoBehaviour
 
     public void OnClickStart()
     {
+        DataManager.Instance.Setting_PowerStat();
         SceneManager.LoadScene(StartScene_Name);
     }
 
     public void OnClickExit()
     {
+        Transform tempobject = GameObject.Find("Title_Screen").transform.Find("Powerup_Panel");
+        if (tempobject.gameObject.activeSelf)
+        {
+            tempobject.gameObject.SetActive(false);
+        }
+        else
+        {
 #if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
+            UnityEditor.EditorApplication.isPlaying = false;
 #else
         Application.Quit();
 #endif
+        }
     }
 
     public void OnClickOption()
     { }
     public void OnClickPowerup()
-    { }
-
-    public void OnKeyCursor()
     {
-        Start_Image.color = Color.green;
+        Transform tempobject = GameObject.Find("Title_Screen").transform.Find("Powerup_Panel");
+        tempobject.gameObject.SetActive(true);
     }
+
 }

@@ -4,12 +4,13 @@ using UnityEngine;
 
 [System.Serializable]
 public enum ItemType { ExpJewel_Big, ExpJewel_Normal, ExpJewel_Small,
-                       Glass,
+                        HpPotion,
                        GoldCoin_Big, GoldCoin_Normal, GoldCoin_Small,
-                       HpPotion,
                        //Level01, Level02, Level03, Level04, Level05,
                        Magnet,
                        Pentagram,
+                       FrozenOrb,
+                       PoisonMushroom,
                        ItemEnd
 };
 public class ItemManager : MonoBehaviour
@@ -66,7 +67,7 @@ public class ItemManager : MonoBehaviour
                 itemObjectCom.isRotate = true;
                 itemObjectCom.isMagnetism = true;
                 break;
-        case ItemType.Glass:
+        case ItemType.HpPotion:
                 itemObjectCom.isRotate = true;
                 itemObjectCom.isMagnetism = false;
                 break;
@@ -82,10 +83,7 @@ public class ItemManager : MonoBehaviour
                 itemObjectCom.isRotate = false;
                 itemObjectCom.isMagnetism = false;
                 break;
-        case ItemType.HpPotion:
-                itemObjectCom.isRotate = false;
-                itemObjectCom.isMagnetism = false;
-                break;
+        
         case ItemType.Magnet:
                 itemObjectCom.isRotate = true;
                 itemObjectCom.isMagnetism = false;
@@ -94,7 +92,15 @@ public class ItemManager : MonoBehaviour
             itemObjectCom.isRotate = true;
             itemObjectCom.isMagnetism = false;
             break;
-        default:
+        case ItemType.FrozenOrb:
+            itemObjectCom.isRotate = true;
+            itemObjectCom.isMagnetism = false;
+            break;
+            case ItemType.PoisonMushroom:
+                itemObjectCom.isRotate = true;
+                itemObjectCom.isMagnetism = false;
+                break;
+            default:
             itemObjectCom.isRotate = true;
             itemObjectCom.isMagnetism = false;
             break;
