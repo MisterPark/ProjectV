@@ -8,7 +8,9 @@ public enum ItemType { ExpJewel_Big, ExpJewel_Normal, ExpJewel_Small,
                        GoldCoin_Big, GoldCoin_Normal, GoldCoin_Small,
                        HpPotion,
                        //Level01, Level02, Level03, Level04, Level05,
-                       Magnet
+                       Magnet,
+                       Pentagram,
+                       ItemEnd
 };
 public class ItemManager : MonoBehaviour
 {
@@ -49,8 +51,7 @@ public class ItemManager : MonoBehaviour
         item.SetActive(true);
         itemObjectCom.Item = itemCom;
 
-        
-        bool isRotate=false;
+     
         switch (type)
         {
         case ItemType.ExpJewel_Big:
@@ -89,12 +90,16 @@ public class ItemManager : MonoBehaviour
                 itemObjectCom.isRotate = true;
                 itemObjectCom.isMagnetism = false;
                 break;
-            default:
-                itemObjectCom.isRotate = true;
-                itemObjectCom.isMagnetism = false;
-                break;
+        case ItemType.Pentagram:
+            itemObjectCom.isRotate = true;
+            itemObjectCom.isMagnetism = false;
+            break;
+        default:
+            itemObjectCom.isRotate = true;
+            itemObjectCom.isMagnetism = false;
+            break;
         }
-        itemObject.GetComponent<ItemObject>().SetRotate(isRotate);
+        
         //GameObject item = ObjectPool.Instance.Allocate(prefabs[(int)type].name);
         //item.transform.position = position;
         itemList.Add(itemObject);

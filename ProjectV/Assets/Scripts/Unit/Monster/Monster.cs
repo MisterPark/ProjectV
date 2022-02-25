@@ -20,10 +20,14 @@ public class Monster : Unit
 
     protected void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.IsPlayer()) return;
+        
         Unit target = other.gameObject.GetComponent<Unit>();
         if (target == null) return;
 
+        if (target.type != UnitType.Monster)
+        {
+            return;
+        }
 
         Vector3 to = other.transform.position - transform.position;
         Vector3 direction = to.normalized;
@@ -33,7 +37,7 @@ public class Monster : Unit
 
     void OnDeadCallback()
     {
-        int rand = Random.Range((int)ItemType.ExpJewel_Big, (int)ItemType.Magnet + 1);
+        int rand = Random.Range((int)ItemType.ExpJewel_Big, (int)ItemType.ItemEnd);
         
         ItemManager.Instance.Drop((ItemType)rand, transform.position);
         SpawnManager.Instance.Remove(gameObject);
