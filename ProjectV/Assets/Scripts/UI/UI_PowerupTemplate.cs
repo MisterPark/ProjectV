@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class UI_PowerupTemplate : MonoBehaviour
@@ -43,6 +44,20 @@ public class UI_PowerupTemplate : MonoBehaviour
             tempobject.transform.SetParent(m_RankPanel.transform);
             tempobject.transform.localScale = m_Powerup_Rank_Image.transform.localScale;
             tempobject.transform.localPosition = new Vector3(columnstart + ColumnPivot + ((ColumnPadding + ColumnInterval) * repeat), 0f, 0f);
+        }
+    }
+
+    public void OnClickPowerupTemplate()
+    {
+        EventSystem tempevent = EventSystem.current;
+        if (tempevent != null)
+        {
+            GameObject tempobject = tempevent.currentSelectedGameObject;
+            if (tempobject != null)
+            {
+                GameObject te = GameObject.Find("UnderPanel");
+                te.GetComponent<UI_PowerupUnderPanel>().PowerupExplanInit(tempobject.GetComponent<UI_PowerupTemplate>().DataType);
+            }
         }
     }
 }

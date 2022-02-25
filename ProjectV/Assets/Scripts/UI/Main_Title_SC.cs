@@ -47,16 +47,27 @@ public class Main_Title_SC : MonoBehaviour
 
     public void OnClickExit()
     {
+        Transform tempobject = GameObject.Find("Title_Screen").transform.Find("Powerup_Panel");
+        if (tempobject.gameObject.activeSelf)
+        {
+            tempobject.gameObject.SetActive(false);
+        }
+        else
+        {
 #if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
+            UnityEditor.EditorApplication.isPlaying = false;
 #else
         Application.Quit();
 #endif
+        }
     }
 
     public void OnClickOption()
     { }
     public void OnClickPowerup()
-    { }
+    {
+        Transform tempobject = GameObject.Find("Title_Screen").transform.Find("Powerup_Panel");
+        tempobject.gameObject.SetActive(true);
+    }
 
 }

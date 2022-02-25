@@ -23,4 +23,12 @@ public class Powerup_DataType : ScriptableObject
     public bool IsPercentage => m_IsPercentage;
     public float Percentage_Per_Level => m_Percentage_Per_Level;
     public float Value_Per_Level => m_Value_Per_Level;
+
+    public void SetRank(int ivalue)
+    {
+        if (ivalue <= m_MaxRank)
+        {
+            m_Rank = ivalue;
+        }
+    }
 }

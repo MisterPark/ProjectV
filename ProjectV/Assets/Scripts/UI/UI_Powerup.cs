@@ -11,9 +11,6 @@ public class UI_Powerup : MonoBehaviour
     [SerializeField] private GameObject m_ContentView;
     [SerializeField] private EventSystem m_EventHandle;
     [SerializeField] private GameObject m_UnderPanel;
-    [SerializeField] private Image m_aaa;
-    [SerializeField] private TMPro.TextMeshProUGUI m_bbb;
-    [SerializeField] private TMPro.TextMeshProUGUI m_ccc;
 
     //TemplateUI Ver,Ho Rect
 
@@ -76,9 +73,7 @@ public class UI_Powerup : MonoBehaviour
                 GameObject tempobject = m_EventHandle.currentSelectedGameObject;
 
                 m_UnderPanel.GetComponent<UI_PowerupUnderPanel>().PowerupExplanInit(tempobject.GetComponent<UI_PowerupTemplate>().DataType);
-                m_aaa.sprite = tempobject.GetComponent<UI_PowerupTemplate>().DataType.Powerup_Image;
-                m_bbb.text = tempobject.GetComponent<UI_PowerupTemplate>().DataType.Powerup_Name;
-                m_ccc.text = tempobject.GetComponent<UI_PowerupTemplate>().DataType.Powerup_Tip;
+
                 LayoutRebuilder.ForceRebuildLayoutImmediate(m_UnderPanel.GetComponent<RectTransform>());
             }
         }
