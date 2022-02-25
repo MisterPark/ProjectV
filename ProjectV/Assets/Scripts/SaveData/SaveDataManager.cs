@@ -7,35 +7,36 @@ public enum CharacterName { Char1, Char2, Char3, END}
 public class SaveDataManager : MonoBehaviour
 {
     // ---싱글톤으로 선언--- 
-    static GameObject _container;
-    static GameObject Container
-    {
-        get
-        {
-            return _container;
-        }
-    }
-    static SaveDataManager _instance; 
-    public static SaveDataManager Instance 
-    { 
-        get 
-        { 
-            if (!_instance) 
-            { 
-                _container = new GameObject();
-                _container.name = "DataController"; 
-                _instance = _container.AddComponent(typeof(SaveDataManager)) as SaveDataManager; 
-                DontDestroyOnLoad(_container); 
-            } 
-            return _instance; 
-        } 
-    } 
+    //static GameObject _container;
+    //static GameObject Container
+    //{
+    //    get
+    //    {
+    //        return _container;
+    //    }
+    //}
+    //static SaveDataManager Instance; 
+    public static SaveDataManager Instance;
+    //{ 
+    //    get 
+    //    { 
+    //        //if (!_instance) 
+    //        //{ 
+    //        //    _container = new GameObject();
+    //        //    _container.name = "DataController"; 
+    //        //    _instance = _container.AddComponent(typeof(SaveDataManager)) as SaveDataManager; 
+    //        //    DontDestroyOnLoad(_container); 
+    //        //} 
+    //        return _instance; 
+    //    } 
+    //} 
     
     // --- 게임 데이터 파일이름 설정 ---
     public string GameDataFileName = "StarfishData.json"; 
     
+
     // "원하는 이름(영문).json"
-    public SaveData _saveData; 
+    [HideInInspector] public SaveData _saveData;  // DataManager.current랑 같은 포인터라 이걸 없애든지, 깊은복사 하던지 해야할듯
     public SaveData saveData 
     {
         get 
@@ -48,18 +49,18 @@ public class SaveDataManager : MonoBehaviour
             }
             return _saveData;
         }
-        set
-        {
 
-        }
-    } 
-    
+    }
+
+
     private void Start() 
     {
-        LoadGameData(); 
-        SaveGameData();
-    } 
-    
+        //LoadGameData();
+        //SaveGameData();
+
+    }
+
+
     // 저장된 게임 불러오기
     public void LoadGameData() 
     {
@@ -82,13 +83,13 @@ public class SaveDataManager : MonoBehaviour
 
         //////
         DataManager dataManager = DataManager.Instance;
-        dataManager.currentSaveData = saveData;
+        dataManager.currentSaveData = _saveData;
     } 
     
     // 게임 저장하기
     public void SaveGameData() 
     {
-        saveData = DataManager.Instance.currentSaveData;
+        _saveData = DataManager.Instance.currentSaveData;
 
         //
         string ToJsonData = JsonUtility.ToJson(saveData); 

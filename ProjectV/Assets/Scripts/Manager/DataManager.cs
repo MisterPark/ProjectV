@@ -24,6 +24,9 @@ public class DataManager : MonoBehaviour
     {
         Instance = this;
         DontDestroyOnLoad(gameObject);
+        SaveDataManager.Instance = GetComponent<SaveDataManager>();
+        SaveDataManager.Instance.LoadGameData();
+        //SaveDataManager.Instance.SaveGameData();
     }
 
     // Start is called before the first frame update
