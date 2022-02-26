@@ -32,6 +32,10 @@ public class Unit : MonoBehaviour
     public Team team;
     public List<Skill> skillList = new List<Skill>();
 
+    float freezeTime;
+    float freezeTick = 0;
+    bool freezeFlag = false;
+
     protected virtual void Start()
     {
         stat = GetComponent<Stat>();
@@ -52,6 +56,7 @@ public class Unit : MonoBehaviour
 
     protected virtual void Update()
     {
+        ProcessFreeze();
         Animation();
 
     }
@@ -59,6 +64,7 @@ public class Unit : MonoBehaviour
 
     public void MoveTo(Vector3 target)
     {
+        if (freezeFlag) return;
         Vector3 to = target - transform.position;
         Vector3 direction = to.normalized;
         
@@ -87,12 +93,32 @@ public class Unit : MonoBehaviour
 
     }
 
+    public void Freeze(float time)
+    {
+        freezeTime = time;
+        freezeTick = 0;
+        freezeFlag = true;
+    }
 
 
+    void ProcessFreeze()
+    {
+        if (freezeFlag == false) return;
+        
+        freezeTick += Time.deltaTime;
+        if(freezeTick > freezeTime)
+        {
+            freezeTick = 0f;
+            freezeFlag = false;
+        }
+        
+    }
 
     void Animation()
     {
         if (animator == null) return;
+
+        animator.speed = (freezeFlag ? 0 : 1);
         // 유닛 타입 세팅
         animator.SetInteger("UnitType", (int)type);
         // 달리기
@@ -102,6 +128,7 @@ public class Unit : MonoBehaviour
             oldPosition = transform.position;
         }
         animator.SetBool("IsRun", isRun);
+
 
     }
 

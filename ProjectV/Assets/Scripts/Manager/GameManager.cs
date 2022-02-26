@@ -35,6 +35,14 @@ public class GameManager : MonoBehaviour
         {
             Cursor.visible = !Cursor.visible;
         }
+        if(Input.GetKeyUp(KeyCode.F))
+        {
+            Pause();
+        }
+        if (Input.GetKeyUp(KeyCode.G))
+        {
+            Resume();
+        }
 
         InitZoom();
     }
@@ -48,5 +56,15 @@ public class GameManager : MonoBehaviour
         {
             initZoomFlag = true;
         }
+    }
+
+    public void Pause()
+    {
+        Time.timeScale = 0f;
+    }
+
+    public void Resume()
+    {
+        Time.timeScale = 1f;
     }
 }

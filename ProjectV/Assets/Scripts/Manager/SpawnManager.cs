@@ -19,7 +19,9 @@ public class SpawnManager : MonoBehaviour
     public List<GameObject> SpawnQueue { get { return spawnQueue; } }
     float spawnDelay = 1f;
     float spawnTick = 0f;
-
+    float freezeTick = 0f;
+    float freezeTime;
+    bool freezeFlag = false;
     private void Awake()
     {
         if(Instance == null)
@@ -34,6 +36,7 @@ public class SpawnManager : MonoBehaviour
 
     void Update()
     {
+        ProcessFreeze();
         ProcessSpawn();
         ProcessRemove();
         PrecessSetNearestEnemy();
@@ -53,8 +56,22 @@ public class SpawnManager : MonoBehaviour
         ObjectPool.Instance.Free(target);
     }
 
+    public void FreezeAll(float time)
+    {
+        freezeTick = 0;
+        freezeTime = time;
+        freezeFlag = true;
+
+        foreach (var monster in spawnList)
+        {
+            Unit unit = monster.GetComponent<Unit>();
+            unit.Freeze(time);
+        }
+    }
+
     private void ProcessSpawn()
     {
+        if (freezeFlag) return;
         spawnTick += Time.deltaTime;
         if (spawnTick < spawnDelay) return;
         
@@ -111,5 +128,16 @@ public class SpawnManager : MonoBehaviour
         spawnQueue = spawnList.OrderBy(x => x.GetDistanceFromPlayer()).ToList();
     }
 
+    private void ProcessFreeze()
+    {
+        if (freezeFlag == false) return;
+        freezeTick += Time.deltaTime;
+        if(freezeTick > freezeTime)
+        {
+            freezeTick = 0f;
+            freezeFlag = false;
+
+        }
+    }
 
 }

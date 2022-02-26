@@ -17,7 +17,10 @@ public class PoisonMushroom : Item
 
     public override void Use()
     {
-
+        GameObject obj = ObjectPool.Instance.Allocate("PoisonFire");
+        obj.transform.position = Player.Instance.transform.position;
+        obj.transform.forward = Player.Instance.transform.forward;
+        obj.transform.SetParent(Player.Instance.transform);
     }
 
 }
