@@ -25,10 +25,10 @@ public class UI_ExpBar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Exp = Player.Instance.stat.Get_FinalStat(StatType.Exp);
-        maxExp = Player.Instance.stat.Get_FinalStat(StatType.MaxExp);
+        //Exp = Player.Instance.stat.Get_FinalStat(StatType.Exp);
+        //maxExp = Player.Instance.stat.Get_FinalStat(StatType.MaxExp);
         UpdateSize();
-        barImage.fillAmount = Exp / maxExp;
+        //barImage.fillAmount = Exp / maxExp;
     }
 
     void UpdateSize()
