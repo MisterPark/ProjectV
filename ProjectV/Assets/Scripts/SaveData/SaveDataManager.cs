@@ -89,8 +89,11 @@ public class SaveDataManager : MonoBehaviour
     // 게임 저장하기
     public void SaveGameData() 
     {
-        _saveData = DataManager.Instance.currentSaveData;
-
+        DataManager dataManager = DataManager.Instance;
+        _saveData = dataManager.currentSaveData;
+        _saveData.totalKillCount += dataManager.currentGameData.killCount;
+        _saveData.totalGold += dataManager.currentGameData.gold;
+        _saveData.currentGold += dataManager.currentGameData.gold;
         //
         string ToJsonData = JsonUtility.ToJson(saveData); 
         string filePath = Application.persistentDataPath + GameDataFileName; 

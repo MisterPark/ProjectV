@@ -37,6 +37,7 @@ public class Monster : Unit
 
     void OnDeadCallback()
     {
+        DataManager.Instance.currentGameData.killCount += 1;
         int rand = Random.Range((int)ItemType.ExpJewel_Big, (int)ItemType.ExpJewel_Small);
         ItemManager.Instance.Drop((ItemType)rand, transform.position);
 
