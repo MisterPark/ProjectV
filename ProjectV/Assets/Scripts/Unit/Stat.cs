@@ -7,7 +7,7 @@ using UnityEngine;
     Level,          // 레벨
     Might,          // 괴력 (Might): 랭크당 공격력 10% 증가
     Armor,          // 방어력 (Armor): 랭크당 피격 데미지 1 감소
-    MaxHealth,      // 최대 체력 (Max Health): 랭크당 체력 20% 증가
+    MaxHealth,      // 최대 체력 (Max Health): 랭크당 최대 체력 20% 증가
     Health,         // 현재 체력
     Recovery,       // 회복 (Recovery): 랭크당 체력 회복 0.2 증가
     Cooldown,       // 쿨타임 (Cooldown): 랭크당 쿨타임 8% 감소
@@ -22,7 +22,6 @@ using UnityEngine;
     MaxExp,         // 최대 경험치
     Exp,            // 현재 경험치
     Greed,          // 탐욕 (Greed): 랭크당 골드 획득 10% 증가
-    Gold,           // 소지 머니
     END
 }
 
@@ -48,7 +47,17 @@ public class Stat : MonoBehaviour
     {
         if (statsData != null)
         {
-            stats = statsData.stats;
+            // 깊은복사
+            stats = new Stats[(int)StatType.END];
+            for (int i = 0; i < (int)StatType.END; i++)
+            {
+                stats[i] = new Stats();
+                stats[i].statType = statsData.stats[i].statType;
+                stats[i].origin_Stat = statsData.stats[i].origin_Stat;
+                stats[i].powerUp_Stat = statsData.stats[i].powerUp_Stat;
+                stats[i].growth_Stat = statsData.stats[i].growth_Stat;
+                stats[i].final_Stat = statsData.stats[i].final_Stat;
+            }
         }
         owner = GetComponent<Unit>();
         Init_FinalStat();
@@ -98,33 +107,9 @@ public class Stat : MonoBehaviour
         stats[(int)StatType.Level].final_Stat += 1;
         stats[(int)StatType.Exp].final_Stat -= stats[(int)StatType.MaxExp].final_Stat;
         stats[(int)StatType.MaxExp].final_Stat += stats[(int)StatType.MaxExp].origin_Stat * stats[(int)StatType.MaxExp].growth_Stat;
+        owner.OnLevelUp?.Invoke(Mathf.RoundToInt(stats[(int)StatType.Level].final_Stat));
     }
 
-    /// <summary>
-    /// 게임시작 이전 상점에서 아이템 구입시 능력치 증가
-    /// </summary>
-    //public float Increase_PowerUpStat(StatType _statType)
-    //{
-    //    switch (_statType)
-    //    {
-    //        case StatType.Armor:
-    //            {
-    //                return stats[(int)StatType.Armor].powerUp_Stat += 1f;
-    //            }
-    //        case StatType.Recovery:
-    //            {
-    //                return stats[(int)StatType.Recovery].powerUp_Stat += 1f;
-    //            }
-    //        case StatType.Amount:
-    //            {
-    //                return stats[(int)StatType.Amount].powerUp_Stat += 1f;
-    //            }
-    //        default:
-    //            {
-    //                return stats[(int)_statType].powerUp_Stat += stats[(int)_statType].powerUp_Stat * 0.5f;
-    //            }
-    //    }
-    //}
 
     /// <summary>
     /// 게임 시작 한후 보조장비 획득후 능력치 증가
@@ -144,10 +129,6 @@ public class Stat : MonoBehaviour
             case StatType.Amount:
                 {
                     return stats[(int)StatType.Amount].final_Stat += _count;
-                }
-            case StatType.Gold:
-                {
-                    return stats[(int)StatType.Gold].final_Stat += _count;
                 }
             case StatType.Health:
                 {
@@ -173,6 +154,7 @@ public class Stat : MonoBehaviour
                 }
         }
     }
+
 
     public float Get_OriginStat(StatType _statType)
     {
@@ -227,6 +209,7 @@ public class Stat : MonoBehaviour
     public void Set_Stats(Stats[] _stat)
     {
         stats = _stat;
+        statsData = DataManager.Instance.playerCharacterData[(int)DataManager.Instance.currentPlayerCharacter].statsData;
     }
     public void Set_PowerUpStat(StatType _statType, float _value)
     {
@@ -263,10 +246,13 @@ public class Stat : MonoBehaviour
     /// <summary>
     /// 상대에게 데미지를 주는
     /// </summary>
-    public float ApplyDamage(Stat otherStat)
+    public float ApplyDamage(Stat otherStat, float _value)
     {
-        return otherStat.TakeDamage(stats[(int)StatType.Might].final_Stat);
+        return otherStat.TakeDamage(_value);
     }
 
-
+    public void RecoverToFull()
+    {
+        stats[(int)StatType.Health].final_Stat = stats[(int)StatType.MaxHealth].final_Stat;
+    }
 }

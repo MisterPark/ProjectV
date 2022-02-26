@@ -11,8 +11,10 @@ public class Skill_IceBolt : Skill
     }
     protected override void Active()
     {
-        GameObject nearest = SpawnManager.Instance.NearestEnemy;
-        if(nearest == null)
+        GameObject nearest = null;
+        SpawnManager.Instance.SpawnQueue.Dequeue(out nearest);
+
+        if (nearest == null)
         {
             // 적이 없으면 공격 안함.
             return;

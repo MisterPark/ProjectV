@@ -1,13 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class UI_Powerup : MonoBehaviour
 {
-    public UI_Powerup_statDB m_PowerupDB;
-    public GameObject m_PowerupTemplate;
-    public GameObject m_ContentView;
-
+    [SerializeField] private UI_Powerup_statDB m_PowerupDB;
+    [SerializeField] private GameObject m_PowerupTemplate;
+    [SerializeField] private GameObject m_ContentView;
+    [SerializeField] private EventSystem m_EventHandle;
+    [SerializeField] private GameObject m_UnderPanel;
 
     //TemplateUI Ver,Ho Rect
 
@@ -28,7 +31,6 @@ public class UI_Powerup : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
 
     private void InitPowerupTemplate()

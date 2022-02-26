@@ -87,7 +87,6 @@ public class ObjectPool : MonoBehaviour
     private GameObject GetPrefab(string key)
     {
         GameObject _prefab = null;
-
         foreach(var prefab in prefabs)
         {
             if (prefab.name == key)
@@ -96,13 +95,11 @@ public class ObjectPool : MonoBehaviour
                 break;
             }
         }
-
         return _prefab;
     }
 
     public void Initialize()
     {
-        
         foreach (var prefab in prefabs)
         {
             if(!_pools.ContainsKey(prefab.name))
@@ -112,6 +109,4 @@ public class ObjectPool : MonoBehaviour
             UpSizing(prefab.name);
         }
     }
-
-    
 }

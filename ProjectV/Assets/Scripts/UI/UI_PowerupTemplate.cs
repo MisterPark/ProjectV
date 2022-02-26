@@ -1,10 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class UI_PowerupTemplate : MonoBehaviour
 {
+    private Powerup_DataType m_DataType;
+
+    public Powerup_DataType DataType => m_DataType;
     [SerializeField] private Image m_Powerup_Image;
     [SerializeField] private Image m_Powerup_Rank_Image;
     [SerializeField] private Image m_RankPanel;
@@ -27,6 +31,7 @@ public class UI_PowerupTemplate : MonoBehaviour
 
     public void Init(Powerup_DataType data)
     {
+        m_DataType = data;
         m_Powerup_Image.sprite = data.Powerup_Image;
         m_Powerup_Name.text = data.Powerup_Name;
         float columnstart = -(m_RankPanel.GetComponent<RectTransform>().rect.width/2);
@@ -39,6 +44,20 @@ public class UI_PowerupTemplate : MonoBehaviour
             tempobject.transform.SetParent(m_RankPanel.transform);
             tempobject.transform.localScale = m_Powerup_Rank_Image.transform.localScale;
             tempobject.transform.localPosition = new Vector3(columnstart + ColumnPivot + ((ColumnPadding + ColumnInterval) * repeat), 0f, 0f);
+        }
+    }
+
+    public void OnClickPowerupTemplate()
+    {
+        EventSystem tempevent = EventSystem.current;
+        if (tempevent != null)
+        {
+            GameObject tempobject = tempevent.currentSelectedGameObject;
+            if (tempobject != null)
+            {
+                GameObject te = GameObject.Find("UnderPanel");
+                te.GetComponent<UI_PowerupUnderPanel>().PowerupExplanInit(tempobject.GetComponent<UI_PowerupTemplate>().DataType);
+            }
         }
     }
 }

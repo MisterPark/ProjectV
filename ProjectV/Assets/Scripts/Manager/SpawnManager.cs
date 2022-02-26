@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
@@ -8,15 +10,18 @@ public class SpawnManager : MonoBehaviour
 
     public int MaxSpawnCount = 100;
 
-    public GameObject NearestEnemy { get; private set; }
 
     [SerializeField] List<GameObject> monsterList = new List<GameObject>();
 
     List<GameObject> spawnList = new List<GameObject>();
+    List<GameObject> spawnQueue = new List<GameObject>();
     public List<GameObject> SpawnList{ get { return spawnList; } }
+    public List<GameObject> SpawnQueue { get { return spawnQueue; } }
     float spawnDelay = 1f;
     float spawnTick = 0f;
-
+    float freezeTick = 0f;
+    float freezeTime;
+    bool freezeFlag = false;
     private void Awake()
     {
         if(Instance == null)
@@ -31,6 +36,7 @@ public class SpawnManager : MonoBehaviour
 
     void Update()
     {
+        ProcessFreeze();
         ProcessSpawn();
         ProcessRemove();
         PrecessSetNearestEnemy();
@@ -40,6 +46,7 @@ public class SpawnManager : MonoBehaviour
     {
         GameObject monster = ObjectPool.Instance.Allocate(prefab.name);
         monster.transform.position = position;
+
         spawnList.Add(monster);
     }
 
@@ -49,8 +56,22 @@ public class SpawnManager : MonoBehaviour
         ObjectPool.Instance.Free(target);
     }
 
+    public void FreezeAll(float time)
+    {
+        freezeTick = 0;
+        freezeTime = time;
+        freezeFlag = true;
+
+        foreach (var monster in spawnList)
+        {
+            Unit unit = monster.GetComponent<Unit>();
+            unit.Freeze(time);
+        }
+    }
+
     private void ProcessSpawn()
     {
+        if (freezeFlag) return;
         spawnTick += Time.deltaTime;
         if (spawnTick < spawnDelay) return;
         
@@ -65,11 +86,12 @@ public class SpawnManager : MonoBehaviour
         {
             return;
         }
-        
-        for (int i = 0; i < 20; i++)
+
+        int spawnCount = MaxSpawnCount - spawnList.Count;
+        for (int i = 0; i < spawnCount; i++)
         {
-            int index = Random.Range(0, monsterList.Count - 1);
-            float angle = Random.Range(-180, 180);
+            int index = UnityEngine.Random.Range(0, monsterList.Count - 1);
+            float angle = UnityEngine.Random.Range(-180, 180);
             float dist = 30f;
             Vector3 pos = new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle)) * dist;
             pos += Player.Instance.transform.position;
@@ -100,26 +122,22 @@ public class SpawnManager : MonoBehaviour
 
     private void PrecessSetNearestEnemy()
     {
-        NearestEnemy = null;
+        spawnQueue.Clear();
         if (Player.Instance == null) return;
 
-        Vector3 playerPos = Player.Instance.transform.position;
-        float minDIst = float.MaxValue;
-        float dist;
-
-        foreach (var monster in spawnList)
-        {
-            if (monster == null) continue;
-            if (monster.activeSelf == false) continue;
-            
-            dist = (playerPos - monster.transform.position).magnitude;
-            if(dist < minDIst)
-            {
-                minDIst = dist;
-                NearestEnemy = monster;
-            }
-        }
+        spawnQueue = spawnList.OrderBy(x => x.GetDistanceFromPlayer()).ToList();
     }
 
+    private void ProcessFreeze()
+    {
+        if (freezeFlag == false) return;
+        freezeTick += Time.deltaTime;
+        if(freezeTick > freezeTime)
+        {
+            freezeTick = 0f;
+            freezeFlag = false;
+
+        }
+    }
 
 }
