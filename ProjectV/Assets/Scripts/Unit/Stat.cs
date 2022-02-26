@@ -22,7 +22,6 @@ using UnityEngine;
     MaxExp,         // 최대 경험치
     Exp,            // 현재 경험치
     Greed,          // 탐욕 (Greed): 랭크당 골드 획득 10% 증가
-    Gold,           // 소지 머니
     END
 }
 
@@ -48,7 +47,17 @@ public class Stat : MonoBehaviour
     {
         if (statsData != null)
         {
-            stats = statsData.stats;
+            // 깊은복사
+            stats = new Stats[(int)StatType.END];
+            for (int i = 0; i < (int)StatType.END; i++)
+            {
+                stats[i] = new Stats();
+                stats[i].statType = statsData.stats[i].statType;
+                stats[i].origin_Stat = statsData.stats[i].origin_Stat;
+                stats[i].powerUp_Stat = statsData.stats[i].powerUp_Stat;
+                stats[i].growth_Stat = statsData.stats[i].growth_Stat;
+                stats[i].final_Stat = statsData.stats[i].final_Stat;
+            }
         }
         owner = GetComponent<Unit>();
         Init_FinalStat();
@@ -101,31 +110,6 @@ public class Stat : MonoBehaviour
         owner.OnLevelUp?.Invoke(Mathf.RoundToInt(stats[(int)StatType.Level].final_Stat));
     }
 
-    /// <summary>
-    /// 게임시작 이전 상점에서 아이템 구입시 능력치 증가
-    /// </summary>
-    //public float Increase_PowerUpStat(StatType _statType)
-    //{
-    //    switch (_statType)
-    //    {
-    //        case StatType.Armor:
-    //            {
-    //                return stats[(int)StatType.Armor].powerUp_Stat += 1f;
-    //            }
-    //        case StatType.Recovery:
-    //            {
-    //                return stats[(int)StatType.Recovery].powerUp_Stat += 1f;
-    //            }
-    //        case StatType.Amount:
-    //            {
-    //                return stats[(int)StatType.Amount].powerUp_Stat += 1f;
-    //            }
-    //        default:
-    //            {
-    //                return stats[(int)_statType].powerUp_Stat += stats[(int)_statType].powerUp_Stat * 0.5f;
-    //            }
-    //    }
-    //}
 
     /// <summary>
     /// 게임 시작 한후 보조장비 획득후 능력치 증가
@@ -145,12 +129,6 @@ public class Stat : MonoBehaviour
             case StatType.Amount:
                 {
                     return stats[(int)StatType.Amount].final_Stat += _count;
-                }
-            case StatType.Gold:
-                {
-                    DataManager.Instance.currentSaveData.totalGold += _count;
-                    DataManager.Instance.currentSaveData.currentGold += _count;
-                    return stats[(int)StatType.Gold].final_Stat += _count;
                 }
             case StatType.Health:
                 {
@@ -273,5 +251,8 @@ public class Stat : MonoBehaviour
         return otherStat.TakeDamage(_value);
     }
 
-
+    public void RecoverToFull()
+    {
+        stats[(int)StatType.Health].final_Stat = stats[(int)StatType.MaxHealth].final_Stat;
+    }
 }

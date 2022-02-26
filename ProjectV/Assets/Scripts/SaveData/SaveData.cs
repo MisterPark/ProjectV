@@ -11,6 +11,12 @@ public class SaveData
     public bool[] unLockCharacter = new bool[(int)CharacterName.END];
     public bool[] unLockStage = new bool[3];
 
+    // ∏ÛΩ∫≈Õ
+    public int totalKillCount;
+
+    // µ∑
     public int totalGold;
     public int currentGold;
+
+    public int currentPowerUpCount;
 }
