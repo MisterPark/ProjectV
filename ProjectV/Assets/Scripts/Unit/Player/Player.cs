@@ -43,11 +43,11 @@ public class Player : Unit
     private void Awake()
     {
         Instance = this;
-        Init_Stat();
     }
     protected override void Start()
     {
         base.Start();
+        Init_Stat();
         type = UnitType.Player;
         OnDead.AddListener(OnDeadCallback);
 

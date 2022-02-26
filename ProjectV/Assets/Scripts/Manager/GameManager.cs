@@ -7,9 +7,11 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     [SerializeField] GameObject objectPoolPrefab;
+    [SerializeField] GameObject dataManagerPrefab;
     CameraController cameraController;
 
     GameObject objectPool;
+    GameObject dataManager;
 
     private bool initZoomFlag = false;
 
@@ -22,6 +24,10 @@ public class GameManager : MonoBehaviour
         objectPool.transform.position = Vector3.zero;
         objectPool.name = "ObjectPool";
 
+        dataManager = Instantiate(dataManagerPrefab);
+        dataManager.transform.position = Vector3.zero;
+        dataManager.name = "DataManager";
+        //
     }
     void Start()
     {
