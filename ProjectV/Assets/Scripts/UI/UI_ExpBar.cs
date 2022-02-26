@@ -11,6 +11,7 @@ public class UI_ExpBar : MonoBehaviour
     private RectTransform rectTransform;
     private RectTransform barRT;
     private RectTransform backRT;
+    public RectTransform parentCanvas;
     private Image barImage;
     // Start is called before the first frame update
     void Start()
@@ -32,8 +33,8 @@ public class UI_ExpBar : MonoBehaviour
 
     void UpdateSize()
     {
-        float width = Screen.width;
-        float height = Screen.height * 0.05f;
+        float width = parentCanvas.sizeDelta.x;
+        float height = parentCanvas.sizeDelta.y * 0.05f;
         rectTransform.sizeDelta = new Vector2(0f, height);
         backRT.sizeDelta = new Vector2(width, height);
         barRT.sizeDelta = new Vector2(width - width * 0.023f, height * 0.73f);
