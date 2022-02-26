@@ -11,14 +11,13 @@ public class Main_Title_SC : MonoBehaviour
     public Image KeyboardCursor_Image;
     public string StartScene_Name;
     public EventSystem Event_Handle;
-    private int Money { get; set; }
     [SerializeField]
     private TMPro.TextMeshProUGUI Money_Text;
 
     // Start is called before the first frame update
     void Start()
     {
-        Money_Text.text = Money.ToString();
+        Money_Text.text = DataManager.Instance.currentSaveData.currentGold.ToString();
     }
 
     // Update is called once per frame

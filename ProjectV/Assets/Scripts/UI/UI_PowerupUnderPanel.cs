@@ -17,7 +17,6 @@ public class UI_PowerupUnderPanel : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        m_MoneyText.text = DataManager.Instance.currentSaveData.currentGold.ToString();
     }
 
     // Update is called once per frame
@@ -32,6 +31,7 @@ public class UI_PowerupUnderPanel : MonoBehaviour
         m_PowerupName.text = data.Powerup_Name;
         m_PowerupImage.sprite = data.Powerup_Image;
         m_PowerupExplan.text = data.Powerup_Tip;
+        m_MoneyText.text = data.Powerup_Price.ToString();
     }
 
     public void OnClickBuyButton()

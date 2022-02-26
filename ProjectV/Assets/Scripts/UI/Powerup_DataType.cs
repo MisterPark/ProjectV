@@ -13,6 +13,7 @@ public class Powerup_DataType : ScriptableObject
     [SerializeField] private int m_Rank;
     [SerializeField] private bool m_IsPercentage;
     [SerializeField] private float m_Powerup_Value;
+    [SerializeField] private int m_Powerup_Price;
 
     public StatType PowerType => m_PowerType;
     public string Powerup_Name => m_Powerup_Name;
@@ -22,6 +23,7 @@ public class Powerup_DataType : ScriptableObject
     public int Rank => m_Rank;
     public bool IsPercentage => m_IsPercentage;
     public float Powerup_Value => m_Powerup_Value;
+    public int Powerup_Price => m_Powerup_Price;
 
     public void SetRank(int ivalue)
     {
@@ -29,5 +31,10 @@ public class Powerup_DataType : ScriptableObject
         {
             m_Rank = ivalue;
         }
+    }
+
+    private void PriceIncrease()
+    {
+        
     }
 }
