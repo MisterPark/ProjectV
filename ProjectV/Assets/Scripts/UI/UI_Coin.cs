@@ -24,7 +24,7 @@ public class UI_Coin : MonoBehaviour
     void Update()
     {
         ResetSize();
-        //text.text = Player.Instance.stat.Get_FinalStat(StatType.Gold).ToString();
+        text.text = DataManager.Instance.currentGameData.gold.ToString();
     }
 
     void ResetSize()

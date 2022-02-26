@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class UI_KillCount : MonoBehaviour
 {
-    public int value = 0;
-
     private RectTransform rectTransform;
     [SerializeField] private Text text;
     [SerializeField] private RectTransform imageRT;
@@ -21,7 +19,7 @@ public class UI_KillCount : MonoBehaviour
     void Update()
     {
         ResetSize();
-        text.text = value.ToString();
+        text.text = DataManager.Instance.currentGameData.killCount.ToString();
     }
 
     void ResetSize()
