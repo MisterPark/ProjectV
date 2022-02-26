@@ -160,5 +160,12 @@ public class Unit : MonoBehaviour
     {
 
     }
-    
+
+    private void OnEnable()
+    {
+        if(stat != null)
+        {
+            stat.RecoverToFull();
+        }
+    }
 }
