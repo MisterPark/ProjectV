@@ -37,4 +37,15 @@ public static class Extension
 
     }
 
+    public static SkillType GetSkillType(this SkillKind kind)
+    {
+        switch (kind)
+        {
+            case SkillKind.None: return SkillType.Passive;
+            case SkillKind.IceBolt: return SkillType.Active;
+            case SkillKind.FireBolt: return SkillType.Active;
+            default: return SkillType.Passive;
+        }
+    }
+
 }

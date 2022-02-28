@@ -74,16 +74,16 @@ public class Unit : MonoBehaviour
         transform.LookAt(target);
     }
 
-    public void AddSkill(SkillType type)
+    public void AddSkill(SkillKind type)
     {
-        if (type == SkillType.None) return;
+        if (type == SkillKind.None) return;
 
         Skill skill = null;
-
+        
         switch (type)
         {
-            case SkillType.IceBolt: skill = gameObject.AddComponent<Skill_IceBolt>(); break;
-            case SkillType.FireBolt: skill = gameObject.AddComponent<Skill_FireBolt>(); break;
+            case SkillKind.IceBolt: skill = gameObject.AddComponent<Skill_IceBolt>(); break;
+            case SkillKind.FireBolt: skill = gameObject.AddComponent<Skill_FireBolt>(); break;
             default:
                 break;
         }
