@@ -30,11 +30,13 @@ public class Unit : MonoBehaviour
     Vector3 oldPosition;
     public Vector3 skillOffsetPosition;
     public Team team;
-    public List<Skill> skillList = new List<Skill>();
+    List<Skill> skillList = new List<Skill>();
 
     float freezeTime;
     float freezeTick = 0;
     bool freezeFlag = false;
+
+    public List<Skill> Skills { get { return skillList; } }
 
     protected virtual void Start()
     {
@@ -72,16 +74,16 @@ public class Unit : MonoBehaviour
         transform.LookAt(target);
     }
 
-    public void AddSkill(SkillType type)
+    public void AddSkill(SkillKind type)
     {
-        if (type == SkillType.None) return;
+        if (type == SkillKind.None) return;
 
         Skill skill = null;
-
+        
         switch (type)
         {
-            case SkillType.IceBolt: skill = gameObject.AddComponent<Skill_IceBolt>(); break;
-            case SkillType.FireBolt: skill = gameObject.AddComponent<Skill_FireBolt>(); break;
+            case SkillKind.IceBolt: skill = gameObject.AddComponent<Skill_IceBolt>(); break;
+            case SkillKind.FireBolt: skill = gameObject.AddComponent<Skill_FireBolt>(); break;
             default:
                 break;
         }

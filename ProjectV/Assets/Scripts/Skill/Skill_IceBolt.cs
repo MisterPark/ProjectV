@@ -7,7 +7,7 @@ public class Skill_IceBolt : Skill
     protected override void Start()
     {
         base.Start();
-        Type = SkillType.IceBolt;
+        Kind = SkillKind.IceBolt;
     }
     protected override void Active()
     {

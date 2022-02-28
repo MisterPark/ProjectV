@@ -50,9 +50,10 @@ public class Player : Unit
         Init_Stat();
         type = UnitType.Player;
         OnDead.AddListener(OnDeadCallback);
+        OnLevelUp.AddListener(OnLevelUpCallback);
 
-        AddSkill(SkillType.IceBolt);
-        AddSkill(SkillType.FireBolt);
+        AddSkill(SkillKind.IceBolt);
+        AddSkill(SkillKind.FireBolt);
         
     }
 
@@ -60,10 +61,6 @@ public class Player : Unit
     {
         base.Update();
         Move();
-        //Debug.Log($"{Column},{Row} / {transform.position}");
-        //Debug.Log($"{s}")
-        
-
     }
 
 
@@ -104,6 +101,12 @@ public class Player : Unit
 
     void OnDeadCallback()
     {
+        // 플레이어가 죽었을 때
+    }
+
+    void OnLevelUpCallback(int level)
+    {
+        // 플레이어가 레벨업 했을 떄
 
     }
 
@@ -112,6 +115,7 @@ public class Player : Unit
         DataManager dataManager = DataManager.Instance;
         Stat _stat = GetComponent<Stat>();
         _stat.Set_Stats(dataManager.playerCharacterData[(int)dataManager.currentPlayerCharacter].statsData.stats);
+        _stat.Init_FinalStat();
         for (int i = 0; i < (int)StatType.END; i++)
         {
             _stat.Set_PowerUpStat(i, dataManager.powerUpStat[i]);

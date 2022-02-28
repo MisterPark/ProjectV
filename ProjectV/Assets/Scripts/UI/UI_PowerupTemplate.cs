@@ -37,6 +37,7 @@ public class UI_PowerupTemplate : MonoBehaviour
         float columnstart = -(m_RankPanel.GetComponent<RectTransform>().rect.width/2);
         ColumnInterval = m_Powerup_Rank_Image.GetComponent<RectTransform>().rect.width;
         int repeatcount = data.MaxRank;
+        int checkcount = data.Rank;
         Image tempobject;
         for (int repeat = 0; repeat < repeatcount; ++repeat)
         {
@@ -44,6 +45,10 @@ public class UI_PowerupTemplate : MonoBehaviour
             tempobject.transform.SetParent(m_RankPanel.transform);
             tempobject.transform.localScale = m_Powerup_Rank_Image.transform.localScale;
             tempobject.transform.localPosition = new Vector3(columnstart + ColumnPivot + ((ColumnPadding + ColumnInterval) * repeat), 0f, 0f);
+            if (repeat < checkcount)
+            {
+                tempobject.transform.Find("Check_Image").gameObject.SetActive(true);
+            }
         }
     }
 

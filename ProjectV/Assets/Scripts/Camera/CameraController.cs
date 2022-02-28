@@ -15,7 +15,7 @@ public class CameraController : MonoBehaviour
     public static CameraController Instance;
 
     public const float minZoom = 3f;
-    public const float maxZoom = 10f;
+    public const float maxZoom = 15f;
     [SerializeField] GameObject target;
     [SerializeField] CameraMode mode;
     [SerializeField] Vector3 offset;
