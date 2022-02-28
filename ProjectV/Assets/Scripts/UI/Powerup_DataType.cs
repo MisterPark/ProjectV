@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Powerup_DataType", menuName = "Powerup_DataType")]
+[CreateAssetMenu(fileName = "Powerup_DataType", menuName = "Data/Powerup_DataType")]
 public class Powerup_DataType : ScriptableObject
 {
     [SerializeField] private StatType m_PowerType;

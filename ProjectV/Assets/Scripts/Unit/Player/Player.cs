@@ -52,9 +52,10 @@ public class Player : Unit
         OnDead.AddListener(OnDeadCallback);
         OnLevelUp.AddListener(OnLevelUpCallback);
 
-        AddSkill(SkillKind.IceBolt);
+        //AddSkill(SkillKind.IceBolt);
         AddSkill(SkillKind.FireBolt);
-        
+        //AddSkill(SkillKind.ForceFieldBarrier);
+
     }
 
     protected override void Update()
