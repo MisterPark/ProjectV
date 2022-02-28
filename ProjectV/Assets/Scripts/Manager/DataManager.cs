@@ -7,6 +7,7 @@ public class CurrentGameData
 {
     public int killCount = 0;
     public int gold = 0;
+    public float playTime = 0f;
 }
 
 public class DataManager : MonoBehaviour
@@ -48,7 +49,7 @@ public class DataManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        currentGameData.playTime += Time.deltaTime;
     }
 
     public void Setting_PowerStat()

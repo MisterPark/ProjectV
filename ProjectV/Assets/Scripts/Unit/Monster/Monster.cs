@@ -8,6 +8,7 @@ public class Monster : Unit
     protected override void Start()
     {
         base.Start();
+        stat.Init_FinalStat();
         type = UnitType.Monster;
         OnDead.AddListener(OnDeadCallback);
     }
