@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject boardManagerPrefab;
     [SerializeField] GameObject spawnManagerPrefab;
     [SerializeField] GameObject itemManagerPrefab;
+    [SerializeField] GameObject propManagerPrefab;
     CameraController cameraController;
 
     GameObject player;
@@ -20,6 +21,7 @@ public class GameManager : MonoBehaviour
     GameObject boardManager;
     GameObject spawnManager;
     GameObject itemManager;
+    GameObject propManager;
 
     private bool initZoomFlag = false;
 
@@ -52,6 +54,10 @@ public class GameManager : MonoBehaviour
         itemManager = Instantiate(itemManagerPrefab);
         itemManager.transform.position = Vector3.zero;
         itemManager.name = itemManagerPrefab.name;
+
+        propManager = Instantiate(propManagerPrefab);
+        propManager.transform.position = Vector3.zero;
+        propManager.name = propManagerPrefab.name;
     }
     void Start()
     {
