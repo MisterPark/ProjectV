@@ -19,4 +19,5 @@ public class SaveData
     public int currentGold;
 
     public int currentPowerUpCount;
+    public float totalPlayTime;
 }

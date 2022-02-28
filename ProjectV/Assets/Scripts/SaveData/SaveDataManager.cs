@@ -94,10 +94,11 @@ public class SaveDataManager : MonoBehaviour
         _saveData.totalKillCount += dataManager.currentGameData.killCount;
         _saveData.totalGold += dataManager.currentGameData.gold;
         _saveData.currentGold += dataManager.currentGameData.gold;
+        _saveData.totalPlayTime += dataManager.currentGameData.playTime;
         //
         string ToJsonData = JsonUtility.ToJson(saveData); 
         string filePath = Application.persistentDataPath + GameDataFileName; 
-
+        
         // 이미 저장된 파일이 있다면 덮어쓰기
         File.WriteAllText(filePath, ToJsonData);
         

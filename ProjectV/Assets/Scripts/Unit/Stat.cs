@@ -45,22 +45,8 @@ public class Stat : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (statsData != null)
-        {
-            // ±Ì¿∫∫πªÁ
-            stats = new Stats[(int)StatType.END];
-            for (int i = 0; i < (int)StatType.END; i++)
-            {
-                stats[i] = new Stats();
-                stats[i].statType = statsData.stats[i].statType;
-                stats[i].origin_Stat = statsData.stats[i].origin_Stat;
-                stats[i].powerUp_Stat = statsData.stats[i].powerUp_Stat;
-                stats[i].growth_Stat = statsData.stats[i].growth_Stat;
-                stats[i].final_Stat = statsData.stats[i].final_Stat;
-            }
-        }
         owner = GetComponent<Unit>();
-        Init_FinalStat();
+        
     }
 
     // Update is called once per frame
@@ -71,10 +57,23 @@ public class Stat : MonoBehaviour
 
     public void Init_FinalStat()
     {
+        if (statsData != null)
+        {
+            // ±Ì¿∫∫πªÁ
+            stats = new Stats[(int)StatType.END];
+            for (int i = 0; i < (int)StatType.END; i++)
+            {
+                stats[i] = new Stats();
+                stats[i].statType = statsData.stats[i].statType;
+                stats[i].origin_Stat = statsData.stats[i].origin_Stat;
+                //stats[i].powerUp_Stat = statsData.stats[i].powerUp_Stat;
+                stats[i].growth_Stat = statsData.stats[i].growth_Stat;
+                stats[i].final_Stat = statsData.stats[i].final_Stat;
+            }
+        }
+        //////////////////////////////////////////////////////////////////////
         for (int i = 0; i < (int)StatType.END; i++)
         {
-            stats[i].final_Stat = stats[i].origin_Stat + (stats[i].origin_Stat * stats[i].powerUp_Stat);
-
             switch ((StatType)i)
             {
                 case StatType.Armor:
@@ -208,7 +207,7 @@ public class Stat : MonoBehaviour
     /// </summary>
     public void Set_Stats(Stats[] _stat)
     {
-        stats = _stat;
+        //stats = _stat;
         statsData = DataManager.Instance.playerCharacterData[(int)DataManager.Instance.currentPlayerCharacter].statsData;
     }
     public void Set_PowerUpStat(StatType _statType, float _value)
