@@ -30,11 +30,13 @@ public class Unit : MonoBehaviour
     Vector3 oldPosition;
     public Vector3 skillOffsetPosition;
     public Team team;
-    public List<Skill> skillList = new List<Skill>();
+    List<Skill> skillList = new List<Skill>();
 
     float freezeTime;
     float freezeTick = 0;
     bool freezeFlag = false;
+
+    public List<Skill> Skills { get { return skillList; } }
 
     protected virtual void Start()
     {
