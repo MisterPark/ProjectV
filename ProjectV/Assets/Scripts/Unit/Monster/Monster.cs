@@ -41,6 +41,7 @@ public class Monster : Unit
         int rand = Random.Range((int)ItemType.ExpJewel_Big, (int)ItemType.ExpJewel_Small);
         ItemManager.Instance.Drop((ItemType)rand, transform.position);
 
+
         SpawnManager.Instance.Remove(gameObject);
     }
 }
