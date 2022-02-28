@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class UI_Coin : MonoBehaviour
 {
-    public int value;
-
     private RectTransform screenRT;
     private RectTransform imageRT;
     private RectTransform rectTransform;

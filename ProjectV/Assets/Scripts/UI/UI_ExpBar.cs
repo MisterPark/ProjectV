@@ -11,7 +11,7 @@ public class UI_ExpBar : MonoBehaviour
     private RectTransform rectTransform;
     private RectTransform barRT;
     private RectTransform backRT;
-    public RectTransform parentCanvas;
+    private RectTransform parentCanvas;
     private Image barImage;
     // Start is called before the first frame update
     void Start()
@@ -20,15 +20,16 @@ public class UI_ExpBar : MonoBehaviour
         barRT = transform.GetChild(1).GetComponent<RectTransform>();
         backRT = transform.GetChild(0).GetComponent<RectTransform>();
         rectTransform = transform.GetComponent<RectTransform>();
+        parentCanvas = transform.parent.GetComponent<RectTransform>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Exp = Player.Instance.stat.Get_FinalStat(StatType.Exp);
-        //maxExp = Player.Instance.stat.Get_FinalStat(StatType.MaxExp);
+        Exp = Player.Instance.stat.Get_FinalStat(StatType.Exp);
+        maxExp = Player.Instance.stat.Get_FinalStat(StatType.MaxExp);
         UpdateSize();
-        //barImage.fillAmount = Exp / maxExp;
+        barImage.fillAmount = Exp / maxExp;
     }
 
     void UpdateSize()

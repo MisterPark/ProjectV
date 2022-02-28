@@ -8,11 +8,12 @@ public class UI_KillCount : MonoBehaviour
     private RectTransform rectTransform;
     [SerializeField] private Text text;
     [SerializeField] private RectTransform imageRT;
-    [SerializeField] private RectTransform parentCanvas;
+    private RectTransform parentCanvas;
     // Start is called before the first frame update
     void Start()
     {
         rectTransform = GetComponent<RectTransform>();
+        parentCanvas = transform.parent.GetComponent<RectTransform>();
     }
 
     // Update is called once per frame

@@ -11,11 +11,12 @@ public class UI_PlayTime : MonoBehaviour
 
     private RectTransform rectTransform;
     [SerializeField] Text text;
-    [SerializeField] private RectTransform parentCanvas;
+    private RectTransform parentCanvas;
     // Start is called before the first frame update
     void Start()
     {
         rectTransform = GetComponent<RectTransform>();
+        parentCanvas = transform.parent.GetComponent<RectTransform>();
     }
 
     // Update is called once per frame
