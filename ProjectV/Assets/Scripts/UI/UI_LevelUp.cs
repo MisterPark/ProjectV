@@ -5,9 +5,7 @@ using UnityEngine.UI;
 
 public class UI_LevelUp : MonoBehaviour
 {
-    public GameObject prefab;
-    private UI_LevelUPItemInfo prefabInfo;
-    private int count = 1;
+    public UI_LevelUPItemInfo[] children;
 
     private float ratioX = 0.34f;
     private float ratioY = 0.8f;
@@ -23,12 +21,12 @@ public class UI_LevelUp : MonoBehaviour
     {
         rectTransform = GetComponent<RectTransform>();
         text = mainText.GetComponent<Text>();
+        ResetSize();
     }
 
     // Update is called once per frame
     void Update()
     {
-        ResetSize();
     }
 
     private void ResetSize()
@@ -41,6 +39,10 @@ public class UI_LevelUp : MonoBehaviour
         background.sizeDelta = new Vector2(width, height);
         mainText.sizeDelta = new Vector2(width, height * 0.2f);
         text.fontSize = ((int)(height * 0.1f));
+        for(int i = 0; i < children.Length; i++)
+        {
+            children[i].ResetSize();
+        }
     }
 
     public void Init()

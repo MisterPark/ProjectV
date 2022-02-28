@@ -17,6 +17,7 @@ public class UI_PlayTime : MonoBehaviour
     {
         rectTransform = GetComponent<RectTransform>();
         parentCanvas = transform.parent.GetComponent<RectTransform>();
+        ResetSize();
     }
 
     // Update is called once per frame
@@ -34,7 +35,7 @@ public class UI_PlayTime : MonoBehaviour
             text.text = "  " + minute.ToString() + " : 0" + second.ToString();
         else
             text.text = "  " + minute.ToString() + " : " + second.ToString();
-        ResetSize();
+
     }
 
     void ResetSize()

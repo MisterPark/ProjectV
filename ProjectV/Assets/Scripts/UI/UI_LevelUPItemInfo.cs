@@ -28,11 +28,10 @@ public class UI_LevelUPItemInfo : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        ResetSize();
+    {   
     }
 
-    private void ResetSize()
+    public void ResetSize()
     {
         float width = parentUI.sizeDelta.x;
         float height = parentUI.sizeDelta.y * 0.2f;
@@ -48,10 +47,4 @@ public class UI_LevelUPItemInfo : MonoBehaviour
         indexText.fontSize = ((int)(size * 0.5f));
         levelText.fontSize = ((int)(size * 0.5f));
     }
-
-    //public void Init(int num)
-    //{
-    //    placeNum = num;
-    //    parentRectTransform = transform.parent.GetComponent<RectTransform>();
-    //}
 }

@@ -17,12 +17,12 @@ public class UI_PauseButton : MonoBehaviour
             Debug.Log("부모가 없으면 작동하지 않습니다.");
         button = transform.GetChild(0).GetComponent<RectTransform>();
         ratio = 0.05f;
+        ResetSize();
     }
 
     // Update is called once per frame
     void Update()
     {
-        ResetSize();
     }
 
     private void ResetSize()

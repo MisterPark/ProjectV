@@ -21,14 +21,14 @@ public class UI_ExpBar : MonoBehaviour
         backRT = transform.GetChild(0).GetComponent<RectTransform>();
         rectTransform = transform.GetComponent<RectTransform>();
         parentCanvas = transform.parent.GetComponent<RectTransform>();
+        UpdateSize();
     }
 
     // Update is called once per frame
     void Update()
     {
         Exp = Player.Instance.stat.Get_FinalStat(StatType.Exp);
-        maxExp = Player.Instance.stat.Get_FinalStat(StatType.MaxExp);
-        UpdateSize();
+        maxExp = Player.Instance.stat.Get_FinalStat(StatType.MaxExp); 
         barImage.fillAmount = Exp / maxExp;
     }
 
