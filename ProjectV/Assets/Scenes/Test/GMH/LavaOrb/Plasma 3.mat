@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-8432706901827265710
+--- !u!114 &-5000740362006102641
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,19 +20,22 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: InnerSphere
-  m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
-  m_ShaderKeywords: _EMISSION
-  m_LightmapFlags: 2
+  m_Name: Plasma 3
+  m_Shader: {fileID: -6465566751694194690, guid: 5396b22a7c5a2fc4fa69e642135e5584, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2000
-  stringTagMap:
-    RenderType: Opaque
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - Texture2D_6f4459b0c08b4c95b696aa1ea5e6cad8:
+        m_Texture: {fileID: 2800000, guid: bdaa2a06003f3764aa91197fa7353b0b, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _BaseMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -90,6 +93,12 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - Vector1_3f436d6e95c049cd889fe752aa9817fd: 0.01
+    - Vector1_6f6d4433d5c245458498d93b79e8c7ad: 1
+    - Vector1_ce6bc8a3c64c4b09ab2b36784012b623: 0.78
+    - Vector1_cfad9a4d605f409792bc806d4f758b3d: 16.07
+    - Vector1_f4b0c1cab6584dbb92d9be32911aa55f: 10
+    - Vector1_f67639b6ea664f338e01a379c98c9e00: 5
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -117,8 +126,10 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
+    - Color_716ca0ee3b614332bf31cd0bdca69de7: {r: 2.194914, g: 0.20903945, b: 0, a: 1}
+    - Color_81f1f403c63e4710b8214eab4990755f: {r: 29.857058, g: 3.290974, b: 0, a: 1}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissionColor: {r: 0, g: 3.706743, b: 3.9999318, a: 1}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
