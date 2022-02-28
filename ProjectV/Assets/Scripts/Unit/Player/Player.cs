@@ -112,6 +112,7 @@ public class Player : Unit
         DataManager dataManager = DataManager.Instance;
         Stat _stat = GetComponent<Stat>();
         _stat.Set_Stats(dataManager.playerCharacterData[(int)dataManager.currentPlayerCharacter].statsData.stats);
+        _stat.Init_FinalStat();
         for (int i = 0; i < (int)StatType.END; i++)
         {
             _stat.Set_PowerUpStat(i, dataManager.powerUpStat[i]);
