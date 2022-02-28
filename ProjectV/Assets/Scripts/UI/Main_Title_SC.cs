@@ -17,12 +17,12 @@ public class Main_Title_SC : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Money_Text.text = DataManager.Instance.currentSaveData.currentGold.ToString();
     }
 
     // Update is called once per frame
     void Update()
     {
+        Money_Text.text = DataManager.Instance.currentSaveData.currentGold.ToString();
         if (Event_Handle.sendNavigationEvents)
         {
             GameObject tempobject = Event_Handle.currentSelectedGameObject;

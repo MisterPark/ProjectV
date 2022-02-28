@@ -17,6 +17,7 @@ public class UI_PowerupUnderPanel : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        DataManager.Instance.PriceReset();
     }
 
     // Update is called once per frame
@@ -31,12 +32,16 @@ public class UI_PowerupUnderPanel : MonoBehaviour
         m_PowerupName.text = data.Powerup_Name;
         m_PowerupImage.sprite = data.Powerup_Image;
         m_PowerupExplan.text = data.Powerup_Tip;
-        m_MoneyText.text = data.Powerup_Price.ToString();
+        m_MoneyText.text = data.CurrentPowerupPrice.ToString();
     }
 
     public void OnClickBuyButton()
     {
-        int itemp = m_CurrentPowerupDB.Rank + 1;
-        m_CurrentPowerupDB.SetRank(itemp);
+        DataManager.Instance.BuyPowerup(m_CurrentPowerupDB);
+        DataManager.Instance.PriceReset();
+        m_PowerupName.text = m_CurrentPowerupDB.Powerup_Name;
+        m_PowerupImage.sprite = m_CurrentPowerupDB.Powerup_Image;
+        m_PowerupExplan.text = m_CurrentPowerupDB.Powerup_Tip;
+        m_MoneyText.text = m_CurrentPowerupDB.CurrentPowerupPrice.ToString();
     }
 }
