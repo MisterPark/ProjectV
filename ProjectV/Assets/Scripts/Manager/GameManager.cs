@@ -6,12 +6,20 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
+    [SerializeField] GameObject playerPrefab;
     [SerializeField] GameObject objectPoolPrefab;
     [SerializeField] GameObject dataManagerPrefab;
+    [SerializeField] GameObject boardManagerPrefab;
+    [SerializeField] GameObject spawnManagerPrefab;
+    [SerializeField] GameObject itemManagerPrefab;
     CameraController cameraController;
 
+    GameObject player;
     GameObject objectPool;
     GameObject dataManager;
+    GameObject boardManager;
+    GameObject spawnManager;
+    GameObject itemManager;
 
     private bool initZoomFlag = false;
 
@@ -20,14 +28,30 @@ public class GameManager : MonoBehaviour
         Instance = this;
         // Ä¿¼­ ¼û±è
         Cursor.visible = false;
+
+        player = Instantiate(playerPrefab);
+        player.transform.position = Vector3.zero;
+        player.name = playerPrefab.name;
+
         objectPool = Instantiate(objectPoolPrefab);
         objectPool.transform.position = Vector3.zero;
-        objectPool.name = "ObjectPool";
+        objectPool.name = objectPoolPrefab.name;
 
         dataManager = Instantiate(dataManagerPrefab);
         dataManager.transform.position = Vector3.zero;
-        dataManager.name = "DataManager";
+        dataManager.name = dataManagerPrefab.name;
         //
+        boardManager = Instantiate(boardManagerPrefab);
+        boardManager.transform.position = Vector3.zero;
+        boardManager.name = boardManagerPrefab.name;
+
+        spawnManager = Instantiate(spawnManagerPrefab);
+        spawnManager.transform.position = Vector3.zero;
+        spawnManager.name = spawnManagerPrefab.name;
+
+        itemManager = Instantiate(itemManagerPrefab);
+        itemManager.transform.position = Vector3.zero;
+        itemManager.name = itemManagerPrefab.name;
     }
     void Start()
     {
