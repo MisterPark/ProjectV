@@ -13,8 +13,6 @@ public class UI_PauseButton : MonoBehaviour
     {
         rectTransform = GetComponent<RectTransform>();
         parent = transform.parent.GetComponent<RectTransform>();
-        if (parent == null)
-            Debug.Log("부모가 없으면 작동하지 않습니다.");
         button = transform.GetChild(0).GetComponent<RectTransform>();
         ratio = 0.05f;
         ResetSize();

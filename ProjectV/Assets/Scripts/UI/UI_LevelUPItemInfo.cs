@@ -7,7 +7,7 @@ public class UI_LevelUPItemInfo : MonoBehaviour
 {
     public int placeNum = 1;
     private RectTransform rectTransform;
-    [SerializeField] private RectTransform parentUI;
+    private RectTransform parent;
     [SerializeField] private RectTransform background;
     [SerializeField] private RectTransform itemName;
     [SerializeField] private RectTransform index;
@@ -24,6 +24,8 @@ public class UI_LevelUPItemInfo : MonoBehaviour
         nameText = itemName.GetComponent<Text>();
         indexText = index.GetComponent<Text>();
         levelText = level.GetComponent<Text>();
+        parent = transform.parent.GetComponent<RectTransform>();
+        ResetSize();
     }
 
     // Update is called once per frame
@@ -33,8 +35,8 @@ public class UI_LevelUPItemInfo : MonoBehaviour
 
     public void ResetSize()
     {
-        float width = parentUI.sizeDelta.x;
-        float height = parentUI.sizeDelta.y * 0.2f;
+        float width = parent.sizeDelta.x;
+        float height = parent.sizeDelta.y * 0.2f;
         rectTransform.anchoredPosition = new Vector2(0f, height * -placeNum);
         float size = height * 0.45f;
         rectTransform.sizeDelta = new Vector2(width, height);

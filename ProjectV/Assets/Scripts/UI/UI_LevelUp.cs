@@ -39,10 +39,11 @@ public class UI_LevelUp : MonoBehaviour
         background.sizeDelta = new Vector2(width, height);
         mainText.sizeDelta = new Vector2(width, height * 0.2f);
         text.fontSize = ((int)(height * 0.1f));
-        for(int i = 0; i < children.Length; i++)
-        {
-            children[i].ResetSize();
-        }
+        //for(int i = 0; i < children.Length; i++)
+        //{
+        //    children[i].ResetSize();
+        //}
+        width.Equals()
     }
 
     public void Init()
