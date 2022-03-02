@@ -31,4 +31,9 @@ public class UI_PauseButton : MonoBehaviour
         button.sizeDelta = new Vector2(width, width);
         rectTransform.anchoredPosition = new Vector2(width * -0.1f , height * -2.5f);
     }
+
+    public void OnClickPause()
+    {
+        UIManager.Instance.SetUIActive("Status Canvas", true);
+    }
 }
