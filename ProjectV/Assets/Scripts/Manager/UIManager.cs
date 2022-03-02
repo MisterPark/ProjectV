@@ -8,7 +8,7 @@ public class UIManager : MonoBehaviour
     public static UIManager Instance;
     public List<GameObject> UIObjectList; 
     
-    private Dictionary<string, GameObject> UIObjectDic;
+    private Dictionary<string, GameObject> UIObjectDic = new Dictionary<string, GameObject>();
 
     // Start is called before the first frame update
 

@@ -47,10 +47,12 @@ public class Main_Title_SC : MonoBehaviour
 
     public void OnClickExit()
     {
-        Transform tempobject = GameObject.Find("Title_Screen").transform.Find("Powerup_Panel");
+        Transform tempobject = UIManager.Instance.GetUIObject("Powerup_Panel").transform;
         if (tempobject.gameObject.activeSelf)
         {
             tempobject.gameObject.SetActive(false);
+            transform.Find("Start_Button").gameObject.SetActive(true);
+            transform.Find("Powerup_Button").gameObject.SetActive(true);
         }
         else
         {
@@ -66,8 +68,11 @@ public class Main_Title_SC : MonoBehaviour
     { }
     public void OnClickPowerup()
     {
-        Transform tempobject = GameObject.Find("Title_Screen").transform.Find("Powerup_Panel");
-        tempobject.gameObject.SetActive(true);
+        KeyboardCursor_Image.gameObject.SetActive(false);
+        transform.Find("Start_Button").gameObject.SetActive(false);
+        transform.Find("Powerup_Button").gameObject.SetActive(false);
+        UIManager.Instance.SetUIActive("Powerup_Panel", true);
+        Event_Handle.SetSelectedGameObject(UIManager.Instance.GetUIObject("Powerup_Panel").transform.Find("Reset_Button").gameObject);
     }
 
 }

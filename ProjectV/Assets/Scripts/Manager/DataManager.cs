@@ -59,16 +59,12 @@ public class DataManager : MonoBehaviour
         }
     }
 
-    public void SetInitCurrentPowerupCount()
-    {
-        currentSaveData.currentPowerUpCount = 0;
-    }
-
     public float m_moneyInterest_Per => moneyInterest_Per;
 
     public void BuyPowerup(Powerup_DataType data)
     {
-        if (currentSaveData.currentGold > data.CurrentPowerupPrice)
+        if ((currentSaveData.currentGold > data.CurrentPowerupPrice)
+            && (data.MaxRank > data.Rank))
         {
             int itemp = data.Rank + 1;
             data.SetRank(itemp);
@@ -87,5 +83,17 @@ public class DataManager : MonoBehaviour
             tempvalue = (tempvalue * (powerStatDB.Powerup_Type_List[repeat].Rank + 1)) + (int)((tempvalue * m_moneyInterest_Per * currentSaveData.currentPowerUpCount));
             powerStatDB.Powerup_Type_List[repeat].SetPrice(tempvalue);
         }
+    }
+
+    public void PowerupReset()
+    {
+        currentSaveData.currentPowerUpCount = 0;
+        currentSaveData.currentGold = currentSaveData.totalGold;
+        int count = powerStatDB.GetCount();
+        for (int repeat = 0; repeat < count; ++repeat)
+        {
+            powerStatDB.Powerup_Type_List[repeat].SetRank(0);
+        }
+        PriceReset();
     }
 }
