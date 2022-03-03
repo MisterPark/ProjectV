@@ -10,7 +10,7 @@ public class SkillData : ScriptableObject
 
     private void OnValidate()
     {
-        for(int i=0;i<skillValues.Length;i++)
+        for (int i = 0; i < skillValues.Length; i++)
         {
             skillValues[i].level = (SkillLevel)i;
         }
