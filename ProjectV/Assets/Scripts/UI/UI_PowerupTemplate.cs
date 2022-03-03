@@ -13,10 +13,14 @@ public class UI_PowerupTemplate : MonoBehaviour
     [SerializeField] private Image m_Powerup_Rank_Image;
     [SerializeField] private Image m_RankPanel;
     [SerializeField] private TMPro.TextMeshProUGUI m_Powerup_Name;
+    private List<GameObject> RankImageList = new List<GameObject>();
 
     private float ColumnInterval;
     [SerializeField] private float ColumnPivot;
     [SerializeField] private float ColumnPadding;
+
+    private int MaxRankCount;
+    private int RankCount;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,16 +40,17 @@ public class UI_PowerupTemplate : MonoBehaviour
         m_Powerup_Name.text = data.Powerup_Name;
         float columnstart = -(m_RankPanel.GetComponent<RectTransform>().rect.width/2);
         ColumnInterval = m_Powerup_Rank_Image.GetComponent<RectTransform>().rect.width;
-        int repeatcount = data.MaxRank;
-        int checkcount = data.Rank;
+        MaxRankCount = data.MaxRank;
+        RankCount = data.Rank;
         Image tempobject;
-        for (int repeat = 0; repeat < repeatcount; ++repeat)
+        for (int repeat = 0; repeat < MaxRankCount; ++repeat)
         {
             tempobject = Instantiate(m_Powerup_Rank_Image);
+            RankImageList.Add(tempobject.gameObject);
             tempobject.transform.SetParent(m_RankPanel.transform);
             tempobject.transform.localScale = m_Powerup_Rank_Image.transform.localScale;
             tempobject.transform.localPosition = new Vector3(columnstart + ColumnPivot + ((ColumnPadding + ColumnInterval) * repeat), 0f, 0f);
-            if (repeat < checkcount)
+            if (repeat < RankCount)
             {
                 tempobject.transform.Find("Check_Image").gameObject.SetActive(true);
             }
@@ -60,8 +65,24 @@ public class UI_PowerupTemplate : MonoBehaviour
             GameObject tempobject = tempevent.currentSelectedGameObject;
             if (tempobject != null)
             {
-                GameObject te = GameObject.Find("UnderPanel");
-                te.GetComponent<UI_PowerupUnderPanel>().PowerupExplanInit(tempobject.GetComponent<UI_PowerupTemplate>().DataType);
+                GameObject te = GameObject.Find("Powerup_Panel");
+                te.GetComponent<UI_Powerup>().PowerupExplanInit(tempobject.GetComponent<UI_PowerupTemplate>().DataType);
+            }
+        }
+    }
+
+    public void ResetRankImage()
+    {
+        RankCount = DataType.Rank;
+        for (int repeat = 0; repeat < MaxRankCount; ++repeat)
+        {
+            if (repeat < RankCount)
+            {
+                RankImageList[repeat].transform.Find("Check_Image").gameObject.SetActive(true);
+            }
+            else
+            {
+                RankImageList[repeat].transform.Find("Check_Image").gameObject.SetActive(false);
             }
         }
     }
