@@ -4,7 +4,18 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 
-public class UI_LevelUp : MonoBehaviour
+public class SkillInformation
+{
+    public SkillKind kind;
+    public int nextLevel;
+    public SkillInformation(SkillKind kind, int nextLevel)
+    {
+        this.kind = kind;
+        this.nextLevel = nextLevel;
+    }
+}
+
+public class UI_LevelUp : UI
 {
     public static UI_LevelUp instance;
 
@@ -18,7 +29,9 @@ public class UI_LevelUp : MonoBehaviour
     [SerializeField] private RectTransform mainText;
     private RectTransform parentCanvas;
     private Text text;
-    public UnityEvent<SkillKind> callback;
+    public UnityEvent<SkillKind> OnSelected;
+
+    int count = 0;
 
     private void Awake()
     {
@@ -31,13 +44,10 @@ public class UI_LevelUp : MonoBehaviour
         text = mainText.GetComponent<Text>();
         parentCanvas = transform.parent.GetComponent<RectTransform>();
         ResetSize();
-        Player.Instance.OnLevelUp.AddListener(LevelupCallback);
-        transform.gameObject.SetActive(false);
+        Clear();
+        Hide();
     }
 
-    void Update()
-    {
-    }
 
     private void ResetSize()
     {
@@ -49,25 +59,51 @@ public class UI_LevelUp : MonoBehaviour
         background.sizeDelta = new Vector2(width, height);
         mainText.sizeDelta = new Vector2(width, height * 0.2f);
         text.fontSize = ((int)(height * 0.1f));
-        for(int i=0; i <4; i++)
+        for (int i = 0; i < 4; i++)
         {
             children[i].ResetSize();
         }
     }
-    public void Init()
+
+    public void Clear()
     {
-        transform.gameObject.SetActive(true);
-        
+        for (int i = 0; i < 4; i++)
+        {
+            children[i].Hide();
+        }
     }
 
-    public void OnCallback(SkillKind kind)
+    public override void Show()
     {
-        callback?.Invoke(kind);
+        base.Show();
+        Clear();
+        for (int i = 0; i < count; i++)
+        {
+            children[i].Show();
+        }
+    }
+
+    public override void Hide()
+    {
+        base.Hide();
+        Clear();
+    }
+
+    public void SetSkillInfomations(List<SkillInformation> skills)
+    {
+        count = 0;
+        foreach (SkillInformation item in skills)
+        {
+            SkillData data = DataManager.Instance.skillDatas[(int)item.kind].skillData;
+            SkillValue value = data.values[(int)item.nextLevel-1];
+            children[count].Init(item.kind, data.skillName, value.description, item.nextLevel, data.icon);
+            count++;
+        }
+    }
+
+    public void OnSelect(SkillKind kind)
+    {
+        OnSelected?.Invoke(kind);
         transform.gameObject.SetActive(false);
-    }
-
-    public void LevelupCallback(int level)
-    {
-        Init();
     }
 }

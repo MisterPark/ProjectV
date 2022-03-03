@@ -10,8 +10,8 @@ public class Skill_ForceFieldBarrier : Skill
     bool isWaitForFrame = false;
     protected override void Start()
     {
-        base.Start();
         Kind = SkillKind.ForceFieldBarrier;
+        base.Start();
 
         obj = ObjectPool.Instance.Allocate("ForceFieldBarrier");
         obj.transform.position = Player.Instance.transform.position;

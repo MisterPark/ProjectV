@@ -39,13 +39,22 @@ public static class Extension
 
     public static SkillType GetSkillType(this SkillKind kind)
     {
-        switch (kind)
-        {
-            case SkillKind.None: return SkillType.Passive;
-            case SkillKind.IceBolt: return SkillType.Active;
-            case SkillKind.FireBolt: return SkillType.Active;
-            default: return SkillType.Passive;
-        }
+        return DataManager.Instance.skillDatas[(int)kind].skillData.type;
+    }
+
+    public static SkillKind GetRandomSkillKind()
+    {
+        return (SkillKind)Random.Range((int)SkillKind.IceBolt, ((int)SkillKind.End) - 1);
+    }
+
+    public static int ToInt(this SkillLevel level)
+    {
+        return (int)level + 1;
+    }
+
+    public static SkillLevel ToSkillLevel(this int level)
+    {
+        return (SkillLevel)(level - 1);
     }
 
 }

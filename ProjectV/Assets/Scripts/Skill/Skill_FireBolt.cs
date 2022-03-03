@@ -6,8 +6,8 @@ public class Skill_FireBolt : Skill
 {
     protected override void Start()
     {
-        base.Start();
         Kind = SkillKind.FireBolt;
+        base.Start();
     }
     protected override void Active()
     {

@@ -76,8 +76,6 @@ public class Unit : MonoBehaviour
 
     public void AddSkill(SkillKind type)
     {
-        if (type == SkillKind.None) return;
-
         Skill skill = null;
         
         switch (type)

@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
     {
         Instance = this;
         // Ä¿¼­ ¼û±è
-        Cursor.visible = false;
+        HideCursor();
 
         player = Instantiate(playerPrefab);
         player.transform.position = Vector3.zero;
@@ -102,5 +102,15 @@ public class GameManager : MonoBehaviour
     public void Resume()
     {
         Time.timeScale = 1f;
+    }
+
+    public void ShowCursor()
+    {
+        Cursor.visible = true;
+    }
+
+    public void HideCursor()
+    {
+        Cursor.visible = false;
     }
 }

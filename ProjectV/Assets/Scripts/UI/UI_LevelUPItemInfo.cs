@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UI_LevelUPItemInfo : MonoBehaviour
+public class UI_LevelUPItemInfo : UI
 {
     public int placeNum = 1;
     private RectTransform rectTransform;
@@ -15,25 +15,19 @@ public class UI_LevelUPItemInfo : MonoBehaviour
     [SerializeField] private RectTransform icon;
     [SerializeField] private RectTransform button;
     private Text nameText;
-    private Text indexText;
+    private Text descText;
     private Text levelText;
     private Image iconImage;
     private SkillKind kind;
 
-    // Start is called before the first frame update
     void Start()
     {
         rectTransform = GetComponent<RectTransform>();
         nameText = itemName.GetComponent<Text>();
-        indexText = index.GetComponent<Text>();
+        descText = index.GetComponent<Text>();
         levelText = level.GetComponent<Text>();
         parent = transform.parent.GetComponent<RectTransform>();
         iconImage = icon.GetComponent<Image>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {   
     }
 
     public void ResetSize()
@@ -50,16 +44,16 @@ public class UI_LevelUPItemInfo : MonoBehaviour
         level.sizeDelta = new Vector2(width * 0.19f, size);
         icon.sizeDelta = new Vector2(size, size);
         nameText.fontSize = ((int)(size * 0.5f));
-        indexText.fontSize = ((int)(size * 0.5f));
+        descText.fontSize = ((int)(size * 0.5f));
         levelText.fontSize = ((int)(size * 0.5f));
     }
 
-    public void Init(SkillKind skillKind, string skillName, string skillIndex, int skillLevel, Sprite skillIcon)
+    public void Init(SkillKind skillKind, string skillName, string description, int skillLevel, Sprite skillIcon)
     {
         kind = skillKind;
         nameText.text = skillName;
-        indexText.text = skillIndex;
-        if (skillLevel == 0)
+        descText.text = description;
+        if (skillLevel == 1)
             levelText.text = "New!!";
         else
             levelText.text = "LV." + skillLevel.ToString();
@@ -68,7 +62,7 @@ public class UI_LevelUPItemInfo : MonoBehaviour
 
     public void OnClick()
     {
-        UI_LevelUp.instance.OnCallback(kind);
+        UI_LevelUp.instance.OnSelect(kind);
     }
 
 }

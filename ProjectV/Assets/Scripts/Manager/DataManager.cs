@@ -22,6 +22,10 @@ public class DataManager : MonoBehaviour
     [SerializeField]
     private UI_Powerup_statDB powerStatDB;
 
+    // 스킬 데이터
+    [ArrayElementTitle("kind")]
+    public SkillDataElement[] skillDatas = new SkillDataElement[(int)SkillKind.End];
+
     // SaveData 에서 가져온 데이터들
     public SaveData currentSaveData;
 
@@ -37,12 +41,13 @@ public class DataManager : MonoBehaviour
         SaveDataManager.Instance = GetComponent<SaveDataManager>();
         SaveDataManager.Instance.LoadGameData();
         //SaveDataManager.Instance.SaveGameData();
+        
     }
 
     // Start is called before the first frame update
     void Start()
     {
-
+        //InitializeSkillData();
     }
 
     // Update is called once per frame
@@ -95,5 +100,14 @@ public class DataManager : MonoBehaviour
             powerStatDB.Powerup_Type_List[repeat].SetRank(0);
         }
         PriceReset();
+    }
+
+    void InitializeSkillData()
+    {
+        int count = (int)SkillKind.End;
+        for (int i = 0; i < count; i++)
+        {
+            skillDatas[i].kind = (SkillKind)i;
+        }
     }
 }

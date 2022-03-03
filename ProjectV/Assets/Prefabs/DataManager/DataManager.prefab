@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4931608550612199043}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.09371877, y: 1.536377, z: -0.44547987}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -72,12 +72,31 @@ MonoBehaviour:
   - 0
   - 0
   - 0
+  powerStatDB: {fileID: 11400000, guid: 11befcd1b5e803d4cafdb70aa31e6f66, type: 2}
+  skillDatas:
+  - kind: 0
+    skillData: {fileID: 11400000, guid: bc2df4804f1c1ff41b95576af3b16e1e, type: 2}
+  - kind: 1
+    skillData: {fileID: 11400000, guid: 6435222bbc5dba24e9a7b5a97d2a8051, type: 2}
+  - kind: 2
+    skillData: {fileID: 11400000, guid: a2342476c171cca48bb675234ad01c3d, type: 2}
+  - kind: 3
+    skillData: {fileID: 11400000, guid: 28717ac4a56092748b55a371f714edcf, type: 2}
+  - kind: 4
+    skillData: {fileID: 11400000, guid: bc2df4804f1c1ff41b95576af3b16e1e, type: 2}
   currentSaveData:
     unLockCharacter: 000000
     unLockStage: 000000
+    totalKillCount: 0
     totalGold: 0
     currentGold: 0
-  powerStatDB: {fileID: 11400000, guid: 11befcd1b5e803d4cafdb70aa31e6f66, type: 2}
+    currentPowerUpCount: 0
+    totalPlayTime: 0
+  currentGameData:
+    killCount: 0
+    gold: 0
+    playTime: 0
+  moneyInterest_Per: 0
 --- !u!114 &2716088676406518505
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -94,5 +113,8 @@ MonoBehaviour:
   _saveData:
     unLockCharacter: 000000
     unLockStage: 000000
+    totalKillCount: 0
     totalGold: 0
     currentGold: 0
+    currentPowerUpCount: 0
+    totalPlayTime: 0
