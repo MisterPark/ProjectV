@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class UI_LevelUp : MonoBehaviour
 {
-    public GameObject prefab;
-    private UI_LevelUPItemInfo prefabInfo;
-    private int count = 1;
+    public static UI_LevelUp instance;
+
+    public UI_LevelUPItemInfo[] children;
 
     private float ratioX = 0.34f;
     private float ratioY = 0.8f;
@@ -15,20 +16,27 @@ public class UI_LevelUp : MonoBehaviour
     [SerializeField] private RectTransform background;
     [SerializeField] private RectTransform outline;
     [SerializeField] private RectTransform mainText;
-    [SerializeField] private RectTransform parentCanvas;
+    private RectTransform parentCanvas;
     private Text text;
+    public UnityEvent<SkillKind> callback;
 
-    // Start is called before the first frame update
+    private void Awake()
+    {
+        instance = this;
+    }
+
     void Start()
     {
         rectTransform = GetComponent<RectTransform>();
         text = mainText.GetComponent<Text>();
+        parentCanvas = transform.parent.GetComponent<RectTransform>();
+        ResetSize();
+        Player.Instance.OnLevelUp.AddListener(LevelupCallback);
+        transform.gameObject.SetActive(false);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        ResetSize();
     }
 
     private void ResetSize()
@@ -41,10 +49,25 @@ public class UI_LevelUp : MonoBehaviour
         background.sizeDelta = new Vector2(width, height);
         mainText.sizeDelta = new Vector2(width, height * 0.2f);
         text.fontSize = ((int)(height * 0.1f));
+        for(int i=0; i <4; i++)
+        {
+            children[i].ResetSize();
+        }
     }
-
     public void Init()
     {
+        transform.gameObject.SetActive(true);
+        
+    }
 
+    public void OnCallback(SkillKind kind)
+    {
+        callback?.Invoke(kind);
+        transform.gameObject.SetActive(false);
+    }
+
+    public void LevelupCallback(int level)
+    {
+        Init();
     }
 }

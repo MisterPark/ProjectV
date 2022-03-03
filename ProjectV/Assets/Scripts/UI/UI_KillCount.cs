@@ -14,12 +14,12 @@ public class UI_KillCount : MonoBehaviour
     {
         rectTransform = GetComponent<RectTransform>();
         parentCanvas = transform.parent.GetComponent<RectTransform>();
+        ResetSize();
     }
 
     // Update is called once per frame
     void Update()
     {
-        ResetSize();
         text.text = DataManager.Instance.currentGameData.killCount.ToString();
     }
 

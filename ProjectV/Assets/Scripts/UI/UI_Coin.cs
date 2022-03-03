@@ -16,12 +16,12 @@ public class UI_Coin : MonoBehaviour
         screenRT = transform.parent.GetComponent<RectTransform>();
         rectTransform = transform.GetComponent<RectTransform>();
         text = transform.GetChild(1).GetComponent<Text>();
+        ResetSize();
     }
 
     // Update is called once per frame
     void Update()
     {
-        ResetSize();
         text.text = DataManager.Instance.currentGameData.gold.ToString();
     }
 

@@ -46,4 +46,6 @@ public class UIManager : MonoBehaviour
     {
         UIObjectDic[objectname].SetActive(bset);
     }
+
+
 }

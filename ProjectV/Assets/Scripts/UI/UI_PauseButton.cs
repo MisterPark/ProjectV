@@ -13,16 +13,14 @@ public class UI_PauseButton : MonoBehaviour
     {
         rectTransform = GetComponent<RectTransform>();
         parent = transform.parent.GetComponent<RectTransform>();
-        if (parent == null)
-            Debug.Log("부모가 없으면 작동하지 않습니다.");
         button = transform.GetChild(0).GetComponent<RectTransform>();
         ratio = 0.05f;
+        ResetSize();
     }
 
     // Update is called once per frame
     void Update()
     {
-        ResetSize();
     }
 
     private void ResetSize()
@@ -32,5 +30,10 @@ public class UI_PauseButton : MonoBehaviour
         rectTransform.sizeDelta = new Vector2(width, width);
         button.sizeDelta = new Vector2(width, width);
         rectTransform.anchoredPosition = new Vector2(width * -0.1f , height * -2.5f);
+    }
+
+    public void OnClickPause()
+    {
+        UIManager.Instance.SetUIActive("Status Canvas", true);
     }
 }
