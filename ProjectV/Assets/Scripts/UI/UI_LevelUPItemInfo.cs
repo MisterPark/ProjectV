@@ -13,9 +13,12 @@ public class UI_LevelUPItemInfo : MonoBehaviour
     [SerializeField] private RectTransform index;
     [SerializeField] private RectTransform level;
     [SerializeField] private RectTransform icon;
+    [SerializeField] private RectTransform button;
     private Text nameText;
     private Text indexText;
     private Text levelText;
+    private Image iconImage;
+    private SkillKind kind;
 
     // Start is called before the first frame update
     void Start()
@@ -25,7 +28,7 @@ public class UI_LevelUPItemInfo : MonoBehaviour
         indexText = index.GetComponent<Text>();
         levelText = level.GetComponent<Text>();
         parent = transform.parent.GetComponent<RectTransform>();
-        ResetSize();
+        iconImage = icon.GetComponent<Image>();
     }
 
     // Update is called once per frame
@@ -41,6 +44,7 @@ public class UI_LevelUPItemInfo : MonoBehaviour
         float size = height * 0.45f;
         rectTransform.sizeDelta = new Vector2(width, height);
         background.sizeDelta = new Vector2(width, height);
+        button.sizeDelta = new Vector2(width, height);
         itemName.sizeDelta = new Vector2(width * 0.55f, size);
         index.sizeDelta = new Vector2(width, size);
         level.sizeDelta = new Vector2(width * 0.19f, size);
@@ -49,4 +53,22 @@ public class UI_LevelUPItemInfo : MonoBehaviour
         indexText.fontSize = ((int)(size * 0.5f));
         levelText.fontSize = ((int)(size * 0.5f));
     }
+
+    public void Init(SkillKind skillKind, string skillName, string skillIndex, int skillLevel, Sprite skillIcon)
+    {
+        kind = skillKind;
+        nameText.text = skillName;
+        indexText.text = skillIndex;
+        if (skillLevel == 0)
+            levelText.text = "New!!";
+        else
+            levelText.text = "LV." + skillLevel.ToString();
+        iconImage.sprite = skillIcon;
+    }
+
+    public void OnClick()
+    {
+        UI_LevelUp.instance.OnCallback(kind);
+    }
+
 }
