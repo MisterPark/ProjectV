@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public enum MissileType // 움직임
 {
@@ -20,6 +21,9 @@ public class Missile : MonoBehaviour
     GameObject target;
     Vector3 targetDirection;
     float tick = 0f;
+
+    public UnityEvent<Vector3> OnCollision;
+
     void Start()
     {
         
@@ -48,7 +52,7 @@ public class Missile : MonoBehaviour
             if( team != unit.team)
             {
                 unit.stat.TakeDamage(damage);
-                // 임시
+                OnCollision?.Invoke(transform.position);
                 ObjectPool.Instance.Free(gameObject);
             }
         }
