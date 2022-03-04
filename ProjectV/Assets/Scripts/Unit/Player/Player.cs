@@ -133,7 +133,7 @@ public class Player : Unit
         {
             AddSkill(kind);
         }
-
+        UI_StatusPanel.instance.SetSkillInfomations(Skills);
     }
 
     private void Init_Stat()
