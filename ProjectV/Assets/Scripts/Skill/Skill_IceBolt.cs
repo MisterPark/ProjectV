@@ -31,6 +31,8 @@ public class Skill_IceBolt : Skill
         missile.transform.position = transform.position + unit.skillOffsetPosition;
         missile.team = unit.team;
         missile.owner = unit;
+        missile.duration = duration;
+        missile.damage = damage;
         missile.SetTarget(nearest.transform.position + unit.skillOffsetPosition);
     }
 }
