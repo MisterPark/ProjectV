@@ -26,9 +26,9 @@ public class PoisonFire
     }
 
 
-    void Update()
+    void FixedUpdate()
     {
-        attackTick += Time.deltaTime;
+        attackTick += Time.fixedDeltaTime;
         if(attackTick >= delay)
         {
             attackTick = 0;
@@ -39,7 +39,7 @@ public class PoisonFire
             //isAttack = false;
         }
 
-        tick += Time.deltaTime;
+        tick += Time.fixedDeltaTime;
         if(tick >= duration)
         {
             isAttack = false;

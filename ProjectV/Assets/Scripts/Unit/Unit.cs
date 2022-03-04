@@ -56,11 +56,14 @@ public class Unit : MonoBehaviour
         OnLevelUp.AddListener(OnLevelUpCallback);
     }
 
-    protected virtual void Update()
+    protected virtual void FixedUpdate()
     {
         ProcessFreeze();
+    }
+    
+    protected virtual void Update()
+    {
         Animation();
-
     }
 
 
@@ -70,7 +73,7 @@ public class Unit : MonoBehaviour
         Vector3 to = target - transform.position;
         Vector3 direction = to.normalized;
         
-        transform.position += stat.Get_FinalStat(StatType.MoveSpeed) * direction * Time.deltaTime;
+        transform.position += stat.Get_FinalStat(StatType.MoveSpeed) * direction * Time.fixedDeltaTime;
         transform.LookAt(target);
     }
 
@@ -106,7 +109,7 @@ public class Unit : MonoBehaviour
     {
         if (freezeFlag == false) return;
         
-        freezeTick += Time.deltaTime;
+        freezeTick += Time.fixedDeltaTime;
         if(freezeTick > freezeTime)
         {
             freezeTick = 0f;
