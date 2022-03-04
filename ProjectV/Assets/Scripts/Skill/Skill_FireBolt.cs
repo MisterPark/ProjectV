@@ -35,6 +35,7 @@ public class Skill_FireBolt : Skill
         missile.duration = duration;
         missile.damage = damage;
         missile.SetTarget(nearest.transform.position + unit.skillOffsetPosition);
+        missile.OnCollision.RemoveAllListeners();
         missile.OnCollision.AddListener(OnCollisionCallback);
     }
 
