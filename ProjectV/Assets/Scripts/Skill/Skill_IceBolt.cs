@@ -32,5 +32,14 @@ public class Skill_IceBolt : Skill
         missile.team = unit.team;
         missile.owner = unit;
         missile.SetTarget(nearest.transform.position + unit.skillOffsetPosition);
+        missile.OnCollision.RemoveAllListeners();
+        missile.OnCollision.AddListener(OnCollisionCallback);
+    }
+
+    void OnCollisionCallback(Vector3 pos)
+    {
+        GameObject impact = ObjectPool.Instance.Allocate("IceFragmentsImpact");
+        impact.transform.position = pos;
+
     }
 }
