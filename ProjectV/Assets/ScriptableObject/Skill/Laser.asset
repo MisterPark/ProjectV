@@ -10,59 +10,67 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aa5b1d46e8056fb4c918683aef013bb6, type: 3}
-  m_Name: ForceFieldBarrier
+  m_Name: Laser
   m_EditorClassIdentifier: 
-  skillName: ForceFieldBarrier
-  icon: {fileID: 21300000, guid: 8c6c842ae8f79a545b2432a3e8974d2a, type: 3}
-  kind: 3
+  skillName: Laser
+  icon: {fileID: 0}
+  kind: 5
   type: 1
   grade: 0
   values:
   - level: 0
     description: 
-    cooltime: 1
-    damage: 15
-    duration: Infinity
+    cooltime: 2
+    damage: 1
+    duration: 1
+    delay: 0.2
     amount: 1
   - level: 1
     description: 
-    cooltime: 1
-    damage: 30
-    duration: Infinity
-    amount: 1
+    cooltime: 2
+    damage: 1
+    duration: 1
+    delay: 0.2
+    amount: 2
   - level: 2
     description: 
-    cooltime: 1
-    damage: 45
-    duration: Infinity
-    amount: 1
+    cooltime: 2
+    damage: 2
+    duration: 1
+    delay: 0.2
+    amount: 2
   - level: 3
     description: 
-    cooltime: 0.5
-    damage: 15
-    duration: 0
-    amount: 1
+    cooltime: 2
+    damage: 2
+    duration: 1
+    delay: 0.2
+    amount: 3
   - level: 4
     description: 
-    cooltime: 0.5
-    damage: 15
-    duration: Infinity
-    amount: 1
+    cooltime: 2
+    damage: 3
+    duration: 1
+    delay: 0.2
+    amount: 3
   - level: 5
     description: 
-    cooltime: 1
-    damage: 15
-    duration: Infinity
-    amount: 0
+    cooltime: 2
+    damage: 3
+    duration: 1
+    delay: 0.2
+    amount: 4
   - level: 6
     description: 
-    cooltime: 1
-    damage: 15
-    duration: 0
-    amount: 1
+    cooltime: 2
+    damage: 4
+    duration: 1
+    delay: 0.2
+    amount: 4
   - level: 7
     description: 
-    cooltime: 1
-    damage: 15
-    duration: Infinity
-    amount: 1
+    cooltime: 2
+    damage: 5
+    duration: 1
+    delay: 0.2
+    amount: 5

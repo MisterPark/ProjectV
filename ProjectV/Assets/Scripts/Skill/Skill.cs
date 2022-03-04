@@ -14,9 +14,11 @@ public abstract class Skill : MonoBehaviour
     public SkillType Type { get { return Kind.GetSkillType(); } }
     public float cooltime = 0.5f;
     public float damage;
+    public float duration;
+    public float delay;
     public int amount = 1;
 
-    public UnityEvent<int> OnLevelUp = new UnityEvent<int>();
+    public UnityEvent<int> OnLevelUp;
 
     public SkillData SkillData { get { return DataManager.Instance.skillDatas[(int)Kind].skillData; } }
     public bool IsMaxLevel { get { return level == maxLevel; } }
@@ -26,7 +28,7 @@ public abstract class Skill : MonoBehaviour
     protected abstract void Active();
     protected virtual void Start()
     {
-        SetValueFromSkillData(level);
+        SetValueFromSkillData(1);
     }
 
     void FixedUpdate()
@@ -39,7 +41,6 @@ public abstract class Skill : MonoBehaviour
             {
                 Active();
             }
-            
         }
     }
 
@@ -51,6 +52,8 @@ public abstract class Skill : MonoBehaviour
         amount = value.amount;
         cooltime = value.cooltime;
         damage = value.damage;
+        duration = value.duration;
+        delay = value.delay;
     }
 
     public void LevelUp()

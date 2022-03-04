@@ -12,10 +12,10 @@ public enum MissileType // ¿òÁ÷ÀÓ
 public class Missile : MonoBehaviour
 {
     public Team team;
-    [SerializeField]public MissileType type;
-    [SerializeField]public float duration;
-    [SerializeField]public float speed;
-    [SerializeField]public float damage;
+    public MissileType type;
+    public float duration;
+    public float speed;
+    public float damage;
 
     public Unit owner;
     GameObject target;
