@@ -7,7 +7,6 @@ public class Skill_ForceFieldBarrier : Skill
     GameObject obj;
     DamageObject damageObject;
 
-    bool isWaitForFrame = false;
     protected override void Start()
     {
         Kind = SkillKind.ForceFieldBarrier;
@@ -23,20 +22,6 @@ public class Skill_ForceFieldBarrier : Skill
         OnLevelUpCallback(1);
 
         OnLevelUp.AddListener(OnLevelUpCallback);
-    }
-
-    private void LateUpdate()
-    {
-        if(isWaitForFrame)
-        {
-            isWaitForFrame = false;
-            damageObject.AttackFlag = false;
-        }
-
-        if(damageObject.AttackFlag)
-        {
-            isWaitForFrame = true;
-        }
     }
 
     protected override void Active()

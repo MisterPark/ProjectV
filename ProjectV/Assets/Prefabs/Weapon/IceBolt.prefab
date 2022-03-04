@@ -127,10 +127,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 063f6c69015df68428e6488f632eb40c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  team: 0
   type: 0
   duration: 3
   speed: 3
-  damage: 1
+  damage: 5
+  owner: {fileID: 0}
 --- !u!135 &6114755606119708097
 SphereCollider:
   m_ObjectHideFlags: 0
