@@ -61,7 +61,7 @@ public class Player : Unit
 
     protected override void FixedUpdate()
     {
-        base.Update();
+        base.FixedUpdate();
         Move();
     }
 
@@ -95,7 +95,7 @@ public class Player : Unit
         // Move
         direction.Normalize();
         moveDirection.Normalize();
-        transform.position += stat.Get_FinalStat(StatType.MoveSpeed) * moveDirection * Time.deltaTime;
+        transform.position += stat.Get_FinalStat(StatType.MoveSpeed) * moveDirection * Time.fixedDeltaTime;
         // Rotate
         transform.LookAt(transform.position + direction);
 

@@ -27,7 +27,7 @@ public class Missile : MonoBehaviour
 
     void FixedUpdate()
     {
-        tick += Time.deltaTime;
+        tick += Time.fixedDeltaTime;
         if(tick >= duration)
         {
             tick = 0f;
@@ -70,7 +70,7 @@ public class Missile : MonoBehaviour
             }
         }
 
-        transform.position += targetDirection * speed * Time.deltaTime;
+        transform.position += targetDirection * speed * Time.fixedDeltaTime;
     }
 
     void ProcessRotate()

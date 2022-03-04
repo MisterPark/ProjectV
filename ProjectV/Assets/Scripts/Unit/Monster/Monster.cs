@@ -13,9 +13,9 @@ public class Monster : Unit
         OnDead.AddListener(OnDeadCallback);
     }
 
-    protected override void Update()
+    protected override void FixedUpdate()
     {
-        base.Update();
+        base.FixedUpdate();
         MoveTo(Player.Instance.transform.position);
     }
 
