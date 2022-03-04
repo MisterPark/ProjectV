@@ -86,6 +86,8 @@ public class Unit : MonoBehaviour
             case SkillKind.IceBolt: skill = gameObject.AddComponent<Skill_IceBolt>(); break;
             case SkillKind.FireBolt: skill = gameObject.AddComponent<Skill_FireBolt>(); break;
             case SkillKind.ForceFieldBarrier: skill = gameObject.AddComponent<Skill_ForceFieldBarrier>(); break;
+            case SkillKind.BlackHole: skill = gameObject.AddComponent<Skill_BlackHole>(); break;
+            case SkillKind.Laser: skill = gameObject.AddComponent<Skill_Laser>(); break;
             default:
                 break;
         }
@@ -94,7 +96,6 @@ public class Unit : MonoBehaviour
         {
             skillList.Add(skill);
         }
-
     }
 
     public void Freeze(float time)

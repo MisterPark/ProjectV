@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
         Instance = this;
         // Ä¿¼­ ¼û±è
         HideCursor();
+        Random.InitState((int)System.DateTime.UtcNow.Ticks);
 
         player = Instantiate(playerPrefab);
         player.transform.position = Vector3.zero;

@@ -53,9 +53,11 @@ public class Player : Unit
         OnLevelUp.AddListener(OnLevelUpCallback);
         UI_LevelUp.instance.OnSelected.AddListener(OnSelectSkill);
 
-        //AddSkill(SkillKind.IceBolt);
-        AddSkill(SkillKind.FireBolt);
+        AddSkill(SkillKind.IceBolt);
+        //AddSkill(SkillKind.FireBolt);
         //AddSkill(SkillKind.ForceFieldBarrier);
+        //AddSkill(SkillKind.BlackHole);
+        //AddSkill(SkillKind.Laser);
 
     }
 
@@ -234,7 +236,7 @@ public class Player : Unit
         while(count < maxCount)
         {
             if (kinds.Count == 0) break;
-            int random = Random.Range(0, kinds.Count - 1);
+            int random = Random.Range(0, kinds.Count);
             SkillKind kind = kinds[random];
             Skill skill = FindSkill(kind);
             int nextLevel = 1;
@@ -251,4 +253,6 @@ public class Player : Unit
 
         return skillInfos;
     }
+
+
 }
