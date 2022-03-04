@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Events;
 
 
 
@@ -15,6 +15,8 @@ public abstract class Skill : MonoBehaviour
     public float cooltime = 0.5f;
     public float damage;
     public int amount = 1;
+
+    public UnityEvent<int> OnLevelUp = new UnityEvent<int>();
 
     public SkillData SkillData { get { return DataManager.Instance.skillDatas[(int)Kind].skillData; } }
     public bool IsMaxLevel { get { return level == maxLevel; } }
@@ -60,6 +62,7 @@ public abstract class Skill : MonoBehaviour
 
         level++;
         SetValueFromSkillData(level);
+        OnLevelUp?.Invoke(level);
     }
 
 }

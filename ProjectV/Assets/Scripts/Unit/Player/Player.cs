@@ -59,7 +59,7 @@ public class Player : Unit
 
     }
 
-    protected override void Update()
+    protected override void FixedUpdate()
     {
         base.Update();
         Move();

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum MissileType
+public enum MissileType // ¿òÁ÷ÀÓ
 {
     Directional,
     Guided,
@@ -25,7 +25,7 @@ public class Missile : MonoBehaviour
         
     }
 
-    void Update()
+    void FixedUpdate()
     {
         tick += Time.deltaTime;
         if(tick >= duration)

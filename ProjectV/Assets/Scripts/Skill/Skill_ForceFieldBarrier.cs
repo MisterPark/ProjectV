@@ -20,8 +20,9 @@ public class Skill_ForceFieldBarrier : Skill
 
         damage = 1;
         damageObject = obj.GetComponent<DamageObject>();
-        damageObject.damage = damage;
+        OnLevelUpCallback(1);
 
+        OnLevelUp.AddListener(OnLevelUpCallback);
     }
 
     private void LateUpdate()
@@ -41,5 +42,13 @@ public class Skill_ForceFieldBarrier : Skill
     protected override void Active()
     {
         damageObject.AttackFlag = true;
+    }
+
+    void OnLevelUpCallback(int nextLevel)
+    {
+        SkillData data = DataManager.Instance.skillDatas[(int)Kind].skillData;
+        SkillLevel skillLevel = level.ToSkillLevel();
+        SkillValue value = data.values[(int)skillLevel];
+        damageObject.damage = value.damage;
     }
 }

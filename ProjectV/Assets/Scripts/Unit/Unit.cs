@@ -56,11 +56,14 @@ public class Unit : MonoBehaviour
         OnLevelUp.AddListener(OnLevelUpCallback);
     }
 
-    protected virtual void Update()
+    protected virtual void FixedUpdate()
     {
         ProcessFreeze();
+    }
+    
+    protected virtual void Update()
+    {
         Animation();
-
     }
 
 
