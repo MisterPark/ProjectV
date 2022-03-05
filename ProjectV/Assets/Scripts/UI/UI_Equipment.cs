@@ -21,10 +21,17 @@ public class UI_Equipment : MonoBehaviour
     {
         int i = 0;
         int j = 0;
-        foreach (Skill skill in skills)
+        for (int k = 0; k < skills.Count; k++)
         {
-            SkillData data = skill.SkillData;
-            if(data.type == SkillType.Active)
+            Skill skill = skills[k];
+            if (skill == null)
+                continue;
+            SkillData data = DataManager.Instance.skillDatas[(int)skill.Kind].skillData;
+            if (skill.Kind == SkillKind.None)
+            {
+                continue;
+            }
+            if (data.type == SkillType.Active)
             {
                 activeSlot[i].icon.sprite = data.icon;
                 if (skill.level != skill.maxLevel)

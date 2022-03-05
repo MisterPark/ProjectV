@@ -62,12 +62,14 @@ public class Player : Unit
         //AddSkill(SkillKind.Laser);
         //AddSkill(SkillKind.FireTornado);
         AddSkill(SkillKind.RockTotem);
+        UI_StatusPanel.instance.SetSkillInfomations(Skills);
     }
 
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
         Move();
+        UI_StatusPanel.instance.SetSkillInfomations(Skills);
     }
 
 
@@ -138,7 +140,6 @@ public class Player : Unit
         {
             AddSkill(kind);
         }
-        UI_StatusPanel.instance.SetSkillInfomations(Skills);
     }
 
     private void Init_Stat()
