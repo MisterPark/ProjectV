@@ -27,6 +27,11 @@ public abstract class Skill : MonoBehaviour
     float tick = 0f;
 
     protected abstract void Active();
+
+    protected virtual void Awake()
+    {
+
+    }
     protected virtual void Start()
     {
         SetValueFromSkillData(1);

@@ -6,6 +6,10 @@ public class Skill_ForceFieldBarrier : Skill
 {
     GameObject obj;
     DamageObject damageObject;
+    protected override void Awake()
+    {
+        Kind = SkillKind.ForceFieldBarrier;
+    }
 
     protected override void Start()
     {

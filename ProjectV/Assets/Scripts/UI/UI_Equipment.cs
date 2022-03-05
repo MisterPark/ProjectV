@@ -14,6 +14,7 @@ public class UI_Equipment : MonoBehaviour
     void Start()
     {
         rectTransform = GetComponent<RectTransform>();
+        Player.Instance.OnSkillSelectionCompleted.AddListener(OnSkillSeletionCompleteCallback);
         HideAllSlot();
     }
 
@@ -54,6 +55,11 @@ public class UI_Equipment : MonoBehaviour
                 j++;
             }
         }
+    }
+
+    void OnSkillSeletionCompleteCallback()
+    {
+        SetSkillInfomations(Player.Instance.Skills);
     }
 
     public void HideAllSlot()

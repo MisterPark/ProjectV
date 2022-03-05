@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [System.Serializable]
 public enum PlayerCharacterName
@@ -23,6 +24,7 @@ public class Player : Unit
 {
     public static Player Instance;
     private Vector3 direction = Vector3.forward;// ĳ���Ͱ� �ٶ󺸴� ����, ��ų ���� ��� 
+    public UnityEvent OnSkillSelectionCompleted;
     
     public static int Row
     {
@@ -64,14 +66,13 @@ public class Player : Unit
 
         //AddSkill(SkillKind.FireTornado);
         AddSkill(SkillKind.RockTotem);
-        UI_StatusPanel.instance.SetSkillInfomations(Skills);
+        OnSkillSelectionCompleted.Invoke();
     }
 
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
         Move();
-        UI_StatusPanel.instance.SetSkillInfomations(Skills);
     }
 
 
@@ -142,6 +143,7 @@ public class Player : Unit
         {
             AddSkill(kind);
         }
+        OnSkillSelectionCompleted.Invoke();
     }
 
     private void Init_Stat()

@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Skill_FireBolt : Skill
 {
+
+    protected override void Awake()
+    {
+        Kind = SkillKind.FireBolt;
+    }
     protected override void Start()
     {
         Kind = SkillKind.FireBolt;

@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class Skill_BlackHole : Skill
 {
-
+    protected override void Awake()
+    {
+        Kind = SkillKind.BlackHole;
+    }
     // Start is called before the first frame update
     protected override void Start() 
     {

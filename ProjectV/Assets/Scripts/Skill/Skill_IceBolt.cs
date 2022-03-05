@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Skill_IceBolt : Skill
 {
+    protected override void Awake()
+    {
+        Kind = SkillKind.IceBolt;
+    }
     protected override void Start()
     {
         Kind = SkillKind.IceBolt;
