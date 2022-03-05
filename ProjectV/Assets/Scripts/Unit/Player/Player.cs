@@ -64,7 +64,7 @@ public class Player : Unit
 
         //AddSkill(SkillKind.FireTornado);
         //AddSkill(SkillKind.RockTotem);
-        AddSkill(SkillKind.ShurikenAttack);
+        //AddSkill(SkillKind.ShurikenAttack);
     }
 
     protected override void FixedUpdate()
