@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class DamageObject : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class DamageObject : MonoBehaviour
 
     GameObject target;
     Vector3 targetDirection;
+    public UnityEvent<Vector3> OnCollision;
     void Start()
     {
 
@@ -60,6 +62,7 @@ public class DamageObject : MonoBehaviour
         {
             if (AttackFlag)
             {
+                OnCollision?.Invoke(other.transform.position);
                 unit.stat.TakeDamage(damage);
                 
             }
