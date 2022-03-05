@@ -90,6 +90,7 @@ public class Unit : MonoBehaviour
             case SkillKind.Laser: skill = gameObject.AddComponent<Skill_Laser>(); break;
             case SkillKind.FireTornado: skill = gameObject.AddComponent<Skill_FireTornado>(); break;
             case SkillKind.RockTotem: skill = gameObject.AddComponent<Skill_RockTotem>(); break;
+            case SkillKind.ShurikenAttack: skill = gameObject.AddComponent<Skill_ShurikenAttack>(); break;
             default:
                 break;
         }

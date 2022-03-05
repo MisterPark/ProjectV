@@ -10,8 +10,8 @@ public class DamageObject : MonoBehaviour
     public bool AttackFlag { get; set; } = false;
     public float duration;
     public float delay;
+    public float speed;
     public bool isGuided = false;
-    float speed = 2f;
     bool isWaitForFrame = false;
     float tick;
     float cooltimeTick;
