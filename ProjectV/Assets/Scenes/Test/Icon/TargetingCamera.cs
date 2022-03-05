@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TargetingCam : MonoBehaviour
+public class TargetingCamera : MonoBehaviour
 {
     [SerializeField] GameObject target;
     [SerializeField] float distance = 2;

@@ -216,9 +216,9 @@ public class Player : Unit
             // 여기서 걸러야 함
 
             // 액티브일때 액티브가 꽉찼는가?
-            if (type == SkillType.Active && actives.Count >= 6) continue;
+            if (type == SkillType.Active && skill == null && actives.Count >= 6) continue;
             // 패시브일때 패시브가 꽉찼는가?
-            if (type == SkillType.Passive && passives.Count >= 6) continue;
+            if (type == SkillType.Passive && skill == null && passives.Count >= 6) continue;
             // 만랩인가?
             if (skill != null && skill.IsMaxLevel) continue;
 
