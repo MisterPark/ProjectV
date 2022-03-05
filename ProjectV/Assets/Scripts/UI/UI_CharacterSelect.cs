@@ -46,7 +46,7 @@ public class UI_CharacterSelect : MonoBehaviour
         GameObject selectobject = Event_Handle.currentSelectedGameObject;
         CharacterName.text = selectobject.GetComponent<UI_CharacterSlot>().CharacterName.text;
         CharacterImage.sprite = selectobject.GetComponent<UI_CharacterSlot>().CharacterImage.sprite;
-
+        WeaponImage.sprite = selectobject.GetComponent<UI_CharacterSlot>().WeaponImage.sprite;
     }
 
     void SlotInit()
@@ -66,7 +66,7 @@ public class UI_CharacterSelect : MonoBehaviour
 
             tempslot.GetComponent<UI_CharacterSlot>().CharacterImage.sprite = DataManager.Instance.playerCharacterData[repeat].charImage;
             tempslot.GetComponent<UI_CharacterSlot>().CharacterName.text = DataManager.Instance.playerCharacterData[repeat].name.ToString();
-            //tempslot.GetComponent<UI_CharacterSlot>().WeaponImage.sprite = DataManager.Instance.playerCharacterData[repeat].firstSkill.ToString()
+            tempslot.GetComponent<UI_CharacterSlot>().WeaponImage.sprite = DataManager.Instance.skillDatas[(int)DataManager.Instance.playerCharacterData[repeat].firstSkill].skillData.icon;
         }
     }
 }
