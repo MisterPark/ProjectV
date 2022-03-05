@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -127,6 +127,11 @@ NavMeshSettings:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4881906775881079464, guid: b69c26c2099c26948b96bab925bf2ba4, type: 3}
   m_PrefabInstance: {fileID: 586678845}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &584414665 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2578352828588265994, guid: 354f74a05ec8c5a469ea83b3c2566efe, type: 3}
+  m_PrefabInstance: {fileID: 2084291111}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &586678845
 PrefabInstance:
@@ -242,7 +247,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5280216451280368610, guid: 2a6b3764919d5ee4e8ca2d5f531db077, type: 3}
       propertyPath: UIObjectList.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5280216451280368610, guid: 2a6b3764919d5ee4e8ca2d5f531db077, type: 3}
       propertyPath: UIObjectList.Array.data[0]
@@ -252,6 +257,10 @@ PrefabInstance:
       propertyPath: UIObjectList.Array.data[1]
       value: 
       objectReference: {fileID: 48188925}
+    - target: {fileID: 5280216451280368610, guid: 2a6b3764919d5ee4e8ca2d5f531db077, type: 3}
+      propertyPath: UIObjectList.Array.data[2]
+      value: 
+      objectReference: {fileID: 584414665}
     - target: {fileID: 6155982232228477442, guid: 2a6b3764919d5ee4e8ca2d5f531db077, type: 3}
       propertyPath: m_Name
       value: UIManager
@@ -579,10 +588,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: cc8e2be9532fbc543af51c6932181466, type: 3}
     - target: {fileID: 4931608550612199040, guid: cb610fc78182bc0429cef4bd4bfe46b5, type: 3}
-      propertyPath: playerCharacterData.Array.data[1].charImage
-      value: 
-      objectReference: {fileID: 21300000, guid: acf24f91ea86d2140b7efa39f2011f06, type: 3}
-    - target: {fileID: 4931608550612199040, guid: cb610fc78182bc0429cef4bd4bfe46b5, type: 3}
       propertyPath: playerCharacterData.Array.data[0].firstSkill
       value: 1
       objectReference: {fileID: 0}
@@ -593,6 +598,10 @@ PrefabInstance:
     - target: {fileID: 4931608550612199040, guid: cb610fc78182bc0429cef4bd4bfe46b5, type: 3}
       propertyPath: playerCharacterData.Array.data[2].firstSkill
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4931608550612199040, guid: cb610fc78182bc0429cef4bd4bfe46b5, type: 3}
+      propertyPath: playerCharacterData.Array.data[0].description
+      value: ' Attack range increases by 5% per level 10.'
       objectReference: {fileID: 0}
     - target: {fileID: 4931608550612199041, guid: cb610fc78182bc0429cef4bd4bfe46b5, type: 3}
       propertyPath: m_RootOrder
@@ -705,11 +714,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4406110560835721576, guid: 354f74a05ec8c5a469ea83b3c2566efe, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2.5
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 4406110560835721576, guid: 354f74a05ec8c5a469ea83b3c2566efe, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2.5
+      value: 1.3
       objectReference: {fileID: 0}
     - target: {fileID: 4406110560835721576, guid: 354f74a05ec8c5a469ea83b3c2566efe, type: 3}
       propertyPath: m_LocalPosition.x
@@ -745,7 +754,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4406110560835721576, guid: 354f74a05ec8c5a469ea83b3c2566efe, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -80
       objectReference: {fileID: 0}
     - target: {fileID: 4406110560835721576, guid: 354f74a05ec8c5a469ea83b3c2566efe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -772,8 +781,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5642519600252835153, guid: 354f74a05ec8c5a469ea83b3c2566efe, type: 3}
+      propertyPath: SlotRowCount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5642519600252835153, guid: 354f74a05ec8c5a469ea83b3c2566efe, type: 3}
       propertyPath: SlotXPadding
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5642519600252835153, guid: 354f74a05ec8c5a469ea83b3c2566efe, type: 3}
+      propertyPath: SlotYPadding
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5642519600252835153, guid: 354f74a05ec8c5a469ea83b3c2566efe, type: 3}
       propertyPath: SlotXPosition
@@ -781,7 +798,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5642519600252835153, guid: 354f74a05ec8c5a469ea83b3c2566efe, type: 3}
       propertyPath: SlotYPosition
-      value: -80
+      value: -100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5642519600252835153, guid: 354f74a05ec8c5a469ea83b3c2566efe, type: 3}
+      propertyPath: SlotColumnCount
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5970159877750896547, guid: 354f74a05ec8c5a469ea83b3c2566efe, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -790,6 +811,18 @@ PrefabInstance:
     - target: {fileID: 5970159877750896547, guid: 354f74a05ec8c5a469ea83b3c2566efe, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -0.000022888184
+      objectReference: {fileID: 0}
+    - target: {fileID: 8943884182641433561, guid: 354f74a05ec8c5a469ea83b3c2566efe, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8943884182641433561, guid: 354f74a05ec8c5a469ea83b3c2566efe, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8943884182641433561, guid: 354f74a05ec8c5a469ea83b3c2566efe, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 354f74a05ec8c5a469ea83b3c2566efe, type: 3}

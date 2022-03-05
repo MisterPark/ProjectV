@@ -17,6 +17,7 @@ public class PlayerCharacterNode
     [SerializeField] public UnitStatData statsData;
     [SerializeField] public Sprite charImage;
     [SerializeField] public SkillKind firstSkill;
+    [SerializeField] public string description;
 }
 
 public class Player : Unit
