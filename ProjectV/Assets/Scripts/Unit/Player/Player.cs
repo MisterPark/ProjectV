@@ -15,6 +15,8 @@ public class PlayerCharacterNode
 {
     [SerializeField] public PlayerCharacterName name;
     [SerializeField] public UnitStatData statsData;
+    [SerializeField] public Sprite charImage;
+    [SerializeField] public SkillKind firstSkill;
 }
 
 public class Player : Unit
@@ -54,9 +56,12 @@ public class Player : Unit
         UI_LevelUp.instance.OnSelected.AddListener(OnSelectSkill);
 
         //AddSkill(SkillKind.IceBolt);
-        AddSkill(SkillKind.FireBolt);
+        //AddSkill(SkillKind.FireBolt);
         //AddSkill(SkillKind.ForceFieldBarrier);
-
+        //AddSkill(SkillKind.BlackHole);
+        //AddSkill(SkillKind.Laser);
+        //AddSkill(SkillKind.FireTornado);
+        AddSkill(SkillKind.RockTotem);
     }
 
     protected override void FixedUpdate()
@@ -212,9 +217,9 @@ public class Player : Unit
             // 여기서 걸러야 함
 
             // 액티브일때 액티브가 꽉찼는가?
-            if (type == SkillType.Active && actives.Count >= 6) continue;
+            if (type == SkillType.Active && skill == null && actives.Count >= 6) continue;
             // 패시브일때 패시브가 꽉찼는가?
-            if (type == SkillType.Passive && passives.Count >= 6) continue;
+            if (type == SkillType.Passive && skill == null && passives.Count >= 6) continue;
             // 만랩인가?
             if (skill != null && skill.IsMaxLevel) continue;
 
@@ -234,7 +239,7 @@ public class Player : Unit
         while(count < maxCount)
         {
             if (kinds.Count == 0) break;
-            int random = Random.Range(0, kinds.Count - 1);
+            int random = Random.Range(0, kinds.Count);
             SkillKind kind = kinds[random];
             Skill skill = FindSkill(kind);
             int nextLevel = 1;
@@ -251,4 +256,6 @@ public class Player : Unit
 
         return skillInfos;
     }
+
+
 }

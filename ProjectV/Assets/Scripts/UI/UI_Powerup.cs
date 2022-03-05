@@ -79,6 +79,10 @@ public class UI_Powerup : MonoBehaviour
     {
         DataManager.Instance.PowerupReset();
         ResetTemplate();
+        m_UnderPowerupName.text = m_CurrentPowerupDB.Powerup_Name;
+        m_UnderPowerupImage.sprite = m_CurrentPowerupDB.Powerup_Image;
+        m_UnderPowerupExplan.text = m_CurrentPowerupDB.Powerup_Tip;
+        m_UnderMoneyText.text = m_CurrentPowerupDB.CurrentPowerupPrice.ToString();
     }
 
     public void ResetTemplate()

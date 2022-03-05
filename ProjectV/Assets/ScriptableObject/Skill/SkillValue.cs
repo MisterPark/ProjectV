@@ -9,6 +9,10 @@ public enum SkillKind
     IceBolt,
     FireBolt,
     ForceFieldBarrier,
+    BlackHole,
+    Laser,
+    FireTornado,
+    RockTotem,
     End,
 }
 [System.Serializable]
@@ -28,6 +32,7 @@ public enum Grade
     Normal, Magic, Rare, Unique, Legendary
 }
 
+
 [System.Serializable]
 public class SkillValue
 {
@@ -35,5 +40,7 @@ public class SkillValue
     public string description;
     public float cooltime;
     public float damage;
+    public float duration;
+    public float delay;
     public int amount;
 }
