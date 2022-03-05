@@ -11,19 +11,19 @@ public class ObjectPool : MonoBehaviour
     Dictionary<string, Stack<GameObject>> _pools = new Dictionary<string, Stack<GameObject>>();
     private void Awake()
     {
-        if(Instance == null)
+        if (Instance == null)
             _instance = this;
         Initialize();
     }
 
     private void Start()
     {
-        
+
     }
 
-    public GameObject Allocate(string key) 
+    public GameObject Allocate(string key)
     {
-        if(!_pools.ContainsKey(key))
+        if (!_pools.ContainsKey(key))
         {
             Debug.LogError($"can't find key : {key}");
         }
@@ -35,7 +35,7 @@ public class ObjectPool : MonoBehaviour
         GameObject gameObject = _pools[key].Pop();
         gameObject.name = key;
         gameObject.SetActive(true);
-        
+
         return gameObject;
     }
 
@@ -52,7 +52,7 @@ public class ObjectPool : MonoBehaviour
         }
         GameObject gameObject = _pools[key].Pop();
         gameObject.name = key;
-        gameObject.transform.position = position;  
+        gameObject.transform.position = position;
         gameObject.SetActive(true);
 
         return gameObject;
@@ -62,7 +62,7 @@ public class ObjectPool : MonoBehaviour
         string key = _gameObject.name.Split('(')[0];
         if (!_pools.ContainsKey(key))
         {
-            throw new System.Exception($"can't find key : {key}");            
+            throw new System.Exception($"can't find key : {key}");
         }
         _gameObject.SetActive(false);
         _pools[key].Push(_gameObject);
@@ -71,11 +71,11 @@ public class ObjectPool : MonoBehaviour
     {
         if (!_pools.ContainsKey(key))
         {
-            Debug.LogError($"can't find key : {key}");           
+            Debug.LogError($"can't find key : {key}");
         }
 
-        GameObject prefab =  GetPrefab(key);
-        
+        GameObject prefab = GetPrefab(key);
+
         for (int i = 0; i < 10; i++)
         {
             GameObject go = Instantiate(prefab, transform);
@@ -87,7 +87,7 @@ public class ObjectPool : MonoBehaviour
     private GameObject GetPrefab(string key)
     {
         GameObject _prefab = null;
-        foreach(var prefab in prefabs)
+        foreach (var prefab in prefabs)
         {
             if (prefab.name == key)
             {
@@ -102,7 +102,11 @@ public class ObjectPool : MonoBehaviour
     {
         foreach (var prefab in prefabs)
         {
-            if(!_pools.ContainsKey(prefab.name))
+            prefab.name = prefab.name.Split('(')[0];
+        }
+        foreach (var prefab in prefabs)
+        {
+            if (!_pools.ContainsKey(prefab.name))
             {
                 _pools.Add(prefab.name, new Stack<GameObject>());
             }

@@ -2733,10 +2733,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd75a23d814cd1246b7270052cee05db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 0
   OnDead:
     m_PersistentCalls:
       m_Calls: []
   OnTakeDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  OnLevelUp:
     m_PersistentCalls:
       m_Calls: []
   stat: {fileID: 0}
