@@ -126,8 +126,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 841e7a7cd135c2e44a6464fde82295c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPull: 0
   damage: 1
   duration: Infinity
+  delay: 0
+  speed: 0
+  isGuided: 0
 --- !u!135 &6703214048480687779
 SphereCollider:
   m_ObjectHideFlags: 0

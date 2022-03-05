@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class DamageObject : MonoBehaviour
 {
@@ -10,14 +11,15 @@ public class DamageObject : MonoBehaviour
     public bool AttackFlag { get; set; } = false;
     public float duration;
     public float delay;
+    public float speed;
     public bool isGuided = false;
-    float speed = 2f;
     bool isWaitForFrame = false;
     float tick;
     float cooltimeTick;
 
     GameObject target;
     Vector3 targetDirection;
+    public UnityEvent<Vector3> OnCollision;
     void Start()
     {
 
@@ -60,6 +62,7 @@ public class DamageObject : MonoBehaviour
         {
             if (AttackFlag)
             {
+                OnCollision?.Invoke(other.transform.position);
                 unit.stat.TakeDamage(damage);
                 
             }

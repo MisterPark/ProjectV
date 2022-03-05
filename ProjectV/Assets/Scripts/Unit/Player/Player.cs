@@ -22,7 +22,7 @@ public class PlayerCharacterNode
 public class Player : Unit
 {
     public static Player Instance;
-    private Vector3 direction = Vector3.forward;// Ä³¸¯ÅÍ°¡ ¹Ù¶óº¸´Â ¹æÇâ, ½ºÅ³ »ç¿ë½Ã »ç¿ë 
+    private Vector3 direction = Vector3.forward;// Ä³ï¿½ï¿½ï¿½Í°ï¿½ ï¿½Ù¶óº¸´ï¿½ ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½Å³ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ 
     
     public static int Row
     {
@@ -60,6 +60,8 @@ public class Player : Unit
         //AddSkill(SkillKind.ForceFieldBarrier);
         //AddSkill(SkillKind.BlackHole);
         //AddSkill(SkillKind.Laser);
+        //AddSkill(SkillKind.Lightning);
+
         //AddSkill(SkillKind.FireTornado);
         AddSkill(SkillKind.RockTotem);
         UI_StatusPanel.instance.SetSkillInfomations(Skills);
@@ -110,12 +112,12 @@ public class Player : Unit
 
     void OnDeadCallback()
     {
-        // ÇÃ·¹ÀÌ¾î°¡ Á×¾úÀ» ¶§
+        // ï¿½Ã·ï¿½ï¿½Ì¾î°¡ ï¿½×¾ï¿½ï¿½ï¿½ ï¿½ï¿½
     }
 
     void OnLevelUpCallback(int level)
     {
-        // ÇÃ·¹ÀÌ¾î°¡ ·¹º§¾÷ ÇßÀ» ‹š
+        // ï¿½Ã·ï¿½ï¿½Ì¾î°¡ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
         GameManager.Instance.Pause();
         GameManager.Instance.ShowCursor();
 
@@ -127,7 +129,7 @@ public class Player : Unit
 
     void OnSelectSkill(SkillKind kind)
     {
-        // ·¹º§¾÷ ÈÄ ½ºÅ³ ¼±ÅÃÇßÀ» ¶§
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½Å³ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
         GameManager.Instance.Resume();
         GameManager.Instance.HideCursor();
 
@@ -206,34 +208,34 @@ public class Player : Unit
         List<Skill> actives = GetActiveSkills();
         List<Skill> passives = GetPassiveSkills();
 
-        // Ãß°¡ °¡´ÉÇÑ ½ºÅ³ÀÇ Á¾·ù
+        // ï¿½ß°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         List<SkillKind> kinds = new List<SkillKind>();
 
-        // Ãß°¡ °¡´ÉÇÑÁö °Å¸£´Â ·ÎÁ÷
+        // ï¿½ß°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Å¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         for (int index = (int)SkillKind.IceBolt; index < (int)SkillKind.End; index++)
         {
             SkillKind kind = (SkillKind)index;
             SkillType type = kind.GetSkillType();
             Skill skill = FindSkill(kind);
-            // ¿©±â¼­ °É·¯¾ß ÇÔ
+            // ï¿½ï¿½ï¿½â¼­ ï¿½É·ï¿½ï¿½ï¿½ ï¿½ï¿½
 
-            // ¾×Æ¼ºêÀÏ¶§ ¾×Æ¼ºê°¡ ²ËÃ¡´Â°¡?
+            // ï¿½ï¿½Æ¼ï¿½ï¿½ï¿½Ï¶ï¿½ ï¿½ï¿½Æ¼ï¿½ê°¡ ï¿½ï¿½Ã¡ï¿½Â°ï¿½?
             if (type == SkillType.Active && skill == null && actives.Count >= 6) continue;
-            // ÆÐ½ÃºêÀÏ¶§ ÆÐ½Ãºê°¡ ²ËÃ¡´Â°¡?
+            // ï¿½Ð½Ãºï¿½ï¿½Ï¶ï¿½ ï¿½Ð½Ãºê°¡ ï¿½ï¿½Ã¡ï¿½Â°ï¿½?
             if (type == SkillType.Passive && skill == null && passives.Count >= 6) continue;
-            // ¸¸·¦ÀÎ°¡?
+            // ï¿½ï¿½ï¿½ï¿½ï¿½Î°ï¿½?
             if (skill != null && skill.IsMaxLevel) continue;
 
             kinds.Add(kind);
         }
 
-        // TODO : ¸¸¾à ¸ðµÎ °É·¯Á³À¸¸é Ã¼·Â or Ä¡Å²
+        // TODO : ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½É·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã¼ï¿½ï¿½ or Ä¡Å²
         if(kinds.Count == 0)
         {
             
         }
 
-        // TODO : Çà¿îÀ¸·Î 4°³±îÁö °¡´ÉÇÏ°Ô ¹Ù²ã¾ßÇÔ
+        // TODO : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 4ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½Ù²ï¿½ï¿½ï¿½ï¿½
         int maxCount = 3;
         int count = 0;
 

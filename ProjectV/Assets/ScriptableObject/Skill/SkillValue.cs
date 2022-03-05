@@ -13,6 +13,8 @@ public enum SkillKind
     Laser,
     FireTornado,
     RockTotem,
+    ShurikenAttack,
+    Lightning,
     End,
 }
 [System.Serializable]
@@ -42,5 +44,6 @@ public class SkillValue
     public float damage;
     public float duration;
     public float delay;
+    public float speed;
     public int amount;
 }
