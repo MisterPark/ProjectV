@@ -15,18 +15,18 @@ public enum UnitType
 public class Unit : MonoBehaviour
 {
     public UnitType type;
-    // ÀÌº¥Æ®
+    // ï¿½Ìºï¿½Æ®
     public UnityEvent OnDead;
     public UnityEvent<float> OnTakeDamage;
     public UnityEvent<int> OnLevelUp;
-    // ½ºÅÈ
+    // ï¿½ï¿½ï¿½ï¿½
     [HideInInspector] public Stat stat;
 
-    // ÄÄÆ÷³ÍÆ®
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
     protected Animator animator;
     public CapsuleCollider capsuleCollider;
     
-    // ³»ºÎ
+    // ï¿½ï¿½ï¿½ï¿½
     Vector3 oldPosition;
     public Vector3 skillOffsetPosition;
     public Team team;
@@ -89,6 +89,8 @@ public class Unit : MonoBehaviour
             case SkillKind.BlackHole: skill = gameObject.AddComponent<Skill_BlackHole>(); break;
             case SkillKind.Laser: skill = gameObject.AddComponent<Skill_Laser>(); break;
             case SkillKind.FireTornado: skill = gameObject.AddComponent<Skill_FireTornado>(); break;
+            case SkillKind.RockTotem: skill = gameObject.AddComponent<Skill_RockTotem>(); break;
+            case SkillKind.ShurikenAttack: skill = gameObject.AddComponent<Skill_ShurikenAttack>(); break;
             case SkillKind.Lightning: skill = gameObject.AddComponent<Skill_Lightning>(); break;
             default:
                 break;
@@ -126,9 +128,9 @@ public class Unit : MonoBehaviour
         if (animator == null) return;
 
         animator.speed = (freezeFlag ? 0 : 1);
-        // À¯´Ö Å¸ÀÔ ¼¼ÆÃ
+        // ï¿½ï¿½ï¿½ï¿½ Å¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         animator.SetInteger("UnitType", (int)type);
-        // ´Þ¸®±â
+        // ï¿½Þ¸ï¿½ï¿½ï¿½
         bool isRun = oldPosition != transform.position;
         if (isRun)
         {
@@ -146,7 +148,7 @@ public class Unit : MonoBehaviour
         UI_DamageFont font = temp.transform.GetChild(0).GetComponent<UI_DamageFont>();
         font.Init((int)damage, UI_DamageFont.FontColor.WHITE, transform.position + (Vector3.up * 2f));
 
-        // »ç¸ÁÃ³¸®
+        // ï¿½ï¿½ï¿½Ã³ï¿½ï¿½
         float hp = stat.Get_FinalStat(StatType.Health);
         if (hp <= 0f)
         {

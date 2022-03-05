@@ -12,6 +12,8 @@ public enum SkillKind
     BlackHole,
     Laser,
     FireTornado,
+    RockTotem,
+    ShurikenAttack,
     Lightning,
     End,
 }
@@ -42,5 +44,6 @@ public class SkillValue
     public float damage;
     public float duration;
     public float delay;
+    public float speed;
     public int amount;
 }
