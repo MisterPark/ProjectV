@@ -13,8 +13,11 @@ public class Skill_FireTornado : Skill
 
     protected override void Active()
     {
-        GameObject nearest = null;
-        SpawnManager.Instance.SpawnQueue.Dequeue(out nearest);
+        GameObject nearest = SpawnManager.Instance.NearestMonster;
+        if(nearest== null)
+        {
+            return;
+        }
         Unit unit = GetComponent<Unit>();
         if (unit == null)
         {
