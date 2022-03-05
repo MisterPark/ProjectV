@@ -89,6 +89,7 @@ public class Unit : MonoBehaviour
             case SkillKind.BlackHole: skill = gameObject.AddComponent<Skill_BlackHole>(); break;
             case SkillKind.Laser: skill = gameObject.AddComponent<Skill_Laser>(); break;
             case SkillKind.FireTornado: skill = gameObject.AddComponent<Skill_FireTornado>(); break;
+            case SkillKind.Lightning: skill = gameObject.AddComponent<Skill_Lightning>(); break;
             default:
                 break;
         }

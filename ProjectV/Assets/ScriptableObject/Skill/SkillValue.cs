@@ -12,6 +12,7 @@ public enum SkillKind
     BlackHole,
     Laser,
     FireTornado,
+    Lightning,
     End,
 }
 [System.Serializable]
