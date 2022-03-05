@@ -55,11 +55,12 @@ public class Player : Unit
         OnLevelUp.AddListener(OnLevelUpCallback);
         UI_LevelUp.instance.OnSelected.AddListener(OnSelectSkill);
 
-        AddSkill(SkillKind.IceBolt);
+        //AddSkill(SkillKind.IceBolt);
         //AddSkill(SkillKind.FireBolt);
         //AddSkill(SkillKind.ForceFieldBarrier);
         //AddSkill(SkillKind.BlackHole);
         //AddSkill(SkillKind.Laser);
+        AddSkill(SkillKind.FireTornado);
 
     }
 

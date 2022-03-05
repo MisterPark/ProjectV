@@ -10,9 +10,14 @@ public class DamageObject : MonoBehaviour
     public bool AttackFlag { get; set; } = false;
     public float duration;
     public float delay;
-    bool isWaitForFrame = false;    
+    public bool isGuided = false;
+    float speed = 2f;
+    bool isWaitForFrame = false;
     float tick;
     float cooltimeTick;
+
+    GameObject target;
+    Vector3 targetDirection;
     void Start()
     {
 
@@ -42,6 +47,8 @@ public class DamageObject : MonoBehaviour
             AttackFlag = true;
             return;
         }
+
+        ProcessMove();
     }
 
 
@@ -65,6 +72,26 @@ public class DamageObject : MonoBehaviour
         }
 
     }
+    void ProcessMove()
+    {
+        if (isGuided)
+        {
+            if (target != null)
+            {
+                Vector3 to = target.transform.position - transform.position;
+                targetDirection = to.normalized;
+            }
+        }
+
+        transform.position += targetDirection * speed * Time.fixedDeltaTime;
+    }
+
+    public void SetTarget(Vector3 target)
+    {
+        Vector3 to = target - transform.position;
+        targetDirection = to.normalized;
+    }
+
 
     private void LateUpdate()
     {

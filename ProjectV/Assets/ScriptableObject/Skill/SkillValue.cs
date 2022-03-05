@@ -11,6 +11,7 @@ public enum SkillKind
     ForceFieldBarrier,
     BlackHole,
     Laser,
+    FireTornado,
     End,
 }
 [System.Serializable]
