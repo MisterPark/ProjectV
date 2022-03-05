@@ -88,6 +88,7 @@ public class Unit : MonoBehaviour
             case SkillKind.ForceFieldBarrier: skill = gameObject.AddComponent<Skill_ForceFieldBarrier>(); break;
             case SkillKind.BlackHole: skill = gameObject.AddComponent<Skill_BlackHole>(); break;
             case SkillKind.Laser: skill = gameObject.AddComponent<Skill_Laser>(); break;
+            case SkillKind.FireTornado: skill = gameObject.AddComponent<Skill_FireTornado>(); break;
             default:
                 break;
         }
@@ -151,7 +152,6 @@ public class Unit : MonoBehaviour
             Death();
             OnDead?.Invoke();
         }
-
     }
 
     void Death()
