@@ -42,5 +42,14 @@ public class Skill_Laser : Skill
         dmgobj.delay = delay;
         dmgobj.damage = damage;
         dmgobj.duration = duration;
+        dmgobj.OnCollision.RemoveAllListeners();
+        dmgobj.OnCollision.AddListener(OnCollisionCallback);
+    }
+
+    void OnCollisionCallback(Vector3 pos)
+    {
+        GameObject impact = ObjectPool.Instance.Allocate("Impact3");
+        impact.transform.position = pos;
+
     }
 }
