@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Impact : MonoBehaviour
 {
-    ParticleSystem particleSystem;
+    ParticleSystem particle;
     float tick = 0;
     // Start is called before the first frame update
     void Start()
     {
-        particleSystem = GetComponent<ParticleSystem>();
+        particle = GetComponent<ParticleSystem>();
     }
 
     private void OnEnable()
@@ -20,7 +20,7 @@ public class Impact : MonoBehaviour
     void FixedUpdate()
     {
         tick += Time.fixedDeltaTime;
-        if(particleSystem.isStopped)
+        if(particle.isStopped)
         {
             ObjectPool.Instance.Free(gameObject);
         }

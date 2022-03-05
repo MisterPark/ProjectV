@@ -27,20 +27,11 @@ public class Skill_Lightning : Skill
         GameObject obj = ObjectPool.Instance.Allocate("Lightning");
         Missile missile = obj.GetComponent<Missile>();
         missile.Initialize();
-        missile.transform.position = Vector3.one;
+        missile.transform.position = random.transform.position;
         missile.team = unit.team;
         missile.owner = unit;
         missile.duration = duration;
         missile.damage = damage;
-        missile.SetTarget(Vector3.one);
-        missile.OnCollision.RemoveAllListeners();
-        missile.OnCollision.AddListener(OnCollisionCallback);
-    }
-
-    void OnCollisionCallback(Vector3 pos)
-    {
-        GameObject impact = ObjectPool.Instance.Allocate("LightningImpact");
-        impact.transform.position = pos;
-
+        missile.SetTarget(random.transform.position);
     }
 }
