@@ -564,7 +564,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614727}
   - {fileID: 8926484042661614729}
   dataType: 0
-  capacity: 600
+  capacity: 400
   stripCapacity: 16
   particlePerStripCount: 16
   m_Space: 0
@@ -621,6 +621,7 @@ MonoBehaviour:
   m_Parent: {fileID: 114350483966674976}
   m_Children:
   - {fileID: 8926484042661614735}
+  - {fileID: 8926484042661615249}
   m_UIPosition: {x: 1154, y: 1419}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
@@ -681,7 +682,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"obj":{"fileID":2800000,"guid":"e71f8df958e49734897d4af81b8966b8","type":3}}'
+      m_SerializableObject: '{"obj":{"fileID":2800000,"guid":"b1bae69b3b5846b47abf66f264c65a0a","type":3}}'
     m_Space: 2147483647
   m_Property:
     name: mainTexture
@@ -744,7 +745,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.Gradient, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"colorKeys":[{"color":{"r":0.0,"g":0.5,"b":1.0,"a":1.0},"time":0.0},{"color":{"r":0.050000011920928958,"g":0.920833170413971,"b":1.0,"a":1.0},"time":1.0}],"alphaKeys":[{"alpha":0.0,"time":0.0},{"alpha":1.0,"time":0.2500038146972656},{"alpha":1.0,"time":0.7499961853027344},{"alpha":0.0,"time":1.0}],"gradientMode":0}'
+      m_SerializableObject: '{"colorKeys":[{"color":{"r":0.0,"g":0.5,"b":1.0,"a":1.0},"time":0.0},{"color":{"r":0.0,"g":0.08035533875226975,"b":0.4245283007621765,"a":1.0},"time":1.0}],"alphaKeys":[{"alpha":0.0,"time":0.0},{"alpha":1.0,"time":0.2500038146972656},{"alpha":1.0,"time":0.7499961853027344},{"alpha":0.0,"time":1.0}],"gradientMode":0}'
     m_Space: 2147483647
   m_Property:
     name: Color
@@ -1459,7 +1460,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.Vector3, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"x":0.30000001192092898,"y":0.30000001192092898,"z":0.30000001192092898}'
+      m_SerializableObject: '{"x":0.20000000298023225,"y":0.20000000298023225,"z":0.20000000298023225}'
     m_Space: 2147483647
   m_Property:
     name: Scale
@@ -3938,7 +3939,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.AnimationCurve, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"frames":[{"time":0.0,"value":0.0,"inTangent":2.6511270999908449,"outTangent":2.6511270999908449,"tangentMode":0,"leftTangentMode":0,"rightTangentMode":0,"broken":false},{"time":0.14776000380516053,"value":0.9982452392578125,"inTangent":-0.07992009073495865,"outTangent":-0.07992009073495865,"tangentMode":0,"leftTangentMode":0,"rightTangentMode":0,"broken":false},{"time":0.8530213832855225,"value":0.28927016258239748,"inTangent":-0.3435537815093994,"outTangent":-0.3435537815093994,"tangentMode":0,"leftTangentMode":0,"rightTangentMode":0,"broken":false},{"time":1.0,"value":0.0,"inTangent":-0.6360108852386475,"outTangent":-0.6360108852386475,"tangentMode":0,"leftTangentMode":0,"rightTangentMode":0,"broken":false}],"preWrapMode":8,"postWrapMode":8,"version":1}'
+      m_SerializableObject: '{"frames":[{"time":0.0,"value":0.0,"inTangent":2.6511270999908449,"outTangent":2.6511270999908449,"tangentMode":0,"leftTangentMode":0,"rightTangentMode":0,"broken":false},{"time":0.14675292372703553,"value":0.9947357177734375,"inTangent":-0.07992009073495865,"outTangent":-0.07992009073495865,"tangentMode":0,"leftTangentMode":0,"rightTangentMode":0,"broken":false},{"time":0.8530213832855225,"value":0.28927016258239748,"inTangent":-0.3435537815093994,"outTangent":-0.3435537815093994,"tangentMode":0,"leftTangentMode":0,"rightTangentMode":0,"broken":false},{"time":1.0,"value":0.0,"inTangent":-0.6360108852386475,"outTangent":-0.6360108852386475,"tangentMode":0,"leftTangentMode":0,"rightTangentMode":0,"broken":false}],"preWrapMode":8,"postWrapMode":8,"version":1}'
     m_Space: 2147483647
   m_Property:
     name: Size
@@ -4001,7 +4002,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.Gradient, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"colorKeys":[{"color":{"r":0.0,"g":0.5089130401611328,"b":1.0,"a":1.0},"time":0.10000763088464737},{"color":{"r":0.0,"g":0.14357328414916993,"b":1.0,"a":1.0},"time":0.29411765933036806},{"color":{"r":0.6878060102462769,"g":0.0,"b":0.6886792182922363,"a":1.0},"time":1.0}],"alphaKeys":[{"alpha":0.0,"time":0.0},{"alpha":0.9019607901573181,"time":0.10000763088464737},{"alpha":0.9019607901573181,"time":0.7000076174736023},{"alpha":0.0,"time":1.0}],"gradientMode":0}'
+      m_SerializableObject: '{"colorKeys":[{"color":{"r":0.0,"g":0.5089130401611328,"b":1.0,"a":1.0},"time":0.33823147416114809},{"color":{"r":0.0,"g":0.14357328414916993,"b":1.0,"a":1.0},"time":0.4882429242134094},{"color":{"r":0.6878060102462769,"g":0.0,"b":0.6886792182922363,"a":1.0},"time":1.0}],"alphaKeys":[{"alpha":0.0,"time":0.0},{"alpha":0.0,"time":0.20881971716880799},{"alpha":0.9019607901573181,"time":0.3353017568588257},{"alpha":0.9019607901573181,"time":0.7000076174736023},{"alpha":0.0,"time":1.0}],"gradientMode":0}'
     m_Space: 2147483647
   m_Property:
     name: Color
@@ -12169,3 +12170,26 @@ MonoBehaviour:
         PublicKeyToken=b77a5c561934e089
   m_Direction: 0
   m_LinkedSlots: []
+--- !u!114 &8926484042661615249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d16c6aeaef944094b9a1633041804207, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UIIgnoredErrors: []
+  m_Parent: {fileID: 8926484042661614729}
+  m_Children: []
+  m_UIPosition: {x: 0, y: 0}
+  m_UICollapsed: 0
+  m_UISuperCollapsed: 0
+  m_InputSlots: []
+  m_OutputSlots: []
+  m_Disabled: 0
+  mode: 0
+  axes: 4

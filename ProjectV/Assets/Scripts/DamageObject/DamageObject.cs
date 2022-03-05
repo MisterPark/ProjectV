@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class DamageObject : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class DamageObject : MonoBehaviour
     bool isWaitForFrame = false;    
     float tick;
     float cooltimeTick;
+    public UnityEvent<Vector3> OnCollision;
     void Start()
     {
 
@@ -53,6 +55,7 @@ public class DamageObject : MonoBehaviour
         {
             if (AttackFlag)
             {
+                OnCollision?.Invoke(other.transform.position);
                 unit.stat.TakeDamage(damage);
                 
             }
