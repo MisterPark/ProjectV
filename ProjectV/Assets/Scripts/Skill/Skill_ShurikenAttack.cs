@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Skill_ShurikenAttack : Skill
 {
+    protected override void Awake()
+    {
+        Kind = SkillKind.ShurikenAttack;
+    }
     protected override void Start()
     {
         Kind = SkillKind.ShurikenAttack;

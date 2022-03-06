@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Skill_RockTotem : Skill
 {
+    protected override void Awake()
+    {
+        Kind = SkillKind.RockTotem;
+    }
     protected override void Start()
     {
         Kind = SkillKind.RockTotem;

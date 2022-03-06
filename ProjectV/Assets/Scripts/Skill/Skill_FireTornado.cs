@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Skill_FireTornado : Skill
 {
+    protected override void Awake()
+    {
+        Kind = SkillKind.FireTornado;
+    }
     // Start is called before the first frame update
     protected override void Start()
     {

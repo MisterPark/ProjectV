@@ -47,5 +47,10 @@ public class UIManager : MonoBehaviour
         UIObjectDic[objectname].SetActive(bset);
     }
 
+    public bool GetUIActive(string objectname)
+    {
+        return UIObjectDic[objectname].activeSelf; 
+    }
+
 
 }
