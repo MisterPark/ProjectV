@@ -4856,6 +4856,9 @@ MonoBehaviour:
   delay: 0
   speed: 0
   isGuided: 0
+  OnCollision:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!135 &4674980908436040829
 SphereCollider:
   m_ObjectHideFlags: 0

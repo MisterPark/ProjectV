@@ -13,7 +13,9 @@ public class Skill_ShurikenAttack : Skill
     protected override void Active()
     {
 
-        GameObject nearest = SpawnManager.Instance.NearestMonster;
+        //GameObject nearest = SpawnManager.Instance.NearestMonster;
+        GameObject nearest = null;
+        SpawnManager.Instance.SpawnQueue.Dequeue(out nearest);
         if (nearest == null)
         {
             return;

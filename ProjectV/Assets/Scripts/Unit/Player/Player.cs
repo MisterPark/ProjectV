@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -22,7 +22,7 @@ public class PlayerCharacterNode
 public class Player : Unit
 {
     public static Player Instance;
-    private Vector3 direction = Vector3.forward;// ĳ���Ͱ� �ٶ󺸴� ����, ��ų ���� ��� 
+    private Vector3 direction = Vector3.forward;// 주석 범인 찾기
     
     public static int Row
     {
@@ -60,11 +60,11 @@ public class Player : Unit
         //AddSkill(SkillKind.ForceFieldBarrier);
         //AddSkill(SkillKind.BlackHole);
         //AddSkill(SkillKind.Laser);
-        //AddSkill(SkillKind.Lightning);
+        AddSkill(SkillKind.Lightning);
 
         //AddSkill(SkillKind.FireTornado);
         //AddSkill(SkillKind.RockTotem);
-        AddSkill(SkillKind.ShurikenAttack);
+        //AddSkill(SkillKind.ShurikenAttack);
     }
 
     protected override void FixedUpdate()
