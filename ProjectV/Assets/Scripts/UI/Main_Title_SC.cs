@@ -41,16 +41,28 @@ public class Main_Title_SC : MonoBehaviour
 
     public void OnClickStart()
     {
-        DataManager.Instance.Setting_PowerStat();
-        SceneManager.LoadScene(StartScene_Name);
+        KeyboardCursor_Image.gameObject.SetActive(false);
+        transform.Find("Start_Button").gameObject.SetActive(false);
+        transform.Find("Powerup_Button").gameObject.SetActive(false);
+        UIManager.Instance.SetUIActive("CharacterSelectPanel", true);
+        Event_Handle.SetSelectedGameObject(UIManager.Instance.GetUIObject("CharacterSelectPanel"));
+       // DataManager.Instance.Setting_PowerStat();
+       //SceneManager.LoadScene(StartScene_Name);
     }
 
     public void OnClickExit()
     {
         Transform tempobject = UIManager.Instance.GetUIObject("Powerup_Panel").transform;
+        Transform tempobject2 = UIManager.Instance.GetUIObject("CharacterSelectPanel").transform;
         if (tempobject.gameObject.activeSelf)
         {
             tempobject.gameObject.SetActive(false);
+            transform.Find("Start_Button").gameObject.SetActive(true);
+            transform.Find("Powerup_Button").gameObject.SetActive(true);
+        }
+        else if (tempobject2.gameObject.activeSelf)
+        {
+            tempobject2.gameObject.SetActive(false);
             transform.Find("Start_Button").gameObject.SetActive(true);
             transform.Find("Powerup_Button").gameObject.SetActive(true);
         }

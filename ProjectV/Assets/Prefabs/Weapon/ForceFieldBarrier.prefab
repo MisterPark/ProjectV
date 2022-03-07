@@ -90,8 +90,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8220433194844053229}
-  - component: {fileID: -433118045931238888}
   - component: {fileID: 6703214048480687779}
+  - component: {fileID: 4525233161073804227}
   m_Layer: 0
   m_Name: ForceFieldBarrier
   m_TagString: Untagged
@@ -114,27 +114,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-433118045931238888
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8220433194844053228}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 841e7a7cd135c2e44a6464fde82295c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isPull: 0
-  damage: 1
-  duration: Infinity
-  delay: 0
-  speed: 0
-  isGuided: 0
-  OnCollision:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!135 &6703214048480687779
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -148,3 +127,28 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4525233161073804227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8220433194844053228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 063f6c69015df68428e6488f632eb40c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  team: 1
+  type: 0
+  duration: 0
+  speed: 0
+  damage: 0
+  delay: 0
+  isPull: 0
+  isPenetrate: 0
+  isRotate: 0
+  owner: {fileID: 0}
+  OnCollision:
+    m_PersistentCalls:
+      m_Calls: []

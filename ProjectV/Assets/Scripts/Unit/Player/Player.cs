@@ -18,6 +18,7 @@ public class PlayerCharacterNode
     [SerializeField] public UnitStatData statsData;
     [SerializeField] public Sprite charImage;
     [SerializeField] public SkillKind firstSkill;
+    [SerializeField] public string description;
 }
 
 public class Player : Unit
@@ -57,14 +58,19 @@ public class Player : Unit
         OnLevelUp.AddListener(OnLevelUpCallback);
         UI_LevelUp.instance.OnSelected.AddListener(OnSelectSkill);
 
-        AddSkill(SkillKind.IceBolt);
+        // 캐릭터 기본스킬
+        PlayerCharacterName charName = DataManager.Instance.currentGameData.characterName;
+        SkillKind skillKind = DataManager.Instance.playerCharacterData[(int)charName].firstSkill;
+        AddSkill(skillKind);
+
+        //AddSkill(SkillKind.IceBolt);
         //AddSkill(SkillKind.FireBolt);
-        //AddSkill(SkillKind.ForceFieldBarrier);
+        AddSkill(SkillKind.ForceFieldBarrier);
         //AddSkill(SkillKind.BlackHole);
         //AddSkill(SkillKind.Laser);
         //AddSkill(SkillKind.Lightning);
 
-        AddSkill(SkillKind.FireTornado);
+        //AddSkill(SkillKind.FireTornado);
         //AddSkill(SkillKind.RockTotem);
         //AddSkill(SkillKind.ShurikenAttack);
         //AddSkill(SkillKind.Rain);
