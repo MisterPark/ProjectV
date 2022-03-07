@@ -31,13 +31,34 @@ public class Skill_FireTornado : Skill
         Vector3 pos = new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle)) * dist;
         pos += Player.Instance.transform.position;
 
-        DamageObject dmgobj = obj.GetComponent<DamageObject>();
-        dmgobj.delay = delay;
-        dmgobj.damage = damage;
-        dmgobj.duration = duration;
-        dmgobj.isGuided = true;
-        dmgobj.SetTarget(nearest.transform.position + unit.skillOffsetPosition);
+        Missile missile = obj.GetComponent<Missile>();
+        missile.Initialize();
+        missile.transform.position = transform.position + unit.skillOffsetPosition;
+        missile.team = unit.team;
+        missile.owner = unit;
+        missile.duration = duration;
+        missile.damage = damage;
+        missile.speed = speed;
+        missile.delay = delay;
+        missile.type = MissileType.Guided;
+        missile.isPenetrate = true;
+        missile.SetTarget(nearest.transform.position + unit.skillOffsetPosition);
+        missile.OnCollision.RemoveAllListeners();
+        missile.OnCollision.AddListener(OnCollisionCallback);
+
+        //DamageObject dmgobj = obj.GetComponent<DamageObject>();
+        //dmgobj.delay = delay;
+        //dmgobj.damage = damage;
+        //dmgobj.duration = duration;
+        //dmgobj.isGuided = true;
+        //dmgobj.SetTarget(nearest.transform.position + unit.skillOffsetPosition);
         obj.transform.position = pos;
 
+    }
+    void OnCollisionCallback(Vector3 pos)
+    {
+        //««∞› ¿Ã∆Â∆Æ
+        //GameObject impact = ObjectPool.Instance.Allocate("IceFragmentsImpact");
+        //impact.transform.position = pos;
     }
 }
