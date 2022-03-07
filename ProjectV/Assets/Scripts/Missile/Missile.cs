@@ -48,18 +48,21 @@ public class Missile : MonoBehaviour
     void FixedUpdate()
     {
         tick += Time.fixedDeltaTime;
-        cooltimeTick += Time.fixedDeltaTime;
         if (tick >= duration)
         {
             tick = 0f;
             ObjectPool.Instance.Free(gameObject);
             return;
         }
-        if (cooltimeTick >= delay)
+        if (delay != 0)
         {
-            cooltimeTick = 0f;
-            AttackFlag = true;
-            return;
+            cooltimeTick += Time.fixedDeltaTime;
+            if (cooltimeTick >= delay)
+            {
+                cooltimeTick = 0f;
+                AttackFlag = true;
+                return;
+            }
         }
         ProcessMove();
         ProcessRotate();
@@ -83,7 +86,6 @@ public class Missile : MonoBehaviour
                 {
                     if (AttackFlag)
                     {
-                        OnCollision?.Invoke(other.transform.position);
                         unit.stat.TakeDamage(damage);
                     }
                 }

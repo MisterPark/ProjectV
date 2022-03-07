@@ -37,6 +37,7 @@ public class Skill_IceBolt : Skill
         missile.owner = unit;
         missile.duration = duration;
         missile.damage = damage;
+        missile.speed = speed;
         missile.SetTarget(nearest.transform.position + unit.skillOffsetPosition);
         missile.OnCollision.RemoveAllListeners();
         missile.OnCollision.AddListener(OnCollisionCallback);
