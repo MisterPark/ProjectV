@@ -7,4 +7,5 @@ public class UI_StatData : MonoBehaviour
 {
     public StatType statType;
     public Text value;
+    public bool isPercent = false;
 }

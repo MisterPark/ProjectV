@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class UI_Status : MonoBehaviour
 {
-    private int count = 16;
     private Stat playerStat;
     private RectTransform rectTransform;
     [SerializeField] private UI_StatData[] children;
@@ -28,7 +27,7 @@ public class UI_Status : MonoBehaviour
                 child.value.text = "-";
             else
             {
-                if(child.statType == StatType.MoveSpeed || child.statType == StatType.Recovery || child.statType == StatType.Armor || child.statType == StatType.Amount)
+                if(child.isPercent == false)
                 {
                     child.value.text = value.ToString();
                 }

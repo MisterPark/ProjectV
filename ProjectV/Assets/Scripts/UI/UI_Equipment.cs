@@ -29,9 +29,7 @@ public class UI_Equipment : MonoBehaviour
                 continue;
             SkillData data = DataManager.Instance.skillDatas[(int)skill.Kind].skillData;
             if (skill.Kind == SkillKind.None)
-            {
                 continue;
-            }
             if (data.type == SkillType.Active)
             {
                 activeSlot[i].icon.sprite = data.icon;
