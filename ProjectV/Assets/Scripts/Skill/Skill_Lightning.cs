@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Skill_Lightning : Skill
 {
+    protected override void Awake()
+    {
+        Kind = SkillKind.Lightning;
+    }
     protected override void Start()
     {
         Kind = SkillKind.Lightning;
