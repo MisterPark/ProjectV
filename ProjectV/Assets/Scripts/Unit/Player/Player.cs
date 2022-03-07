@@ -91,23 +91,38 @@ public class Player : Unit
         forward.y = 0f;
         forward.Normalize();
         Vector3 right = Vector3.Cross(Vector3.up, forward);
+        right.Normalize();
 
-        if (Input.GetKey(KeyCode.W))
+#if UNITY_EDITOR || UNITY_STANDALONE
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
             moveDirection += forward;
         }
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
             moveDirection += -right;
         }
-        if (Input.GetKey(KeyCode.S))
+        if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
         {
             moveDirection += -forward;
         }
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
             moveDirection += right;
         }
+#endif
+#if UNITY_EDITOR || UNITY_ANDROID
+        float horizontal = GameManager.Instance.Joystick.Horizontal;
+        float vertical = GameManager.Instance.Joystick.Vertical;
+        Vector3 joystickInput = new Vector3(horizontal, 0, vertical).normalized;
+        float angle = Vector3.SignedAngle(Vector3.forward, forward, Vector3.up);
+        //Debug.Log($"{ joystickInput} {angle}");
+        float radian = Mathf.Deg2Rad * -angle;
+        float x = joystickInput.x * Mathf.Cos(radian) - joystickInput.z * Mathf.Sin(radian);
+        float y = joystickInput.x * Mathf.Sin(radian) + joystickInput.z * Mathf.Cos(radian);
+        moveDirection += new Vector3(x, 0, y).normalized;
+
+#endif
 
         direction += moveDirection;
         // Move

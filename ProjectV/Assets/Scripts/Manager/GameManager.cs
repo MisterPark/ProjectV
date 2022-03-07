@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject spawnManagerPrefab;
     [SerializeField] GameObject itemManagerPrefab;
     [SerializeField] GameObject propManagerPrefab;
+    [SerializeField] GameObject joystickPrefab;
     CameraController cameraController;
 
     GameObject player;
@@ -22,6 +23,10 @@ public class GameManager : MonoBehaviour
     GameObject spawnManager;
     GameObject itemManager;
     GameObject propManager;
+    GameObject joystick;
+
+    Joystick _joystick;
+    public Joystick Joystick { get { return _joystick; } }
 
     private bool initZoomFlag = false;
 
@@ -31,6 +36,18 @@ public class GameManager : MonoBehaviour
         // Ä¿¼­ ¼û±è
         HideCursor();
         Random.InitState((int)System.DateTime.UtcNow.Ticks);
+#if UNITY_EDITOR || UNITY_ANDROID
+        joystick = Instantiate(joystickPrefab);
+        joystick.transform.position = Vector3.zero;
+        joystick.name = joystickPrefab.name;
+
+        _joystick = joystick.GetComponent<Joystick>();
+        GameObject canvas = GameObject.Find("MainGame Canvas");
+        if (canvas != null)
+        {
+            joystick.transform.SetParent(canvas.transform);
+        }
+#endif
 
         player = Instantiate(playerPrefab);
         player.transform.position = Vector3.zero;
@@ -108,11 +125,15 @@ public class GameManager : MonoBehaviour
 
     public void ShowCursor()
     {
+#if UNITY_STANDALONE
         Cursor.visible = true;
+#endif
     }
 
     public void HideCursor()
     {
+#if UNITY_STANDALONE
         Cursor.visible = false;
+#endif
     }
 }
