@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UI_CharacterSelect : MonoBehaviour
@@ -21,10 +22,13 @@ public class UI_CharacterSelect : MonoBehaviour
     [SerializeField] private int SlotColumnCount;
     private float SlotWidth;
     private float SlotHeight;
+
+    private PlayerCharacterName CurrentClickPlayerCharacter;
     // Start is called before the first frame update
     void Start()
     {
         SlotInit();
+        gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -49,6 +53,7 @@ public class UI_CharacterSelect : MonoBehaviour
         CharacterImage.sprite = selectobject.GetComponent<UI_CharacterSlot>().CharacterImage.sprite;
         WeaponImage.sprite = selectobject.GetComponent<UI_CharacterSlot>().WeaponImage.sprite;
         DescriptionText.text = selectobject.GetComponent<UI_CharacterSlot>().m_CharacterDescription;
+        CurrentClickPlayerCharacter = selectobject.GetComponent<UI_CharacterSlot>().CharacterIndex;
     }
 
     void SlotInit()
@@ -75,6 +80,14 @@ public class UI_CharacterSelect : MonoBehaviour
             tempslot.GetComponent<UI_CharacterSlot>().CharacterName.text = DataManager.Instance.playerCharacterData[repeat].name.ToString();
             tempslot.GetComponent<UI_CharacterSlot>().WeaponImage.sprite = DataManager.Instance.skillDatas[(int)DataManager.Instance.playerCharacterData[repeat].firstSkill].skillData.icon;
             tempslot.GetComponent<UI_CharacterSlot>().m_CharacterDescription = DataManager.Instance.playerCharacterData[repeat].description;
+            tempslot.GetComponent<UI_CharacterSlot>().CharacterIndex = (PlayerCharacterName)repeat;
         }
+    }
+
+    public void OnClickCharacterSelectOKButton()
+    {
+        DataManager.Instance.currentPlayerCharacter = CurrentClickPlayerCharacter;
+        DataManager.Instance.Setting_PowerStat();
+        SceneManager.LoadScene(UIManager.Instance.StartSceneName);
     }
 }

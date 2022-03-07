@@ -10,6 +10,7 @@ public class UI_CharacterSlot : MonoBehaviour
     [SerializeField] private TMPro.TextMeshProUGUI m_CharacterName;
     private GameObject m_CharacterSelect;
     public string m_CharacterDescription;
+    public PlayerCharacterName CharacterIndex;
 
     public Image CharacterImage => m_CharacterImage;
     public Image WeaponImage => m_WeaponImage;
