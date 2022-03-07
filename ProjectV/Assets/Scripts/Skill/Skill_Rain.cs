@@ -6,13 +6,11 @@ public class Skill_Rain : Skill
 {
     protected override void Awake()
     {
-        Kind = SkillKind.FireBolt;
-        duration = 2.5f;
-        damage = 2f;
+        Kind = SkillKind.Rain;
     }
     protected override void Start()
     {
-        Kind = SkillKind.FireBolt;
+        Kind = SkillKind.Rain;
         base.Start();
     }
 
@@ -40,8 +38,8 @@ public class Skill_Rain : Skill
         }
         Vector3 getPoint = Random.onUnitSphere;
         getPoint = transform.position + (getPoint * 8f);
-        getPoint.y = 6f;
-        GameObject obj = ObjectPool.Instance.Allocate("Skill_Rain");
+        getPoint.y = unit.skillOffsetPosition.y;
+        GameObject obj = ObjectPool.Instance.Allocate("Rain");
         Missile missile = obj.GetComponent<Missile>();
         missile.Initialize();
         missile.transform.position = getPoint;
@@ -49,6 +47,10 @@ public class Skill_Rain : Skill
         missile.owner = unit;
         missile.duration = duration;
         missile.damage = damage;
+        missile.speed = speed;
+        missile.delay = delay;
+        missile.type = MissileType.Directional;
+        missile.isPenetrate = true;
         //missile.SetTarget(nearest.transform.position + unit.skillOffsetPosition);
         
     }

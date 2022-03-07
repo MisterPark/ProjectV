@@ -10,75 +10,75 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aa5b1d46e8056fb4c918683aef013bb6, type: 3}
-  m_Name: ShurikenAttack
+  m_Name: Rain
   m_EditorClassIdentifier: 
-  skillName: ShurikenAttack
-  icon: {fileID: 0}
-  kind: 8
+  skillName: Rain
+  icon: {fileID: 21300000, guid: df11555a43900ba439abe5a8036b7b1e, type: 3}
+  kind: 10
   type: 1
   grade: 0
   values:
   - level: 0
     description: 
-    cooltime: 5
+    cooltime: 3
     damage: 1
-    duration: 2
-    delay: 0.1
-    speed: 1
+    duration: 3
+    delay: 0.2
+    speed: 0
     amount: 1
   - level: 1
     description: 
-    cooltime: 1
-    damage: 2
-    duration: 2
-    delay: 0.3
-    speed: 10
+    cooltime: 3
+    damage: 1
+    duration: 3
+    delay: 0.2
+    speed: 0
     amount: 1
   - level: 2
     description: 
-    cooltime: 1
-    damage: 3
-    duration: 2
-    delay: 0.3
-    speed: 10
+    cooltime: 3
+    damage: 1
+    duration: 3
+    delay: 0.2
+    speed: 0
     amount: 1
   - level: 3
     description: 
-    cooltime: 1
-    damage: 4
-    duration: 2
-    delay: 0.3
-    speed: 10
-    amount: 1
+    cooltime: 3
+    damage: 1
+    duration: 4
+    delay: 0.2
+    speed: 0
+    amount: 2
   - level: 4
     description: 
-    cooltime: 1
-    damage: 5
-    duration: 2
-    delay: 0.3
-    speed: 10
+    cooltime: 3
+    damage: 1
+    duration: 4
+    delay: 0.2
+    speed: 0
     amount: 2
   - level: 5
     description: 
-    cooltime: 1
-    damage: 5
-    duration: 2
-    delay: 0.3
-    speed: 10
+    cooltime: 3
+    damage: 1
+    duration: 4
+    delay: 0.2
+    speed: 0
     amount: 2
   - level: 6
     description: 
-    cooltime: 1
-    damage: 6
-    duration: 2
-    delay: 0.3
-    speed: 10
+    cooltime: 3
+    damage: 1
+    duration: 4
+    delay: 0.2
+    speed: 0
     amount: 2
   - level: 7
     description: 
-    cooltime: 1
-    damage: 7
-    duration: 2
-    delay: 0.3
-    speed: 10
-    amount: 2
+    cooltime: 3
+    damage: 2
+    duration: 5
+    delay: 0.2
+    speed: 0
+    amount: 3
