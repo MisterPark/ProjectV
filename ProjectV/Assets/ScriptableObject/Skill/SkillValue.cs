@@ -15,6 +15,7 @@ public enum SkillKind
     RockTotem,
     ShurikenAttack,
     Lightning,
+    Rain,
     End,
 }
 [System.Serializable]

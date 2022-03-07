@@ -19,7 +19,7 @@ public abstract class Skill : MonoBehaviour
     public float speed;
     public int amount = 1;
 
-    public UnityEvent<int> OnLevelUp;
+    public UnityEvent<int> OnLevelUp = new UnityEvent<int>();
 
     public SkillData SkillData { get { return DataManager.Instance.skillDatas[(int)Kind].skillData; } }
     public bool IsMaxLevel { get { return level == maxLevel; } }

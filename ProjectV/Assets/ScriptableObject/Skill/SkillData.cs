@@ -10,7 +10,9 @@ public class SkillData : ScriptableObject
     public SkillKind kind;
     public SkillType type;
     public Grade grade;
+#if UNITY_EDITOR
     [ArrayElementTitle("level")]
+#endif
     public SkillValue[] values = new SkillValue[(int)SkillLevel.End];
 
     private void OnValidate()
