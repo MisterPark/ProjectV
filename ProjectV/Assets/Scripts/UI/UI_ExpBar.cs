@@ -12,7 +12,9 @@ public class UI_ExpBar : MonoBehaviour
     private RectTransform barRT;
     private RectTransform backRT;
     private RectTransform parentCanvas;
+    [SerializeField] RectTransform level;
     private Image barImage;
+    private Text levelText;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +23,7 @@ public class UI_ExpBar : MonoBehaviour
         backRT = transform.GetChild(0).GetComponent<RectTransform>();
         rectTransform = transform.GetComponent<RectTransform>();
         parentCanvas = transform.parent.GetComponent<RectTransform>();
+        levelText = level.GetComponent<Text>();
         UpdateSize();
     }
 
@@ -30,14 +33,18 @@ public class UI_ExpBar : MonoBehaviour
         Exp = Player.Instance.stat.Get_FinalStat(StatType.Exp);
         maxExp = Player.Instance.stat.Get_FinalStat(StatType.MaxExp); 
         barImage.fillAmount = Exp / maxExp;
+        levelText.text = "LV." + Player.Instance.stat.Get_FinalStat(StatType.Level).ToString();
     }
 
     void UpdateSize()
     {
         float width = parentCanvas.sizeDelta.x;
         float height = parentCanvas.sizeDelta.y * 0.05f;
-        rectTransform.sizeDelta = new Vector2(0f, height);
+        float barHeight = height * 0.73f;
+        rectTransform.sizeDelta = new Vector2(width, height);
         backRT.sizeDelta = new Vector2(width, height);
-        barRT.sizeDelta = new Vector2(width - width * 0.023f, height * 0.73f);
+        barRT.sizeDelta = new Vector2(width - width * 0.023f, barHeight);
+        level.sizeDelta = new Vector2(200f, height);
+        levelText.fontSize = (int)height;
     }
 }
