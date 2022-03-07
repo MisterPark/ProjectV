@@ -14,6 +14,7 @@ public class UI_PausePanel : UI
     {
         GameManager.Instance.Resume();
         Hide();
+        UIManager.Instance.SetUIActive("Status Panel", false);
     }
 
     public void OnClickOption()

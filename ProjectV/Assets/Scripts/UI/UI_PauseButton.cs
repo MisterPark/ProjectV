@@ -38,6 +38,7 @@ public class UI_PauseButton : MonoBehaviour
         {
             GameManager.Instance.Pause();
             UIManager.Instance.SetUIActive("Pause Panel", true);
+            UIManager.Instance.SetUIActive("Status Panel", true);
         }
     }
 }
