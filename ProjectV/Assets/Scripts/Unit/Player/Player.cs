@@ -65,7 +65,7 @@ public class Player : Unit
 
         //AddSkill(SkillKind.IceBolt);
         //AddSkill(SkillKind.FireBolt);
-        AddSkill(SkillKind.ForceFieldBarrier);
+        //AddSkill(SkillKind.ForceFieldBarrier);
         //AddSkill(SkillKind.BlackHole);
         //AddSkill(SkillKind.Laser);
         //AddSkill(SkillKind.Lightning);

@@ -5,6 +5,7 @@ using UnityEngine;
 public class Skill_ForceFieldBarrier : Skill
 {
     GameObject obj;
+    Missile missile;
     protected override void Awake()
     {
         Kind = SkillKind.ForceFieldBarrier;
@@ -26,7 +27,7 @@ public class Skill_ForceFieldBarrier : Skill
         obj.transform.forward = Player.Instance.transform.forward;
         obj.transform.SetParent(Player.Instance.transform);
 
-        Missile missile = obj.GetComponent<Missile>();
+        missile = obj.GetComponent<Missile>();
         missile.Initialize();
 
         missile.team = unit.team;
@@ -53,7 +54,14 @@ public class Skill_ForceFieldBarrier : Skill
         SkillData data = DataManager.Instance.skillDatas[(int)Kind].skillData;
         SkillLevel skillLevel = level.ToSkillLevel();
         SkillValue value = data.values[(int)skillLevel];
-        
+
+        missile.duration = value.duration;
+        missile.damage = value.damage;
+        missile.speed = value.speed;
+        missile.delay = value.delay;
+
+
+
     }
     void OnCollisionCallback(Vector3 pos)
     {

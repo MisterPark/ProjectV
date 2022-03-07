@@ -48,16 +48,18 @@ MonoBehaviour:
   - name: 0
     statsData: {fileID: 11400000, guid: c3159443739d66342a3b049d488e094e, type: 2}
     charImage: {fileID: 0}
-    firstSkill: 0
+    firstSkill: 1
+    description: 
   - name: 1
     statsData: {fileID: 11400000, guid: c3159443739d66342a3b049d488e094e, type: 2}
     charImage: {fileID: 0}
     firstSkill: 0
+    description: 
   - name: 2
     statsData: {fileID: 11400000, guid: c3159443739d66342a3b049d488e094e, type: 2}
     charImage: {fileID: 0}
     firstSkill: 0
-  currentPlayerCharacter: 0
+    description: 
   powerUpStat:
   - 0
   - 0
@@ -111,6 +113,7 @@ MonoBehaviour:
     currentPowerUpCount: 0
     totalPlayTime: 0
   currentGameData:
+    characterName: 0
     killCount: 0
     gold: 0
     playTime: 0
