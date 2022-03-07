@@ -15,13 +15,28 @@ public class SpawnManager : MonoBehaviour
 
     List<GameObject> spawnList = new List<GameObject>();
     List<GameObject> spawnQueue = new List<GameObject>();
+    GameObject nearestMonster;
+    public GameObject NearestMonster { get { return nearestMonster; } }
     public List<GameObject> SpawnList{ get { return spawnList; } }
     public List<GameObject> SpawnQueue { get { return spawnQueue; } }
+
+    public GameObject RandomMonster 
+    {
+        get 
+        {
+            if (spawnList.Count == 0) return null;
+            int index = UnityEngine.Random.Range(0, spawnList.Count);
+
+            return spawnList[index];
+        } 
+    }
+
     float spawnDelay = 1f;
     float spawnTick = 0f;
     float freezeTick = 0f;
     float freezeTime;
     bool freezeFlag = false;
+
     private void Awake()
     {
         if(Instance == null)
@@ -126,6 +141,12 @@ public class SpawnManager : MonoBehaviour
         if (Player.Instance == null) return;
 
         spawnQueue = spawnList.OrderBy(x => x.GetDistanceFromPlayer()).ToList();
+
+        nearestMonster = null;
+        if(spawnQueue.Count > 0)
+        {
+             nearestMonster = spawnQueue.First();  
+        }
     }
 
     private void ProcessFreeze()

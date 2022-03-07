@@ -11,6 +11,11 @@ public enum SkillKind
     ForceFieldBarrier,
     BlackHole,
     Laser,
+    FireTornado,
+    RockTotem,
+    ShurikenAttack,
+    Lightning,
+    Rain,
     End,
 }
 [System.Serializable]
@@ -40,5 +45,6 @@ public class SkillValue
     public float damage;
     public float duration;
     public float delay;
+    public float speed;
     public int amount;
 }

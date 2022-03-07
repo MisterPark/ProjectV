@@ -6,6 +6,10 @@ public class Skill_ForceFieldBarrier : Skill
 {
     GameObject obj;
     DamageObject damageObject;
+    protected override void Awake()
+    {
+        Kind = SkillKind.ForceFieldBarrier;
+    }
 
     protected override void Start()
     {
@@ -16,8 +20,6 @@ public class Skill_ForceFieldBarrier : Skill
         obj.transform.position = Player.Instance.transform.position;
         obj.transform.forward = Player.Instance.transform.forward;
         obj.transform.SetParent(Player.Instance.transform);
-
-        damage = 1;
         damageObject = obj.GetComponent<DamageObject>();
         OnLevelUpCallback(1);
 

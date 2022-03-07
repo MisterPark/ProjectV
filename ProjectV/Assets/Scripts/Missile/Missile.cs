@@ -13,32 +13,57 @@ public class Missile : MonoBehaviour
 {
     public Team team;
     public MissileType type;
+
     public float duration;
     public float speed;
     public float damage;
+    public float delay;
+    public bool isPull = false;
+    public bool isPenetrate = false;
+    public bool isRotate=false;
+    public bool AttackFlag { get; set; } = false;
 
     public Unit owner;
     GameObject target;
     Vector3 targetDirection;
     float tick = 0f;
+    float cooltimeTick;
+
+    bool isWaitForFrame = false;
 
     public UnityEvent<Vector3> OnCollision;
 
     void Start()
     {
-        
+
+    }
+    private void OnEnable()
+    {
+        tick = 0;
+        cooltimeTick = 0;
+        isWaitForFrame = false;
+        AttackFlag = false;
     }
 
     void FixedUpdate()
     {
         tick += Time.fixedDeltaTime;
-        if(tick >= duration)
+        if (tick >= duration)
         {
             tick = 0f;
             ObjectPool.Instance.Free(gameObject);
             return;
         }
-
+        if (delay != 0)
+        {
+            cooltimeTick += Time.fixedDeltaTime;
+            if (cooltimeTick >= delay)
+            {
+                cooltimeTick = 0f;
+                AttackFlag = true;
+                return;
+            }
+        }
         ProcessMove();
         ProcessRotate();
     }
@@ -51,13 +76,41 @@ public class Missile : MonoBehaviour
         {
             if( team != unit.team)
             {
-                unit.stat.TakeDamage(damage);
                 OnCollision?.Invoke(transform.position);
-                ObjectPool.Instance.Free(gameObject);
+                if (!isPenetrate)
+                {
+                    unit.stat.TakeDamage(damage);
+                    ObjectPool.Instance.Free(gameObject); 
+                }
+                else if (isPenetrate)
+                {
+                    if (AttackFlag)
+                    {
+                        unit.stat.TakeDamage(damage);
+                    }
+                }
+                if (isPull)
+                {
+                    Vector3 direction = transform.position - unit.transform.position;
+                    float pullPower = 2f;
+                    unit.transform.position += direction * pullPower * Time.fixedDeltaTime;
+                }
             }
         }
     }
+    private void LateUpdate()
+    {
+        if (isWaitForFrame)
+        {
+            isWaitForFrame = false;
+            this.AttackFlag = false;
+        }
 
+        if (this.AttackFlag)
+        {
+            isWaitForFrame = true;
+        }
+    }
     public void Initialize()
     {
         tick = 0f;
@@ -97,7 +150,7 @@ public class Missile : MonoBehaviour
                 targetPos = transform.position + targetDirection;
                 break;
         }
-
+        if(!isRotate)
         transform.LookAt(targetPos);
     }
 

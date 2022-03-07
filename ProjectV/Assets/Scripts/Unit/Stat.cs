@@ -39,7 +39,9 @@ public class Stats
 public class Stat : MonoBehaviour
 {
     [SerializeField] private UnitStatData statsData;
+#if UNITY_EDITOR
     [ArrayElementTitle("statType")]
+#endif
     [SerializeField] protected Stats[] stats;
     Unit owner;
     // Start is called before the first frame update
@@ -208,7 +210,7 @@ public class Stat : MonoBehaviour
     public void Set_Stats(Stats[] _stat)
     {
         //stats = _stat;
-        statsData = DataManager.Instance.playerCharacterData[(int)DataManager.Instance.currentPlayerCharacter].statsData;
+        statsData = DataManager.Instance.playerCharacterData[(int)DataManager.Instance.currentGameData.characterName].statsData;
     }
     public void Set_PowerUpStat(StatType _statType, float _value)
     {

@@ -34,6 +34,10 @@ public class UI_PauseButton : MonoBehaviour
 
     public void OnClickPause()
     {
-        UIManager.Instance.SetUIActive("Status Canvas", true);
+        if (!UIManager.Instance.GetUIActive("Levelup Panel"))
+        {
+            GameManager.Instance.Pause();
+            UIManager.Instance.SetUIActive("Pause Panel", true);
+        }
     }
 }

@@ -16,9 +16,10 @@ public abstract class Skill : MonoBehaviour
     public float damage;
     public float duration;
     public float delay;
+    public float speed;
     public int amount = 1;
 
-    public UnityEvent<int> OnLevelUp;
+    public UnityEvent<int> OnLevelUp = new UnityEvent<int>();
 
     public SkillData SkillData { get { return DataManager.Instance.skillDatas[(int)Kind].skillData; } }
     public bool IsMaxLevel { get { return level == maxLevel; } }
@@ -26,6 +27,11 @@ public abstract class Skill : MonoBehaviour
     float tick = 0f;
 
     protected abstract void Active();
+
+    protected virtual void Awake()
+    {
+
+    }
     protected virtual void Start()
     {
         SetValueFromSkillData(1);
@@ -54,6 +60,7 @@ public abstract class Skill : MonoBehaviour
         damage = value.damage;
         duration = value.duration;
         delay = value.delay;
+        speed = value.speed;
     }
 
     public void LevelUp()

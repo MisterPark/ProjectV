@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Skill_Laser : Skill
 {
+    protected override void Awake()
+    {
+        Kind = SkillKind.Laser;
+    }
     // Start is called before the first frame update
     protected override void Start()
     {
@@ -38,9 +42,28 @@ public class Skill_Laser : Skill
         Vector3 random = new Vector3(randDistance, 0f, 2f);
         obj.transform.position = transform.position+unit.skillOffsetPosition+ random;
 
-        DamageObject dmgobj = obj.GetComponent<DamageObject>();
-        dmgobj.delay = delay;
-        dmgobj.damage = damage;
-        dmgobj.duration = duration;
+        Missile missile = obj.GetComponent<Missile>();
+        missile.Initialize();
+        missile.transform.position = transform.position + unit.skillOffsetPosition;
+        missile.team = unit.team;
+        missile.owner = unit;
+        missile.duration = duration;
+        missile.damage = damage;
+        missile.speed = speed;
+        missile.delay = delay;
+        missile.type = MissileType.Directional;
+        missile.isPenetrate = true;
+        missile.SetTarget(nearest.transform.position + unit.skillOffsetPosition);
+        missile.isRotate = true;
+        missile.OnCollision.RemoveAllListeners();
+        missile.OnCollision.AddListener(OnCollisionCallback);
+
+    }
+
+    void OnCollisionCallback(Vector3 pos)
+    {
+        GameObject impact = ObjectPool.Instance.Allocate("Impact3");
+        impact.transform.position = pos;
+
     }
 }

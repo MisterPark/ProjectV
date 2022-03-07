@@ -132,7 +132,14 @@ MonoBehaviour:
   duration: 3
   speed: 3
   damage: 5
+  delay: 0
+  isPull: 0
+  isPenetrate: 0
+  isRotate: 0
   owner: {fileID: 0}
+  OnCollision:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!135 &6114755606119708097
 SphereCollider:
   m_ObjectHideFlags: 0

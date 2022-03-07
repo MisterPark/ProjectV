@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Skill_IceBolt : Skill
 {
+    protected override void Awake()
+    {
+        Kind = SkillKind.IceBolt;
+    }
     protected override void Start()
     {
         Kind = SkillKind.IceBolt;
@@ -33,6 +37,7 @@ public class Skill_IceBolt : Skill
         missile.owner = unit;
         missile.duration = duration;
         missile.damage = damage;
+        missile.speed = speed;
         missile.SetTarget(nearest.transform.position + unit.skillOffsetPosition);
         missile.OnCollision.RemoveAllListeners();
         missile.OnCollision.AddListener(OnCollisionCallback);

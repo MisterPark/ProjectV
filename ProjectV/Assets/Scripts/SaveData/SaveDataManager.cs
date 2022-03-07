@@ -6,32 +6,7 @@ using UnityEngine;
 public enum CharacterName { Char1, Char2, Char3, END}
 public class SaveDataManager : MonoBehaviour
 {
-    // ---싱글톤으로 선언--- 
-    //static GameObject _container;
-    //static GameObject Container
-    //{
-    //    get
-    //    {
-    //        return _container;
-    //    }
-    //}
-    //static SaveDataManager Instance; 
     public static SaveDataManager Instance;
-    //{ 
-    //    get 
-    //    { 
-    //        //if (!_instance) 
-    //        //{ 
-    //        //    _container = new GameObject();
-    //        //    _container.name = "DataController"; 
-    //        //    _instance = _container.AddComponent(typeof(SaveDataManager)) as SaveDataManager; 
-    //        //    DontDestroyOnLoad(_container); 
-    //        //} 
-    //        return _instance; 
-    //    } 
-    //} 
-    
-    // --- 게임 데이터 파일이름 설정 ---
     public string GameDataFileName = "StarfishData.json"; 
     
 

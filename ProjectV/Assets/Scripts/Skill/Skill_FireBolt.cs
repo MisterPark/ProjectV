@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Skill_FireBolt : Skill
 {
+
+    protected override void Awake()
+    {
+        Kind = SkillKind.FireBolt;
+    }
     protected override void Start()
     {
         Kind = SkillKind.FireBolt;
@@ -34,6 +39,8 @@ public class Skill_FireBolt : Skill
         missile.owner = unit;
         missile.duration = duration;
         missile.damage = damage;
+        missile.speed = speed;
+        missile.type = MissileType.Directional;
         missile.SetTarget(nearest.transform.position + unit.skillOffsetPosition);
         missile.OnCollision.RemoveAllListeners();
         missile.OnCollision.AddListener(OnCollisionCallback);

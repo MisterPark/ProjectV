@@ -47,10 +47,16 @@ MonoBehaviour:
   playerCharacterData:
   - name: 0
     statsData: {fileID: 11400000, guid: c3159443739d66342a3b049d488e094e, type: 2}
+    charImage: {fileID: 0}
+    firstSkill: 0
   - name: 1
     statsData: {fileID: 11400000, guid: c3159443739d66342a3b049d488e094e, type: 2}
+    charImage: {fileID: 0}
+    firstSkill: 0
   - name: 2
     statsData: {fileID: 11400000, guid: c3159443739d66342a3b049d488e094e, type: 2}
+    charImage: {fileID: 0}
+    firstSkill: 0
   currentPlayerCharacter: 0
   powerUpStat:
   - 0
@@ -86,6 +92,16 @@ MonoBehaviour:
     skillData: {fileID: 11400000, guid: ff0526ecd3a851441af55da3efd154ce, type: 2}
   - kind: 5
     skillData: {fileID: 11400000, guid: 71f6aea787bb3b34eb3c63632b7a8def, type: 2}
+  - kind: 6
+    skillData: {fileID: 11400000, guid: 07873f5da853c0147a63182825195bdf, type: 2}
+  - kind: 7
+    skillData: {fileID: 11400000, guid: a142d9f410c9338438594d9dfee0a56d, type: 2}
+  - kind: 8
+    skillData: {fileID: 11400000, guid: 8b9b31d3621a2de4aaedd01d32172817, type: 2}
+  - kind: 9
+    skillData: {fileID: 11400000, guid: 119747fe07739c1449b279b80771b49f, type: 2}
+  - kind: 10
+    skillData: {fileID: 11400000, guid: 499a3e8f32adfd54ca25f13b7b6a93e8, type: 2}
   currentSaveData:
     unLockCharacter: 000000
     unLockStage: 000000
@@ -99,6 +115,8 @@ MonoBehaviour:
     gold: 0
     playTime: 0
   moneyInterest_Per: 0
+  stageDatas:
+  - {fileID: 11400000, guid: 514049e7ebff7864d9cc7c9eae511a7a, type: 2}
 --- !u!114 &2716088676406518505
 MonoBehaviour:
   m_ObjectHideFlags: 0
