@@ -4813,8 +4813,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8889771271640957458}
-  - component: {fileID: 9040795590569406586}
   - component: {fileID: 4674980908436040829}
+  - component: {fileID: -1973773625564965147}
   m_Layer: 0
   m_Name: ShurikenAttack
   m_TagString: Untagged
@@ -4838,27 +4838,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &9040795590569406586
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8889771271640957459}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 841e7a7cd135c2e44a6464fde82295c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isPull: 0
-  damage: 0
-  duration: 0
-  delay: 0
-  speed: 0
-  isGuided: 0
-  OnCollision:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!135 &4674980908436040829
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -4872,6 +4851,31 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 1.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-1973773625564965147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8889771271640957459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 063f6c69015df68428e6488f632eb40c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  team: 0
+  type: 0
+  duration: 0
+  speed: 0
+  damage: 0
+  delay: 0
+  isPull: 0
+  isPenetrate: 0
+  isRotate: 0
+  owner: {fileID: 0}
+  OnCollision:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &8889771271804480195
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4955,7 +4959,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 420bc265e092a26488cd6e7ddc53bc95, type: 3}
   m_PrefabInstance: {fileID: 8889771271804480195}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8889771271701386240
+--- !u!114 &7921788218262454023
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

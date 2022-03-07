@@ -3,6 +3,7 @@ using UnityEngine;
 [System.Serializable]
 public class CurrentGameData
 {
+    public PlayerCharacterName characterName;
     public int killCount = 0;
     public int gold = 0;
     public float playTime = 0f;
@@ -13,9 +14,10 @@ public class DataManager : MonoBehaviour
     public static DataManager Instance;
 
     // 캐릭터들 정보와 현재 선택된 캐릭터 정보
+#if UNITY_EDITOR
     [ArrayElementTitle("name")]
+#endif
     public PlayerCharacterNode[] playerCharacterData = new PlayerCharacterNode[(int)PlayerCharacterName.END];
-    [HideInInspector] public PlayerCharacterName currentPlayerCharacter = PlayerCharacterName.Character_01;
 
     // 상점에서 구입한 스탯들이 보관되는 곳
     public float[] powerUpStat = new float[(int)StatType.END];
@@ -23,7 +25,9 @@ public class DataManager : MonoBehaviour
     private UI_Powerup_statDB powerStatDB;
 
     // 스킬 데이터
+#if UNITY_EDITOR
     [ArrayElementTitle("kind")]
+#endif
     public SkillDataElement[] skillDatas = new SkillDataElement[(int)SkillKind.End];
 
     // SaveData 에서 가져온 데이터들
@@ -33,6 +37,9 @@ public class DataManager : MonoBehaviour
     [SerializeField] public CurrentGameData currentGameData;
 
     [SerializeField] private float moneyInterest_Per;
+
+
+    public StageData[] stageDatas = new StageData[(int)StageKind.End];
 
     private void Awake()
     {

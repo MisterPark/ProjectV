@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -23,7 +23,7 @@ public class PlayerCharacterNode
 public class Player : Unit
 {
     public static Player Instance;
-    private Vector3 direction = Vector3.forward;// ĳ���Ͱ� �ٶ󺸴� ����, ��ų ���� ��� 
+    private Vector3 direction = Vector3.forward;// 주석 범인 찾기
     public UnityEvent OnSkillSelectionCompleted;
     
     public static int Row
@@ -57,15 +57,17 @@ public class Player : Unit
         OnLevelUp.AddListener(OnLevelUpCallback);
         UI_LevelUp.instance.OnSelected.AddListener(OnSelectSkill);
 
-        //AddSkill(SkillKind.IceBolt);
+        AddSkill(SkillKind.IceBolt);
         //AddSkill(SkillKind.FireBolt);
         //AddSkill(SkillKind.ForceFieldBarrier);
         //AddSkill(SkillKind.BlackHole);
         //AddSkill(SkillKind.Laser);
         //AddSkill(SkillKind.Lightning);
 
-        //AddSkill(SkillKind.FireTornado);
-        AddSkill(SkillKind.RockTotem);
+        AddSkill(SkillKind.FireTornado);
+        //AddSkill(SkillKind.RockTotem);
+        //AddSkill(SkillKind.ShurikenAttack);
+        //AddSkill(SkillKind.Rain);
         OnSkillSelectionCompleted.Invoke();
     }
 
@@ -150,7 +152,7 @@ public class Player : Unit
     {
         DataManager dataManager = DataManager.Instance;
         Stat _stat = GetComponent<Stat>();
-        _stat.Set_Stats(dataManager.playerCharacterData[(int)dataManager.currentPlayerCharacter].statsData.stats);
+        _stat.Set_Stats(dataManager.playerCharacterData[(int)dataManager.currentGameData.characterName].statsData.stats);
         _stat.Init_FinalStat();
         for (int i = 0; i < (int)StatType.END; i++)
         {

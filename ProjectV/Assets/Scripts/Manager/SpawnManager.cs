@@ -142,6 +142,7 @@ public class SpawnManager : MonoBehaviour
 
         spawnQueue = spawnList.OrderBy(x => x.GetDistanceFromPlayer()).ToList();
 
+        nearestMonster = null;
         if(spawnQueue.Count > 0)
         {
              nearestMonster = spawnQueue.First();  

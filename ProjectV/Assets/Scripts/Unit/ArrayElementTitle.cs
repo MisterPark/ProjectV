@@ -1,6 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
+#if UNITY_EDITOR
 //Attribute
 public class ArrayElementTitleAttribute : PropertyAttribute
 {
@@ -20,6 +21,7 @@ public class ArrayElementTitleDrawer : PropertyDrawer
     }
 
     protected virtual ArrayElementTitleAttribute Attribute => attribute as ArrayElementTitleAttribute;
+
     SerializedProperty TitleNameProp;
 
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
@@ -92,3 +94,5 @@ public class ArrayElementTitleDrawer : PropertyDrawer
         return "";
     }
 }
+
+#endif
