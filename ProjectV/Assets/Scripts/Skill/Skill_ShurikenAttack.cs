@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class Skill_ShurikenAttack : Skill
 {
-    protected override void Awake()
-    {
-        Kind = SkillKind.ShurikenAttack;
-    }
     protected override void Start()
     {
         Kind = SkillKind.ShurikenAttack;
@@ -17,9 +13,7 @@ public class Skill_ShurikenAttack : Skill
     protected override void Active()
     {
 
-        //GameObject nearest = SpawnManager.Instance.NearestMonster;
-        GameObject nearest = null;
-        SpawnManager.Instance.SpawnQueue.Dequeue(out nearest);
+        GameObject nearest = SpawnManager.Instance.NearestMonster;
         if (nearest == null)
         {
             return;
@@ -59,7 +53,6 @@ public class Skill_ShurikenAttack : Skill
     void OnCollisionCallback(Vector3 pos)
     {
         //««∞› ¿Ã∆Â∆Æ
-        //GameObject impact = ObjectPool.Instance.Allocate("IceFragmentsImpact");
-        //impact.transform.position = pos;
+
     }
 }
