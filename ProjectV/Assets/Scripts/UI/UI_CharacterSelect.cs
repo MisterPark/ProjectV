@@ -86,7 +86,7 @@ public class UI_CharacterSelect : MonoBehaviour
 
     public void OnClickCharacterSelectOKButton()
     {
-        DataManager.Instance.currentPlayerCharacter = CurrentClickPlayerCharacter;
+        DataManager.Instance.currentGameData.characterName = CurrentClickPlayerCharacter;
         DataManager.Instance.Setting_PowerStat();
         SceneManager.LoadScene(UIManager.Instance.StartSceneName);
     }
