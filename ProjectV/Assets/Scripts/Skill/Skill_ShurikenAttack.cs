@@ -35,16 +35,31 @@ public class Skill_ShurikenAttack : Skill
         //float angle = UnityEngine.Random.Range(-180, 180);
         //float dist = 6;
         //Vector3 pos = new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle)) * dist;
-        
 
-        DamageObject dmgobj = obj.GetComponent<DamageObject>();
-        dmgobj.delay = delay;
-        dmgobj.damage = damage;
-        dmgobj.duration = duration;
-        dmgobj.speed = speed;
-        dmgobj.isGuided = true;
-        dmgobj.SetTarget(nearest.transform.position + unit.skillOffsetPosition);
+
+        Missile missile = obj.GetComponent<Missile>();
+        missile.Initialize();
+        missile.transform.position = transform.position + unit.skillOffsetPosition;
+        missile.team = unit.team;
+        missile.owner = unit;
+        missile.duration = duration;
+        missile.damage = damage;
+        missile.speed = speed;
+        missile.delay = delay;
+        missile.type = MissileType.Guided;
+        missile.isPenetrate = true;
+        missile.SetTarget(nearest.transform.position + unit.skillOffsetPosition);
+        missile.isRotate = true;
+        missile.OnCollision.RemoveAllListeners();
+        missile.OnCollision.AddListener(OnCollisionCallback);
+
         obj.transform.position = Player.Instance.transform.position + unit.skillOffsetPosition;
 
+    }
+    void OnCollisionCallback(Vector3 pos)
+    {
+        //««∞› ¿Ã∆Â∆Æ
+        //GameObject impact = ObjectPool.Instance.Allocate("IceFragmentsImpact");
+        //impact.transform.position = pos;
     }
 }

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1087102599113759098}
   - component: {fileID: 6554538666458317801}
-  - component: {fileID: 3366323897586964122}
+  - component: {fileID: 3297316428310721002}
   m_Layer: 0
   m_Name: RockTotem
   m_TagString: Untagged
@@ -47,7 +47,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3366323897586964122
+--- !u!114 &3297316428310721002
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -56,15 +56,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 67715461904325898}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 841e7a7cd135c2e44a6464fde82295c6, type: 3}
+  m_Script: {fileID: 11500000, guid: 063f6c69015df68428e6488f632eb40c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPull: 0
-  damage: 0
+  team: 0
+  type: 0
   duration: 0
-  delay: 0
   speed: 0
-  isGuided: 0
+  damage: 0
+  delay: 0
+  isPull: 0
+  isPenetrate: 0
+  isRotate: 0
+  owner: {fileID: 0}
   OnCollision:
     m_PersistentCalls:
       m_Calls: []

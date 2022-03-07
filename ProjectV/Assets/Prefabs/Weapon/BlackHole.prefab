@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 920613985145366627}
-  - component: {fileID: 4608350281418529699}
   - component: {fileID: 8395392106188364505}
+  - component: {fileID: 1061368295298225747}
   m_Layer: 0
   m_Name: BlackHole
   m_TagString: Untagged
@@ -33,27 +33,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4608350281418529699
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6213877589103566940}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 841e7a7cd135c2e44a6464fde82295c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isPull: 0
-  damage: 2
-  duration: 5
-  delay: 1
-  speed: 0
-  isGuided: 0
-  OnCollision:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!135 &8395392106188364505
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -67,6 +46,31 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 3
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1061368295298225747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6213877589103566940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 063f6c69015df68428e6488f632eb40c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  team: 0
+  type: 0
+  duration: 0
+  speed: 0
+  damage: 0
+  delay: 0
+  isPull: 0
+  isPenetrate: 0
+  isRotate: 0
+  owner: {fileID: 0}
+  OnCollision:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &7682333269819862402
 PrefabInstance:
   m_ObjectHideFlags: 0
