@@ -128,6 +128,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4881906775881079464, guid: b69c26c2099c26948b96bab925bf2ba4, type: 3}
   m_PrefabInstance: {fileID: 586678845}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &101893171 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2578352830027092496, guid: b69c26c2099c26948b96bab925bf2ba4, type: 3}
+  m_PrefabInstance: {fileID: 586678845}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &586678845
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -297,6 +302,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 5280216451280368610, guid: 2a6b3764919d5ee4e8ca2d5f531db077, type: 3}
+      propertyPath: StartSceneName
+      value: Stage01
+      objectReference: {fileID: 0}
+    - target: {fileID: 5280216451280368610, guid: 2a6b3764919d5ee4e8ca2d5f531db077, type: 3}
       propertyPath: UIObjectList.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -311,7 +320,7 @@ PrefabInstance:
     - target: {fileID: 5280216451280368610, guid: 2a6b3764919d5ee4e8ca2d5f531db077, type: 3}
       propertyPath: UIObjectList.Array.data[2]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 101893171}
     - target: {fileID: 6155982232228477442, guid: 2a6b3764919d5ee4e8ca2d5f531db077, type: 3}
       propertyPath: m_Name
       value: UIManager
