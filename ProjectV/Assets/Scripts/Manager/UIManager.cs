@@ -10,6 +10,7 @@ public class UIManager : MonoBehaviour
     
     private Dictionary<string, GameObject> UIObjectDic = new Dictionary<string, GameObject>();
 
+    public string StartSceneName;
     // Start is called before the first frame update
 
     private void Awake()

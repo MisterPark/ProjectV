@@ -9,10 +9,13 @@ public class UI_CharacterSlot : MonoBehaviour
     [SerializeField] private Image m_WeaponImage;
     [SerializeField] private TMPro.TextMeshProUGUI m_CharacterName;
     private GameObject m_CharacterSelect;
+    public string m_CharacterDescription;
+    public PlayerCharacterName CharacterIndex;
 
     public Image CharacterImage => m_CharacterImage;
     public Image WeaponImage => m_WeaponImage;
     public TMPro.TextMeshProUGUI CharacterName => m_CharacterName;
+
     // Start is called before the first frame update
     void Start()
     {

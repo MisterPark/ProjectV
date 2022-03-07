@@ -61,7 +61,6 @@ public class Missile : MonoBehaviour
             {
                 cooltimeTick = 0f;
                 AttackFlag = true;
-                return;
             }
         }
         ProcessMove();
