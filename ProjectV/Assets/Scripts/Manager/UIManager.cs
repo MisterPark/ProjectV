@@ -25,6 +25,7 @@ public class UIManager : MonoBehaviour
     }
     void Start()
     {
+        InitUIManager();
         int listcount = UIObjectList.Count;
         for (int listrepeat = 0; listrepeat < listcount; ++listrepeat)
         {
@@ -50,6 +51,22 @@ public class UIManager : MonoBehaviour
     public bool GetUIActive(string objectname)
     {
         return UIObjectDic[objectname].activeSelf; 
+    }
+
+    private void InitUIManager()
+    {
+        if(UIObjectList.Count == 0)
+        {
+            GameObject mainGameCanvas = GameObject.Find("MainGame Canvas");
+            if (mainGameCanvas == null)
+                return;
+            UIObjectList.Add(mainGameCanvas);
+            int childCount = mainGameCanvas.transform.childCount;
+            for(int i = 0; i < childCount; i++)
+            {
+                UIObjectList.Add(mainGameCanvas.transform.GetChild(i).gameObject);
+            }
+        }
     }
 
 
