@@ -92,6 +92,7 @@ public class Unit : MonoBehaviour
             case SkillKind.RockTotem: skill = gameObject.AddComponent<Skill_RockTotem>(); break;
             case SkillKind.ShurikenAttack: skill = gameObject.AddComponent<Skill_ShurikenAttack>(); break;
             case SkillKind.Lightning: skill = gameObject.AddComponent<Skill_Lightning>(); break;
+            case SkillKind.Rain: skill = gameObject.AddComponent<Skill_Rain>(); break;
             default:
                 break;
         }
