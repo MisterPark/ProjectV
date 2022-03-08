@@ -54,8 +54,6 @@ public class Skill_Laser : Skill
         missile.damage = damage;
         missile.speed = speed;
         missile.range = range;
-        missile.colliderSize = new Vector3(range * 0.8f, range, range * 6);
-        missile.colliderCenter = new Vector3(0, 0, range * 2.6f);
         missile.delay = delay;
         missile.type = MissileType.Directional;
         missile.isPenetrate = true;

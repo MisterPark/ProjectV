@@ -23,8 +23,6 @@ public class Missile : MonoBehaviour
     public bool isPenetrate = false;
     public bool isRotate=false;
     public bool AttackFlag { get; set; } = false;
-    public Vector3 colliderSize;
-    public Vector3 colliderCenter;
     public Unit owner;
     GameObject target;
     Vector3 targetDirection;
@@ -49,16 +47,6 @@ public class Missile : MonoBehaviour
         if (visualEffect != null)
         {
             visualEffect.SetFloat("Duration", duration);
-        }
-        BoxCollider boxCollider = GetComponentInParent<BoxCollider>();
-        if (boxCollider == null)
-        {
-            boxCollider = GetComponent<BoxCollider>();
-        }
-        if (boxCollider != null)
-        {
-            boxCollider.size = colliderSize;
-            boxCollider.center = colliderCenter;
         }
 
 
