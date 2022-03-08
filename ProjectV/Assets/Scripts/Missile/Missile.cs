@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-
+using UnityEngine.VFX;
 public enum MissileType // ¿òÁ÷ÀÓ
 {
     Directional,
@@ -18,17 +18,22 @@ public class Missile : MonoBehaviour
     public float speed;
     public float damage;
     public float delay;
+    public float range;
     public bool isPull = false;
     public bool isPenetrate = false;
     public bool isRotate=false;
     public bool AttackFlag { get; set; } = false;
-
+    public float radiusSize;
+    public Vector3 colliderSize;
+    public Vector3 colliderCenter;
     public Unit owner;
     GameObject target;
     Vector3 targetDirection;
     float tick = 0f;
     float cooltimeTick;
-
+    VisualEffect visualEffect;
+    
+    
     bool isWaitForFrame = false;
 
     public UnityEvent<Vector3> OnCollision;
@@ -39,6 +44,26 @@ public class Missile : MonoBehaviour
     }
     private void OnEnable()
     {
+        visualEffect = GetComponentInChildren<VisualEffect>();
+        if (visualEffect != null)
+        {
+            visualEffect.SetFloat("Duration", duration);
+            visualEffect.SetFloat("Range", range);
+        }
+        BoxCollider boxCollider = GetComponentInParent<BoxCollider>();
+        if (boxCollider != null)
+        {
+            boxCollider.size = colliderSize;
+            boxCollider.center = colliderCenter;
+        }
+
+        SphereCollider sphereCollider = GetComponentInParent<SphereCollider>();
+        if (sphereCollider != null)
+        {
+            sphereCollider.radius = radiusSize;
+            sphereCollider.center = colliderCenter;
+        }
+
         tick = 0;
         cooltimeTick = 0;
         isWaitForFrame = false;

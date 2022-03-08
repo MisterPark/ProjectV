@@ -46,5 +46,6 @@ public class SkillValue
     public float duration;
     public float delay;
     public float speed;
+    public float range;
     public int amount;
 }

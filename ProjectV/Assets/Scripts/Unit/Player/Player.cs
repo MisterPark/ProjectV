@@ -70,7 +70,7 @@ public class Player : Unit
         //AddSkill(SkillKind.Laser);
         //AddSkill(SkillKind.Lightning);
 
-        //AddSkill(SkillKind.FireTornado);
+        AddSkill(SkillKind.FireTornado);
         //AddSkill(SkillKind.RockTotem);
         //AddSkill(SkillKind.ShurikenAttack);
         //AddSkill(SkillKind.Rain);

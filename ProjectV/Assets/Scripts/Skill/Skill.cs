@@ -17,6 +17,7 @@ public abstract class Skill : MonoBehaviour
     public float duration;
     public float delay;
     public float speed;
+    public float range;
     public int amount = 1;
 
     public UnityEvent<int> OnLevelUp = new UnityEvent<int>();
@@ -61,6 +62,7 @@ public abstract class Skill : MonoBehaviour
         duration = value.duration;
         delay = value.delay;
         speed = value.speed;
+        range = value.range;
     }
 
     public void LevelUp()

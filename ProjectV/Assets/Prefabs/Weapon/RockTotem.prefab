@@ -65,9 +65,13 @@ MonoBehaviour:
   speed: 0
   damage: 0
   delay: 0
+  range: 0
   isPull: 0
   isPenetrate: 0
   isRotate: 0
+  radiusSize: 0
+  colliderSize: {x: 0, y: 0, z: 0}
+  colliderCenter: {x: 0, y: 0, z: 0}
   owner: {fileID: 0}
   OnCollision:
     m_PersistentCalls:

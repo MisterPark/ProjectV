@@ -13,18 +13,19 @@ MonoBehaviour:
   m_Name: FireTornado
   m_EditorClassIdentifier: 
   skillName: FireTornado
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 2fd37aab63452dc4098d64d3e16a0a54, type: 3}
   kind: 6
   type: 1
   grade: 0
   values:
   - level: 0
     description: 
-    cooltime: 3
+    cooltime: 1
     damage: 1
-    duration: 5
+    duration: 2
     delay: 1
     speed: 2
+    range: 1
     amount: 1
   - level: 1
     description: 
@@ -33,6 +34,7 @@ MonoBehaviour:
     duration: 5
     delay: 1
     speed: 2
+    range: 1
     amount: 1
   - level: 2
     description: 
@@ -41,6 +43,7 @@ MonoBehaviour:
     duration: 5
     delay: 1
     speed: 2
+    range: 1
     amount: 1
   - level: 3
     description: 
@@ -49,6 +52,7 @@ MonoBehaviour:
     duration: 5
     delay: 1
     speed: 2
+    range: 0
     amount: 1
   - level: 4
     description: 
@@ -57,6 +61,7 @@ MonoBehaviour:
     duration: 5
     delay: 1
     speed: 2
+    range: 0
     amount: 2
   - level: 5
     description: 
@@ -65,6 +70,7 @@ MonoBehaviour:
     duration: 5
     delay: 1
     speed: 2
+    range: 0
     amount: 2
   - level: 6
     description: 
@@ -73,6 +79,7 @@ MonoBehaviour:
     duration: 5
     delay: 1
     speed: 2
+    range: 0
     amount: 2
   - level: 7
     description: 
@@ -81,4 +88,5 @@ MonoBehaviour:
     duration: 5
     delay: 1
     speed: 2
+    range: 0
     amount: 2
