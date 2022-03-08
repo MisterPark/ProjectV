@@ -13,8 +13,7 @@ public class Skill_ForceFieldBarrier : Skill
 
     private void OnEnable()
     {
-           missile.range = range;
-           missile.radiusSize = range;   
+        
     }
     protected override void Start()
     {
