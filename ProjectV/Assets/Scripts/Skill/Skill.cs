@@ -63,7 +63,7 @@ public abstract class Skill : MonoBehaviour
         float cooltimeReduce = unit.stat.Get_FinalStat(StatType.Cooldown);
         float additionalDamage = unit.stat.Get_FinalStat(StatType.Might);
         float additionalDuration = unit.stat.Get_FinalStat(StatType.Duration);
-        float additionalSpeed = unit.stat.Get_FinalStat(StatType.MoveSpeed);
+        float additionalSpeed = unit.stat.Get_FinalStat(StatType.Speed);
 
         amount = value.amount + additionalAmount;
         cooltime = value.cooltime * cooltimeReduce;
