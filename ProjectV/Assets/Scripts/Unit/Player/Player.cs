@@ -10,6 +10,7 @@ public enum PlayerCharacterName
     Character_02,
     Character_03,
     Character_04,
+    Character_05,
     END
 }
 [System.Serializable]
@@ -67,13 +68,13 @@ public class Player : Unit
         //AddSkill(SkillKind.IceBolt);
         //AddSkill(SkillKind.FireBolt);
         //AddSkill(SkillKind.ForceFieldBarrier);
-        AddSkill(SkillKind.BlackHole);
-        //AddSkill(SkillKind.Laser);
+        //AddSkill(SkillKind.BlackHole);
+        AddSkill(SkillKind.Laser);
         //AddSkill(SkillKind.Lightning);
 
         //AddSkill(SkillKind.FireTornado);
         //AddSkill(SkillKind.RockTotem);
-        //AddSkill(SkillKind.ShurikenAttack);
+        AddSkill(SkillKind.ShurikenAttack);
         //AddSkill(SkillKind.Rain);
         OnSkillSelectionCompleted.Invoke();
     }

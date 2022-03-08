@@ -45,7 +45,6 @@ public class Skill_FireTornado : Skill
         missile.speed = speed;
         missile.delay = delay;
         missile.range = range;
-        missile.radiusSize = range * 3.6f;
         missile.type = MissileType.Guided;
         missile.isPenetrate = true;
         missile.SetTarget(nearest.transform.position + unit.skillOffsetPosition);

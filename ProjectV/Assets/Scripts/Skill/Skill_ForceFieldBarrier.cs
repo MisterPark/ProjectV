@@ -11,6 +11,10 @@ public class Skill_ForceFieldBarrier : Skill
         Kind = SkillKind.ForceFieldBarrier;
     }
 
+    private void OnEnable()
+    {
+        
+    }
     protected override void Start()
     {
         Kind = SkillKind.ForceFieldBarrier;
@@ -36,6 +40,7 @@ public class Skill_ForceFieldBarrier : Skill
         missile.damage = damage;
         missile.speed = speed;
         missile.delay = delay;
+        missile.range = range;
         missile.type = MissileType.Guided;
         missile.isPenetrate = true;
         missile.OnCollision.RemoveAllListeners();
@@ -59,8 +64,8 @@ public class Skill_ForceFieldBarrier : Skill
         missile.damage = value.damage;
         missile.speed = value.speed;
         missile.delay = value.delay;
-
-
+        missile.range = value.range;
+        
 
     }
     void OnCollisionCallback(Vector3 pos, Unit other )
