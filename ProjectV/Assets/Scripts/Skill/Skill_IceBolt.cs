@@ -43,7 +43,7 @@ public class Skill_IceBolt : Skill
         missile.OnCollision.AddListener(OnCollisionCallback);
     }
 
-    void OnCollisionCallback(Vector3 pos)
+    void OnCollisionCallback(Vector3 pos, Unit other)
     {
         GameObject impact = ObjectPool.Instance.Allocate("IceFragmentsImpact");
         impact.transform.position = pos;
