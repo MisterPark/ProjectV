@@ -5,10 +5,6 @@ using UnityEngine.UI;
 
 public class UI_PlayTime : MonoBehaviour
 {
-    private int second = 0;
-    private int minute = 0;
-    private float curTime = 0f;
-
     private RectTransform rectTransform;
     [SerializeField] Text text;
     private RectTransform parentCanvas;
