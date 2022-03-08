@@ -20,7 +20,7 @@ public class UI_LevelUPItemInfo : UI
     private Image iconImage;
     private SkillKind kind;
 
-    void Start()
+    void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
         nameText = itemName.GetComponent<Text>();
