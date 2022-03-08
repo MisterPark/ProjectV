@@ -51,6 +51,8 @@ public class Skill_Rain : Skill
         missile.delay = delay;
         missile.type = MissileType.Directional;
         missile.isPenetrate = true;
+        missile.range = range;
+        missile.radiusSize = range * 4f;
         //missile.SetTarget(nearest.transform.position + unit.skillOffsetPosition);
         
     }
