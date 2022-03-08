@@ -11,6 +11,7 @@ public class Torchlight : Unit
         stat.Init_FinalStat();
         type = UnitType.Prop;
         OnDead.AddListener(OnDeadCallback);
+        animator = null;
     }
 
     protected override void Update()
