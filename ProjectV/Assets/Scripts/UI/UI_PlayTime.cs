@@ -23,7 +23,7 @@ public class UI_PlayTime : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        curTime += Time.deltaTime;
+        curTime = DataManager.Instance.currentGameData.playTime;
         second = Mathf.FloorToInt(curTime);
         if(second >= 60)
         {

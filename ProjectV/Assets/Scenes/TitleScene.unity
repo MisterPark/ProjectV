@@ -1007,8 +1007,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 232617482}
     - target: {fileID: 5642519598822331723, guid: b69c26c2099c26948b96bab925bf2ba4, type: 3}
+      propertyPath: SlotXPadding
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 5642519598822331723, guid: b69c26c2099c26948b96bab925bf2ba4, type: 3}
       propertyPath: SlotXPosition
-      value: -325
+      value: -350
       objectReference: {fileID: 0}
     - target: {fileID: 5642519598822331723, guid: b69c26c2099c26948b96bab925bf2ba4, type: 3}
       propertyPath: SlotYPosition
@@ -1017,6 +1021,10 @@ PrefabInstance:
     - target: {fileID: 5642519598822331723, guid: b69c26c2099c26948b96bab925bf2ba4, type: 3}
       propertyPath: SlotColumnCount
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5970159878921156537, guid: b69c26c2099c26948b96bab925bf2ba4, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.00010529319
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b69c26c2099c26948b96bab925bf2ba4, type: 3}
