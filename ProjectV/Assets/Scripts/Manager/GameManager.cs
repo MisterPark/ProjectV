@@ -62,9 +62,13 @@ public class GameManager : MonoBehaviour
         objectPool.transform.position = Vector3.zero;
         objectPool.name = objectPoolPrefab.name;
 
-        dataManager = Instantiate(dataManagerPrefab);
-        dataManager.transform.position = Vector3.zero;
-        dataManager.name = dataManagerPrefab.name;
+        if(DataManager.Instance == null)
+        {
+            dataManager = Instantiate(dataManagerPrefab);
+            dataManager.transform.position = Vector3.zero;
+            dataManager.name = dataManagerPrefab.name;
+        }
+        
         //
         boardManager = Instantiate(boardManagerPrefab);
         boardManager.transform.position = Vector3.zero;

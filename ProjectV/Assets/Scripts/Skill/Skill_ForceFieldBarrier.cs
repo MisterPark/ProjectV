@@ -63,7 +63,7 @@ public class Skill_ForceFieldBarrier : Skill
 
 
     }
-    void OnCollisionCallback(Vector3 pos)
+    void OnCollisionCallback(Vector3 pos, Unit other )
     {
         //««∞› ¿Ã∆Â∆Æ
 

@@ -46,7 +46,7 @@ public class Skill_FireBolt : Skill
         missile.OnCollision.AddListener(OnCollisionCallback);
     }
 
-    void OnCollisionCallback(Vector3 pos)
+    void OnCollisionCallback(Vector3 pos, Unit other)
     {
         GameObject impact = ObjectPool.Instance.Allocate("FireFlameImpact");
         impact.transform.position = pos;

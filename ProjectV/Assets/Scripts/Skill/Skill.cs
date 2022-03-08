@@ -25,6 +25,7 @@ public abstract class Skill : MonoBehaviour
     public SkillData SkillData { get { return DataManager.Instance.skillDatas[(int)Kind].skillData; } }
     public bool IsMaxLevel { get { return level == maxLevel; } }
 
+    Unit unit;
     float tick = 0f;
 
     protected abstract void Active();
@@ -35,6 +36,7 @@ public abstract class Skill : MonoBehaviour
     }
     protected virtual void Start()
     {
+        unit = gameObject.GetComponent<Unit>();
         SetValueFromSkillData(1);
     }
 
@@ -56,13 +58,20 @@ public abstract class Skill : MonoBehaviour
         SkillData data = DataManager.Instance.skillDatas[(int)Kind].skillData;
         SkillLevel skillLevel = level.ToSkillLevel();
         SkillValue value = data.values[(int)skillLevel];
-        amount = value.amount;
-        cooltime = value.cooltime;
-        damage = value.damage;
-        duration = value.duration;
+
+        int additionalAmount = Mathf.RoundToInt(unit.stat.Get_FinalStat(StatType.Amount));
+        float cooltimeReduce = unit.stat.Get_FinalStat(StatType.Cooldown);
+        float additionalDamage = unit.stat.Get_FinalStat(StatType.Might);
+        float additionalDuration = unit.stat.Get_FinalStat(StatType.Duration);
+        float additionalSpeed = unit.stat.Get_FinalStat(StatType.MoveSpeed);
+
+        amount = value.amount + additionalAmount;
+        cooltime = value.cooltime * cooltimeReduce;
+        damage = value.damage * additionalDamage;
+        duration = value.duration * additionalDuration;
         delay = value.delay;
-        speed = value.speed;
         range = value.range;
+        speed = value.speed * additionalSpeed;
     }
 
     public void LevelUp()

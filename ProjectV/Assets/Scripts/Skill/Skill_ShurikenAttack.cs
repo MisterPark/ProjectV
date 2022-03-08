@@ -50,7 +50,7 @@ public class Skill_ShurikenAttack : Skill
         obj.transform.position = Player.Instance.transform.position + unit.skillOffsetPosition;
 
     }
-    void OnCollisionCallback(Vector3 pos)
+    void OnCollisionCallback(Vector3 pos, Unit other)
     {
         //««∞› ¿Ã∆Â∆Æ
 

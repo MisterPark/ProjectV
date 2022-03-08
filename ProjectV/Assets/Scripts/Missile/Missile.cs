@@ -36,7 +36,7 @@ public class Missile : MonoBehaviour
     
     bool isWaitForFrame = false;
 
-    public UnityEvent<Vector3> OnCollision;
+    public UnityEvent<Vector3, Unit> OnCollision;
 
     void Start()
     {
@@ -100,7 +100,7 @@ public class Missile : MonoBehaviour
         {
             if( team != unit.team)
             {
-                OnCollision?.Invoke(transform.position);
+                OnCollision?.Invoke(transform.position, unit);
                 if (!isPenetrate)
                 {
                     unit.stat.TakeDamage(damage);

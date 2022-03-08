@@ -66,10 +66,10 @@ public class Skill_Laser : Skill
 
     }
 
-    void OnCollisionCallback(Vector3 pos)
+    void OnCollisionCallback(Vector3 pos, Unit other )
     {
         GameObject impact = ObjectPool.Instance.Allocate("Impact3");
-        impact.transform.position = pos;
+        impact.transform.position = other.transform.position;
 
     }
 }
