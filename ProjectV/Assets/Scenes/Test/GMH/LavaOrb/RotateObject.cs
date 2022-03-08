@@ -18,11 +18,11 @@ public class RotateObject : MonoBehaviour
     void Update()
     {
         if (RotateX)
-        { transform.Rotate(Vector3.right, rotationSpeed, Space.World); }
+        { transform.Rotate(Vector3.right, rotationSpeed*Time.deltaTime, Space.World); }
         if (RotateY)
-        { transform.Rotate(Vector3.up, rotationSpeed, Space.World); }
+        { transform.Rotate(Vector3.up, rotationSpeed * Time.deltaTime, Space.World); }
         if (RotateZ)
-        { transform.Rotate(Vector3.forward, rotationSpeed, Space.World); }
+        { transform.Rotate(Vector3.forward, rotationSpeed * Time.deltaTime, Space.World); }
 
     }
 }
