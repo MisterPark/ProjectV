@@ -57,7 +57,7 @@ public class Stat : MonoBehaviour
 
     }
 
-    public void Init_FinalStat()
+    public void Init_LoadStat()
     {
         if (statsData != null)
         {
@@ -73,8 +73,11 @@ public class Stat : MonoBehaviour
                 stats[i].final_Stat = statsData.stats[i].final_Stat;
             }
         }
-        //////////////////////////////////////////////////////////////////////
-        for (int i = 0; i < (int)StatType.END; i++)
+    }
+      /////////////////////////////////////////////////////////////////////////
+    public void Init_FinalStat()
+    { 
+            for (int i = 0; i < (int)StatType.END; i++)
         {
             switch ((StatType)i)
             {

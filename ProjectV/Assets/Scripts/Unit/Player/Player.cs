@@ -174,11 +174,12 @@ public class Player : Unit
         DataManager dataManager = DataManager.Instance;
         Stat _stat = GetComponent<Stat>();
         _stat.Set_Stats(dataManager.playerCharacterData[(int)dataManager.currentGameData.characterName].statsData.stats);
-        _stat.Init_FinalStat();
+        _stat.Init_LoadStat();
         for (int i = 0; i < (int)StatType.END; i++)
         {
             _stat.Set_PowerUpStat(i, dataManager.powerUpStat[i]);
         }
+        _stat.Init_FinalStat();
     }
 
     List<Skill> GetActiveSkills()
