@@ -69,7 +69,7 @@ public class SaveDataManager : MonoBehaviour
         _saveData.totalKillCount += dataManager.currentGameData.killCount;
         _saveData.totalGold += dataManager.currentGameData.gold;
         _saveData.currentGold += dataManager.currentGameData.gold;
-        _saveData.totalPlayTime += dataManager.currentGameData.playTime;
+        _saveData.totalPlayTime += dataManager.currentGameData.totalPlayTime;
         //
         string ToJsonData = JsonUtility.ToJson(saveData); 
         string filePath = Application.persistentDataPath + GameDataFileName; 

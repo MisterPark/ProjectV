@@ -6,7 +6,8 @@ public class CurrentGameData
     public PlayerCharacterName characterName;
     public int killCount = 0;
     public int gold = 0;
-    public float playTime = 0f;
+    public System.DateTime startTime;
+    public System.TimeSpan totalPlayTime;
 }
 
 public class DataManager : MonoBehaviour
@@ -49,18 +50,6 @@ public class DataManager : MonoBehaviour
         SaveDataManager.Instance.LoadGameData();
         //SaveDataManager.Instance.SaveGameData();
         
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        //InitializeSkillData();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        currentGameData.playTime += Time.deltaTime;
     }
 
     public void Setting_PowerStat()

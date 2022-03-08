@@ -23,19 +23,7 @@ public class UI_PlayTime : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        curTime = DataManager.Instance.currentGameData.playTime;
-        second = Mathf.FloorToInt(curTime);
-        if(second >= 60)
-        {
-            curTime = 0f;
-            second = 0;
-            minute += 1;
-        }
-        if(second < 10)
-            text.text = "  " + minute.ToString() + " : 0" + second.ToString();
-        else
-            text.text = "  " + minute.ToString() + " : " + second.ToString();
-
+        text.text = DataManager.Instance.currentGameData.totalPlayTime.ToString(@"mm\:ss");
     }
 
     void ResetSize()
