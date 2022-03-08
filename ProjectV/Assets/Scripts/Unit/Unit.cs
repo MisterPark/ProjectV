@@ -59,11 +59,12 @@ public class Unit : MonoBehaviour
     protected virtual void FixedUpdate()
     {
         ProcessFreeze();
+        Animation();
     }
     
     protected virtual void Update()
     {
-        Animation();
+        
     }
 
 
