@@ -114,13 +114,13 @@ public class Player : Unit
 #if UNITY_EDITOR || UNITY_ANDROID
         float horizontal = GameManager.Instance.Joystick.Horizontal;
         float vertical = GameManager.Instance.Joystick.Vertical;
-        Vector3 joystickInput = new Vector3(horizontal, 0, vertical).normalized;
+        Vector3 joystickInput = new Vector3(horizontal, 0, vertical);
         float angle = Vector3.SignedAngle(Vector3.forward, forward, Vector3.up);
         //Debug.Log($"{ joystickInput} {angle}");
         float radian = Mathf.Deg2Rad * -angle;
         float x = joystickInput.x * Mathf.Cos(radian) - joystickInput.z * Mathf.Sin(radian);
         float y = joystickInput.x * Mathf.Sin(radian) + joystickInput.z * Mathf.Cos(radian);
-        moveDirection += new Vector3(x, 0, y).normalized;
+        moveDirection += new Vector3(x, 0, y);
 
 #endif
 

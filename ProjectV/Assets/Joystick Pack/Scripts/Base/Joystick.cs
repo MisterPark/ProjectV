@@ -21,6 +21,8 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
         set { deadZone = Mathf.Abs(value); }
     }
 
+    public bool IsPaused { get { return isPaused; } }
+
     public AxisOptions AxisOptions { get { return AxisOptions; } set { axisOptions = value; } }
     public bool SnapX { get { return snapX; } set { snapX = value; } }
     public bool SnapY { get { return snapY; } set { snapY = value; } }
@@ -39,6 +41,7 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
     private Camera cam;
 
     private Vector2 input = Vector2.zero;
+    private bool isPaused = false;
 
     protected virtual void Start()
     {
@@ -59,6 +62,7 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
 
     public virtual void OnPointerDown(PointerEventData eventData)
     {
+        if (isPaused) return;
         OnDrag(eventData);
     }
 
@@ -144,6 +148,32 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
             return localPoint - (background.anchorMax * baseRect.sizeDelta) + pivotOffset;
         }
         return Vector2.zero;
+    }
+
+    public void Show()
+    {
+        background.gameObject.SetActive(true);
+    }
+
+    public void Hide()
+    {
+        background.gameObject.SetActive(false);
+    }
+
+    public void Pause()
+    {
+        isPaused = true;
+    }
+
+    public void Resume()
+    {
+        isPaused = false;
+    }
+
+    public void PointerUp()
+    {
+        input = Vector2.zero;
+        handle.anchoredPosition = Vector2.zero;
     }
 }
 

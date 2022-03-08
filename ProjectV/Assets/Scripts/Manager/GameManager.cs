@@ -29,6 +29,8 @@ public class GameManager : MonoBehaviour
     public Joystick Joystick { get { return _joystick; } }
 
     private bool initZoomFlag = false;
+    private bool isPaused = false;
+    public bool IsPaused { get { return isPaused; } }
 
     private void Awake()
     {
@@ -36,12 +38,14 @@ public class GameManager : MonoBehaviour
         // Ä¿¼­ ¼û±è
         HideCursor();
         Random.InitState((int)System.DateTime.UtcNow.Ticks);
+
 #if UNITY_EDITOR || UNITY_ANDROID
         joystick = Instantiate(joystickPrefab);
         joystick.transform.position = Vector3.zero;
         joystick.name = joystickPrefab.name;
 
         _joystick = joystick.GetComponent<Joystick>();
+
         GameObject canvas = GameObject.Find("MainGame Canvas");
         if (canvas != null)
         {
@@ -49,9 +53,10 @@ public class GameManager : MonoBehaviour
         }
 #endif
 
-        player = Instantiate(playerPrefab);
-        player.transform.position = Vector3.zero;
-        player.name = playerPrefab.name;
+        //player = Instantiate(playerPrefab);
+        //player = Instantiate(Resources.Load("Unit/Player/Player")) as GameObject;
+        //player.transform.position = Vector3.zero;
+        //player.name = playerPrefab.name;
 
         objectPool = Instantiate(objectPoolPrefab);
         objectPool.transform.position = Vector3.zero;
@@ -116,24 +121,38 @@ public class GameManager : MonoBehaviour
     public void Pause()
     {
         Time.timeScale = 0f;
+        if (_joystick != null)
+        {
+            _joystick.PointerUp();
+            _joystick.Hide();
+            _joystick.gameObject.SetActive(false);
+        }
+        
+        isPaused = true;
     }
 
     public void Resume()
     {
         Time.timeScale = 1f;
+        if (_joystick != null)
+        {
+            _joystick.gameObject.SetActive(true);
+            //_joystick.Show();
+        }
+        isPaused = false;
     }
 
     public void ShowCursor()
     {
 #if UNITY_STANDALONE
-        Cursor.visible = true;
+        //Cursor.visible = true;
 #endif
     }
 
     public void HideCursor()
     {
 #if UNITY_STANDALONE
-        Cursor.visible = false;
+        //Cursor.visible = false;
 #endif
     }
 }

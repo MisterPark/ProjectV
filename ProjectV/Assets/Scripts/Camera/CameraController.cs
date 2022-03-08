@@ -52,11 +52,6 @@ public class CameraController : MonoBehaviour
         this.mode = mode;
     }
 
-    public void ShowCursor(bool visible)
-    {
-
-    }
-
     private void ProcessZoom()
     {
         float wheel = Input.GetAxis("Mouse ScrollWheel") * zoomSpeed;
