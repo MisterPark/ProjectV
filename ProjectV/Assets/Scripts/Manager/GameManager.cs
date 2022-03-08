@@ -90,6 +90,7 @@ public class GameManager : MonoBehaviour
     {
         cameraController = Camera.main.GetComponent<CameraController>();
         cameraController.SetTarget(Player.Instance.gameObject);
+        DataManager.Instance.currentGameData.startTime = System.DateTime.UtcNow;
     }
 
     void Update()
@@ -109,6 +110,7 @@ public class GameManager : MonoBehaviour
 
 
         InitZoom();
+        CountTime();
     }
 
     void InitZoom()
@@ -120,6 +122,13 @@ public class GameManager : MonoBehaviour
         {
             initZoomFlag = true;
         }
+    }
+
+    void CountTime()
+    {
+        System.DateTime curTime = System.DateTime.UtcNow;
+        System.DateTime startTime = DataManager.Instance.currentGameData.startTime;
+        DataManager.Instance.currentGameData.totalPlayTime = curTime - startTime;
     }
 
     public void Pause()
