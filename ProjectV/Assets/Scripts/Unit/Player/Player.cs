@@ -10,6 +10,7 @@ public enum PlayerCharacterName
     Character_02,
     Character_03,
     Character_04,
+    Character_05,
     END
 }
 [System.Serializable]
