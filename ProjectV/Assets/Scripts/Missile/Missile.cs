@@ -40,17 +40,22 @@ public class Missile : MonoBehaviour
 
     void Start()
     {
-
+        transform.localScale = Vector3.one * range;
     }
     private void OnEnable()
     {
         visualEffect = GetComponentInChildren<VisualEffect>();
+        transform.localScale = Vector3.one * range;
+
         if (visualEffect != null)
         {
             visualEffect.SetFloat("Duration", duration);
-            visualEffect.SetFloat("Range", range);
         }
         BoxCollider boxCollider = GetComponentInParent<BoxCollider>();
+        if (boxCollider == null)
+        {
+            boxCollider = GetComponent<BoxCollider>();
+        }
         if (boxCollider != null)
         {
             boxCollider.size = colliderSize;
@@ -58,12 +63,20 @@ public class Missile : MonoBehaviour
         }
 
         SphereCollider sphereCollider = GetComponentInParent<SphereCollider>();
+        if (sphereCollider == null)
+        {
+            sphereCollider = GetComponent<SphereCollider>(); 
+        }
         if (sphereCollider != null)
         {
-            sphereCollider.radius = radiusSize;
-            sphereCollider.center = colliderCenter;
+            if (gameObject.name == "ForceFieldBarrier")
+            {
+                radiusSize = 0.5f;
+            }
+                sphereCollider.radius = radiusSize;
+                sphereCollider.center = colliderCenter;
         }
-
+       
         tick = 0;
         cooltimeTick = 0;
         isWaitForFrame = false;
@@ -115,6 +128,8 @@ public class Missile : MonoBehaviour
                 }
                 if (isPull)
                 {
+                    
+                    
                     Vector3 direction = transform.position - unit.transform.position;
                     float pullPower = 2f;
                     unit.transform.position += direction * pullPower * Time.fixedDeltaTime;

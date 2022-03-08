@@ -40,6 +40,7 @@ public class Skill_ShurikenAttack : Skill
         missile.damage = damage;
         missile.speed = speed;
         missile.delay = delay;
+        missile.range = range;
         missile.type = MissileType.Guided;
         missile.isPenetrate = true;
         missile.SetTarget(nearest.transform.position + unit.skillOffsetPosition);
