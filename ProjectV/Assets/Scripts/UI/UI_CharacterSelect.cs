@@ -72,8 +72,9 @@ public class UI_CharacterSelect : MonoBehaviour
             row = repeat / SlotColumnCount;
             tempslot = Instantiate(CharacterSlot);
             tempslot.transform.SetParent(ContentsWindow.transform);
-            tempwidth = SlotWidth * tempslot.transform.localScale.x;
-            tempheight = SlotHeight * tempslot.transform.localScale.y;
+            tempwidth = SlotWidth;
+            tempheight = SlotHeight;
+            tempslot.transform.localScale = CharacterSlot.transform.localScale;
             tempslot.transform.localPosition = new Vector3(SlotXPosition+((tempwidth + SlotXPadding) * column), SlotYPosition - ((tempheight + SlotYPadding) * row), 0f);
 
             tempslot.GetComponent<UI_CharacterSlot>().CharacterImage.sprite = DataManager.Instance.playerCharacterData[repeat].charImage;
