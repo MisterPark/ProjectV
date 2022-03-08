@@ -41,7 +41,6 @@ public class Skill_ForceFieldBarrier : Skill
         missile.speed = speed;
         missile.delay = delay;
         missile.range = range;
-        missile.radiusSize = 0.5f;
         missile.type = MissileType.Guided;
         missile.isPenetrate = true;
         missile.OnCollision.RemoveAllListeners();
@@ -66,8 +65,7 @@ public class Skill_ForceFieldBarrier : Skill
         missile.speed = value.speed;
         missile.delay = value.delay;
         missile.range = value.range;
-        missile.radiusSize = range * 0.125f;
-        //missile.radiusSize = range;
+        
 
     }
     void OnCollisionCallback(Vector3 pos, Unit other )

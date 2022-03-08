@@ -43,7 +43,6 @@ public class Skill_BlackHole : Skill
         missile.speed = speed;
         missile.delay = delay;
         missile.range = range;
-        missile.radiusSize = range;
         missile.type = MissileType.Directional;
         missile.isPenetrate = true;
         missile.isPull = true;
