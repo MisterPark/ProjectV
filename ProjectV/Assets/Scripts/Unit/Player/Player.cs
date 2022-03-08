@@ -9,6 +9,7 @@ public enum PlayerCharacterName
     Character_01,
     Character_02,
     Character_03,
+    Character_04,
     END
 }
 [System.Serializable]
@@ -66,7 +67,7 @@ public class Player : Unit
         //AddSkill(SkillKind.IceBolt);
         //AddSkill(SkillKind.FireBolt);
         //AddSkill(SkillKind.ForceFieldBarrier);
-        //AddSkill(SkillKind.BlackHole);
+        AddSkill(SkillKind.BlackHole);
         //AddSkill(SkillKind.Laser);
         //AddSkill(SkillKind.Lightning);
 
@@ -174,11 +175,12 @@ public class Player : Unit
         DataManager dataManager = DataManager.Instance;
         Stat _stat = GetComponent<Stat>();
         _stat.Set_Stats(dataManager.playerCharacterData[(int)dataManager.currentGameData.characterName].statsData.stats);
-        _stat.Init_FinalStat();
+        _stat.Init_LoadStat();
         for (int i = 0; i < (int)StatType.END; i++)
         {
             _stat.Set_PowerUpStat(i, dataManager.powerUpStat[i]);
         }
+        _stat.Init_FinalStat();
     }
 
     List<Skill> GetActiveSkills()

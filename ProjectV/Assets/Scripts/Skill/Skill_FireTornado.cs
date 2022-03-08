@@ -44,6 +44,8 @@ public class Skill_FireTornado : Skill
         missile.damage = damage;
         missile.speed = speed;
         missile.delay = delay;
+        missile.range = range;
+        missile.radiusSize = range * 3.6f;
         missile.type = MissileType.Guided;
         missile.isPenetrate = true;
         missile.SetTarget(nearest.transform.position + unit.skillOffsetPosition);
@@ -59,7 +61,7 @@ public class Skill_FireTornado : Skill
         obj.transform.position = pos;
 
     }
-    void OnCollisionCallback(Vector3 pos)
+    void OnCollisionCallback(Vector3 pos, Unit other)
     {
         //««∞› ¿Ã∆Â∆Æ
         //GameObject impact = ObjectPool.Instance.Allocate("IceFragmentsImpact");

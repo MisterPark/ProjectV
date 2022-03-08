@@ -46,7 +46,7 @@ public class Skill_RockTotem : Skill
         missile.OnCollision.AddListener(OnCollisionCallback);
         obj.transform.position = pos;
     }
-    void OnCollisionCallback(Vector3 pos)
+    void OnCollisionCallback(Vector3 pos, Unit other )
     {
         //««∞› ¿Ã∆Â∆Æ
 

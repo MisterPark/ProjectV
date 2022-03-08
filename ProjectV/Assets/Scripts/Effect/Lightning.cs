@@ -42,6 +42,8 @@ public class Lightning : MonoBehaviour
         {
             impactFlag = true;
             GameObject impact = ObjectPool.Instance.Allocate("LightningImpact");
+            ImpactV2 comp = impact.GetComponent<ImpactV2>();
+            comp.Duration = 0.3f;
             impact.transform.position = transform.parent.transform.position;
         }
     }
