@@ -15,10 +15,12 @@ public class UI_PausePanel : UI
         GameManager.Instance.Resume();
         Hide();
         UIManager.Instance.SetUIActive("Status Panel", false);
+        if (UIManager.Instance.GetUIActive("Option Panel"))
+            UIManager.Instance.SetUIActive("Option Panel", false);
     }
 
     public void OnClickOption()
     {
-
+        UIManager.Instance.SetUIActive("Option Panel", true);
     }
 }

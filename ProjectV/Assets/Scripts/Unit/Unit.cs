@@ -15,18 +15,16 @@ public enum UnitType
 public class Unit : MonoBehaviour
 {
     public UnitType type;
-    // �̺�Ʈ
+
     public UnityEvent OnDead;
     public UnityEvent<float> OnTakeDamage;
     public UnityEvent<int> OnLevelUp;
-    // ����
+
     [HideInInspector] public Stat stat;
 
-    // ������Ʈ
     protected Animator animator;
     public CapsuleCollider capsuleCollider;
     
-    // ����
     Vector3 oldPosition;
     public Vector3 skillOffsetPosition;
     public Team team;

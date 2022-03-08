@@ -39,6 +39,7 @@ public class Skill_FireBolt : Skill
         missile.owner = unit;
         missile.duration = duration;
         missile.damage = damage;
+        missile.range = range;
         missile.speed = speed;
         missile.type = MissileType.Directional;
         missile.SetTarget(nearest.transform.position + unit.skillOffsetPosition);

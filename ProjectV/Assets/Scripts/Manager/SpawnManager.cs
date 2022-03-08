@@ -112,8 +112,6 @@ public class SpawnManager : MonoBehaviour
             pos += Player.Instance.transform.position;
             Spawn(monsterList[index], pos);
         }
-        
-
     }
 
     private void ProcessRemove()
