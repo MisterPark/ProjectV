@@ -23,7 +23,6 @@ public class Missile : MonoBehaviour
     public bool isPenetrate = false;
     public bool isRotate=false;
     public bool AttackFlag { get; set; } = false;
-    public float radiusSize;
     public Vector3 colliderSize;
     public Vector3 colliderCenter;
     public Unit owner;
@@ -62,20 +61,7 @@ public class Missile : MonoBehaviour
             boxCollider.center = colliderCenter;
         }
 
-        SphereCollider sphereCollider = GetComponentInParent<SphereCollider>();
-        if (sphereCollider == null)
-        {
-            sphereCollider = GetComponent<SphereCollider>(); 
-        }
-        if (sphereCollider != null)
-        {
-            if (gameObject.name == "ForceFieldBarrier")
-            {
-                radiusSize = 0.5f;
-            }
-                sphereCollider.radius = radiusSize;
-                sphereCollider.center = colliderCenter;
-        }
+
        
         tick = 0;
         cooltimeTick = 0;
