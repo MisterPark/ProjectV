@@ -89,6 +89,7 @@ public class UI_CharacterSelect : MonoBehaviour
     public void OnClickCharacterSelectOKButton()
     {
         DataManager.Instance.currentGameData.characterName = CurrentClickPlayerCharacter;
-        SceneManager.LoadScene(UIManager.Instance.StartSceneName);
+        gameObject.SetActive(false);
+        UIManager.Instance.SetUIActive("StageSelectPanel", true);
     }
 }
