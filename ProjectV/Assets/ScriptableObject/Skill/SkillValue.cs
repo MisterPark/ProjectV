@@ -30,6 +30,7 @@ public enum SkillKind
     //Luck,
     Growth,
     //Greed,
+    BlizzardOrb,
     End,
 }
 [System.Serializable]

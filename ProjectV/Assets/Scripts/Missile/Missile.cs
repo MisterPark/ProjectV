@@ -23,9 +23,9 @@ public class Missile : MonoBehaviour
     public bool isPenetrate = false;
     public bool isRotate=false;
     public bool AttackFlag { get; set; } = false;
+    public Vector3 targetDirection { get; set; }
     public Unit owner;
     GameObject target;
-    Vector3 targetDirection;
     float tick = 0f;
     float cooltimeTick;
     VisualEffect visualEffect;
@@ -49,8 +49,6 @@ public class Missile : MonoBehaviour
             visualEffect.SetFloat("Duration", duration);
         }
 
-
-       
         tick = 0;
         cooltimeTick = 0;
         isWaitForFrame = false;
@@ -177,4 +175,5 @@ public class Missile : MonoBehaviour
         Vector3 to = target - transform.position;
         targetDirection = to.normalized;
     }
+
 }

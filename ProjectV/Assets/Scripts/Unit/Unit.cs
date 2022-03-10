@@ -100,7 +100,7 @@ public class Unit : MonoBehaviour
             case SkillKind.Armor: skill = gameObject.AddComponent<Skill_Armor>(); break;
             case SkillKind.Growth: skill = gameObject.AddComponent<Skill_Growth>(); break;
             case SkillKind.Magnet: skill = gameObject.AddComponent<Skill_Magnet>(); break;
-
+            case SkillKind.BlizzardOrb: skill = gameObject.AddComponent<Skill_BlizzardOrb>(); break;
             default:
                 break;
         }
