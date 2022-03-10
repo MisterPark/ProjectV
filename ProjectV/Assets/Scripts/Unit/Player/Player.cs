@@ -69,13 +69,13 @@ public class Player : Unit
         //AddSkill(SkillKind.FireBolt);
         //AddSkill(SkillKind.ForceFieldBarrier);
         //AddSkill(SkillKind.BlackHole);
-        AddSkill(SkillKind.Laser);
+        //AddSkill(SkillKind.Laser);
         //AddSkill(SkillKind.Lightning);
 
         //AddSkill(SkillKind.FireTornado);
         //AddSkill(SkillKind.RockTotem);
-        AddSkill(SkillKind.ShurikenAttack);
-        //AddSkill(SkillKind.Rain);
+        //AddSkill(SkillKind.ShurikenAttack);
+        AddSkill(SkillKind.Rain);
         OnSkillSelectionCompleted.Invoke();
     }
 

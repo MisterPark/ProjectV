@@ -5,7 +5,7 @@ public class CurrentGameData
 {
     public PlayerCharacterName characterName;
     public int killCount = 0;
-    public int gold = 0;
+    public float gold = 0;
     public float playTime = 0f;
 }
 

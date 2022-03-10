@@ -52,7 +52,9 @@ public class Skill_Rain : Skill
         missile.type = MissileType.Directional;
         missile.isPenetrate = true;
         missile.range = range;
-        missile.radiusSize = range * 4f;
+        var shape = missile.transform.GetChild(0).GetComponent<ParticleSystem>().shape;
+        shape.radius = 4 * range;
+        missile.transform.GetChild(1).localScale = new Vector3(range, range, range);
         //missile.SetTarget(nearest.transform.position + unit.skillOffsetPosition);
         
     }
