@@ -92,6 +92,15 @@ public class Unit : MonoBehaviour
             case SkillKind.ShurikenAttack: skill = gameObject.AddComponent<Skill_ShurikenAttack>(); break;
             case SkillKind.Lightning: skill = gameObject.AddComponent<Skill_Lightning>(); break;
             case SkillKind.Rain: skill = gameObject.AddComponent<Skill_Rain>(); break;
+            case SkillKind.Might: skill = gameObject.AddComponent<Skill_Might>(); break;
+            case SkillKind.Range: skill = gameObject.AddComponent<Skill_Range>(); break;
+            case SkillKind.MoveSpeed: skill = gameObject.AddComponent<Skill_MoveSpeed>(); break;
+            case SkillKind.Speed: skill = gameObject.AddComponent<Skill_Speed>(); break;
+            case SkillKind.MaxHp: skill = gameObject.AddComponent<Skill_MaxHp>(); break;
+            case SkillKind.Armor: skill = gameObject.AddComponent<Skill_Armor>(); break;
+            case SkillKind.Growth: skill = gameObject.AddComponent<Skill_Growth>(); break;
+            case SkillKind.Magnet: skill = gameObject.AddComponent<Skill_Magnet>(); break;
+
             default:
                 break;
         }

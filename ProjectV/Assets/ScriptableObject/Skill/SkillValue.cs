@@ -16,6 +16,14 @@ public enum SkillKind
     ShurikenAttack,
     Lightning,
     Rain,
+    Might,
+    Range,
+    MoveSpeed,
+    Speed,
+    MaxHp,
+    Armor,
+    Growth,
+    Magnet,
     End,
 }
 [System.Serializable]

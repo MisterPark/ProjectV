@@ -42,22 +42,28 @@ public abstract class Skill : MonoBehaviour
 
     void FixedUpdate()
     {
-        tick += Time.fixedDeltaTime;
-        if (tick >= cooltime)
+        if (Type == SkillType.Active)
         {
-            tick = 0f;
-            for(int i = 0; i < amount; i++)
+            tick += Time.fixedDeltaTime;
+            if (tick >= cooltime)
             {
-                Active();
+                tick = 0f;
+                for (int i = 0; i < amount; i++)
+                {
+
+                    Active();
+
+                }
             }
         }
     }
-
     void SetValueFromSkillData(int level)
     {
+
         SkillData data = DataManager.Instance.skillDatas[(int)Kind].skillData;
         SkillLevel skillLevel = level.ToSkillLevel();
         SkillValue value = data.values[(int)skillLevel];
+
 
         int additionalAmount = Mathf.RoundToInt(unit.stat.Get_FinalStat(StatType.Amount));
         float cooltimeReduce = unit.stat.Get_FinalStat(StatType.Cooldown);
@@ -72,8 +78,11 @@ public abstract class Skill : MonoBehaviour
         delay = value.delay;
         range = value.range;
         speed = value.speed * additionalSpeed;
+        if (Type == SkillType.Passive)
+        {
+            Active();
+        }
     }
-
     public void LevelUp()
     {
         if(level == maxLevel)
