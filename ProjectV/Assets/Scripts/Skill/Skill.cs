@@ -95,4 +95,26 @@ public abstract class Skill : MonoBehaviour
         OnLevelUp?.Invoke(level);
     }
 
+    public void UpdateSkillData()
+    {
+        SkillData data = DataManager.Instance.skillDatas[(int)Kind].skillData;
+        SkillLevel skillLevel = level.ToSkillLevel();
+        SkillValue value = data.values[(int)skillLevel];
+
+
+        int additionalAmount = Mathf.RoundToInt(unit.stat.Get_FinalStat(StatType.Amount));
+        float cooltimeReduce = unit.stat.Get_FinalStat(StatType.Cooldown);
+        float additionalDamage = unit.stat.Get_FinalStat(StatType.Might);
+        float additionalDuration = unit.stat.Get_FinalStat(StatType.Duration);
+        float additionalSpeed = unit.stat.Get_FinalStat(StatType.Speed);
+
+        amount = value.amount + additionalAmount;
+        cooltime = value.cooltime * cooltimeReduce;
+        damage = value.damage * additionalDamage;
+        duration = value.duration * additionalDuration;
+        delay = value.delay;
+        range = value.range;
+        speed = value.speed * additionalSpeed;
+    }
+
 }
