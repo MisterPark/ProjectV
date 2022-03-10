@@ -185,4 +185,13 @@ public class Unit : MonoBehaviour
             stat.RecoverToFull();
         }
     }
+
+    public void UpdateSkillData()
+    {
+        foreach (var skill in skillList)
+        {
+            if (skill.Type == SkillType.Passive) continue;
+            skill.UpdateSkillData();
+        }
+    }
 }
