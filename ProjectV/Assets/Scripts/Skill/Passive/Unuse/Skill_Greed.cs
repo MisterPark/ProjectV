@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Skill_MaxHp : Skill
+public class Skill_Greed : Skill
 {
     protected override void Awake()
     {
-        Kind = SkillKind.MaxHp;
+       //Kind = SkillKind.Greed;
     }
     protected override void Start()
     {
@@ -15,7 +15,7 @@ public class Skill_MaxHp : Skill
     protected override void Active()
     {
         Stat stat = Player.Instance.GetComponent<Stat>();
-        stat.Increase_FinalStat(StatType.MaxHealth);
+        stat.Increase_FinalStat(StatType.Greed);
         Player.Instance.UpdateSkillData();
     }
 }

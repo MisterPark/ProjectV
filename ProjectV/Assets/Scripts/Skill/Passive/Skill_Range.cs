@@ -16,5 +16,6 @@ public class Skill_Range : Skill
     {
         Stat stat = Player.Instance.GetComponent<Stat>();
         stat.Increase_FinalStat(StatType.Area);
+        Player.Instance.UpdateSkillData();
     }
 }

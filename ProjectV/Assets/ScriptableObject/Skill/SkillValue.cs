@@ -19,17 +19,17 @@ public enum SkillKind
     Might,
     Armor,
     MaxHp,
-    Recovery,
-    Cooldown,
+    //Recovery, //추가시 Skill_XXX Awake 수정해줘야함.
+    //Cooldown,
     Range,
     Speed,
-    Duration,
-    Amount,
+    //Duration,
+    //Amount,
     MoveSpeed,
     Magnet,
-    Luck,
+    //Luck,
     Growth,
-    Greed,
+    //Greed,
     End,
 }
 [System.Serializable]

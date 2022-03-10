@@ -16,5 +16,6 @@ public class Skill_Growth : Skill
     {
         Stat stat = Player.Instance.GetComponent<Stat>();
         stat.Increase_FinalStat(StatType.Growth);
+        Player.Instance.UpdateSkillData();
     }
 }

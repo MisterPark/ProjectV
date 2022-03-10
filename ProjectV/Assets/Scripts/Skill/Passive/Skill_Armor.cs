@@ -16,5 +16,6 @@ public class Skill_Armor : Skill
     {
         Stat stat = Player.Instance.GetComponent<Stat>();
         stat.Increase_FinalStat(StatType.Armor);
+        Player.Instance.UpdateSkillData();
     }
 }

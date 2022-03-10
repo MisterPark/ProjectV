@@ -16,5 +16,6 @@ public class Skill_Speed : Skill
     {
         Stat stat = Player.Instance.GetComponent<Stat>();
         stat.Increase_FinalStat(StatType.Speed);
+        Player.Instance.UpdateSkillData();
     }
 }
