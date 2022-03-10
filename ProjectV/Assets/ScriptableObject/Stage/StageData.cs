@@ -6,6 +6,7 @@ using UnityEngine;
 public enum StageKind
 {
     Stage01,
+    Stage02,
     End
 }
 
