@@ -10,13 +10,13 @@ public class SaveDataManager : MonoBehaviour
     public string GameDataFileName = "StarfishData.json"; 
     
 
-    // "¿øÇÏ´Â ÀÌ¸§(¿µ¹®).json"
-    [HideInInspector] public SaveData _saveData;  // DataManager.current¶û °°Àº Æ÷ÀÎÅÍ¶ó ÀÌ°É ¾ø¾ÖµçÁö, ±íÀºº¹»ç ÇÏ´øÁö ÇØ¾ßÇÒµí
+    // "ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Ì¸ï¿½(ï¿½ï¿½ï¿½ï¿½).json"
+    [HideInInspector] public SaveData _saveData;  // DataManager.currentï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¶ï¿½ ï¿½Ì°ï¿½ ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï´ï¿½ï¿½ï¿½ ï¿½Ø¾ï¿½ï¿½Òµï¿½
     public SaveData saveData 
     {
         get 
         { 
-            // °ÔÀÓÀÌ ½ÃÀÛµÇ¸é ÀÚµ¿À¸·Î ½ÇÇàµÇµµ·Ï
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ÛµÇ¸ï¿½ ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Çµï¿½ï¿½ï¿½
             if(_saveData == null)
             { 
                 LoadGameData(); 
@@ -36,23 +36,23 @@ public class SaveDataManager : MonoBehaviour
     }
 
 
-    // ÀúÀåµÈ °ÔÀÓ ºÒ·¯¿À±â
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ò·ï¿½ï¿½ï¿½ï¿½ï¿½
     public void LoadGameData() 
     {
         string filePath = Application.persistentDataPath + GameDataFileName;
         
-        // ÀúÀåµÈ °ÔÀÓÀÌ ÀÖ´Ù¸é
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´Ù¸ï¿½
         if (File.Exists(filePath))
         { 
-            print("ºÒ·¯¿À±â ¼º°ø"); 
+            print("ï¿½Ò·ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½"); 
             string FromJsonData = File.ReadAllText(filePath); 
             _saveData = JsonUtility.FromJson<SaveData>(FromJsonData);
         }
         
-        // ÀúÀåµÈ °ÔÀÓÀÌ ¾ø´Ù¸é
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ù¸ï¿½
         else 
         { 
-            print("»õ·Î¿î ÆÄÀÏ »ý¼º");            
+            print("ï¿½ï¿½ï¿½Î¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");            
             _saveData = new SaveData();
         }
 
@@ -61,28 +61,28 @@ public class SaveDataManager : MonoBehaviour
         dataManager.currentSaveData = _saveData;
     } 
     
-    // °ÔÀÓ ÀúÀåÇÏ±â
+    // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½
     public void SaveGameData() 
     {
         DataManager dataManager = DataManager.Instance;
         _saveData = dataManager.currentSaveData;
         _saveData.totalKillCount += dataManager.currentGameData.killCount;
-        _saveData.totalGold += dataManager.currentGameData.gold;
-        _saveData.currentGold += dataManager.currentGameData.gold;
+        _saveData.totalGold += (int)dataManager.currentGameData.gold;
+        _saveData.currentGold += (int)dataManager.currentGameData.gold;
         _saveData.totalPlayTime += dataManager.currentGameData.totalPlayTime;
         //
         string ToJsonData = JsonUtility.ToJson(saveData); 
         string filePath = Application.persistentDataPath + GameDataFileName; 
         
-        // ÀÌ¹Ì ÀúÀåµÈ ÆÄÀÏÀÌ ÀÖ´Ù¸é µ¤¾î¾²±â
+        // ï¿½Ì¹ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´Ù¸ï¿½ ï¿½ï¿½ï¿½î¾²ï¿½ï¿½
         File.WriteAllText(filePath, ToJsonData);
         
-        print("ÀúÀå¿Ï·á"); 
+        print("ï¿½ï¿½ï¿½ï¿½Ï·ï¿½"); 
 
         
     } 
     
-    // °ÔÀÓÀ» Á¾·áÇÏ¸é ÀÚµ¿ÀúÀåµÇµµ·Ï
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½Çµï¿½ï¿½ï¿½
     private void OnApplicationQuit()
     { 
         SaveGameData(); 

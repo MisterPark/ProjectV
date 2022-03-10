@@ -5,7 +5,7 @@ public class CurrentGameData
 {
     public PlayerCharacterName characterName;
     public int killCount = 0;
-    public int gold = 0;
+    public float gold = 0;
     public System.DateTime startTime;
     public System.TimeSpan totalPlayTime;
 }
@@ -14,27 +14,27 @@ public class DataManager : MonoBehaviour
 {
     public static DataManager Instance;
 
-    // Ä³¸¯ÅÍµé Á¤º¸¿Í ÇöÀç ¼±ÅÃµÈ Ä³¸¯ÅÍ Á¤º¸
+    // Ä³ï¿½ï¿½ï¿½Íµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ãµï¿½ Ä³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 #if UNITY_EDITOR
     [ArrayElementTitle("name")]
 #endif
     public PlayerCharacterNode[] playerCharacterData = new PlayerCharacterNode[(int)PlayerCharacterName.END];
 
-    // »óÁ¡¿¡¼­ ±¸ÀÔÇÑ ½ºÅÈµéÀÌ º¸°üµÇ´Â °÷
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Èµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ç´ï¿½ ï¿½ï¿½
     public float[] powerUpStat = new float[(int)StatType.END];
     [SerializeField]
     private UI_Powerup_statDB powerStatDB;
 
-    // ½ºÅ³ µ¥ÀÌÅÍ
+    // ï¿½ï¿½Å³ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 #if UNITY_EDITOR
     [ArrayElementTitle("kind")]
 #endif
     public SkillDataElement[] skillDatas = new SkillDataElement[(int)SkillKind.End];
 
-    // SaveData ¿¡¼­ °¡Á®¿Â µ¥ÀÌÅÍµé
+    // SaveData ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Íµï¿½
     public SaveData currentSaveData;
 
-    // ÇöÀç ÁøÇàµÇ°í ÀÖ´Â °ÔÀÓ µ¥ÀÌÅÍ
+    // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ç°ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     [SerializeField] public CurrentGameData currentGameData;
 
     [SerializeField] private float moneyInterest_Per;
