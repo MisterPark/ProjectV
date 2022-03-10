@@ -52,9 +52,17 @@ public class Stat : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-
+        // Ã¼Á¨
+        if(stats[(int)StatType.Recovery].final_Stat != 0f)
+        {
+            stats[(int)StatType.Health].final_Stat += stats[(int)StatType.Recovery].final_Stat * Time.fixedDeltaTime;
+            if(stats[(int)StatType.Health].final_Stat > stats[(int)StatType.MaxHealth].final_Stat)
+            {
+                stats[(int)StatType.Health].final_Stat = stats[(int)StatType.MaxHealth].final_Stat;
+            }
+        }
     }
 
     public void Init_LoadStat()
@@ -146,7 +154,7 @@ public class Stat : MonoBehaviour
                 }
             case StatType.Exp:
                 {
-                    stats[(int)StatType.Exp].final_Stat += _count;
+                    stats[(int)StatType.Exp].final_Stat += _count * stats[(int)StatType.Growth].final_Stat;
                     if (stats[(int)StatType.Exp].final_Stat > stats[(int)StatType.MaxExp].final_Stat)
                     {
                         LevelUp();
