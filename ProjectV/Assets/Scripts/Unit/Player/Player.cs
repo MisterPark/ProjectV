@@ -76,7 +76,8 @@ public class Player : Unit
         //AddSkill(SkillKind.RockTotem);
         //AddSkill(SkillKind.ShurikenAttack);
         //AddSkill(SkillKind.Rain);
-        AddSkill(SkillKind.BlizzardOrb);
+        //AddSkill(SkillKind.BlizzardOrb);
+        AddSkill(SkillKind.UnstableMagicMissile);
         OnSkillSelectionCompleted.Invoke();
     }
 
