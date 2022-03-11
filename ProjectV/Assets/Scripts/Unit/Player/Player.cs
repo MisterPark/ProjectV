@@ -252,7 +252,7 @@ public class Player : Unit
 
         if (kinds.Count == 0)
         {
-
+            // TODO : Make HP and Money
         }
         else
         {
