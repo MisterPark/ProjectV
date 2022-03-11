@@ -104,7 +104,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 507996899843175800}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -175,7 +175,7 @@ MonoBehaviour:
   DescriptionName: {fileID: 6542613243983500354}
   DescriptionImage: {fileID: 3882157179422657495}
   DescriptionText: {fileID: 4039678736781779617}
-  SlotYPosition: -80
+  SlotYPosition: -110
   SlotYPadding: 20
 --- !u!1 &588629544100027444
 GameObject:
@@ -667,7 +667,7 @@ MonoBehaviour:
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 1
+  m_ScrollSensitivity: 60
   m_Viewport: {fileID: 4379478461847173953}
   m_HorizontalScrollbar: {fileID: 0}
   m_VerticalScrollbar: {fileID: 7801176441543484123}
@@ -799,7 +799,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1824563216126996288}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.6740492
+  m_Size: 0.5073825
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
