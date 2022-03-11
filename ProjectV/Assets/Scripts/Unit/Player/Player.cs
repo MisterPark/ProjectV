@@ -139,12 +139,10 @@ public class Player : Unit
 
     void OnDeadCallback()
     {
-        // �÷��̾ �׾��� ��
     }
 
     void OnLevelUpCallback(int level)
     {
-        // �÷��̾ ������ ���� ��
         GameManager.Instance.Pause();
         GameManager.Instance.ShowCursor();
 
@@ -156,7 +154,6 @@ public class Player : Unit
 
     void OnSelectSkill(SkillKind kind)
     {
-        // ������ �� ��ų �������� ��
         GameManager.Instance.Resume();
         GameManager.Instance.HideCursor();
 
@@ -237,34 +234,26 @@ public class Player : Unit
         List<Skill> actives = GetActiveSkills();
         List<Skill> passives = GetPassiveSkills();
 
-        // �߰� ������ ��ų�� ����
         List<SkillKind> kinds = new List<SkillKind>();
 
-        // �߰� �������� �Ÿ��� ����
         for (int index = (int)SkillKind.IceBolt; index < (int)SkillKind.End; index++)
         {
             SkillKind kind = (SkillKind)index;
             SkillType type = kind.GetSkillType();
             Skill skill = FindSkill(kind);
-            // ���⼭ �ɷ��� ��
 
-            // ��Ƽ���϶� ��Ƽ�갡 ��á�°�?
             if (type == SkillType.Active && skill == null && actives.Count >= 6) continue;
-            // �нú��϶� �нú갡 ��á�°�?
             if (type == SkillType.Passive && skill == null && passives.Count >= 6) continue;
-            // �����ΰ�?
             if (skill != null && skill.IsMaxLevel) continue;
 
             kinds.Add(kind);
         }
 
-        // TODO : ���� ��� �ɷ������� ü�� or ġŲ
         if(kinds.Count == 0)
         {
             
         }
 
-        // TODO : ������� 4������ �����ϰ� �ٲ����
         int maxCount = 3;
         int count = 0;
 
