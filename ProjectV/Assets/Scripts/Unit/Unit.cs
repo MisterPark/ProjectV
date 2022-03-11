@@ -111,6 +111,42 @@ public class Unit : MonoBehaviour
         }
     }
 
+    public void RemoveSkill(SkillKind kind)
+    {
+        Skill skill = null;
+
+        switch (kind)
+        {
+            case SkillKind.IceBolt: skill = gameObject.GetComponent<Skill_IceBolt>(); break;
+            case SkillKind.FireBolt: skill = gameObject.GetComponent<Skill_FireBolt>(); break;
+            case SkillKind.ForceFieldBarrier: skill = gameObject.GetComponent<Skill_ForceFieldBarrier>(); break;
+            case SkillKind.BlackHole: skill = gameObject.GetComponent<Skill_BlackHole>(); break;
+            case SkillKind.Laser: skill = gameObject.GetComponent<Skill_Laser>(); break;
+            case SkillKind.FireTornado: skill = gameObject.GetComponent<Skill_FireTornado>(); break;
+            case SkillKind.RockTotem: skill = gameObject.GetComponent<Skill_RockTotem>(); break;
+            case SkillKind.ShurikenAttack: skill = gameObject.GetComponent<Skill_ShurikenAttack>(); break;
+            case SkillKind.Lightning: skill = gameObject.GetComponent<Skill_Lightning>(); break;
+            case SkillKind.Rain: skill = gameObject.GetComponent<Skill_Rain>(); break;
+            case SkillKind.Might: skill = gameObject.GetComponent<Skill_Might>(); break;
+            case SkillKind.Range: skill = gameObject.GetComponent<Skill_Range>(); break;
+            case SkillKind.MoveSpeed: skill = gameObject.GetComponent<Skill_MoveSpeed>(); break;
+            case SkillKind.Speed: skill = gameObject.GetComponent<Skill_Speed>(); break;
+            case SkillKind.MaxHp: skill = gameObject.GetComponent<Skill_MaxHp>(); break;
+            case SkillKind.Armor: skill = gameObject.GetComponent<Skill_Armor>(); break;
+            case SkillKind.Growth: skill = gameObject.GetComponent<Skill_Growth>(); break;
+            case SkillKind.Magnet: skill = gameObject.GetComponent<Skill_Magnet>(); break;
+            case SkillKind.BlizzardOrb: skill = gameObject.GetComponent<Skill_BlizzardOrb>(); break;
+            default:
+                break;
+        }
+
+        if(skill != null)
+        {
+            skillList.Remove(skill);
+            Destroy(skill);
+        }
+    }
+
     public void Freeze(float time)
     {
         freezeTime = time;
