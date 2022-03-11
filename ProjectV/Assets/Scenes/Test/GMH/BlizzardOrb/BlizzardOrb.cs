@@ -38,9 +38,9 @@ public class BlizzardOrb : MonoBehaviour
             missile.team = parentMissile.team;
             missile.owner = parentMissile.owner;
             missile.duration = parentMissile.duration;
-            missile.damage = parentMissile.damage;
+            missile.damage = parentMissile.damage*0.6f;
             missile.range = parentMissile.range;
-            missile.speed = parentMissile.speed*3;
+            missile.speed = parentMissile.speed*2;
             missile.type = MissileType.Directional;
 
             Quaternion v3Rotation = Quaternion.Euler(0f, angle, 0f);
