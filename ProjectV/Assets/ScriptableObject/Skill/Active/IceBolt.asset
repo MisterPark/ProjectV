@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa5b1d46e8056fb4c918683aef013bb6, type: 3}
   m_Name: IceBolt
   m_EditorClassIdentifier: 
+  maxLevel: 8
   skillName: Ice Bolt
   icon: {fileID: 21300000, guid: 57d56de06b4a934499d941e3fc9a66da, type: 3}
   kind: 1
@@ -84,7 +85,7 @@ MonoBehaviour:
   - level: 7
     description: 
     cooltime: 1
-    damage: 15
+    damage: 3
     duration: 5
     delay: 0
     speed: 9
