@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UI_Equipment : MonoBehaviour
 {
-
+    public bool isTextHide = false;
     private RectTransform rectTransform;
     [SerializeField] private RectTransform background;
     public UI_SlotInfomation[] activeSlot;
@@ -16,6 +17,11 @@ public class UI_Equipment : MonoBehaviour
         rectTransform = GetComponent<RectTransform>();
         Player.Instance.OnSkillSelectionCompleted.AddListener(OnSkillSeletionCompleteCallback);
         HideAllSlot();
+        if(isTextHide)
+        {
+            ResetSize();
+            HideText();
+        }
     }
 
     public void SetSkillInfomations(List<Skill> skills)
@@ -72,5 +78,44 @@ public class UI_Equipment : MonoBehaviour
         {
             passiveSlot[i].Hide();
         }
+    }
+
+    private void ResetSize()
+    {
+        Vector2 vecSize = transform.parent.GetComponent<RectTransform>().sizeDelta;
+        int size = Mathf.RoundToInt((vecSize.x * 0.034f));
+        int width = size * 6;
+        int height = size * 2;
+        float posY = vecSize.y * 0.05f;
+        rectTransform.sizeDelta = new Vector2(width, height);
+        rectTransform.anchoredPosition = new Vector2(0f, -posY - 1f);
+    }
+
+    private void HideText()
+    {
+        RectTransform image;
+        int activeCnt = activeSlot.Length;
+        int passiveCnt = passiveSlot.Length;
+        for (int i = 0; i < activeCnt; i++)
+        {
+            activeSlot[i].text.gameObject.SetActive(false);
+            image = activeSlot[i].icon.gameObject.GetComponent<RectTransform>();
+            image.anchorMin = new Vector2(0f, 0f);
+            image.anchorMax = new Vector2(1f, 1f);
+            image.pivot = new Vector2(0.5f, 0.5f);
+            image.sizeDelta = Vector2.zero;
+            image.anchoredPosition = Vector2.zero;
+        }
+        for (int i = 0; i < passiveCnt; i++)
+        {
+            passiveSlot[i].text.gameObject.SetActive(false);
+            image = passiveSlot[i].icon.gameObject.GetComponent<RectTransform>();
+            image.anchorMin = new Vector2(0f, 0f);
+            image.anchorMax = new Vector2(1f, 1f);
+            image.pivot = new Vector2(0.5f, 0.5f);
+            image.sizeDelta = Vector2.zero;
+            image.anchoredPosition = Vector2.zero;
+        }
+        background.GetComponent<Image>().color = new Color(1f, 1f, 1f, 0f);
     }
 }
