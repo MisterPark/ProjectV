@@ -77,7 +77,12 @@ public class Main_Title_SC : MonoBehaviour
     }
 
     public void OnClickOption()
-    { }
+    {
+        if(!UIManager.Instance.GetUIActive("Option Panel"))
+        {
+            UIManager.Instance.SetUIActive("Option Panel", true);
+        }
+    }
     public void OnClickPowerup()
     {
         KeyboardCursor_Image.gameObject.SetActive(false);
