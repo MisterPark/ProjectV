@@ -9,7 +9,6 @@ public abstract class Skill : MonoBehaviour
 {
     public Sprite icon;
     public int level = 1;
-    public int maxLevel = 8;
     public SkillKind Kind;
     public SkillType Type { get { return Kind.GetSkillType(); } }
     public float cooltime = 0.5f;
@@ -23,8 +22,8 @@ public abstract class Skill : MonoBehaviour
     public UnityEvent<int> OnLevelUp = new UnityEvent<int>();
 
     public SkillData SkillData { get { return DataManager.Instance.skillDatas[(int)Kind].skillData; } }
-    public bool IsMaxLevel { get { return level == maxLevel; } }
-
+    public int MaxLevel { get { return SkillData.maxLevel; } }
+    public bool IsMaxLevel { get { return level == MaxLevel; } }
     Unit unit;
     float tick = 0f;
 
@@ -86,7 +85,7 @@ public abstract class Skill : MonoBehaviour
     }
     public void LevelUp()
     {
-        if(level == maxLevel)
+        if(level == MaxLevel)
         {
             return;
         }

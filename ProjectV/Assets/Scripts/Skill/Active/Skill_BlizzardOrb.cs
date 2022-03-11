@@ -44,8 +44,7 @@ public class Skill_BlizzardOrb : Skill
         missile.type = MissileType.Directional;
         missile.isPenetrate = true;
         missile.SetTarget(nearest.transform.position + unit.skillOffsetPosition);
-        //missile.OnCollision.RemoveAllListeners();
-        //missile.OnCollision.AddListener(OnCollisionCallback);
+        //Ref. BlizzardOrb Script
     }
 
     void OnCollisionCallback(Vector3 pos, Unit other)

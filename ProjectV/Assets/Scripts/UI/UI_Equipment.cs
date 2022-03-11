@@ -33,7 +33,7 @@ public class UI_Equipment : MonoBehaviour
             if (data.type == SkillType.Active)
             {
                 activeSlot[i].icon.sprite = data.icon;
-                if (skill.level != skill.maxLevel)
+                if (skill.level != skill.MaxLevel)
                     activeSlot[i].text.text = "LV. " + skill.level.ToString();
                 else
                     activeSlot[i].text.text = "LV. " +
@@ -44,7 +44,7 @@ public class UI_Equipment : MonoBehaviour
             else if(data.type == SkillType.Passive)
             {
                 passiveSlot[j].icon.sprite = data.icon;
-                if (skill.level != skill.maxLevel)
+                if (skill.level != skill.MaxLevel)
                     passiveSlot[j].text.text = "LV. " + skill.level.ToString();
                 else
                     passiveSlot[j].text.text = "LV. " +
