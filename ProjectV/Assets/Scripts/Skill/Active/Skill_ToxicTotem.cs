@@ -1,22 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Skill_RockTotem : Skill
+public class Skill_ToxicTotem : Skill
 {
     protected override void Awake()
     {
-        Kind = SkillKind.RockTotem;
+        Kind = SkillKind.ToxicTotem;
     }
     protected override void Start()
     {
-        Kind = SkillKind.RockTotem;
+        Kind = SkillKind.ToxicTotem;
         base.Start();
     }
 
     protected override void Active()
     {
-        GameObject obj = ObjectPool.Instance.Allocate("RockTotem");
+        GameObject obj = ObjectPool.Instance.Allocate("ToxicTotem");
 
         Unit unit = GetComponent<Unit>();
         if (unit == null)

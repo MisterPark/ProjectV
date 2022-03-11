@@ -12,7 +12,7 @@ public enum SkillKind
     BlackHole,
     Laser,
     FireTornado,
-    RockTotem,
+    ToxicTotem,
     ShurikenAttack,
     Lightning,
     Rain,
