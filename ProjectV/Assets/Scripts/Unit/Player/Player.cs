@@ -237,53 +237,52 @@ public class Player : Unit
         List<Skill> actives = GetActiveSkills();
         List<Skill> passives = GetPassiveSkills();
 
-        // �߰� ������ ��ų�� ����
         List<SkillKind> kinds = new List<SkillKind>();
 
-        // �߰� �������� �Ÿ��� ����
         for (int index = (int)SkillKind.IceBolt; index < (int)SkillKind.End; index++)
         {
             SkillKind kind = (SkillKind)index;
             SkillType type = kind.GetSkillType();
             Skill skill = FindSkill(kind);
-            // ���⼭ �ɷ��� ��
 
-            // ��Ƽ���϶� ��Ƽ�갡 ��á�°�?
             if (type == SkillType.Active && skill == null && actives.Count >= 6) continue;
-            // �нú��϶� �нú갡 ��á�°�?
             if (type == SkillType.Passive && skill == null && passives.Count >= 6) continue;
-            // �����ΰ�?
             if (skill != null && skill.IsMaxLevel) continue;
 
             kinds.Add(kind);
         }
 
-        // TODO : ���� ��� �ɷ������� ü�� or ġŲ
-        if(kinds.Count == 0)
+
+        if (kinds.Count == 0)
         {
-            
+
         }
-
-        // TODO : ������� 4������ �����ϰ� �ٲ����
-        int maxCount = 3;
-        int count = 0;
-
-        while(count < maxCount)
+        else
         {
-            if (kinds.Count == 0) break;
-            int random = Random.Range(0, kinds.Count);
-            SkillKind kind = kinds[random];
-            Skill skill = FindSkill(kind);
-            int nextLevel = 1;
-            if (skill != null)
+            int maxCount = 3;
+            int count = 0;
+
+            while (count < maxCount)
             {
-                nextLevel = skill.level + 1;
+                if (kinds.Count == 0) break;
+                int random = Random.Range(0, kinds.Count);
+                SkillKind kind = kinds[random];
+                Skill skill = FindSkill(kind);
+                int nextLevel = 1;
+                if (skill != null)
+                {
+                    nextLevel = skill.level + 1;
+                }
+                SkillInformation info = new SkillInformation(kind, nextLevel);
+                skillInfos.Add(info);
+                kinds.RemoveAt(random);
+                count++;
             }
-            SkillInformation info = new SkillInformation(kind, nextLevel);
-            skillInfos.Add(info);
-            kinds.RemoveAt(random);
-            count++;
         }
+
+        
+
+
 
 
         return skillInfos;
