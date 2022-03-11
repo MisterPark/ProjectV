@@ -88,7 +88,7 @@ public class Unit : MonoBehaviour
             case SkillKind.BlackHole: skill = gameObject.AddComponent<Skill_BlackHole>(); break;
             case SkillKind.Laser: skill = gameObject.AddComponent<Skill_Laser>(); break;
             case SkillKind.FireTornado: skill = gameObject.AddComponent<Skill_FireTornado>(); break;
-            case SkillKind.RockTotem: skill = gameObject.AddComponent<Skill_RockTotem>(); break;
+            case SkillKind.ToxicTotem: skill = gameObject.AddComponent<Skill_ToxicTotem>(); break;
             case SkillKind.ShurikenAttack: skill = gameObject.AddComponent<Skill_ShurikenAttack>(); break;
             case SkillKind.Lightning: skill = gameObject.AddComponent<Skill_Lightning>(); break;
             case SkillKind.Rain: skill = gameObject.AddComponent<Skill_Rain>(); break;
@@ -101,6 +101,7 @@ public class Unit : MonoBehaviour
             case SkillKind.Growth: skill = gameObject.AddComponent<Skill_Growth>(); break;
             case SkillKind.Magnet: skill = gameObject.AddComponent<Skill_Magnet>(); break;
             case SkillKind.BlizzardOrb: skill = gameObject.AddComponent<Skill_BlizzardOrb>(); break;
+            case SkillKind.UnstableMagicMissile: skill = gameObject.AddComponent<Skill_UnstableMagicMissile>(); break;
             default:
                 break;
         }
@@ -123,7 +124,7 @@ public class Unit : MonoBehaviour
             case SkillKind.BlackHole: skill = gameObject.GetComponent<Skill_BlackHole>(); break;
             case SkillKind.Laser: skill = gameObject.GetComponent<Skill_Laser>(); break;
             case SkillKind.FireTornado: skill = gameObject.GetComponent<Skill_FireTornado>(); break;
-            case SkillKind.RockTotem: skill = gameObject.GetComponent<Skill_RockTotem>(); break;
+            case SkillKind.ToxicTotem: skill = gameObject.GetComponent<Skill_ToxicTotem>(); break;
             case SkillKind.ShurikenAttack: skill = gameObject.GetComponent<Skill_ShurikenAttack>(); break;
             case SkillKind.Lightning: skill = gameObject.GetComponent<Skill_Lightning>(); break;
             case SkillKind.Rain: skill = gameObject.GetComponent<Skill_Rain>(); break;

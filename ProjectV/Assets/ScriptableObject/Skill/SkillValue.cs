@@ -12,7 +12,7 @@ public enum SkillKind
     BlackHole,
     Laser,
     FireTornado,
-    RockTotem,
+    ToxicTotem,
     ShurikenAttack,
     Lightning,
     Rain,
@@ -31,6 +31,7 @@ public enum SkillKind
     Growth,
     //Greed,
     BlizzardOrb,
+    UnstableMagicMissile,
     End,
 }
 [System.Serializable]

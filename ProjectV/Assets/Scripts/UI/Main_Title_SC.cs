@@ -54,6 +54,7 @@ public class Main_Title_SC : MonoBehaviour
     {
         Transform tempobject = UIManager.Instance.GetUIObject("Powerup_Panel").transform;
         Transform tempobject2 = UIManager.Instance.GetUIObject("CharacterSelectPanel").transform;
+        Transform tempobject3 = UIManager.Instance.GetUIObject("StageSelectPanel").transform;
         if (tempobject.gameObject.activeSelf)
         {
             tempobject.gameObject.SetActive(false);
@@ -66,6 +67,11 @@ public class Main_Title_SC : MonoBehaviour
             transform.Find("Start_Button").gameObject.SetActive(true);
             transform.Find("Powerup_Button").gameObject.SetActive(true);
         }
+        else if (tempobject3.gameObject.activeSelf)
+        {
+            tempobject3.gameObject.SetActive(false);
+            tempobject2.gameObject.SetActive(true);
+        }
         else
         {
 #if UNITY_EDITOR
@@ -77,7 +83,12 @@ public class Main_Title_SC : MonoBehaviour
     }
 
     public void OnClickOption()
-    { }
+    {
+        if(!UIManager.Instance.GetUIActive("Option Panel"))
+        {
+            UIManager.Instance.SetUIActive("Option Panel", true);
+        }
+    }
     public void OnClickPowerup()
     {
         KeyboardCursor_Image.gameObject.SetActive(false);

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa5b1d46e8056fb4c918683aef013bb6, type: 3}
   m_Name: FireBolt
   m_EditorClassIdentifier: 
+  maxLevel: 8
   skillName: Fire Bolt
   icon: {fileID: 21300000, guid: 9d1b929d8ff2c8d469fc3ba266424534, type: 3}
   kind: 2
@@ -19,7 +20,8 @@ MonoBehaviour:
   grade: 0
   values:
   - level: 0
-    description: 
+    description: "\uC801\uC744 \uD5A5\uD574 \uBD88\uAF43 \uD22C\uC0AC\uCCB4\uB97C
+      \uB0A0\uB9BD\uB2C8\uB2E4."
     cooltime: 1
     damage: 15
     duration: 5

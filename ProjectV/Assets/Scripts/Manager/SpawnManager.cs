@@ -105,7 +105,7 @@ public class SpawnManager : MonoBehaviour
         int spawnCount = MaxSpawnCount - spawnList.Count;
         for (int i = 0; i < spawnCount; i++)
         {
-            int index = UnityEngine.Random.Range(0, monsterList.Count - 1);
+            int index = UnityEngine.Random.Range(0, monsterList.Count);
             float angle = UnityEngine.Random.Range(-180, 180);
             float dist = 30f;
             Vector3 pos = new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle)) * dist;

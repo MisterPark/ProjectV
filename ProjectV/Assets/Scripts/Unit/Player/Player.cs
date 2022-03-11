@@ -73,10 +73,10 @@ public class Player : Unit
         //AddSkill(SkillKind.Lightning);
 
         //AddSkill(SkillKind.FireTornado);
-        //AddSkill(SkillKind.RockTotem);
+        AddSkill(SkillKind.ToxicTotem);
         //AddSkill(SkillKind.ShurikenAttack);
         //AddSkill(SkillKind.Rain);
-        AddSkill(SkillKind.BlizzardOrb);
+        //AddSkill(SkillKind.BlizzardOrb);
         OnSkillSelectionCompleted.Invoke();
     }
 
@@ -139,12 +139,10 @@ public class Player : Unit
 
     void OnDeadCallback()
     {
-        // �÷��̾ �׾��� ��
     }
 
     void OnLevelUpCallback(int level)
     {
-        // �÷��̾ ������ ���� ��
         GameManager.Instance.Pause();
         GameManager.Instance.ShowCursor();
 
@@ -156,7 +154,6 @@ public class Player : Unit
 
     void OnSelectSkill(SkillKind kind)
     {
-        // ������ �� ��ų �������� ��
         GameManager.Instance.Resume();
         GameManager.Instance.HideCursor();
 
