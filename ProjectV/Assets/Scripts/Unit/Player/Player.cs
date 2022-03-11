@@ -62,20 +62,21 @@ public class Player : Unit
 
         // 캐릭터 기본스킬
         PlayerCharacterName charName = DataManager.Instance.currentGameData.characterName;
-        SkillKind skillKind = DataManager.Instance.playerCharacterData[(int)charName].firstSkill;
-        AddSkill(skillKind);
+        //SkillKind skillKind = DataManager.Instance.playerCharacterData[(int)charName].firstSkill;
+        //AddSkill(skillKind);
 
         //AddSkill(SkillKind.IceBolt);
         //AddSkill(SkillKind.FireBolt);
         //AddSkill(SkillKind.ForceFieldBarrier);
         //AddSkill(SkillKind.BlackHole);
-        AddSkill(SkillKind.Laser);
+        //AddSkill(SkillKind.Laser);
         //AddSkill(SkillKind.Lightning);
 
         //AddSkill(SkillKind.FireTornado);
         //AddSkill(SkillKind.RockTotem);
-        AddSkill(SkillKind.ShurikenAttack);
+        //AddSkill(SkillKind.ShurikenAttack);
         //AddSkill(SkillKind.Rain);
+        AddSkill(SkillKind.BlizzardOrb);
         OnSkillSelectionCompleted.Invoke();
     }
 

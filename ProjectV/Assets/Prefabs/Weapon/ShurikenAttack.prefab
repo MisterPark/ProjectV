@@ -4873,8 +4873,6 @@ MonoBehaviour:
   isPull: 0
   isPenetrate: 0
   isRotate: 0
-  colliderSize: {x: 0, y: 0, z: 0}
-  colliderCenter: {x: 0, y: 0, z: 0}
   owner: {fileID: 0}
   OnCollision:
     m_PersistentCalls:
@@ -4974,7 +4972,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d889f5d5bb09a9c4bb5e7570b41ae9a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 5
+  rotationSpeed: 1000
   RotateX: 0
   RotateY: 1
   RotateZ: 0

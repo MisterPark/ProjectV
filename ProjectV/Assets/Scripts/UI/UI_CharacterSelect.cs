@@ -54,6 +54,7 @@ public class UI_CharacterSelect : MonoBehaviour
         WeaponImage.sprite = selectobject.GetComponent<UI_CharacterSlot>().WeaponImage.sprite;
         DescriptionText.text = selectobject.GetComponent<UI_CharacterSlot>().m_CharacterDescription;
         CurrentClickPlayerCharacter = selectobject.GetComponent<UI_CharacterSlot>().CharacterIndex;
+        DataManager.Instance.Setting_PowerStat();
     }
 
     void SlotInit()
@@ -88,7 +89,7 @@ public class UI_CharacterSelect : MonoBehaviour
     public void OnClickCharacterSelectOKButton()
     {
         DataManager.Instance.currentGameData.characterName = CurrentClickPlayerCharacter;
-        DataManager.Instance.Setting_PowerStat();
-        SceneManager.LoadScene(UIManager.Instance.StartSceneName);
+        gameObject.SetActive(false);
+        UIManager.Instance.SetUIActive("StageSelectPanel", true);
     }
 }

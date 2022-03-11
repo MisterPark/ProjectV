@@ -16,6 +16,21 @@ public enum SkillKind
     ShurikenAttack,
     Lightning,
     Rain,
+    Might,
+    Armor,
+    MaxHp,
+    //Recovery, //추가시 Skill_XXX Awake 수정해줘야함.
+    //Cooldown,
+    Range,
+    Speed,
+    //Duration,
+    //Amount,
+    MoveSpeed,
+    Magnet,
+    //Luck,
+    Growth,
+    //Greed,
+    BlizzardOrb,
     End,
 }
 [System.Serializable]
