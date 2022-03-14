@@ -25,7 +25,7 @@ public class ObjectPool : MonoBehaviour
     {
         if (!_pools.ContainsKey(key))
         {
-            Debug.LogError($"can't find key : {key}");
+            _pools.Add(key, new Stack<GameObject>());
         }
 
         if (_pools[key].Count == 0)
