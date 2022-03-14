@@ -73,10 +73,11 @@ public class Player : Unit
         //AddSkill(SkillKind.Lightning);
 
         //AddSkill(SkillKind.FireTornado);
-        AddSkill(SkillKind.ToxicTotem);
+        //AddSkill(SkillKind.ToxicTotem);
         //AddSkill(SkillKind.ShurikenAttack);
         //AddSkill(SkillKind.Rain);
         //AddSkill(SkillKind.BlizzardOrb);
+        AddSkill(SkillKind.Meteor);
         OnSkillSelectionCompleted.Invoke();
     }
 

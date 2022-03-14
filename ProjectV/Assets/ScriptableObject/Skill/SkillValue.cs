@@ -32,6 +32,7 @@ public enum SkillKind
     //Greed,
     BlizzardOrb,
     UnstableMagicMissile,
+    Meteor,
     End,
 }
 [System.Serializable]
