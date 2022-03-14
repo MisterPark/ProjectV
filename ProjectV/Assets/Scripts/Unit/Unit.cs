@@ -103,6 +103,7 @@ public class Unit : MonoBehaviour
             case SkillKind.BlizzardOrb: skill = gameObject.AddComponent<Skill_BlizzardOrb>(); break;
             case SkillKind.UnstableMagicMissile: skill = gameObject.AddComponent<Skill_UnstableMagicMissile>(); break;
             case SkillKind.HeavyFireBall: skill = gameObject.AddComponent<Skill_HeavyFireBall>(); break;
+            case SkillKind.Meteor: skill = gameObject.AddComponent<Skill_Meteor>(); break;
             default:
                 break;
         }
@@ -138,6 +139,8 @@ public class Unit : MonoBehaviour
             case SkillKind.Growth: skill = gameObject.GetComponent<Skill_Growth>(); break;
             case SkillKind.Magnet: skill = gameObject.GetComponent<Skill_Magnet>(); break;
             case SkillKind.BlizzardOrb: skill = gameObject.GetComponent<Skill_BlizzardOrb>(); break;
+            case SkillKind.UnstableMagicMissile: skill = gameObject.GetComponent<Skill_UnstableMagicMissile>(); break;
+            case SkillKind.Meteor: skill = gameObject.GetComponent<Skill_Meteor>(); break;
             default:
                 break;
         }
