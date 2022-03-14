@@ -77,6 +77,7 @@ public class Player : Unit
         //AddSkill(SkillKind.ShurikenAttack);
         //AddSkill(SkillKind.Rain);
         //AddSkill(SkillKind.BlizzardOrb);
+        AddSkill(SkillKind.Meteor);
         OnSkillSelectionCompleted.Invoke();
     }
 

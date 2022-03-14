@@ -21,7 +21,7 @@ public class ProjectileMoveTutScript : MonoBehaviour
     {
         if(speed!=0&&rb!=null)
         {
-            rb.position+=transform.forward*(speed*Time.deltaTime);
+            rb.position+=transform.forward*(speed*Time.fixedDeltaTime);
         }
     }
 
@@ -35,7 +35,7 @@ public class ProjectileMoveTutScript : MonoBehaviour
 
         if(impactPrefab!=null)
         {
-            var impactVFX = Instantiate(impactPrefab, pos, rot) as GameObject;
+            var impactVFX = ObjectPool.Instance.Allocate("MeteorHit", pos, rot) as GameObject;
             Destroy(impactVFX, 5);
 
         }
