@@ -36,6 +36,7 @@ public class Skill_Lightning : Skill
         missile.owner = unit;
         missile.duration = duration;
         missile.damage = damage;
+        missile.range = range;
         missile.SetTarget(random.transform.position);
     }
 }

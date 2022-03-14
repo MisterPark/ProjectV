@@ -62,7 +62,7 @@ public class Player : Unit
 
         // 캐릭터 기본스킬
         PlayerCharacterName charName = DataManager.Instance.currentGameData.characterName;
-        //SkillKind skillKind = DataManager.Instance.playerCharacterData[(int)charName].firstSkill;
+        SkillKind skillKind = DataManager.Instance.playerCharacterData[(int)charName].firstSkill;
         //AddSkill(skillKind);
 
         //AddSkill(SkillKind.IceBolt);
@@ -70,7 +70,7 @@ public class Player : Unit
         //AddSkill(SkillKind.ForceFieldBarrier);
         //AddSkill(SkillKind.BlackHole);
         //AddSkill(SkillKind.Laser);
-        //AddSkill(SkillKind.Lightning);
+        AddSkill(SkillKind.Lightning);
 
         //AddSkill(SkillKind.FireTornado);
         //AddSkill(SkillKind.ToxicTotem);
@@ -144,13 +144,13 @@ public class Player : Unit
 
     void OnLevelUpCallback(int level)
     {
-        GameManager.Instance.Pause();
-        GameManager.Instance.ShowCursor();
+        //GameManager.Instance.Pause();
+        //GameManager.Instance.ShowCursor();
 
-        List<SkillInformation> skillInfos = MakeNewSkillInformations();
+        //List<SkillInformation> skillInfos = MakeNewSkillInformations();
 
-        UI_LevelUp.instance.SetSkillInfomations(skillInfos);
-        UI_LevelUp.instance.Show();
+        //UI_LevelUp.instance.SetSkillInfomations(skillInfos);
+        //UI_LevelUp.instance.Show();
     }
 
     void OnSelectSkill(SkillKind kind)
