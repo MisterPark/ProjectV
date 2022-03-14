@@ -40,4 +40,31 @@ public class SkillObject_HeavyFireBall : SkillObject
 
 
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Board")
+        {
+            //GameObject obj = ObjectPool.Instance.Allocate("MeteorHit");
+            //obj.transform.position = new Vector3(gameObject.transform.position.x, 0f, gameObject.transform.position.z);
+            tick = duration;
+
+            GameObject obj = ObjectPool.Instance.Allocate("HeavyFireBallImpact");
+            Missile missile = obj.GetComponent<Missile>();
+            missile.Initialize();
+            missile.transform.position = transform.position;
+            missile.team = team;
+            missile.owner = owner;
+            missile.duration = 0.3f;
+            missile.damage = damage;
+            missile.range = range;
+            missile.speed = speed;
+            missile.delay = delay;
+            missile.isPenetrate = true;
+            missile.type = MissileType.Other;
+
+            //missile.OnCollision.RemoveAllListeners();
+            //missile.OnCollision.AddListener(OnCollisionCallback);
+        }
+    }
 }
