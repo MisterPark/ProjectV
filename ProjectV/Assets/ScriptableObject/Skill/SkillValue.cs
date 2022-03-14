@@ -31,6 +31,7 @@ public enum SkillKind
     Growth,
     //Greed,
     BlizzardOrb,
+    UnstableMagicMissile,
     End,
 }
 [System.Serializable]

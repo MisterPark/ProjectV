@@ -8,6 +8,7 @@ public class CurrentGameData
     public float gold = 0;
     public System.DateTime startTime;
     public System.TimeSpan totalPlayTime;
+    public int playerLevel = 1;
 }
 
 public class DataManager : MonoBehaviour

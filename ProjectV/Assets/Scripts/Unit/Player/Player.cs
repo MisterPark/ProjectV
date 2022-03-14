@@ -249,30 +249,37 @@ public class Player : Unit
             kinds.Add(kind);
         }
 
-        if(kinds.Count == 0)
+
+        if (kinds.Count == 0)
         {
-            
+            // TODO : Make HP and Money
         }
-
-        int maxCount = 3;
-        int count = 0;
-
-        while(count < maxCount)
+        else
         {
-            if (kinds.Count == 0) break;
-            int random = Random.Range(0, kinds.Count);
-            SkillKind kind = kinds[random];
-            Skill skill = FindSkill(kind);
-            int nextLevel = 1;
-            if (skill != null)
+            int maxCount = 3;
+            int count = 0;
+
+            while (count < maxCount)
             {
-                nextLevel = skill.level + 1;
+                if (kinds.Count == 0) break;
+                int random = Random.Range(0, kinds.Count);
+                SkillKind kind = kinds[random];
+                Skill skill = FindSkill(kind);
+                int nextLevel = 1;
+                if (skill != null)
+                {
+                    nextLevel = skill.level + 1;
+                }
+                SkillInformation info = new SkillInformation(kind, nextLevel);
+                skillInfos.Add(info);
+                kinds.RemoveAt(random);
+                count++;
             }
-            SkillInformation info = new SkillInformation(kind, nextLevel);
-            skillInfos.Add(info);
-            kinds.RemoveAt(random);
-            count++;
         }
+
+        
+
+
 
 
         return skillInfos;

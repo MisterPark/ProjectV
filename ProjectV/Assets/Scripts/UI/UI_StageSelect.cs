@@ -63,6 +63,6 @@ public class UI_StageSelect : MonoBehaviour
 
     public void OnClickStageSelectOKButton()
     {
-        SceneManager.LoadScene(UIManager.Instance.StartSceneName);
+        LoadingSceneManager.instance.LoadScene(UIManager.Instance.StartSceneName);
     }
 }
