@@ -27,8 +27,8 @@ public class Missile : MonoBehaviour
     public Vector3 targetDirection { get; set; }
     public Unit owner;
     public GameObject target;
-    public float tick = 0f;
-    public float cooltimeTick;
+    protected float tick = 0f;
+    protected float cooltimeTick;
     protected VisualEffect visualEffect;
     
     
