@@ -37,6 +37,7 @@ public enum SkillKind
     IceTornado,
     ToxicTornado,
     WindTornado,
+    LavaOrb,
     End,
 }
 [System.Serializable]

@@ -72,10 +72,11 @@ public class Player : Unit
         //AddSkill(SkillKind.Laser);
         //AddSkill(SkillKind.Lightning);
 
-        AddSkill(SkillKind.WindTornado);
-        AddSkill(SkillKind.ToxicTornado);
-        AddSkill(SkillKind.IceTornado);
+        //AddSkill(SkillKind.WindTornado);
+        //AddSkill(SkillKind.ToxicTornado);
+        //AddSkill(SkillKind.IceTornado);
         //AddSkill(SkillKind.ToxicTotem);
+        AddSkill(SkillKind.LavaOrb);
         //AddSkill(SkillKind.ShurikenAttack);
         //AddSkill(SkillKind.Rain);
         //AddSkill(SkillKind.BlizzardOrb);

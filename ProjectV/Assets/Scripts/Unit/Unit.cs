@@ -107,7 +107,7 @@ public class Unit : MonoBehaviour
             case SkillKind.IceTornado: skill = gameObject.AddComponent<Skill_IceTornado>(); break;
             case SkillKind.ToxicTornado: skill = gameObject.AddComponent<Skill_ToxicTornado>(); break;
             case SkillKind.WindTornado: skill = gameObject.AddComponent<Skill_WindTornado>(); break;
-
+            case SkillKind.LavaOrb: skill = gameObject.AddComponent<Skill_LavaOrb>(); break;
             default:
                 break;
         }
