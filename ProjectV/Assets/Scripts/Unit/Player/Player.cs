@@ -70,15 +70,17 @@ public class Player : Unit
         //AddSkill(SkillKind.ForceFieldBarrier);
         //AddSkill(SkillKind.BlackHole);
         //AddSkill(SkillKind.Laser);
-        AddSkill(SkillKind.Lightning);
+        //AddSkill(SkillKind.Lightning);
 
-        //AddSkill(SkillKind.FireTornado);
+        AddSkill(SkillKind.WindTornado);
+        AddSkill(SkillKind.ToxicTornado);
+        AddSkill(SkillKind.IceTornado);
         //AddSkill(SkillKind.ToxicTotem);
         //AddSkill(SkillKind.ShurikenAttack);
         //AddSkill(SkillKind.Rain);
         //AddSkill(SkillKind.BlizzardOrb);
         //AddSkill(SkillKind.Meteor);
-        AddSkill(SkillKind.HeavyFireBall);
+        //AddSkill(SkillKind.HeavyFireBall);
         OnSkillSelectionCompleted.Invoke();
     }
 

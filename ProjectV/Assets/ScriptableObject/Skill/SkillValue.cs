@@ -34,6 +34,9 @@ public enum SkillKind
     UnstableMagicMissile,
     HeavyFireBall,
     Meteor,
+    IceTornado,
+    ToxicTornado,
+    WindTornado,
     End,
 }
 [System.Serializable]
