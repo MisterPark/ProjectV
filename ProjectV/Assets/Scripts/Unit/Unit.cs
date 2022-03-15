@@ -102,6 +102,7 @@ public class Unit : MonoBehaviour
             case SkillKind.Magnet: skill = gameObject.AddComponent<Skill_Magnet>(); break;
             case SkillKind.BlizzardOrb: skill = gameObject.AddComponent<Skill_BlizzardOrb>(); break;
             case SkillKind.UnstableMagicMissile: skill = gameObject.AddComponent<Skill_UnstableMagicMissile>(); break;
+            case SkillKind.HeavyFireBall: skill = gameObject.AddComponent<Skill_HeavyFireBall>(); break;
             case SkillKind.Meteor: skill = gameObject.AddComponent<Skill_Meteor>(); break;
             default:
                 break;

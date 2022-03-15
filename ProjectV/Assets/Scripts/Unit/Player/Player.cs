@@ -77,7 +77,8 @@ public class Player : Unit
         //AddSkill(SkillKind.ShurikenAttack);
         //AddSkill(SkillKind.Rain);
         //AddSkill(SkillKind.BlizzardOrb);
-        AddSkill(SkillKind.Meteor);
+        //AddSkill(SkillKind.Meteor);
+        AddSkill(SkillKind.HeavyFireBall);
         OnSkillSelectionCompleted.Invoke();
     }
 
@@ -144,13 +145,13 @@ public class Player : Unit
 
     void OnLevelUpCallback(int level)
     {
-        //GameManager.Instance.Pause();
-        //GameManager.Instance.ShowCursor();
+        GameManager.Instance.Pause();
+        GameManager.Instance.ShowCursor();
 
-        //List<SkillInformation> skillInfos = MakeNewSkillInformations();
+        List<SkillInformation> skillInfos = MakeNewSkillInformations();
 
-        //UI_LevelUp.instance.SetSkillInfomations(skillInfos);
-        //UI_LevelUp.instance.Show();
+        UI_LevelUp.instance.SetSkillInfomations(skillInfos);
+        UI_LevelUp.instance.Show();
     }
 
     void OnSelectSkill(SkillKind kind)
