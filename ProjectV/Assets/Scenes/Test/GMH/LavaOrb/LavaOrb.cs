@@ -10,8 +10,10 @@ public class LavaOrb : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Missile missile = GetComponent<Missile>();
-        target = missile.target.transform;
+        if (target == null)
+        {
+            target = Player.Instance.transform; 
+        }
     }
 
     private void OnEnable()
@@ -21,6 +23,6 @@ public class LavaOrb : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        transform.RotateAround(target.transform.position, Vector3.up, speed * Time.fixedDeltaTime);
+            transform.RotateAround(target.transform.position, Vector3.up, speed * Time.fixedDeltaTime);
     }
 }

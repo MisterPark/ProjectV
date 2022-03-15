@@ -32,7 +32,7 @@ public class Skill_LavaOrb : Skill
 
         //float angle = UnityEngine.Random.Range(-180, 180);
         //float dist = Random.Range(0, 6);
-        Vector3 pos = Player.Instance.transform.position;
+        Vector3 pos = Player.Instance.transform.position + unit.skillOffsetPosition + new Vector3(0f,0f,1f);
 
         Missile missile = obj.GetComponent<Missile>();
         missile.Initialize();
