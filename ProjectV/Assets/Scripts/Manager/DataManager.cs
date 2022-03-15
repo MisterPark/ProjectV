@@ -107,4 +107,6 @@ public class DataManager : MonoBehaviour
             skillDatas[i].kind = (SkillKind)i;
         }
     }
+
+
 }

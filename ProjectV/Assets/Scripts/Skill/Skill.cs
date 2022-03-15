@@ -18,6 +18,9 @@ public abstract class Skill : MonoBehaviour
     public float speed;
     public float range;
     public int amount = 1;
+    protected float activeInterval = 0f;
+    protected float activeIntervalTick = 0f;
+    protected int activeIntervalCtn = 0;
 
     public UnityEvent<int> OnLevelUp = new UnityEvent<int>();
 
@@ -44,14 +47,34 @@ public abstract class Skill : MonoBehaviour
         if (Type == SkillType.Active)
         {
             tick += Time.fixedDeltaTime;
-            if (tick >= cooltime)
+            //if (tick >= cooltime)
+            //{
+            //    tick = 0f;
+            //    for (int i = 0; i < amount; i++)
+            //    {
+
+            //        Active();
+
+            //    }
+            //}
+            if(tick >= cooltime)
             {
                 tick = 0f;
-                for (int i = 0; i < amount; i++)
+                activeIntervalCtn = 0;
+                activeIntervalTick = 0;
+            }
+            if(activeIntervalTick != -1)
+            {
+                activeIntervalTick += Time.fixedDeltaTime;
+                if(activeIntervalTick >= activeInterval)
                 {
-
                     Active();
-
+                    activeIntervalTick = 0f;
+                    activeIntervalCtn++;
+                    if(activeIntervalCtn >= amount)
+                    {
+                        activeIntervalTick = -1;
+                    }
                 }
             }
         }
