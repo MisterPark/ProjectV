@@ -12,6 +12,7 @@ public class Skill_UnstableMagicMissile : Skill
     {
         Kind = SkillKind.UnstableMagicMissile;
         base.Start();
+        activeInterval = 0.1f;
     }
     protected override void Active()
     {
@@ -43,6 +44,7 @@ public class Skill_UnstableMagicMissile : Skill
         missile.type = MissileType.Other;
         missile.isPenetrate = true;
         missile.range = range;
+        missile.transform.GetChild(0).GetComponent<ParticleSystem>().startSize = range * 1.4f;
         //missile.SetTarget(nearest.transform.position + unit.skillOffsetPosition);
         //missile.OnCollision.RemoveAllListeners();
         //missile.OnCollision.AddListener(OnCollisionCallback);

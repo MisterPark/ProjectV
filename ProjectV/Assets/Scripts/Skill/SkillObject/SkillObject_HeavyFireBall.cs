@@ -35,7 +35,7 @@ public class SkillObject_HeavyFireBall : SkillObject
         getPoint.y = 2f;
         getPoint = getPoint.normalized;
         Rigidbody rigidbody = GetComponent<Rigidbody>();
-        rigidbody.AddForce(getPoint * 800f, ForceMode.Impulse);
+        rigidbody.AddForce(getPoint * 1000f, ForceMode.Impulse);
         rigidbody.velocity = Vector3.zero;
 
 
@@ -55,14 +55,15 @@ public class SkillObject_HeavyFireBall : SkillObject
             missile.transform.position = transform.position;
             missile.team = team;
             missile.owner = owner;
-            missile.duration = 0.3f;
+            missile.duration = 0.5f;
             missile.damage = damage;
             missile.range = range;
             missile.speed = speed;
             missile.delay = delay;
             missile.isPenetrate = true;
             missile.type = MissileType.Other;
-
+            var shape = missile.transform.GetChild(0).GetComponent<ParticleSystem>().shape;
+            shape.radius = range * 0.5f;
             //missile.OnCollision.RemoveAllListeners();
             //missile.OnCollision.AddListener(OnCollisionCallback);
         }

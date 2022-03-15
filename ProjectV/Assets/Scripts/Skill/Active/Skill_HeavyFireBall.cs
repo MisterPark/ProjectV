@@ -12,6 +12,7 @@ public class Skill_HeavyFireBall : Skill
     {
         Kind = SkillKind.HeavyFireBall;
         base.Start();
+        activeInterval = 0.1f;
     }
 
     // Update is called once per frame
@@ -42,7 +43,7 @@ public class Skill_HeavyFireBall : Skill
         GameObject obj = ObjectPool.Instance.Allocate("HeavyFireBall");
         SkillObject_HeavyFireBall skillObj = obj.GetComponent<SkillObject_HeavyFireBall>();
         skillObj.Initialize();
-        skillObj.transform.position = transform.position + (unit.skillOffsetPosition * 3f);
+        skillObj.transform.position = transform.position + (unit.skillOffsetPosition * 1.6f);
         skillObj.team = unit.team;
         skillObj.owner = unit;
         skillObj.duration = duration;
@@ -52,7 +53,7 @@ public class Skill_HeavyFireBall : Skill
         //missile.type = MissileType.Directional;
         //missile.isPenetrate = true;
         skillObj.range = range;
-        //var shape = missile.transform.GetChild(0).GetComponent<ParticleSystem>().shape;
+        //skillObj.transform.GetChild(0).GetComponent<ParticleSystem>().startSize = range * 0.75f;
         //shape.radius = 4 * range;
         //missile.transform.GetChild(1).localScale = new Vector3(range, range, range);
         //missile.SetTarget(nearest.transform.position + unit.skillOffsetPosition);
