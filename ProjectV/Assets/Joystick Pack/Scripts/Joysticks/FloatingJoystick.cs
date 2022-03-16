@@ -8,6 +8,7 @@ public class FloatingJoystick : Joystick
     protected override void Start()
     {
         base.Start();
+        
         background.gameObject.SetActive(false);
     }
 

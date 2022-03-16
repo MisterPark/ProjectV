@@ -47,18 +47,28 @@ MonoBehaviour:
   playerCharacterData:
   - name: 0
     statsData: {fileID: 11400000, guid: c3159443739d66342a3b049d488e094e, type: 2}
-    charImage: {fileID: 0}
+    charImage: {fileID: 21300000, guid: cc8e2be9532fbc543af51c6932181466, type: 3}
     firstSkill: 1
-    description: 
+    description: ' Attack range increases by 5% per level 10.'
   - name: 1
     statsData: {fileID: 11400000, guid: c3159443739d66342a3b049d488e094e, type: 2}
     charImage: {fileID: 0}
-    firstSkill: 0
+    firstSkill: 2
     description: 
   - name: 2
     statsData: {fileID: 11400000, guid: c3159443739d66342a3b049d488e094e, type: 2}
     charImage: {fileID: 0}
-    firstSkill: 0
+    firstSkill: 3
+    description: 
+  - name: 3
+    statsData: {fileID: 11400000, guid: c3159443739d66342a3b049d488e094e, type: 2}
+    charImage: {fileID: 0}
+    firstSkill: 3
+    description: 
+  - name: 4
+    statsData: {fileID: 11400000, guid: c3159443739d66342a3b049d488e094e, type: 2}
+    charImage: {fileID: 0}
+    firstSkill: 3
     description: 
   powerUpStat:
   - 0
@@ -120,22 +130,38 @@ MonoBehaviour:
     skillData: {fileID: 11400000, guid: 5ecb4bd98a94c4c42bf5bc4b945aad0d, type: 2}
   - kind: 18
     skillData: {fileID: 11400000, guid: c3f8e635a2cad404e915823417eb20df, type: 2}
-  - kind: 3
+  - kind: 19
     skillData: {fileID: 11400000, guid: 8af3aad5b22865c4dbafeffad06848ea, type: 2}
+  - kind: 20
+    skillData: {fileID: 11400000, guid: 6fb178e571328164db42c1fc29944fce, type: 2}
+  - kind: 21
+    skillData: {fileID: 11400000, guid: 42c6a2e5bfd199e4fb06677aae1bba21, type: 2}
+  - kind: 22
+    skillData: {fileID: 11400000, guid: d7592dd9c0878ad4488f4fea953c6cab, type: 2}
+  - kind: 23
+    skillData: {fileID: 11400000, guid: b5ebd4b7ebf5fb14eab3ee093838f69a, type: 2}
+  - kind: 24
+    skillData: {fileID: 11400000, guid: bcb4523d6ef1dce44a39bea8c4217ecc, type: 2}
+  - kind: 25
+    skillData: {fileID: 11400000, guid: 3da73b3db05512a419663fa671dc6c27, type: 2}
+  - kind: 26
+    skillData: {fileID: 11400000, guid: 2439f142d5a9fc14894ed61b1bf89fc4, type: 2}
   currentSaveData:
     unLockCharacter: 000000
     unLockStage: 000000
     totalKillCount: 0
     totalGold: 0
-    currentGold: 0
+    currentGold: 8000
     currentPowerUpCount: 0
   currentGameData:
     characterName: 0
     killCount: 0
     gold: 0
-  moneyInterest_Per: 0
+    playerLevel: 1
+  moneyInterest_Per: 0.1
   stageDatas:
   - {fileID: 11400000, guid: 514049e7ebff7864d9cc7c9eae511a7a, type: 2}
+  - {fileID: 11400000, guid: 717d8c2774c86b44d8bf13c3b47d954c, type: 2}
 --- !u!114 &2716088676406518505
 MonoBehaviour:
   m_ObjectHideFlags: 0

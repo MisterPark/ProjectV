@@ -25,7 +25,7 @@ public class ObjectPool : MonoBehaviour
     {
         if (!_pools.ContainsKey(key))
         {
-            Debug.LogError($"can't find key : {key}");
+            _pools.Add(key, new Stack<GameObject>());
         }
 
         if (_pools[key].Count == 0)
@@ -53,6 +53,26 @@ public class ObjectPool : MonoBehaviour
         GameObject gameObject = _pools[key].Pop();
         gameObject.name = key;
         gameObject.transform.position = position;
+        gameObject.SetActive(true);
+
+        return gameObject;
+    }
+
+    public GameObject Allocate(string key, Vector3 position,Quaternion rotation)
+    {
+        if (!_pools.ContainsKey(key))
+        {
+            Debug.LogError($"can't find key : {key}");
+        }
+
+        if (_pools[key].Count == 0)
+        {
+            UpSizing(key);
+        }
+        GameObject gameObject = _pools[key].Pop();
+        gameObject.name = key;
+        gameObject.transform.position = position;
+        gameObject.transform.rotation = rotation;
         gameObject.SetActive(true);
 
         return gameObject;

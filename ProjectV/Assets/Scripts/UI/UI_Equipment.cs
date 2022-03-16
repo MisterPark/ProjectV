@@ -15,7 +15,7 @@ public class UI_Equipment : MonoBehaviour
     void Start()
     {
         rectTransform = GetComponent<RectTransform>();
-        Player.Instance.OnSkillSelectionCompleted.AddListener(OnSkillSeletionCompleteCallback);
+        Player.Instance.OnAddOrIncreaseSkill.AddListener(OnSkillSeletionCompleteCallback);
         HideAllSlot();
         if(isTextHide)
         {

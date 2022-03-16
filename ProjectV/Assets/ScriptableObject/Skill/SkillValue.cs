@@ -12,14 +12,14 @@ public enum SkillKind
     BlackHole,
     Laser,
     FireTornado,
-    RockTotem,
+    ToxicTotem,
     ShurikenAttack,
     Lightning,
     Rain,
     Might,
     Armor,
     MaxHp,
-    //Recovery, //Ãß°¡½Ã Skill_XXX Awake ¼öÁ¤ÇØÁà¾ßÇÔ.
+    //Recovery, //ï¿½ß°ï¿½ï¿½ï¿½ Skill_XXX Awake ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
     //Cooldown,
     Range,
     Speed,
@@ -31,6 +31,13 @@ public enum SkillKind
     Growth,
     //Greed,
     BlizzardOrb,
+    UnstableMagicMissile,
+    HeavyFireBall,
+    Meteor,
+    IceTornado,
+    ToxicTornado,
+    WindTornado,
+    LavaOrb,
     End,
 }
 [System.Serializable]

@@ -27,7 +27,6 @@ public class Player : Unit
 {
     public static Player Instance;
     private Vector3 direction = Vector3.forward;// 주석 범인 찾기
-    public UnityEvent OnSkillSelectionCompleted;
     
     public static int Row
     {
@@ -62,22 +61,8 @@ public class Player : Unit
 
         // 캐릭터 기본스킬
         PlayerCharacterName charName = DataManager.Instance.currentGameData.characterName;
-        //SkillKind skillKind = DataManager.Instance.playerCharacterData[(int)charName].firstSkill;
-        //AddSkill(skillKind);
-
-        //AddSkill(SkillKind.IceBolt);
-        //AddSkill(SkillKind.FireBolt);
-        //AddSkill(SkillKind.ForceFieldBarrier);
-        //AddSkill(SkillKind.BlackHole);
-        //AddSkill(SkillKind.Laser);
-        //AddSkill(SkillKind.Lightning);
-
-        //AddSkill(SkillKind.FireTornado);
-        //AddSkill(SkillKind.RockTotem);
-        //AddSkill(SkillKind.ShurikenAttack);
-        //AddSkill(SkillKind.Rain);
-        AddSkill(SkillKind.BlizzardOrb);
-        OnSkillSelectionCompleted.Invoke();
+        SkillKind skillKind = DataManager.Instance.playerCharacterData[(int)charName].firstSkill;
+        AddOrIncreaseSkill(skillKind);
     }
 
     protected override void FixedUpdate()
@@ -157,16 +142,7 @@ public class Player : Unit
         GameManager.Instance.Resume();
         GameManager.Instance.HideCursor();
 
-        Skill skill = FindSkill(kind);
-        if(skill != null)
-        {
-            skill.LevelUp();
-        }
-        else
-        {
-            AddSkill(kind);
-        }
-        OnSkillSelectionCompleted.Invoke();
+        AddOrIncreaseSkill(kind);
     }
 
     private void Init_Stat()
@@ -212,20 +188,7 @@ public class Player : Unit
         return resuls;
     }
 
-    Skill FindSkill(SkillKind kind)
-    {
-        int count = Skills.Count;
-        for (int i = 0; i < count; i++)
-        {
-            Skill skill = Skills[i];
-            if(skill.Kind == kind)
-            {
-                return skill;
-            }
-        }
-
-        return null;
-    }
+    
 
     List<SkillInformation> MakeNewSkillInformations()
     {
@@ -249,30 +212,37 @@ public class Player : Unit
             kinds.Add(kind);
         }
 
-        if(kinds.Count == 0)
+
+        if (kinds.Count == 0)
         {
-            
+            // TODO : Make HP and Money
         }
-
-        int maxCount = 3;
-        int count = 0;
-
-        while(count < maxCount)
+        else
         {
-            if (kinds.Count == 0) break;
-            int random = Random.Range(0, kinds.Count);
-            SkillKind kind = kinds[random];
-            Skill skill = FindSkill(kind);
-            int nextLevel = 1;
-            if (skill != null)
+            int maxCount = 3;
+            int count = 0;
+
+            while (count < maxCount)
             {
-                nextLevel = skill.level + 1;
+                if (kinds.Count == 0) break;
+                int random = Random.Range(0, kinds.Count);
+                SkillKind kind = kinds[random];
+                Skill skill = FindSkill(kind);
+                int nextLevel = 1;
+                if (skill != null)
+                {
+                    nextLevel = skill.level + 1;
+                }
+                SkillInformation info = new SkillInformation(kind, nextLevel);
+                skillInfos.Add(info);
+                kinds.RemoveAt(random);
+                count++;
             }
-            SkillInformation info = new SkillInformation(kind, nextLevel);
-            skillInfos.Add(info);
-            kinds.RemoveAt(random);
-            count++;
         }
+
+        
+
+
 
 
         return skillInfos;

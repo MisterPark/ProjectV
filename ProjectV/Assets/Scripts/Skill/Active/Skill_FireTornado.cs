@@ -31,7 +31,7 @@ public class Skill_FireTornado : Skill
         GameObject obj = ObjectPool.Instance.Allocate("FireTornado");
 
         float angle = UnityEngine.Random.Range(-180, 180);
-        float dist = 6;
+        float dist = Random.Range(0,6);
         Vector3 pos = new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle)) * dist;
         pos += Player.Instance.transform.position;
 

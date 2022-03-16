@@ -54,6 +54,7 @@ public class Main_Title_SC : MonoBehaviour
     {
         Transform tempobject = UIManager.Instance.GetUIObject("Powerup_Panel").transform;
         Transform tempobject2 = UIManager.Instance.GetUIObject("CharacterSelectPanel").transform;
+        Transform tempobject3 = UIManager.Instance.GetUIObject("StageSelectPanel").transform;
         if (tempobject.gameObject.activeSelf)
         {
             tempobject.gameObject.SetActive(false);
@@ -65,6 +66,11 @@ public class Main_Title_SC : MonoBehaviour
             tempobject2.gameObject.SetActive(false);
             transform.Find("Start_Button").gameObject.SetActive(true);
             transform.Find("Powerup_Button").gameObject.SetActive(true);
+        }
+        else if (tempobject3.gameObject.activeSelf)
+        {
+            tempobject3.gameObject.SetActive(false);
+            tempobject2.gameObject.SetActive(true);
         }
         else
         {

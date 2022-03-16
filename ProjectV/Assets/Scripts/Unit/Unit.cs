@@ -19,6 +19,7 @@ public class Unit : MonoBehaviour
     public UnityEvent OnDead;
     public UnityEvent<float> OnTakeDamage;
     public UnityEvent<int> OnLevelUp;
+    public UnityEvent OnAddOrIncreaseSkill;
 
     [HideInInspector] public Stat stat;
 
@@ -76,11 +77,11 @@ public class Unit : MonoBehaviour
         transform.LookAt(target);
     }
 
-    public void AddSkill(SkillKind type)
+    private void AddSkill(SkillKind kind)
     {
         Skill skill = null;
         
-        switch (type)
+        switch (kind)
         {
             case SkillKind.IceBolt: skill = gameObject.AddComponent<Skill_IceBolt>(); break;
             case SkillKind.FireBolt: skill = gameObject.AddComponent<Skill_FireBolt>(); break;
@@ -88,7 +89,7 @@ public class Unit : MonoBehaviour
             case SkillKind.BlackHole: skill = gameObject.AddComponent<Skill_BlackHole>(); break;
             case SkillKind.Laser: skill = gameObject.AddComponent<Skill_Laser>(); break;
             case SkillKind.FireTornado: skill = gameObject.AddComponent<Skill_FireTornado>(); break;
-            case SkillKind.RockTotem: skill = gameObject.AddComponent<Skill_RockTotem>(); break;
+            case SkillKind.ToxicTotem: skill = gameObject.AddComponent<Skill_ToxicTotem>(); break;
             case SkillKind.ShurikenAttack: skill = gameObject.AddComponent<Skill_ShurikenAttack>(); break;
             case SkillKind.Lightning: skill = gameObject.AddComponent<Skill_Lightning>(); break;
             case SkillKind.Rain: skill = gameObject.AddComponent<Skill_Rain>(); break;
@@ -101,6 +102,13 @@ public class Unit : MonoBehaviour
             case SkillKind.Growth: skill = gameObject.AddComponent<Skill_Growth>(); break;
             case SkillKind.Magnet: skill = gameObject.AddComponent<Skill_Magnet>(); break;
             case SkillKind.BlizzardOrb: skill = gameObject.AddComponent<Skill_BlizzardOrb>(); break;
+            case SkillKind.UnstableMagicMissile: skill = gameObject.AddComponent<Skill_UnstableMagicMissile>(); break;
+            case SkillKind.HeavyFireBall: skill = gameObject.AddComponent<Skill_HeavyFireBall>(); break;
+            case SkillKind.Meteor: skill = gameObject.AddComponent<Skill_Meteor>(); break;
+            case SkillKind.IceTornado: skill = gameObject.AddComponent<Skill_IceTornado>(); break;
+            case SkillKind.ToxicTornado: skill = gameObject.AddComponent<Skill_ToxicTornado>(); break;
+            case SkillKind.WindTornado: skill = gameObject.AddComponent<Skill_WindTornado>(); break;
+            case SkillKind.LavaOrb: skill = gameObject.AddComponent<Skill_LavaOrb>(); break;
             default:
                 break;
         }
@@ -109,6 +117,20 @@ public class Unit : MonoBehaviour
         {
             skillList.Add(skill);
         }
+    }
+
+    public void AddOrIncreaseSkill(SkillKind kind)
+    {
+        Skill skill = FindSkill(kind);
+        if (skill != null)
+        {
+            skill.LevelUp();
+        }
+        else
+        {
+            AddSkill(kind);
+        }
+        OnAddOrIncreaseSkill.Invoke();
     }
 
     public void RemoveSkill(SkillKind kind)
@@ -123,7 +145,7 @@ public class Unit : MonoBehaviour
             case SkillKind.BlackHole: skill = gameObject.GetComponent<Skill_BlackHole>(); break;
             case SkillKind.Laser: skill = gameObject.GetComponent<Skill_Laser>(); break;
             case SkillKind.FireTornado: skill = gameObject.GetComponent<Skill_FireTornado>(); break;
-            case SkillKind.RockTotem: skill = gameObject.GetComponent<Skill_RockTotem>(); break;
+            case SkillKind.ToxicTotem: skill = gameObject.GetComponent<Skill_ToxicTotem>(); break;
             case SkillKind.ShurikenAttack: skill = gameObject.GetComponent<Skill_ShurikenAttack>(); break;
             case SkillKind.Lightning: skill = gameObject.GetComponent<Skill_Lightning>(); break;
             case SkillKind.Rain: skill = gameObject.GetComponent<Skill_Rain>(); break;
@@ -136,6 +158,8 @@ public class Unit : MonoBehaviour
             case SkillKind.Growth: skill = gameObject.GetComponent<Skill_Growth>(); break;
             case SkillKind.Magnet: skill = gameObject.GetComponent<Skill_Magnet>(); break;
             case SkillKind.BlizzardOrb: skill = gameObject.GetComponent<Skill_BlizzardOrb>(); break;
+            case SkillKind.UnstableMagicMissile: skill = gameObject.GetComponent<Skill_UnstableMagicMissile>(); break;
+            case SkillKind.Meteor: skill = gameObject.GetComponent<Skill_Meteor>(); break;
             default:
                 break;
         }
@@ -145,6 +169,21 @@ public class Unit : MonoBehaviour
             skillList.Remove(skill);
             Destroy(skill);
         }
+    }
+
+    public Skill FindSkill(SkillKind kind)
+    {
+        int count = Skills.Count;
+        for (int i = 0; i < count; i++)
+        {
+            Skill skill = Skills[i];
+            if (skill.Kind == kind)
+            {
+                return skill;
+            }
+        }
+
+        return null;
     }
 
     public void Freeze(float time)

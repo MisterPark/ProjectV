@@ -7,6 +7,7 @@ public enum MissileType // ¿òÁ÷ÀÓ
 {
     Directional,
     Guided,
+    Other,
 }
 
 public class Missile : MonoBehaviour
@@ -25,21 +26,21 @@ public class Missile : MonoBehaviour
     public bool AttackFlag { get; set; } = false;
     public Vector3 targetDirection { get; set; }
     public Unit owner;
-    GameObject target;
-    float tick = 0f;
-    float cooltimeTick;
-    VisualEffect visualEffect;
+    public GameObject target;
+    protected float tick = 0f;
+    protected float cooltimeTick;
+    protected VisualEffect visualEffect;
     
     
     bool isWaitForFrame = false;
 
     public UnityEvent<Vector3, Unit> OnCollision;
 
-    void Start()
+    protected virtual void Start()
     {
         transform.localScale = Vector3.one * range;
     }
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
         visualEffect = GetComponentInChildren<VisualEffect>();
         transform.localScale = Vector3.one * range;
@@ -55,7 +56,7 @@ public class Missile : MonoBehaviour
         AttackFlag = false;
     }
 
-    void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
         tick += Time.fixedDeltaTime;
         if (tick >= duration)
@@ -77,7 +78,7 @@ public class Missile : MonoBehaviour
         ProcessRotate();
     }
 
-    private void OnTriggerStay(Collider other)
+    protected virtual void OnTriggerStay(Collider other)
     {
         if (other.gameObject.IsPlayer()) return;
         Unit unit = other.gameObject.GetComponent<Unit>();
@@ -109,7 +110,7 @@ public class Missile : MonoBehaviour
             }
         }
     }
-    private void LateUpdate()
+    protected virtual void LateUpdate()
     {
         if (isWaitForFrame)
         {
@@ -127,7 +128,7 @@ public class Missile : MonoBehaviour
         tick = 0f;
     }
 
-    void ProcessMove()
+    protected virtual void ProcessMove()
     {
         if(type == MissileType.Guided)
         {

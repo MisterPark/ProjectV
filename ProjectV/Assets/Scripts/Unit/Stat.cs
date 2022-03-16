@@ -117,6 +117,7 @@ public class Stat : MonoBehaviour
     public virtual void LevelUp()
     {
         stats[(int)StatType.Level].final_Stat += 1;
+        DataManager.Instance.currentGameData.playerLevel += 1;
         stats[(int)StatType.Exp].final_Stat -= stats[(int)StatType.MaxExp].final_Stat;
         //stats[(int)StatType.MaxExp].final_Stat += stats[(int)StatType.MaxExp].origin_Stat * stats[(int)StatType.MaxExp].growth_Stat;
         stats[(int)StatType.MaxExp].final_Stat *= stats[(int)StatType.MaxExp].growth_Stat + 1f;

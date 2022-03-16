@@ -56,6 +56,7 @@ MonoBehaviour:
   isPenetrate: 0
   isRotate: 0
   owner: {fileID: 0}
+  target: {fileID: 0}
   OnCollision:
     m_PersistentCalls:
       m_Calls: []
@@ -67,7 +68,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1753930026823235514}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
