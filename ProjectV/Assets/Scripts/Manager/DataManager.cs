@@ -6,8 +6,7 @@ public class CurrentGameData
     public PlayerCharacterName characterName;
     public int killCount = 0;
     public float gold = 0;
-    public System.DateTime startTime;
-    public System.TimeSpan totalPlayTime;
+    public float totalPlayTime;
     public int playerLevel = 1;
 }
 
@@ -15,18 +14,18 @@ public class DataManager : MonoBehaviour
 {
     public static DataManager Instance;
 
-    // ĳ���͵� ������ ���� ���õ� ĳ���� ����
+    
 #if UNITY_EDITOR
     [ArrayElementTitle("name")]
 #endif
     public PlayerCharacterNode[] playerCharacterData = new PlayerCharacterNode[(int)PlayerCharacterName.END];
 
-    // �������� ������ ���ȵ��� �����Ǵ� ��
+    
     public float[] powerUpStat = new float[(int)StatType.END];
     [SerializeField]
     private UI_Powerup_statDB powerStatDB;
 
-    // ��ų ������
+    
 #if UNITY_EDITOR
     [ArrayElementTitle("kind")]
 #endif

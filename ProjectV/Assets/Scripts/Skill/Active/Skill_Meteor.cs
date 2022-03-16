@@ -13,6 +13,7 @@ public class Skill_Meteor : Skill
     {
         Kind = SkillKind.Meteor;
         base.Start();
+        activeInterval = 0.1f;
     }
 
     protected override void Active()

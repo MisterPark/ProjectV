@@ -19,5 +19,5 @@ public class SaveData
     public int currentGold;
 
     public int currentPowerUpCount;
-    public TimeSpan totalPlayTime;
+    public float totalPlayTime;
 }

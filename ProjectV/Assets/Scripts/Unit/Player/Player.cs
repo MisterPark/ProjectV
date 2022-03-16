@@ -23,11 +23,13 @@ public class PlayerCharacterNode
     [SerializeField] public string description;
 }
 
+
+
 public class Player : Unit
 {
     public static Player Instance;
     private Vector3 direction = Vector3.forward;// 주석 범인 찾기
-    
+
     public static int Row
     {
         get 
@@ -247,6 +249,6 @@ public class Player : Unit
 
         return skillInfos;
     }
-
+    
 
 }

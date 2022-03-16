@@ -36,7 +36,6 @@ public class SaveDataManager : MonoBehaviour
     }
 
 
-    // ����� ���� �ҷ�����
     public void LoadGameData() 
     {
         string filePath = Application.persistentDataPath + GameDataFileName;
@@ -44,7 +43,7 @@ public class SaveDataManager : MonoBehaviour
         // ����� ������ �ִٸ�
         if (File.Exists(filePath))
         { 
-            print("�ҷ����� ����"); 
+            print("Load Game Data"); 
             string FromJsonData = File.ReadAllText(filePath); 
             _saveData = JsonUtility.FromJson<SaveData>(FromJsonData);
         }
@@ -52,7 +51,7 @@ public class SaveDataManager : MonoBehaviour
         // ����� ������ ���ٸ�
         else 
         { 
-            print("���ο� ���� ����");            
+            print("Create Save Data");            
             _saveData = new SaveData();
         }
 
@@ -61,7 +60,6 @@ public class SaveDataManager : MonoBehaviour
         dataManager.currentSaveData = _saveData;
     } 
     
-    // ���� �����ϱ�
     public void SaveGameData() 
     {
         DataManager dataManager = DataManager.Instance;
@@ -74,15 +72,13 @@ public class SaveDataManager : MonoBehaviour
         string ToJsonData = JsonUtility.ToJson(saveData); 
         string filePath = Application.persistentDataPath + GameDataFileName; 
         
-        // �̹� ����� ������ �ִٸ� �����
         File.WriteAllText(filePath, ToJsonData);
         
-        print("����Ϸ�"); 
+        print("Save Game Data"); 
 
         
     } 
     
-    // ������ �����ϸ� �ڵ�����ǵ���
     private void OnApplicationQuit()
     { 
         SaveGameData(); 

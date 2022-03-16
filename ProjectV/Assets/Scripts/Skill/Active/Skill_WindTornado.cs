@@ -13,6 +13,7 @@ public class Skill_WindTornado : Skill
     {
         Kind = SkillKind.WindTornado;
         base.Start();
+        activeInterval = 0.1f;
     }
 
     protected override void Active()
