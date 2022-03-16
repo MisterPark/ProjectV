@@ -4,14 +4,29 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+// 그 패턴에서 나오는 몬스터
+[System.Serializable]
+public class MonstersNode
+{
+    [SerializeField] public List<GameObject> monsters;
+}
+// 분마다 나오는 몬스터(들)의 패턴종류
+[System.Serializable]
+public class MinuteMonsterNode
+{
+    [SerializeField] public List<MonstersNode> monsterPattern = new List<MonstersNode>();
+    [SerializeField] public GameObject boss = null;
+}
+
 public class SpawnManager : MonoBehaviour
 {
     public static SpawnManager Instance;
 
     public int MaxSpawnCount = 100;
 
+    [SerializeField]private GameObject torchLight;
 
-    [SerializeField] List<GameObject> monsterList = new List<GameObject>();
+    [SerializeField] List<MinuteMonsterNode> monsterList = new List<MinuteMonsterNode>();
 
     List<GameObject> spawnList = new List<GameObject>();
     List<GameObject> spawnQueue = new List<GameObject>();
@@ -20,6 +35,9 @@ public class SpawnManager : MonoBehaviour
     public List<GameObject> SpawnList{ get { return spawnList; } }
     public List<GameObject> SpawnQueue { get { return spawnQueue; } }
 
+    private int currentMinute = -1;
+    private int currentMonsterPattern = 0;
+    private int currentPatternMonstersCount = 0;
     public GameObject RandomMonster 
     {
         get 
@@ -92,6 +110,24 @@ public class SpawnManager : MonoBehaviour
         
         spawnTick = 0f;
 
+
+
+        int minute = (DataManager.Instance.currentGameData.totalPlayTime.Minutes);
+        if(currentMinute != minute)
+        {
+            currentMinute = minute;
+            currentMonsterPattern = UnityEngine.Random.Range(0, monsterList[currentMinute].monsterPattern.Count);
+            currentPatternMonstersCount = monsterList[minute].monsterPattern[currentMonsterPattern].monsters.Count;
+            if(monsterList[minute].boss != null)
+            {
+                float angle = UnityEngine.Random.Range(-180, 180);
+                float dist = 30f;
+                Vector3 pos = new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle)) * dist;
+                pos += Player.Instance.transform.position;
+
+                Spawn(monsterList[minute].boss, pos);
+            }
+        }
         if (spawnList.Count >= MaxSpawnCount)
         {
             return;
@@ -105,18 +141,21 @@ public class SpawnManager : MonoBehaviour
         int spawnCount = MaxSpawnCount - spawnList.Count;
         for (int i = 0; i < spawnCount; i++)
         {
-            //UnityEngine.Random.Range(0, monsterList.Count);
-            int index = 0;
-            if (UnityEngine.Random.Range(0, 100) > 5f)
-            {
-                index = (DataManager.Instance.currentGameData.totalPlayTime.Seconds / 10) + 1;
-            }
-            // else 횟불
+            
             float angle = UnityEngine.Random.Range(-180, 180);
             float dist = 30f;
             Vector3 pos = new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle)) * dist;
             pos += Player.Instance.transform.position;
-            Spawn(monsterList[index], pos);
+
+            if (UnityEngine.Random.Range(0, 100) < 5f)
+            {
+                Spawn(torchLight, pos);
+            }
+            else
+            {
+                int mons = UnityEngine.Random.Range(0, currentPatternMonstersCount);
+                Spawn(monsterList[minute].monsterPattern[currentMonsterPattern].monsters[mons], pos);
+            }
         }
     }
 
@@ -125,6 +164,8 @@ public class SpawnManager : MonoBehaviour
         List<GameObject> removes = new List<GameObject>();
         foreach (var monster in spawnList)
         {
+            if (monster.CompareTag("Boss")) continue;
+
             Vector3 to = Player.Instance.transform.position - monster.transform.position;
             float dist = to.magnitude;
             if(dist > 35f)
