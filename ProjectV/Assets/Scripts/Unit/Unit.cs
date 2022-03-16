@@ -35,6 +35,10 @@ public class Unit : MonoBehaviour
     float freezeTick = 0;
     bool freezeFlag = false;
 
+    float knockbackTick = 0;
+    float knockbackDelay = 0.5f;
+    bool knockbackFlag = false;
+
     public List<Skill> Skills { get { return skillList; } }
 
     protected virtual void Start()
@@ -58,6 +62,7 @@ public class Unit : MonoBehaviour
     protected virtual void FixedUpdate()
     {
         ProcessFreeze();
+        ProcessKnockback();
         Animation();
     }
     
@@ -66,7 +71,9 @@ public class Unit : MonoBehaviour
         
     }
 
-
+    /// <summary>
+    /// target 위치로 이동, 회전 합니다.
+    /// </summary>
     public void MoveTo(Vector3 target)
     {
         if (freezeFlag) return;
@@ -118,7 +125,9 @@ public class Unit : MonoBehaviour
             skillList.Add(skill);
         }
     }
-
+    /// <summary>
+    /// 스킬이 없으면 추가, 있으면 레벨업
+    /// </summary>
     public void AddOrIncreaseSkill(SkillKind kind)
     {
         Skill skill = FindSkill(kind);
@@ -132,7 +141,9 @@ public class Unit : MonoBehaviour
         }
         OnAddOrIncreaseSkill.Invoke();
     }
-
+    /// <summary>
+    /// 스킬을 삭제합니다.
+    /// </summary>
     public void RemoveSkill(SkillKind kind)
     {
         Skill skill = null;
@@ -170,7 +181,9 @@ public class Unit : MonoBehaviour
             Destroy(skill);
         }
     }
-
+    /// <summary>
+    /// 해당 종류의 스킬을 찾습니다. 없으면 NULL 반환
+    /// </summary>
     public Skill FindSkill(SkillKind kind)
     {
         int count = Skills.Count;
@@ -185,7 +198,10 @@ public class Unit : MonoBehaviour
 
         return null;
     }
-
+    /// <summary>
+    /// time만큼 멈춥니다. (초단위)
+    /// </summary>
+    /// <param name="time"></param>
     public void Freeze(float time)
     {
         freezeTime = time;
@@ -207,14 +223,24 @@ public class Unit : MonoBehaviour
         
     }
 
+    void ProcessKnockback()
+    {
+        if (knockbackFlag == false) return;
+
+        knockbackTick += Time.fixedDeltaTime;
+        if(knockbackTick > knockbackDelay)
+        {
+            knockbackTick = 0f;
+            knockbackFlag = false;
+        }
+    }
+
     void Animation()
     {
         if (animator == null) return;
 
         animator.speed = (freezeFlag ? 0 : 1);
-        // ���� Ÿ�� ����
         animator.SetInteger("UnitType", (int)type);
-        // �޸���
         bool isRun = oldPosition != transform.position;
         if (isRun)
         {
@@ -232,7 +258,6 @@ public class Unit : MonoBehaviour
         UI_DamageFont font = temp.transform.GetChild(0).GetComponent<UI_DamageFont>();
         font.Init((int)damage, UI_DamageFont.FontColor.WHITE, transform.position + (Vector3.up * 2f));
 
-        // ���ó��
         float hp = stat.Get_FinalStat(StatType.Health);
         if (hp <= 0f)
         {
@@ -260,7 +285,9 @@ public class Unit : MonoBehaviour
             stat.RecoverToFull();
         }
     }
-
+    /// <summary>
+    /// 스킬 데이터를 업데이트 합니다.
+    /// </summary>
     public void UpdateSkillData()
     {
         foreach (var skill in skillList)
@@ -268,5 +295,19 @@ public class Unit : MonoBehaviour
             if (skill.Type == SkillType.Passive) continue;
             skill.UpdateSkillData();
         }
+    }
+
+    /// <summary>
+    /// 유닛을 밀어냅니다.
+    /// </summary>
+    /// <param name="sourcePosition">밀어내는 위치</param>
+    /// <param name="power">힘</param>
+    public void Knockback(Vector3 sourcePosition, float power)
+    {
+        if (knockbackFlag) return;
+        knockbackFlag = true;
+        Vector3 direction = transform.position - sourcePosition;
+        transform.position += direction.normalized * power;
+        transform.LookAt(sourcePosition);
     }
 }
