@@ -112,7 +112,7 @@ public class SpawnManager : MonoBehaviour
 
 
 
-        int minute = (DataManager.Instance.currentGameData.totalPlayTime.Minutes);
+        int minute = ((int)DataManager.Instance.currentGameData.totalPlayTime / 60);
         if(currentMinute != minute)
         {
             currentMinute = minute;
