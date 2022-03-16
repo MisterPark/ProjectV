@@ -12,13 +12,13 @@ public class LavaOrb : MonoBehaviour
     {
         if (target == null)
         {
-            target = Player.Instance.transform; 
+            target = Player.Instance.transform;
         }
     }
 
     private void OnEnable()
     {
-        Start();
+        
     }
     // Update is called once per frame
     void FixedUpdate()
