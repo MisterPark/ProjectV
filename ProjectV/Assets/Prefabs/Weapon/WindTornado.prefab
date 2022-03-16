@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1041541176758700649}
   - component: {fileID: 994645446655791813}
   - component: {fileID: 2403209690618284667}
+  - component: {fileID: 686544363772015385}
   m_Layer: 0
   m_Name: WindTornado
   m_TagString: Untagged
@@ -73,6 +74,20 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 3.66
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &686544363772015385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 865357983701976817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66a01ec4213f9cd42991c88ca98fff4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scale: 1
+  speed: 0.5
 --- !u!1001 &7171813265366059794
 PrefabInstance:
   m_ObjectHideFlags: 0
