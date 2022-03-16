@@ -6,8 +6,7 @@ public class CurrentGameData
     public PlayerCharacterName characterName;
     public int killCount = 0;
     public float gold = 0;
-    public System.DateTime startTime;
-    public System.TimeSpan totalPlayTime;
+    public float totalPlayTime;
     public int playerLevel = 1;
 }
 
