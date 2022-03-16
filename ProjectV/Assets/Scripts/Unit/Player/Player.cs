@@ -206,10 +206,12 @@ public class Player : Unit
             SkillKind kind = (SkillKind)index;
             SkillType type = kind.GetSkillType();
             Skill skill = FindSkill(kind);
+            SkillData data = DataManager.Instance.skillDatas[(int)kind].skillData;
 
             if (type == SkillType.Active && skill == null && actives.Count >= 6) continue;
             if (type == SkillType.Passive && skill == null && passives.Count >= 6) continue;
             if (skill != null && skill.IsMaxLevel) continue;
+            if (skill == null && data.grade != Grade.Normal) continue;
 
             kinds.Add(kind);
         }

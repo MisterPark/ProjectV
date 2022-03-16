@@ -9,6 +9,7 @@ public abstract class Skill : MonoBehaviour
 {
     public Sprite icon;
     public int level = 1;
+    public Grade grade;
     public SkillKind Kind;
     public SkillType Type { get { return Kind.GetSkillType(); } }
     public float cooltime = 0.5f;
@@ -94,6 +95,7 @@ public abstract class Skill : MonoBehaviour
         float additionalSpeed = unit.stat.Get_FinalStat(StatType.Speed);
         float additionalRange = unit.stat.Get_FinalStat(StatType.Area);
 
+        grade = data.grade;
         amount = value.amount + additionalAmount;
         cooltime = value.cooltime * cooltimeReduce;
         damage = value.damage * additionalDamage;

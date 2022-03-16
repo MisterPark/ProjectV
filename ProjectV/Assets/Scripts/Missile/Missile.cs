@@ -23,6 +23,8 @@ public class Missile : MonoBehaviour
     public bool isPull = false;
     public bool isPenetrate = false;
     public bool isRotate=false;
+    public float knockbackPower = 1f;
+    public bool KnockbackFlag { get; set; } = false;
     public bool AttackFlag { get; set; } = false;
     public Vector3 targetDirection { get; set; }
     public Unit owner;
@@ -90,6 +92,10 @@ public class Missile : MonoBehaviour
                 if (!isPenetrate)
                 {
                     unit.stat.TakeDamage(damage);
+                    if (KnockbackFlag)
+                    {
+                        unit.Knockback(transform.position, 1);
+                    }
                     ObjectPool.Instance.Free(gameObject); 
                 }
                 else if (isPenetrate)
@@ -97,6 +103,10 @@ public class Missile : MonoBehaviour
                     if (AttackFlag)
                     {
                         unit.stat.TakeDamage(damage);
+                        if (KnockbackFlag)
+                        {
+                            unit.Knockback(transform.position, 1);
+                        }
                     }
                 }
                 if (isPull)
@@ -107,6 +117,7 @@ public class Missile : MonoBehaviour
                     float pullPower = 2f;
                     unit.transform.position += direction * pullPower * Time.fixedDeltaTime;
                 }
+                
             }
         }
     }

@@ -43,6 +43,7 @@ public class Skill_ForceFieldBarrier : Skill
         missile.range = range;
         missile.type = MissileType.Guided;
         missile.isPenetrate = true;
+        missile.KnockbackFlag = true;
         missile.OnCollision.RemoveAllListeners();
         missile.OnCollision.AddListener(OnCollisionCallback);
         OnLevelUpCallback(1);
