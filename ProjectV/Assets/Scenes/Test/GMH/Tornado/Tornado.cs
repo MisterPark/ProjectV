@@ -1,0 +1,28 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Tornado : MonoBehaviour
+{
+    public float scale;
+    public float speed = 10f;
+    // Start is called before the first frame update
+    void Start()
+    {
+        transform.localScale = new Vector3(scale/5, scale / 5, scale / 5);
+
+        Missile missile = GetComponent<Missile>();
+        scale = missile.range;
+    }
+
+    private void OnEnable()
+    {
+        Start();
+    }
+    // Update is called once per frame
+    void FixedUpdate()
+    {
+        if (transform.localScale.x<scale)
+        { transform.localScale += new Vector3(0.3f, 0.3f, 0.3f) * speed * Time.fixedDeltaTime; }
+    }
+}
