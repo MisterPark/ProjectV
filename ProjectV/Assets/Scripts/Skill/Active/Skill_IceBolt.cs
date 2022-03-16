@@ -12,6 +12,7 @@ public class Skill_IceBolt : Skill
     {
         Kind = SkillKind.IceBolt;
         base.Start();
+        activeInterval = 0.1f;
     }
     protected override void Active()
     {
