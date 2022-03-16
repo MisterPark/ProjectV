@@ -15,18 +15,18 @@ public class DataManager : MonoBehaviour
 {
     public static DataManager Instance;
 
-    // ĳ���͵� ������ ���� ���õ� ĳ���� ����
+    
 #if UNITY_EDITOR
     [ArrayElementTitle("name")]
 #endif
     public PlayerCharacterNode[] playerCharacterData = new PlayerCharacterNode[(int)PlayerCharacterName.END];
 
-    // �������� ������ ���ȵ��� �����Ǵ� ��
+    
     public float[] powerUpStat = new float[(int)StatType.END];
     [SerializeField]
     private UI_Powerup_statDB powerStatDB;
 
-    // ��ų ������
+    
 #if UNITY_EDITOR
     [ArrayElementTitle("kind")]
 #endif
