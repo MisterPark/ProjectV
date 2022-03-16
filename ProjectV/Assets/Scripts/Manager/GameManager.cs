@@ -50,6 +50,7 @@ public class GameManager : MonoBehaviour
         if (canvas != null)
         {
             joystick.transform.SetParent(canvas.transform);
+            joystick.transform.SetAsFirstSibling();
         }
 #endif
 

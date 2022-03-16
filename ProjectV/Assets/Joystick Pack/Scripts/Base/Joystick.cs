@@ -36,6 +36,7 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
     [SerializeField] protected RectTransform background = null;
     [SerializeField] private RectTransform handle = null;
     private RectTransform baseRect = null;
+    private RectTransform canvasRect = null;
 
     private Canvas canvas;
     private Camera cam;
@@ -51,6 +52,8 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
         canvas = GetComponentInParent<Canvas>();
         if (canvas == null)
             Debug.LogError("The Joystick is not placed inside a canvas");
+        canvasRect = canvas.transform.GetComponent<RectTransform>();
+        baseRect.sizeDelta = canvasRect.sizeDelta;
 
         Vector2 center = new Vector2(0.5f, 0.5f);
         background.pivot = center;
@@ -58,6 +61,9 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
         handle.anchorMax = center;
         handle.pivot = center;
         handle.anchoredPosition = Vector2.zero;
+        baseRect.position = new Vector3(0, canvasRect.sizeDelta.y, 0);
+        background.sizeDelta = new Vector2(canvasRect.sizeDelta.x * 0.1f, canvasRect.sizeDelta.x * 0.1f);
+        handle.sizeDelta = background.sizeDelta * 0.5f;
     }
 
     public virtual void OnPointerDown(PointerEventData eventData)
