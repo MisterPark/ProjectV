@@ -19,6 +19,7 @@ public class Unit : MonoBehaviour
     public UnityEvent OnDead;
     public UnityEvent<float> OnTakeDamage;
     public UnityEvent<int> OnLevelUp;
+    public UnityEvent OnAddOrIncreaseSkill;
 
     [HideInInspector] public Stat stat;
 
@@ -76,11 +77,11 @@ public class Unit : MonoBehaviour
         transform.LookAt(target);
     }
 
-    public void AddSkill(SkillKind type)
+    private void AddSkill(SkillKind kind)
     {
         Skill skill = null;
         
-        switch (type)
+        switch (kind)
         {
             case SkillKind.IceBolt: skill = gameObject.AddComponent<Skill_IceBolt>(); break;
             case SkillKind.FireBolt: skill = gameObject.AddComponent<Skill_FireBolt>(); break;
@@ -116,6 +117,20 @@ public class Unit : MonoBehaviour
         {
             skillList.Add(skill);
         }
+    }
+
+    public void AddOrIncreaseSkill(SkillKind kind)
+    {
+        Skill skill = FindSkill(kind);
+        if (skill != null)
+        {
+            skill.LevelUp();
+        }
+        else
+        {
+            AddSkill(kind);
+        }
+        OnAddOrIncreaseSkill.Invoke();
     }
 
     public void RemoveSkill(SkillKind kind)
@@ -154,6 +169,21 @@ public class Unit : MonoBehaviour
             skillList.Remove(skill);
             Destroy(skill);
         }
+    }
+
+    public Skill FindSkill(SkillKind kind)
+    {
+        int count = Skills.Count;
+        for (int i = 0; i < count; i++)
+        {
+            Skill skill = Skills[i];
+            if (skill.Kind == kind)
+            {
+                return skill;
+            }
+        }
+
+        return null;
     }
 
     public void Freeze(float time)

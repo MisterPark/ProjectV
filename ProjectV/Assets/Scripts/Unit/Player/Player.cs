@@ -27,7 +27,6 @@ public class Player : Unit
 {
     public static Player Instance;
     private Vector3 direction = Vector3.forward;// 주석 범인 찾기
-    public UnityEvent OnSkillSelectionCompleted;
     
     public static int Row
     {
@@ -63,26 +62,7 @@ public class Player : Unit
         // 캐릭터 기본스킬
         PlayerCharacterName charName = DataManager.Instance.currentGameData.characterName;
         SkillKind skillKind = DataManager.Instance.playerCharacterData[(int)charName].firstSkill;
-        //AddSkill(skillKind);
-
-        //AddSkill(SkillKind.IceBolt);
-        //AddSkill(SkillKind.FireBolt);
-        //AddSkill(SkillKind.ForceFieldBarrier);
-        //AddSkill(SkillKind.BlackHole);
-        //AddSkill(SkillKind.Laser);
-        //AddSkill(SkillKind.Lightning);
-
-        //AddSkill(SkillKind.WindTornado);
-        //AddSkill(SkillKind.ToxicTornado);
-        //AddSkill(SkillKind.IceTornado);
-        //AddSkill(SkillKind.ToxicTotem);
-        AddSkill(SkillKind.LavaOrb);
-        //AddSkill(SkillKind.ShurikenAttack);
-        //AddSkill(SkillKind.Rain);
-        //AddSkill(SkillKind.BlizzardOrb);
-        //AddSkill(SkillKind.Meteor);
-        //AddSkill(SkillKind.HeavyFireBall);
-        OnSkillSelectionCompleted.Invoke();
+        AddOrIncreaseSkill(skillKind);
     }
 
     protected override void FixedUpdate()
@@ -162,16 +142,7 @@ public class Player : Unit
         GameManager.Instance.Resume();
         GameManager.Instance.HideCursor();
 
-        Skill skill = FindSkill(kind);
-        if(skill != null)
-        {
-            skill.LevelUp();
-        }
-        else
-        {
-            AddSkill(kind);
-        }
-        OnSkillSelectionCompleted.Invoke();
+        AddOrIncreaseSkill(kind);
     }
 
     private void Init_Stat()
@@ -217,20 +188,7 @@ public class Player : Unit
         return resuls;
     }
 
-    Skill FindSkill(SkillKind kind)
-    {
-        int count = Skills.Count;
-        for (int i = 0; i < count; i++)
-        {
-            Skill skill = Skills[i];
-            if(skill.Kind == kind)
-            {
-                return skill;
-            }
-        }
-
-        return null;
-    }
+    
 
     List<SkillInformation> MakeNewSkillInformations()
     {
