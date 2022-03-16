@@ -7,9 +7,16 @@ using UnityEngine;
 public class CombineSkill : ScriptableObject
 {
     
-        public SkillKind kindA;
-        public SkillKind kindB;
+        public SkillKind materialA;
+        public SkillKind materialB;
 
-        public SkillKind kindC;
+        public SkillKind combinedSkill;
     
+}
+
+[System.Serializable]
+public class CombineSkillDataElement
+{
+    public SkillKind combinedSkill;
+    public CombineSkill combineSkillData;
 }

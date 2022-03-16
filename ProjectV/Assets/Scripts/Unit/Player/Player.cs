@@ -250,23 +250,5 @@ public class Player : Unit
         return skillInfos;
     }
     
-    
-    void CombineSkill()
-    {
 
-        Skill IceBolt = FindSkill(SkillKind.IceBolt);
-        Skill WindTornado = FindSkill(SkillKind.WindTornado);
-        
-        if(IceBolt.level==IceBolt.MaxLevel)
-        {
-            //Ice Tornado
-            if ((WindTornado.level == WindTornado.MaxLevel))
-            {
-                RemoveSkill(SkillKind.IceBolt);
-                RemoveSkill(SkillKind.WindTornado);
-
-                AddOrIncreaseSkill(SkillKind.IceTornado);
-            }
-        }
-    }
 }
