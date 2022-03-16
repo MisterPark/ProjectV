@@ -13,6 +13,7 @@ public class Skill_ToxicTornado : Skill
     {
         Kind = SkillKind.ToxicTornado;
         base.Start();
+        activeInterval = 0.1f;
     }
 
     protected override void Active()

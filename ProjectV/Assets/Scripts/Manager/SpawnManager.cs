@@ -4,13 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-// ±× ÆĞÅÏ¿¡¼­ ³ª¿À´Â ¸ó½ºÅÍ
+// ê·¸ íŒ¨í„´ì—ì„œ ë‚˜ì˜¤ëŠ” ëª¬ìŠ¤í„°
 [System.Serializable]
 public class MonstersNode
 {
     [SerializeField] public List<GameObject> monsters;
 }
-// ºĞ¸¶´Ù ³ª¿À´Â ¸ó½ºÅÍ(µé)ÀÇ ÆĞÅÏÁ¾·ù
+// ë¶„ë§ˆë‹¤ ë‚˜ì˜¤ëŠ” ëª¬ìŠ¤í„°(ë“¤)ì˜ íŒ¨í„´ì¢…ë¥˜
 [System.Serializable]
 public class MinuteMonsterNode
 {

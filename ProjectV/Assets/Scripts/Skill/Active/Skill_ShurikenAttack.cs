@@ -8,6 +8,7 @@ public class Skill_ShurikenAttack : Skill
     {
         Kind = SkillKind.ShurikenAttack;
         base.Start();
+        activeInterval = 0.1f;
     }
 
     protected override void Active()

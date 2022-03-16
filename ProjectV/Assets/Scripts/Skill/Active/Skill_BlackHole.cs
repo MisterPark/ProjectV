@@ -13,6 +13,8 @@ public class Skill_BlackHole : Skill
     {
         Kind = SkillKind.BlackHole;
         base.Start();
+
+        activeInterval = 0.1f;
     }
 
     protected override void Active()
