@@ -10,6 +10,7 @@ public class Skill_ToxicTotem : Skill
     {
         Kind = SkillKind.ToxicTotem;
         base.Start();
+        activeInterval = 0.1f;
     }
 
     protected override void Active()

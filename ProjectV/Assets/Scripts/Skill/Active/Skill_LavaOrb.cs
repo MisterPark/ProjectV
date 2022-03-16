@@ -13,6 +13,7 @@ public class Skill_LavaOrb : Skill
     {
         Kind = SkillKind.LavaOrb;
         base.Start();
+        activeInterval = 0.1f;
     }
 
     protected override void Active()
