@@ -5,15 +5,13 @@ using UnityEngine.UI;
 
 public class UI_PlayerHealth : MonoBehaviour
 {
-    public float tempHp;
-    public float tempMaxHp;
     public GameObject target;
     public Image barImage;
 
     private float Hp;
     private float maxHp;
     private float height = 0f;
-    // Start is called before the first frame update
+
     void Start()
     {
         target = Player.Instance.gameObject;
@@ -21,15 +19,30 @@ public class UI_PlayerHealth : MonoBehaviour
         {
             Debug.Log("Not Find Target");
         }
-        else 
+        else
+        {
             height = target.GetComponent<CapsuleCollider>().height;
+        }
+            
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        Hp = tempHp;
-        maxHp = tempMaxHp;
-        barImage.fillAmount = Hp / maxHp;
+        float fillAmount = 0f;
+        Hp = Player.Instance.stat.Get_FinalStat(StatType.Health);
+        maxHp = Player.Instance.stat.Get_FinalStat(StatType.MaxHealth);
+        if (Hp <= 0f)
+        {
+            fillAmount = 0f;
+        }
+        else
+        {
+            fillAmount = Hp / maxHp;
+        }
+
+        fillAmount = Mathf.Clamp(fillAmount, 0f, 1f);
+
+        barImage.fillAmount = fillAmount;
         transform.LookAt(Camera.main.transform);
     }
 

@@ -29,6 +29,9 @@ public class Player : Unit
 {
     public static Player Instance;
     private Vector3 direction = Vector3.forward;// 주석 범인 찾기
+    private float damageTick = 0f;
+    private float damageDelay = 0.2f;
+    private bool damageFlag = false;
 
     public static int Row
     {
@@ -71,6 +74,26 @@ public class Player : Unit
     {
         base.FixedUpdate();
         Move();
+        ProcessDamage();
+    }
+
+    protected void OnTriggerStay(Collider other)
+    {
+
+        Unit target = other.gameObject.GetComponent<Unit>();
+        if (target == null) return;
+
+        if (target.type != UnitType.Monster)
+        {
+            return;
+        }
+
+        if(damageFlag)
+        {
+            damageFlag = false;
+            stat.TakeDamage(target.stat.Get_FinalStat(StatType.Strength));
+        }
+        
     }
 
 
@@ -122,6 +145,16 @@ public class Player : Unit
         // Rotate
         transform.LookAt(transform.position + direction);
 
+    }
+
+    void ProcessDamage()
+    {
+        damageTick += Time.fixedDeltaTime;
+        if(damageTick > damageDelay)
+        {
+            damageTick = 0f;
+            damageFlag = true;
+        }
     }
 
     void OnDeadCallback()
