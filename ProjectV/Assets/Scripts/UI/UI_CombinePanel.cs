@@ -18,6 +18,15 @@ public class UI_CombinePanel : UI
         Hide();
     }
 
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.L))
+        {
+            Stat stat = Player.Instance.GetComponent<Stat>();
+            stat.Increase_FinalStat(StatType.Exp, 50000);
+        }
+    }
+
     private void SetPlayerSkillInformation(List<Skill> playerSkill)
     {
         for (int i = 0; i < playerSkill.Count; i++)
@@ -78,6 +87,7 @@ public class UI_CombinePanel : UI
 
     private void Init()
     {
+        CombineSkillManager temp = CombineSkillManager.Instance;
         contents = new UI_CombineSlot[CombineSkillManager.Instance.combineSkillDatas.Length];
         for(int i =0; i < contents.Length; i++)
         {

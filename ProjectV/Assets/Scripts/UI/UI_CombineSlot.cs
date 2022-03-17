@@ -45,8 +45,6 @@ public class UI_CombineSlot : MonoBehaviour
             button.interactable = true;
             return true;
         }
-        else
-            button.interactable = false;
         return false;
     }
 
@@ -58,6 +56,7 @@ public class UI_CombineSlot : MonoBehaviour
 
     public void OnClickSlot()
     {
+        button.interactable = false;
         CombineSkillManager.Instance.CombineSkill(kindC);
     }
 
