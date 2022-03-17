@@ -41,7 +41,6 @@ public class GameManager : MonoBehaviour
 
 #if UNITY_EDITOR || UNITY_ANDROID
         joystick = Instantiate(joystickPrefab);
-        joystick.transform.position = Vector3.zero;
         joystick.name = joystickPrefab.name;
 
         _joystick = joystick.GetComponent<Joystick>();
