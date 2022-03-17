@@ -94,7 +94,7 @@ public class Missile : MonoBehaviour
                     OnCollision?.Invoke(transform.position, unit);
                     if (KnockbackFlag)
                     {
-                        unit.Knockback(transform.position, 1);
+                        unit.Knockback(transform.position, 0.2f);
                     }
                     ObjectPool.Instance.Free(gameObject); 
                 }
@@ -106,7 +106,7 @@ public class Missile : MonoBehaviour
                         OnCollision?.Invoke(transform.position, unit);
                         if (KnockbackFlag)
                         {
-                            unit.Knockback(transform.position, 1);
+                            unit.Knockback(transform.position, 0.2f);
                         }
                     }
                 }
