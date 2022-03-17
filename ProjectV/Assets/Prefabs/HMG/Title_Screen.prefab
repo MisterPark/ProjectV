@@ -916,7 +916,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 4881906774669239305}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.21730664
+  m_Size: 0.21730667
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3567,7 +3567,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 4881906775886472974}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -4232,6 +4232,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4881906774332173126}
     m_Modifications:
+    - target: {fileID: 674434785620723550, guid: 354f74a05ec8c5a469ea83b3c2566efe, type: 3}
+      propertyPath: m_Text
+      value: Strength
+      objectReference: {fileID: 0}
+    - target: {fileID: 674434785948291295, guid: 354f74a05ec8c5a469ea83b3c2566efe, type: 3}
+      propertyPath: m_Text
+      value: Range
+      objectReference: {fileID: 0}
     - target: {fileID: 1730484193791155251, guid: 354f74a05ec8c5a469ea83b3c2566efe, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1
@@ -4355,6 +4363,14 @@ PrefabInstance:
     - target: {fileID: 5970159877750896547, guid: 354f74a05ec8c5a469ea83b3c2566efe, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -0.000044971704
+      objectReference: {fileID: 0}
+    - target: {fileID: 7414157958596807137, guid: 354f74a05ec8c5a469ea83b3c2566efe, type: 3}
+      propertyPath: m_Name
+      value: Range
+      objectReference: {fileID: 0}
+    - target: {fileID: 7414157959791210767, guid: 354f74a05ec8c5a469ea83b3c2566efe, type: 3}
+      propertyPath: m_Name
+      value: Strength
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 354f74a05ec8c5a469ea83b3c2566efe, type: 3}
