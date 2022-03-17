@@ -40,11 +40,11 @@ public class Skill_BlackHole : Skill
         
         missile.team = unit.team;
         missile.owner = unit;
-        missile.duration = duration;
+        missile.duration = duration *Player.Instance.stat.Get_FinalStat(StatType.Duration);
         missile.damage = damage;
-        missile.speed = speed;
+        missile.speed = speed * Player.Instance.stat.Get_FinalStat(StatType.Speed);
         missile.delay = delay;
-        missile.range = range;
+        missile.range = range * Player.Instance.stat.Get_FinalStat(StatType.Range);
         missile.type = MissileType.Directional;
         missile.isPenetrate = true;
         missile.isPull = true;

@@ -8,7 +8,6 @@ public class MagicChest : Item
     {
         base.Start();
     }
-    // Update is called once per frame
     protected override void Update()
     {
         base.Update();
