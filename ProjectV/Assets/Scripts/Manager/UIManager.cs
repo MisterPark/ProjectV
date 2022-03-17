@@ -35,9 +35,13 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
+        if(Input.GetKeyDown(KeyCode.L))
+        {
+            Stat stat = Player.Instance.GetComponent<Stat>();
+            stat.Increase_FinalStat(StatType.Exp, 5000);
+        }
     }
 
     public GameObject GetUIObject(string objectname)
