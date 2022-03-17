@@ -57,6 +57,8 @@ public class Unit : MonoBehaviour
         oldPosition = transform.position;
         OnTakeDamage.AddListener(OnTakeDamageCallback);
         OnLevelUp.AddListener(OnLevelUpCallback);
+        stat.OnLevelUp.AddListener(OnStatLevelUp);
+        stat.OnTakeDamage.AddListener(OnStatTakeDamage);
     }
 
     protected virtual void FixedUpdate()
@@ -284,9 +286,13 @@ public class Unit : MonoBehaviour
 
     void Death()
     {
-        GameObject deathObject = ObjectPool.Instance.Allocate($"{gameObject.name}_Death");
-        deathObject.transform.position = transform.position;
-        deathObject.transform.rotation = transform.rotation;
+        if(type == UnitType.Monster)
+        {
+            GameObject deathObject = ObjectPool.Instance.Allocate($"{gameObject.name}_Death");
+            deathObject.transform.position = transform.position;
+            deathObject.transform.rotation = transform.rotation;
+        }
+        
     }
 
     void OnLevelUpCallback(int level)
@@ -325,5 +331,15 @@ public class Unit : MonoBehaviour
         Vector3 direction = transform.position - sourcePosition;
         transform.position += direction.normalized * power;
         transform.LookAt(sourcePosition);
+    }
+
+    void OnStatTakeDamage(float damage)
+    {
+        OnTakeDamage?.Invoke(damage);
+    }
+
+    void OnStatLevelUp(int level)
+    {
+        OnLevelUp?.Invoke(level);
     }
 }

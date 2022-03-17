@@ -159,6 +159,8 @@ public class Player : Unit
 
     void OnDeadCallback()
     {
+        GameManager.Instance.Pause();
+        UI_Gameover.instance.Show();
     }
 
     void OnLevelUpCallback(int level)
