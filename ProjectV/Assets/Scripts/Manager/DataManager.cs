@@ -110,7 +110,7 @@ public class DataManager : MonoBehaviour
     private void Update()
     {
         //Test
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (Input.GetKeyDown(KeyCode.F1))
             currentGameData.totalPlayTime += 60f;
     }
 
