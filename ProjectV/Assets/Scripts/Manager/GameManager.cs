@@ -111,6 +111,10 @@ public class GameManager : MonoBehaviour
         {
             Resume();
         }
+        if (Input.GetKeyUp(KeyCode.K))
+        {
+            UI_Gameover.instance.Show();
+        }
 
 
         InitZoom();
