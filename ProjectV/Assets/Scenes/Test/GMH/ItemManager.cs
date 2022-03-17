@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public enum ItemType { ExpJewel_Big, ExpJewel_Normal, ExpJewel_Small,
+public enum ItemType { ExpJewelBig, ExpJewelNormal, ExpJewelSmall,
                         HpPotion,
-                       GoldCoin_Big, GoldCoin_Normal, GoldCoin_Small,
+                       GoldCoinBig, GoldCoinNormal, GoldCoinSmall,
                        //Level01, Level02, Level03, Level04, Level05,
                        Magnet,
                        Pentagram,
                        FrozenOrb,
                        PoisonMushroom,
+                       NormalChest,MagicChest,RareChest,UniqueChest,LegenderyChest,
                        ItemEnd
 };
 public class ItemManager : MonoBehaviour
@@ -55,15 +56,15 @@ public class ItemManager : MonoBehaviour
      
         switch (type)
         {
-        case ItemType.ExpJewel_Big:
+        case ItemType.ExpJewelBig:
                 itemObjectCom.isRotate = true;
                 itemObjectCom.isMagnetism = true;
                 break;
-        case ItemType.ExpJewel_Normal:
+        case ItemType.ExpJewelNormal:
                 itemObjectCom.isRotate = true;
                 itemObjectCom.isMagnetism = true;
                 break;
-        case ItemType.ExpJewel_Small:
+        case ItemType.ExpJewelSmall:
                 itemObjectCom.isRotate = true;
                 itemObjectCom.isMagnetism = true;
                 break;
@@ -71,15 +72,15 @@ public class ItemManager : MonoBehaviour
                 itemObjectCom.isRotate = true;
                 itemObjectCom.isMagnetism = false;
                 break;
-        case ItemType.GoldCoin_Big:
+        case ItemType.GoldCoinBig:
                 itemObjectCom.isRotate = false;
                 itemObjectCom.isMagnetism = false;
                 break;
-        case ItemType.GoldCoin_Normal:
+        case ItemType.GoldCoinNormal:
                 itemObjectCom.isRotate = false;
                 itemObjectCom.isMagnetism = false;
                 break;
-        case ItemType.GoldCoin_Small:
+        case ItemType.GoldCoinSmall:
                 itemObjectCom.isRotate = false;
                 itemObjectCom.isMagnetism = false;
                 break;
@@ -96,10 +97,30 @@ public class ItemManager : MonoBehaviour
             itemObjectCom.isRotate = true;
             itemObjectCom.isMagnetism = false;
             break;
-            case ItemType.PoisonMushroom:
-                itemObjectCom.isRotate = true;
-                itemObjectCom.isMagnetism = false;
-                break;
+        case ItemType.PoisonMushroom:
+            itemObjectCom.isRotate = true;
+            itemObjectCom.isMagnetism = false;
+            break;
+        case ItemType.NormalChest:
+            itemObjectCom.isRotate = false;
+            itemObjectCom.isMagnetism = false;
+            break;
+        case ItemType.MagicChest:
+            itemObjectCom.isRotate = false;
+            itemObjectCom.isMagnetism = false;
+            break;
+        case ItemType.RareChest:
+            itemObjectCom.isRotate = false;
+            itemObjectCom.isMagnetism = false;
+            break;
+        case ItemType.UniqueChest:
+            itemObjectCom.isRotate = false;
+            itemObjectCom.isMagnetism = false;
+            break;
+        case ItemType.LegenderyChest:
+            itemObjectCom.isRotate = false;
+            itemObjectCom.isMagnetism = false;
+            break;
             default:
             itemObjectCom.isRotate = true;
             itemObjectCom.isMagnetism = false;

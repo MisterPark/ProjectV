@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject itemManagerPrefab;
     [SerializeField] GameObject propManagerPrefab;
     [SerializeField] GameObject joystickPrefab;
+    [SerializeField] GameObject combineSkillManagerPrefab;
     CameraController cameraController;
 
     GameObject player;
@@ -24,6 +25,7 @@ public class GameManager : MonoBehaviour
     GameObject itemManager;
     GameObject propManager;
     GameObject joystick;
+    GameObject combineSkillManager;
 
     Joystick _joystick;
     public Joystick Joystick { get { return _joystick; } }
@@ -85,6 +87,10 @@ public class GameManager : MonoBehaviour
         propManager = Instantiate(propManagerPrefab);
         propManager.transform.position = Vector3.zero;
         propManager.name = propManagerPrefab.name;
+
+        combineSkillManager = Instantiate(combineSkillManagerPrefab);
+        combineSkillManager.transform.position = Vector3.zero;
+        combineSkillManager.name= combineSkillManagerPrefab.name;
     }
     void Start()
     {
@@ -102,6 +108,7 @@ public class GameManager : MonoBehaviour
         if(Input.GetKeyUp(KeyCode.Escape))
         {
             Cursor.visible = !Cursor.visible;
+            UI_PausePanel.instance.Show(!UI_PausePanel.instance.Visible);
         }
         if(Input.GetKeyUp(KeyCode.F))
         {
