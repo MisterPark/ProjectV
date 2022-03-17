@@ -4,11 +4,16 @@ using UnityEngine;
 
 public class UI_PauseButton : MonoBehaviour
 {
+    public static UI_PauseButton instance;
     private float ratio;
     private RectTransform rectTransform;
     private RectTransform parent;
     private RectTransform button;
-    // Start is called before the first frame update
+
+    private void Awake()
+    {
+        instance = this;
+    }
     void Start()
     {
         rectTransform = GetComponent<RectTransform>();
@@ -34,11 +39,6 @@ public class UI_PauseButton : MonoBehaviour
 
     public void OnClickPause()
     {
-        if (!UIManager.Instance.GetUIActive("Levelup Panel"))
-        {
-            GameManager.Instance.Pause();
-            UIManager.Instance.SetUIActive("Pause Panel", true);
-            UIManager.Instance.SetUIActive("Status Panel", true);
-        }
+        UI_PausePanel.instance.Show();
     }
 }

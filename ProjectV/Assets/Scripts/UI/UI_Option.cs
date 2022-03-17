@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class UI_Option : UI
 {
+    public static UI_Option instance;
     private RectTransform rectTransform;
     private RectTransform parent;
-    // Start is called before the first frame update
+
+    private void Awake()
+    {
+        instance = this;
+    }
     void Start()
     {
         rectTransform = GetComponent<RectTransform>();

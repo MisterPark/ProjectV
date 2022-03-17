@@ -102,6 +102,7 @@ public class GameManager : MonoBehaviour
         if(Input.GetKeyUp(KeyCode.Escape))
         {
             Cursor.visible = !Cursor.visible;
+            UI_PausePanel.instance.Show(!UI_PausePanel.instance.Visible);
         }
         if(Input.GetKeyUp(KeyCode.F))
         {

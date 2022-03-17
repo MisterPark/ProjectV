@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Skill Data", menuName = "Data/Skill Data"), System.Serializable]
 public class SkillData : ScriptableObject
 {
-    public int maxLevel = 8;
+    public int maxLevel;
     public string skillName;
     public Sprite icon;
     public SkillKind kind;

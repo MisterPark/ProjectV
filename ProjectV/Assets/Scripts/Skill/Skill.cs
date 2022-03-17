@@ -48,16 +48,6 @@ public abstract class Skill : MonoBehaviour
         if (Type == SkillType.Active)
         {
             tick += Time.fixedDeltaTime;
-            //if (tick >= cooltime)
-            //{
-            //    tick = 0f;
-            //    for (int i = 0; i < amount; i++)
-            //    {
-
-            //        Active();
-
-            //    }
-            //}
             if(tick >= cooltime)
             {
                 tick = 0f;
