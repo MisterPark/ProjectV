@@ -100,7 +100,7 @@ public class Unit : MonoBehaviour
             case SkillKind.ShurikenAttack: skill = gameObject.AddComponent<Skill_ShurikenAttack>(); break;
             case SkillKind.Lightning: skill = gameObject.AddComponent<Skill_Lightning>(); break;
             case SkillKind.Rain: skill = gameObject.AddComponent<Skill_Rain>(); break;
-            case SkillKind.Might: skill = gameObject.AddComponent<Skill_Might>(); break;
+            case SkillKind.Strength: skill = gameObject.AddComponent<Skill_Strength>(); break;
             case SkillKind.Range: skill = gameObject.AddComponent<Skill_Range>(); break;
             case SkillKind.MoveSpeed: skill = gameObject.AddComponent<Skill_MoveSpeed>(); break;
             case SkillKind.Speed: skill = gameObject.AddComponent<Skill_Speed>(); break;
@@ -160,7 +160,7 @@ public class Unit : MonoBehaviour
             case SkillKind.ShurikenAttack: skill = gameObject.GetComponent<Skill_ShurikenAttack>(); break;
             case SkillKind.Lightning: skill = gameObject.GetComponent<Skill_Lightning>(); break;
             case SkillKind.Rain: skill = gameObject.GetComponent<Skill_Rain>(); break;
-            case SkillKind.Might: skill = gameObject.GetComponent<Skill_Might>(); break;
+            case SkillKind.Strength: skill = gameObject.GetComponent<Skill_Strength>(); break;
             case SkillKind.Range: skill = gameObject.GetComponent<Skill_Range>(); break;
             case SkillKind.MoveSpeed: skill = gameObject.GetComponent<Skill_MoveSpeed>(); break;
             case SkillKind.Speed: skill = gameObject.GetComponent<Skill_Speed>(); break;

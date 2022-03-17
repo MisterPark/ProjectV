@@ -15,7 +15,7 @@ public class Skill_Range : Skill
     protected override void Active()
     {
         Stat stat = Player.Instance.GetComponent<Stat>();
-        stat.Increase_FinalStat(StatType.Area);
+        stat.Increase_FinalStat(StatType.Range);
         Player.Instance.UpdateSkillData();
     }
 }
