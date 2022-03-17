@@ -40,8 +40,21 @@ public class Monster : Unit
     void OnDeadCallback()
     {
         DataManager.Instance.currentGameData.killCount += 1;
-        int rand = Random.Range((int)ItemType.ExpJewel_Big, (int)ItemType.ExpJewel_Small);
-        ItemManager.Instance.Drop((ItemType)rand, transform.position);
+        int itemType = (int)ItemType.ExpJewelSmall;
+        int playTime = (int)DataManager.Instance.currentGameData.totalPlayTime;
+        int minute = playTime / 60;
+
+        // TODO : 몬스터에 따른 드랍 아이템이 생기면 바꿔야 함
+        if (minute > 20)
+        {
+            itemType = (int)ItemType.ExpJewelBig;
+        }
+        else if (minute > 10)
+        {
+            itemType = (int)ItemType.ExpJewelNormal;
+        }
+
+        ItemManager.Instance.Drop((ItemType)itemType, transform.position);
 
 
         SpawnManager.Instance.Remove(gameObject);

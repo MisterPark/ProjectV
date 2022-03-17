@@ -32,7 +32,7 @@ public class Torchlight : Unit
 
     void OnDeadCallback()
     {
-        int rand = Random.Range((int)ItemType.HpPotion, (int)ItemType.ItemEnd);
+        int rand = Random.Range((int)ItemType.HpPotion, (int)ItemType.PoisonMushroom+1);
         ItemManager.Instance.Drop((ItemType)rand, transform.position);
 
         PropManager.Instance.Remove(gameObject);

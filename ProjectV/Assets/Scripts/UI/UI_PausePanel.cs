@@ -4,19 +4,36 @@ using UnityEngine;
 
 public class UI_PausePanel : UI
 {
-    // Start is called before the first frame update
+    public static UI_PausePanel instance;
+
+    private void Awake()
+    {
+        instance = this;
+    }
     void Start()
     {
         Hide();
     }
 
+    public override void Show()
+    {
+        if (UI_LevelUp.instance.Visible) return;
+        GameManager.Instance.Pause();
+        base.Show();
+        UI_StatusPanel.instance.Show();
+    }
+
+    public override void Hide()
+    {
+        base.Hide();
+        UI_StatusPanel.instance.Hide();
+        UI_Option.instance.Hide();
+        GameManager.Instance.Resume();
+    }
+
     public void OnClickResume()
     {
-        GameManager.Instance.Resume();
         Hide();
-        UIManager.Instance.SetUIActive("Status Panel", false);
-        if (UIManager.Instance.GetUIActive("Option Panel"))
-            UIManager.Instance.SetUIActive("Option Panel", false);
     }
 
     public void OnClickOption()

@@ -48,16 +48,6 @@ public abstract class Skill : MonoBehaviour
         if (Type == SkillType.Active)
         {
             tick += Time.fixedDeltaTime;
-            //if (tick >= cooltime)
-            //{
-            //    tick = 0f;
-            //    for (int i = 0; i < amount; i++)
-            //    {
-
-            //        Active();
-
-            //    }
-            //}
             if(tick >= cooltime)
             {
                 tick = 0f;
@@ -90,10 +80,10 @@ public abstract class Skill : MonoBehaviour
 
         int additionalAmount = Mathf.RoundToInt(unit.stat.Get_FinalStat(StatType.Amount));
         float cooltimeReduce = unit.stat.Get_FinalStat(StatType.Cooldown);
-        float additionalDamage = unit.stat.Get_FinalStat(StatType.Might);
+        float additionalDamage = unit.stat.Get_FinalStat(StatType.Strength);
         float additionalDuration = unit.stat.Get_FinalStat(StatType.Duration);
         float additionalSpeed = unit.stat.Get_FinalStat(StatType.Speed);
-        float additionalRange = unit.stat.Get_FinalStat(StatType.Area);
+        float additionalRange = unit.stat.Get_FinalStat(StatType.Range);
 
         grade = data.grade;
         amount = value.amount + additionalAmount;
@@ -129,7 +119,7 @@ public abstract class Skill : MonoBehaviour
 
         int additionalAmount = Mathf.RoundToInt(unit.stat.Get_FinalStat(StatType.Amount));
         float cooltimeReduce = unit.stat.Get_FinalStat(StatType.Cooldown);
-        float additionalDamage = unit.stat.Get_FinalStat(StatType.Might);
+        float additionalDamage = unit.stat.Get_FinalStat(StatType.Strength);
         float additionalDuration = unit.stat.Get_FinalStat(StatType.Duration);
         float additionalSpeed = unit.stat.Get_FinalStat(StatType.Speed);
 

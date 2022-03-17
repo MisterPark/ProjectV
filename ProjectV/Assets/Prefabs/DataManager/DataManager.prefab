@@ -117,19 +117,19 @@ MonoBehaviour:
   - kind: 11
     skillData: {fileID: 11400000, guid: a13f3a628136f884f92b9d6de02e1d44, type: 2}
   - kind: 12
-    skillData: {fileID: 11400000, guid: 742ca3e1a75f5184ebf61611a3613e3d, type: 2}
+    skillData: {fileID: 11400000, guid: 83f8c66d53fadd1429364d2f96951bd4, type: 2}
   - kind: 13
-    skillData: {fileID: 11400000, guid: 28c38b96ad2f67148b268361cbc28a96, type: 2}
-  - kind: 14
-    skillData: {fileID: 11400000, guid: 37cfcd21c47f7094b8cd64d7cdae0a96, type: 2}
-  - kind: 15
     skillData: {fileID: 11400000, guid: fa110a477096cf74eacd29e8b2730a5d, type: 2}
+  - kind: 14
+    skillData: {fileID: 11400000, guid: 742ca3e1a75f5184ebf61611a3613e3d, type: 2}
+  - kind: 15
+    skillData: {fileID: 11400000, guid: 37cfcd21c47f7094b8cd64d7cdae0a96, type: 2}
   - kind: 16
     skillData: {fileID: 11400000, guid: 83f8c66d53fadd1429364d2f96951bd4, type: 2}
   - kind: 17
-    skillData: {fileID: 11400000, guid: 5ecb4bd98a94c4c42bf5bc4b945aad0d, type: 2}
-  - kind: 18
     skillData: {fileID: 11400000, guid: c3f8e635a2cad404e915823417eb20df, type: 2}
+  - kind: 18
+    skillData: {fileID: 11400000, guid: 5ecb4bd98a94c4c42bf5bc4b945aad0d, type: 2}
   - kind: 19
     skillData: {fileID: 11400000, guid: 8af3aad5b22865c4dbafeffad06848ea, type: 2}
   - kind: 20
@@ -153,10 +153,12 @@ MonoBehaviour:
     totalGold: 0
     currentGold: 8000
     currentPowerUpCount: 0
+    totalPlayTime: 0
   currentGameData:
     characterName: 0
     killCount: 0
     gold: 0
+    totalPlayTime: 0
     playerLevel: 1
   moneyInterest_Per: 0.1
   stageDatas:
@@ -182,3 +184,4 @@ MonoBehaviour:
     totalGold: 0
     currentGold: 0
     currentPowerUpCount: 0
+    totalPlayTime: 0

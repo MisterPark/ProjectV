@@ -10,19 +10,21 @@ public class UI_Result : MonoBehaviour
     public Text goldText;
     public Text levelText;
     public Text killcountText;
-    // Start is called before the first frame update
+    public Button doneButton;
+
     void Start()
     {
-        surviveText.text = DataManager.Instance.currentGameData.totalPlayTime.ToString(@"mm\:ss");
+        int total = (int)DataManager.Instance.currentGameData.totalPlayTime;
+        int minute = total / 60;
+        int second = total % 60;
+        surviveText.text = $"{string.Format("{0:00}", minute)}:{string.Format("{0:00}", second)}";
         goldText.text = DataManager.Instance.currentGameData.gold.ToString();
         killcountText.text = DataManager.Instance.currentGameData.killCount.ToString();
     }
 
-    void Update()
+
+    public void OnDoneButtonClick()
     {
-        if(Input.anyKeyDown)
-        {
-            SceneManager.LoadScene(UIManager.Instance.StartSceneName);
-        }
+        SceneManager.LoadScene("TitleScene");
     }
 }

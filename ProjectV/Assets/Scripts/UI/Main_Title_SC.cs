@@ -42,8 +42,8 @@ public class Main_Title_SC : MonoBehaviour
     public void OnClickStart()
     {
         KeyboardCursor_Image.gameObject.SetActive(false);
-        transform.Find("Start_Button").gameObject.SetActive(false);
-        transform.Find("Powerup_Button").gameObject.SetActive(false);
+        transform.Find("Start Button").gameObject.SetActive(false);
+        transform.Find("Powerup Button").gameObject.SetActive(false);
         UIManager.Instance.SetUIActive("CharacterSelectPanel", true);
         Event_Handle.SetSelectedGameObject(UIManager.Instance.GetUIObject("CharacterSelectPanel"));
        // DataManager.Instance.Setting_PowerStat();
@@ -58,14 +58,14 @@ public class Main_Title_SC : MonoBehaviour
         if (tempobject.gameObject.activeSelf)
         {
             tempobject.gameObject.SetActive(false);
-            transform.Find("Start_Button").gameObject.SetActive(true);
-            transform.Find("Powerup_Button").gameObject.SetActive(true);
+            transform.Find("Start Button").gameObject.SetActive(true);
+            transform.Find("Powerup Button").gameObject.SetActive(true);
         }
         else if (tempobject2.gameObject.activeSelf)
         {
             tempobject2.gameObject.SetActive(false);
-            transform.Find("Start_Button").gameObject.SetActive(true);
-            transform.Find("Powerup_Button").gameObject.SetActive(true);
+            transform.Find("Start Button").gameObject.SetActive(true);
+            transform.Find("Powerup Button").gameObject.SetActive(true);
         }
         else if (tempobject3.gameObject.activeSelf)
         {
@@ -92,8 +92,8 @@ public class Main_Title_SC : MonoBehaviour
     public void OnClickPowerup()
     {
         KeyboardCursor_Image.gameObject.SetActive(false);
-        transform.Find("Start_Button").gameObject.SetActive(false);
-        transform.Find("Powerup_Button").gameObject.SetActive(false);
+        transform.Find("Start Button").gameObject.SetActive(false);
+        transform.Find("Powerup Button").gameObject.SetActive(false);
         UIManager.Instance.SetUIActive("Powerup_Panel", true);
         Event_Handle.SetSelectedGameObject(UIManager.Instance.GetUIObject("Powerup_Panel").transform.Find("Reset_Button").gameObject);
     }
