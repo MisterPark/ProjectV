@@ -122,14 +122,14 @@ public abstract class Skill : MonoBehaviour
         float additionalDamage = unit.stat.Get_FinalStat(StatType.Strength);
         float additionalDuration = unit.stat.Get_FinalStat(StatType.Duration);
         float additionalSpeed = unit.stat.Get_FinalStat(StatType.Speed);
+        float additionalRange = unit.stat.Get_FinalStat(StatType.Range);
 
         amount = value.amount + additionalAmount;
         cooltime = value.cooltime * cooltimeReduce;
         damage = value.damage * additionalDamage;
         duration = value.duration * additionalDuration;
         delay = value.delay;
-        range = value.range;
+        range = value.range * additionalRange;
         speed = value.speed * additionalSpeed;
     }
-
 }
