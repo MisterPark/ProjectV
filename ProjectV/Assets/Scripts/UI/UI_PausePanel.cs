@@ -38,6 +38,7 @@ public class UI_PausePanel : UI
 
     public void OnClickOption()
     {
-        UIManager.Instance.SetUIActive("Option Panel", true);
+        //UIManager.Instance.SetUIActive("Option Panel", true);
+        UI_Option.instance.Show();
     }
 }
