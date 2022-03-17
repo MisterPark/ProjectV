@@ -124,6 +124,7 @@ public abstract class Skill : MonoBehaviour
         float additionalSpeed = unit.stat.Get_FinalStat(StatType.Speed);
         float additionalRange = unit.stat.Get_FinalStat(StatType.Range);
 
+        grade = data.grade;
         amount = value.amount + additionalAmount;
         cooltime = value.cooltime * cooltimeReduce;
         damage = value.damage * additionalDamage;

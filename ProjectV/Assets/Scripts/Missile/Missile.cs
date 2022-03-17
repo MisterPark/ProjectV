@@ -88,10 +88,10 @@ public class Missile : MonoBehaviour
         {
             if( team != unit.team)
             {
-                OnCollision?.Invoke(transform.position, unit);
                 if (!isPenetrate)
                 {
                     unit.stat.TakeDamage(damage);
+                    OnCollision?.Invoke(transform.position, unit);
                     if (KnockbackFlag)
                     {
                         unit.Knockback(transform.position, 1);
@@ -103,6 +103,7 @@ public class Missile : MonoBehaviour
                     if (AttackFlag)
                     {
                         unit.stat.TakeDamage(damage);
+                        OnCollision?.Invoke(transform.position, unit);
                         if (KnockbackFlag)
                         {
                             unit.Knockback(transform.position, 1);

@@ -57,17 +57,10 @@ public class Skill_ForceFieldBarrier : Skill
 
     void OnLevelUpCallback(int nextLevel)
     {
-        SkillData data = DataManager.Instance.skillDatas[(int)Kind].skillData;
-        SkillLevel skillLevel = level.ToSkillLevel();
-        SkillValue value = data.values[(int)skillLevel];
+        UpdateSkillData();
 
-        missile.duration = value.duration;
-        missile.damage = value.damage;
-        missile.speed = value.speed;
-        missile.delay = value.delay;
-        missile.range = value.range;
-        
-
+        missile.range = range;
+        missile.transform.localScale = Vector3.one * range;
     }
     void OnCollisionCallback(Vector3 pos, Unit other )
     {

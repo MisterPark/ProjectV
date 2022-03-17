@@ -46,14 +46,14 @@ public class Skill_UnstableMagicMissile : Skill
         missile.range = range;
         missile.transform.GetChild(0).GetComponent<ParticleSystem>().startSize = range * 1.4f;
         //missile.SetTarget(nearest.transform.position + unit.skillOffsetPosition);
-        //missile.OnCollision.RemoveAllListeners();
-        //missile.OnCollision.AddListener(OnCollisionCallback);
+        missile.OnCollision.RemoveAllListeners();
+        missile.OnCollision.AddListener(OnCollisionCallback);
     }
 
     void OnCollisionCallback(Vector3 pos, Unit other)
     {
-        //GameObject impact = ObjectPool.Instance.Allocate("FireFlameImpact");
-        //impact.transform.position = pos;
+        GameObject impact = ObjectPool.Instance.Allocate("UnstableMagicMissileImpact");
+        impact.transform.position = other.transform.position;
 
     }
 }
