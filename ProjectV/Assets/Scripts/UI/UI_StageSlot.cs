@@ -17,10 +17,4 @@ public class UI_StageSlot : MonoBehaviour
         Button tempbutton = GetComponent<Button>();
         tempbutton.onClick.AddListener(StageSelect.GetComponent<UI_StageSelect>().OnClickStageSlot);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

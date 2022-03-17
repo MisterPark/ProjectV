@@ -5,8 +5,10 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class UI_Powerup : MonoBehaviour
+public class UI_Powerup : UI
 {
+    public static UI_Powerup instacne;
+
     [SerializeField] private UI_Powerup_statDB m_PowerupDB;
     [SerializeField] private GameObject m_PowerupTemplate;
     [SerializeField] private GameObject m_ContentView;
@@ -31,6 +33,11 @@ public class UI_Powerup : MonoBehaviour
     private Powerup_DataType m_CurrentPowerupDB;
 
     public UnityEvent OnBuyButton;
+
+    void Awake()
+    {
+        instacne = this;
+    }
 
     // Start is called before the first frame update
     void Start()

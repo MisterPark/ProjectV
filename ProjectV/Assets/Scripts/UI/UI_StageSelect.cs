@@ -5,20 +5,28 @@ using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class UI_StageSelect : MonoBehaviour
+public class UI_StageSelect : UI
 {
+    public static UI_StageSelect instance;
+
     [SerializeField] private EventSystem Event_Handle;
     [SerializeField] private GameObject StageSelectSlot;
     [SerializeField] private GameObject ContentsWindow;
     [SerializeField] private TMPro.TextMeshProUGUI DescriptionName;
     [SerializeField] private Image DescriptionImage;
     [SerializeField] private TMPro.TextMeshProUGUI DescriptionText;
+    private string stageName;
     private StageKind CurrentStageKind;
 
     [SerializeField] private float SlotYPosition;
     [SerializeField] private float SlotYPadding;
 
     private float SlotHeight;
+
+    void Awake()
+    {
+        instance = this;
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -40,7 +48,13 @@ public class UI_StageSelect : MonoBehaviour
         DescriptionText.text = selectobject.GetComponent<UI_StageSlot>().SlotDescription.text;
         DescriptionImage.sprite = selectobject.GetComponent<UI_StageSlot>().SlotImage.sprite;
         CurrentStageKind = selectobject.GetComponent<UI_StageSlot>().Stage;
-        UIManager.Instance.StartSceneName = CurrentStageKind.ToString();
+        for(int i =0; i < DataManager.Instance.stageDatas.Length; i++)
+        {
+            if(CurrentStageKind == DataManager.Instance.stageDatas[i].kind)
+            {
+                stageName = DataManager.Instance.stageDatas[i].stageName;
+            }
+        }
     }
 
     void SlotInit()
@@ -63,6 +77,6 @@ public class UI_StageSelect : MonoBehaviour
 
     public void OnClickStageSelectOKButton()
     {
-        LoadingSceneManager.instance.LoadScene(UIManager.Instance.StartSceneName);
+        LoadingSceneManager.instance.LoadScene(stageName);
     }
 }

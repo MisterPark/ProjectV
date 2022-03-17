@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class UI_SlotMachine : UI
 {
+    public static UI_SlotMachine instance;
+
     public RectTransform resultPanel;
 
     private bool isPlayMachine = false;
@@ -23,6 +25,7 @@ public class UI_SlotMachine : UI
 
     void Awake()
     {
+        instance = this;
         Init();
     }
 

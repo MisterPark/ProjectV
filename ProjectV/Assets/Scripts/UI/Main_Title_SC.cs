@@ -44,17 +44,17 @@ public class Main_Title_SC : MonoBehaviour
         KeyboardCursor_Image.gameObject.SetActive(false);
         transform.Find("Start Button").gameObject.SetActive(false);
         transform.Find("Powerup Button").gameObject.SetActive(false);
-        UIManager.Instance.SetUIActive("CharacterSelectPanel", true);
-        Event_Handle.SetSelectedGameObject(UIManager.Instance.GetUIObject("CharacterSelectPanel"));
+        UI_CharacterSelect.instance.Show();
+        Event_Handle.SetSelectedGameObject(UI_CharacterSelect.instance.gameObject);
        // DataManager.Instance.Setting_PowerStat();
        //SceneManager.LoadScene(StartScene_Name);
     }
 
     public void OnClickExit()
     {
-        Transform tempobject = UIManager.Instance.GetUIObject("Powerup_Panel").transform;
-        Transform tempobject2 = UIManager.Instance.GetUIObject("CharacterSelectPanel").transform;
-        Transform tempobject3 = UIManager.Instance.GetUIObject("StageSelectPanel").transform;
+        Transform tempobject = UI_Powerup.instacne.transform;
+        Transform tempobject2 = UI_CharacterSelect.instance.transform;
+        Transform tempobject3 = UI_StageSelect.instance.transform;
         if (tempobject.gameObject.activeSelf)
         {
             tempobject.gameObject.SetActive(false);
@@ -84,18 +84,15 @@ public class Main_Title_SC : MonoBehaviour
 
     public void OnClickOption()
     {
-        if(!UIManager.Instance.GetUIActive("Option Panel"))
-        {
-            UIManager.Instance.SetUIActive("Option Panel", true);
-        }
+        UI_Option.instance.Show();
     }
     public void OnClickPowerup()
     {
         KeyboardCursor_Image.gameObject.SetActive(false);
         transform.Find("Start Button").gameObject.SetActive(false);
         transform.Find("Powerup Button").gameObject.SetActive(false);
-        UIManager.Instance.SetUIActive("Powerup_Panel", true);
-        Event_Handle.SetSelectedGameObject(UIManager.Instance.GetUIObject("Powerup_Panel").transform.Find("Reset_Button").gameObject);
+        UI_Powerup.instacne.Show();
+        Event_Handle.SetSelectedGameObject(UI_Powerup.instacne.transform.Find("Reset_Button").gameObject);
     }
 
 }
