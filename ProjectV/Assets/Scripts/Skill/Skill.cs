@@ -9,6 +9,7 @@ public abstract class Skill : MonoBehaviour
 {
     public Sprite icon;
     public int level = 1;
+    public Grade grade;
     public SkillKind Kind;
     public SkillType Type { get { return Kind.GetSkillType(); } }
     public float cooltime = 0.5f;
@@ -89,11 +90,12 @@ public abstract class Skill : MonoBehaviour
 
         int additionalAmount = Mathf.RoundToInt(unit.stat.Get_FinalStat(StatType.Amount));
         float cooltimeReduce = unit.stat.Get_FinalStat(StatType.Cooldown);
-        float additionalDamage = unit.stat.Get_FinalStat(StatType.Might);
+        float additionalDamage = unit.stat.Get_FinalStat(StatType.Strength);
         float additionalDuration = unit.stat.Get_FinalStat(StatType.Duration);
         float additionalSpeed = unit.stat.Get_FinalStat(StatType.Speed);
-        float additionalRange = unit.stat.Get_FinalStat(StatType.Area);
+        float additionalRange = unit.stat.Get_FinalStat(StatType.Range);
 
+        grade = data.grade;
         amount = value.amount + additionalAmount;
         cooltime = value.cooltime * cooltimeReduce;
         damage = value.damage * additionalDamage;
@@ -127,7 +129,7 @@ public abstract class Skill : MonoBehaviour
 
         int additionalAmount = Mathf.RoundToInt(unit.stat.Get_FinalStat(StatType.Amount));
         float cooltimeReduce = unit.stat.Get_FinalStat(StatType.Cooldown);
-        float additionalDamage = unit.stat.Get_FinalStat(StatType.Might);
+        float additionalDamage = unit.stat.Get_FinalStat(StatType.Strength);
         float additionalDuration = unit.stat.Get_FinalStat(StatType.Duration);
         float additionalSpeed = unit.stat.Get_FinalStat(StatType.Speed);
 

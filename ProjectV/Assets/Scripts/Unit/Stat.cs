@@ -5,13 +5,13 @@ using UnityEngine;
 [System.Serializable] public enum StatType
 {
     Level,          // 레벨
-    Might,          // 괴력 (Might): 랭크당 공격력 10% 증가
+    Strength,          // 괴력 (Strength): 랭크당 공격력 10% 증가
     Armor,          // 방어력 (Armor): 랭크당 피격 데미지 1 감소
     MaxHealth,      // 최대 체력 (Max Health): 랭크당 최대 체력 20% 증가
     Health,         // 현재 체력
     Recovery,       // 회복 (Recovery): 랭크당 체력 회복 0.2 증가
     Cooldown,       // 쿨타임 (Cooldown): 랭크당 쿨타임 8% 감소
-    Area,           // 공격범위 (Area): 랭크당 범위 10% 증가
+    Range,           // 공격범위 (Range): 랭크당 범위 10% 증가
     Speed,          // 투사체 속도 (Speed): 랭크당 투사체 속도 10% 증가
     Duration,       // 지속시간 (Duration): 랭크당 지속력 10% 증가
     Amount,         // 투사체 수 (Amount): 투사체 개수 +1
