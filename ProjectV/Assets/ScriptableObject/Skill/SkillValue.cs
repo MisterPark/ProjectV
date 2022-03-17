@@ -16,7 +16,7 @@ public enum SkillKind
     ShurikenAttack,
     Lightning,
     Rain,
-    Might,
+    Strength,
     Armor,
     MaxHp,
     //Recovery, //�߰��� Skill_XXX Awake �����������.
