@@ -133,5 +133,4 @@ public abstract class Skill : MonoBehaviour
         range = value.range * additionalRange;
         speed = value.speed * additionalSpeed;
     }
-
 }
