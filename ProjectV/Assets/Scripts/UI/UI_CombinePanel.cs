@@ -14,17 +14,22 @@ public class UI_CombinePanel : UI
     void Start()
     {
         Init();
-        Player.Instance.OnAddOrIncreaseSkill.AddListener(OnSkillSeletionCompleteCallback);
+        if (Player.Instance == null)
+        {
+            Hide();
+            return;
+        }
+        SetPlayerSkillInformation(Player.Instance.Skills);
+        CheckSkillCombinable();
         Hide();
     }
 
-    private void Update()
+    private void OnEnable()
     {
-        if(Input.GetKeyDown(KeyCode.L))
-        {
-            Stat stat = Player.Instance.GetComponent<Stat>();
-            stat.Increase_FinalStat(StatType.Exp, 50000);
-        }
+        if (Player.Instance == null)
+            return;
+        SetPlayerSkillInformation(Player.Instance.Skills);
+        CheckSkillCombinable();
     }
 
     private void SetPlayerSkillInformation(List<Skill> playerSkill)
@@ -49,45 +54,43 @@ public class UI_CombinePanel : UI
 
     private void CheckSkillCombinable()
     {
-        for(int i = 0; i< contents.Length; i++)
+        //for(int i = 0; i< contents.Length; i++)
+        //{
+        //    if (playerSkillLevel.ContainsKey(contents[i].kindA))
+        //    {
+        //        if (playerSkillLevel[contents[i].kindA] == DataManager.Instance.skillDatas[(int)contents[i].kindA].skillData.maxLevel)
+        //        {
+        //            contents[i].ActivateSkillA(true, ableColor);
+        //        }
+        //        else
+        //            contents[i].ActivateSkillA(false, disableColor);
+        //    }
+        //    else
+        //        contents[i].ActivateSkillA(false, disableColor);
+
+        //    if (playerSkillLevel.ContainsKey(contents[i].kindB))
+        //    {
+        //        if (playerSkillLevel[contents[i].kindB] == DataManager.Instance.skillDatas[(int)contents[i].kindB].skillData.maxLevel)
+        //        {
+        //            contents[i].ActivateSkillB(true, ableColor);
+        //        }
+        //        else
+        //            contents[i].ActivateSkillB(false, disableColor);
+        //    }
+        //    else
+        //        contents[i].ActivateSkillB(false, disableColor);
+        //}
+        foreach(KeyValuePair<SkillKind, int> item in playerSkillLevel)
         {
-            if (playerSkillLevel.ContainsKey(contents[i].kindA))
+            if(item.Value == DataManager.Instance.skillDatas[((int)(item.Key))].skillData.maxLevel)
             {
-                if (playerSkillLevel[contents[i].kindA] == DataManager.Instance.skillDatas[(int)contents[i].kindA].skillData.maxLevel)
-                {
-                    contents[i].ActivateSkillA(true, ableColor);
-                }
-                else
-                    contents[i].ActivateSkillA(false, disableColor);
+                AbleSlot(item.Key);
             }
-            else
-                contents[i].ActivateSkillA(false, disableColor);
-
-            if (playerSkillLevel.ContainsKey(contents[i].kindB))
-            {
-                if (playerSkillLevel[contents[i].kindB] == DataManager.Instance.skillDatas[(int)contents[i].kindB].skillData.maxLevel)
-                {
-                    contents[i].ActivateSkillB(true, ableColor);
-                }
-                else
-                    contents[i].ActivateSkillB(false, disableColor);
-            }
-            else
-                contents[i].ActivateSkillB(false, disableColor);
-
-            contents[i].ActivateSlot();
         }
-    }
-
-    private void OnSkillSeletionCompleteCallback()
-    {
-        SetPlayerSkillInformation(Player.Instance.Skills);
-        CheckSkillCombinable();
     }
 
     private void Init()
     {
-        CombineSkillManager temp = CombineSkillManager.Instance;
         contents = new UI_CombineSlot[CombineSkillManager.Instance.combineSkillDatas.Length];
         for(int i =0; i < contents.Length; i++)
         {
@@ -105,8 +108,51 @@ public class UI_CombinePanel : UI
             contents[i].skillB.sprite = DataManager.Instance.skillDatas[((int)(contents[i].kindB))].skillData.icon;
             contents[i].skillC.sprite = DataManager.Instance.skillDatas[((int)(contents[i].kindC))].skillData.icon;
 
-            contents[i].Init(disableColor);
+            contents[i].Init(this, disableColor);
         }
 
+    }
+
+    public void OnClickSlot(SkillKind matA, SkillKind matB)
+    {
+        playerSkillLevel.Remove(matA);
+        playerSkillLevel.Remove(matB);
+        DisableSlot(matA);
+        DisableSlot(matB);
+    }
+
+    private void AbleSlot(SkillKind kind)
+    {
+        for (int i = 0; i < contents.Length; i++)
+        {
+            if (contents[i].kindA == kind)
+            {
+                contents[i].ActivateSkillA(true, ableColor);
+            }
+            if (contents[i].kindB == kind)
+            {
+                contents[i].ActivateSkillB(true, ableColor);
+            }
+        }
+    }
+
+    private void DisableSlot(SkillKind kind)
+    {
+        for(int i = 0; i < contents.Length; i++)
+        {
+            if(contents[i].kindA == kind)
+            {
+                contents[i].ActivateSkillA(false, disableColor);
+            }
+            if(contents[i].kindB == kind)
+            {
+                contents[i].ActivateSkillB(false, disableColor);
+            }
+        }
+    }
+
+    public void OnClickExit()
+    {
+        Hide();
     }
 }

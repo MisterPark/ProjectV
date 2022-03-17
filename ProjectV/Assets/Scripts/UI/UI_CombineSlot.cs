@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 public class UI_CombineSlot : MonoBehaviour
 {
     public SkillKind kindA;
@@ -14,16 +15,22 @@ public class UI_CombineSlot : MonoBehaviour
     private bool isActivateA = false;
     private bool isActivateB = false;
     private Button button;
+    private UI_CombinePanel parent;
     // Start is called before the first frame update
     void Start()
     {
-        button = GetComponent<Button>();
     }
 
     public void ActivateSkillA(bool isActivate, Color color)
     {
         if (isActivate)
+        {
             isActivateA = true;
+            if(isActivateA && isActivateB)
+            {
+                ActivateSlot();
+            }
+        }
         else
             isActivateA = false;
         skillA.color = color;
@@ -32,24 +39,31 @@ public class UI_CombineSlot : MonoBehaviour
     public void ActivateSkillB(bool isActivate, Color color)
     {
         if (isActivate)
+        {
             isActivateB = true;
+            if(isActivateB && isActivateA)
+            {
+                ActivateSlot();
+            }
+        }
         else
             isActivateB = false;
         skillB.color = color;
     }
 
-    public bool ActivateSlot()
+    private void ActivateSlot()
     {
-        if (isActivateA == true && isActivateB == true)
+        if (!button.interactable)
         {
             button.interactable = true;
-            return true;
         }
-        return false;
     }
 
-    public void Init(Color color)
+    public void Init(UI_CombinePanel parentPanel, Color color)
     {
+        button = GetComponent<Button>();
+        button.interactable = false;
+        parent = parentPanel;
         skillA.color = color;
         skillB.color = color;
     }
@@ -57,6 +71,7 @@ public class UI_CombineSlot : MonoBehaviour
     public void OnClickSlot()
     {
         button.interactable = false;
+        parent.OnClickSlot(kindA, kindB);
         CombineSkillManager.Instance.CombineSkill(kindC);
     }
 
