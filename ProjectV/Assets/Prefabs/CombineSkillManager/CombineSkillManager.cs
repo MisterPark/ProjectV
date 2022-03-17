@@ -8,6 +8,11 @@ public class CombineSkillManager : MonoBehaviour
     
     public CombineSkillDataElement[] combineSkillDatas;
 
+    private void Start()
+    {
+        Instance = this;
+    }
+
     public void CombineSkill(SkillKind skillKind)
     {
         foreach(var skill in combineSkillDatas)

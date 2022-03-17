@@ -4,19 +4,61 @@ using UnityEngine;
 using UnityEngine.UI;
 public class UI_CombineSlot : MonoBehaviour
 {
+    public SkillKind kindA;
+    public SkillKind kindB;
+    public SkillKind kindC;
     public Image skillA;
     public Image skillB;
     public Image skillC;
+
+    private bool isActivateA = false;
+    private bool isActivateB = false;
+    private Button button;
     // Start is called before the first frame update
     void Start()
     {
-        Color disableColor = new Color(0.3f, 0.3f, 0.3f, 0.9f);
-        Color ableColor = new Color(1f, 1f, 1f, 1f);
+        button = GetComponent<Button>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ActivateSkillA(bool isActivate, Color color)
     {
-        
+        if (isActivate)
+            isActivateA = true;
+        else
+            isActivateA = false;
+        skillA.color = color;
     }
+
+    public void ActivateSkillB(bool isActivate, Color color)
+    {
+        if (isActivate)
+            isActivateB = true;
+        else
+            isActivateB = false;
+        skillB.color = color;
+    }
+
+    public bool ActivateSlot()
+    {
+        if (isActivateA == true && isActivateB == true)
+        {
+            button.interactable = true;
+            return true;
+        }
+        else
+            button.interactable = false;
+        return false;
+    }
+
+    public void Init(Color color)
+    {
+        skillA.color = color;
+        skillB.color = color;
+    }
+
+    public void OnClickSlot()
+    {
+        CombineSkillManager.Instance.CombineSkill(kindC);
+    }
+
 }
