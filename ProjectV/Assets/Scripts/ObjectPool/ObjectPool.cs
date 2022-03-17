@@ -43,7 +43,7 @@ public class ObjectPool : MonoBehaviour
     {
         if (!_pools.ContainsKey(key))
         {
-            Debug.LogError($"can't find key : {key}");
+            _pools.Add(key, new Stack<GameObject>());
         }
 
         if (_pools[key].Count == 0)
@@ -62,7 +62,7 @@ public class ObjectPool : MonoBehaviour
     {
         if (!_pools.ContainsKey(key))
         {
-            Debug.LogError($"can't find key : {key}");
+            _pools.Add(key, new Stack<GameObject>());
         }
 
         if (_pools[key].Count == 0)
@@ -82,7 +82,7 @@ public class ObjectPool : MonoBehaviour
         string key = _gameObject.name.Split('(')[0];
         if (!_pools.ContainsKey(key))
         {
-            throw new System.Exception($"can't find key : {key}");
+            _pools.Add(key, new Stack<GameObject>());
         }
         _gameObject.SetActive(false);
         _pools[key].Push(_gameObject);
@@ -91,7 +91,7 @@ public class ObjectPool : MonoBehaviour
     {
         if (!_pools.ContainsKey(key))
         {
-            Debug.LogError($"can't find key : {key}");
+            _pools.Add(key, new Stack<GameObject>());
         }
 
         GameObject prefab = GetPrefab(key);

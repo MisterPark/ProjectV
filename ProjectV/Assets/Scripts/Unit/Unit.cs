@@ -256,7 +256,23 @@ public class Unit : MonoBehaviour
 
         GameObject temp = ObjectPool.Instance.Allocate("UI_DamageFont");
         UI_DamageFont font = temp.transform.GetChild(0).GetComponent<UI_DamageFont>();
-        font.Init((int)damage, UI_DamageFont.FontColor.WHITE, transform.position + (Vector3.up * 2f));
+        Color fontColor = Color.white;
+        Color outlineColor = Color.black;
+
+        if(gameObject.IsPlayer())
+        {
+            fontColor = Color.red;
+            outlineColor = Color.yellow;
+        }
+        else
+        {
+            float clamp = Mathf.Clamp(damage, 0f, 255f);
+            fontColor.r = 1f;
+            fontColor.g = 1f - (clamp / 255f);
+            fontColor.b = 0f;
+        }
+
+        font.Init((int)damage, fontColor, outlineColor, transform.position + (Vector3.up * 2f));
 
         float hp = stat.Get_FinalStat(StatType.Health);
         if (hp <= 0f)
