@@ -8,13 +8,18 @@ public class CombineSkillManager : MonoBehaviour
     
     public CombineSkillDataElement[] combineSkillDatas;
 
+    private void Start()
+    {
+        Instance = this;
+    }
+
     public void CombineSkill(SkillKind skillKind)
     {
         foreach(var skill in combineSkillDatas)
         {
             if(skill.combinedSkill != skillKind)
             {
-                Debug.Log("해당 스킬의 조합이 없습니다.");
+                Debug.Log(skillKind+"해당 스킬의 조합이 없습니다.");
                 return;
             }
 
