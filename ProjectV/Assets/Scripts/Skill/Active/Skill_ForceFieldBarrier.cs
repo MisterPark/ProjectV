@@ -27,12 +27,14 @@ public class Skill_ForceFieldBarrier : Skill
         }
 
         obj = ObjectPool.Instance.Allocate("ForceFieldBarrier");
-        obj.transform.position = Player.Instance.transform.position;
-        obj.transform.forward = Player.Instance.transform.forward;
-        obj.transform.SetParent(Player.Instance.transform);
+        //obj.transform.position = Player.Instance.transform.position;
+        //obj.transform.forward = Player.Instance.transform.forward;
+        //obj.transform.SetParent(Player.Instance.transform);
 
         missile = obj.GetComponent<Missile>();
         missile.Initialize();
+        missile.SetTarget(unit.gameObject);
+
 
         missile.team = unit.team;
         missile.owner = unit;
@@ -41,7 +43,7 @@ public class Skill_ForceFieldBarrier : Skill
         missile.speed = speed;
         missile.delay = delay;
         missile.range = range;
-        missile.type = MissileType.Guided;
+        missile.type = MissileType.Attached;
         missile.isPenetrate = true;
         missile.KnockbackFlag = true;
         missile.OnCollision.RemoveAllListeners();

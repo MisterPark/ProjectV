@@ -7,6 +7,7 @@ public enum MissileType // ¿òÁ÷ÀÓ
 {
     Directional,
     Guided,
+    Attached,
     Other,
 }
 
@@ -94,7 +95,7 @@ public class Missile : MonoBehaviour
                     OnCollision?.Invoke(transform.position, unit);
                     if (KnockbackFlag)
                     {
-                        unit.Knockback(transform.position, 1);
+                        unit.Knockback(transform.position, 0.2f);
                     }
                     ObjectPool.Instance.Free(gameObject); 
                 }
@@ -106,7 +107,7 @@ public class Missile : MonoBehaviour
                         OnCollision?.Invoke(transform.position, unit);
                         if (KnockbackFlag)
                         {
-                            unit.Knockback(transform.position, 1);
+                            unit.Knockback(transform.position, 0.2f);
                         }
                     }
                 }
@@ -150,6 +151,14 @@ public class Missile : MonoBehaviour
                 targetDirection = to.normalized;
             }
         }
+        else if(type == MissileType.Attached)
+        {
+            targetDirection = Vector3.zero;
+            if(target != null)
+            {
+                transform.position = target.transform.position;
+            }
+        }
 
         transform.position += targetDirection * speed * Time.fixedDeltaTime;
     }
@@ -170,6 +179,14 @@ public class Missile : MonoBehaviour
                     }
                 }
                 break;
+            case MissileType.Attached:
+                {
+                    if (target != null)
+                    {
+                        targetPos = target.transform.forward + target.transform.position;
+                    }
+                    break;
+                }
             default:
                 targetPos = transform.position + targetDirection;
                 break;

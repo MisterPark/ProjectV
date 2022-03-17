@@ -57,6 +57,8 @@ public class Unit : MonoBehaviour
         oldPosition = transform.position;
         OnTakeDamage.AddListener(OnTakeDamageCallback);
         OnLevelUp.AddListener(OnLevelUpCallback);
+        stat.OnLevelUp.AddListener(OnStatLevelUp);
+        stat.OnTakeDamage.AddListener(OnStatTakeDamage);
     }
 
     protected virtual void FixedUpdate()
@@ -256,7 +258,23 @@ public class Unit : MonoBehaviour
 
         GameObject temp = ObjectPool.Instance.Allocate("UI_DamageFont");
         UI_DamageFont font = temp.transform.GetChild(0).GetComponent<UI_DamageFont>();
-        font.Init((int)damage, UI_DamageFont.FontColor.WHITE, transform.position + (Vector3.up * 2f));
+        Color fontColor = Color.white;
+        Color outlineColor = Color.black;
+
+        if(gameObject.IsPlayer())
+        {
+            fontColor = Color.red;
+            outlineColor = Color.yellow;
+        }
+        else
+        {
+            float clamp = Mathf.Clamp(damage, 0f, 255f);
+            fontColor.r = 1f;
+            fontColor.g = 1f - (clamp / 255f);
+            fontColor.b = 0f;
+        }
+
+        font.Init((int)damage, fontColor, outlineColor, transform.position + (Vector3.up * 2f));
 
         float hp = stat.Get_FinalStat(StatType.Health);
         if (hp <= 0f)
@@ -268,9 +286,13 @@ public class Unit : MonoBehaviour
 
     void Death()
     {
-        GameObject deathObject = ObjectPool.Instance.Allocate($"{gameObject.name}_Death");
-        deathObject.transform.position = transform.position;
-        deathObject.transform.rotation = transform.rotation;
+        if(type == UnitType.Monster)
+        {
+            GameObject deathObject = ObjectPool.Instance.Allocate($"{gameObject.name}_Death");
+            deathObject.transform.position = transform.position;
+            deathObject.transform.rotation = transform.rotation;
+        }
+        
     }
 
     void OnLevelUpCallback(int level)
@@ -309,5 +331,15 @@ public class Unit : MonoBehaviour
         Vector3 direction = transform.position - sourcePosition;
         transform.position += direction.normalized * power;
         transform.LookAt(sourcePosition);
+    }
+
+    void OnStatTakeDamage(float damage)
+    {
+        OnTakeDamage?.Invoke(damage);
+    }
+
+    void OnStatLevelUp(int level)
+    {
+        OnLevelUp?.Invoke(level);
     }
 }
