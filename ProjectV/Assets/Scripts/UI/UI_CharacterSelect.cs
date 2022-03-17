@@ -76,14 +76,15 @@ public class UI_CharacterSelect : UI
         SlotHeight = CharacterSlot.GetComponent<RectTransform>().rect.height;
         for (int repeat = 0; repeat < (int)PlayerCharacterName.END; ++repeat)
         {
-            column = repeat % SlotColumnCount;
-            row = repeat / SlotColumnCount;
+            //column = repeat % SlotColumnCount;
+            //row = repeat / SlotColumnCount;
             tempslot = Instantiate(CharacterSlot);
             tempslot.transform.SetParent(ContentsWindow.transform);
-            tempwidth = SlotWidth;
-            tempheight = SlotHeight;
-            tempslot.transform.localScale = CharacterSlot.transform.localScale;
-            tempslot.transform.localPosition = new Vector3(SlotXPosition+((tempwidth + SlotXPadding) * column), SlotYPosition - ((tempheight + SlotYPadding) * row), 0f);
+            tempslot.transform.localScale = Vector3.one;
+            //tempwidth = SlotWidth;
+            //tempheight = SlotHeight;
+            //tempslot.transform.localScale = CharacterSlot.transform.localScale;
+            //tempslot.transform.localPosition = new Vector3(SlotXPosition+((tempwidth + SlotXPadding) * column), SlotYPosition - ((tempheight + SlotYPadding) * row), 0f);
 
             tempslot.GetComponent<UI_CharacterSlot>().CharacterImage.sprite = DataManager.Instance.playerCharacterData[repeat].charImage;
             tempslot.GetComponent<UI_CharacterSlot>().CharacterName.text = DataManager.Instance.playerCharacterData[repeat].name.ToString();

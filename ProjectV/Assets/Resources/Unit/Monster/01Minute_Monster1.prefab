@@ -2764,6 +2764,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   statsData: {fileID: 11400000, guid: fa2debf79f040864d97b910b4eaf35ad, type: 2}
   stats: []
+  OnLevelUp:
+    m_PersistentCalls:
+      m_Calls: []
+  OnTakeDamage:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!136 &5620476943669159745
 CapsuleCollider:
   m_ObjectHideFlags: 0
