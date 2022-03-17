@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [System.Serializable] public enum StatType
 {
@@ -43,15 +44,10 @@ public class Stat : MonoBehaviour
     [ArrayElementTitle("statType")]
 #endif
     [SerializeField] protected Stats[] stats;
-    Unit owner;
-    // Start is called before the first frame update
-    void Start()
-    {
-        owner = GetComponent<Unit>();
-        
-    }
 
-    // Update is called once per frame
+    public UnityEvent<int> OnLevelUp;
+    public UnityEvent<float> OnTakeDamage;
+
     void FixedUpdate()
     {
         // Ã¼Á¨
@@ -121,7 +117,7 @@ public class Stat : MonoBehaviour
         stats[(int)StatType.Exp].final_Stat -= stats[(int)StatType.MaxExp].final_Stat;
         //stats[(int)StatType.MaxExp].final_Stat += stats[(int)StatType.MaxExp].origin_Stat * stats[(int)StatType.MaxExp].growth_Stat;
         stats[(int)StatType.MaxExp].final_Stat *= stats[(int)StatType.MaxExp].growth_Stat + 1f;
-        owner.OnLevelUp?.Invoke(Mathf.RoundToInt(stats[(int)StatType.Level].final_Stat));
+        OnLevelUp?.Invoke(Mathf.RoundToInt(stats[(int)StatType.Level].final_Stat));
     }
 
 
@@ -251,7 +247,7 @@ public class Stat : MonoBehaviour
         if(_value > 0f)
         {
             stats[(int)StatType.Health].final_Stat -= _value;
-            owner.OnTakeDamage?.Invoke(_value);
+            OnTakeDamage?.Invoke(_value);
         }
 
         return _value;
