@@ -35,6 +35,7 @@ public class LoadingSceneManager : MonoBehaviour
 
     private void FixedUpdate()
     {
+        Debug.Log($"{NextScene} {loadingFlag} {trigger} {loadTick} / {WaitTime}");
         if (loadingFlag == false) return;
 
         if(trigger == false)
@@ -57,6 +58,11 @@ public class LoadingSceneManager : MonoBehaviour
 
     }
 
+    private void OnDestroy()
+    {
+        Debug.Log("로딩씬매니저 삭제");
+    }
+
     public void LoadScene(string sceneName, float waitTime = 5f)
     {
         NextScene = sceneName;
@@ -65,6 +71,7 @@ public class LoadingSceneManager : MonoBehaviour
         loadTick = 0;
         loadingFlag = true;
         trigger = false;
+        Time.timeScale = 1f;
         SceneManager.LoadScene("LoadingScene");
     }
 

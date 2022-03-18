@@ -60,10 +60,6 @@ public class UI_CharacterSelect : UI
     void SlotInit()
     {
         GameObject tempslot;
-        float tempwidth;
-        float tempheight;
-        int column;
-        int row;
 
         SlotWidth = CharacterSlot.GetComponent<RectTransform>().rect.width;
         SlotHeight = CharacterSlot.GetComponent<RectTransform>().rect.height;
@@ -74,11 +70,7 @@ public class UI_CharacterSelect : UI
             tempslot = Instantiate(CharacterSlot);
             tempslot.transform.SetParent(ContentsWindow.transform);
             tempslot.transform.localScale = Vector3.one;
-            //tempwidth = SlotWidth;
-            //tempheight = SlotHeight;
-            //tempslot.transform.localScale = CharacterSlot.transform.localScale;
-            //tempslot.transform.localPosition = new Vector3(SlotXPosition+((tempwidth + SlotXPadding) * column), SlotYPosition - ((tempheight + SlotYPadding) * row), 0f);
-
+            
             tempslot.GetComponent<UI_CharacterSlot>().CharacterImage.sprite = DataManager.Instance.playerCharacterData[repeat].charImage;
             tempslot.GetComponent<UI_CharacterSlot>().CharacterName.text = DataManager.Instance.playerCharacterData[repeat].name.ToString();
             tempslot.GetComponent<UI_CharacterSlot>().WeaponImage.sprite = DataManager.Instance.skillDatas[(int)DataManager.Instance.playerCharacterData[repeat].firstSkill].skillData.icon;
