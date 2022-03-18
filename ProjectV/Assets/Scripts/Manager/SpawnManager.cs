@@ -113,6 +113,11 @@ public class SpawnManager : MonoBehaviour
 
 
         int minute = ((int)DataManager.Instance.currentGameData.totalPlayTime / 60);
+        if(minute >= monsterList.Count)
+        {
+            return;
+        }
+
         if(currentMinute != minute)
         {
             currentMinute = minute;
@@ -133,10 +138,6 @@ public class SpawnManager : MonoBehaviour
             return;
         }
 
-        if(monsterList.Count == 0)
-        {
-            return;
-        }
 
         int spawnCount = MaxSpawnCount - spawnList.Count;
         for (int i = 0; i < spawnCount; i++)
