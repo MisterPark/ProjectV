@@ -96,7 +96,7 @@ public class UI_CombinePanel : UI
         {
             GameObject TempObject = Instantiate(contentPrefab);
             contents[i] = TempObject.GetComponent<UI_CombineSlot>();
-            TempObject.transform.parent = contentsObject.transform;
+            TempObject.transform.SetParent(contentsObject.transform);
             TempObject.transform.localScale = Vector3.one;
 
             CombineSkill combineData = CombineSkillManager.Instance.combineSkillDatas[i].combineSkillData;

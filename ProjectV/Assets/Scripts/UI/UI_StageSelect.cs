@@ -5,8 +5,9 @@ using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class UI_StageSelect : MonoBehaviour
+public class UI_StageSelect : UI
 {
+    public static UI_StageSelect instance;
     [SerializeField] private EventSystem Event_Handle;
     [SerializeField] private GameObject StageSelectSlot;
     [SerializeField] private GameObject ContentsWindow;
@@ -19,17 +20,14 @@ public class UI_StageSelect : MonoBehaviour
     [SerializeField] private float SlotYPadding;
 
     private float SlotHeight;
-    // Start is called before the first frame update
+    private void Awake()
+    {
+        instance = this;
+    }
     void Start()
     {
         SlotInit();
         gameObject.SetActive(false);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void OnClickStageSlot()

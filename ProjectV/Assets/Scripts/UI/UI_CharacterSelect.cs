@@ -5,8 +5,9 @@ using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class UI_CharacterSelect : MonoBehaviour
+public class UI_CharacterSelect : UI
 {
+    public static UI_CharacterSelect instance;
     [SerializeField] private EventSystem Event_Handle;
     [SerializeField] private TMPro.TextMeshProUGUI CharacterName;
     [SerializeField] private Image WeaponImage;
@@ -24,18 +25,17 @@ public class UI_CharacterSelect : MonoBehaviour
     private float SlotHeight;
 
     private PlayerCharacterName CurrentClickPlayerCharacter;
-    // Start is called before the first frame update
+
+    private void Awake()
+    {
+        instance = this;
+    }
     void Start()
     {
         SlotInit();
         gameObject.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     void DescriptionPanelInit(string charname, Sprite charimage, Sprite weaponimage, string descrip)
     {
@@ -90,6 +90,6 @@ public class UI_CharacterSelect : MonoBehaviour
     {
         DataManager.Instance.currentGameData.characterName = CurrentClickPlayerCharacter;
         gameObject.SetActive(false);
-        UIManager.Instance.SetUIActive("StageSelectPanel", true);
+        UI_StageSelect.instance.Show();
     }
 }

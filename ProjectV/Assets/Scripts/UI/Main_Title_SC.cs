@@ -44,7 +44,7 @@ public class Main_Title_SC : MonoBehaviour
         KeyboardCursor_Image.gameObject.SetActive(false);
         transform.Find("Start Button").gameObject.SetActive(false);
         transform.Find("Powerup Button").gameObject.SetActive(false);
-        UIManager.Instance.SetUIActive("CharacterSelectPanel", true);
+        UI_CharacterSelect.instance.Show();
         Event_Handle.SetSelectedGameObject(UIManager.Instance.GetUIObject("CharacterSelectPanel"));
        // DataManager.Instance.Setting_PowerStat();
        //SceneManager.LoadScene(StartScene_Name);

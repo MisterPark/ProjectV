@@ -41,15 +41,15 @@ public class Skill_Meteor : Skill
         missile.Initialize();
         missile.transform.position = pos + new Vector3(-10f, 10f, -10f); //¿ÞÂÊ
         //missile.transform.position = pos + new Vector3(10f, 10f, 10f); 
-        missile.team = unit.team;
-        missile.owner = unit;
-        missile.duration = duration;
-        missile.speed = speed;
-        missile.delay = delay;
-        missile.range = range;
-        missile.damage = damage;
-        missile.type = MissileType.Guided;
-        missile.isPenetrate = true;
+        missile.Team = unit.team;
+        missile.Owner = unit;
+        missile.Duration = duration;
+        missile.Speed = speed;
+        missile.Delay = delay;
+        missile.Range = range;
+        missile.Damage = damage;
+        missile.Type = MissileType.Guided;
+        missile.IsPenetrate = true;
         missile.SetTarget(pos);
     }
 }

@@ -35,18 +35,18 @@ public class BlizzardOrb : MonoBehaviour
             Missile missile = obj.GetComponent<Missile>();
             missile.Initialize();
             missile.transform.position = parentMissile.transform.position;
-            missile.team = parentMissile.team;
-            missile.owner = parentMissile.owner;
-            missile.duration = parentMissile.duration;
-            missile.damage = parentMissile.damage*0.6f;
-            missile.range = parentMissile.range;
-            missile.speed = parentMissile.speed*2;
-            missile.type = MissileType.Directional;
+            missile.Team = parentMissile.Team;
+            missile.Owner = parentMissile.Owner;
+            missile.Duration = parentMissile.Duration;
+            missile.Damage = parentMissile.Damage*0.6f;
+            missile.Range = parentMissile.Range;
+            missile.Speed = parentMissile.Speed*2;
+            missile.Type = MissileType.Directional;
 
             Quaternion v3Rotation = Quaternion.Euler(0f, angle, 0f);
-            Vector3 v3Direction = parentMissile.targetDirection;
+            Vector3 v3Direction = parentMissile.TargetDirection;
             Vector3 v3RotatedDirection = v3Rotation * v3Direction;
-            missile.targetDirection = (v3RotatedDirection);
+            missile.TargetDirection = (v3RotatedDirection);
         }
         
     }

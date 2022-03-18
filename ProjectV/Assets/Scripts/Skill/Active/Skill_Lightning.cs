@@ -32,11 +32,11 @@ public class Skill_Lightning : Skill
         Missile missile = obj.GetComponent<Missile>();
         missile.Initialize();
         missile.transform.position = random.transform.position;
-        missile.team = unit.team;
-        missile.owner = unit;
-        missile.duration = duration;
-        missile.damage = damage;
-        missile.range = range;
+        missile.Team = unit.team;
+        missile.Owner = unit;
+        missile.Duration = duration;
+        missile.Damage = damage;
+        missile.Range = range;
         missile.SetTarget(random.transform.position);
     }
 }

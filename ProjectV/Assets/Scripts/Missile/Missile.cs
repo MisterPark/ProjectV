@@ -13,44 +13,67 @@ public enum MissileType // ¿òÁ÷ÀÓ
 
 public class Missile : MonoBehaviour
 {
-    public Team team;
-    public MissileType type;
 
-    public float duration;
-    public float speed;
-    public float damage;
-    public float delay;
-    public float range;
-    public bool isPull = false;
-    public bool isPenetrate = false;
-    public bool isRotate=false;
-    public float knockbackPower = 1f;
+    private float duration;
+    private float speed;
+    private float damage;
+    private float delay;
+    private float range;
+    private bool isPull = false;
+    private bool isPenetrate = false;
+    private bool isRotate = false;
+    private float knockbackPower = 1f;
+
+    public Team Team { get; set; }
+    public MissileType Type { get; set; }
+    public float Duration 
+    {
+        get { return duration; } 
+        set 
+        { 
+            duration = value;
+            visualEffect = GetComponentInChildren<VisualEffect>();
+            if (visualEffect != null)
+            {
+                visualEffect.SetFloat("Duration", value);
+            }
+        } 
+    }
+    public float Speed { get { return speed; } set { speed = value; } }
+    public float Damage { get { return damage; } set { damage = value; } }
+    public float Delay { get { return delay; } set { delay = value; } }
+    public float Range { get { return range; } set { range = value; } }
+    public bool IsPull { get { return isPull; } set { isPull = value; } }
+    public bool IsPenetrate { get { return isPenetrate; } set { isPenetrate = value; } }
+    public bool IsRotate { get { return isRotate; } set { isRotate = value; } }
+    public float KnockbackPower { get { return knockbackPower; } set { knockbackPower = value; } }
     public bool KnockbackFlag { get; set; } = false;
     public bool AttackFlag { get; set; } = false;
-    public Vector3 targetDirection { get; set; }
-    public Unit owner;
-    public GameObject target;
+    public Vector3 TargetDirection { get; set; }
+    public Unit Owner { get; set; }
+    public GameObject Target { get; set; }
+
     protected float tick = 0f;
     protected float cooltimeTick;
     protected VisualEffect visualEffect;
-    
-    
+
+
     bool isWaitForFrame = false;
 
     public UnityEvent<Vector3, Unit> OnCollision;
 
     protected virtual void Start()
     {
-        transform.localScale = Vector3.one * range;
+        transform.localScale = Vector3.one * Range;
     }
     protected virtual void OnEnable()
     {
         visualEffect = GetComponentInChildren<VisualEffect>();
-        transform.localScale = Vector3.one * range;
+        transform.localScale = Vector3.one * Range;
 
         if (visualEffect != null)
         {
-            visualEffect.SetFloat("Duration", duration);
+            visualEffect.SetFloat("Duration", Duration);
         }
 
         tick = 0;
@@ -62,16 +85,16 @@ public class Missile : MonoBehaviour
     protected virtual void FixedUpdate()
     {
         tick += Time.fixedDeltaTime;
-        if (tick >= duration)
+        if (tick >= Duration)
         {
             tick = 0f;
             ObjectPool.Instance.Free(gameObject);
             return;
         }
-        if (delay != 0)
+        if (Delay != 0)
         {
             cooltimeTick += Time.fixedDeltaTime;
-            if (cooltimeTick >= delay)
+            if (cooltimeTick >= Delay)
             {
                 cooltimeTick = 0f;
                 AttackFlag = true;
@@ -85,25 +108,25 @@ public class Missile : MonoBehaviour
     {
         if (other.gameObject.IsPlayer()) return;
         Unit unit = other.gameObject.GetComponent<Unit>();
-        if(unit != null)
+        if (unit != null)
         {
-            if( team != unit.team)
+            if (Team != unit.team)
             {
-                if (!isPenetrate)
+                if (!IsPenetrate)
                 {
-                    unit.stat.TakeDamage(damage);
+                    unit.stat.TakeDamage(Damage);
                     OnCollision?.Invoke(transform.position, unit);
                     if (KnockbackFlag)
                     {
                         unit.Knockback(transform.position, 0.2f);
                     }
-                    ObjectPool.Instance.Free(gameObject); 
+                    ObjectPool.Instance.Free(gameObject);
                 }
-                else if (isPenetrate)
+                else if (IsPenetrate)
                 {
                     if (AttackFlag)
                     {
-                        unit.stat.TakeDamage(damage);
+                        unit.stat.TakeDamage(Damage);
                         OnCollision?.Invoke(transform.position, unit);
                         if (KnockbackFlag)
                         {
@@ -111,15 +134,15 @@ public class Missile : MonoBehaviour
                         }
                     }
                 }
-                if (isPull)
+                if (IsPull)
                 {
-                    
-                    
+
+
                     Vector3 direction = transform.position - unit.transform.position;
                     float pullPower = 2f;
                     unit.transform.position += direction * pullPower * Time.fixedDeltaTime;
                 }
-                
+
             }
         }
     }
@@ -143,67 +166,67 @@ public class Missile : MonoBehaviour
 
     protected virtual void ProcessMove()
     {
-        if(type == MissileType.Guided)
+        if (Type == MissileType.Guided)
         {
-            if(target != null)
+            if (Target != null)
             {
-                Vector3 to = target.transform.position - transform.position;
-                targetDirection = to.normalized;
+                Vector3 to = Target.transform.position - transform.position;
+                TargetDirection = to.normalized;
             }
         }
-        else if(type == MissileType.Attached)
+        else if (Type == MissileType.Attached)
         {
-            targetDirection = Vector3.zero;
-            if(target != null)
+            TargetDirection = Vector3.zero;
+            if (Target != null)
             {
-                transform.position = target.transform.position;
+                transform.position = Target.transform.position;
             }
         }
 
-        transform.position += targetDirection * speed * Time.fixedDeltaTime;
+        transform.position += TargetDirection * Speed * Time.fixedDeltaTime;
     }
 
     void ProcessRotate()
     {
         Vector3 targetPos = Vector3.zero;
-        switch (type)
+        switch (Type)
         {
             case MissileType.Directional:
-                targetPos = transform.position + targetDirection;
+                targetPos = transform.position + TargetDirection;
                 break;
             case MissileType.Guided:
                 {
-                    if(target != null)
+                    if (Target != null)
                     {
-                        targetPos = target.transform.position;
+                        targetPos = Target.transform.position;
                     }
                 }
                 break;
             case MissileType.Attached:
                 {
-                    if (target != null)
+                    if (Target != null)
                     {
-                        targetPos = target.transform.forward + target.transform.position;
+                        targetPos = Target.transform.forward + Target.transform.position;
                     }
                     break;
                 }
             default:
-                targetPos = transform.position + targetDirection;
+                targetPos = transform.position + TargetDirection;
                 break;
         }
-        if(!isRotate)
-        transform.LookAt(targetPos);
+        if (!IsRotate)
+            transform.LookAt(targetPos);
     }
 
     public void SetTarget(GameObject target)
     {
-        this.target = target;
+        this.Target = target;
     }
 
     public void SetTarget(Vector3 target)
     {
         Vector3 to = target - transform.position;
-        targetDirection = to.normalized;
+        TargetDirection = to.normalized;
     }
 
 }
