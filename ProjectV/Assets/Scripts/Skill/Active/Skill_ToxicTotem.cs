@@ -39,6 +39,7 @@ public class Skill_ToxicTotem : Skill
         missile.Damage = damage;
         missile.Speed = speed;
         missile.Delay = delay;
+        missile.Range = range;
         missile.Type = MissileType.Guided;
         missile.IsPenetrate = true;
         missile.OnCollision.RemoveAllListeners();
