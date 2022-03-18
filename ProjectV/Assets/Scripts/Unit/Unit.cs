@@ -265,6 +265,7 @@ public class Unit : MonoBehaviour
         {
             fontColor = Color.red;
             outlineColor = Color.yellow;
+            UI_Damaged.instance.Show();
         }
         else
         {
