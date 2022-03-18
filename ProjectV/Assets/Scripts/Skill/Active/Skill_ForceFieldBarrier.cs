@@ -51,6 +51,7 @@ public class Skill_ForceFieldBarrier : Skill
         OnLevelUpCallback(1);
 
         OnLevelUp.AddListener(OnLevelUpCallback);
+        unit.OnLevelUp.AddListener(OnLevelUpCallback);
     }
 
     protected override void Active()

@@ -209,6 +209,8 @@ public class Unit : MonoBehaviour
         freezeTime = time;
         freezeTick = 0;
         freezeFlag = true;
+        GameObject impact = ObjectPool.Instance.Allocate("IceFragmentsImpact");
+        impact.transform.position = transform.position;
     }
 
 
