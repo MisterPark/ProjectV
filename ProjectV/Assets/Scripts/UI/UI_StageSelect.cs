@@ -14,6 +14,7 @@ public class UI_StageSelect : UI
     [SerializeField] private TMPro.TextMeshProUGUI DescriptionName;
     [SerializeField] private Image DescriptionImage;
     [SerializeField] private TMPro.TextMeshProUGUI DescriptionText;
+    private string stageName;
     private StageKind CurrentStageKind;
 
     [SerializeField] private float SlotYPosition;
@@ -38,7 +39,13 @@ public class UI_StageSelect : UI
         DescriptionText.text = selectobject.GetComponent<UI_StageSlot>().SlotDescription.text;
         DescriptionImage.sprite = selectobject.GetComponent<UI_StageSlot>().SlotImage.sprite;
         CurrentStageKind = selectobject.GetComponent<UI_StageSlot>().Stage;
-        UIManager.Instance.StartSceneName = CurrentStageKind.ToString();
+        for(int i =0; i < DataManager.Instance.stageDatas.Length; i++)
+        {
+            if(CurrentStageKind == DataManager.Instance.stageDatas[i].kind)
+            {
+                stageName = DataManager.Instance.stageDatas[i].stageName;
+            }
+        }
     }
 
     void SlotInit()
@@ -61,6 +68,6 @@ public class UI_StageSelect : UI
 
     public void OnClickStageSelectOKButton()
     {
-        LoadingSceneManager.instance.LoadScene(UIManager.Instance.StartSceneName);
+        LoadingSceneManager.instance.LoadScene(stageName);
     }
 }

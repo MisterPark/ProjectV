@@ -44,6 +44,6 @@ public class UI_PausePanel : UI
 
     public void OnClickCombine()
     {
-        UIManager.Instance.SetUIActive("Combine Panel", true);
+        UI_CombinePanel.instance.Show();
     }
 }

@@ -4,12 +4,19 @@ using UnityEngine;
 
 public class UI_CombinePanel : UI
 {
+    public static UI_CombinePanel instance;
+
     public GameObject contentsObject;
     public GameObject contentPrefab;
     private Dictionary<SkillKind, int> playerSkillLevel = new Dictionary<SkillKind, int>();
     private Color disableColor = new Color(0.3f, 0.3f, 0.3f, 0.9f);
     private Color ableColor = new Color(1f, 1f, 1f, 1f);
     private UI_CombineSlot[] contents;
+
+    void Awake()
+    {
+        instance = this;
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -108,7 +115,7 @@ public class UI_CombinePanel : UI
             contents[i].skillB.sprite = DataManager.Instance.skillDatas[((int)(contents[i].kindB))].skillData.icon;
             contents[i].skillC.sprite = DataManager.Instance.skillDatas[((int)(contents[i].kindC))].skillData.icon;
 
-            contents[i].Init(this, disableColor);
+            contents[i].Init(disableColor);
         }
 
     }

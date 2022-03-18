@@ -9,7 +9,7 @@ public class Skill_Laser : Skill
     protected override void Awake()
     {
         Kind = SkillKind.Laser;
-        activeInterval = 0.1f;
+        activeInterval = 0.25f;
     }
     // Start is called before the first frame update
     protected override void Start()
