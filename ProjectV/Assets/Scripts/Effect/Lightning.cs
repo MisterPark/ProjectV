@@ -37,7 +37,7 @@ public class Lightning : MonoBehaviour
     {
         // 스케일 키우기
         float yScale = transform.localScale.y;
-        yScale += Time.fixedDeltaTime * 2 / missile.duration;
+        yScale += Time.fixedDeltaTime * 2 / missile.Duration;
         transform.localScale = new Vector3(1, yScale, 1);
 
         // 콜라이더 위치 조정
