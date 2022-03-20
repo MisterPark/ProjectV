@@ -44,6 +44,7 @@ public class UI_StageSelect : UI
             if(CurrentStageKind == DataManager.Instance.stageDatas[i].kind)
             {
                 stageName = DataManager.Instance.stageDatas[i].stageName;
+                break;
             }
         }
     }

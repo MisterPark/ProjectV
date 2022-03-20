@@ -41,8 +41,7 @@ public class LoadingSceneManager : MonoBehaviour
         if(trigger == false)
         {
             trigger = true;
-            operation = SceneManager.LoadSceneAsync(NextScene);
-            operation.allowSceneActivation = false;
+            
         }
 
         loadTick += Time.fixedDeltaTime;
@@ -53,6 +52,7 @@ public class LoadingSceneManager : MonoBehaviour
             Progress = 1;
             loadTick = 0;
             loadingFlag = false;
+            operation = SceneManager.LoadSceneAsync(NextScene);
             operation.allowSceneActivation = true;
         }
 
