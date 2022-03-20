@@ -67,10 +67,10 @@ public class UI_CharacterSelect : UI
     void SlotInit()
     {
         GameObject tempslot;
-        float tempwidth;
-        float tempheight;
-        int column;
-        int row;
+        //float tempwidth;
+        //float tempheight;
+        //int column;
+        //int row;
 
         SlotWidth = CharacterSlot.GetComponent<RectTransform>().rect.width;
         SlotHeight = CharacterSlot.GetComponent<RectTransform>().rect.height;
