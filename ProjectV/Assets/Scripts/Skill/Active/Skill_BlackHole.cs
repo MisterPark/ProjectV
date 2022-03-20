@@ -38,16 +38,16 @@ public class Skill_BlackHole : Skill
         Missile missile = obj.GetComponent<Missile>();
         missile.Initialize();
         
-        missile.team = unit.team;
-        missile.owner = unit;
-        missile.duration = duration;
-        missile.damage = damage;
-        missile.speed = speed;
-        missile.delay = delay;
-        missile.range = range;
-        missile.type = MissileType.Directional;
-        missile.isPenetrate = true;
-        missile.isPull = true;
+        missile.Team = unit.team;
+        missile.Owner = unit;
+        missile.Duration = duration;
+        missile.Damage = damage;
+        missile.Speed = speed;
+        missile.Delay = delay;
+        missile.Range = range;
+        missile.Type = MissileType.Directional;
+        missile.IsPenetrate = true;
+        missile.IsPull = true;
         missile.OnCollision.RemoveAllListeners();
         missile.OnCollision.AddListener(OnCollisionCallback);
 

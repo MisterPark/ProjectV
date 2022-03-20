@@ -35,13 +35,13 @@ public class LoadingSceneManager : MonoBehaviour
 
     private void FixedUpdate()
     {
+        Debug.Log($"{NextScene} {loadingFlag} {trigger} {loadTick} / {WaitTime}");
         if (loadingFlag == false) return;
 
         if(trigger == false)
         {
             trigger = true;
-            operation = SceneManager.LoadSceneAsync(NextScene);
-            operation.allowSceneActivation = false;
+            
         }
 
         loadTick += Time.fixedDeltaTime;
@@ -52,9 +52,15 @@ public class LoadingSceneManager : MonoBehaviour
             Progress = 1;
             loadTick = 0;
             loadingFlag = false;
+            operation = SceneManager.LoadSceneAsync(NextScene);
             operation.allowSceneActivation = true;
         }
 
+    }
+
+    private void OnDestroy()
+    {
+        Debug.Log("로딩씬매니저 삭제");
     }
 
     public void LoadScene(string sceneName, float waitTime = 5f)
@@ -65,6 +71,7 @@ public class LoadingSceneManager : MonoBehaviour
         loadTick = 0;
         loadingFlag = true;
         trigger = false;
+        Time.timeScale = 1f;
         SceneManager.LoadScene("LoadingScene");
     }
 

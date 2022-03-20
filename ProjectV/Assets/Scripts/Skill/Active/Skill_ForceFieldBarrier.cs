@@ -36,21 +36,22 @@ public class Skill_ForceFieldBarrier : Skill
         missile.SetTarget(unit.gameObject);
 
 
-        missile.team = unit.team;
-        missile.owner = unit;
-        missile.duration = duration;
-        missile.damage = damage;
-        missile.speed = speed;
-        missile.delay = delay;
-        missile.range = range;
-        missile.type = MissileType.Attached;
-        missile.isPenetrate = true;
+        missile.Team = unit.team;
+        missile.Owner = unit;
+        missile.Duration = duration;
+        missile.Damage = damage;
+        missile.Speed = speed;
+        missile.Delay = delay;
+        missile.Range = range;
+        missile.Type = MissileType.Attached;
+        missile.IsPenetrate = true;
         missile.KnockbackFlag = true;
         missile.OnCollision.RemoveAllListeners();
         missile.OnCollision.AddListener(OnCollisionCallback);
         OnLevelUpCallback(1);
 
         OnLevelUp.AddListener(OnLevelUpCallback);
+        unit.OnLevelUp.AddListener(OnLevelUpCallback);
     }
 
     protected override void Active()
@@ -61,7 +62,7 @@ public class Skill_ForceFieldBarrier : Skill
     {
         UpdateSkillData();
 
-        missile.range = range;
+        missile.Range = range;
         missile.transform.localScale = Vector3.one * range;
     }
     void OnCollisionCallback(Vector3 pos, Unit other )

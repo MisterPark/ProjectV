@@ -33,14 +33,15 @@ public class Skill_ToxicTotem : Skill
         Missile missile = obj.GetComponent<Missile>();
         missile.Initialize();
         
-        missile.team = unit.team;
-        missile.owner = unit;
-        missile.duration = duration;
-        missile.damage = damage;
-        missile.speed = speed;
-        missile.delay = delay;
-        missile.type = MissileType.Guided;
-        missile.isPenetrate = true;
+        missile.Team = unit.team;
+        missile.Owner = unit;
+        missile.Duration = duration;
+        missile.Damage = damage;
+        missile.Speed = speed;
+        missile.Delay = delay;
+        missile.Range = range;
+        missile.Type = MissileType.Guided;
+        missile.IsPenetrate = true;
         missile.OnCollision.RemoveAllListeners();
         missile.OnCollision.AddListener(OnCollisionCallback);
         obj.transform.position = pos;

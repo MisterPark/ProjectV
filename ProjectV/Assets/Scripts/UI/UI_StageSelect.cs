@@ -8,7 +8,6 @@ using UnityEngine.UI;
 public class UI_StageSelect : UI
 {
     public static UI_StageSelect instance;
-
     [SerializeField] private EventSystem Event_Handle;
     [SerializeField] private GameObject StageSelectSlot;
     [SerializeField] private GameObject ContentsWindow;
@@ -22,22 +21,14 @@ public class UI_StageSelect : UI
     [SerializeField] private float SlotYPadding;
 
     private float SlotHeight;
-
-    void Awake()
+    private void Awake()
     {
         instance = this;
     }
-    // Start is called before the first frame update
     void Start()
     {
         SlotInit();
         gameObject.SetActive(false);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void OnClickStageSlot()
@@ -53,6 +44,7 @@ public class UI_StageSelect : UI
             if(CurrentStageKind == DataManager.Instance.stageDatas[i].kind)
             {
                 stageName = DataManager.Instance.stageDatas[i].stageName;
+                break;
             }
         }
     }

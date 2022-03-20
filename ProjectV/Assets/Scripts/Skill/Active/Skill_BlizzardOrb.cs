@@ -36,15 +36,15 @@ public class Skill_BlizzardOrb : Skill
         Missile missile = obj.GetComponent<Missile>();
         missile.Initialize();
         missile.transform.position = transform.position + unit.skillOffsetPosition;
-        missile.team = unit.team;
-        missile.owner = unit;
-        missile.duration = duration;
-        missile.damage = damage;
-        missile.speed = speed;
-        missile.delay = delay;
-        missile.range = range;
-        missile.type = MissileType.Directional;
-        missile.isPenetrate = true;
+        missile.Team = unit.team;
+        missile.Owner = unit;
+        missile.Duration = duration;
+        missile.Damage = damage;
+        missile.Speed = speed;
+        missile.Delay = delay;
+        missile.Range = range;
+        missile.Type = MissileType.Directional;
+        missile.IsPenetrate = true;
         missile.SetTarget(nearest.transform.position + unit.skillOffsetPosition);
         //Ref. BlizzardOrb Script
     }

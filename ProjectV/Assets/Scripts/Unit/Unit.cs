@@ -209,6 +209,10 @@ public class Unit : MonoBehaviour
         freezeTime = time;
         freezeTick = 0;
         freezeFlag = true;
+        GameObject obj = ObjectPool.Instance.Allocate("IceCubeEffect");
+        ImpactV3 impact = obj.GetComponent<ImpactV3>();
+        impact.Duration = time;
+        obj.transform.position = transform.position;
     }
 
 
@@ -265,6 +269,7 @@ public class Unit : MonoBehaviour
         {
             fontColor = Color.red;
             outlineColor = Color.yellow;
+            UI_Damaged.instance.Show();
         }
         else
         {

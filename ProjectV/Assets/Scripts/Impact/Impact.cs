@@ -6,7 +6,7 @@ public class Impact : MonoBehaviour
 {
     ParticleSystem particle;
     float tick = 0;
-    // Start is called before the first frame update
+
     void Start()
     {
         particle = GetComponent<ParticleSystem>();

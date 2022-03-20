@@ -8,7 +8,6 @@ using UnityEngine.UI;
 public class UI_CharacterSelect : UI
 {
     public static UI_CharacterSelect instance;
-
     [SerializeField] private EventSystem Event_Handle;
     [SerializeField] private TMPro.TextMeshProUGUI CharacterName;
     [SerializeField] private Image WeaponImage;
@@ -27,22 +26,16 @@ public class UI_CharacterSelect : UI
 
     private PlayerCharacterName CurrentClickPlayerCharacter;
 
-    void Awake()
+    private void Awake()
     {
         instance = this;
     }
-    // Start is called before the first frame update
     void Start()
     {
         SlotInit();
         gameObject.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     void DescriptionPanelInit(string charname, Sprite charimage, Sprite weaponimage, string descrip)
     {
@@ -67,10 +60,6 @@ public class UI_CharacterSelect : UI
     void SlotInit()
     {
         GameObject tempslot;
-        //float tempwidth;
-        //float tempheight;
-        //int column;
-        //int row;
 
         SlotWidth = CharacterSlot.GetComponent<RectTransform>().rect.width;
         SlotHeight = CharacterSlot.GetComponent<RectTransform>().rect.height;
@@ -81,11 +70,7 @@ public class UI_CharacterSelect : UI
             tempslot = Instantiate(CharacterSlot);
             tempslot.transform.SetParent(ContentsWindow.transform);
             tempslot.transform.localScale = Vector3.one;
-            //tempwidth = SlotWidth;
-            //tempheight = SlotHeight;
-            //tempslot.transform.localScale = CharacterSlot.transform.localScale;
-            //tempslot.transform.localPosition = new Vector3(SlotXPosition+((tempwidth + SlotXPadding) * column), SlotYPosition - ((tempheight + SlotYPadding) * row), 0f);
-
+            
             tempslot.GetComponent<UI_CharacterSlot>().CharacterImage.sprite = DataManager.Instance.playerCharacterData[repeat].charImage;
             tempslot.GetComponent<UI_CharacterSlot>().CharacterName.text = DataManager.Instance.playerCharacterData[repeat].name.ToString();
             tempslot.GetComponent<UI_CharacterSlot>().WeaponImage.sprite = DataManager.Instance.skillDatas[(int)DataManager.Instance.playerCharacterData[repeat].firstSkill].skillData.icon;

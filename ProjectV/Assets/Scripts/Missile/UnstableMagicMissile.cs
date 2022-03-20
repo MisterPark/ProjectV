@@ -22,7 +22,7 @@ public class UnstableMagicMissile : Missile
     protected override void ProcessMove()
     {
 
-        transform.position += targetDirection * speed * Time.fixedDeltaTime;
+        transform.position += TargetDirection * Speed * Time.fixedDeltaTime;
     }
 
     protected override void FixedUpdate()
@@ -32,18 +32,18 @@ public class UnstableMagicMissile : Missile
         {
             movePatternTick = 0f;
             movePatternCoolTime = Random.Range(0.4f, 0.6f);
-            targetDirection = new Vector3(Random.Range(-180f, 180f), 0f, Random.Range(-180f, 180f));
-            targetDirection = targetDirection.normalized;
+            TargetDirection = new Vector3(Random.Range(-180f, 180f), 0f, Random.Range(-180f, 180f));
+            TargetDirection = TargetDirection.normalized;
 
             Vector3 to = Player.Instance.transform.position - transform.position;
             float dist = to.magnitude;
             if(dist >= 7f)
             {
-                to = to + targetDirection;
+                to = to + TargetDirection;
                 float dist2 = to.magnitude;
                 if (dist > dist2)
                 {
-                    targetDirection *= -1f;
+                    TargetDirection *= -1f;
                 }
             }
         }
