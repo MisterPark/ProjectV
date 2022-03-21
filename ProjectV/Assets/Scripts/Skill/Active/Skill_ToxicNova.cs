@@ -8,17 +8,19 @@ public class Skill_ToxicNova : Skill
     protected override void Awake()
     {
         Kind = SkillKind.ToxicNova;
+
     }
     protected override void Start()
     {
         Kind = SkillKind.ToxicNova;
+        activeOnce = true;
         base.Start();
 
         activeInterval = 0.5f;
     }
     protected override void Active()
     {
-
+        
         GameObject nearest = null;
         SpawnManager.Instance.SpawnQueue.Dequeue(out nearest);
 
@@ -33,8 +35,8 @@ public class Skill_ToxicNova : Skill
             Debug.LogError("스킬을 유닛만 사용가능.");
             return;
         }
-        float missileAmount = 12;
-        for (int i = 1; i<=missileAmount;i++)
+        //float missileAmount = 12;
+        for (int i = 1; i<=amount;i++)
         { 
             GameObject obj = ObjectPool.Instance.Allocate("ToxicNova");
             Missile missile = obj.GetComponent<Missile>();
@@ -50,7 +52,7 @@ public class Skill_ToxicNova : Skill
             missile.Range = range;
             missile.Type = MissileType.Directional;
             missile.IsPenetrate = false;
-            float rotateIncrease =  360 / missileAmount; //3개 120 240 360
+            float rotateIncrease =  360 / amount; //3개 120 240 360
             float rotateValue = i * rotateIncrease;
             Quaternion v3Rotation = Quaternion.Euler(0f, rotateValue, 0f);
             Vector3 v3Direction = unit.transform.forward;
