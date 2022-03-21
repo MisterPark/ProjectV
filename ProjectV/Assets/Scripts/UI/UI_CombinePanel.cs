@@ -8,6 +8,8 @@ public class UI_CombinePanel : UI
 
     public GameObject contentsObject;
     public GameObject contentPrefab;
+
+    private bool isInit = false;
     private Dictionary<SkillKind, int> playerSkillLevel = new Dictionary<SkillKind, int>();
     private Color disableColor = new Color(0.3f, 0.3f, 0.3f, 0.9f);
     private Color ableColor = new Color(1f, 1f, 1f, 1f);
@@ -20,8 +22,8 @@ public class UI_CombinePanel : UI
     // Start is called before the first frame update
     void Start()
     {
-        Init();
-        if (Player.Instance == null)
+        isInit = Init();
+        if (Player.Instance == null || isInit == false)
         {
             Hide();
             return;
@@ -35,6 +37,15 @@ public class UI_CombinePanel : UI
     {
         if (Player.Instance == null)
             return;
+        if(!isInit)
+        {
+            isInit = Init();
+            if(isInit == false)
+            {
+                Hide();
+                return;
+            }
+        }
         SetPlayerSkillInformation(Player.Instance.Skills);
         CheckSkillCombinable();
     }
@@ -96,8 +107,10 @@ public class UI_CombinePanel : UI
         }
     }
 
-    private void Init()
+    private bool Init()
     {
+        if (CombineSkillManager.Instance == null)
+            return false;
         contents = new UI_CombineSlot[CombineSkillManager.Instance.combineSkillDatas.Length];
         for(int i =0; i < contents.Length; i++)
         {
@@ -117,7 +130,7 @@ public class UI_CombinePanel : UI
 
             contents[i].Init(disableColor);
         }
-
+        return true;
     }
 
     public void OnClickSlot(SkillKind matA, SkillKind matB)
