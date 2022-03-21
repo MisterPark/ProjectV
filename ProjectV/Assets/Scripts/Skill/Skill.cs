@@ -55,6 +55,7 @@ public abstract class Skill : MonoBehaviour
                 if (activeOnce)
                 {
                     Active();
+                    activeIntervalTick = -1;
                 }
                 else
                 {
@@ -62,7 +63,7 @@ public abstract class Skill : MonoBehaviour
                     activeIntervalTick = 0;
                 }
             }
-            if(activeIntervalTick != -1)
+            if(!activeOnce && activeIntervalTick != -1)
             {
                 activeIntervalTick += Time.fixedDeltaTime;
                 if(activeIntervalTick >= activeInterval)
