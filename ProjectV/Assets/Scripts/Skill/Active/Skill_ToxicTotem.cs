@@ -38,6 +38,7 @@ public class Skill_ToxicTotem : Skill
         missile.Duration = duration;
         missile.Damage = damage;
         missile.Speed = speed;
+        //이 딜레이는 아이스 볼트 생산력을 뜻함.
         missile.Delay = delay;
         missile.Range = range;
         missile.Type = MissileType.Guided;
