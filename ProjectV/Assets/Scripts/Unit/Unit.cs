@@ -152,6 +152,8 @@ public class Unit : MonoBehaviour
 
         switch (kind)
         {
+
+            //case SkillKind.IceBolt: skill = gameObject.GetComponent<Skill_IceBolt>(); break;
             case SkillKind.IceBolt: skill = gameObject.GetComponent<Skill_IceBolt>(); break;
             case SkillKind.FireBolt: skill = gameObject.GetComponent<Skill_FireBolt>(); break;
             case SkillKind.ForceFieldBarrier: skill = gameObject.GetComponent<Skill_ForceFieldBarrier>(); break;
@@ -172,7 +174,12 @@ public class Unit : MonoBehaviour
             case SkillKind.Magnet: skill = gameObject.GetComponent<Skill_Magnet>(); break;
             case SkillKind.BlizzardOrb: skill = gameObject.GetComponent<Skill_BlizzardOrb>(); break;
             case SkillKind.UnstableMagicMissile: skill = gameObject.GetComponent<Skill_UnstableMagicMissile>(); break;
+            case SkillKind.HeavyFireBall: skill = gameObject.GetComponent<Skill_HeavyFireBall>(); break;
             case SkillKind.Meteor: skill = gameObject.GetComponent<Skill_Meteor>(); break;
+            case SkillKind.IceTornado: skill = gameObject.GetComponent<Skill_IceTornado>(); break;
+            case SkillKind.ToxicTornado: skill = gameObject.GetComponent<Skill_ToxicTornado>(); break;
+            case SkillKind.WindTornado: skill = gameObject.GetComponent<Skill_WindTornado>(); break;
+            case SkillKind.LavaOrb: skill = gameObject.GetComponent<Skill_LavaOrb>(); break;
             default:
                 break;
         }
