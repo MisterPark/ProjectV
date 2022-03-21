@@ -55,6 +55,7 @@ public abstract class Skill : MonoBehaviour
                 if (activeOnce)
                 {
                     Active();
+                    activeIntervalTick = -1;
                 }
                 else
                 {
