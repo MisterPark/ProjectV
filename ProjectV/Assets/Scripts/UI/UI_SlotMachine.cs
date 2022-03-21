@@ -7,58 +7,61 @@ public class UI_SlotMachine : UI
 {
     public static UI_SlotMachine instance;
 
-    public RectTransform resultPanel;
+    public int lineCount = 3;
+    public float spacing = 10f;
+    public RectTransform[] originImage;
 
     private bool isPlayMachine = false;
-    private int slotStack = 0;
-    private int maxSlotStack;
-    private float maxSpeed = 1000f;
+    private int lineStack = 0;
+    private float slotSize;
+    private float maxSpeed;
+    private float[] startPosX;
     private float startPosY;
-    private float contentsWidth;
-    private float contentsHeight;
     private RectTransform rectTransform;
-    private RectTransform parent;
-    private RectTransform[] contents;
-    private LayoutElement[][] slotsElement;
-    private Coroutine[] slotCoroutine;
-
+    private RectTransform linePanel;
+    private RectTransform buttonPanel;
+    private RectTransform[][] contents;
+    private Coroutine[] playCoroutine;
+    private Coroutine[] stopCoroutine;
+    
+    
 
     void Awake()
     {
         instance = this;
-        Init();
     }
 
     void Start()
     {
+        Init();
         ResetSize();
+        Hide();
     }
 
     private void Play()
     {
         if (isPlayMachine == false)
         {
-            for (int i = 0; i < slotCoroutine.Length; i++)
-            {
-                if (slotCoroutine[i] != null)
-                    StopCoroutine(slotCoroutine[i]);
-                slotCoroutine[i] = StartCoroutine(PlaySlotMachine(contents[i]));
-            }
             isPlayMachine = true;
+            for (int i = 0; i < playCoroutine.Length; i++)
+            {
+                if (playCoroutine[i] != null)
+                    StopCoroutine(playCoroutine[i]);
+                playCoroutine[i] = StartCoroutine(PlaySlotMachine(contents[i], i, maxSpeed * Random.Range(1f, 3f)));
+            }
         }
     }
 
     private void Stop()
     {
-        if (isPlayMachine == true && slotStack >= maxSlotStack)
+        if (isPlayMachine == true && lineStack == 0)
         {
-            for (int i = 0; i < slotCoroutine.Length; i++)
+            for (int i = 0; i < playCoroutine.Length; i++)
             {
-                StopCoroutine(slotCoroutine[i]);
-                slotCoroutine[i] = StartCoroutine(StopSlotMachine(contents[i], Random.Range(1, 5)));
+                StopCoroutine(playCoroutine[i]);
+                stopCoroutine[i] = StartCoroutine(StopSlotMachine(contents[i],i, Random.Range(0, 5), maxSpeed));
             }
         }
-
     }
 
     public void OnClickPlay()
@@ -71,44 +74,82 @@ public class UI_SlotMachine : UI
         Stop();
     }
 
-    IEnumerator PlaySlotMachine(RectTransform contents)
+    IEnumerator PlaySlotMachine(RectTransform[] contents, int lineNum, float rotationSpeed)
     {
-        float curSpeed = maxSpeed;
         while (true)
         {
-            contents.anchoredPosition -= new Vector2(0f, curSpeed * Time.unscaledDeltaTime);
-            if (contents.anchoredPosition.y <= 0f)
+            for (int i = 0; i < contents.Length; i++)
             {
-                contents.anchoredPosition = new Vector2(0f, startPosY);
+                contents[i].anchoredPosition -= new Vector2(0f, rotationSpeed * Time.unscaledDeltaTime);
+                if (contents[i].anchoredPosition.y <= -slotSize)
+                {
+                    float gap = contents[i].anchoredPosition.y + slotSize;
+                    contents[i].anchoredPosition = new Vector2(startPosX[lineNum], startPosY + gap);
+                }
             }
             yield return null;
         }
     }
 
-    IEnumerator StopSlotMachine(RectTransform contents, int slotNum)
+    IEnumerator StopSlotMachine(RectTransform[] contents,int lineNum, int slotNum, float rotationSpeed)
     {
-        int rollRound = 0;
-        float curSpeed = maxSpeed;
-        slotStack--;
+        bool isRotationOneLap = false;
+        int rotationCount = 0;
+        int lapCount = 0;
+        float curSpeed = rotationSpeed;
+        lineStack++;
         while (true)
         {
-            contents.anchoredPosition -= new Vector2(0f, curSpeed * Time.unscaledDeltaTime);
-            if (contents.anchoredPosition.y <= 0f)
+            for (int i = 0; i < contents.Length; i++)
             {
-                contents.anchoredPosition = new Vector2(0f, startPosY);
-                rollRound++;
-                curSpeed *= 0.7f;
-            }
-            if(rollRound >= 3)
-            {
-                if(contents.anchoredPosition.y <= slotNum * contentsHeight)
+                contents[i].anchoredPosition -= new Vector2(0f, curSpeed * Time.unscaledDeltaTime);
+                if (contents[i].anchoredPosition.y <= -slotSize)
                 {
-                    contents.anchoredPosition = new Vector2(0f, slotNum * contentsHeight);
-                    slotStack++;
-                    if (slotStack >= maxSlotStack)
-                        isPlayMachine = false;
-                    break;
+                    float gap = contents[i].anchoredPosition.y + slotSize;
+                    contents[i].anchoredPosition = new Vector2(startPosX[lineNum], startPosY + gap);
+                    rotationCount++;
+                    if(rotationCount >= contents.Length)
+                    {
+                        isRotationOneLap = true;
+                        lapCount++;
+                        rotationCount = 0;
+                        if (lapCount >= 3)
+                            break;
+                    }
                 }
+            }
+            if(lapCount >= 3 && contents[slotNum].anchoredPosition.y <= (slotSize * 0.5f))
+            {
+                int slot = slotNum - 1;
+                int sort = 0;
+                if(slot < 0)
+                {
+                    slot += contents.Length;
+                }
+                for (int i = slot; i < contents.Length + slot; i++)
+                {
+                    if(i >=  contents.Length)
+                    {
+                        contents[i - contents.Length].anchoredPosition = new Vector2(startPosX[lineNum], (slotSize * sort) - (slotSize * 0.5f));
+                    }
+                    else
+                    {
+                        contents[i].anchoredPosition = new Vector2(startPosX[lineNum], (slotSize * sort) - (slotSize * 0.5f));
+                    }
+                    sort++;
+                }
+
+                lineStack--;
+                if(lineStack == 0)
+                {
+                    isPlayMachine = false;
+                }
+                break;
+            }
+            if(isRotationOneLap)
+            {
+                isRotationOneLap = false;
+                curSpeed *= 0.7f;
             }
             yield return null;
         }
@@ -118,59 +159,60 @@ public class UI_SlotMachine : UI
     private void Init()
     {
         rectTransform = GetComponent<RectTransform>();
-        //Init Contents
-        contents = new RectTransform[resultPanel.childCount];
-        for(int i = 0; i < resultPanel.childCount; i++)
+        linePanel = transform.GetChild(0).GetComponent<RectTransform>();
+        buttonPanel = transform.GetChild(1).GetComponent<RectTransform>();
+        contents = new RectTransform[lineCount][];
+        for(int i = 0; i < contents.Length; i++)
         {
-            contents[i] = resultPanel.GetChild(i).GetChild(0).GetComponent<RectTransform>();
-        }
-        //Init SlotsElement
-        slotsElement = new LayoutElement[contents.Length][];
-        for(int i =0; i < 3; i++)
-        {
-            slotsElement[i] = new LayoutElement[contents[i].childCount];
-            for(int j = 0; j < contents[i].childCount; j++)
+            contents[i] = new RectTransform[originImage.Length];
+            for(int j = 0; j< originImage.Length;j++)
             {
-                slotsElement[i][j] = contents[i].GetChild(j).GetComponent<LayoutElement>();
+                if (i == 0)
+                {
+                    contents[i][j] = originImage[j];
+                }
+                else
+                {
+                    GameObject temp = Instantiate(originImage[j].gameObject, transform.GetChild(0));
+                    contents[i][j] = temp.GetComponent<RectTransform>();
+                }
             }
         }
-        //Init Coroutine
-        slotCoroutine = new Coroutine[contents.Length];
-
-        maxSlotStack = contents.Length;
-        slotStack = maxSlotStack;
-
-        parent = transform.parent.GetComponent<RectTransform>();
+        playCoroutine = new Coroutine[contents.Length];
+        stopCoroutine = new Coroutine[contents.Length];
     }
 
     private void ResetSize()
     {
-        Vector2 size = parent.sizeDelta;
-        float ratioX = 0.4f;
-        float ratioY = 0.8f;
-        rectTransform.sizeDelta = new Vector2(size.x * ratioX, size.y * ratioY);
-        float width = rectTransform.sizeDelta.x;
-        HorizontalLayoutGroup temp = resultPanel.GetComponent<HorizontalLayoutGroup>();
-        float interval = width * 0.1f;
-        temp.padding.left = (int)(interval * 0.15f);
-        temp.padding.right = (int)(interval * 0.15f);
-        temp.spacing = (int)(interval * 0.35f);
-        contentsWidth = width * 0.3f;
-        contentsHeight = contentsWidth;
-        resultPanel.sizeDelta = new Vector2(0f, contentsHeight);
-        
-        for (int i = 0; i < contents.Length; i++)
+        Vector2 parentSize = transform.parent.GetComponent<RectTransform>().sizeDelta;
+        Vector2 ratio = new Vector2(0.4f, 0.8f);
+        float width = parentSize.x * ratio.x;
+        float height = parentSize.y * ratio.y;
+
+        rectTransform.sizeDelta = new Vector2(width, height);
+        slotSize = (width - (spacing * (lineCount + 1))) / lineCount;
+        linePanel.sizeDelta = new Vector2(0f, slotSize * 2);
+        buttonPanel.sizeDelta = new Vector2(0f, (height - linePanel.sizeDelta.y) * 0.5f);
+        for(int i =0; i < buttonPanel.childCount; i++)
         {
-            for(int j = 0; j < slotsElement[i].Length; j++)
+            RectTransform buttonRT = buttonPanel.GetChild(i).GetComponent<RectTransform>();
+            buttonRT.sizeDelta = new Vector2(width * 0.3f, buttonPanel.sizeDelta.y * 0.5f);
+            float buttonPosX = (width * 0.1f) + (buttonRT.sizeDelta.x * 0.5f);
+            buttonRT.anchoredPosition = new Vector2((buttonPosX * 2f * i) - buttonPosX, 0f);
+        }
+
+        startPosX = new float[contents.Length];
+        startPosY = slotSize * (contents[0].Length - 1);
+        float endPosY = slotSize * -0.5f;
+        for (int i =0; i < contents.Length; i++)
+        {
+            startPosX[i] = (slotSize * i) + (spacing * (i+1));
+            for(int j = 0; j< contents[i].Length; j++)
             {
-                slotsElement[i][j].minHeight = contentsHeight;
+                contents[i][j].sizeDelta = new Vector2(slotSize, slotSize);
+                contents[i][j].anchoredPosition = new Vector2(startPosX[i], endPosY + (slotSize * j));
             }
         }
-        startPosY = contentsHeight * (slotsElement[0].Length - 1);
-        for (int i = 0; i < contents.Length; i++)
-        {
-            contents[i].anchoredPosition = new Vector2(0f, startPosY);
-        }
-        maxSpeed = startPosY;
+        maxSpeed = slotSize * contents[0].Length;
     }
 }
