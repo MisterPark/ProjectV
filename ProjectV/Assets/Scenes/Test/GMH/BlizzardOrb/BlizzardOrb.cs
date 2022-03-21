@@ -17,10 +17,16 @@ public class BlizzardOrb : MonoBehaviour
     private void OnEnable()
     {
         parentMissile = GetComponent<Missile>();
+        cooldown = parentMissile.Delay;
     }
     // Update is called once per frame
     void FixedUpdate()
     {
+        if(cooldown<=0)
+        {
+            OnEnable();
+            return;
+        }
         tick += Time.fixedDeltaTime;
         angle += 300 * Time.fixedDeltaTime;
         //if(angle>360)
@@ -38,7 +44,7 @@ public class BlizzardOrb : MonoBehaviour
             missile.Team = parentMissile.Team;
             missile.Owner = parentMissile.Owner;
             missile.Duration = parentMissile.Duration;
-            missile.Damage = parentMissile.Damage*0.6f;
+            missile.Damage = parentMissile.Damage*0.75f;
             missile.Range = parentMissile.Range;
             missile.Speed = parentMissile.Speed*2;
             missile.Type = MissileType.Directional;

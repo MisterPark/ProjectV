@@ -13,7 +13,7 @@ public class Skill_BlizzardOrb : Skill
         Kind = SkillKind.BlizzardOrb;
         base.Start();
 
-        activeInterval = 0.1f;
+        activeInterval = 0.25f;
     }
     protected override void Active()
     {
