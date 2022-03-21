@@ -14,7 +14,7 @@ public class Skill_ToxicNova : Skill
         Kind = SkillKind.ToxicNova;
         base.Start();
 
-        activeInterval = 0.25f;
+        activeInterval = 0.5f;
     }
     protected override void Active()
     {
@@ -49,7 +49,7 @@ public class Skill_ToxicNova : Skill
             missile.Delay = delay;
             missile.Range = range;
             missile.Type = MissileType.Directional;
-            missile.IsPenetrate = true;
+            missile.IsPenetrate = false;
             float rotateIncrease =  360 / missileAmount; //3°³ 120 240 360
             float rotateValue = i * rotateIncrease;
             Quaternion v3Rotation = Quaternion.Euler(0f, rotateValue, 0f);
