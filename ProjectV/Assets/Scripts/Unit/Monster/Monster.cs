@@ -40,21 +40,33 @@ public class Monster : Unit
     void OnDeadCallback()
     {
         DataManager.Instance.currentGameData.killCount += 1;
-        int itemType = (int)ItemType.ExpJewelSmall;
-        int playTime = (int)DataManager.Instance.currentGameData.totalPlayTime;
-        int minute = playTime / 60;
-
-        // TODO : 몬스터에 따른 드랍 아이템이 생기면 바꿔야 함
-        if (minute > 20)
+        if (CompareTag("Boss"))
         {
-            itemType = (int)ItemType.ExpJewelBig;
+            ItemManager.Instance.Drop(ItemType.NormalChest, transform.position);
         }
-        else if (minute > 10)
+        else
         {
-            itemType = (int)ItemType.ExpJewelNormal;
-        }
+            GameObject obj;
+            int random = Random.Range(0, 100);
+            int minute = (int)DataManager.Instance.currentGameData.totalPlayTime / 60;
+            int randomExp = (int)(Random.Range(8, 13) * (1 + (minute * 0.1f)));
+            if (random < 90)
+            {
+                obj = ItemManager.Instance.Drop(ItemType.ExpJewelSmall, transform.position);
+                obj.GetComponentInChildren<ExpJewel_01>().exp = randomExp;
+            }
+            else if (random < 99)
+            {
+                obj = ItemManager.Instance.Drop(ItemType.ExpJewelNormal, transform.position);
+                obj.GetComponentInChildren<ExpJewel_02>().exp = randomExp * 5;
+            }
+            else
+            {
+                obj = ItemManager.Instance.Drop(ItemType.ExpJewelBig, transform.position);
+                obj.GetComponentInChildren<ExpJewel_03>().exp = randomExp * 15;
+            }
 
-        ItemManager.Instance.Drop((ItemType)itemType, transform.position);
+        }
 
 
         SpawnManager.Instance.Remove(gameObject);

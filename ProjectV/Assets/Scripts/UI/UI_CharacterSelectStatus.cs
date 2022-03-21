@@ -8,15 +8,25 @@ public class UI_CharacterSelectStatus : MonoBehaviour
     private RectTransform rectTransform;
     [SerializeField] private UI_StatData[] children;
     // Start is called before the first frame update
+    static public UI_CharacterSelectStatus Instance;
     void Start()
     {
+        Instance = this;
         rectTransform = GetComponent<RectTransform>();
         playerStat = DataManager.Instance.playerCharacterData[(int)(DataManager.Instance.currentGameData.characterName)].statsData.stats;
     }
 
-    // Update is called once per frame
-    void Update()
+
+    private void OnEnable()
     {
+        Setting_UIStatus();
+        Debug.Log("Setting");
+    }
+
+    public void Setting_UIStatus()
+    {
+        if (DataManager.Instance == null)
+            return;
         playerStat = DataManager.Instance.playerCharacterData[(int)(DataManager.Instance.currentGameData.characterName)].statsData.stats;
         if (playerStat == null)
             return;
@@ -44,10 +54,11 @@ public class UI_CharacterSelectStatus : MonoBehaviour
                 }
                 else
                 {
-                    child.value.text = value.ToString() + "%";
+                    child.value.text = (value * 100f).ToString() + "%";
                 }
             }
 
         }
     }
 }
+
