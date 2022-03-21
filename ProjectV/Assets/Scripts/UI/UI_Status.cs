@@ -21,18 +21,27 @@ public class UI_Status : MonoBehaviour
             return;
         foreach (UI_StatData child in children)
         {
-            float tempStat = playerStat.Get_FinalStat(child.statType);
-            float value = tempStat;
+            float value = playerStat.Get_TotalPercentStat(child.statType);
+
             if(value == 0)
                 child.value.text = "-";
             else
             {
+                if(playerStat.Get_OriginStat(child.statType) == playerStat.Get_FinalStat(child.statType))
+                {
+                    child.value.color = Color.black;
+                }
+                else
+                {
+                    child.value.color = Color.yellow;
+                }
+
                 if(child.isPercent == false)
                 {
                     child.value.text = value.ToString();
                 }
                 else
-                    child.value.text = value.ToString() + "%";
+                    child.value.text = (value * 100f).ToString() + "%";
             }
 
         }
