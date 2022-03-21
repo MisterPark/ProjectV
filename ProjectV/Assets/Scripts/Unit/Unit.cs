@@ -210,6 +210,15 @@ public class Unit : MonoBehaviour
         return null;
     }
     /// <summary>
+    /// 가지고 있는 스킬 중 랜덤으로 리턴합니다.
+    /// </summary>
+    public SkillKind GetRandomSkill()
+    {
+        int count = Skills.Count;
+        int random = Random.Range(0, count);
+        return Skills[random].Kind;
+    }
+    /// <summary>
     /// time만큼 멈춥니다. (초단위)
     /// </summary>
     /// <param name="time"></param>
