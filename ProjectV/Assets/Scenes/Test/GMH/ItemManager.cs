@@ -37,7 +37,7 @@ public class ItemManager : MonoBehaviour
     {
         
     }
-    public void Drop(ItemType type, Vector3 position)
+    public GameObject Drop(ItemType type, Vector3 position)
     {
         GameObject itemObject =ObjectPool.Instance.Allocate("ItemObject");
         ItemObject itemObjectCom = itemObject.GetComponent<ItemObject>();
@@ -130,6 +130,7 @@ public class ItemManager : MonoBehaviour
         //GameObject item = ObjectPool.Instance.Allocate(prefabs[(int)type].name);
         //item.transform.position = position;
         itemList.Add(itemObject);
+        return itemObject;
     }
     public void Remove(GameObject target)
     {

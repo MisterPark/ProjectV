@@ -19,17 +19,11 @@ public enum SkillKind
     Strength,
     Armor,
     MaxHp,
-    //Recovery, //�߰��� Skill_XXX Awake �����������.
-    //Cooldown,
     Range,
     Speed,
-    //Duration,
-    //Amount,
     MoveSpeed,
     Magnet,
-    //Luck,
     Growth,
-    //Greed,
     BlizzardOrb,
     UnstableMagicMissile,
     HeavyFireBall,
@@ -38,6 +32,13 @@ public enum SkillKind
     ToxicTornado,
     WindTornado,
     LavaOrb,
+    ToxicNova,
+    //Recovery, //�߰��� Skill_XXX Awake �����������.
+    //Cooldown,
+    //Duration,
+    //Amount,
+    //Luck,
+    //Greed,
     End,
 }
 [System.Serializable]

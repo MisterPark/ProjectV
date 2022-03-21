@@ -48,7 +48,7 @@ public class BlizzardOrb : MonoBehaviour
             missile.Range = parentMissile.Range;
             missile.Speed = parentMissile.Speed*2;
             missile.Type = MissileType.Directional;
-
+            missile.IsPull = true;
             Quaternion v3Rotation = Quaternion.Euler(0f, angle, 0f);
             Vector3 v3Direction = parentMissile.TargetDirection;
             Vector3 v3RotatedDirection = v3Rotation * v3Direction;

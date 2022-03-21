@@ -22,6 +22,7 @@ public abstract class Skill : MonoBehaviour
     protected float activeInterval = 0f;
     protected float activeIntervalTick = 0f;
     protected int activeIntervalCtn = 0;
+    protected bool activeOnce = false;
 
     public UnityEvent<int> OnLevelUp = new UnityEvent<int>();
 
@@ -51,8 +52,15 @@ public abstract class Skill : MonoBehaviour
             if(tick >= cooltime)
             {
                 tick = 0f;
-                activeIntervalCtn = 0;
-                activeIntervalTick = 0;
+                if (activeOnce)
+                {
+                    Active();
+                }
+                else
+                {
+                    activeIntervalCtn = 0;
+                    activeIntervalTick = 0;
+                }
             }
             if(activeIntervalTick != -1)
             {

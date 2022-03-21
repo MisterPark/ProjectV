@@ -49,7 +49,7 @@ public class DataManager : MonoBehaviour
         SaveDataManager.Instance = GetComponent<SaveDataManager>();
         SaveDataManager.Instance.LoadGameData();
         //SaveDataManager.Instance.SaveGameData();
-        
+
     }
 
     public void Setting_PowerStat()

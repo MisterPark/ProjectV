@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ExpJewel_03 : Item
 {
+    public int exp;
     // Start is called before the first frame update
     protected override void Start()
     {
@@ -18,7 +19,6 @@ public class ExpJewel_03 : Item
     public override void Use()
     {
         Stat stat = Player.Instance.GetComponent<Stat>();
-        int rand = Random.Range(100, 400);
-        stat.Increase_FinalStat(StatType.Exp, rand);
+        stat.Increase_FinalStat(StatType.Exp, exp);
     }
 }

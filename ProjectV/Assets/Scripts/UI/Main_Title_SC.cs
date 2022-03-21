@@ -44,10 +44,10 @@ public class Main_Title_SC : MonoBehaviour
         KeyboardCursor_Image.gameObject.SetActive(false);
         transform.Find("Start Button").gameObject.SetActive(false);
         transform.Find("Powerup Button").gameObject.SetActive(false);
+        DataManager.Instance.Setting_PowerStat();
         UI_CharacterSelect.instance.Show();
         Event_Handle.SetSelectedGameObject(UI_CharacterSelect.instance.gameObject);
-       // DataManager.Instance.Setting_PowerStat();
-       //SceneManager.LoadScene(StartScene_Name);
+        //SceneManager.LoadScene(StartScene_Name);
     }
 
     public void OnClickExit()
