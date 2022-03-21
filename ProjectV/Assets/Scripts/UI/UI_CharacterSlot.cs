@@ -22,6 +22,7 @@ public class UI_CharacterSlot : MonoBehaviour
         m_CharacterSelect = this.transform.root.Find("CharacterSelectPanel").gameObject;
         Button tempbutton = GetComponent<Button>();
         tempbutton.onClick.AddListener(m_CharacterSelect.GetComponent<UI_CharacterSelect>().OnClickCharacterBoard);
+        tempbutton.onClick.AddListener(UI_CharacterSelectStatus.Instance.Setting_UIStatus);
     }
 
     // Update is called once per frame

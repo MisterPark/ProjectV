@@ -133,11 +133,11 @@ public class SpawnManager : MonoBehaviour
                 Spawn(monsterList[minute].boss, pos);
             }
         }
+
         if (spawnList.Count >= MaxSpawnCount)
         {
             return;
         }
-
 
         int spawnCount = MaxSpawnCount - spawnList.Count;
         for (int i = 0; i < spawnCount; i++)

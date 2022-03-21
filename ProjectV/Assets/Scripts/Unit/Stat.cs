@@ -168,15 +168,15 @@ public class Stat : MonoBehaviour
 
     public float Get_OriginStat(StatType _statType)
     {
-        return stats[(int)_statType].final_Stat;
+        return stats[(int)_statType].origin_Stat;
     }
     public float Get_PowerUpStat(StatType _statType)
     {
-        return stats[(int)_statType].final_Stat;
+        return stats[(int)_statType].powerUp_Stat;
     }
     public float Get_GrowthStat(StatType _statType)
     {
-        return stats[(int)_statType].final_Stat;
+        return stats[(int)_statType].growth_Stat;
     }
     public float Get_FinalStat(StatType _statType)
     {
@@ -190,6 +190,10 @@ public class Stat : MonoBehaviour
     {
         switch (_statType)
         {
+            case StatType.MaxHealth:
+                {
+                    return stats[(int)StatType.MaxHealth].final_Stat;
+                }
             case StatType.Armor:
                 {
                     return stats[(int)StatType.Armor].final_Stat;
@@ -202,10 +206,10 @@ public class Stat : MonoBehaviour
                 {
                     return stats[(int)StatType.Amount].final_Stat;
                 }
-            case StatType.Cooldown:
-                {
-                    return stats[(int)_statType].final_Stat - stats[(int)_statType].origin_Stat;
-                }
+            //case StatType.Cooldown:
+            //    {
+            //        return stats[(int)_statType].final_Stat - stats[(int)_statType].origin_Stat;
+            //    }
             default:
                 {
                     return (stats[(int)_statType].final_Stat / stats[(int)_statType].origin_Stat);
