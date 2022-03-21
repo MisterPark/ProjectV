@@ -118,6 +118,7 @@ public class Unit : MonoBehaviour
             case SkillKind.ToxicTornado: skill = gameObject.AddComponent<Skill_ToxicTornado>(); break;
             case SkillKind.WindTornado: skill = gameObject.AddComponent<Skill_WindTornado>(); break;
             case SkillKind.LavaOrb: skill = gameObject.AddComponent<Skill_LavaOrb>(); break;
+            case SkillKind.ToxicNova: skill = gameObject.AddComponent<Skill_ToxicNova>(); break;
             default:
                 break;
         }
@@ -180,6 +181,7 @@ public class Unit : MonoBehaviour
             case SkillKind.ToxicTornado: skill = gameObject.GetComponent<Skill_ToxicTornado>(); break;
             case SkillKind.WindTornado: skill = gameObject.GetComponent<Skill_WindTornado>(); break;
             case SkillKind.LavaOrb: skill = gameObject.GetComponent<Skill_LavaOrb>(); break;
+            case SkillKind.ToxicNova: skill = gameObject.GetComponent<Skill_ToxicNova>(); break;
             default:
                 break;
         }
