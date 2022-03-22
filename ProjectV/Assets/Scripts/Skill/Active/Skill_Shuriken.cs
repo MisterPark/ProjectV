@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Skill_ShurikenAttack : Skill
+public class Skill_Shuriken : Skill
 {
     protected override void Start()
     {
-        Kind = SkillKind.ShurikenAttack;
+        Kind = SkillKind.Shuriken;
         base.Start();
         activeInterval = 0.25f;
     }
@@ -25,7 +25,7 @@ public class Skill_ShurikenAttack : Skill
             Debug.LogError("스킬을 유닛만 사용가능.");
             return;
         }
-        GameObject obj = ObjectPool.Instance.Allocate("ShurikenAttack");
+        GameObject obj = ObjectPool.Instance.Allocate("Shuriken");
 
         //float angle = UnityEngine.Random.Range(-180, 180);
         //float dist = 6;

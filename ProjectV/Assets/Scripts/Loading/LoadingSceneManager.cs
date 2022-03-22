@@ -35,7 +35,7 @@ public class LoadingSceneManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Debug.Log($"{NextScene} {loadingFlag} {trigger} {loadTick} / {WaitTime}");
+        //Debug.Log($"{NextScene} {loadingFlag} {trigger} {loadTick} / {WaitTime}");
         if (loadingFlag == false) return;
 
         if(trigger == false)

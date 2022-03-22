@@ -13,7 +13,7 @@ public enum SkillKind
     Laser,
     FireTornado,
     ToxicTotem,
-    ShurikenAttack,
+    Shuriken,
     Lightning,
     Rain,
     Strength,
