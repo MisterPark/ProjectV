@@ -13,7 +13,7 @@ public class Skill_FireBolt : Skill
     {
         Kind = SkillKind.FireBolt;
         base.Start();
-        activeOnce = true;
+        
         activeInterval = 0.1f;
     }
     protected override void Active()
