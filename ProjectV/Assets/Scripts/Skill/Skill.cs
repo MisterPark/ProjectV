@@ -20,7 +20,7 @@ public abstract class Skill : MonoBehaviour
     public float range;
     public int amount = 1;
     protected float activeInterval = 0f;
-    protected float activeIntervalTick = 0f;
+    protected float activeIntervalTick = -1f;
     protected int activeIntervalCtn = 0;
     protected bool activeOnce = false;
 
@@ -54,8 +54,7 @@ public abstract class Skill : MonoBehaviour
                 tick = 0f;
                 if (activeOnce)
                 {
-                    Active();
-                    activeIntervalTick = -1;
+                    Active();                
                 }
                 else
                 {
@@ -63,7 +62,7 @@ public abstract class Skill : MonoBehaviour
                     activeIntervalTick = 0;
                 }
             }
-            if(!activeOnce && activeIntervalTick != -1)
+            if(!activeOnce && activeIntervalTick != -1f)
             {
                 activeIntervalTick += Time.fixedDeltaTime;
                 if(activeIntervalTick >= activeInterval)
@@ -73,7 +72,7 @@ public abstract class Skill : MonoBehaviour
                     activeIntervalCtn++;
                     if(activeIntervalCtn >= amount)
                     {
-                        activeIntervalTick = -1;
+                        activeIntervalTick = -1f;
                     }
                 }
             }

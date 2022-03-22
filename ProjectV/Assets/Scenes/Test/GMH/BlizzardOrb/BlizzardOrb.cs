@@ -16,7 +16,10 @@ public class BlizzardOrb : MonoBehaviour
 
     private void OnEnable()
     {
-        parentMissile = GetComponent<Missile>();
+        if (parentMissile == null)
+        {
+            parentMissile = GetComponent<Missile>();
+        }
         cooldown = parentMissile.Delay;
     }
     // Update is called once per frame

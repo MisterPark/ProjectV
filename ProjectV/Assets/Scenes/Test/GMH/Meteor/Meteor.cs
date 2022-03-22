@@ -5,11 +5,28 @@ using UnityEngine;
 public class Meteor : MonoBehaviour
 {
     // Start is called before the first frame update
+    bool createCrater = false;
+    GameObject meteor;
+    Missile parentMissile;
     void Start()
     {
-
+        createCrater = false;
+        
     }
 
+    private void OnEnable()
+    {
+        if (null == meteor)
+        {
+            meteor = transform.GetChild(0).gameObject.transform.GetChild(0).gameObject; 
+        }
+        if (parentMissile == null)
+        {
+            parentMissile = GetComponent<Missile>();
+        }
+        createCrater = false;
+        meteor.SetActive(true);
+    }
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -20,8 +37,21 @@ public class Meteor : MonoBehaviour
     {
         if (other.gameObject.tag == "Board")
         {
-            GameObject obj = ObjectPool.Instance.Allocate("MeteorHit");
-            obj.transform.position=new Vector3(gameObject.transform.position.x,0f, gameObject.transform.position.z);
+            if (!createCrater)
+            {
+                GameObject obj = ObjectPool.Instance.Allocate("MeteorHit");
+                obj.transform.position = new Vector3(gameObject.transform.position.x, 0f, gameObject.transform.position.z);
+                createCrater=true;
+
+
+                obj.transform.localScale = new Vector3(parentMissile.Range, parentMissile.Range, parentMissile.Range);
+                for (int i = 0; i < 9; i++)
+                {
+                    obj.transform.GetChild(0).transform.GetChild(0).transform.GetChild(i).localScale = new Vector3(parentMissile.Range, parentMissile.Range, parentMissile.Range);
+                }
+                meteor.SetActive(false);
+                Debug.Log(meteor);
+            }
         }
     }
 }

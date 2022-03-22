@@ -47,7 +47,7 @@ public class Skill_WindTornado : Skill
         missile.Delay = delay;
         missile.Range = range;
         missile.Type = MissileType.Guided;
-        missile.IsPenetrate = true;
+        missile.IsPenetrate = false;
         missile.SetTarget(nearest.transform.position + unit.skillOffsetPosition);
         missile.OnCollision.RemoveAllListeners();
         missile.OnCollision.AddListener(OnCollisionCallback);
