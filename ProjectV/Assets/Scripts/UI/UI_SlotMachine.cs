@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 public class UI_SlotMachine : UI
 {
@@ -13,6 +14,9 @@ public class UI_SlotMachine : UI
 
     private bool isPlayMachine = false;
     private int lineStack = 0;
+    private int maxRange;
+    private int sameContents;
+    private int[] jackpotNum;
     private float slotSize;
     private float maxSpeed;
     private float[] startPosX;
@@ -23,6 +27,8 @@ public class UI_SlotMachine : UI
     private RectTransform[][] contents;
     private Coroutine[] playCoroutine;
     private Coroutine[] stopCoroutine;
+
+    private SkillKind[] result;
     
     
 
@@ -56,23 +62,99 @@ public class UI_SlotMachine : UI
     {
         if (isPlayMachine == true && lineStack == 0)
         {
+            KingCrimson();
             for (int i = 0; i < playCoroutine.Length; i++)
             {
                 StopCoroutine(playCoroutine[i]);
-                stopCoroutine[i] = StartCoroutine(StopSlotMachine(contents[i],i, Random.Range(0, 5), maxSpeed));
+                stopCoroutine[i] = StartCoroutine(StopSlotMachine(contents[i],i, jackpotNum[i], maxSpeed));
+
             }
+            
         }
     }
 
-    public void OnClickPlay()
+    private void KingCrimson()
     {
-        Play();
+        int percent = Random.Range(1, 100);
+        if (1 <= percent && percent < 70)
+        {
+            sameContents = 1;
+        }
+        else if (70 <= percent && percent < 95)
+        {
+            sameContents = 2;
+        }
+        else if (95 <= percent && percent <= 100)
+        {
+            sameContents = 3;
+        }
+        else
+            sameContents = 1;
+
+        int numA, numB, numC;
+
+        var exclude = new HashSet<int>();
+        var range = Enumerable.Range(0, maxRange).Where(i => !exclude.Contains(i));
+        var rand = new System.Random();
+        int index = rand.Next(0, maxRange - exclude.Count);
+        numA = range.ElementAt(index);
+
+        exclude.Add(numA);
+        range = Enumerable.Range(0, maxRange).Where(i => !exclude.Contains(i));
+        rand = new System.Random();
+        index = rand.Next(0, maxRange - exclude.Count);
+        numB = range.ElementAt(index);
+
+        exclude.Add(numB);
+        range = Enumerable.Range(0, maxRange).Where(i => !exclude.Contains(i));
+        rand = new System.Random();
+        index = rand.Next(0, maxRange - exclude.Count);
+        numC = range.ElementAt(index);
+
+        switch (sameContents)
+        {
+            case 1:
+                jackpotNum[0] = numA;
+                jackpotNum[1] = numB;
+                jackpotNum[2] = numC;
+                break;
+            case 2:
+                jackpotNum[0] = numA;
+                jackpotNum[1] = numA;
+                jackpotNum[2] = numB;
+                break;
+            case 3:
+                jackpotNum[0] = numA;
+                jackpotNum[1] = numA;
+                jackpotNum[2] = numA;
+                break;
+            default:
+                jackpotNum[0] = numA;
+                jackpotNum[1] = numB;
+                jackpotNum[2] = numC;
+                break;
+        }
+
+        Debug.Log(sameContents.ToString() + "개 당첨");
     }
 
-    public void OnClickStop()
+    private void Reward(int rewardQuantity)
     {
-        Stop();
+        //당첨 확률 1 = 70%, 2 = 25; 3 = 5;
+        //당첨확률에 따라 어떤그림이 1~3개가 뜰지 정하고 뜬 숫자에 따라 결과를 전송 후
+        // 완전히 멈췄을때 획득한 스킬을 보여준 다음 끝;
+        for(int i =0; i < rewardQuantity;)
+        {
+            SkillKind kind = Player.Instance.GetRandomSkill();
+            Skill skill = Player.Instance.FindSkill(kind);
+            if(skill == null || skill.IsMaxLevel)
+                continue;
+            result[i] = kind;
+            Player.Instance.AddOrIncreaseSkill(kind);
+            i++;
+        }
     }
+
 
     IEnumerator PlaySlotMachine(RectTransform[] contents, int lineNum, float rotationSpeed)
     {
@@ -143,6 +225,17 @@ public class UI_SlotMachine : UI
                 if(lineStack == 0)
                 {
                     isPlayMachine = false;
+                    switch(sameContents)
+                    {
+                        case 1: Reward(1);
+                            break;
+                        case 2: Reward(3);
+                            break;
+                        case 3: Reward(5);
+                            break;
+                        default: Reward(1);
+                            break;
+                    }
                 }
                 break;
             }
@@ -180,6 +273,10 @@ public class UI_SlotMachine : UI
         }
         playCoroutine = new Coroutine[contents.Length];
         stopCoroutine = new Coroutine[contents.Length];
+
+        result = new SkillKind[5];
+        jackpotNum = new int[contents.Length];
+        maxRange = contents[0].Length -1;
     }
 
     private void ResetSize()
@@ -214,5 +311,15 @@ public class UI_SlotMachine : UI
             }
         }
         maxSpeed = slotSize * contents[0].Length;
+    }
+
+    public void OnClickPlay()
+    {
+        Play();
+    }
+
+    public void OnClickStop()
+    {
+        Stop();
     }
 }
