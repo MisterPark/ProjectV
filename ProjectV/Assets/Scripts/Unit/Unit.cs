@@ -98,7 +98,7 @@ public class Unit : MonoBehaviour
             case SkillKind.BlackHole: skill = gameObject.AddComponent<Skill_BlackHole>(); break;
             case SkillKind.Laser: skill = gameObject.AddComponent<Skill_Laser>(); break;
             case SkillKind.FireTornado: skill = gameObject.AddComponent<Skill_FireTornado>(); break;
-            case SkillKind.ToxicTotem: skill = gameObject.AddComponent<Skill_ToxicTotem>(); break;
+            case SkillKind.PoisonTrail: skill = gameObject.AddComponent<Skill_PoisonTrail>(); break;
             case SkillKind.Shuriken: skill = gameObject.AddComponent<Skill_Shuriken>(); break;
             case SkillKind.Lightning: skill = gameObject.AddComponent<Skill_Lightning>(); break;
             case SkillKind.Rain: skill = gameObject.AddComponent<Skill_Rain>(); break;
@@ -161,7 +161,7 @@ public class Unit : MonoBehaviour
             case SkillKind.BlackHole: skill = gameObject.GetComponent<Skill_BlackHole>(); break;
             case SkillKind.Laser: skill = gameObject.GetComponent<Skill_Laser>(); break;
             case SkillKind.FireTornado: skill = gameObject.GetComponent<Skill_FireTornado>(); break;
-            case SkillKind.ToxicTotem: skill = gameObject.GetComponent<Skill_ToxicTotem>(); break;
+            case SkillKind.PoisonTrail: skill = gameObject.GetComponent<Skill_PoisonTrail>(); break;
             case SkillKind.Shuriken: skill = gameObject.GetComponent<Skill_Shuriken>(); break;
             case SkillKind.Lightning: skill = gameObject.GetComponent<Skill_Lightning>(); break;
             case SkillKind.Rain: skill = gameObject.GetComponent<Skill_Rain>(); break;
@@ -230,6 +230,7 @@ public class Unit : MonoBehaviour
         GameObject obj = ObjectPool.Instance.Allocate("IceCubeEffect");
         ImpactV3 impact = obj.GetComponent<ImpactV3>();
         impact.Duration = time;
+        impact.Target = this;
         obj.transform.position = transform.position;
     }
 
@@ -364,5 +365,19 @@ public class Unit : MonoBehaviour
     void OnStatLevelUp(int level)
     {
         OnLevelUp?.Invoke(level);
+    }
+
+    public bool IsAllSkillMaxLevel()
+    {
+        int count = Skills.Count;
+        for (int i = 0; i < count; i++)
+        {
+            Skill skill = Skills[i];
+            if (skill.IsMaxLevel) continue;
+
+            return false;
+        }
+
+        return true;
     }
 }

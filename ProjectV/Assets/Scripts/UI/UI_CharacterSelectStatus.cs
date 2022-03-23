@@ -46,7 +46,7 @@ public class UI_CharacterSelectStatus : MonoBehaviour
                 }
                 else
                 {
-                    child.value.color = Color.black;
+                    child.value.color = Color.white;
                 }
                 if (child.isPercent == false)
                 {
