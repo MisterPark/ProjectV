@@ -230,6 +230,7 @@ public class Unit : MonoBehaviour
         GameObject obj = ObjectPool.Instance.Allocate("IceCubeEffect");
         ImpactV3 impact = obj.GetComponent<ImpactV3>();
         impact.Duration = time;
+        impact.Target = this;
         obj.transform.position = transform.position;
     }
 
