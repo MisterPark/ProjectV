@@ -20,7 +20,6 @@ public class UI_CharacterSelectStatus : MonoBehaviour
     private void OnEnable()
     {
         Setting_UIStatus();
-        Debug.Log("Setting");
     }
 
     public void Setting_UIStatus()
@@ -37,7 +36,10 @@ public class UI_CharacterSelectStatus : MonoBehaviour
             float tempPowerupStat = DataManager.Instance.powerUpStat[(int)(child.statType)];
             float value = tempStat + tempPowerupStat;
             if ((tempStat == 0) && (tempPowerupStat == 0))
+            {
                 child.value.text = "-";
+                child.value.color = Color.white;
+            }
             else
             {
                 if (tempPowerupStat != 0)
