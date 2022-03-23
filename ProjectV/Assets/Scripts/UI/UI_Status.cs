@@ -29,7 +29,7 @@ public class UI_Status : MonoBehaviour
             {
                 if(playerStat.Get_OriginStat(child.statType) == playerStat.Get_FinalStat(child.statType))
                 {
-                    child.value.color = Color.black;
+                    child.value.color = Color.white;
                 }
                 else
                 {
