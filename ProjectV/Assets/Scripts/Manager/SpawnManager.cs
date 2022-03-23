@@ -22,7 +22,7 @@ public class SpawnManager : MonoBehaviour
 {
     public static SpawnManager Instance;
 
-    public int MaxSpawnCount = 100;
+    public int MaxSpawnCount { get; set; } = 100;
 
     [SerializeField]private GameObject torchLight;
 
@@ -73,6 +73,7 @@ public class SpawnManager : MonoBehaviour
         ProcessSpawn();
         ProcessRemove();
         PrecessSetNearestEnemy();
+        Debug.Log($"{spawnList.Count}");
     }
 
     public void Spawn(GameObject prefab, Vector3 position)
