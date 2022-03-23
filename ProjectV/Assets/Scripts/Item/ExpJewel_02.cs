@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ExpJewel_02 : Item
 {
-    public int exp;
+    public float exp;
     // Start is called before the first frame update
     protected override void Start()
     {
