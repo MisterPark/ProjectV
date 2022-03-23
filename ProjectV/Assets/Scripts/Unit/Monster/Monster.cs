@@ -58,12 +58,12 @@ public class Monster : Unit
             else if (random < 99)
             {
                 obj = ItemManager.Instance.Drop(ItemType.ExpJewelNormal, transform.position);
-                obj.GetComponentInChildren<ExpJewel_02>().exp = randomExp * 3;
+                obj.GetComponentInChildren<ExpJewel_02>().exp = randomExp * 4;
             }
             else
             {
                 obj = ItemManager.Instance.Drop(ItemType.ExpJewelBig, transform.position);
-                obj.GetComponentInChildren<ExpJewel_03>().exp = randomExp * 6;
+                obj.GetComponentInChildren<ExpJewel_03>().exp = randomExp * 10;
             }
 
         }
