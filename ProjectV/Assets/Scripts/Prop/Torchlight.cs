@@ -37,12 +37,12 @@ public class Torchlight : Unit
 
         int random = Random.Range(0, 100 - (int)((luck - 1) * 25));
         //coin
-        if(random <10)
+        if(random <5)
         {
             int random2 = Random.Range((int)ItemType.Magnet,(int)ItemType.PoisonMushroom + 1);
             ItemManager.Instance.Drop((ItemType)random2, transform.position);
         }
-        else if (random  < 40)
+        else if (random  < 20)
         {
             ItemManager.Instance.Drop(ItemType.HpPotion, transform.position);
         }
