@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject propManagerPrefab;
     [SerializeField] GameObject joystickPrefab;
     [SerializeField] GameObject combineSkillManagerPrefab;
+    [SerializeField] GameObject soundManagerPrefab;
     CameraController cameraController;
 
     GameObject player;
@@ -26,6 +27,7 @@ public class GameManager : MonoBehaviour
     GameObject propManager;
     GameObject joystick;
     GameObject combineSkillManager;
+    GameObject soundManager;
 
     Joystick _joystick;
     public Joystick Joystick { get { return _joystick; } }
@@ -91,6 +93,13 @@ public class GameManager : MonoBehaviour
         combineSkillManager = Instantiate(combineSkillManagerPrefab);
         combineSkillManager.transform.position = Vector3.zero;
         combineSkillManager.name= combineSkillManagerPrefab.name;
+
+        if (SoundManager.Instance == null)
+        {
+            soundManager = Instantiate(soundManagerPrefab);
+            soundManager.transform.position = Vector3.zero;
+            soundManager.name = soundManagerPrefab.name;
+        }
     }
     void Start()
     {

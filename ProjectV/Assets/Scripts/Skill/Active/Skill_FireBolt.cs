@@ -47,6 +47,7 @@ public class Skill_FireBolt : Skill
         missile.SetTarget(nearest.transform.position + unit.skillOffsetPosition);
         missile.OnCollision.RemoveAllListeners();
         missile.OnCollision.AddListener(OnCollisionCallback);
+        SoundManager.Instance.PlaySFXSound("FireBolt", 0.16f);
     }
 
     void OnCollisionCallback(Vector3 pos, Unit other)

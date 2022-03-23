@@ -43,6 +43,7 @@ public class Skill_IceBolt : Skill
         missile.SetTarget(nearest.transform.position + unit.skillOffsetPosition);
         missile.OnCollision.RemoveAllListeners();
         missile.OnCollision.AddListener(OnCollisionCallback);
+        SoundManager.Instance.PlaySFXSound("IceBolt", 0.1f);
     }
 
     void OnCollisionCallback(Vector3 pos, Unit other)
