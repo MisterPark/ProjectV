@@ -255,6 +255,11 @@ public class Player : Unit
             if (skill == null && data.grade != Grade.Normal) continue;
 
             kinds.Add(kind);
+            if (skill != null)
+            {
+                kinds.Add(kind);
+                kinds.Add(kind);
+            }
         }
 
 
