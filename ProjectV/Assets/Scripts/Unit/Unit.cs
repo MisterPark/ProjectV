@@ -365,4 +365,18 @@ public class Unit : MonoBehaviour
     {
         OnLevelUp?.Invoke(level);
     }
+
+    public bool IsAllSkillMaxLevel()
+    {
+        int count = Skills.Count;
+        for (int i = 0; i < count; i++)
+        {
+            Skill skill = Skills[i];
+            if (skill.IsMaxLevel) continue;
+
+            return false;
+        }
+
+        return true;
+    }
 }
