@@ -6,7 +6,21 @@ public class ImpactV3 : MonoBehaviour
 {
     float tick = 0;
     float duration = 1f;
-    public float Duration { get { return duration; }  set { duration = value; } }
+    Unit target;
+    public float Duration { get { return duration; } set { duration = value; } }
+    public Unit Target
+    {
+        get { return target; }
+        set
+        {
+            target = value;
+            if (target != null)
+            {
+                target.OnDead.RemoveListener(Remove);
+                target.OnDead.AddListener(Remove);
+            }
+        }
+    }
 
     void Start()
     {
@@ -27,5 +41,10 @@ public class ImpactV3 : MonoBehaviour
             tick = 0f;
             ObjectPool.Instance.Free(gameObject);
         }
+    }
+
+    public void Remove()
+    {
+        ObjectPool.Instance.Free(gameObject);
     }
 }
