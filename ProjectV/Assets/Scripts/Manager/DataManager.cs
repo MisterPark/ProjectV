@@ -23,7 +23,7 @@ public class DataManager : MonoBehaviour
     
     public float[] powerUpStat = new float[(int)StatType.END];
     [SerializeField]
-    private UI_Powerup_statDB powerStatDB;
+    public UI_Powerup_statDB powerStatDB;
 
     
 #if UNITY_EDITOR
