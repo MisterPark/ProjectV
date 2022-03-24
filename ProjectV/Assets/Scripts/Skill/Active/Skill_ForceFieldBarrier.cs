@@ -15,6 +15,12 @@ public class Skill_ForceFieldBarrier : Skill
     {
         
     }
+
+    private void OnDestroy()
+    {
+        ObjectPool.Instance.Free(obj);
+    }
+
     protected override void Start()
     {
         Kind = SkillKind.ForceFieldBarrier;
@@ -62,6 +68,10 @@ public class Skill_ForceFieldBarrier : Skill
     {
         UpdateSkillData();
 
+        missile.Duration = duration;
+        missile.Damage = damage;
+        missile.Speed = speed;
+        missile.Delay = delay;
         missile.Range = range;
         missile.transform.localScale = Vector3.one * range;
     }

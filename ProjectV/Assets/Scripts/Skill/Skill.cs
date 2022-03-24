@@ -99,6 +99,10 @@ public abstract class Skill : MonoBehaviour
         damage = value.damage * additionalDamage;
         duration = value.duration * additionalDuration;
         delay = value.delay;
+        if(delay < 0.3f)
+        {
+            Debug.Log($"{this.name}");
+        }
         range = value.range * additionalRange;
         speed = value.speed * additionalSpeed;
         if (Type == SkillType.Passive)

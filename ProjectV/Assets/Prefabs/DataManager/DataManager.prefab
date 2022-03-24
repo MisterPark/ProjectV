@@ -50,56 +50,67 @@ MonoBehaviour:
     charImage: {fileID: 21300000, guid: 1378f63764518d14cb764f2300fceb03, type: 3}
     firstSkill: 1
     description: ' Attack range increases by 5% per level 10.'
+    prefab: {fileID: 4392251996632517536, guid: 360edf5805998c74d8c74bf912a4c07c, type: 3}
   - name: 1
     statsData: {fileID: 11400000, guid: c3159443739d66342a3b049d488e094e, type: 2}
     charImage: {fileID: 0}
     firstSkill: 2
     description: 
+    prefab: {fileID: 4028914485716664332, guid: 397d459a4caef1e4da0dc0838d67721c, type: 3}
   - name: 2
     statsData: {fileID: 11400000, guid: c3159443739d66342a3b049d488e094e, type: 2}
     charImage: {fileID: 0}
     firstSkill: 3
     description: 
+    prefab: {fileID: 692576022197210753, guid: d091757f965cb6a4b8cc8a69d9c13f66, type: 3}
   - name: 3
     statsData: {fileID: 11400000, guid: c3159443739d66342a3b049d488e094e, type: 2}
     charImage: {fileID: 0}
     firstSkill: 5
     description: 
+    prefab: {fileID: 6561061231965142291, guid: cf5bf2281372a644b9242af3a0f9bec6, type: 3}
   - name: 4
     statsData: {fileID: 11400000, guid: c3159443739d66342a3b049d488e094e, type: 2}
     charImage: {fileID: 0}
     firstSkill: 7
     description: 
+    prefab: {fileID: 6957631055780863036, guid: 914d5bd51f692b9438d07b9e29afd8bd, type: 3}
   - name: 5
     statsData: {fileID: 11400000, guid: c3159443739d66342a3b049d488e094e, type: 2}
     charImage: {fileID: 0}
     firstSkill: 8
     description: 
+    prefab: {fileID: 7458167090379541118, guid: d0487a2fa332d91429b8bed49c63db72, type: 3}
   - name: 6
     statsData: {fileID: 11400000, guid: c3159443739d66342a3b049d488e094e, type: 2}
     charImage: {fileID: 0}
     firstSkill: 9
     description: 
+    prefab: {fileID: 4757298087277447138, guid: 79f0125a827a47643bcb14cde76d38d9, type: 3}
   - name: 7
     statsData: {fileID: 11400000, guid: c3159443739d66342a3b049d488e094e, type: 2}
     charImage: {fileID: 0}
     firstSkill: 10
     description: 
+    prefab: {fileID: 6559832539930943091, guid: 7db831253473a884ba4b868002136f58, type: 3}
   - name: 9
     statsData: {fileID: 11400000, guid: c3159443739d66342a3b049d488e094e, type: 2}
     charImage: {fileID: 0}
     firstSkill: 20
     description: 
+    prefab: {fileID: 2398793701391586976, guid: 63b2bda120e606145938daadcfd1f48b, type: 3}
   - name: 8
     statsData: {fileID: 11400000, guid: c3159443739d66342a3b049d488e094e, type: 2}
     charImage: {fileID: 0}
     firstSkill: 25
     description: 
+    prefab: {fileID: 1072559046621329892, guid: ffcf25a03997de846856041995e459fd, type: 3}
   - name: 10
     statsData: {fileID: 11400000, guid: c3159443739d66342a3b049d488e094e, type: 2}
     charImage: {fileID: 0}
     firstSkill: 27
     description: 
+    prefab: {fileID: 9213812217520204671, guid: b8766377e0cbcca4787e52889dd2f030, type: 3}
   powerUpStat:
   - 0
   - 0
@@ -191,6 +202,7 @@ MonoBehaviour:
     totalGold: 0
     currentGold: 8000
     currentPowerUpCount: 0
+    powerUpSaves: []
     totalPlayTime: 0
   currentGameData:
     characterName: 0
@@ -222,4 +234,5 @@ MonoBehaviour:
     totalGold: 0
     currentGold: 0
     currentPowerUpCount: 0
+    powerUpSaves: []
     totalPlayTime: 0
