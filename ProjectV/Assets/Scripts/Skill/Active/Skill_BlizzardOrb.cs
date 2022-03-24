@@ -15,7 +15,7 @@ public class Skill_BlizzardOrb : Skill
 
         activeInterval = 0.25f;
     }
-    protected override void Active()
+    public override void Active()
     {
 
         GameObject nearest = null;

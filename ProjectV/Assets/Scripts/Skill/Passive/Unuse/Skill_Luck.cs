@@ -12,7 +12,7 @@ public class Skill_Luck : Skill
     {
         base.Start();
     }
-    protected override void Active()
+    public override void Active()
     {
         Stat stat = Player.Instance.GetComponent<Stat>();
         stat.Increase_FinalStat(StatType.Luck);

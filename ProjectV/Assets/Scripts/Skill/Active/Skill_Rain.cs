@@ -20,7 +20,7 @@ public class Skill_Rain : Skill
         
     }
 
-    protected override void Active()
+    public override void Active()
     {
         //GameObject nearest = null;
         //SpawnManager.Instance.SpawnQueue.Dequeue(out nearest);

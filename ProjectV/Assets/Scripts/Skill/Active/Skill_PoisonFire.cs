@@ -14,7 +14,7 @@ public class Skill_PoisonFire : Skill
         base.Start();
         Kind = SkillKind.FireBolt;
     }
-    protected override void Active()
+    public override void Active()
     {
         throw new System.NotImplementedException();
     }

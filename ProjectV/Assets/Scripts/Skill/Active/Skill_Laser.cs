@@ -20,7 +20,7 @@ public class Skill_Laser : Skill
     }
 
     // Update is called once per frame
-    protected override void Active()
+    public override void Active()
     {
 
 

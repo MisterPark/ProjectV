@@ -185,6 +185,20 @@ public class Player : Unit
         GameManager.Instance.Resume();
         GameManager.Instance.HideCursor();
 
+        if(kind == SkillKind.RecoveryHp )
+        {
+            Skill skill = gameObject.AddComponent<Skill_RecoveryHp>();
+            skill.Active();
+            Destroy(skill);
+            return;
+        }
+        if(kind==SkillKind.IncreaseCoin)
+        {
+            Skill skill = gameObject.AddComponent<Skill_IncreaseCoin>();
+            skill.Active();
+            Destroy(skill);
+            return;
+        }
         AddOrIncreaseSkill(kind);
     }
 

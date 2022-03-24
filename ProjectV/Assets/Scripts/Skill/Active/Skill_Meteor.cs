@@ -17,7 +17,7 @@ public class Skill_Meteor : Skill
         
     }
 
-    protected override void Active()
+    public override void Active()
     {
         GameObject random = SpawnManager.Instance.RandomMonster;
         if (random == null)

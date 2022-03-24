@@ -59,6 +59,11 @@ public class Stat : MonoBehaviour
                 stats[(int)StatType.Health].final_Stat = stats[(int)StatType.MaxHealth].final_Stat;
             }
         }
+        // °æÇèÄ¡
+        if (stats[(int)StatType.Exp].final_Stat > stats[(int)StatType.MaxExp].final_Stat)
+        {
+            LevelUp();
+        }
     }
 
     public void Init_LoadStat()
@@ -152,10 +157,7 @@ public class Stat : MonoBehaviour
             case StatType.Exp:
                 {
                     stats[(int)StatType.Exp].final_Stat += _count * stats[(int)StatType.Growth].final_Stat;
-                    if (stats[(int)StatType.Exp].final_Stat > stats[(int)StatType.MaxExp].final_Stat)
-                    {
-                        LevelUp();
-                    }
+                    
                     return stats[(int)StatType.Exp].final_Stat;
                 }
             default:
@@ -193,10 +195,7 @@ public class Stat : MonoBehaviour
             case StatType.Exp:
                 {
                     stats[(int)StatType.Exp].final_Stat += _count * stats[(int)StatType.Growth].final_Stat;
-                    if (stats[(int)StatType.Exp].final_Stat > stats[(int)StatType.MaxExp].final_Stat)
-                    {
-                        LevelUp();
-                    }
+
                     return stats[(int)StatType.Exp].final_Stat;
                 }
             default:

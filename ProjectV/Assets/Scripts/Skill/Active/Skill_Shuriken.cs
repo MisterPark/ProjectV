@@ -11,7 +11,7 @@ public class Skill_Shuriken : Skill
         activeInterval = 0.25f;
     }
 
-    protected override void Active()
+    public override void Active()
     {
 
         GameObject nearest = SpawnManager.Instance.NearestMonster;

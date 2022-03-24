@@ -14,7 +14,7 @@ public class Skill_PoisonTrail : Skill
         activeOnce = true;
     }
 
-    protected override void Active()
+    public override void Active()
     {
         GameObject obj = ObjectPool.Instance.Allocate("PoisonTrail");
 

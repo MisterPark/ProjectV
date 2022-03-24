@@ -16,7 +16,7 @@ public class Skill_FireBolt : Skill
         
         activeInterval = 0.1f;
     }
-    protected override void Active()
+    public override void Active()
     {
 
         GameObject nearest = null;

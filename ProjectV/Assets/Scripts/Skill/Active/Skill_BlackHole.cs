@@ -17,7 +17,7 @@ public class Skill_BlackHole : Skill
         activeInterval = 0.1f;
     }
 
-    protected override void Active()
+    public override void Active()
     {
         Unit unit = GetComponent<Unit>();
         if (unit == null)

@@ -16,7 +16,7 @@ public class Skill_LavaOrb : Skill
         activeInterval = 0.4f;
     }
 
-    protected override void Active()
+    public override void Active()
     {
         GameObject nearest = SpawnManager.Instance.NearestMonster;
         if (nearest == null)

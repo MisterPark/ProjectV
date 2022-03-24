@@ -32,7 +32,7 @@ public abstract class Skill : MonoBehaviour
     Unit unit;
     float tick = 0f;
 
-    protected abstract void Active();
+    public abstract void Active();
 
     protected virtual void Awake()
     {

@@ -13,7 +13,7 @@ public class Skill_Lightning : Skill
         Kind = SkillKind.Lightning;
         base.Start();
     }
-    protected override void Active()
+    public override void Active()
     {
         GameObject random = SpawnManager.Instance.RandomMonster;
         if (random == null)

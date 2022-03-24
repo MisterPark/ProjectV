@@ -12,7 +12,7 @@ public class Skill_IncreaseCoin : Skill
     {
         base.Start();
     }
-    protected override void Active()
+    public override void Active()
     {
         DataManager.Instance.currentGameData.gold += 100f * Player.Instance.stat.Get_FinalStat(StatType.Greed);
     }

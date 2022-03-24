@@ -14,7 +14,7 @@ public class Skill_IceBolt : Skill
         base.Start();
         activeInterval = 0.1f;
     }
-    protected override void Active()
+    public override void Active()
     {
         GameObject nearest = null;
         SpawnManager.Instance.SpawnQueue.Dequeue(out nearest);

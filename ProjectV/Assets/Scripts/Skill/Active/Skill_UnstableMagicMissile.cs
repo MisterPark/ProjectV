@@ -14,7 +14,7 @@ public class Skill_UnstableMagicMissile : Skill
         base.Start();
         activeInterval = 0.1f;
     }
-    protected override void Active()
+    public override void Active()
     {
 
         GameObject nearest = null;

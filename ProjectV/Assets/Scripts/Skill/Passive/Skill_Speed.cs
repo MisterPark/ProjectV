@@ -12,7 +12,7 @@ public class Skill_Speed : Skill
     {
         base.Start();
     }
-    protected override void Active()
+    public override void Active()
     {
         Stat stat = Player.Instance.GetComponent<Stat>();
         stat.Increase_FinalStat(StatType.Speed);

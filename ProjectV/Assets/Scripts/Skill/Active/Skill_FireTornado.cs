@@ -17,7 +17,7 @@ public class Skill_FireTornado : Skill
         activeInterval = 0.1f;
     }
 
-    protected override void Active()
+    public override void Active()
     {
         GameObject nearest = SpawnManager.Instance.NearestMonster;
         if(nearest== null)

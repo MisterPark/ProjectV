@@ -18,7 +18,7 @@ public class Skill_ToxicNova : Skill
 
         activeInterval = 0.5f;
     }
-    protected override void Active()
+    public override void Active()
     {
         
         GameObject nearest = null;
