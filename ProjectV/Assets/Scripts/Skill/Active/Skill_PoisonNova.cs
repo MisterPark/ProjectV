@@ -2,17 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Skill_ToxicNova : Skill
+public class Skill_PoisonNova : Skill
 {
 
     protected override void Awake()
     {
-        Kind = SkillKind.ToxicNova;
+        Kind = SkillKind.PoisonNova;
 
     }
     protected override void Start()
     {
-        Kind = SkillKind.ToxicNova;
+        Kind = SkillKind.PoisonNova;
         activeOnce = true;
         base.Start();
 
@@ -38,7 +38,7 @@ public class Skill_ToxicNova : Skill
         //float missileAmount = 12;
         for (int i = 1; i<=amount;i++)
         { 
-            GameObject obj = ObjectPool.Instance.Allocate("ToxicNova");
+            GameObject obj = ObjectPool.Instance.Allocate("PoisonNova");
             Missile missile = obj.GetComponent<Missile>();
 
             missile.Initialize();

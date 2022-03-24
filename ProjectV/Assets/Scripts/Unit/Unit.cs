@@ -115,10 +115,11 @@ public class Unit : MonoBehaviour
             case SkillKind.HeavyFireBall: skill = gameObject.AddComponent<Skill_HeavyFireBall>(); break;
             case SkillKind.Meteor: skill = gameObject.AddComponent<Skill_Meteor>(); break;
             case SkillKind.IceTornado: skill = gameObject.AddComponent<Skill_IceTornado>(); break;
-            case SkillKind.ToxicTornado: skill = gameObject.AddComponent<Skill_ToxicTornado>(); break;
+            case SkillKind.PoisonTornado: skill = gameObject.AddComponent<Skill_PoisonTornado>(); break;
             case SkillKind.WindTornado: skill = gameObject.AddComponent<Skill_WindTornado>(); break;
             case SkillKind.LavaOrb: skill = gameObject.AddComponent<Skill_LavaOrb>(); break;
-            case SkillKind.ToxicNova: skill = gameObject.AddComponent<Skill_ToxicNova>(); break;
+            case SkillKind.PoisonNova: skill = gameObject.AddComponent<Skill_PoisonNova>(); break;
+            case SkillKind.CoolDown: skill = gameObject.AddComponent<Skill_CoolDown>(); break;
             default:
                 break;
         }
@@ -178,10 +179,11 @@ public class Unit : MonoBehaviour
             case SkillKind.HeavyFireBall: skill = gameObject.GetComponent<Skill_HeavyFireBall>(); break;
             case SkillKind.Meteor: skill = gameObject.GetComponent<Skill_Meteor>(); break;
             case SkillKind.IceTornado: skill = gameObject.GetComponent<Skill_IceTornado>(); break;
-            case SkillKind.ToxicTornado: skill = gameObject.GetComponent<Skill_ToxicTornado>(); break;
+            case SkillKind.PoisonTornado: skill = gameObject.GetComponent<Skill_PoisonTornado>(); break;
             case SkillKind.WindTornado: skill = gameObject.GetComponent<Skill_WindTornado>(); break;
             case SkillKind.LavaOrb: skill = gameObject.GetComponent<Skill_LavaOrb>(); break;
-            case SkillKind.ToxicNova: skill = gameObject.GetComponent<Skill_ToxicNova>(); break;
+            case SkillKind.PoisonNova: skill = gameObject.GetComponent<Skill_PoisonNova>(); break;
+            case SkillKind.CoolDown: skill = gameObject.GetComponent<Skill_CoolDown>(); break;
             default:
                 break;
         }

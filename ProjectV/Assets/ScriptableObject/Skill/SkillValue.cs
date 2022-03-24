@@ -29,13 +29,14 @@ public enum SkillKind
     HeavyFireBall,
     Meteor,
     IceTornado,
-    ToxicTornado,
+    PoisonTornado,
     WindTornado,
     LavaOrb,
-    ToxicNova,
+    PoisonNova,
+    CoolDown,
+    //caution : active or passive skill add on this text;
     RecoveryHp,
     IncreaseCoin,
-    CoolDown,
     End,
 }
 [System.Serializable]

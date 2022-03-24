@@ -2,16 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Skill_ToxicTornado : Skill
+public class Skill_PoisonTornado : Skill
 {
     protected override void Awake()
     {
-        Kind = SkillKind.ToxicTornado;
+        Kind = SkillKind.PoisonTornado;
     }
     // Start is called before the first frame update
     protected override void Start()
     {
-        Kind = SkillKind.ToxicTornado;
+        Kind = SkillKind.PoisonTornado;
         base.Start();
         activeInterval = 0.1f;
     }
@@ -29,7 +29,7 @@ public class Skill_ToxicTornado : Skill
             Debug.LogError("스킬을 유닛만 사용가능.");
             return;
         }
-        GameObject obj = ObjectPool.Instance.Allocate("ToxicTornado");
+        GameObject obj = ObjectPool.Instance.Allocate("PoisonTornado");
 
         float angle = UnityEngine.Random.Range(-180, 180);
         float dist = Random.Range(0,6);
