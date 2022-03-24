@@ -11,6 +11,10 @@ public class CombineSkillManager : MonoBehaviour
     private void Start()
     {
         Instance = this;
+        //for (int i = 0; i < combineSkillDatas.Length; i++)
+        //{
+        //    Debug.Log(combineSkillDatas[i].combinedSkill);
+        //}
     }
 
     public void CombineSkill(SkillKind skillKind)
@@ -19,14 +23,15 @@ public class CombineSkillManager : MonoBehaviour
         {
             if(skill.combinedSkill != skillKind)
             {
-                Debug.Log(skillKind+"해당 스킬의 조합이 없습니다.");
-                return;
+                continue;
             }
 
             Player.Instance.RemoveSkill(skill.combineSkillData.materialA);
+            Debug.Log(skill.combineSkillData.materialA + "제거");
             Player.Instance.RemoveSkill(skill.combineSkillData.materialB);
-
+            Debug.Log(skill.combineSkillData.materialB + "제거");
             Player.Instance.AddOrIncreaseSkill(skill.combineSkillData.combinedSkill);
+            Debug.Log(skill.combineSkillData.combinedSkill + "추가");
         }
     
     }

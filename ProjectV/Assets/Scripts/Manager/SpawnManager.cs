@@ -62,7 +62,7 @@ public class SpawnManager : MonoBehaviour
         ProcessSpawn();
         ProcessRemove();
         PrecessSetNearestEnemy();
-        Debug.Log($"{spawnList.Count}");
+        //Debug.Log($"{spawnList.Count}");
     }
 
     public void Spawn(GameObject prefab, Vector3 position)
