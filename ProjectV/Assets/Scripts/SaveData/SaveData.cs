@@ -3,8 +3,14 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 
-[Serializable] // 직렬화
+[Serializable]
+public class powerUpSave
+{ 
+    public StatType powerType;
+    public int Rank;
+}
 
+[Serializable] // 직렬화
 public class SaveData 
 { 
     // 각 챕터의 잠금여부
@@ -19,5 +25,6 @@ public class SaveData
     public int currentGold;
 
     public int currentPowerUpCount;
+    [SerializeField] public List<powerUpSave> powerUpSaves;
     public float totalPlayTime;
 }
