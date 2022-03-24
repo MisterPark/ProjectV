@@ -33,12 +33,8 @@ public enum SkillKind
     WindTornado,
     LavaOrb,
     ToxicNova,
-    //Recovery, //�߰��� Skill_XXX Awake �����������.
-    //Cooldown,
-    //Duration,
-    //Amount,
-    //Luck,
-    //Greed,
+    RecoveryHp,
+    IncreaseCoin,
     End,
 }
 [System.Serializable]

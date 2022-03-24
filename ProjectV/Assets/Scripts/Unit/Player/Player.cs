@@ -6,7 +6,7 @@ using UnityEngine.Events;
 [System.Serializable]
 public enum PlayerCharacterName
 {
-    Character_01,
+    Knight,
     Character_02,
     Character_03,
     Character_04,
@@ -266,6 +266,8 @@ public class Player : Unit
         if (kinds.Count == 0)
         {
             // TODO : Make HP and Money
+            kinds.Add(SkillKind.RecoveryHp);
+            kinds.Add(SkillKind.IncreaseCoin);
         }
         else
         {
