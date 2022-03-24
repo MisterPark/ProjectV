@@ -165,6 +165,47 @@ public class Stat : MonoBehaviour
         }
     }
 
+    public float Increase_FinalStat(StatType _statType, float _count)
+    {
+        switch (_statType)
+        {
+            case StatType.Armor:
+                {
+                    return stats[(int)StatType.Armor].final_Stat += _count;
+                }
+            case StatType.Recovery:
+                {
+                    return stats[(int)StatType.Recovery].final_Stat += _count;
+                }
+            case StatType.Amount:
+                {
+                    return stats[(int)StatType.Amount].final_Stat += _count;
+                }
+            case StatType.Health:
+                {
+                    stats[(int)StatType.Health].final_Stat += _count;
+                    if (stats[(int)StatType.Health].final_Stat > stats[(int)StatType.MaxHealth].final_Stat)
+                    {
+                        stats[(int)StatType.Health].final_Stat = stats[(int)StatType.MaxHealth].final_Stat;
+                    }
+                    return stats[(int)StatType.Health].final_Stat;
+                }
+            case StatType.Exp:
+                {
+                    stats[(int)StatType.Exp].final_Stat += _count * stats[(int)StatType.Growth].final_Stat;
+                    if (stats[(int)StatType.Exp].final_Stat > stats[(int)StatType.MaxExp].final_Stat)
+                    {
+                        LevelUp();
+                    }
+                    return stats[(int)StatType.Exp].final_Stat;
+                }
+            default:
+                {
+                    return stats[(int)_statType].final_Stat += stats[(int)_statType].origin_Stat * (stats[(int)_statType].growth_Stat * _count);
+                }
+        }
+    }
+
 
     public float Get_OriginStat(StatType _statType)
     {

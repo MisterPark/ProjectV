@@ -49,7 +49,7 @@ public class Monster : Unit
             GameObject obj;
             int random = Random.Range(0, 100);
             int minute = (int)DataManager.Instance.currentGameData.totalPlayTime / 60;
-            int randomExp = (int)(Random.Range(8, 13) * (1 + (minute * 0.1f)));
+            float randomExp = Random.Range(8, 13) * (1 + (minute * 0.2f));
             if (random < 90)
             {
                 obj = ItemManager.Instance.Drop(ItemType.ExpJewelSmall, transform.position);
