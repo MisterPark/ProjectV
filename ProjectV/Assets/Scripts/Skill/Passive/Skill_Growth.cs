@@ -6,7 +6,7 @@ public class Skill_Growth : Skill
 {
     protected override void Awake()
     {
-        Kind = SkillKind.MaxHp;
+        Kind = SkillKind.Growth;
     }
     protected override void Start()
     {
