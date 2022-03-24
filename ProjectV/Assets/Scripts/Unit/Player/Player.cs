@@ -285,7 +285,7 @@ public class Player : Unit
                 }
                 SkillInformation info = new SkillInformation(kind, nextLevel);
                 skillInfos.Add(info);
-                kinds.RemoveAt(random);
+                kinds.RemoveAll(x => x == kind);
                 count++;
             }
         }
