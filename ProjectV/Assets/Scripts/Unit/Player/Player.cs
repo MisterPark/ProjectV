@@ -167,6 +167,7 @@ public class Player : Unit
     {
         GameManager.Instance.Pause();
         UI_Gameover.instance.Show();
+        SoundManager.Instance.PlaySFXSound("Death");
     }
 
     void OnLevelUpCallback(int level)

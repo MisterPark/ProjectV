@@ -38,6 +38,6 @@ public class Skill_Lightning : Skill
         missile.Damage = damage;
         missile.Range = range;
         missile.SetTarget(random.transform.position);
-        SoundManager.Instance.PlaySFXSound("Lightning", 0.16f);
+        SoundManager.Instance.PlaySFXSound("Lightning");
     }
 }
