@@ -256,7 +256,7 @@ public class Player : Unit
 
         List<SkillKind> kinds = new List<SkillKind>();
 
-        for (int index = (int)SkillKind.IceBolt; index < (int)SkillKind.End; index++)
+        for (int index = (int)SkillKind.IceBolt; index < (int)SkillKind.RecoveryHp; index++)
         {
             SkillKind kind = (SkillKind)index;
             SkillType type = kind.GetSkillType();
