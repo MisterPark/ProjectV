@@ -68,6 +68,10 @@ public class Skill_ForceFieldBarrier : Skill
     {
         UpdateSkillData();
 
+        missile.Duration = duration;
+        missile.Damage = damage;
+        missile.Speed = speed;
+        missile.Delay = delay;
         missile.Range = range;
         missile.transform.localScale = Vector3.one * range;
     }

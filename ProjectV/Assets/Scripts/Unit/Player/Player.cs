@@ -27,6 +27,7 @@ public class PlayerCharacterNode
     [SerializeField] public Sprite charImage;
     [SerializeField] public SkillKind firstSkill;
     [SerializeField] public string description;
+    [SerializeField] public GameObject prefab;
 }
 
 
@@ -70,8 +71,12 @@ public class Player : Unit
         OnLevelUp.AddListener(OnLevelUpCallback);
         UI_LevelUp.instance.OnSelected.AddListener(OnSelectSkill);
 
-        // 캐릭터 기본스킬
+        
         PlayerCharacterName charName = DataManager.Instance.currentGameData.characterName;
+        // 캐릭터 프리펩
+        Instantiate(DataManager.Instance.playerCharacterData[(int)charName].prefab, transform);
+        animator = GetComponentInChildren<Animator>();
+        // 캐릭터 기본스킬
         SkillKind skillKind = DataManager.Instance.playerCharacterData[(int)charName].firstSkill;
         AddOrIncreaseSkill(skillKind);
     }
