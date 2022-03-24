@@ -48,6 +48,7 @@ public class Main_Title_SC : MonoBehaviour
         UI_CharacterSelect.instance.Show();
         Event_Handle.SetSelectedGameObject(UI_CharacterSelect.instance.gameObject);
         //SceneManager.LoadScene(StartScene_Name);
+        SoundManager.Instance.PlaySFXSound("ShortButton");
     }
 
     public void OnClickExit()
@@ -85,6 +86,7 @@ public class Main_Title_SC : MonoBehaviour
     public void OnClickOption()
     {
         UI_Option.instance.Show();
+        SoundManager.Instance.PlaySFXSound("ShortButton");
     }
     public void OnClickPowerup()
     {
@@ -93,6 +95,7 @@ public class Main_Title_SC : MonoBehaviour
         transform.Find("Powerup Button").gameObject.SetActive(false);
         UI_Powerup.instacne.Show();
         Event_Handle.SetSelectedGameObject(UI_Powerup.instacne.transform.Find("Reset_Button").gameObject);
+        SoundManager.Instance.PlaySFXSound("ShortButton");
     }
 
 }

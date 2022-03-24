@@ -48,7 +48,7 @@ public class Skill_UnstableMagicMissile : Skill
         //missile.SetTarget(nearest.transform.position + unit.skillOffsetPosition);
         missile.OnCollision.RemoveAllListeners();
         missile.OnCollision.AddListener(OnCollisionCallback);
-        SoundManager.Instance.PlaySFXSound("UnstableMagicMissile", 0.16f);
+        SoundManager.Instance.PlaySFXSound("UnstableMagicMissile");
     }
 
     void OnCollisionCallback(Vector3 pos, Unit other)

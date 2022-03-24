@@ -60,9 +60,11 @@ public class Stat : MonoBehaviour
             }
         }
         // °æÇèÄ¡
-        if (stats[(int)StatType.Exp].final_Stat > stats[(int)StatType.MaxExp].final_Stat)
-        {
-            LevelUp();
+        if (stats[(int)StatType.MaxExp].final_Stat != 0f){
+            if (stats[(int)StatType.Exp].final_Stat > stats[(int)StatType.MaxExp].final_Stat)
+            {
+                LevelUp();
+            }
         }
     }
 
@@ -123,6 +125,7 @@ public class Stat : MonoBehaviour
         stats[(int)StatType.MaxExp].final_Stat += stats[(int)StatType.MaxExp].origin_Stat * stats[(int)StatType.MaxExp].growth_Stat;
         //stats[(int)StatType.MaxExp].final_Stat *= stats[(int)StatType.MaxExp].growth_Stat + 1f;
         OnLevelUp?.Invoke(Mathf.RoundToInt(stats[(int)StatType.Level].final_Stat));
+        SoundManager.Instance.PlaySFXSound("LevelUp");
     }
 
 

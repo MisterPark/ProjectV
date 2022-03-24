@@ -6,7 +6,13 @@ using UnityEngine.SceneManagement;
 //이 게임에서는 거리에 비례해 사운드의 크기를 조절할 필요가 없기에 하나의 AudioSource로 AudioClip들을 돌려가며 실행시킬 것이다.
 //배경음악을 실행할 AudioSource와 효과음을 실행할 AudioSource를 SoundManager의 자식 오브젝트로 설정
 
-
+[System.Serializable]
+public class AudioClipNode
+{
+    public string clipName;
+    public AudioClip clip;
+    public float volume = 1f;
+}
 public class SoundManager : MonoBehaviour
 {
     private static SoundManager instance;
@@ -36,10 +42,11 @@ public class SoundManager : MonoBehaviour
     //[SerializeField]
     //private AudioClip adventureBgmAudioClip; //어드벤쳐씬에서 사용할 BGM
 
+    [ArrayElementTitle("clipName")]
     [SerializeField]
-    private AudioClip[] sfxAudioClips; //효과음들 지정
+    private AudioClipNode[] sfxAudioClips; //효과음들 지정
 
-    Dictionary<string, AudioClip> audioClipsDic = new Dictionary<string, AudioClip>(); //효과음 딕셔너리
+    Dictionary<string, AudioClipNode> audioClipsDic = new Dictionary<string, AudioClipNode>(); //효과음 딕셔너리
     // AudioClip을 Key,Value 형태로 관리하기 위해 딕셔너리 사용
 
     private void Awake()
@@ -50,21 +57,25 @@ public class SoundManager : MonoBehaviour
         bgmPlayer = transform.GetChild(0).GetComponent<AudioSource>();
         sfxPlayer = transform.GetChild(1).GetComponent<AudioSource>();
 
-        foreach (AudioClip audioclip in sfxAudioClips)
+        foreach (AudioClipNode audioclip in sfxAudioClips)
         {
-            audioClipsDic.Add(audioclip.name, audioclip);
+            AudioClipNode newNode = new AudioClipNode();
+            newNode.clip = audioclip.clip;
+            newNode.volume = audioclip.volume;
+            audioClipsDic.Add(audioclip.clip.name, newNode);
         }
+        PlaySFXSound("GameStart");
     }
 
     // 효과 사운드 재생 : 이름을 필수 매개변수, 볼륨을 선택적 매개변수로 지정
-    public void PlaySFXSound(string name, float volume = 1f)
+    public void PlaySFXSound(string name)
     {
         if (audioClipsDic.ContainsKey(name) == false)
         {
             Debug.Log(name + " is not Contained audioClipsDic");
             return;
         }
-        sfxPlayer.PlayOneShot(audioClipsDic[name], volume * masterVolumeSFX);
+        sfxPlayer.PlayOneShot(audioClipsDic[name].clip, audioClipsDic[name].volume * masterVolumeSFX);
     }
 
     //BGM 사운드 재생 : 볼륨을 선택적 매개변수로 지정
