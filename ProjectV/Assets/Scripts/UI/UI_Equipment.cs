@@ -28,6 +28,13 @@ public class UI_Equipment : MonoBehaviour
     {
         int i = 0;
         int j = 0;
+
+        for (int k = 0; k < 6; k++)
+        {
+            activeSlot[k].Hide();
+            passiveSlot[k].Hide();
+        }
+
         for (int k = 0; k < skills.Count; k++)
         {
             Skill skill = skills[k];
