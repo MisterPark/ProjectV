@@ -35,6 +35,7 @@ public enum SkillKind
     ToxicNova,
     RecoveryHp,
     IncreaseCoin,
+    CoolDown,
     End,
 }
 [System.Serializable]
