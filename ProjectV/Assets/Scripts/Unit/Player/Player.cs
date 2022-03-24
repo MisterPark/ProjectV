@@ -282,6 +282,8 @@ public class Player : Unit
             // TODO : Make HP and Money
             kinds.Add(SkillKind.RecoveryHp);
             kinds.Add(SkillKind.IncreaseCoin);
+            skillInfos.Add(new SkillInformation(SkillKind.RecoveryHp, 1));
+            skillInfos.Add(new SkillInformation(SkillKind.IncreaseCoin, 1));
         }
         else
         {
