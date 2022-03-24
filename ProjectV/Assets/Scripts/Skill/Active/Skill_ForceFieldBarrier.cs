@@ -15,6 +15,12 @@ public class Skill_ForceFieldBarrier : Skill
     {
         
     }
+
+    private void OnDestroy()
+    {
+        ObjectPool.Instance.Free(obj);
+    }
+
     protected override void Start()
     {
         Kind = SkillKind.ForceFieldBarrier;
