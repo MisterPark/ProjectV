@@ -7,16 +7,16 @@ using UnityEngine.Events;
 public enum PlayerCharacterName
 {
     Knight,
-    Character_02,
-    Character_03,
-    Character_04,
-    Character_05,
-    Character_06,
-    Character_07,
-    Character_08,
-    Character_09,
-    Character_10,
-    Unknown,
+    Druid,
+    Alchemist,
+    Gypsy,
+    King,
+    Queen,
+    Peasant,
+    Rogue,
+    Wizard,
+    Sorcerer,
+    Witch,
     END
 }
 [System.Serializable]
