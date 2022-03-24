@@ -58,6 +58,17 @@ public class SaveDataManager : MonoBehaviour
         //////
         DataManager dataManager = DataManager.Instance;
         dataManager.currentSaveData = _saveData;
+        foreach (powerUpSave saveData in dataManager.currentSaveData.powerUpSaves)
+        {
+            foreach (Powerup_DataType powerupData in dataManager.powerStatDB.Powerup_Type_List)
+            {
+                if (saveData.powerType == powerupData.PowerType)
+                {
+                    powerupData.SetRank(saveData.Rank);
+                    break;
+                }
+            }
+        }
     } 
     
     public void SaveGameData() 
@@ -68,6 +79,14 @@ public class SaveDataManager : MonoBehaviour
         _saveData.totalGold += (int)dataManager.currentGameData.gold;
         _saveData.currentGold += (int)dataManager.currentGameData.gold;
         _saveData.totalPlayTime += dataManager.currentGameData.totalPlayTime;
+        _saveData.powerUpSaves.Clear();
+        foreach (Powerup_DataType data in dataManager.powerStatDB.Powerup_Type_List)
+        {
+            powerUpSave _powerUpSave = new powerUpSave();
+            _powerUpSave.powerType = data.PowerType;
+            _powerUpSave.Rank = data.Rank;
+            _saveData.powerUpSaves.Add(_powerUpSave);
+        }
         //
         string ToJsonData = JsonUtility.ToJson(saveData); 
         string filePath = Application.persistentDataPath + GameDataFileName; 
