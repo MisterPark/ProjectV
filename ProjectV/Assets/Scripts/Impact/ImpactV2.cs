@@ -17,6 +17,7 @@ public class ImpactV2 : MonoBehaviour
     private void OnEnable()
     {
         tick = 0f;
+        
     }
 
     void FixedUpdate()

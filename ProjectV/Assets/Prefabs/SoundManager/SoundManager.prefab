@@ -15,7 +15,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &6199384872075667559
 Transform:
@@ -142,7 +142,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &6199384872693330280
 Transform:
@@ -209,6 +209,9 @@ MonoBehaviour:
   - clipName: WindTornado
     clip: {fileID: 8300000, guid: 8fc42d66e0ef1a34d8e746533020ce45, type: 3}
     volume: 0.12
+  - clipName: Thunder
+    clip: {fileID: 8300000, guid: 41fc07085ce8ca9409b8d6747fa1bc27, type: 3}
+    volume: 0.1
 --- !u!1 &6199384874053364125
 GameObject:
   m_ObjectHideFlags: 0
@@ -224,7 +227,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &6199384874053364126
 Transform:

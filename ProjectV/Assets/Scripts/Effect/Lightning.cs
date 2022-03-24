@@ -8,6 +8,8 @@ public class Lightning : MonoBehaviour
     SphereCollider parentCollider;
     bool impactFlag = false;
     Missile missile;
+
+    bool firstDisable = true;
     void Start()
     {
         cam = Camera.main;
@@ -27,10 +29,16 @@ public class Lightning : MonoBehaviour
 
     private void OnDisable()
     {
+        if(firstDisable)
+        {
+            firstDisable = false;
+            return;
+        }
         GameObject impact = ObjectPool.Instance.Allocate("LightningImpact");
         ImpactV2 comp = impact.GetComponent<ImpactV2>();
         comp.Duration = 0.3f;
         impact.transform.position = transform.parent.transform.position;
+        SoundManager.Instance.PlaySFXSound("Thunder");
     }
 
     void FixedUpdate()
