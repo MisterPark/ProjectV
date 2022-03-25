@@ -59,72 +59,89 @@ public class ItemManager : MonoBehaviour
         case ItemType.ExpJewelBig:
                 itemObjectCom.isRotate = true;
                 itemObjectCom.isMagnetism = true;
+                itemObjectCom.isChest = false;
                 break;
         case ItemType.ExpJewelNormal:
                 itemObjectCom.isRotate = true;
                 itemObjectCom.isMagnetism = true;
+                itemObjectCom.isChest = false;
                 break;
         case ItemType.ExpJewelSmall:
                 itemObjectCom.isRotate = true;
                 itemObjectCom.isMagnetism = true;
+                itemObjectCom.isChest = false;
                 break;
         case ItemType.HpPotion:
                 itemObjectCom.isRotate = true;
                 itemObjectCom.isMagnetism = false;
+                itemObjectCom.isChest = false;
                 break;
         case ItemType.GoldCoinBig:
                 itemObjectCom.isRotate = false;
                 itemObjectCom.isMagnetism = false;
+                itemObjectCom.isChest = false;
                 break;
         case ItemType.GoldCoinNormal:
                 itemObjectCom.isRotate = false;
                 itemObjectCom.isMagnetism = false;
+                itemObjectCom.isChest = false;
                 break;
         case ItemType.GoldCoinSmall:
                 itemObjectCom.isRotate = false;
                 itemObjectCom.isMagnetism = false;
+                itemObjectCom.isChest = false;
                 break;
         
         case ItemType.Magnet:
                 itemObjectCom.isRotate = true;
                 itemObjectCom.isMagnetism = false;
+                itemObjectCom.isChest = false;
                 break;
         case ItemType.Pentagram:
-            itemObjectCom.isRotate = true;
-            itemObjectCom.isMagnetism = false;
-            break;
+                itemObjectCom.isRotate = true;
+                itemObjectCom.isMagnetism = false;
+                itemObjectCom.isChest = false;
+                break;
         case ItemType.FrozenOrb:
-            itemObjectCom.isRotate = true;
-            itemObjectCom.isMagnetism = false;
-            break;
+                itemObjectCom.isRotate = true;
+                itemObjectCom.isMagnetism = false;
+                itemObjectCom.isChest = false;
+                break;
         case ItemType.PoisonMushroom:
-            itemObjectCom.isRotate = true;
-            itemObjectCom.isMagnetism = false;
-            break;
+                itemObjectCom.isRotate = true;
+                itemObjectCom.isMagnetism = false;
+                itemObjectCom.isChest = false;
+                break;
         case ItemType.NormalChest:
-            itemObjectCom.isRotate = false;
-            itemObjectCom.isMagnetism = false;
-            break;
+                itemObjectCom.isRotate = false;
+                itemObjectCom.isMagnetism = false;
+                itemObjectCom.isChest = true;
+                break;  
         case ItemType.MagicChest:
-            itemObjectCom.isRotate = false;
-            itemObjectCom.isMagnetism = false;
-            break;
+                itemObjectCom.isRotate = false;
+                itemObjectCom.isMagnetism = false;
+                itemObjectCom.isChest = true;
+                break;
         case ItemType.RareChest:
-            itemObjectCom.isRotate = false;
-            itemObjectCom.isMagnetism = false;
-            break;
+                itemObjectCom.isRotate = false;
+                itemObjectCom.isMagnetism = false;
+                itemObjectCom.isChest = true;
+                break;
         case ItemType.UniqueChest:
-            itemObjectCom.isRotate = false;
-            itemObjectCom.isMagnetism = false;
-            break;
+                itemObjectCom.isRotate = false;
+                itemObjectCom.isMagnetism = false;
+                itemObjectCom.isChest = true;
+                break;
         case ItemType.LegenderyChest:
-            itemObjectCom.isRotate = false;
-            itemObjectCom.isMagnetism = false;
-            break;
+                itemObjectCom.isRotate = false;
+                itemObjectCom.isMagnetism = false;
+                itemObjectCom.isChest = true;
+                break;
             default:
-            itemObjectCom.isRotate = true;
-            itemObjectCom.isMagnetism = false;
-            break;
+                itemObjectCom.isRotate = true;
+                itemObjectCom.isMagnetism = false;
+                itemObjectCom.isChest = false;
+                break;
         }
         
         //GameObject item = ObjectPool.Instance.Allocate(prefabs[(int)type].name);
