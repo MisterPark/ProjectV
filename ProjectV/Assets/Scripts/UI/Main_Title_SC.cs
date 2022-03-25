@@ -81,6 +81,7 @@ public class Main_Title_SC : MonoBehaviour
         Application.Quit();
 #endif
         }
+        SoundManager.Instance.PlaySFXSound("ShortButton");
     }
 
     public void OnClickOption()
