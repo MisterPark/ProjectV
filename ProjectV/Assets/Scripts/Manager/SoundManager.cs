@@ -116,6 +116,7 @@ public class SoundManager : MonoBehaviour
             return;
         }
         sfxPlayer.PlayOneShot(sfxAudioClipsDic[name].clip, sfxAudioClipsDic[name].volume * masterVolumeSFX);
+        
     }
 
     //BGM 사운드 재생 : 볼륨을 선택적 매개변수로 지정

@@ -70,6 +70,5 @@ public class Skill_Laser : Skill
     {
         GameObject impact = ObjectPool.Instance.Allocate("Impact3");
         impact.transform.position = other.transform.position;
-
     }
 }
