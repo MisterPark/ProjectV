@@ -289,21 +289,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6199384872075667558, guid: e9ce8fadba09f2142912ca6d6aa1b594, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 6199384872693330278, guid: e9ce8fadba09f2142912ca6d6aa1b594, type: 3}
       propertyPath: m_Name
       value: SoundManager
       objectReference: {fileID: 0}
-    - target: {fileID: 6199384872693330278, guid: e9ce8fadba09f2142912ca6d6aa1b594, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 6199384872693330279, guid: e9ce8fadba09f2142912ca6d6aa1b594, type: 3}
-      propertyPath: sfxAudioClips.Array.data[11].volume
-      value: 0.1
+      propertyPath: newBgmInterval
+      value: 600
       objectReference: {fileID: 0}
     - target: {fileID: 6199384872693330280, guid: e9ce8fadba09f2142912ca6d6aa1b594, type: 3}
       propertyPath: m_RootOrder
@@ -348,10 +340,6 @@ PrefabInstance:
     - target: {fileID: 6199384872693330280, guid: e9ce8fadba09f2142912ca6d6aa1b594, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6199384874053364125, guid: e9ce8fadba09f2142912ca6d6aa1b594, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e9ce8fadba09f2142912ca6d6aa1b594, type: 3}

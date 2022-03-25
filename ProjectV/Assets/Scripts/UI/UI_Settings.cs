@@ -29,6 +29,7 @@ public class UI_Settings : UI
     public void OnClickExit()
     {
         Hide();
+        SoundManager.Instance.PlaySFXSound("ShortButton");
     }
 
     public void ResetSize()

@@ -17,6 +17,7 @@ public class Main_Title_SC : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
     }
 
     // Update is called once per frame

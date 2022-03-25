@@ -47,6 +47,7 @@ public class UI_StageSelect : UI
                 break;
             }
         }
+        SoundManager.Instance.PlaySFXSound("ShortButton");
     }
 
     void SlotInit()

@@ -40,5 +40,6 @@ public class UI_PauseButton : MonoBehaviour
     public void OnClickPause()
     {
         UI_PausePanel.instance.Show();
+        SoundManager.Instance.PlaySFXSound("ShortButton");
     }
 }

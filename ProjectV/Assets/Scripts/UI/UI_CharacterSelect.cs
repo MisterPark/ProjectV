@@ -56,6 +56,7 @@ public class UI_CharacterSelect : UI
         CurrentClickPlayerCharacter = selectobject.GetComponent<UI_CharacterSlot>().CharacterIndex;
         DataManager.Instance.currentGameData.characterName = CurrentClickPlayerCharacter;
         DataManager.Instance.Setting_PowerStat();
+        SoundManager.Instance.PlaySFXSound("ShortButton");
     }
 
     void SlotInit()
@@ -96,5 +97,6 @@ public class UI_CharacterSelect : UI
         DataManager.Instance.currentGameData.characterName = CurrentClickPlayerCharacter;
         gameObject.SetActive(false);
         UI_StageSelect.instance.Show();
+        SoundManager.Instance.PlaySFXSound("ShortButton");
     }
 }

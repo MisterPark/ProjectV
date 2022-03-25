@@ -21,11 +21,13 @@ public class UI_ExitPanel : UI
 
     public void OnClickYes()
     {
+        SoundManager.Instance.PlaySFXSound("ShortButton");
         SceneManager.LoadScene("ResultScene");
     }
 
     public void OnClickNo()
     {
+        SoundManager.Instance.PlaySFXSound("ShortButton");
         Hide();
     }
 }

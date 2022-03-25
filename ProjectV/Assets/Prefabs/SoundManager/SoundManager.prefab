@@ -174,7 +174,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   masterVolumeSFX: 1
   masterVolumeBGM: 1
-  mainBgmAudioClip: {fileID: 0}
+  bgmAudioClips:
+  - clipName: 8Bit Track1
+    clip: {fileID: 8300000, guid: 00379ff33019bab4c9495c70aa3c3ff7, type: 3}
+    volume: 0.15
+  - clipName: 8Bit Track2
+    clip: {fileID: 8300000, guid: 0e3b57fe9497c4a4cb25a0414d430a2c, type: 3}
+    volume: 0.1
+  - clipName: 8Bit Track5
+    clip: {fileID: 8300000, guid: 42eca95eca33c464b93c6797d20a673c, type: 3}
+    volume: 0.1
+  - clipName: 8Bit Track8
+    clip: {fileID: 8300000, guid: 466f7ce0edba30549bebcb8e96e931dd, type: 3}
+    volume: 0.1
+  - clipName: 8Bit Track9
+    clip: {fileID: 8300000, guid: 0ba0fe5080f00ce47aee7a253ae7f7af, type: 3}
+    volume: 0.1
   sfxAudioClips:
   - clipName: Death
     clip: {fileID: 8300000, guid: d969622a0d3401e44afa43f7e7eb5d3e, type: 3}
@@ -208,7 +223,7 @@ MonoBehaviour:
     volume: 0.14
   - clipName: WindTornado
     clip: {fileID: 8300000, guid: 8fc42d66e0ef1a34d8e746533020ce45, type: 3}
-    volume: 0.12
+    volume: 0.08
   - clipName: Thunder
     clip: {fileID: 8300000, guid: 41fc07085ce8ca9409b8d6747fa1bc27, type: 3}
     volume: 0.1
@@ -263,6 +278,7 @@ MonoBehaviour:
   - clipName: Shuriken
     clip: {fileID: 8300000, guid: ad4b6ee16a675084a9b636d5dba04956, type: 3}
     volume: 0.1
+  newBgmInterval: 600
 --- !u!1 &6199384874053364125
 GameObject:
   m_ObjectHideFlags: 0
