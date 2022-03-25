@@ -25,13 +25,22 @@ public class CombineSkillManager : MonoBehaviour
             {
                 continue;
             }
+            ;
 
-            Player.Instance.RemoveSkill(skill.combineSkillData.materialA);
-            Debug.Log(skill.combineSkillData.materialA + "제거");
-            Player.Instance.RemoveSkill(skill.combineSkillData.materialB);
-            Debug.Log(skill.combineSkillData.materialB + "제거");
-            Player.Instance.AddOrIncreaseSkill(skill.combineSkillData.combinedSkill);
-            Debug.Log(skill.combineSkillData.combinedSkill + "추가");
+            if (Player.Instance.FindSkill(skillKind) == null)
+            {
+                Player.Instance.RemoveSkill(skill.combineSkillData.materialA);
+                Debug.Log(skill.combineSkillData.materialA + "제거");
+                Player.Instance.RemoveSkill(skill.combineSkillData.materialB);
+                Debug.Log(skill.combineSkillData.materialB + "제거");
+                Player.Instance.AddOrIncreaseSkill(skill.combineSkillData.combinedSkill);
+                Debug.Log(skill.combineSkillData.combinedSkill + "추가");
+            }
+            else
+            {
+                Debug.Log(skillKind + " 는 이미 존재하는 스킬입니다.");
+            }
+
         }
     
     }

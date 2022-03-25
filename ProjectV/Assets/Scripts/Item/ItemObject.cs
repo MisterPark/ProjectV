@@ -11,6 +11,8 @@ public class ItemObject : MonoBehaviour
     public bool isRotate { get; set; } = false;
     public bool isMagnetism { get; set; } = false;
     public bool MagnetFlag { get; set; } = false;
+
+    public bool isChest { get; set; } = false;
     void Start()
     {
         
@@ -25,7 +27,7 @@ public class ItemObject : MonoBehaviour
         }
         
         Vector3 to = Player.Instance.transform.position - transform.position;
-        
+
         if (!MagnetFlag)
         {
             float radius = Player.Instance.stat.Get_FinalStat(StatType.Magnet);
@@ -36,7 +38,7 @@ public class ItemObject : MonoBehaviour
             }
         }
 
-        else if (MagnetFlag)
+        else if (MagnetFlag && isChest == false)
         {
             transform.position += to.normalized * moveSpeed * Time.fixedDeltaTime;
         }
