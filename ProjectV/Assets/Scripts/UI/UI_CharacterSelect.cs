@@ -54,7 +54,13 @@ public class UI_CharacterSelect : UI
         WeaponImage.sprite = selectobject.GetComponent<UI_CharacterSlot>().WeaponImage.sprite;
         DescriptionText.text = selectobject.GetComponent<UI_CharacterSlot>().m_CharacterDescription;
         CurrentClickPlayerCharacter = selectobject.GetComponent<UI_CharacterSlot>().CharacterIndex;
+        
         DataManager.Instance.currentGameData.characterName = CurrentClickPlayerCharacter;
+        DataManager.Instance.currentGameData.gold = 0;
+        DataManager.Instance.currentGameData.killCount = 0;
+        DataManager.Instance.currentGameData.totalPlayTime = 0;
+        DataManager.Instance.currentGameData.playerLevel = 1;
+
         DataManager.Instance.Setting_PowerStat();
         SoundManager.Instance.PlaySFXSound("ShortButton");
     }

@@ -43,7 +43,6 @@ public class GameManager : MonoBehaviour
         HideCursor();
         Random.InitState((int)System.DateTime.UtcNow.Ticks);
 
-#if UNITY_EDITOR || UNITY_ANDROID
         joystick = Instantiate(joystickPrefab);
         joystick.name = joystickPrefab.name;
 
@@ -55,7 +54,6 @@ public class GameManager : MonoBehaviour
             joystick.transform.SetParent(canvas.transform);
             joystick.transform.SetAsFirstSibling();
         }
-#endif
 
         //player = Instantiate(playerPrefab);
         //player = Instantiate(Resources.Load("Unit/Player/Player")) as GameObject;
