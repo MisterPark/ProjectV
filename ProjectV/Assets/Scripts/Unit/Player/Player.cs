@@ -4,9 +4,6 @@ using UnityEngine;
 using UnityEngine.Events;
 
 
-
-
-
 public class Player : Unit
 {
     public static Player Instance;
@@ -23,7 +20,6 @@ public class Player : Unit
             return ((int)Instance.transform.position.z + temp) / 40; 
         }
     }
-
     public static int Column
     {
         get 
