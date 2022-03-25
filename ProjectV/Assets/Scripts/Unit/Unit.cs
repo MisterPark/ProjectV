@@ -41,6 +41,8 @@ public class Unit : MonoBehaviour
 
     public List<Skill> Skills { get { return skillList; } }
 
+    public Sound[] Sounds { get; set; }
+
     protected virtual void Start()
     {
         stat = GetComponent<Stat>();
@@ -280,33 +282,58 @@ public class Unit : MonoBehaviour
 
     void OnTakeDamageCallback(float damage)
     {
-
-        GameObject temp = ObjectPool.Instance.Allocate("UI_DamageFont");
-        UI_DamageFont font = temp.transform.GetChild(0).GetComponent<UI_DamageFont>();
-        Color fontColor = Color.white;
-        Color outlineColor = Color.black;
-
-        if(gameObject.IsPlayer())
+        // Show Damage Numbers
+        if (DataManager.Instance.Settings.VisibleDamageNumbers)
         {
-            fontColor = Color.red;
-            outlineColor = Color.yellow;
+            GameObject temp = ObjectPool.Instance.Allocate("UI_DamageFont");
+            UI_DamageFont font = temp.transform.GetChild(0).GetComponent<UI_DamageFont>();
+            Color fontColor = Color.white;
+            Color outlineColor = Color.black;
+
+            if (gameObject.IsPlayer())
+            {
+                fontColor = Color.red;
+                outlineColor = Color.yellow;
+            }
+            else
+            {
+                float clamp = Mathf.Clamp(damage, 0f, 255f);
+                fontColor.r = 1f;
+                fontColor.g = 1f - (clamp / 255f);
+                fontColor.b = 0f;
+            }
+
+            font.Init((int)damage, fontColor, outlineColor, transform.position + (Vector3.up * 2f));
+        }
+
+        // Show Hurt Effect
+        if (gameObject.IsPlayer())
+        {
             UI_Damaged.instance.Show();
         }
-        else
-        {
-            float clamp = Mathf.Clamp(damage, 0f, 255f);
-            fontColor.r = 1f;
-            fontColor.g = 1f - (clamp / 255f);
-            fontColor.b = 0f;
-        }
 
-        font.Init((int)damage, fontColor, outlineColor, transform.position + (Vector3.up * 2f));
-
+        // Process Damage and Death
         float hp = stat.Get_FinalStat(StatType.Health);
         if (hp <= 0f)
         {
             Death();
             OnDead?.Invoke();
+            return;
+        }
+
+        // Play Hurt Sound
+        if(Sounds != null)
+        {
+            int index = Random.Range((int)SoundKind.Hurt01, (int)SoundKind.Hurt03 + 1);
+            SoundKind soundkind = (SoundKind)index;
+            Sound sound = Sounds[index];
+            if(sound == null)
+            {
+                Debug.LogError($"[Error] Unit({name} has not Sound Data : Kind={soundkind})");
+                return;
+            }
+            SoundManager.Instance.PlaySFXSound(sound.clip.name);
+            Debug.Log(sound.clip.name);
         }
     }
 

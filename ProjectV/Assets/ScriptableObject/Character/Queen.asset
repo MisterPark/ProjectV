@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1911c9087a2ed8148ad56f4fcfc4d499, type: 3}
+  m_Name: Queen
+  m_EditorClassIdentifier: 
+  characterName: 5
+  statsData: {fileID: 11400000, guid: 713999855b299894395d6de13064aae7, type: 2}
+  charImage: {fileID: 21300000, guid: 4f1c785a92ef14f429169c05692ae0f7, type: 3}
+  firstSkill: 5
+  description: Queen
+  prefab: {fileID: 7458167090379541118, guid: d0487a2fa332d91429b8bed49c63db72, type: 3}
+  Sounds:
+  - kind: 0
+    clip: {fileID: 8300000, guid: 7a4d7f6bb60bbff4a9278ab004e3a217, type: 3}
+  - kind: 1
+    clip: {fileID: 8300000, guid: 551e267c94792c043891af9d27338f21, type: 3}
+  - kind: 2
+    clip: {fileID: 8300000, guid: 0011e67c580b99146901940c734e55a9, type: 3}

@@ -87,7 +87,7 @@ public class Main_Title_SC : MonoBehaviour
 
     public void OnClickOption()
     {
-        UI_Option.instance.Show();
+        UI_Settings.instance.Show();
         SoundManager.Instance.PlaySFXSound("ShortButton");
     }
     public void OnClickPowerup()

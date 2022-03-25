@@ -16,9 +16,9 @@ public class DataManager : MonoBehaviour
 
     
 #if UNITY_EDITOR
-    [ArrayElementTitle("name")]
+    //[ArrayElementTitle("name")]
 #endif
-    public PlayerCharacterNode[] playerCharacterData = new PlayerCharacterNode[(int)PlayerCharacterName.END];
+    public PlayerCharacterData[] playerCharacterData = new PlayerCharacterData[(int)PlayerCharacterName.END];
 
     
     public float[] powerUpStat = new float[(int)StatType.END];
@@ -31,16 +31,16 @@ public class DataManager : MonoBehaviour
 #endif
     public SkillDataElement[] skillDatas = new SkillDataElement[(int)SkillKind.End];
 
-    // SaveData ���� ������ �����͵�
     public SaveData currentSaveData;
 
-    // ���� ����ǰ� �ִ� ���� ������
     [SerializeField] public CurrentGameData currentGameData;
 
     [SerializeField] private float moneyInterest_Per;
 
 
     public StageData[] stageDatas = new StageData[(int)StageKind.End];
+
+    public Settings Settings;
 
     private void Awake()
     {

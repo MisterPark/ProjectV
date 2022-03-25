@@ -14,6 +14,6 @@ public class NormalChest : Item
     }
     public override void Use()
     {
-        
+        UI_SlotMachine.instance.Show();
     }
 }

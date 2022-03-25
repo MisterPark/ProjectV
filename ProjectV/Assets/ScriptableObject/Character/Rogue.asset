@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1911c9087a2ed8148ad56f4fcfc4d499, type: 3}
+  m_Name: Rogue
+  m_EditorClassIdentifier: 
+  characterName: 7
+  statsData: {fileID: 11400000, guid: 0a502a2a8439d974280d15b1e3a4e5db, type: 2}
+  charImage: {fileID: 21300000, guid: d0fc6f37cf8f2e04f83e205e93ff5b65, type: 3}
+  firstSkill: 8
+  description: Rogue
+  prefab: {fileID: 6559832539930943091, guid: 7db831253473a884ba4b868002136f58, type: 3}
+  Sounds:
+  - kind: 0
+    clip: {fileID: 8300000, guid: 7a4d7f6bb60bbff4a9278ab004e3a217, type: 3}
+  - kind: 1
+    clip: {fileID: 8300000, guid: 551e267c94792c043891af9d27338f21, type: 3}
+  - kind: 2
+    clip: {fileID: 8300000, guid: 0011e67c580b99146901940c734e55a9, type: 3}

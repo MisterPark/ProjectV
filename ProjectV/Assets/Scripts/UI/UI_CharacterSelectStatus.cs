@@ -13,7 +13,7 @@ public class UI_CharacterSelectStatus : MonoBehaviour
     {
         Instance = this;
         rectTransform = GetComponent<RectTransform>();
-        playerStat = DataManager.Instance.playerCharacterData[(int)(DataManager.Instance.currentGameData.characterName)].statsData.stats;
+        playerStat = DataManager.Instance.playerCharacterData[(int)(DataManager.Instance.currentGameData.characterName)].playerCharacter.statsData.stats;
     }
 
 
@@ -26,7 +26,7 @@ public class UI_CharacterSelectStatus : MonoBehaviour
     {
         if (DataManager.Instance == null)
             return;
-        playerStat = DataManager.Instance.playerCharacterData[(int)(DataManager.Instance.currentGameData.characterName)].statsData.stats;
+        playerStat = DataManager.Instance.playerCharacterData[(int)(DataManager.Instance.currentGameData.characterName)].playerCharacter.statsData.stats;
         if (playerStat == null)
             return;
 
