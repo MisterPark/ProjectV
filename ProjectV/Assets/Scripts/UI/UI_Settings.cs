@@ -9,6 +9,8 @@ public class UI_Settings : UI
     private RectTransform rectTransform;
     private RectTransform parent;
 
+    [SerializeField] Slider bgmSlider;
+    [SerializeField] Slider soundSlider;
     [SerializeField] Toggle damageNumberToggle;
 
     private void Awake()
@@ -19,9 +21,11 @@ public class UI_Settings : UI
     {
         rectTransform = GetComponent<RectTransform>();
         parent = transform.parent.GetComponent<RectTransform>();
-        
+
+        bgmSlider.onValueChanged.AddListener(OnValueChange_BGM);
+        soundSlider.onValueChanged.AddListener(OnValueChange_Sound);
         damageNumberToggle.onValueChanged.AddListener(OnValueChanged_VisibleDamageNumbers);
-        
+
         ResetSize();
         Hide();
     }
@@ -44,5 +48,17 @@ public class UI_Settings : UI
     public void OnValueChanged_VisibleDamageNumbers(bool _isOn)
     {
         DataManager.Instance.Settings.VisibleDamageNumbers = _isOn;
+    }
+
+    public void OnValueChange_BGM(float _volume)
+    {
+        DataManager.Instance.Settings.BGMVolume = _volume;
+        SoundManager.Instance.masterVolumeBGM = _volume;
+    }
+
+    public void OnValueChange_Sound(float _volume)
+    {
+        DataManager.Instance.Settings.SoundVolume = _volume;
+        SoundManager.Instance.masterVolumeSFX = _volume;
     }
 }
