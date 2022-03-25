@@ -26,8 +26,18 @@ public class UI_Settings : UI
         soundSlider.onValueChanged.AddListener(OnValueChange_Sound);
         damageNumberToggle.onValueChanged.AddListener(OnValueChanged_VisibleDamageNumbers);
 
+
+        Initialize();
+
         ResetSize();
         Hide();
+    }
+
+    public void Initialize()
+    {
+        bgmSlider.value = DataManager.Instance.Settings.BGMVolume;
+        soundSlider.value = DataManager.Instance.Settings.SoundVolume;
+        damageNumberToggle.isOn = DataManager.Instance.Settings.VisibleDamageNumbers;
     }
 
     public void OnClickExit()
@@ -54,6 +64,7 @@ public class UI_Settings : UI
     {
         DataManager.Instance.Settings.BGMVolume = _volume;
         SoundManager.Instance.masterVolumeBGM = _volume;
+        SoundManager.Instance.SetCurrentBgmVolume();
     }
 
     public void OnValueChange_Sound(float _volume)
