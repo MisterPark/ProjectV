@@ -40,6 +40,27 @@ public class UI_Settings : UI
         damageNumberToggle.isOn = DataManager.Instance.Settings.VisibleDamageNumbers;
     }
 
+    public override void Show()
+    {
+        base.Show();
+
+#if UNITY_STANDALONE
+        GameManager.Instance.ShowCursor();
+#endif
+    }
+
+    public override void Show(bool _visible)
+    {
+        base.Show(_visible);
+#if UNITY_STANDALONE
+        GameManager.Instance.ShowCursor();
+#endif
+    }
+    public override void Hide()
+    {
+        base.Hide();
+    }
+
     public void OnClickExit()
     {
         Hide();
@@ -50,8 +71,8 @@ public class UI_Settings : UI
     {
         float width = parent.sizeDelta.x;
         float height = parent.sizeDelta.y;
-        float ratioX = 0.3f;
-        float ratioY = 0.8f;
+        float ratioX = 0.5f;
+        float ratioY = 0.6f;
         rectTransform.sizeDelta = new Vector2(width * ratioX, height * ratioY);
     }
 

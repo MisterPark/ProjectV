@@ -54,13 +54,18 @@ public class SoundManager : MonoBehaviour
     public float masterVolumeBGM = 1f;
     public float masterVolumeSFX = 1f;
 
+#if UNITY_EDITOR
     [ArrayElementTitle("clipName")]
+#endif
+
     [SerializeField]
     private AudioClipNode[] bgmAudioClips; //메인화면에서 사용할 BGM
-    //[SerializeField]
-    //private AudioClip adventureBgmAudioClip; //어드벤쳐씬에서 사용할 BGM
+                                           //[SerializeField]
+                                           //private AudioClip adventureBgmAudioClip; //어드벤쳐씬에서 사용할 BGM
 
+#if UNITY_EDITOR
     [ArrayElementTitle("clipName")]
+#endif
     [SerializeField]
     private AudioClipNode[] sfxAudioClips; //효과음들 지정
 
