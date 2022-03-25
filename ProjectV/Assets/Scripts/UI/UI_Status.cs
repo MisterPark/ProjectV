@@ -21,7 +21,7 @@ public class UI_Status : MonoBehaviour
             return;
         foreach (UI_StatData child in children)
         {
-            float value = playerStat.Get_TotalPercentStat(child.statType);
+            float value = playerStat.Get_FinalStat(child.statType);
 
             if(value == 0)
                 child.value.text = "-";
