@@ -97,6 +97,9 @@ public class SoundManager : MonoBehaviour
             bgmAudioClipsDic.Add(audioclip.clipName, newNode);
         }
         SceneManager.sceneLoaded += OnSceneLoad;
+
+        masterVolumeBGM = DataManager.Instance.Settings.BGMVolume;
+        masterVolumeSFX = DataManager.Instance.Settings.SoundVolume;
     }
 
     // 효과 사운드 재생 : 이름을 필수 매개변수, 볼륨을 선택적 매개변수로 지정
