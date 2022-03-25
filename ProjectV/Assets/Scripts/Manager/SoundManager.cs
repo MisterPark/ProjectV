@@ -12,6 +12,7 @@ public enum SoundKind
     Hurt01,
     Hurt02,
     Hurt03,
+    Death,
     End
 }
 

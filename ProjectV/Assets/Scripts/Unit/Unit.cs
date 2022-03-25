@@ -333,7 +333,6 @@ public class Unit : MonoBehaviour
                 return;
             }
             SoundManager.Instance.PlaySFXSound(sound.clip.name);
-            Debug.Log(sound.clip.name);
         }
     }
 
@@ -345,7 +344,21 @@ public class Unit : MonoBehaviour
             deathObject.transform.position = transform.position;
             deathObject.transform.rotation = transform.rotation;
         }
-        
+
+        if (Sounds != null)
+        {
+            // Play Death Sound
+            int index = Random.Range((int)SoundKind.Death, (int)SoundKind.Death + 1);
+            SoundKind soundkind = (SoundKind)index;
+            Sound sound = Sounds[index];
+            if (sound == null)
+            {
+                Debug.LogError($"[Error] Unit({name} has not Sound Data : Kind={soundkind})");
+                return;
+            }
+            SoundManager.Instance.PlaySFXSound(sound.clip.name);
+        }
+
     }
 
     void OnLevelUpCallback(int level)
