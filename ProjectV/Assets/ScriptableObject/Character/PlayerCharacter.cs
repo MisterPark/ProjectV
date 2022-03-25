@@ -41,6 +41,7 @@ public enum PlayerCharacterName
     Wizard,
     Sorcerer,
     Witch,
+    Cheater,
     END
 }
 
