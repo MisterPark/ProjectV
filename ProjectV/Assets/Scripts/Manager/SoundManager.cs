@@ -86,14 +86,14 @@ public class SoundManager : MonoBehaviour
             AudioClipNode newNode = new AudioClipNode();
             newNode.clip = audioclip.clip;
             newNode.volume = audioclip.volume;
-            sfxAudioClipsDic.Add(audioclip.clip.name, newNode);
+            sfxAudioClipsDic.Add(audioclip.clipName, newNode);
         }
         foreach (AudioClipNode audioclip in bgmAudioClips)
         {
             AudioClipNode newNode = new AudioClipNode();
             newNode.clip = audioclip.clip;
             newNode.volume = audioclip.volume;
-            bgmAudioClipsDic.Add(audioclip.clip.name, newNode);
+            bgmAudioClipsDic.Add(audioclip.clipName, newNode);
         }
         SceneManager.sceneLoaded += OnSceneLoad;
     }
