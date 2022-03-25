@@ -72,9 +72,9 @@ public class GameManager : MonoBehaviour
         }
         
         //
-        boardManager = Instantiate(boardManagerPrefab);
-        boardManager.transform.position = Vector3.zero;
-        boardManager.name = boardManagerPrefab.name;
+        //boardManager = Instantiate(boardManagerPrefab);
+        //boardManager.transform.position = Vector3.zero;
+        //boardManager.name = boardManagerPrefab.name;
 
         spawnManager = Instantiate(spawnManagerPrefab);
         spawnManager.transform.position = Vector3.zero;

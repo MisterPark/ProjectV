@@ -39,6 +39,11 @@ public class Unit : MonoBehaviour
     float knockbackDelay = 0.5f;
     bool knockbackFlag = false;
 
+    float damageFontTick = 0;
+    float damageFontDelay = 0.3f;
+    float damageSum = 0;
+    bool damageFontFlag = false;
+
     public List<Skill> Skills { get { return skillList; } }
 
     public Sound[] Sounds { get; set; }
@@ -67,6 +72,7 @@ public class Unit : MonoBehaviour
     {
         ProcessFreeze();
         ProcessKnockback();
+        ProcessDamageFont();
         Animation();
     }
     
@@ -264,6 +270,17 @@ public class Unit : MonoBehaviour
         }
     }
 
+    void ProcessDamageFont()
+    {
+        if(damageFontFlag) return;
+
+        damageFontTick += Time.fixedDeltaTime;
+        if(damageFontTick > damageFontDelay)
+        {
+            damageFontTick = 0f;
+            damageFontFlag = true;
+        }
+    }
     void Animation()
     {
         if (animator == null) return;
@@ -285,25 +302,40 @@ public class Unit : MonoBehaviour
         // Show Damage Numbers
         if (DataManager.Instance.Settings.VisibleDamageNumbers)
         {
-            GameObject temp = ObjectPool.Instance.Allocate("UI_DamageFont");
-            UI_DamageFont font = temp.transform.GetChild(0).GetComponent<UI_DamageFont>();
-            Color fontColor = Color.white;
-            Color outlineColor = Color.black;
-
-            if (gameObject.IsPlayer())
+            if(damageFontFlag)
             {
-                fontColor = Color.red;
-                outlineColor = Color.yellow;
+                damageFontFlag = false;
+                float dmg = damage + damageSum;
+                damageSum = 0;
+
+                // 폰트 띄워도 될 때
+                GameObject temp = ObjectPool.Instance.Allocate("UI_DamageFont");
+                UI_DamageFont font = temp.transform.GetChild(0).GetComponent<UI_DamageFont>();
+                Color fontColor = Color.white;
+                Color outlineColor = Color.black;
+
+                if (gameObject.IsPlayer())
+                {
+                    fontColor = Color.red;
+                    outlineColor = Color.yellow;
+                }
+                else
+                {
+                    float clamp = Mathf.Clamp(damage, 0f, 255f);
+                    fontColor.r = 1f;
+                    fontColor.g = 1f - (clamp / 255f);
+                    fontColor.b = 0f;
+                }
+
+                font.Init((int)dmg, fontColor, outlineColor, transform.position + (Vector3.up * 2f));
             }
             else
             {
-                float clamp = Mathf.Clamp(damage, 0f, 255f);
-                fontColor.r = 1f;
-                fontColor.g = 1f - (clamp / 255f);
-                fontColor.b = 0f;
+                // 폰트 띄우면 안될 떄
+                damageSum += damage; // 데미지 누적해서 다음 차례에 띄우기
+                
             }
-
-            font.Init((int)damage, fontColor, outlineColor, transform.position + (Vector3.up * 2f));
+            
         }
 
         // Show Hurt Effect
