@@ -41,6 +41,8 @@ public class Unit : MonoBehaviour
 
     public List<Skill> Skills { get { return skillList; } }
 
+    public Sound[] Sounds { get; set; }
+
     protected virtual void Start()
     {
         stat = GetComponent<Stat>();
@@ -280,6 +282,7 @@ public class Unit : MonoBehaviour
 
     void OnTakeDamageCallback(float damage)
     {
+        // Show Damage Numbers
         if (DataManager.Instance.Settings.VisibleDamageNumbers)
         {
             GameObject temp = ObjectPool.Instance.Allocate("UI_DamageFont");
@@ -291,7 +294,6 @@ public class Unit : MonoBehaviour
             {
                 fontColor = Color.red;
                 outlineColor = Color.yellow;
-                UI_Damaged.instance.Show();
             }
             else
             {
@@ -303,13 +305,35 @@ public class Unit : MonoBehaviour
 
             font.Init((int)damage, fontColor, outlineColor, transform.position + (Vector3.up * 2f));
         }
-        
 
+        // Show Hurt Effect
+        if (gameObject.IsPlayer())
+        {
+            UI_Damaged.instance.Show();
+        }
+
+        // Process Damage and Death
         float hp = stat.Get_FinalStat(StatType.Health);
         if (hp <= 0f)
         {
             Death();
             OnDead?.Invoke();
+            return;
+        }
+
+        // Play Hurt Sound
+        if(Sounds != null)
+        {
+            int index = Random.Range((int)SoundKind.Hurt01, (int)SoundKind.Hurt03 + 1);
+            SoundKind soundkind = (SoundKind)index;
+            Sound sound = Sounds[index];
+            if(sound == null)
+            {
+                Debug.LogError($"[Error] Unit({name} has not Sound Data : Kind={soundkind})");
+                return;
+            }
+            SoundManager.Instance.PlaySFXSound(sound.clip.name);
+
         }
     }
 

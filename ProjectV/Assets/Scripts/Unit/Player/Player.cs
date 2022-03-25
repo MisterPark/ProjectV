@@ -3,32 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-[System.Serializable]
-public enum PlayerCharacterName
-{
-    Knight,
-    Druid,
-    Alchemist,
-    Gypsy,
-    King,
-    Queen,
-    Peasant,
-    Rogue,
-    Wizard,
-    Sorcerer,
-    Witch,
-    END
-}
-[System.Serializable]
-public class PlayerCharacterNode
-{
-    [SerializeField] public PlayerCharacterName name;
-    [SerializeField] public UnitStatData statsData;
-    [SerializeField] public Sprite charImage;
-    [SerializeField] public SkillKind firstSkill;
-    [SerializeField] public string description;
-    [SerializeField] public GameObject prefab;
-}
+
 
 
 
@@ -73,12 +48,16 @@ public class Player : Unit
 
         
         PlayerCharacterName charName = DataManager.Instance.currentGameData.characterName;
+        PlayerCharacter data = DataManager.Instance.playerCharacterData[(int)charName].playerCharacter;
         // 캐릭터 프리펩
-        Instantiate(DataManager.Instance.playerCharacterData[(int)charName].prefab, transform);
+        Instantiate(data.prefab, transform);
         animator = GetComponentInChildren<Animator>();
         // 캐릭터 기본스킬
-        SkillKind skillKind = DataManager.Instance.playerCharacterData[(int)charName].firstSkill;
+        SkillKind skillKind = data.firstSkill;
         AddOrIncreaseSkill(skillKind);
+        // 캐릭터 사운드
+        //Sounds = data.Sounds;
+
     }
 
     protected override void FixedUpdate()
@@ -212,7 +191,7 @@ public class Player : Unit
     {
         DataManager dataManager = DataManager.Instance;
         Stat _stat = GetComponent<Stat>();
-        _stat.Set_Stats(dataManager.playerCharacterData[(int)dataManager.currentGameData.characterName].statsData.stats);
+        _stat.Set_Stats(dataManager.playerCharacterData[(int)dataManager.currentGameData.characterName].playerCharacter.statsData.stats);
         _stat.Init_LoadStat();
         for (int i = 0; i < (int)StatType.END; i++)
         {

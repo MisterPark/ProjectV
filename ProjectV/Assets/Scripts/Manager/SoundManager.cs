@@ -7,6 +7,22 @@ using UnityEngine.SceneManagement;
 //배경음악을 실행할 AudioSource와 효과음을 실행할 AudioSource를 SoundManager의 자식 오브젝트로 설정
 
 [System.Serializable]
+public enum SoundKind
+{
+    Hurt01,
+    Hurt02,
+    Hurt03,
+    End
+}
+
+[System.Serializable]
+public class Sound
+{
+    public SoundKind kind;
+    public AudioClip clip;
+}
+
+[System.Serializable]
 public class AudioClipNode
 {
     public string clipName;

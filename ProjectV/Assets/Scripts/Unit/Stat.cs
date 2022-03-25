@@ -266,7 +266,7 @@ public class Stat : MonoBehaviour
     public void Set_Stats(Stats[] _stat)
     {
         //stats = _stat;
-        statsData = DataManager.Instance.playerCharacterData[(int)DataManager.Instance.currentGameData.characterName].statsData;
+        statsData = DataManager.Instance.playerCharacterData[(int)DataManager.Instance.currentGameData.characterName].playerCharacter.statsData;
     }
     public void Set_PowerUpStat(StatType _statType, float _value)
     {

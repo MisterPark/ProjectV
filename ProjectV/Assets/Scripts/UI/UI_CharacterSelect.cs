@@ -67,14 +67,16 @@ public class UI_CharacterSelect : UI
         {
             //column = repeat % SlotColumnCount;
             //row = repeat / SlotColumnCount;
+            PlayerCharacterData character = DataManager.Instance.playerCharacterData[repeat];
+
             tempslot = Instantiate(CharacterSlot);
             tempslot.transform.SetParent(ContentsWindow.transform);
             tempslot.transform.localScale = Vector3.one;
             
-            tempslot.GetComponent<UI_CharacterSlot>().CharacterImage.sprite = DataManager.Instance.playerCharacterData[repeat].charImage;
-            tempslot.GetComponent<UI_CharacterSlot>().CharacterName.text = DataManager.Instance.playerCharacterData[repeat].name.ToString();
-            tempslot.GetComponent<UI_CharacterSlot>().WeaponImage.sprite = DataManager.Instance.skillDatas[(int)DataManager.Instance.playerCharacterData[repeat].firstSkill].skillData.icon;
-            tempslot.GetComponent<UI_CharacterSlot>().m_CharacterDescription = DataManager.Instance.playerCharacterData[repeat].description;
+            tempslot.GetComponent<UI_CharacterSlot>().CharacterImage.sprite = character.playerCharacter.charImage;
+            tempslot.GetComponent<UI_CharacterSlot>().CharacterName.text = character.playerCharacter.characterName.ToString();
+            tempslot.GetComponent<UI_CharacterSlot>().WeaponImage.sprite = DataManager.Instance.skillDatas[(int)character.playerCharacter.firstSkill].skillData.icon;
+            tempslot.GetComponent<UI_CharacterSlot>().m_CharacterDescription = character.playerCharacter.description;
             tempslot.GetComponent<UI_CharacterSlot>().CharacterIndex = (PlayerCharacterName)repeat;
         }
     }
