@@ -165,7 +165,7 @@ public class Stat : MonoBehaviour
                 }
             default:
                 {
-                    return stats[(int)_statType].final_Stat += stats[(int)_statType].origin_Stat * (stats[(int)_statType].growth_Stat * _count);
+                    return stats[(int)_statType].final_Stat += stats[(int)_statType].growth_Stat * _count; ;
                 }
         }
     }
@@ -203,7 +203,8 @@ public class Stat : MonoBehaviour
                 }
             default:
                 {
-                    return stats[(int)_statType].final_Stat += stats[(int)_statType].origin_Stat * (stats[(int)_statType].growth_Stat * _count);
+                    return stats[(int)_statType].final_Stat += stats[(int)_statType].growth_Stat * _count;
+                    //return stats[(int)_statType].final_Stat += stats[(int)_statType].origin_Stat * (stats[(int)_statType].growth_Stat * _count);
                 }
         }
     }
@@ -233,7 +234,7 @@ public class Stat : MonoBehaviour
     {
         switch (_statType)
         {
-            case StatType.MaxHealth:
+            case StatType.MoveSpeed:
                 {
                     return stats[(int)StatType.MaxHealth].final_Stat;
                 }
@@ -259,6 +260,7 @@ public class Stat : MonoBehaviour
                 }
         }
     }
+
 
     /// <summary>
     /// 플레이어 데이터 로드용
