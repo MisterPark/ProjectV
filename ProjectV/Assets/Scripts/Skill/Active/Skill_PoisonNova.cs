@@ -59,6 +59,8 @@ public class Skill_PoisonNova : Skill
             Vector3 v3RotatedDirection = v3Rotation * v3Direction;
 
             missile.TargetDirection = v3RotatedDirection;
+
+            SoundManager.Instance.PlaySFXSound("PoisonNova");
         }
         //Ref. BlizzardOrb Script
     }

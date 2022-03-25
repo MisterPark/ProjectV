@@ -51,6 +51,7 @@ public class Skill_Shuriken : Skill
 
         obj.transform.position = Player.Instance.transform.position + unit.skillOffsetPosition;
 
+        SoundManager.Instance.PlaySFXSound("Shuriken");
     }
     void OnCollisionCallback(Vector3 pos, Unit other)
     {

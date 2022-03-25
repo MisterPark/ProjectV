@@ -58,5 +58,6 @@ public class Skill_HeavyFireBall : Skill
         //missile.transform.GetChild(1).localScale = new Vector3(range, range, range);
         //missile.SetTarget(nearest.transform.position + unit.skillOffsetPosition);
 
+        SoundManager.Instance.PlaySFXSound("HeavyFireBall");
     }
 }

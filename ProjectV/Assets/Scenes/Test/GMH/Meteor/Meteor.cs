@@ -42,7 +42,7 @@ public class Meteor : MonoBehaviour
                 GameObject obj = ObjectPool.Instance.Allocate("MeteorHit");
                 obj.transform.position = new Vector3(gameObject.transform.position.x, 0f, gameObject.transform.position.z);
                 createCrater=true;
-
+                SoundManager.Instance.PlaySFXSound("MeteorImpact");
 
                 obj.transform.localScale = new Vector3(parentMissile.Range, parentMissile.Range, parentMissile.Range);
                 for (int i = 0; i < 9; i++)
@@ -50,7 +50,6 @@ public class Meteor : MonoBehaviour
                     obj.transform.GetChild(0).transform.GetChild(0).transform.GetChild(i).localScale = new Vector3(parentMissile.Range, parentMissile.Range, parentMissile.Range);
                 }
                 meteor.SetActive(false);
-                Debug.Log(meteor);
             }
         }
     }

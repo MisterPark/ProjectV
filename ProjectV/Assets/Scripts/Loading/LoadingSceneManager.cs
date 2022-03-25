@@ -73,7 +73,6 @@ public class LoadingSceneManager : MonoBehaviour
         trigger = false;
         Time.timeScale = 1f;
         SceneManager.LoadScene("LoadingScene");
-        SoundManager.Instance.PlaySFXSound("LongButton");
     }
 
 }

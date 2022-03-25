@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1911c9087a2ed8148ad56f4fcfc4d499, type: 3}
+  m_Name: Gypsy
+  m_EditorClassIdentifier: 
+  characterName: 3
+  statsData: {fileID: 11400000, guid: e9a490fff3198bc40aa8f734e63bac7c, type: 2}
+  charImage: {fileID: 21300000, guid: 240ebd7ec4eee78449e00ff8ff9d4660, type: 3}
+  firstSkill: 7
+  description: Gypsy
+  prefab: {fileID: 6561061231965142291, guid: cf5bf2281372a644b9242af3a0f9bec6, type: 3}
+  Sounds:
+  - kind: 0
+    clip: {fileID: 8300000, guid: 7a4d7f6bb60bbff4a9278ab004e3a217, type: 3}
+  - kind: 1
+    clip: {fileID: 8300000, guid: 551e267c94792c043891af9d27338f21, type: 3}
+  - kind: 2
+    clip: {fileID: 8300000, guid: 0011e67c580b99146901940c734e55a9, type: 3}

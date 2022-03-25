@@ -46,6 +46,7 @@ public class Skill_BlizzardOrb : Skill
         missile.Type = MissileType.Directional;
         missile.IsPenetrate = true;
         missile.SetTarget(nearest.transform.position + unit.skillOffsetPosition);
+        SoundManager.Instance.PlaySFXSound("BlizzardOrb");
         //Ref. BlizzardOrb Script
     }
 
