@@ -42,6 +42,8 @@ public class DataManager : MonoBehaviour
 
     public StageData[] stageDatas = new StageData[(int)StageKind.End];
 
+    public Settings Settings;
+
     private void Awake()
     {
         Instance = this;

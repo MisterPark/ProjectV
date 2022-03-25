@@ -27,7 +27,7 @@ public class UI_PausePanel : UI
     {
         base.Hide();
         UI_StatusPanel.instance.Hide();
-        UI_Option.instance.Hide();
+        UI_Settings.instance.Hide();
         GameManager.Instance.Resume();
     }
 
@@ -38,7 +38,7 @@ public class UI_PausePanel : UI
 
     public void OnClickOption()
     {
-        UI_Option.instance.Show();
+        UI_Settings.instance.Show();
     }
 
     public void OnClickCombine()
