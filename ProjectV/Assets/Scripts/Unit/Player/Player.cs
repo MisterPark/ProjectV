@@ -56,7 +56,7 @@ public class Player : Unit
         SkillKind skillKind = data.firstSkill;
         AddOrIncreaseSkill(skillKind);
         // 캐릭터 사운드
-        //Sounds = data.Sounds;
+        Sounds = data.Sounds;
 
     }
 
