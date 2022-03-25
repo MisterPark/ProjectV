@@ -51,8 +51,8 @@ public class SoundManager : MonoBehaviour
     private AudioSource bgmPlayer;
     private AudioSource sfxPlayer;
 
-    public float masterVolumeSFX = 1f;
     public float masterVolumeBGM = 1f;
+    public float masterVolumeSFX = 1f;
 
     [ArrayElementTitle("clipName")]
     [SerializeField]
@@ -169,6 +169,12 @@ public class SoundManager : MonoBehaviour
         }
     }
 
+    public void SetCurrentBgmVolume()
+    {
+        string currentBgmName = bgmPlayer.clip.name;
+        bgmPlayer.volume = bgmAudioClipsDic[currentBgmName].volume * masterVolumeBGM;
+    }
+
     void OnSceneLoad(Scene scene, LoadSceneMode mode)
     {
         string sceneName = SceneManager.GetActiveScene().name;
@@ -191,4 +197,5 @@ public class SoundManager : MonoBehaviour
                 break;
         }
     }
+
 }
