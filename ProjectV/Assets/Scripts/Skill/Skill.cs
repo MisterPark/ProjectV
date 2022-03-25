@@ -25,7 +25,7 @@ public abstract class Skill : MonoBehaviour
     protected bool activeOnce = false;
 
     public UnityEvent<int> OnLevelUp = new UnityEvent<int>();
-
+    public UnityEvent OnDestroyed = new UnityEvent();
     public SkillData SkillData { get { return DataManager.Instance.skillDatas[(int)Kind].skillData; } }
     public int MaxLevel { get { return SkillData.maxLevel; } }
     public bool IsMaxLevel { get { return level == MaxLevel; } }
@@ -77,6 +77,11 @@ public abstract class Skill : MonoBehaviour
                 }
             }
         }
+    }
+
+    protected virtual void OnDestroy()
+    {
+        OnDestroyed.Invoke();
     }
     void SetValueFromSkillData(int level)
     {

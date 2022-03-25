@@ -164,6 +164,11 @@ public class Missile : MonoBehaviour
         tick = 0f;
     }
 
+    public void Destroy()
+    {
+        ObjectPool.Instance.Free(this.gameObject);
+    }
+
     protected virtual void ProcessMove()
     {
         if (Type == MissileType.Guided)

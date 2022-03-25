@@ -64,13 +64,13 @@ public class GameManager : MonoBehaviour
         objectPool.transform.position = Vector3.zero;
         objectPool.name = objectPoolPrefab.name;
 
-        if(DataManager.Instance == null)
+        if (DataManager.Instance == null)
         {
             dataManager = Instantiate(dataManagerPrefab);
             dataManager.transform.position = Vector3.zero;
             dataManager.name = dataManagerPrefab.name;
         }
-        
+
         //
         //boardManager = Instantiate(boardManagerPrefab);
         //boardManager.transform.position = Vector3.zero;
@@ -90,7 +90,7 @@ public class GameManager : MonoBehaviour
 
         combineSkillManager = Instantiate(combineSkillManagerPrefab);
         combineSkillManager.transform.position = Vector3.zero;
-        combineSkillManager.name= combineSkillManagerPrefab.name;
+        combineSkillManager.name = combineSkillManagerPrefab.name;
 
         if (SoundManager.Instance == null)
         {
@@ -112,12 +112,12 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyUp(KeyCode.Escape))
+        if (Input.GetKeyUp(KeyCode.Escape))
         {
             Cursor.visible = !Cursor.visible;
             UI_PausePanel.instance.Show(!UI_PausePanel.instance.Visible);
         }
-        if(Input.GetKeyUp(KeyCode.F))
+        if (Input.GetKeyUp(KeyCode.F))
         {
             Pause();
         }
@@ -129,10 +129,18 @@ public class GameManager : MonoBehaviour
         {
             UI_Gameover.instance.Show();
         }
-
+        if (Input.GetKeyDown(KeyCode.F1))
+        {
+            DataManager.Instance.currentGameData.totalPlayTime += 60f;
+        }
+        if (Input.GetKeyDown(KeyCode.F2))
+        {
+            float exp = Player.Instance.stat.Get_FinalStat(StatType.MaxExp);
+            Player.Instance.stat.Increase_FinalStat(StatType.Exp, exp);
+        }
 
         InitZoom();
-        
+
     }
 
     void InitZoom()
@@ -140,7 +148,7 @@ public class GameManager : MonoBehaviour
         if (initZoomFlag) return;
 
         CameraController.Instance.ZoomOut();
-        if(CameraController.Instance.Zoom >= CameraController.maxZoom)
+        if (CameraController.Instance.Zoom >= CameraController.maxZoom)
         {
             initZoomFlag = true;
         }
@@ -160,7 +168,7 @@ public class GameManager : MonoBehaviour
             _joystick.Hide();
             _joystick.gameObject.SetActive(false);
         }
-        
+
         isPaused = true;
     }
 

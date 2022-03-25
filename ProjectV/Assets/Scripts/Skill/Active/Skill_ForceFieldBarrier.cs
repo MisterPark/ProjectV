@@ -16,10 +16,6 @@ public class Skill_ForceFieldBarrier : Skill
         
     }
 
-    private void OnDestroy()
-    {
-        ObjectPool.Instance.Free(obj);
-    }
 
     protected override void Start()
     {
@@ -33,14 +29,10 @@ public class Skill_ForceFieldBarrier : Skill
         }
 
         obj = ObjectPool.Instance.Allocate("ForceFieldBarrier");
-        //obj.transform.position = Player.Instance.transform.position;
-        //obj.transform.forward = Player.Instance.transform.forward;
-        //obj.transform.SetParent(Player.Instance.transform);
 
         missile = obj.GetComponent<Missile>();
         missile.Initialize();
         missile.SetTarget(unit.gameObject);
-
 
         missile.Team = unit.team;
         missile.Owner = unit;
@@ -54,6 +46,7 @@ public class Skill_ForceFieldBarrier : Skill
         missile.KnockbackFlag = true;
         missile.OnCollision.RemoveAllListeners();
         missile.OnCollision.AddListener(OnCollisionCallback);
+        OnDestroyed.AddListener(missile.Destroy);
         OnLevelUpCallback(1);
 
         OnLevelUp.AddListener(OnLevelUpCallback);
