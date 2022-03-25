@@ -54,13 +54,13 @@ public class UI_CharacterSelect : UI
         WeaponImage.sprite = selectobject.GetComponent<UI_CharacterSlot>().WeaponImage.sprite;
         DescriptionText.text = selectobject.GetComponent<UI_CharacterSlot>().m_CharacterDescription;
         CurrentClickPlayerCharacter = selectobject.GetComponent<UI_CharacterSlot>().CharacterIndex;
+        DataManager.Instance.currentGameData.characterName = CurrentClickPlayerCharacter;
         DataManager.Instance.Setting_PowerStat();
     }
 
     void SlotInit()
     {
         GameObject tempslot;
-
         SlotWidth = CharacterSlot.GetComponent<RectTransform>().rect.width;
         SlotHeight = CharacterSlot.GetComponent<RectTransform>().rect.height;
         for (int repeat = 0; repeat < (int)PlayerCharacterName.END; ++repeat)
@@ -78,6 +78,16 @@ public class UI_CharacterSelect : UI
             tempslot.GetComponent<UI_CharacterSlot>().WeaponImage.sprite = DataManager.Instance.skillDatas[(int)character.playerCharacter.firstSkill].skillData.icon;
             tempslot.GetComponent<UI_CharacterSlot>().m_CharacterDescription = character.playerCharacter.description;
             tempslot.GetComponent<UI_CharacterSlot>().CharacterIndex = (PlayerCharacterName)repeat;
+        }
+        {
+            DataManager.Instance.currentGameData.characterName = PlayerCharacterName.Knight;
+            GameObject selectobject = transform.Find("Scroll View").Find("Contents").GetChild(0).gameObject;
+            CharacterName.text = selectobject.GetComponent<UI_CharacterSlot>().CharacterName.text;
+            CharacterImage.sprite = selectobject.GetComponent<UI_CharacterSlot>().CharacterImage.sprite;
+            WeaponImage.sprite = selectobject.GetComponent<UI_CharacterSlot>().WeaponImage.sprite;
+            DescriptionText.text = selectobject.GetComponent<UI_CharacterSlot>().m_CharacterDescription;
+            CurrentClickPlayerCharacter = selectobject.GetComponent<UI_CharacterSlot>().CharacterIndex;
+            DataManager.Instance.Setting_PowerStat();
         }
     }
 
