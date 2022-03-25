@@ -60,7 +60,7 @@ public class Skill_FireTornado : Skill
         //dmgobj.isGuided = true;
         //dmgobj.SetTarget(nearest.transform.position + unit.skillOffsetPosition);
         obj.transform.position = pos;
-
+        SoundManager.Instance.PlaySFXSound("FireTornado");
     }
     void OnCollisionCallback(Vector3 pos, Unit other)
     {

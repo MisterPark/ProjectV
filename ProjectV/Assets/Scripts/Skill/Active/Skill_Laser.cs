@@ -63,6 +63,7 @@ public class Skill_Laser : Skill
         missile.OnCollision.RemoveAllListeners();
         missile.OnCollision.AddListener(OnCollisionCallback);
 
+        SoundManager.Instance.PlaySFXSound("Laser");
     }
 
     void OnCollisionCallback(Vector3 pos, Unit other )

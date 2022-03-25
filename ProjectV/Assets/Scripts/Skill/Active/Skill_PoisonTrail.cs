@@ -48,6 +48,8 @@ public class Skill_PoisonTrail : Skill
         missile.OnCollision.AddListener(OnCollisionCallback);
         obj.transform.position = pos;
         obj.transform.GetChild(0).gameObject.transform.localScale = Vector3.one * range;
+
+        SoundManager.Instance.PlaySFXSound("PoisonTrail");
     }
     void OnCollisionCallback(Vector3 pos, Unit other )
     {

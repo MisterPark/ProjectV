@@ -52,5 +52,6 @@ public class Skill_Meteor : Skill
         missile.Type = MissileType.Guided;
         missile.IsPenetrate = true;
         missile.SetTarget(pos);
+        SoundManager.Instance.PlaySFXSound("Meteor");
     }
 }

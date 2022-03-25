@@ -20,5 +20,6 @@ public class HpPotion : Item
     {
         Stat stat = Player.Instance.GetComponent<Stat>();
         stat.Increase_FinalStat(StatType.Health, 30);
+        SoundManager.Instance.PlaySFXSound("HpPotion");
     }
 }

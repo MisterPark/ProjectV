@@ -56,6 +56,7 @@ public class BlizzardOrb : MonoBehaviour
             Vector3 v3Direction = parentMissile.TargetDirection;
             Vector3 v3RotatedDirection = v3Rotation * v3Direction;
             missile.TargetDirection = (v3RotatedDirection);
+            SoundManager.Instance.PlaySFXSound("IceBolt");
         }
         
     }
