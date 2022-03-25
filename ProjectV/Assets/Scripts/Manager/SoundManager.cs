@@ -37,8 +37,9 @@ public class SoundManager : MonoBehaviour
     public float masterVolumeSFX = 1f;
     public float masterVolumeBGM = 1f;
 
+    [ArrayElementTitle("clipName")]
     [SerializeField]
-    private AudioClip mainBgmAudioClip; //메인화면에서 사용할 BGM
+    private AudioClipNode[] bgmAudioClips; //메인화면에서 사용할 BGM
     //[SerializeField]
     //private AudioClip adventureBgmAudioClip; //어드벤쳐씬에서 사용할 BGM
 
@@ -46,11 +47,18 @@ public class SoundManager : MonoBehaviour
     [SerializeField]
     private AudioClipNode[] sfxAudioClips; //효과음들 지정
 
-    Dictionary<string, AudioClipNode> audioClipsDic = new Dictionary<string, AudioClipNode>(); //효과음 딕셔너리
+    Dictionary<string, AudioClipNode> sfxAudioClipsDic = new Dictionary<string, AudioClipNode>(); //효과음 딕셔너리
+    Dictionary<string, AudioClipNode> bgmAudioClipsDic = new Dictionary<string, AudioClipNode>(); //배경음 딕셔너리
     // AudioClip을 Key,Value 형태로 관리하기 위해 딕셔너리 사용
-
+    [SerializeField] private float newBgmInterval = 600f;
+    private float newBgmTick = 0f;
     private void Awake()
     {
+        if (instance != null)
+        {
+            Destroy(this);
+            return;
+        }
         instance = this;
         DontDestroyOnLoad(this.gameObject); //여러 씬에서 사용할 것.
 
@@ -62,38 +70,108 @@ public class SoundManager : MonoBehaviour
             AudioClipNode newNode = new AudioClipNode();
             newNode.clip = audioclip.clip;
             newNode.volume = audioclip.volume;
-            audioClipsDic.Add(audioclip.clip.name, newNode);
+            sfxAudioClipsDic.Add(audioclip.clip.name, newNode);
         }
-        PlaySFXSound("GameStart");
+        foreach (AudioClipNode audioclip in bgmAudioClips)
+        {
+            AudioClipNode newNode = new AudioClipNode();
+            newNode.clip = audioclip.clip;
+            newNode.volume = audioclip.volume;
+            bgmAudioClipsDic.Add(audioclip.clip.name, newNode);
+        }
+        SceneManager.sceneLoaded += OnSceneLoad;
     }
 
     // 효과 사운드 재생 : 이름을 필수 매개변수, 볼륨을 선택적 매개변수로 지정
     public void PlaySFXSound(string name)
     {
-        if (audioClipsDic.ContainsKey(name) == false)
+        if (sfxAudioClipsDic.ContainsKey(name) == false)
         {
             Debug.Log(name + " is not Contained audioClipsDic");
             return;
         }
-        sfxPlayer.PlayOneShot(audioClipsDic[name].clip, audioClipsDic[name].volume * masterVolumeSFX);
+        sfxPlayer.PlayOneShot(sfxAudioClipsDic[name].clip, sfxAudioClipsDic[name].volume * masterVolumeSFX);
     }
 
     //BGM 사운드 재생 : 볼륨을 선택적 매개변수로 지정
-    public void PlayBGMSound(float volume = 1f)
+    public void PlayBGMSound(string name)
     {
         bgmPlayer.loop = true; //BGM 사운드이므로 루프설정
-        bgmPlayer.volume = volume * masterVolumeBGM;
 
-        //if (SceneManager.GetActiveScene().name == "Main")
-        //{
-            bgmPlayer.clip = mainBgmAudioClip;
-            bgmPlayer.Play();
-        //}
-        //else if (SceneManager.GetActiveScene().name == "Adventure")
-        //{
-        //    bgmPlayer.clip = adventureBgmAudioClip;
-        //    bgmPlayer.Play();
-        //}
-        //현재 씬에 맞는 BGM 재생
+        if (bgmAudioClipsDic.ContainsKey(name) == false)
+        {
+            Debug.Log(name + " is not Contained audioClipsDic");
+            return;
+        }
+        bgmPlayer.clip = bgmAudioClipsDic[name].clip;
+        bgmPlayer.volume = bgmAudioClipsDic[name].volume * masterVolumeBGM;
+        bgmPlayer.Play();
+
+    }
+
+    public void StopBGM()
+    {
+        bgmPlayer.Stop();
+    }
+
+    void FixedUpdate()
+    {
+        if(SceneManager.GetActiveScene().name.Contains("Stage"))
+        {
+            newBgmTick += Time.fixedDeltaTime;
+            if(newBgmTick >= newBgmInterval)
+            {
+                newBgmTick = 0f;
+                int random = Random.Range(0, 4);
+                switch (random)
+                {
+                    case 0:
+                        {
+                            PlayBGMSound("8Bit Track2");
+                            break;
+                        }
+                    case 1:
+                        {
+                            PlayBGMSound("8Bit Track5");
+                            break;
+                        }
+                    case 2:
+                        {
+                            PlayBGMSound("8Bit Track8");
+                            break;
+                        }
+                    case 3:
+                        {
+                            PlayBGMSound("8Bit Track9");
+                            break;
+                        }
+                    default:
+                        break;
+                }
+            }
+        }
+    }
+
+    void OnSceneLoad(Scene scene, LoadSceneMode mode)
+    {
+        string sceneName = SceneManager.GetActiveScene().name;
+        switch (sceneName)
+        {
+            case "TitleScene":
+                {
+                    PlaySFXSound("GameStart");
+                    PlayBGMSound("8Bit Track1");
+                    break;
+                }
+            case "LoadingScene":
+                {
+                    PlaySFXSound("LongButton");
+                    StopBGM();
+                    newBgmTick = newBgmInterval;
+                    break;
+                }
+            default:
+                break;
+        }
     }
 }

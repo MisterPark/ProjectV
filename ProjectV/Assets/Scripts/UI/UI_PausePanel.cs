@@ -34,20 +34,24 @@ public class UI_PausePanel : UI
     public void OnClickResume()
     {
         Hide();
+        SoundManager.Instance.PlaySFXSound("ShortButton");
     }
 
     public void OnClickOption()
     {
         UI_Option.instance.Show();
+        SoundManager.Instance.PlaySFXSound("ShortButton");
     }
 
     public void OnClickCombine()
     {
         UI_CombinePanel.instance.Show();
+        SoundManager.Instance.PlaySFXSound("ShortButton");
     }
 
     public void OnClickExit()
     {
         UI_ExitPanel.instance.Show();
+        SoundManager.Instance.PlaySFXSound("ShortButton");
     }
 }

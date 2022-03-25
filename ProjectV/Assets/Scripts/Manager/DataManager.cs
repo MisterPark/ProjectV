@@ -44,12 +44,16 @@ public class DataManager : MonoBehaviour
 
     private void Awake()
     {
+        if (Instance != null)
+        {
+            Destroy(this);
+            return;
+        }
         Instance = this;
         DontDestroyOnLoad(gameObject);
         SaveDataManager.Instance = GetComponent<SaveDataManager>();
         SaveDataManager.Instance.LoadGameData();
         //SaveDataManager.Instance.SaveGameData();
-
     }
 
     public void Setting_PowerStat()

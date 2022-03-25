@@ -94,6 +94,7 @@ public class UI_Powerup : UI
             m_UnderPowerupExplan.text = m_CurrentPowerupDB.Powerup_Tip;
             m_UnderMoneyText.text = m_CurrentPowerupDB.CurrentPowerupPrice.ToString();
         }
+        SoundManager.Instance.PlaySFXSound("ShortButton");
     }
 
     public void ResetTemplate()
@@ -112,6 +113,7 @@ public class UI_Powerup : UI
         m_UnderPowerupImage.sprite = data.Powerup_Image;
         m_UnderPowerupExplan.text = data.Powerup_Tip;
         m_UnderMoneyText.text = data.CurrentPowerupPrice.ToString();
+        SoundManager.Instance.PlaySFXSound("ShortButton");
     }
 
     public void OnClickBuyButton()
@@ -123,5 +125,6 @@ public class UI_Powerup : UI
         m_UnderPowerupImage.sprite = m_CurrentPowerupDB.Powerup_Image;
         m_UnderPowerupExplan.text = m_CurrentPowerupDB.Powerup_Tip;
         m_UnderMoneyText.text = m_CurrentPowerupDB.CurrentPowerupPrice.ToString();
+        SoundManager.Instance.PlaySFXSound("ShortButton");
     }
 }

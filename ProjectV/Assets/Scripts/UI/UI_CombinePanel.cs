@@ -139,6 +139,7 @@ public class UI_CombinePanel : UI
         playerSkillLevel.Remove(matB);
         DisableSlot(matA);
         DisableSlot(matB);
+        SoundManager.Instance.PlaySFXSound("ShortButton");
     }
 
     private void AbleSlot(SkillKind kind)
@@ -173,6 +174,9 @@ public class UI_CombinePanel : UI
 
     public void OnClickExit()
     {
+        SoundManager.Instance.PlaySFXSound("ShortButton");
         Hide();
     }
+
+
 }
