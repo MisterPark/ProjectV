@@ -333,7 +333,7 @@ public class Unit : MonoBehaviour
                 return;
             }
             SoundManager.Instance.PlaySFXSound(sound.clip.name);
-
+            Debug.Log(sound.clip.name);
         }
     }
 
