@@ -64,6 +64,7 @@ public class UI_Settings : UI
     {
         DataManager.Instance.Settings.BGMVolume = _volume;
         SoundManager.Instance.masterVolumeBGM = _volume;
+        SoundManager.Instance.SetCurrentBgmVolume();
     }
 
     public void OnValueChange_Sound(float _volume)
