@@ -53,7 +53,7 @@ public class UI_Settings : UI
         base.Show();
 
 #if UNITY_STANDALONE
-        GameManager.Instance.ShowCursor();
+        Cursor.visible = true;
 #endif
     }
 
@@ -61,7 +61,7 @@ public class UI_Settings : UI
     {
         base.Show(_visible);
 #if UNITY_STANDALONE
-        GameManager.Instance.ShowCursor();
+        Cursor.visible = true;
 #endif
     }
     public override void Hide()

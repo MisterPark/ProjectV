@@ -69,6 +69,11 @@ public class SaveDataManager : MonoBehaviour
                 }
             }
         }
+        dataManager.Settings.BGMVolume = _saveData.BGMVolume;
+        dataManager.Settings.SoundVolume = _saveData.SoundVolume;
+        dataManager.Settings.VisibleDamageNumbers = _saveData.VisibleDamageNumbers;
+        dataManager.Settings.Language = _saveData.Language;
+
     } 
     
     public void SaveGameData() 
@@ -80,6 +85,11 @@ public class SaveDataManager : MonoBehaviour
         _saveData.currentGold += (int)dataManager.currentGameData.gold;
         _saveData.totalPlayTime += dataManager.currentGameData.totalPlayTime;
         _saveData.powerUpSaves.Clear();
+        //설정
+        _saveData.BGMVolume = dataManager.Settings.BGMVolume;
+        _saveData.SoundVolume = dataManager.Settings.SoundVolume;
+        _saveData.VisibleDamageNumbers = dataManager.Settings.VisibleDamageNumbers;
+        _saveData.Language = dataManager.Settings.Language;
         foreach (Powerup_DataType data in dataManager.powerStatDB.Powerup_Type_List)
         {
             powerUpSave _powerUpSave = new powerUpSave();
@@ -101,6 +111,10 @@ public class SaveDataManager : MonoBehaviour
     private void OnApplicationQuit()
     {
         if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name.Contains("Stage"))
+        {
+            SaveGameData();
+        }
+        else if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "TitleScene")
         {
             SaveGameData();
         }

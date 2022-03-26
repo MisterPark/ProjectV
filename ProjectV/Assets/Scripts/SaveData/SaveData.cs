@@ -27,4 +27,10 @@ public class SaveData
     public int currentPowerUpCount;
     [SerializeField] public List<powerUpSave> powerUpSaves;
     public float totalPlayTime;
+
+    // ¼³Á¤
+    public float BGMVolume = 1f;
+    public float SoundVolume = 1f;
+    public bool VisibleDamageNumbers = true;
+    public Language Language;
 }
