@@ -16,16 +16,16 @@ public class Player : Unit
     {
         get 
         {
-            int temp = (Instance.transform.position.z < 0f) ? -20 : 20;
-            return ((int)Instance.transform.position.z + temp) / 40; 
+            int temp = (Instance.transform.position.z < 0f) ? -50 : 50;
+            return ((int)Instance.transform.position.z + temp) / 100; 
         }
     }
     public static int Column
     {
         get 
         {
-            int temp = (Instance.transform.position.x < 0f) ? -20 : 20;
-            return ((int)Instance.transform.position.x + temp) / 40; 
+            int temp = (Instance.transform.position.x < 0f) ? -50 : 50;
+            return ((int)Instance.transform.position.x + temp) / 100; 
         }
     }
 

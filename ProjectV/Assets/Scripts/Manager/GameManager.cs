@@ -71,10 +71,10 @@ public class GameManager : MonoBehaviour
             dataManager.name = dataManagerPrefab.name;
         }
 
-        //
-        //boardManager = Instantiate(boardManagerPrefab);
-        //boardManager.transform.position = Vector3.zero;
-        //boardManager.name = boardManagerPrefab.name;
+
+        boardManager = Instantiate(boardManagerPrefab);
+        boardManager.transform.position = Vector3.zero;
+        boardManager.name = boardManagerPrefab.name;
 
         spawnManager = Instantiate(spawnManagerPrefab);
         spawnManager.transform.position = Vector3.zero;
@@ -137,6 +137,10 @@ public class GameManager : MonoBehaviour
         {
             float exp = Player.Instance.stat.Get_FinalStat(StatType.MaxExp);
             Player.Instance.stat.Increase_FinalStat(StatType.Exp, exp);
+        }
+        if (Input.GetKeyDown(KeyCode.F3))
+        {
+            Player.Instance.stat.Increase_FinalStat(StatType.MoveSpeed, 100);
         }
 
         InitZoom();
