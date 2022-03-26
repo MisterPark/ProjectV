@@ -159,6 +159,21 @@ public static class Extension
             texts[j].text = texts[j].text.Localized();
         }
     }
+
+    public static string ToString(this Language language)
+    {
+        switch (language)
+        {
+            case Language.English: return "English";
+            case Language.Korean: return "Korean";
+            case Language.End:
+                break;
+            default:
+                break;
+
+        }
+        return string.Empty;
+    }
 }
 
 
