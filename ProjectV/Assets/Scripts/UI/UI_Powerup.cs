@@ -26,10 +26,10 @@ public class UI_Powerup : UI
     [SerializeField] private float RowPivot;
     [SerializeField] private float ColumnPivot;
 
-    [SerializeField] private TMPro.TextMeshProUGUI m_UnderPowerupName;
+    [SerializeField] private Text m_UnderPowerupName;
     [SerializeField] private Image m_UnderPowerupImage;
-    [SerializeField] private TMPro.TextMeshProUGUI m_UnderPowerupExplan;
-    [SerializeField] private TMPro.TextMeshProUGUI m_UnderMoneyText;
+    [SerializeField] private Text m_UnderPowerupExplan;
+    [SerializeField] private Text m_UnderMoneyText;
     private Powerup_DataType m_CurrentPowerupDB;
 
     public UnityEvent OnBuyButton;

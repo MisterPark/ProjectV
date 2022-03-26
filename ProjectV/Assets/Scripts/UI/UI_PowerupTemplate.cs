@@ -12,7 +12,7 @@ public class UI_PowerupTemplate : MonoBehaviour
     [SerializeField] private Image m_Powerup_Image;
     [SerializeField] private Image m_Powerup_Rank_Image;
     [SerializeField] private Image m_RankPanel;
-    [SerializeField] private TMPro.TextMeshProUGUI m_Powerup_Name;
+    [SerializeField] private Text m_Powerup_Name;
     private List<GameObject> RankImageList = new List<GameObject>();
 
     private float ColumnInterval;
