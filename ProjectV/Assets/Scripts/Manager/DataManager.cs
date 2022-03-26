@@ -162,5 +162,13 @@ public class DataManager : MonoBehaviour
         }
     }
 
-
+    private void Update()
+    {
+#if UNITY_EDITOR
+        if(Input.GetKeyUp(KeyCode.Delete))
+        {
+            SaveDataManager.Instance.SaveDataDelete();
+        }
+#endif
+    }
 }

@@ -118,6 +118,7 @@ public class GameManager : MonoBehaviour
             Cursor.visible = !Cursor.visible;
             UI_PausePanel.instance.Show(!UI_PausePanel.instance.Visible);
         }
+#if UNITY_EDITOR
         if (Input.GetKeyUp(KeyCode.F))
         {
             Pause();
@@ -143,6 +144,7 @@ public class GameManager : MonoBehaviour
         {
             Player.Instance.stat.Increase_FinalStat(StatType.MoveSpeed, 100);
         }
+#endif
 
         InitZoom();
 
