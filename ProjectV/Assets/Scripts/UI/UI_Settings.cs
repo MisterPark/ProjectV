@@ -12,7 +12,10 @@ public class UI_Settings : UI
     [SerializeField] Slider bgmSlider;
     [SerializeField] Slider soundSlider;
     [SerializeField] Toggle damageNumberToggle;
-    [SerializeField] Dropdown languageDropdown;
+    [SerializeField] Button prevLangButton;
+    [SerializeField] Button nextLangButton;
+    [SerializeField] Text langText;
+    int langIndex = 0;
 
     public UnityEvent OnClosed = new UnityEvent();
     
@@ -28,13 +31,15 @@ public class UI_Settings : UI
         bgmSlider.onValueChanged.AddListener(OnValueChange_BGM);
         soundSlider.onValueChanged.AddListener(OnValueChange_Sound);
         damageNumberToggle.onValueChanged.AddListener(OnValueChanged_VisibleDamageNumbers);
-        languageDropdown.onValueChanged.AddListener(OnValueChange_Language);
 
         bgmSlider.value = DataManager.Instance.Settings.BGMVolume;
         soundSlider.value = DataManager.Instance.Settings.SoundVolume;
         damageNumberToggle.isOn = DataManager.Instance.Settings.VisibleDamageNumbers;
-        languageDropdown.value = (int)DataManager.Instance.Settings.Language;
 
+        prevLangButton.onClick.AddListener(OnClickPrev);
+        nextLangButton.onClick.AddListener(OnClickNext);
+
+        UpdateLanguageText();
         Initialize();
 
         ResetSize();
@@ -107,9 +112,33 @@ public class UI_Settings : UI
         SoundManager.Instance.masterVolumeSFX = _volume;
     }
 
-    public void OnValueChange_Language(int _language)
+
+    public void UpdateLanguageText()
     {
-        DataManager.Instance.Settings.Language = (Language)_language;
+        Language language = DataManager.Instance.Settings.Language;
+        langIndex = (int)language;
+        langText.text = language.ToString();
+    }
+
+    public void OnClickPrev()
+    {
+        langIndex--;
+        langIndex = langIndex < 0 ? 0 : langIndex;
+        langIndex = langIndex >= (int)Language.End ? langIndex - 1 : langIndex;
+        
+        DataManager.Instance.Settings.Language = (Language)langIndex;
+        UpdateLanguageText();
+        DataManager.Instance.Localized();
+    }
+
+    public void OnClickNext()
+    {
+        langIndex++;
+        langIndex = langIndex < 0 ? 0 : langIndex;
+        langIndex = langIndex >= (int)Language.End ? langIndex - 1 : langIndex;
+
+        DataManager.Instance.Settings.Language = (Language)langIndex;
+        UpdateLanguageText();
         DataManager.Instance.Localized();
     }
 }

@@ -20,7 +20,7 @@ public class DataManager : MonoBehaviour
 #if UNITY_EDITOR
     //[ArrayElementTitle("name")]
 #endif
-    public PlayerCharacterData[] playerCharacterData = new PlayerCharacterData[(int)PlayerCharacterName.END];
+    public PlayerCharacterData[] playerCharacterData = new PlayerCharacterData[(int)PlayerCharacterName.Knight];
 
     
     public float[] powerUpStat = new float[(int)StatType.END];
