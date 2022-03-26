@@ -57,14 +57,14 @@ public class BoardManager : MonoBehaviour
     {
         if (FindBoard(row, col)) return;
 
-        GameObject boardObj = ObjectPool.Instance.Allocate("Board");
+        GameObject boardObj = ObjectPool.Instance.Allocate("Terrain1");
         Board board = boardObj.GetComponent<Board>();
         board.Row = row;
         board.Column = col;
 
         // 초기 위치 세팅
-        float x = col * 40f;
-        float y = row * 40f;
+        float x = col * 100f;
+        float y = row * 100f;
 
         boardObj.transform.position = new Vector3(x, 0, y);
         boards.Add(board);
@@ -90,8 +90,8 @@ public class BoardManager : MonoBehaviour
         if (Player.Instance == null) return;
 
         Vector3 playerPos = Player.Instance.transform.position;
-        int indexX = (int)playerPos.x / 40;
-        int indexY = (int)playerPos.z / 40;
+        int indexX = (int)playerPos.x / 100;
+        int indexY = (int)playerPos.z / 100;
 
         List<Board> removes = new List<Board>();
         int count = boards.Count;
