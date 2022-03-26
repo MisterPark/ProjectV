@@ -27,12 +27,20 @@ public class UI_StageSelect : UI
     }
     void Start()
     {
+        //StageSelectSlot = this.transform.root.Find("CharacterSlot").gameObject;
         SlotInit();
         gameObject.SetActive(false);
         
     }
+    private void OnEnable()
+    {
+        //if (Event_Handle.currentSelectedGameObject == null)
+        //{
+        //    GameObject selectobject = transform.Find("Scroll View").Find("Contents").GetChild(0).gameObject;
+        //    Event_Handle.SetSelectedGameObject(selectobject);
+        //}
+    }
 
-    
     public void OnClickStageSlot()
     {
         Event_Handle = EventSystem.current;
@@ -68,6 +76,7 @@ public class UI_StageSelect : UI
             tempslot.GetComponent<UI_StageSlot>().SlotDescription.text = DataManager.Instance.stageDatas[repeat].description;
             tempslot.GetComponent<UI_StageSlot>().Stage = (StageKind)repeat;
         }
+       
     }
 
     public void OnClickStageSelectOKButton()

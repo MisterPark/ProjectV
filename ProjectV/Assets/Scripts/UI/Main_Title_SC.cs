@@ -19,6 +19,7 @@ public class Main_Title_SC : MonoBehaviour
     void Start()
     {
         UI_Settings.instance.OnClosed.AddListener(ShowCursor);
+        
     }
 
     // Update is called once per frame

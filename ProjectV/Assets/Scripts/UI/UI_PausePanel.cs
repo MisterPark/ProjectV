@@ -21,16 +21,23 @@ public class UI_PausePanel : UI
         GameManager.Instance.Pause();
         base.Show();
         UI_StatusPanel.instance.Show();
+        UI_CombinePanel.instance.Show();
     }
 
     public override void Hide()
     {
         base.Hide();
+        UI_CombinePanel.instance.Hide();
         UI_StatusPanel.instance.Hide();
         UI_Settings.instance.Hide();
         GameManager.Instance.Resume();
     }
 
+    private void HidePanel()
+    {
+        UI_CombinePanel.instance.Hide();
+        UI_Settings.instance.Hide();
+    }
     public void OnClickResume()
     {
         Hide();
@@ -39,14 +46,17 @@ public class UI_PausePanel : UI
 
     public void OnClickOption()
     {
+
         SoundManager.Instance.PlaySFXSound("ShortButton");
+        HidePanel();
         UI_Settings.instance.Show();
     }
 
     public void OnClickCombine()
     {
-        UI_CombinePanel.instance.Show();
         SoundManager.Instance.PlaySFXSound("ShortButton");
+        HidePanel();
+        UI_CombinePanel.instance.Show();
     }
 
     public void OnClickExit()
