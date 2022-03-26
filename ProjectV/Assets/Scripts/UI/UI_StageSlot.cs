@@ -5,9 +5,9 @@ using UnityEngine.UI;
 
 public class UI_StageSlot : MonoBehaviour
 {
-    public TMPro.TextMeshProUGUI SlotName;
+    public Text SlotName;
     public Image SlotImage;
-    public TMPro.TextMeshProUGUI SlotDescription;
+    public Text SlotDescription;
     public StageKind Stage;
     private GameObject StageSelect;
     // Start is called before the first frame update

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.Events;
 public class UI_Settings : UI
 {
     public static UI_Settings instance;
@@ -14,6 +14,8 @@ public class UI_Settings : UI
     [SerializeField] Toggle damageNumberToggle;
     [SerializeField] Dropdown languageDropdown;
 
+    public UnityEvent OnClosed = new UnityEvent();
+    
     private void Awake()
     {
         instance = this;
@@ -66,6 +68,11 @@ public class UI_Settings : UI
     {
         Hide();
         SoundManager.Instance.PlaySFXSound("ShortButton");
+    }
+
+    public void OnDisable()
+    {
+        OnClosed.Invoke();
     }
 
     public void ResetSize()

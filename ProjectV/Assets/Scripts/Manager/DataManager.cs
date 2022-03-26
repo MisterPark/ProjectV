@@ -56,8 +56,7 @@ public class DataManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
         SaveDataManager.Instance = GetComponent<SaveDataManager>();
-        SaveDataManager.Instance.LoadGameData();
-        //SaveDataManager.Instance.SaveGameData();
+        UnityEngine.SceneManagement.SceneManager.sceneLoaded += OnSceneLoad;
     }
 
     public void Setting_PowerStat()
@@ -141,6 +140,23 @@ public class DataManager : MonoBehaviour
                     }
                 }
             }
+    void OnSceneLoad(UnityEngine.SceneManagement.Scene scene, UnityEngine.SceneManagement.LoadSceneMode mode)
+    {
+        string sceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+        switch (sceneName)
+        {
+            case "TitleScene":
+                {
+                    SaveDataManager.Instance.LoadGameData();
+                    break;
+                }
+            case "ResultScene":
+                {
+                    SaveDataManager.Instance.SaveGameData();
+                    break;
+                }
+            default:
+                break;
         }
     }
 

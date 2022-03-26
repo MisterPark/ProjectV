@@ -11,9 +11,9 @@ public class UI_StageSelect : UI
     [SerializeField] private EventSystem Event_Handle;
     [SerializeField] private GameObject StageSelectSlot;
     [SerializeField] private GameObject ContentsWindow;
-    [SerializeField] private TMPro.TextMeshProUGUI DescriptionName;
+    [SerializeField] private Text DescriptionName;
     [SerializeField] private Image DescriptionImage;
-    [SerializeField] private TMPro.TextMeshProUGUI DescriptionText;
+    [SerializeField] private Text DescriptionText;
     private string stageName;
     private StageKind CurrentStageKind;
 
@@ -27,8 +27,18 @@ public class UI_StageSelect : UI
     }
     void Start()
     {
+        //StageSelectSlot = this.transform.root.Find("CharacterSlot").gameObject;
         SlotInit();
         gameObject.SetActive(false);
+        
+    }
+    private void OnEnable()
+    {
+        //if (Event_Handle.currentSelectedGameObject == null)
+        //{
+        //    GameObject selectobject = transform.Find("Scroll View").Find("Contents").GetChild(0).gameObject;
+        //    Event_Handle.SetSelectedGameObject(selectobject);
+        //}
     }
 
     public void OnClickStageSlot()
@@ -66,10 +76,18 @@ public class UI_StageSelect : UI
             tempslot.GetComponent<UI_StageSlot>().SlotDescription.text = DataManager.Instance.stageDatas[repeat].description;
             tempslot.GetComponent<UI_StageSlot>().Stage = (StageKind)repeat;
         }
+       
     }
 
     public void OnClickStageSelectOKButton()
     {
-        LoadingSceneManager.instance.LoadScene(stageName);
+        if (stageName!=null)
+        {
+            LoadingSceneManager.instance.LoadScene(stageName);
+        }
+        else
+        {
+            Debug.Log("스테이지를 선택해주세요");
+        }
     }
 }

@@ -59,7 +59,7 @@ public class Skill_PoisonTornado : Skill
         //dmgobj.isGuided = true;
         //dmgobj.SetTarget(nearest.transform.position + unit.skillOffsetPosition);
         obj.transform.position = pos;
-
+        SoundManager.Instance.PlaySFXSound("WindTornado");
     }
     void OnCollisionCallback(Vector3 pos, Unit other)
     {
