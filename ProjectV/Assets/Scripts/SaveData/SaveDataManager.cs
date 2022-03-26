@@ -69,6 +69,7 @@ public class SaveDataManager : MonoBehaviour
                 }
             }
         }
+        dataManager.Settings = _saveData.settings;
     } 
     
     public void SaveGameData() 
@@ -80,6 +81,7 @@ public class SaveDataManager : MonoBehaviour
         _saveData.currentGold += (int)dataManager.currentGameData.gold;
         _saveData.totalPlayTime += dataManager.currentGameData.totalPlayTime;
         _saveData.powerUpSaves.Clear();
+        _saveData.settings = dataManager.Settings;
         foreach (Powerup_DataType data in dataManager.powerStatDB.Powerup_Type_List)
         {
             powerUpSave _powerUpSave = new powerUpSave();

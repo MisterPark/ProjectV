@@ -27,4 +27,5 @@ public class SaveData
     public int currentPowerUpCount;
     [SerializeField] public List<powerUpSave> powerUpSaves;
     public float totalPlayTime;
+    public Settings settings;
 }
