@@ -176,6 +176,7 @@ public class SoundManager : MonoBehaviour
                 }
             }
         }
+
     }
 
     public void SetCurrentBgmVolume()

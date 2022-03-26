@@ -21,7 +21,7 @@ public class MinuteMonsterNode
 public enum StageKind
 {
     Stage01,
-    Stage02,
+    //Stage02,
     End
 }
 

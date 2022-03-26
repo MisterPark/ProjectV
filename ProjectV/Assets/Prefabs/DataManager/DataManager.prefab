@@ -162,6 +162,10 @@ MonoBehaviour:
     currentPowerUpCount: 0
     powerUpSaves: []
     totalPlayTime: 0
+    BGMVolume: 1
+    SoundVolume: 1
+    VisibleDamageNumbers: 1
+    Language: 0
   currentGameData:
     characterName: 0
     killCount: 0
@@ -171,7 +175,6 @@ MonoBehaviour:
   moneyInterest_Per: 0.1
   stageDatas:
   - {fileID: 11400000, guid: 514049e7ebff7864d9cc7c9eae511a7a, type: 2}
-  - {fileID: 11400000, guid: 717d8c2774c86b44d8bf13c3b47d954c, type: 2}
   Settings: {fileID: 11400000, guid: 3f199f7d916e09e459139085a5c127d8, type: 2}
   Localization: {fileID: 11400000, guid: 596084c0b6f0c7d4b92b1f70fbbb2de3, type: 2}
 --- !u!114 &2716088676406518505
@@ -196,3 +199,7 @@ MonoBehaviour:
     currentPowerUpCount: 0
     powerUpSaves: []
     totalPlayTime: 0
+    BGMVolume: 1
+    SoundVolume: 1
+    VisibleDamageNumbers: 1
+    Language: 0

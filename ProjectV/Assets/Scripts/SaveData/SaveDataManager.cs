@@ -118,5 +118,35 @@ public class SaveDataManager : MonoBehaviour
         {
             SaveGameData();
         }
-    } 
+    }
+
+    public void SaveDataDelete()
+    {
+        DataManager dataManager = DataManager.Instance;
+        _saveData.totalKillCount = 0;
+        _saveData.totalGold = 0;
+        _saveData.currentGold = 0;
+        _saveData.totalPlayTime = 0f;
+        _saveData.powerUpSaves.Clear();
+        //설정
+        _saveData.BGMVolume = dataManager.Settings.BGMVolume;
+        _saveData.SoundVolume = dataManager.Settings.SoundVolume;
+        _saveData.VisibleDamageNumbers = dataManager.Settings.VisibleDamageNumbers;
+        _saveData.Language = dataManager.Settings.Language;
+        foreach (Powerup_DataType data in dataManager.powerStatDB.Powerup_Type_List)
+        {
+            powerUpSave _powerUpSave = new powerUpSave();
+            _powerUpSave.powerType = data.PowerType;
+            _powerUpSave.Rank = 0;
+            _saveData.powerUpSaves.Add(_powerUpSave);
+        }
+        //
+        string ToJsonData = JsonUtility.ToJson(saveData);
+        string filePath = Application.persistentDataPath + GameDataFileName;
+
+        File.WriteAllText(filePath, ToJsonData);
+        //
+        LoadGameData();
+        UI_Powerup.instacne.OnClickResetButton();
+    }
 } 
