@@ -103,6 +103,10 @@ public class SoundManager : MonoBehaviour
         }
         SceneManager.sceneLoaded += OnSceneLoad;
 
+    }
+
+    public void Start()
+    {
         masterVolumeBGM = DataManager.Instance.Settings.BGMVolume;
         masterVolumeSFX = DataManager.Instance.Settings.SoundVolume;
     }
