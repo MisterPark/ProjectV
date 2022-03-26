@@ -29,7 +29,8 @@ public class UI_StageSelect : UI
     {
         //StageSelectSlot = this.transform.root.Find("CharacterSlot").gameObject;
         SlotInit();
-        gameObject.SetActive(false);
+        Hide();
+        //gameObject.SetActive(false);
         
     }
     private void OnEnable()

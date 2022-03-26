@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class UI_Result : MonoBehaviour
+public class UI_Result : UI
 {
     public Text surviveText;
     public Text goldText;
