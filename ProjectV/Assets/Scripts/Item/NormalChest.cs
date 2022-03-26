@@ -14,6 +14,7 @@ public class NormalChest : Item
     }
     public override void Use()
     {
-        UI_SlotMachine.instance.Show();
+        // TODO : 슬롯머신 완성하면 추가
+        //UI_SlotMachine.instance.Show();
     }
 }

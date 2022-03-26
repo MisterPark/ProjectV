@@ -30,6 +30,11 @@ public class UI_Settings : UI
         damageNumberToggle.onValueChanged.AddListener(OnValueChanged_VisibleDamageNumbers);
         languageDropdown.onValueChanged.AddListener(OnValueChange_Language);
 
+        bgmSlider.value = DataManager.Instance.Settings.BGMVolume;
+        soundSlider.value = DataManager.Instance.Settings.SoundVolume;
+        damageNumberToggle.isOn = DataManager.Instance.Settings.VisibleDamageNumbers;
+        languageDropdown.value = (int)DataManager.Instance.Settings.Language;
+
         Initialize();
 
         ResetSize();

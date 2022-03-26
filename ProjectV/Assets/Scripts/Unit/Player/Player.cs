@@ -17,7 +17,7 @@ public class Player : Unit
         get 
         {
             int temp = (Instance.transform.position.z < 0f) ? -50 : 50;
-            return ((int)Instance.transform.position.z + temp) / 50; 
+            return ((int)Instance.transform.position.z + temp) / 100; 
         }
     }
     public static int Column
@@ -25,7 +25,7 @@ public class Player : Unit
         get 
         {
             int temp = (Instance.transform.position.x < 0f) ? -50 : 50;
-            return ((int)Instance.transform.position.x + temp) / 50; 
+            return ((int)Instance.transform.position.x + temp) / 100; 
         }
     }
 

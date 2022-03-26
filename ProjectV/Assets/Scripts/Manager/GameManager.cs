@@ -138,6 +138,10 @@ public class GameManager : MonoBehaviour
             float exp = Player.Instance.stat.Get_FinalStat(StatType.MaxExp);
             Player.Instance.stat.Increase_FinalStat(StatType.Exp, exp);
         }
+        if (Input.GetKeyDown(KeyCode.F3))
+        {
+            Player.Instance.stat.Increase_FinalStat(StatType.MoveSpeed, 100);
+        }
 
         InitZoom();
 
