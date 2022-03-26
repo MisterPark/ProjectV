@@ -52,5 +52,6 @@ public class Skill_LavaOrb : Skill
 
         obj.transform.position = pos;
 
+        SoundManager.Instance.PlaySFXSound("LavaOrb");
     }
 }

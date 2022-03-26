@@ -12,12 +12,13 @@ public class Main_Title_SC : MonoBehaviour
     public string StartScene_Name;
     public EventSystem Event_Handle;
     [SerializeField]
-    private TMPro.TextMeshProUGUI Money_Text;
+    private Text Money_Text;
+    //private TMPro.TextMeshProUGUI Money_Text;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        UI_Settings.instance.OnClosed.AddListener(ShowCursor);
     }
 
     // Update is called once per frame
@@ -31,7 +32,27 @@ public class Main_Title_SC : MonoBehaviour
             {
                 float objectwidth = (tempobject.GetComponent<RectTransform>().rect.width) / 4;
                 Vector2 SelectedCursorPos = new Vector2(tempobject.transform.position.x - objectwidth, tempobject.transform.position.y);
-                KeyboardCursor_Image.transform.position = SelectedCursorPos;
+                if (tempobject.name=="Start Button")
+                {
+                    
+                    KeyboardCursor_Image.transform.position = SelectedCursorPos + new Vector2(-200, 0f);
+                }
+                else if(tempobject.name == "Powerup Button")
+                {
+                    KeyboardCursor_Image.transform.position = SelectedCursorPos + new Vector2(-200, 0f);
+                }
+                else if(tempobject.name == "Option Button")
+                {
+                    KeyboardCursor_Image.transform.position = SelectedCursorPos + new Vector2(-150, 0f);
+                }
+                else if (tempobject.name == "Exit Button")
+                {
+                    KeyboardCursor_Image.transform.position = SelectedCursorPos + new Vector2(-150, 0f);
+                }
+                else
+                {
+                    KeyboardCursor_Image.transform.position = SelectedCursorPos + new Vector2(-150, 0f);
+                }
             }
             else
             {
@@ -39,7 +60,11 @@ public class Main_Title_SC : MonoBehaviour
             }
         }
     }
-
+    public void ShowCursor()
+    {
+        Event_Handle.SetSelectedGameObject(Event_Handle.firstSelectedGameObject);
+        KeyboardCursor_Image.gameObject.SetActive(true);
+    }
     public void OnClickStart()
     {
         KeyboardCursor_Image.gameObject.SetActive(false);
@@ -57,20 +82,24 @@ public class Main_Title_SC : MonoBehaviour
         Transform tempobject = UI_Powerup.instacne.transform;
         Transform tempobject2 = UI_CharacterSelect.instance.transform;
         Transform tempobject3 = UI_StageSelect.instance.transform;
+
         if (tempobject.gameObject.activeSelf)
         {
+            ShowCursor();
             tempobject.gameObject.SetActive(false);
             transform.Find("Start Button").gameObject.SetActive(true);
             transform.Find("Powerup Button").gameObject.SetActive(true);
         }
         else if (tempobject2.gameObject.activeSelf)
         {
+            ShowCursor();
             tempobject2.gameObject.SetActive(false);
             transform.Find("Start Button").gameObject.SetActive(true);
             transform.Find("Powerup Button").gameObject.SetActive(true);
         }
         else if (tempobject3.gameObject.activeSelf)
         {
+            ShowCursor();
             tempobject3.gameObject.SetActive(false);
             tempobject2.gameObject.SetActive(true);
         }
@@ -84,11 +113,12 @@ public class Main_Title_SC : MonoBehaviour
         }
         SoundManager.Instance.PlaySFXSound("ShortButton");
     }
-
+    
     public void OnClickOption()
     {
         UI_Settings.instance.Show();
         SoundManager.Instance.PlaySFXSound("ShortButton");
+        KeyboardCursor_Image.gameObject.SetActive(false);
     }
     public void OnClickPowerup()
     {
