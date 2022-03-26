@@ -12,6 +12,7 @@ public class UI_Settings : UI
     [SerializeField] Slider bgmSlider;
     [SerializeField] Slider soundSlider;
     [SerializeField] Toggle damageNumberToggle;
+    [SerializeField] Dropdown languageDropdown;
 
     public UnityEvent OnClosed = new UnityEvent();
     
@@ -27,7 +28,7 @@ public class UI_Settings : UI
         bgmSlider.onValueChanged.AddListener(OnValueChange_BGM);
         soundSlider.onValueChanged.AddListener(OnValueChange_Sound);
         damageNumberToggle.onValueChanged.AddListener(OnValueChanged_VisibleDamageNumbers);
-
+        languageDropdown.onValueChanged.AddListener(OnValueChange_Language);
 
         Initialize();
 
@@ -99,5 +100,11 @@ public class UI_Settings : UI
     {
         DataManager.Instance.Settings.SoundVolume = _volume;
         SoundManager.Instance.masterVolumeSFX = _volume;
+    }
+
+    public void OnValueChange_Language(int _language)
+    {
+        DataManager.Instance.Settings.Language = (Language)_language;
+        DataManager.Instance.Localized();
     }
 }

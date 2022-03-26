@@ -13,13 +13,14 @@ public class Main_Title_SC : MonoBehaviour
     public EventSystem Event_Handle;
     [SerializeField]
     private Text Money_Text;
+    private RectTransform screenRT;
     //private TMPro.TextMeshProUGUI Money_Text;
 
     // Start is called before the first frame update
     void Start()
     {
         UI_Settings.instance.OnClosed.AddListener(ShowCursor);
-        
+        screenRT = GetComponent<RectTransform>();
     }
 
     // Update is called once per frame
@@ -33,26 +34,27 @@ public class Main_Title_SC : MonoBehaviour
             {
                 float objectwidth = (tempobject.GetComponent<RectTransform>().rect.width) / 4;
                 Vector2 SelectedCursorPos = new Vector2(tempobject.transform.position.x - objectwidth, tempobject.transform.position.y);
+                float width = screenRT.sizeDelta.x;
                 if (tempobject.name=="Start Button")
                 {
                     
-                    KeyboardCursor_Image.transform.position = SelectedCursorPos + new Vector2(-200, 0f);
+                    KeyboardCursor_Image.transform.position = SelectedCursorPos + new Vector2(-width*10f, 0f);
                 }
                 else if(tempobject.name == "Powerup Button")
                 {
-                    KeyboardCursor_Image.transform.position = SelectedCursorPos + new Vector2(-200, 0f);
+                    KeyboardCursor_Image.transform.position = SelectedCursorPos + new Vector2(-width * 10f, 0f);
                 }
                 else if(tempobject.name == "Option Button")
                 {
-                    KeyboardCursor_Image.transform.position = SelectedCursorPos + new Vector2(-150, 0f);
+                    KeyboardCursor_Image.transform.position = SelectedCursorPos + new Vector2(-width * 10f, 0f);
                 }
                 else if (tempobject.name == "Exit Button")
                 {
-                    KeyboardCursor_Image.transform.position = SelectedCursorPos + new Vector2(-150, 0f);
+                    KeyboardCursor_Image.transform.position = SelectedCursorPos + new Vector2(-width * 10f, 0f);
                 }
                 else
                 {
-                    KeyboardCursor_Image.transform.position = SelectedCursorPos + new Vector2(-150, 0f);
+                    KeyboardCursor_Image.transform.position = SelectedCursorPos + new Vector2(-width * 10f, 0f);
                 }
             }
             else

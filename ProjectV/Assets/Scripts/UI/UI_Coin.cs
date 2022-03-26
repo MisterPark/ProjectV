@@ -33,6 +33,6 @@ public class UI_Coin : MonoBehaviour
         rectTransform.anchoredPosition = new Vector2(height * -1.5f, height * -1.8f);
         imageRT.sizeDelta = new Vector2(height004, height004);
         imageRT.anchoredPosition = new Vector2(height004, 0f);
-        text.fontSize = ((int)height004);
+        text.fontSize = ((int)(height004 * 1.5f));
     }
 }
