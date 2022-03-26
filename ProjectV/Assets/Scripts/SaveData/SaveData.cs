@@ -25,7 +25,7 @@ public class SaveData
     public int currentGold;
 
     public int currentPowerUpCount;
-    [SerializeField] public List<powerUpSave> powerUpSaves;
+    [SerializeField] public List<powerUpSave> powerUpSaves = new List<powerUpSave>();
     public float totalPlayTime;
 
     // ¼³Á¤

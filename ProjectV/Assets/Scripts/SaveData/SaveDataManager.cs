@@ -7,7 +7,7 @@ public enum CharacterName { Char1, Char2, Char3, END}
 public class SaveDataManager : MonoBehaviour
 {
     public static SaveDataManager Instance;
-    public string GameDataFileName = "StarfishData.json"; 
+    public string GameDataFileName = "ProjectV.json"; 
     
 
     // "���ϴ� �̸�(����).json"
@@ -38,20 +38,20 @@ public class SaveDataManager : MonoBehaviour
 
     public void LoadGameData() 
     {
-        string filePath = Application.persistentDataPath + GameDataFileName;
-        
+        string filePath = Path.Combine(Application.persistentDataPath, GameDataFileName);
+
         // ����� ������ �ִٸ�
         if (File.Exists(filePath))
         { 
-            print("Load Game Data"); 
+            Debug.Log($"Load Game Data {filePath}"); 
             string FromJsonData = File.ReadAllText(filePath); 
             _saveData = JsonUtility.FromJson<SaveData>(FromJsonData);
         }
         
         // ����� ������ ���ٸ�
         else 
-        { 
-            print("Create Save Data");            
+        {
+            Debug.Log($"Create Save Data {filePath}");            
             _saveData = new SaveData();
         }
 
@@ -99,11 +99,12 @@ public class SaveDataManager : MonoBehaviour
         }
         //
         string ToJsonData = JsonUtility.ToJson(saveData); 
-        string filePath = Application.persistentDataPath + GameDataFileName; 
-        
+        string filePath = Path.Combine(Application.persistentDataPath, GameDataFileName);
+
+
         File.WriteAllText(filePath, ToJsonData);
         
-        print("Save Game Data"); 
+        Debug.Log($"Save Game Data {filePath}"); 
 
         
     } 

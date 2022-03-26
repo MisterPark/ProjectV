@@ -27,6 +27,5 @@ public class UI_Result : UI
     {
         SaveDataManager.Instance.SaveGameData();
         SceneManager.LoadScene("TitleScene");
-        SaveDataManager.Instance.LoadGameData();
     }
 }

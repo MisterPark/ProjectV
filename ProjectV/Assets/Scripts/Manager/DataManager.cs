@@ -56,7 +56,7 @@ public class DataManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
         SaveDataManager.Instance = GetComponent<SaveDataManager>();
-        UnityEngine.SceneManagement.SceneManager.sceneLoaded += OnSceneLoad;
+        //UnityEngine.SceneManagement.SceneManager.sceneLoaded += OnSceneLoad;
     }
 
     public void Setting_PowerStat()
