@@ -11,11 +11,29 @@ public class UI_CombineSlot : MonoBehaviour
     public Image skillA;
     public Image skillB;
     public Image skillC;
-
+    public Image BanIcon;
     private bool isActivateA = false;
     private bool isActivateB = false;
     private Button button;
 
+    private void Start()
+    {
+        BanIcon.gameObject.SetActive(false);
+        BanSkill();
+    }
+    private void OnEnable()
+    {
+        BanIcon.gameObject.SetActive(false);
+        BanSkill();
+    }
+
+    private void BanSkill()
+    {
+        if (Player.Instance.FindSkill(kindC) != null)
+        {
+            BanIcon.gameObject.SetActive(true); 
+        }
+    }
     public void ActivateSkillA(bool isActivate, Color color)
     {
         if (isActivate)
