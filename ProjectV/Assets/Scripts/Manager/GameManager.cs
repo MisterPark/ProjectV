@@ -108,6 +108,7 @@ public class GameManager : MonoBehaviour
     void FixedUpdate()
     {
         CountTime();
+        ProcessVictory();
     }
 
     void Update()
@@ -129,16 +130,16 @@ public class GameManager : MonoBehaviour
         {
             UI_Gameover.instance.Show();
         }
-        if (Input.GetKeyDown(KeyCode.F1))
+        if (Input.GetKeyUp(KeyCode.F1))
         {
             DataManager.Instance.currentGameData.totalPlayTime += 60f;
         }
-        if (Input.GetKeyDown(KeyCode.F2))
+        if (Input.GetKeyUp(KeyCode.F2))
         {
             float exp = Player.Instance.stat.Get_FinalStat(StatType.MaxExp);
             Player.Instance.stat.Increase_FinalStat(StatType.Exp, exp);
         }
-        if (Input.GetKeyDown(KeyCode.F3))
+        if (Input.GetKeyUp(KeyCode.F3))
         {
             Player.Instance.stat.Increase_FinalStat(StatType.MoveSpeed, 100);
         }
@@ -161,6 +162,15 @@ public class GameManager : MonoBehaviour
     void CountTime()
     {
         DataManager.Instance.currentGameData.totalPlayTime += Time.fixedDeltaTime;
+    }
+
+    void ProcessVictory()
+    {
+        if (DataManager.Instance.currentGameData.totalPlayTime >= 1800f)
+        {
+            Pause();
+            UI_Victory.instance.Show();
+        }
     }
 
     public void Pause()
