@@ -117,7 +117,7 @@ public class DataManager : MonoBehaviour
     public void Localized()
     {
         Scene currentScene = SceneManager.GetActiveScene();
-        if(currentScene.isLoaded)
+        if (currentScene.isLoaded)
         {
             var all = currentScene.GetRootGameObjects();
             Debug.Log(all.Length);
@@ -134,12 +134,14 @@ public class DataManager : MonoBehaviour
                     }
 
                     Text[] texts = go.GetComponentsInChildren<Text>();
-                    for(int j = 0; j < texts.Length; j++)
+                    for (int j = 0; j < texts.Length; j++)
                     {
                         texts[j].text = texts[j].text.Localized();
                     }
                 }
             }
+        }
+    }
     void OnSceneLoad(UnityEngine.SceneManagement.Scene scene, UnityEngine.SceneManagement.LoadSceneMode mode)
     {
         string sceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
