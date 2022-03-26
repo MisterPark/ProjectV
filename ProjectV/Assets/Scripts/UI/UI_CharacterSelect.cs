@@ -87,7 +87,7 @@ public class UI_CharacterSelect : UI
             tempslot.GetComponent<UI_CharacterSlot>().CharacterIndex = (PlayerCharacterName)repeat;
         }
         {
-            DataManager.Instance.currentGameData.characterName = PlayerCharacterName.Knight;
+            DataManager.Instance.currentGameData.characterName = PlayerCharacterName.Witch;
             GameObject selectobject = transform.Find("Scroll View").Find("Contents").GetChild(0).gameObject;
             CharacterName.text = selectobject.GetComponent<UI_CharacterSlot>().CharacterName.text;
             CharacterImage.sprite = selectobject.GetComponent<UI_CharacterSlot>().CharacterImage.sprite;
