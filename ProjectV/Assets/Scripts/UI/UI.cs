@@ -5,6 +5,12 @@ using UnityEngine;
 public class UI : MonoBehaviour
 {
     public bool Visible { get { return gameObject.activeSelf; } }
+
+
+    protected void OnEnable()
+    {
+        gameObject.Localized();
+    }
     public virtual void Show()
     {
         gameObject.SetActive(true);

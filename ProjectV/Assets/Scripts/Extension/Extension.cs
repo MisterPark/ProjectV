@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.Serialization;
 using UnityEngine;
+using UnityEngine.UI;
 
 public static class Extension
 {
@@ -66,4 +69,96 @@ public static class Extension
 
     //    return result;
     //}
+
+    public class Less : IComparer
+    {
+        public int Compare(object x, object y)
+        {
+            return ((new CaseInsensitiveComparer()).Compare(x, y));
+        }
+    }
+
+    public static string Localized(this string text)
+    {
+        if (DataManager.Instance == null) return text;
+
+        Language language = DataManager.Instance.Settings.Language;
+        var datas = DataManager.Instance.Localization.datas;
+        LocalizationElement elem = null;
+        int count = datas.Length;
+        for(int i = 0; i < count; i++)
+        {
+            var data = datas[i];
+            if(text == data.English ||
+                text == data.Korean)
+            {
+                elem = data;
+                break;
+            }
+        }
+
+        if(elem == null)
+        {
+            return text;
+        }
+
+        switch (language)
+        {
+            case Language.English: return elem.English;
+            case Language.Korean: return elem.Korean;
+
+        }
+
+        return text;
+    }
+
+    public static string Localized(this string text, Language language)
+    {
+        if (DataManager.Instance == null) return text;
+
+        var datas = DataManager.Instance.Localization.datas;
+        LocalizationElement elem = null;
+        int count = datas.Length;
+        for (int i = 0; i < count; i++)
+        {
+            var data = datas[i];
+            if (text == data.English ||
+                text == data.Korean)
+            {
+                elem = data;
+                break;
+            }
+        }
+
+        if (elem == null)
+        {
+            return text;
+        }
+
+        switch (language)
+        {
+            case Language.English: return elem.English;
+            case Language.Korean: return elem.Korean;
+
+        }
+
+        return text;
+    }
+
+    public static void Localized(this GameObject gameObject)
+    {
+        Text text = gameObject.GetComponent<Text>();
+        if (text != null)
+        {
+            text.text = text.text.Localized();
+        }
+
+        Text[] texts = gameObject.GetComponentsInChildren<Text>();
+        for (int j = 0; j < texts.Length; j++)
+        {
+            texts[j].text = texts[j].text.Localized();
+        }
+    }
 }
+
+

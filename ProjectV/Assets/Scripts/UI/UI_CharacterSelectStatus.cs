@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UI_CharacterSelectStatus : MonoBehaviour
+public class UI_CharacterSelectStatus : UI
 {
     private Stats[] playerStat;
     private RectTransform rectTransform;

@@ -8,4 +8,5 @@ public class Settings : ScriptableObject
     public float BGMVolume;
     public float SoundVolume;
     public bool VisibleDamageNumbers;
+    public Language Language;
 }

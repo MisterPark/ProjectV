@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 [System.Serializable]
 public class CurrentGameData
@@ -41,6 +43,8 @@ public class DataManager : MonoBehaviour
     public StageData[] stageDatas = new StageData[(int)StageKind.End];
 
     public Settings Settings;
+
+    public Localization Localization;
 
     private void Awake()
     {
@@ -108,6 +112,35 @@ public class DataManager : MonoBehaviour
         for (int i = 0; i < count; i++)
         {
             skillDatas[i].kind = (SkillKind)i;
+        }
+    }
+
+    public void Localized()
+    {
+        Scene currentScene = SceneManager.GetActiveScene();
+        if(currentScene.isLoaded)
+        {
+            var all = currentScene.GetRootGameObjects();
+            Debug.Log(all.Length);
+            for (int i = 0; i < all.Length; i++)
+            {
+                GameObject go = all[i];
+
+                if (go != null)
+                {
+                    Text text = go.GetComponent<Text>();
+                    if (text != null)
+                    {
+                        text.text = text.text.Localized();
+                    }
+
+                    Text[] texts = go.GetComponentsInChildren<Text>();
+                    for(int j = 0; j < texts.Length; j++)
+                    {
+                        texts[j].text = texts[j].text.Localized();
+                    }
+                }
+            }
         }
     }
 
