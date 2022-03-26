@@ -110,14 +110,15 @@ public class SaveDataManager : MonoBehaviour
     
     private void OnApplicationQuit()
     {
-        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name.Contains("Stage"))
-        {
-            SaveGameData();
-        }
-        else if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "TitleScene")
-        {
-            SaveGameData();
-        }
+        SaveGameData();
+        //if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name.Contains("Stage"))
+        //{
+        //    SaveGameData();
+        //}
+        //else if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "TitleScene")
+        //{
+        //    SaveGameData();
+        //}
     }
 
     public void SaveDataDelete()

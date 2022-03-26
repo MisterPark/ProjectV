@@ -142,7 +142,8 @@ public class SoundManager : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(SceneManager.GetActiveScene().name.Contains("Stage"))
+        string sceneName = SceneManager.GetActiveScene().name;
+        if (sceneName.Contains("Stage"))
         {
             newBgmTick += Time.fixedDeltaTime;
             if(newBgmTick >= newBgmInterval)
@@ -176,7 +177,13 @@ public class SoundManager : MonoBehaviour
                 }
             }
         }
-
+        else if (sceneName == "TitleScene")
+        {
+            if(bgmPlayer.clip == null || bgmPlayer.clip.name != "8Bit Track1")
+            {
+                PlayBGMSound("8Bit Track1");
+            }
+        }
     }
 
     public void SetCurrentBgmVolume()
@@ -192,7 +199,7 @@ public class SoundManager : MonoBehaviour
         {
             case "TitleScene":
                 {
-                    PlaySFXSound("GameStart");
+                    //PlaySFXSound("GameStart");
                     PlayBGMSound("8Bit Track1");
                     break;
                 }
