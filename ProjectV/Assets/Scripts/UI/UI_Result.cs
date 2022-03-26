@@ -25,6 +25,8 @@ public class UI_Result : UI
 
     public void OnDoneButtonClick()
     {
+        SaveDataManager.Instance.SaveGameData();
         SceneManager.LoadScene("TitleScene");
+        SaveDataManager.Instance.LoadGameData();
     }
 }

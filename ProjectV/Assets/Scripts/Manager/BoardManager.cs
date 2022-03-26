@@ -57,7 +57,7 @@ public class BoardManager : MonoBehaviour
     {
         if (FindBoard(row, col)) return;
 
-        GameObject boardObj = ObjectPool.Instance.Allocate("Terrain1");
+        GameObject boardObj = ObjectPool.Instance.Allocate("Terrain3");
         Board board = boardObj.GetComponent<Board>();
         board.Row = row;
         board.Column = col;
