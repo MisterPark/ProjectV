@@ -30,17 +30,17 @@ public class PlayerCharacter : ScriptableObject
 [System.Serializable]
 public enum PlayerCharacterName
 {
-    Knight,
+    Witch,
+    Wizard,
     Druid,
-    Alchemist,
     Gypsy,
+    Peasant,
+    Sorcerer,
+    Knight,
+    Alchemist,
     King,
     Queen,
-    Peasant,
     Rogue,
-    Wizard,
-    Sorcerer,
-    Witch,
     Cheater,
     END
 }
