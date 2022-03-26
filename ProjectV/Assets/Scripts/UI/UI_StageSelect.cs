@@ -11,9 +11,9 @@ public class UI_StageSelect : UI
     [SerializeField] private EventSystem Event_Handle;
     [SerializeField] private GameObject StageSelectSlot;
     [SerializeField] private GameObject ContentsWindow;
-    [SerializeField] private TMPro.TextMeshProUGUI DescriptionName;
+    [SerializeField] private Text DescriptionName;
     [SerializeField] private Image DescriptionImage;
-    [SerializeField] private TMPro.TextMeshProUGUI DescriptionText;
+    [SerializeField] private Text DescriptionText;
     private string stageName;
     private StageKind CurrentStageKind;
 
@@ -29,8 +29,10 @@ public class UI_StageSelect : UI
     {
         SlotInit();
         gameObject.SetActive(false);
+        
     }
 
+    
     public void OnClickStageSlot()
     {
         Event_Handle = EventSystem.current;
@@ -70,6 +72,13 @@ public class UI_StageSelect : UI
 
     public void OnClickStageSelectOKButton()
     {
-        LoadingSceneManager.instance.LoadScene(stageName);
+        if (stageName!=null)
+        {
+            LoadingSceneManager.instance.LoadScene(stageName);
+        }
+        else
+        {
+            Debug.Log("스테이지를 선택해주세요");
+        }
     }
 }

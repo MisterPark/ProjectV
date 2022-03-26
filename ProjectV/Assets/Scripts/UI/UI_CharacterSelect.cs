@@ -9,10 +9,10 @@ public class UI_CharacterSelect : UI
 {
     public static UI_CharacterSelect instance;
     [SerializeField] private EventSystem Event_Handle;
-    [SerializeField] private TMPro.TextMeshProUGUI CharacterName;
+    [SerializeField] private Text CharacterName;
     [SerializeField] private Image WeaponImage;
     [SerializeField] private Image CharacterImage;
-    [SerializeField] private TMPro.TextMeshProUGUI DescriptionText;
+    [SerializeField] private Text DescriptionText;
     [SerializeField] private GameObject CharacterSlot;
     [SerializeField] private GameObject ContentsWindow;
 
