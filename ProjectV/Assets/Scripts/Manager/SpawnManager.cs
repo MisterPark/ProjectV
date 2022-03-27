@@ -26,6 +26,9 @@ public class SpawnManager : MonoBehaviour
     private int currentMinute = -1;
     private int currentMonsterPattern = 0;
     private int currentPatternMonstersCount = 0;
+
+    private bool pauseFlag = false;
+    public bool Pause { get {return pauseFlag;} set { pauseFlag = value; } }
     public GameObject RandomMonster 
     {
         get 
@@ -58,6 +61,7 @@ public class SpawnManager : MonoBehaviour
 
     void Update()
     {
+        
         ProcessFreeze();
         ProcessSpawn();
         ProcessRemove();
@@ -94,6 +98,7 @@ public class SpawnManager : MonoBehaviour
 
     private void ProcessSpawn()
     {
+        if (Pause) return;
         if (freezeFlag) return;
         spawnTick += Time.deltaTime;
         if (spawnTick < spawnDelay) return;

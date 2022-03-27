@@ -39,6 +39,8 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        // fps °íÁ¤
+        Application.targetFrameRate = 50;
         // Ä¿¼­ ¼û±è
         HideCursor();
         Random.InitState((int)System.DateTime.UtcNow.Ticks);
@@ -59,6 +61,13 @@ public class GameManager : MonoBehaviour
         //player = Instantiate(Resources.Load("Unit/Player/Player")) as GameObject;
         //player.transform.position = Vector3.zero;
         //player.name = playerPrefab.name;
+
+        if (SoundManager.Instance == null)
+        {
+            soundManager = Instantiate(soundManagerPrefab);
+            soundManager.transform.position = Vector3.zero;
+            soundManager.name = soundManagerPrefab.name;
+        }
 
         objectPool = Instantiate(objectPoolPrefab);
         objectPool.transform.position = Vector3.zero;
@@ -92,12 +101,7 @@ public class GameManager : MonoBehaviour
         combineSkillManager.transform.position = Vector3.zero;
         combineSkillManager.name = combineSkillManagerPrefab.name;
 
-        if (SoundManager.Instance == null)
-        {
-            soundManager = Instantiate(soundManagerPrefab);
-            soundManager.transform.position = Vector3.zero;
-            soundManager.name = soundManagerPrefab.name;
-        }
+        
     }
     void Start()
     {
@@ -143,6 +147,14 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.F3))
         {
             Player.Instance.stat.Increase_FinalStat(StatType.MoveSpeed, 100);
+        }
+        if (Input.GetKeyUp(KeyCode.F4))
+        {
+            SpawnManager.Instance.Pause = !SpawnManager.Instance.Pause;
+        }
+        if (Input.GetKeyUp(KeyCode.F5))
+        {
+            BoardManager.Instance.Pause = !BoardManager.Instance.Pause;
         }
 #endif
 

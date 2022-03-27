@@ -27,7 +27,7 @@ public class Torchlight : Unit
         Vector3 to = other.transform.position - transform.position;
         Vector3 direction = to.normalized;
         float dist = target.capsuleCollider.radius + capsuleCollider.radius;
-        target.transform.position += direction * dist * Time.deltaTime;
+        target.transform.position += direction * dist * Time.fixedDeltaTime;
     }
 
     void OnDeadCallback()

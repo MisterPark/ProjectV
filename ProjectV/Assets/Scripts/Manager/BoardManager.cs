@@ -7,6 +7,9 @@ public class BoardManager : MonoBehaviour
     public static BoardManager Instance;
     [SerializeField]List<Board> boards = new List<Board>();
 
+
+    private bool pauseFlag = false;
+    public bool Pause { get { return pauseFlag; } set { pauseFlag = value; } }
     private void Awake()
     {
         Instance = this;
@@ -72,6 +75,7 @@ public class BoardManager : MonoBehaviour
 
     void CreateBoards()
     {
+        if (Pause) return;
         if (Player.Instance == null) return;
 
         int row = Player.Row;

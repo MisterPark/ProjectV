@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 353396901595375541}
   - component: {fileID: 353396901595375546}
   - component: {fileID: 353396901595375547}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120,7 +120,7 @@ GameObject:
   m_Component:
   - component: {fileID: 353396903338734640}
   - component: {fileID: 7467065802211350747}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Torchlight_Death
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -166,6 +166,10 @@ PrefabInstance:
     - target: {fileID: 194992, guid: 52301af46bf2aca4cba80ecf307a7777, type: 3}
       propertyPath: m_Name
       value: SM_Env_Pillar_Square_03
+      objectReference: {fileID: 0}
+    - target: {fileID: 194992, guid: 52301af46bf2aca4cba80ecf307a7777, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 422452, guid: 52301af46bf2aca4cba80ecf307a7777, type: 3}
       propertyPath: m_RootOrder
@@ -252,6 +256,10 @@ PrefabInstance:
     - target: {fileID: 103198, guid: f65b497ff807d95439b38e7da2fab667, type: 3}
       propertyPath: m_Name
       value: FX_Fire_02
+      objectReference: {fileID: 0}
+    - target: {fileID: 103198, guid: f65b497ff807d95439b38e7da2fab667, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 456254, guid: f65b497ff807d95439b38e7da2fab667, type: 3}
       propertyPath: m_RootOrder

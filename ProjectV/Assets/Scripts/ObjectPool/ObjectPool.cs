@@ -13,7 +13,7 @@ public class ObjectPool : MonoBehaviour
     {
         if (Instance == null)
             _instance = this;
-        Initialize();
+        //Initialize();
     }
 
     private void Start()
@@ -23,17 +23,18 @@ public class ObjectPool : MonoBehaviour
 
     public GameObject Allocate(string key)
     {
-        if (!_pools.ContainsKey(key))
+        string _key = key.Split('(')[0];
+        if (!_pools.ContainsKey(_key))
         {
-            _pools.Add(key, new Stack<GameObject>());
+            _pools.Add(_key, new Stack<GameObject>());
         }
 
-        if (_pools[key].Count == 0)
+        if (_pools[_key].Count == 0)
         {
-            UpSizing(key);
+            UpSizing(_key);
         }
-        GameObject gameObject = _pools[key].Pop();
-        gameObject.name = key;
+        GameObject gameObject = _pools[_key].Pop();
+        gameObject.name = _key;
         gameObject.SetActive(true);
 
         return gameObject;
@@ -41,17 +42,18 @@ public class ObjectPool : MonoBehaviour
 
     public GameObject Allocate(string key, Vector3 position)
     {
-        if (!_pools.ContainsKey(key))
+        string _key = key.Split('(')[0];
+        if (!_pools.ContainsKey(_key))
         {
-            _pools.Add(key, new Stack<GameObject>());
+            _pools.Add(_key, new Stack<GameObject>());
         }
 
-        if (_pools[key].Count == 0)
+        if (_pools[_key].Count == 0)
         {
-            UpSizing(key);
+            UpSizing(_key);
         }
-        GameObject gameObject = _pools[key].Pop();
-        gameObject.name = key;
+        GameObject gameObject = _pools[_key].Pop();
+        gameObject.name = _key;
         gameObject.transform.position = position;
         gameObject.SetActive(true);
 
@@ -60,17 +62,18 @@ public class ObjectPool : MonoBehaviour
 
     public GameObject Allocate(string key, Vector3 position,Quaternion rotation)
     {
-        if (!_pools.ContainsKey(key))
+        string _key = key.Split('(')[0];
+        if (!_pools.ContainsKey(_key))
         {
-            _pools.Add(key, new Stack<GameObject>());
+            _pools.Add(_key, new Stack<GameObject>());
         }
 
-        if (_pools[key].Count == 0)
+        if (_pools[_key].Count == 0)
         {
-            UpSizing(key);
+            UpSizing(_key);
         }
-        GameObject gameObject = _pools[key].Pop();
-        gameObject.name = key;
+        GameObject gameObject = _pools[_key].Pop();
+        gameObject.name = _key;
         gameObject.transform.position = position;
         gameObject.transform.rotation = rotation;
         gameObject.SetActive(true);
