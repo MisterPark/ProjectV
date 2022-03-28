@@ -10,7 +10,7 @@ public class ExpJewel_01 : Item
     {
         base.Start();
     }
-    // Update is called once per frame
+    
     protected override void Update()
     {
         base.Update();

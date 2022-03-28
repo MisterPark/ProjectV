@@ -17,7 +17,7 @@ public class UI_KillCount : MonoBehaviour
         ResetSize();
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         text.text = DataManager.Instance.currentGameData.killCount.ToString();

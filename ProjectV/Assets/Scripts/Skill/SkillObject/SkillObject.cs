@@ -22,7 +22,7 @@ public class SkillObject : MonoBehaviour
         transform.localScale = Vector3.one * range;
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         

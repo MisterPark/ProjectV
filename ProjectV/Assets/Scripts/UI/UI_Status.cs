@@ -13,7 +13,7 @@ public class UI_Status : MonoBehaviour
         rectTransform = GetComponent<RectTransform>();
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         playerStat = Player.Instance.stat;

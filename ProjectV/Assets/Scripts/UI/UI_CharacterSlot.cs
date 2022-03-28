@@ -25,7 +25,7 @@ public class UI_CharacterSlot : MonoBehaviour
         tempbutton.onClick.AddListener(UI_CharacterSelectStatus.Instance.Setting_UIStatus);
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         

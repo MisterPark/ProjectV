@@ -27,7 +27,7 @@ public class UI_PowerupTemplate : UI
         
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         

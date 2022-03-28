@@ -27,7 +27,7 @@ public class UI_ExpBar : MonoBehaviour
         UpdateSize();
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         Exp = Player.Instance.stat.Get_FinalStat(StatType.Exp);

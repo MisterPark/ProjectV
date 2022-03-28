@@ -13,7 +13,7 @@ public class UnstableMagicMissile : Missile
 
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         

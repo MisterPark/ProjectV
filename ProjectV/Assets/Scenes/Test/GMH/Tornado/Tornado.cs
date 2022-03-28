@@ -19,7 +19,7 @@ public class Tornado : MonoBehaviour
     {
         Start();
     }
-    // Update is called once per frame
+    
     void FixedUpdate()
     {
         if (transform.localScale.x<scale)

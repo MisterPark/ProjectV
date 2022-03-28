@@ -16,7 +16,7 @@ public class UI_PlayTime : MonoBehaviour
         ResetSize();
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         int total = (int)DataManager.Instance.currentGameData.totalPlayTime;

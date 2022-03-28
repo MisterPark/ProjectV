@@ -23,7 +23,7 @@ public class Main_Title_SC : MonoBehaviour
         screenRT = GetComponent<RectTransform>();
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         Money_Text.text = DataManager.Instance.currentSaveData.currentGold.ToString();

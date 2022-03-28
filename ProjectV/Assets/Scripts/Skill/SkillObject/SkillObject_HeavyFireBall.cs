@@ -10,7 +10,7 @@ public class SkillObject_HeavyFireBall : SkillObject
         
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         

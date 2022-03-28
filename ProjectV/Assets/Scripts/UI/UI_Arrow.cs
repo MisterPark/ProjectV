@@ -14,7 +14,7 @@ public class UI_Arrow : MonoBehaviour
         Twinkle_Speed = 100f;
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         Twinkle_Time += Time.deltaTime;

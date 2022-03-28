@@ -14,7 +14,7 @@ public class MeteorHit : MonoBehaviour
         
     }
 
-    // Update is called once per frame
+    
     void FixedUpdate()
     {
         tick += Time.fixedDeltaTime;

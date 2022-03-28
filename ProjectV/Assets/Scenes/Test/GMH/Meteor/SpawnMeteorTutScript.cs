@@ -18,7 +18,7 @@ public class SpawnMeteorTutScript : MonoBehaviour
         RotateTo(objVFX, endPos);
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         

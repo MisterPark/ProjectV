@@ -15,7 +15,7 @@ public class ProgressBar : MonoBehaviour
         mat = GetComponent<Renderer>().material;
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         float progress = LoadingSceneManager.instance.Progress;

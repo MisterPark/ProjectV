@@ -27,7 +27,7 @@ public class Meteor : MonoBehaviour
         createCrater = false;
         meteor.SetActive(true);
     }
-    // Update is called once per frame
+    
     void FixedUpdate()
     {
 

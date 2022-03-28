@@ -10,7 +10,7 @@ public class TorchlightDeath : MonoBehaviour
         
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         ObjectPool.Instance.Free(gameObject);

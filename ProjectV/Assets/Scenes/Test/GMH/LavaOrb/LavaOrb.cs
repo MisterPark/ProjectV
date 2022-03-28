@@ -20,7 +20,7 @@ public class LavaOrb : MonoBehaviour
     {
         
     }
-    // Update is called once per frame
+    
     void FixedUpdate()
     {
             transform.RotateAround(target.transform.position, Vector3.up, speed * Time.fixedDeltaTime);

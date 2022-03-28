@@ -19,7 +19,7 @@ public class UI_Coin : MonoBehaviour
         ResetSize();
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         text.text = DataManager.Instance.currentGameData.gold.ToString();

@@ -16,7 +16,7 @@ public class AllDelete : MonoBehaviour
     {
         tick = 0;
     }
-    // Update is called once per frame
+    
     void Update()
     {
         tick += Time.deltaTime;

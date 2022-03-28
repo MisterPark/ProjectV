@@ -18,7 +18,7 @@ public class ItemObject : MonoBehaviour
         
     }
 
-    // Update is called once per frame
+    
     void FixedUpdate()
     {
         if(isRotate)

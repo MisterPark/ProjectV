@@ -22,7 +22,7 @@ public class BlizzardOrb : MonoBehaviour
         }
         cooldown = parentMissile.Delay;
     }
-    // Update is called once per frame
+    
     void FixedUpdate()
     {
         if(cooldown<=0)
