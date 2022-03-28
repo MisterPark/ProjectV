@@ -23,7 +23,7 @@ public class PropManager : MonoBehaviour
         
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         ProcessSpawn();

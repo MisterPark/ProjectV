@@ -15,7 +15,7 @@ public class Skill_HeavyFireBall : Skill
         activeInterval = 0.1f;
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
 

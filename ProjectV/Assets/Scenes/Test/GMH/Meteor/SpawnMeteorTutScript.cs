@@ -7,7 +7,7 @@ public class SpawnMeteorTutScript : MonoBehaviour
     public GameObject vfx;
     public Transform startPoint;
     public Transform endPoint;
-    // Start is called before the first frame update
+    
     void Start()
     {
         var startPos = startPoint.position;
@@ -18,7 +18,7 @@ public class SpawnMeteorTutScript : MonoBehaviour
         RotateTo(objVFX, endPos);
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         

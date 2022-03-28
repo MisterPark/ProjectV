@@ -11,7 +11,7 @@ public class Skill_Laser : Skill
         Kind = SkillKind.Laser;
         activeInterval = 0.25f;
     }
-    // Start is called before the first frame update
+    
     protected override void Start()
     {
         Kind = SkillKind.Laser;
@@ -19,7 +19,7 @@ public class Skill_Laser : Skill
         base.Start();
     }
 
-    // Update is called once per frame
+    
     public override void Active()
     {
 

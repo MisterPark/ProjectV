@@ -20,6 +20,9 @@ public class ItemManager : MonoBehaviour
     public static ItemManager Instance;
 
     [SerializeField] GameObject[] prefabs;
+    public int expJewelMaxCount = 100;
+    public int expJewelCount = 0;
+    public float expAccumulate = 0;
 
     public List<GameObject> itemList = new List<GameObject>();
     private void Awake()
@@ -147,11 +150,44 @@ public class ItemManager : MonoBehaviour
         //GameObject item = ObjectPool.Instance.Allocate(prefabs[(int)type].name);
         //item.transform.position = position;
         itemList.Add(itemObject);
+
+        if((int)type <= (int)ItemType.ExpJewelSmall)
+        {
+            expJewelCount++;
+            if (expJewelCount > expJewelMaxCount)
+            {
+                AdjustTheExpJewel();
+            }
+        }
         return itemObject;
     }
     public void Remove(GameObject target)
     {
         itemList.Remove(target);
         ObjectPool.Instance.Free(target);
+    }
+
+    public void AdjustTheExpJewel()
+    {
+        GameObject expJewelObj = null;
+        ExpJewel expJewel = null;
+        foreach (GameObject _item in itemList)
+        {
+            expJewel = _item.GetComponentInChildren<ExpJewel>();
+            if (expJewel != null)
+            {
+                expJewelObj = _item;
+                break;
+            }
+        }
+
+        if (expJewel == null)
+        {
+            return;
+        }
+        expJewelCount--;
+        expAccumulate += expJewel.exp;
+
+        Remove(expJewelObj);
     }
 }

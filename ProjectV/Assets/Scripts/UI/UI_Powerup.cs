@@ -39,7 +39,7 @@ public class UI_Powerup : UI
         instacne = this;
     }
 
-    // Start is called before the first frame update
+    
     void Start()
     {
         DataManager.Instance.PriceReset();
@@ -48,7 +48,7 @@ public class UI_Powerup : UI
         gameObject.SetActive(false);
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
     }

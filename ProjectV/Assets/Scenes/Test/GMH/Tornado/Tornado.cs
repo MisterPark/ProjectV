@@ -6,7 +6,7 @@ public class Tornado : MonoBehaviour
 {
     public float scale;
     public float speed = 10f;
-    // Start is called before the first frame update
+    
     void Start()
     {
         transform.localScale = new Vector3(scale/5, scale / 5, scale / 5);
@@ -19,7 +19,7 @@ public class Tornado : MonoBehaviour
     {
         Start();
     }
-    // Update is called once per frame
+    
     void FixedUpdate()
     {
         if (transform.localScale.x<scale)

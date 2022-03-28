@@ -120,7 +120,7 @@ public class DataManager : MonoBehaviour
         if (currentScene.isLoaded)
         {
             var all = currentScene.GetRootGameObjects();
-            Debug.Log(all.Length);
+            //Debug.Log(all.Length);
             for (int i = 0; i < all.Length; i++)
             {
                 GameObject go = all[i];

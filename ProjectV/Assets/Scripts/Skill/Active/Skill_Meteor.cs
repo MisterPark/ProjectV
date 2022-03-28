@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Skill_Meteor : Skill
 {
-    // Start is called before the first frame update
+    
     protected override void Awake()
     {
         Kind = SkillKind.Meteor;
