@@ -20,9 +20,12 @@ public class ItemManager : MonoBehaviour
     public static ItemManager Instance;
 
     [SerializeField] GameObject[] prefabs;
-    public int expJewelMaxCount = 100;
+    [SerializeField] private int expJewelMaxCount = 100;
     public int expJewelCount = 0;
     public float expAccumulate = 0;
+    [SerializeField] private float farExpJewelDeleteTime = 5f;
+    [SerializeField] private float farExpJewelDeleteTick = 0f;
+    [SerializeField] private float farExpJewelDeleteDistance = 25f;
 
     public List<GameObject> itemList = new List<GameObject>();
     private void Awake()
@@ -40,6 +43,12 @@ public class ItemManager : MonoBehaviour
     {
         
     }
+
+    private void FixedUpdate()
+    {
+        FarExpJewelDelete();
+    }
+
     public GameObject Drop(ItemType type, Vector3 position)
     {
         GameObject itemObject =ObjectPool.Instance.Allocate("ItemObject");
@@ -189,5 +198,37 @@ public class ItemManager : MonoBehaviour
         expAccumulate += expJewel.exp;
 
         Remove(expJewelObj);
+    }
+
+    public void FarExpJewelDelete()
+    {
+        farExpJewelDeleteTick += Time.fixedDeltaTime;
+        List<GameObject> deleteList = new List<GameObject>();
+        if (farExpJewelDeleteTick >= farExpJewelDeleteTime)
+        {
+            farExpJewelDeleteTick = 0f;
+            Vector3 playerPos = Player.Instance.transform.position;
+            foreach (GameObject _item in itemList)
+            {
+                ExpJewel expJewel = _item.GetComponentInChildren<ExpJewel>();
+                if (expJewel == null)
+                {
+                    continue;
+                }
+                float distance = Vector3.Distance(playerPos, _item.transform.position);
+                if (farExpJewelDeleteDistance <= distance)
+                {
+                    expJewelCount--;
+                    expAccumulate += expJewel.exp;
+
+                    deleteList.Add(_item);
+                }
+            }
+
+            foreach (GameObject _item in deleteList)
+            {
+                Remove(_item);
+            }
+        }
     }
 }
