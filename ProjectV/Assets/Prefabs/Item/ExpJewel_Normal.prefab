@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4084462226160456449}
   - component: {fileID: 4084462226163849093}
   - component: {fileID: 4084462226162808201}
-  - component: {fileID: 5502134552608774980}
+  - component: {fileID: 4072750292953248226}
   m_Layer: 0
   m_Name: ExpJewel_Normal
   m_TagString: Untagged
@@ -82,7 +82,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &5502134552608774980
+--- !u!114 &4072750292953248226
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -91,6 +91,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4084462226160613661}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c201efe934c6374ab7c5a6bbffc56ae, type: 3}
+  m_Script: {fileID: 11500000, guid: 1ad44e2b4b69db34fbb3905263a08a72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  exp: 0

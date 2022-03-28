@@ -20,5 +20,6 @@ public class ExpJewel_01 : Item
     {
         Stat stat = Player.Instance.GetComponent<Stat>();
         stat.Increase_FinalStat(StatType.Exp, exp);
+        ItemManager.Instance.expJewelCount--;
     }
 }

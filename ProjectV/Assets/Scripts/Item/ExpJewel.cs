@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ExpJewel_03 : Item
+public class ExpJewel : Item
 {
     public float exp;
     // Start is called before the first frame update
@@ -15,7 +15,7 @@ public class ExpJewel_03 : Item
     {
         base.Update();
     }
-    
+
     public override void Use()
     {
         Stat stat = Player.Instance.GetComponent<Stat>();
