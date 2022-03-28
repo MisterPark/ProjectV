@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
-public enum CharacterName { Char1, Char2, Char3, END}
 public class SaveDataManager : MonoBehaviour
 {
     public static SaveDataManager Instance;
@@ -57,39 +56,52 @@ public class SaveDataManager : MonoBehaviour
 
         //////
         DataManager dataManager = DataManager.Instance;
-        dataManager.currentSaveData = _saveData;
-        foreach (powerUpSave saveData in dataManager.currentSaveData.powerUpSaves)
-        {
-            foreach (Powerup_DataType powerupData in dataManager.powerStatDB.Powerup_Type_List)
-            {
-                if (saveData.powerType == powerupData.PowerType)
-                {
-                    powerupData.SetRank(saveData.Rank);
-                    break;
-                }
-            }
-        }
+        //
+        dataManager.currentSaveData = new SaveData();
+
         dataManager.Settings.BGMVolume = _saveData.BGMVolume;
         dataManager.Settings.SoundVolume = _saveData.SoundVolume;
         dataManager.Settings.VisibleDamageNumbers = _saveData.VisibleDamageNumbers;
         dataManager.Settings.Language = _saveData.Language;
+
+        dataManager.currentSaveData.totalKillCount = _saveData.totalKillCount;
+        dataManager.currentSaveData.totalGold = _saveData.totalGold;
+        dataManager.currentSaveData.currentGold = _saveData.currentGold;
+        dataManager.currentSaveData.totalPlayTime = _saveData.totalPlayTime;
+
+        dataManager.currentSaveData.currentPowerUpCount = _saveData.currentPowerUpCount;
+        foreach (powerUpSave powerUp in _saveData.powerUpSaves)
+        {
+            foreach (Powerup_DataType powerupData in dataManager.powerStatDB.Powerup_Type_List)
+            {
+                if (powerUp.powerType == powerupData.PowerType)
+                {
+                    powerupData.SetRank(powerUp.Rank);
+                    dataManager.currentSaveData.powerUpSaves.Add(powerUp);
+                    break;
+                }
+            }
+        }
 
     } 
     
     public void SaveGameData() 
     {
         DataManager dataManager = DataManager.Instance;
-        _saveData = dataManager.currentSaveData;
-        _saveData.totalKillCount += dataManager.currentGameData.killCount;
-        _saveData.totalGold += (int)dataManager.currentGameData.gold;
-        _saveData.currentGold += (int)dataManager.currentGameData.gold;
-        _saveData.totalPlayTime += dataManager.currentGameData.totalPlayTime;
-        _saveData.powerUpSaves.Clear();
+        SaveData currentSaveData = dataManager.currentSaveData;
+        dataManager.CurrentGameDataSave();
+        //_saveData = dataManager.currentSaveData;
+        _saveData.totalKillCount = currentSaveData.totalKillCount;
+        _saveData.totalGold = currentSaveData.totalGold;
+        _saveData.currentGold = currentSaveData.currentGold;
+        _saveData.totalPlayTime = currentSaveData.totalPlayTime;
         //설정
         _saveData.BGMVolume = dataManager.Settings.BGMVolume;
         _saveData.SoundVolume = dataManager.Settings.SoundVolume;
         _saveData.VisibleDamageNumbers = dataManager.Settings.VisibleDamageNumbers;
         _saveData.Language = dataManager.Settings.Language;
+        //파워업
+        _saveData.powerUpSaves.Clear();
         foreach (Powerup_DataType data in dataManager.powerStatDB.Powerup_Type_List)
         {
             powerUpSave _powerUpSave = new powerUpSave();

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class UI_PowerupTemplate : MonoBehaviour
+public class UI_PowerupTemplate : UI
 {
     private Powerup_DataType m_DataType;
 
