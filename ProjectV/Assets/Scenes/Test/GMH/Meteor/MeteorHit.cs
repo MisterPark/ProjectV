@@ -8,7 +8,7 @@ public class MeteorHit : MonoBehaviour
     public float lifeTime;
     public float downSpeed;
     private float tick;
-    // Start is called before the first frame update
+    
     void Start()
     {
         

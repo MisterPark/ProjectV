@@ -21,7 +21,7 @@ public class UI_PowerupTemplate : UI
 
     private int MaxRankCount;
     private int RankCount;
-    // Start is called before the first frame update
+    
     void Start()
     {
         

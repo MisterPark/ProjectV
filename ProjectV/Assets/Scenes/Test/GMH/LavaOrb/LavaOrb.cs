@@ -7,7 +7,7 @@ public class LavaOrb : MonoBehaviour
 
     public float speed;
     public Transform target;
-    // Start is called before the first frame update
+    
     void Start()
     {
         if (target == null)

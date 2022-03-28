@@ -16,7 +16,7 @@ public class Main_Title_SC : MonoBehaviour
     private RectTransform screenRT;
     //private TMPro.TextMeshProUGUI Money_Text;
 
-    // Start is called before the first frame update
+    
     void Start()
     {
         UI_Settings.instance.OnClosed.AddListener(ShowCursor);

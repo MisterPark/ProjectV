@@ -7,7 +7,7 @@ public class UI_CharacterSelectStatus : UI
     private Stats[] playerStat;
     private RectTransform rectTransform;
     [SerializeField] private UI_StatData[] children;
-    // Start is called before the first frame update
+    
     static public UI_CharacterSelectStatus Instance;
     void Start()
     {
@@ -16,9 +16,9 @@ public class UI_CharacterSelectStatus : UI
         playerStat = DataManager.Instance.playerCharacterData[(int)(DataManager.Instance.currentGameData.characterName)].playerCharacter.statsData.stats;
     }
 
-
-    private void OnEnable()
+    protected override void OnEnable()
     {
+        base.OnEnable();
         Setting_UIStatus();
     }
 

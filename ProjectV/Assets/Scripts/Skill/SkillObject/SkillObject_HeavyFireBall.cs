@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SkillObject_HeavyFireBall : SkillObject
 {
-    // Start is called before the first frame update
+    
     void Start()
     {
         

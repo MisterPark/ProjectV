@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RotateObject : MonoBehaviour
 {
-    // Start is called before the first frame update
+    
     [SerializeField] float rotationSpeed=5f;
     [SerializeField] bool RotateX = false;
     [SerializeField] bool RotateY = false;

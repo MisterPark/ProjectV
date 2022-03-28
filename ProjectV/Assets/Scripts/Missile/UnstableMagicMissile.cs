@@ -6,7 +6,7 @@ public class UnstableMagicMissile : Missile
 {
     float movePatternTick = 1f;
     float movePatternCoolTime = 1f;
-    // Start is called before the first frame update
+    
     protected override void Start()
     {
         base.Start();

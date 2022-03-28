@@ -33,14 +33,6 @@ public class UI_StageSelect : UI
         //gameObject.SetActive(false);
         
     }
-    private void OnEnable()
-    {
-        //if (Event_Handle.currentSelectedGameObject == null)
-        //{
-        //    GameObject selectobject = transform.Find("Scroll View").Find("Contents").GetChild(0).gameObject;
-        //    Event_Handle.SetSelectedGameObject(selectobject);
-        //}
-    }
 
     public void OnClickStageSlot()
     {

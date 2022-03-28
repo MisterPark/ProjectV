@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Meteor : MonoBehaviour
 {
-    // Start is called before the first frame update
+    
     bool createCrater = false;
     GameObject meteor;
     Missile parentMissile;

@@ -39,7 +39,7 @@ public class UI_Powerup : UI
         instacne = this;
     }
 
-    // Start is called before the first frame update
+    
     void Start()
     {
         DataManager.Instance.PriceReset();

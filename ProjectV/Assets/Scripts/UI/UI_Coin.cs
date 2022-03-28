@@ -9,7 +9,7 @@ public class UI_Coin : MonoBehaviour
     private RectTransform imageRT;
     private RectTransform rectTransform;
     private Text text;
-    // Start is called before the first frame update
+    
     void Start()
     {
         imageRT = transform.GetChild(0).GetComponent<RectTransform>();

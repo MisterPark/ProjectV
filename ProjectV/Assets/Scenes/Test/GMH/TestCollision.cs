@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TestCollision : MonoBehaviour
 {
-    // Start is called before the first frame update
+    
     void Start()
     {
         

@@ -8,7 +8,7 @@ public class Skill_BlackHole : Skill
     {
         Kind = SkillKind.BlackHole;
     }
-    // Start is called before the first frame update
+    
     protected override void Start() 
     {
         Kind = SkillKind.BlackHole;

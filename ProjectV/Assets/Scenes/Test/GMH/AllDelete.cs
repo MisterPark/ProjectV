@@ -6,7 +6,7 @@ public class AllDelete : MonoBehaviour
 {
     float lifeTime=0.1f;
     float tick=0f;
-    // Start is called before the first frame update
+    
     void Start()
     {
         

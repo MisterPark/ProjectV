@@ -16,7 +16,7 @@ public class UI_CharacterSlot : MonoBehaviour
     public Image WeaponImage => m_WeaponImage;
     public Text CharacterName => m_CharacterName;
 
-    // Start is called before the first frame update
+    
     void Start()
     {
         m_CharacterSelect = this.transform.root.Find("CharacterSelectPanel").gameObject;

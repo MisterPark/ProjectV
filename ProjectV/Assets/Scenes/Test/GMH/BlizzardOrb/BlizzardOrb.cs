@@ -8,7 +8,7 @@ public class BlizzardOrb : MonoBehaviour
     float angle;
     public float cooldown;
     Missile parentMissile;
-    // Start is called before the first frame update
+    
     void Start()
     {
         

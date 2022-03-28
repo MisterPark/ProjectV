@@ -15,7 +15,7 @@ public class UI_ExpBar : MonoBehaviour
     [SerializeField] RectTransform level;
     private Image barImage;
     private Text levelText;
-    // Start is called before the first frame update
+    
     void Start()
     {
         barImage = transform.GetChild(1).GetComponent<Image>();
