@@ -12,7 +12,7 @@ public class Slide : MonoBehaviour {
 		Filler = GetComponent<Image>();
 	}
 	
-	// Update is called once per frame
+	
 	void Update () {
 		Filler.fillAmount = slider.value;
 	}

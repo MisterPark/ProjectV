@@ -10,7 +10,7 @@ public class UI_StageSlot : MonoBehaviour
     public Text SlotDescription;
     public StageKind Stage;
     private GameObject StageSelect;
-    // Start is called before the first frame update
+    
     void Start()
     {
         StageSelect = this.transform.root.Find("StageSelectPanel").gameObject;

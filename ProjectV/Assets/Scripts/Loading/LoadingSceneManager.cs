@@ -60,7 +60,7 @@ public class LoadingSceneManager : MonoBehaviour
 
     private void OnDestroy()
     {
-        Debug.Log("로딩씬매니저 삭제");
+        //Debug.Log("로딩씬매니저 삭제");
     }
 
     public void LoadScene(string sceneName, float waitTime = 5f)

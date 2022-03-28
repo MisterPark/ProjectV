@@ -8,7 +8,7 @@ public class Skill_WindTornado : Skill
     {
         Kind = SkillKind.WindTornado;
     }
-    // Start is called before the first frame update
+    
     protected override void Start()
     {
         Kind = SkillKind.WindTornado;

@@ -6,11 +6,18 @@ using UnityEngine.SceneManagement;
 
 public class UI_Result : UI
 {
+    public static UI_Result instance;
+
     public Text surviveText;
     public Text goldText;
     public Text levelText;
     public Text killcountText;
     public Button doneButton;
+
+    void Awake()
+    {
+        instance = this;
+    }
 
     void Start()
     {

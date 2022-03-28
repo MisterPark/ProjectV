@@ -11,7 +11,7 @@ public class UI_Equipment : MonoBehaviour
     public UI_SlotInfomation[] activeSlot;
     public UI_SlotInfomation[] passiveSlot;
 
-    // Start is called before the first frame update
+    
     void Start()
     {
         rectTransform = GetComponent<RectTransform>();

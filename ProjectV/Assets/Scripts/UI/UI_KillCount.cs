@@ -9,7 +9,7 @@ public class UI_KillCount : MonoBehaviour
     [SerializeField] private Text text;
     [SerializeField] private RectTransform imageRT;
     private RectTransform parentCanvas;
-    // Start is called before the first frame update
+    
     void Start()
     {
         rectTransform = GetComponent<RectTransform>();
@@ -17,7 +17,7 @@ public class UI_KillCount : MonoBehaviour
         ResetSize();
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         text.text = DataManager.Instance.currentGameData.killCount.ToString();

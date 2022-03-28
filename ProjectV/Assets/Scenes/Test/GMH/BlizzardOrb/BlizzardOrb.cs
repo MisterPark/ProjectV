@@ -8,7 +8,7 @@ public class BlizzardOrb : MonoBehaviour
     float angle;
     public float cooldown;
     Missile parentMissile;
-    // Start is called before the first frame update
+    
     void Start()
     {
         
@@ -22,7 +22,7 @@ public class BlizzardOrb : MonoBehaviour
         }
         cooldown = parentMissile.Delay;
     }
-    // Update is called once per frame
+    
     void FixedUpdate()
     {
         if(cooldown<=0)

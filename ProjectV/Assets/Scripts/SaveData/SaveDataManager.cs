@@ -42,7 +42,7 @@ public class SaveDataManager : MonoBehaviour
         // ����� ������ �ִٸ�
         if (File.Exists(filePath))
         { 
-            Debug.Log($"Load Game Data {filePath}"); 
+            //Debug.Log($"Load Game Data {filePath}"); 
             string FromJsonData = File.ReadAllText(filePath); 
             _saveData = JsonUtility.FromJson<SaveData>(FromJsonData);
         }
@@ -50,7 +50,7 @@ public class SaveDataManager : MonoBehaviour
         // ����� ������ ���ٸ�
         else 
         {
-            Debug.Log($"Create Save Data {filePath}");            
+            //Debug.Log($"Create Save Data {filePath}");            
             _saveData = new SaveData();
         }
 
@@ -116,7 +116,7 @@ public class SaveDataManager : MonoBehaviour
 
         File.WriteAllText(filePath, ToJsonData);
         
-        Debug.Log($"Save Game Data {filePath}"); 
+        //Debug.Log($"Save Game Data {filePath}"); 
 
         
     } 
