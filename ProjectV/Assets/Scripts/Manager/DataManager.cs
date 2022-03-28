@@ -171,4 +171,19 @@ public class DataManager : MonoBehaviour
         }
 #endif
     }
+
+
+    public void CurrentGameDataSave()
+    {
+        currentSaveData.totalKillCount += currentGameData.killCount;
+        currentSaveData.totalGold += (int)currentGameData.gold;
+        currentSaveData.currentGold += (int)currentGameData.gold;
+        currentSaveData.totalPlayTime += (int)currentGameData.totalPlayTime;
+
+        currentGameData.killCount = 0;
+        currentGameData.gold = 0f;
+        currentGameData.totalPlayTime = 0f;
+        currentGameData.playerLevel = 1;
+        currentGameData.characterName = PlayerCharacterName.Witch;
+    }
 }
