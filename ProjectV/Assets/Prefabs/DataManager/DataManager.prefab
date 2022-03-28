@@ -154,14 +154,12 @@ MonoBehaviour:
   - kind: 29
     skillData: {fileID: 11400000, guid: b6a703f99cb1f7440b6746aa71b9d76b, type: 2}
   currentSaveData:
-    unLockCharacter: 000000
-    unLockStage: 000000
     totalKillCount: 0
     totalGold: 0
-    currentGold: 8000
+    currentGold: 0
+    totalPlayTime: 0
     currentPowerUpCount: 0
     powerUpSaves: []
-    totalPlayTime: 0
     BGMVolume: 1
     SoundVolume: 1
     VisibleDamageNumbers: 1
@@ -189,16 +187,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12afbc0e64f71db41b3ad99bdea859ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameDataFileName: StarfishData.json
+  GameDataFileName: ProjectV.json
   _saveData:
-    unLockCharacter: 000000
-    unLockStage: 000000
     totalKillCount: 0
     totalGold: 0
     currentGold: 0
+    totalPlayTime: 0
     currentPowerUpCount: 0
     powerUpSaves: []
-    totalPlayTime: 0
     BGMVolume: 1
     SoundVolume: 1
     VisibleDamageNumbers: 1
