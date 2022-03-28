@@ -36,6 +36,7 @@ public class UI_StageSelect : UI
 
     public void OnClickStageSlot()
     {
+        DescriptionImage.color = new Color(1f, 1f, 1f, 1f);
         Event_Handle = EventSystem.current;
         GameObject selectobject = Event_Handle.currentSelectedGameObject;
         DescriptionName.text = selectobject.GetComponent<UI_StageSlot>().SlotName.text;
@@ -55,6 +56,7 @@ public class UI_StageSelect : UI
 
     void SlotInit()
     {
+        DescriptionImage.color = new Color(1f,1f,1f,0f);
         GameObject tempslot;
         for (int repeat = 0; repeat < (int)(StageKind.End); ++repeat)
         {
