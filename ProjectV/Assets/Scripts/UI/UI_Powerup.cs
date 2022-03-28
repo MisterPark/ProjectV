@@ -111,9 +111,9 @@ public class UI_Powerup : UI
     {
         m_UnderPowerupImage.color = new Color(1f, 1f, 1f, 1f);
         m_CurrentPowerupDB = data;
-        m_UnderPowerupName.text = data.Powerup_Name;
+        m_UnderPowerupName.text = data.Powerup_Name.Localized();
         m_UnderPowerupImage.sprite = data.Powerup_Image;
-        m_UnderPowerupExplan.text = data.Powerup_Tip;
+        m_UnderPowerupExplan.text = data.Powerup_Tip.Localized();
         m_UnderMoneyText.text = data.CurrentPowerupPrice.ToString();
         SoundManager.Instance.PlaySFXSound("ShortButton");
     }
@@ -123,9 +123,9 @@ public class UI_Powerup : UI
         DataManager.Instance.BuyPowerup(m_CurrentPowerupDB);
         DataManager.Instance.PriceReset();
         OnBuyButton.Invoke();
-        m_UnderPowerupName.text = m_CurrentPowerupDB.Powerup_Name;
+        m_UnderPowerupName.text = m_CurrentPowerupDB.Powerup_Name.Localized();
         m_UnderPowerupImage.sprite = m_CurrentPowerupDB.Powerup_Image;
-        m_UnderPowerupExplan.text = m_CurrentPowerupDB.Powerup_Tip;
+        m_UnderPowerupExplan.text = m_CurrentPowerupDB.Powerup_Tip.Localized();
         m_UnderMoneyText.text = m_CurrentPowerupDB.CurrentPowerupPrice.ToString();
         SoundManager.Instance.PlaySFXSound("ShortButton");
     }
