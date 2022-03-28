@@ -291,9 +291,9 @@ public class UI_SlotMachine : UI
                     audioSource.pitch = 1f;
                     audioSource.Play();
                     isPlayMachine = false;
-                    yield return new WaitForSeconds(0.15f);
+                    yield return new WaitForSecondsRealtime(0.15f);
                     rewardPanel.gameObject.SetActive(true);
-                    yield return new WaitForSeconds(0.25f);
+                    yield return new WaitForSecondsRealtime(0.25f);
                     switch (sameContents)
                     {
                         case 1: Reward(1);
