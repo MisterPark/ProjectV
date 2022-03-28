@@ -111,6 +111,8 @@ public class UI_CombinePanel : UI
     {
         if (CombineSkillManager.Instance == null)
             return false;
+
+        float[,] gradeColor = new float[3,3] { { 255f / 255f, 255f / 255f, 255f / 255f }, { 61f / 255f, 182f / 255f, 42f / 255f }, { 34f / 255f, 76f / 255f, 191f / 255f } };
         contents = new UI_CombineSlot[CombineSkillManager.Instance.combineSkillDatas.Length];
         for(int i =0; i < contents.Length; i++)
         {
@@ -127,6 +129,25 @@ public class UI_CombinePanel : UI
             contents[i].skillA.sprite = DataManager.Instance.skillDatas[((int)(contents[i].kindA))].skillData.icon;
             contents[i].skillB.sprite = DataManager.Instance.skillDatas[((int)(contents[i].kindB))].skillData.icon;
             contents[i].skillC.sprite = DataManager.Instance.skillDatas[((int)(contents[i].kindC))].skillData.icon;
+
+            Grade grade = DataManager.Instance.skillDatas[(int)(contents[i].kindA)].skillData.grade;
+            if((int)grade > 2)
+            {
+                grade = Grade.Normal;
+            }
+            contents[i].borderA.color = new Color(gradeColor[(int)grade, 0], gradeColor[(int)grade, 1], gradeColor[(int)grade, 2]);
+            grade = DataManager.Instance.skillDatas[(int)(contents[i].kindB)].skillData.grade;
+            if ((int)grade > 2)
+            {
+                grade = Grade.Normal;
+            }
+            contents[i].borderB.color = new Color(gradeColor[(int)grade, 0], gradeColor[(int)grade, 1], gradeColor[(int)grade, 2]);
+            grade = DataManager.Instance.skillDatas[(int)(contents[i].kindC)].skillData.grade;
+            if ((int)grade > 2)
+            {
+                grade = Grade.Normal;
+            }
+            contents[i].borderC.color = new Color(gradeColor[(int)grade, 0], gradeColor[(int)grade, 1], gradeColor[(int)grade, 2]);
 
             contents[i].Init(disableColor);
         }

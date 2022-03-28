@@ -11,6 +11,9 @@ public class UI_CombineSlot : MonoBehaviour
     public Image skillA;
     public Image skillB;
     public Image skillC;
+    public Image borderA;
+    public Image borderB;
+    public Image borderC;
     public Image BanIcon;
     private bool isActivateA = false;
     private bool isActivateB = false;
