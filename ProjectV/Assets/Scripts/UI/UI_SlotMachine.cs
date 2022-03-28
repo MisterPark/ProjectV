@@ -12,6 +12,8 @@ public class UI_SlotMachine : UI
     public float spacing = 10f;
     public RectTransform[] originImage;
     public Sprite goldSprite;
+    public AudioClip rillSound;
+    public AudioClip stopSound;
 
     private bool isPlayMachine = false;
     private int lineStack = 0;
@@ -35,6 +37,7 @@ public class UI_SlotMachine : UI
     private Image[] rewardsImage;
     private Coroutine[] playCoroutine;
     private Coroutine[] stopCoroutine;
+    private AudioSource audioSource;
     
 
     private SkillKind[] result;
@@ -53,11 +56,27 @@ public class UI_SlotMachine : UI
         Hide();
     }
 
+    public override void Show()
+    {
+        GameManager.Instance.Pause();
+        base.Show();
+    }
+
+    public override void Hide()
+    {
+        base.Hide();
+        GameManager.Instance.Resume();
+    }
+
     private void Play()
     {
         if (isPlayMachine == false)
         {
             isPlayMachine = true;
+            audioSource.enabled = true;
+            audioSource.clip = rillSound;
+            audioSource.loop = true;
+            audioSource.Play();
             for (int i = 0; i < playCoroutine.Length; i++)
             {
                 if (playCoroutine[i] != null)
@@ -72,7 +91,7 @@ public class UI_SlotMachine : UI
     {
         if (isPlayMachine == true && lineStack == 0)
         {
-            KingCrimson();
+            Result();
             for (int i = 0; i < playCoroutine.Length; i++)
             {
                 StopCoroutine(playCoroutine[i]);
@@ -83,7 +102,7 @@ public class UI_SlotMachine : UI
         }
     }
 
-    private void KingCrimson()
+    private void Result()
     {
         int percent = Random.Range(1, 100);
         if (1 <= percent && percent < 70)
@@ -145,7 +164,6 @@ public class UI_SlotMachine : UI
                 break;
         }
 
-        Debug.Log(sameContents.ToString() + "°³ ´çÃ·");
     }
 
     private void Reward(int rewardQuantity)
@@ -232,10 +250,12 @@ public class UI_SlotMachine : UI
                 float gap = contents[0].anchoredPosition.y + slotSize;
                 contents[0].anchoredPosition = new Vector2(startPosX[lineNum], startPosY + gap);
                 curSpeed *= 0.7f;
-                if(curSpeed <= minSpeed)
+                if (curSpeed <= minSpeed)
                 {
                     curSpeed = minSpeed;
                 }
+                else
+                    audioSource.pitch *= 0.95f;
             }
             for (int i = 1; i < contents.Length; i++)
             {
@@ -266,9 +286,14 @@ public class UI_SlotMachine : UI
                 lineStack--;
                 if(lineStack == 0)
                 {
+                    audioSource.clip = stopSound;
+                    audioSource.loop = false;
+                    audioSource.pitch = 1f;
+                    audioSource.Play();
                     isPlayMachine = false;
+                    yield return new WaitForSeconds(0.15f);
                     rewardPanel.gameObject.SetActive(true);
-                    yield return new WaitForSeconds(1f);
+                    yield return new WaitForSeconds(0.25f);
                     switch (sameContents)
                     {
                         case 1: Reward(1);
@@ -328,6 +353,8 @@ public class UI_SlotMachine : UI
             rewardsRT[i].gameObject.SetActive(false);
         }
         rewardPanel.gameObject.SetActive(false);
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void ResetSize()
@@ -380,6 +407,7 @@ public class UI_SlotMachine : UI
     public void OnClickConfirm()
     {
         rewardPanel.gameObject.SetActive(false);
+        audioSource.enabled = false;
         Hide();
     }
 }
