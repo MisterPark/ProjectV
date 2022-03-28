@@ -52,11 +52,36 @@ public class UI_CharacterSelectStatus : UI
                 }
                 if (child.isPercent == false)
                 {
-                    child.value.text = value.ToString();
+                    if(child.statType == StatType.MaxHealth || child.statType == StatType.Armor || child.statType == StatType.Amount)
+                    {
+                        child.value.text = value.ToString();
+                        continue;
+                    }
+                    float oriValue = DataManager.Instance.playerCharacterData[(int)PlayerCharacterName.Witch].playerCharacter.statsData.stats[(int)child.statType].origin_Stat;
+                    float differenceValue = value - oriValue;
+                    if(differenceValue == 0f)
+                    {
+                        child.value.text = "-";
+                    }
+                    else
+                    {
+                        float percentValue = Mathf.Round(differenceValue * 100f / oriValue);
+                        if (percentValue > 0f) child.value.text = "+" + (percentValue).ToString() + "%";
+                        else child.value.text = (percentValue).ToString() + "%";
+                    }
                 }
                 else
                 {
-                    child.value.text = (value * 100f).ToString() + "%";
+                    if (value == 1f)
+                    {
+                        child.value.text = "-";
+                    }
+                    else
+                    {
+                        string valueText = Mathf.Round(((value - 1) * 100f)).ToString() + "%";
+                        if (value > 1f) valueText = "+" + valueText;
+                        child.value.text = valueText;
+                    }
                 }
             }
 
