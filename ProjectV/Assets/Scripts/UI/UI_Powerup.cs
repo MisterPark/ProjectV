@@ -55,6 +55,7 @@ public class UI_Powerup : UI
 
     private void InitPowerupTemplate()
     {
+        m_UnderPowerupImage.color = new Color(1f,1f,1f,0f);
         ColumnInterval = (m_PowerupTemplate.GetComponent<RectTransform>().rect.width);
         RowInterval = (m_PowerupTemplate.GetComponent<RectTransform>().rect.height);
         int DBCount = m_PowerupDB.GetCount();
@@ -108,6 +109,7 @@ public class UI_Powerup : UI
 
     public void PowerupExplanInit(Powerup_DataType data)
     {
+        m_UnderPowerupImage.color = new Color(1f, 1f, 1f, 1f);
         m_CurrentPowerupDB = data;
         m_UnderPowerupName.text = data.Powerup_Name;
         m_UnderPowerupImage.sprite = data.Powerup_Image;

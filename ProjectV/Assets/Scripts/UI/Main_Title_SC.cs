@@ -46,11 +46,11 @@ public class Main_Title_SC : MonoBehaviour
                 }
                 else if(tempobject.name == "Option Button")
                 {
-                    KeyboardCursor_Image.transform.position = SelectedCursorPos + new Vector2(-width * 10f, 0f);
+                    KeyboardCursor_Image.transform.position = SelectedCursorPos + new Vector2(-width * 8f, 0f);
                 }
                 else if (tempobject.name == "Exit Button")
                 {
-                    KeyboardCursor_Image.transform.position = SelectedCursorPos + new Vector2(-width * 10f, 0f);
+                    KeyboardCursor_Image.transform.position = SelectedCursorPos + new Vector2(-width * 5f, 0f);
                 }
                 else
                 {
