@@ -20,7 +20,7 @@ public class ItemManager : MonoBehaviour
     public static ItemManager Instance;
 
     [SerializeField] GameObject[] prefabs;
-    public int expJewelMaxCount = 100;
+    public int expJewelMaxCount = 200;
     public int expJewelCount = 0;
     public float expAccumulate = 0;
 
@@ -54,25 +54,30 @@ public class ItemManager : MonoBehaviour
         GameObject item = itemObject.transform.GetChild((int)type).gameObject;
         Item itemCom = item.GetComponent<Item>();
         item.SetActive(true);
+        item.gameObject.transform.localPosition = Vector3.zero;
         itemObjectCom.Item = itemCom;
+        itemObjectCom.LifeTime = 0;
+        itemObjectCom.SinWaveFlag = false;
 
-     
         switch (type)
         {
         case ItemType.ExpJewelBig:
                 itemObjectCom.isRotate = true;
                 itemObjectCom.isMagnetism = true;
                 itemObjectCom.isChest = false;
+                itemObjectCom.SinWaveFlag = true;
                 break;
         case ItemType.ExpJewelNormal:
                 itemObjectCom.isRotate = true;
                 itemObjectCom.isMagnetism = true;
                 itemObjectCom.isChest = false;
+                itemObjectCom.SinWaveFlag = true;
                 break;
         case ItemType.ExpJewelSmall:
                 itemObjectCom.isRotate = true;
                 itemObjectCom.isMagnetism = true;
                 itemObjectCom.isChest = false;
+                itemObjectCom.SinWaveFlag = true;
                 break;
         case ItemType.HpPotion:
                 itemObjectCom.isRotate = true;
