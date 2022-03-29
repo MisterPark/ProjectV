@@ -13,6 +13,7 @@ public class UI_LevelUPItemInfo : UI
     [SerializeField] private RectTransform index;
     [SerializeField] private RectTransform level;
     [SerializeField] private RectTransform icon;
+    [SerializeField] private RectTransform iconMask;
     [SerializeField] private RectTransform button;
     private Text nameText;
     private Text descText;
