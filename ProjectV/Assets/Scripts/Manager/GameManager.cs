@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
     {
         Instance = this;
         // fps °íÁ¤
-        Application.targetFrameRate = 30;
+        Application.targetFrameRate = 50;
         // Ä¿¼­ ¼û±è
         HideCursor();
         Random.InitState((int)System.DateTime.UtcNow.Ticks);
