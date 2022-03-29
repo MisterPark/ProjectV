@@ -12,9 +12,6 @@ public class UI_SlotMachine : UI
     public float spacing = 10f;
     public RectTransform[] originImage;
     public Sprite goldSprite;
-    public AudioClip rillSound;
-    public AudioClip jackpotSound;
-    public AudioClip bangSound;
 
     private bool isPlayMachine = false;
     private bool isOnceTime = false;
@@ -40,8 +37,6 @@ public class UI_SlotMachine : UI
     private Image[] rewardsImage;
     private Coroutine[] playCoroutine;
     private Coroutine[] stopCoroutine;
-    private AudioSource audioSource;
-    
 
     private SkillKind[] result;
     
@@ -57,7 +52,6 @@ public class UI_SlotMachine : UI
         Init();
         ResetSize();
         Hide();
-        audioSource.volume = DataManager.Instance.Settings.SoundVolume;
     }
 
     public override void Show()
@@ -72,7 +66,6 @@ public class UI_SlotMachine : UI
     {
         base.Hide();
         rewardPanel.gameObject.SetActive(false);
-        audioSource.enabled = false;
         GameManager.Instance.Resume();
     }
 
@@ -82,10 +75,8 @@ public class UI_SlotMachine : UI
         {
             isPlayMachine = true;
             isOnceTime = false;
-            audioSource.enabled = true;
-            audioSource.clip = rillSound;
-            audioSource.loop = true;
-            audioSource.Play();
+            SoundManager.Instance.slotMachinePlayer.pitch = 1f;
+            SoundManager.Instance.PlaySlotMachineSound("Rill");
             for (int i = 0; i < playCoroutine.Length; i++)
             {
                 if (playCoroutine[i] != null)
@@ -266,7 +257,7 @@ public class UI_SlotMachine : UI
             }
             else
             {
-                audioSource.pitch -= 0.005f * Time.unscaledDeltaTime;
+                SoundManager.Instance.slotMachinePlayer.pitch -= 0.005f * Time.unscaledDeltaTime;
             }
             contents[0].anchoredPosition -= new Vector2(0f, curSpeed * Time.unscaledDeltaTime);
 
@@ -330,16 +321,13 @@ public class UI_SlotMachine : UI
                 lineStack--;
                 if(lineStack == 0)
                 {
-                    audioSource.Stop();
-                    audioSource.pitch = 1f;
-                    audioSource.loop = false;
+                    SoundManager.Instance.StopSlotMachineSound();
                     isPlayMachine = false;
                     yield return new WaitForSecondsRealtime(0.15f);
                     rewardPanel.gameObject.SetActive(true);
                     if (sameContents == 3)
                     {
-                        audioSource.clip = jackpotSound;
-                        audioSource.Play();
+                        SoundManager.Instance.PlaySFXSound("JingleWin");
                         switch (jackpotGrade)
                         {
                             case 0:
@@ -358,8 +346,7 @@ public class UI_SlotMachine : UI
                                 Reward(5);
                                 break;
                             case 5:
-                                audioSource.clip = bangSound;
-                                audioSource.Play();
+                                SoundManager.Instance.PlaySFXSound("JingleLose");
                                 Reward(0);
                                 break;
                             default:
@@ -369,8 +356,7 @@ public class UI_SlotMachine : UI
                     }
                     else
                     {
-                        audioSource.clip = bangSound;
-                        audioSource.Play();
+                        SoundManager.Instance.PlaySFXSound("JingleLose");
                         Reward(0);
                     }
                 }
@@ -421,8 +407,6 @@ public class UI_SlotMachine : UI
             rewardsRT[i].gameObject.SetActive(false);
         }
         rewardPanel.gameObject.SetActive(false);
-
-        audioSource = GetComponent<AudioSource>();
     }
 
     private void ResetSize()
