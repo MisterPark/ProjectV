@@ -7,8 +7,6 @@ using UnityEngine.EventSystems;
 
 public class Main_Title_SC : MonoBehaviour
 {
-    public float KeyboardCursor_Xpos;
-    public Image KeyboardCursor_Image;
     public string StartScene_Name;
     public EventSystem Event_Handle;
     [SerializeField]
@@ -30,34 +28,7 @@ public class Main_Title_SC : MonoBehaviour
         if (Event_Handle.sendNavigationEvents)
         {
             GameObject tempobject = Event_Handle.currentSelectedGameObject;
-            if (tempobject != null)
-            {
-                float objectwidth = (tempobject.GetComponent<RectTransform>().rect.width) / 4;
-                Vector2 SelectedCursorPos = new Vector2(tempobject.transform.position.x - objectwidth, tempobject.transform.position.y);
-                float width = screenRT.sizeDelta.x;
-                if (tempobject.name=="Start Button")
-                {
-                    
-                    KeyboardCursor_Image.transform.position = SelectedCursorPos + new Vector2(-width*10f, 0f);
-                }
-                else if(tempobject.name == "Powerup Button")
-                {
-                    KeyboardCursor_Image.transform.position = SelectedCursorPos + new Vector2(-width * 10f, 0f);
-                }
-                else if(tempobject.name == "Option Button")
-                {
-                    KeyboardCursor_Image.transform.position = SelectedCursorPos + new Vector2(-width * 8f, 0f);
-                }
-                else if (tempobject.name == "Exit Button")
-                {
-                    KeyboardCursor_Image.transform.position = SelectedCursorPos + new Vector2(-width * 5f, 0f);
-                }
-                else
-                {
-                    KeyboardCursor_Image.transform.position = SelectedCursorPos + new Vector2(-width * 10f, 0f);
-                }
-            }
-            else
+            if (tempobject == null)
             {
                 Event_Handle.SetSelectedGameObject(Event_Handle.firstSelectedGameObject);
             }
@@ -66,11 +37,9 @@ public class Main_Title_SC : MonoBehaviour
     public void ShowCursor()
     {
         Event_Handle.SetSelectedGameObject(Event_Handle.firstSelectedGameObject);
-        KeyboardCursor_Image.gameObject.SetActive(true);
     }
     public void OnClickStart()
     {
-        KeyboardCursor_Image.gameObject.SetActive(false);
         transform.Find("Start Button").gameObject.SetActive(false);
         transform.Find("Powerup Button").gameObject.SetActive(false);
         DataManager.Instance.Setting_PowerStat();
@@ -121,11 +90,9 @@ public class Main_Title_SC : MonoBehaviour
     {
         UI_Settings.instance.Show();
         SoundManager.Instance.PlaySFXSound("ShortButton");
-        KeyboardCursor_Image.gameObject.SetActive(false);
     }
     public void OnClickPowerup()
     {
-        KeyboardCursor_Image.gameObject.SetActive(false);
         transform.Find("Start Button").gameObject.SetActive(false);
         transform.Find("Powerup Button").gameObject.SetActive(false);
         UI_Powerup.instacne.Show();
