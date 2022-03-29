@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class ObjectSound : MonoBehaviour
 {
-    // Start is called before the first frame update
-    private AudioSource audio;
+    
+    private AudioSource audioSource;
     [SerializeField] float Volume;
     private void OnEnable()
     {
-        if(audio==null)
+        if (audioSource == null)
         {
-            audio = GetComponent<AudioSource>();
+            audioSource = GetComponent<AudioSource>();
         }
-        audio.volume = SoundManager.Instance.masterVolumeSFX * Volume;
+        audioSource.volume = SoundManager.Instance.masterVolumeSFX * Volume;
     }
 }

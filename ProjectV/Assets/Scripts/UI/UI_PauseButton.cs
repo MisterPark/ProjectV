@@ -23,7 +23,7 @@ public class UI_PauseButton : MonoBehaviour
         ResetSize();
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
     }

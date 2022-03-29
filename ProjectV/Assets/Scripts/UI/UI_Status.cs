@@ -7,13 +7,13 @@ public class UI_Status : MonoBehaviour
     private Stat playerStat;
     private RectTransform rectTransform;
     [SerializeField] private UI_StatData[] children;
-    // Start is called before the first frame update
+    
     void Start()
     {
         rectTransform = GetComponent<RectTransform>();
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         playerStat = Player.Instance.stat;

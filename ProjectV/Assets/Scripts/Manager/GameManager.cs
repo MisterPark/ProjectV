@@ -156,6 +156,11 @@ public class GameManager : MonoBehaviour
         {
             BoardManager.Instance.Pause = !BoardManager.Instance.Pause;
         }
+        if (Input.GetKeyUp(KeyCode.F6))
+        {
+            float hp = Player.Instance.stat.Get_FinalStat(StatType.MaxHealth);
+            Player.Instance.stat.Set_FinalStat(StatType.Health, hp);
+        }
 #endif
 
         InitZoom();

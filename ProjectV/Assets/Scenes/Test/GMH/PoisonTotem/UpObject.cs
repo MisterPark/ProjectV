@@ -10,7 +10,7 @@ public class UpObject : MonoBehaviour
 
 
 
-    // Update is called once per frame
+    
     private void OnEnable()
     {
         transform.position =  new Vector3(transform.position.x, Default, transform.position.z);

@@ -8,7 +8,7 @@ public class Skill_LavaOrb : Skill
     {
         Kind = SkillKind.LavaOrb;
     }
-    // Start is called before the first frame update
+    
     protected override void Start()
     {
         Kind = SkillKind.LavaOrb;

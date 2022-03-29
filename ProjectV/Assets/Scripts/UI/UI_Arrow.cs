@@ -8,13 +8,13 @@ public class UI_Arrow : MonoBehaviour
     public Image Arrow_Image;
     private float Twinkle_Time;
     private float Twinkle_Speed;
-    // Start is called before the first frame update
+    
     void Start()
     {
         Twinkle_Speed = 100f;
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         Twinkle_Time += Time.deltaTime;

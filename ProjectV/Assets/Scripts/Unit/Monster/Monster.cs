@@ -48,23 +48,25 @@ public class Monster : Unit
         {
             ItemManager.Instance.Drop(ItemType.NormalChest, transform.position);
             GameObject obj;
+            ItemManager itemManager = ItemManager.Instance;
             int random = Random.Range(0, 100);
             int minute = (int)DataManager.Instance.currentGameData.totalPlayTime / 60;
             float randomExp = Random.Range(8, 13) * (1 + (minute * 0.2f));
             if (random < 90)
             {
-                obj = ItemManager.Instance.Drop(ItemType.ExpJewelSmall, transform.position);
-                obj.GetComponentInChildren<ExpJewel_01>().exp = randomExp;
+                obj = itemManager.Drop(ItemType.ExpJewelSmall, transform.position);
+                obj.GetComponentInChildren<ExpJewel>().exp = randomExp;
             }
             else if (random < 99)
             {
-                obj = ItemManager.Instance.Drop(ItemType.ExpJewelNormal, transform.position);
-                obj.GetComponentInChildren<ExpJewel_02>().exp = randomExp * 4;
+                obj = itemManager.Drop(ItemType.ExpJewelNormal, transform.position);
+                obj.GetComponentInChildren<ExpJewel>().exp = randomExp * 4;
             }
             else
             {
-                obj = ItemManager.Instance.Drop(ItemType.ExpJewelBig, transform.position);
-                obj.GetComponentInChildren<ExpJewel_03>().exp = randomExp * 10;
+                obj = itemManager.Drop(ItemType.ExpJewelBig, transform.position);
+                obj.GetComponentInChildren<ExpJewel>().exp = (randomExp * 10) + itemManager.expAccumulate;
+                itemManager.expAccumulate = 0f;
             }
 
         }

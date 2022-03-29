@@ -16,13 +16,13 @@ public class SkillObject : MonoBehaviour
     public Unit owner;
     public float tick = 0f;
     public float cooltimeTick;
-    // Start is called before the first frame update
+    
     void Start()
     {
         transform.localScale = Vector3.one * range;
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         

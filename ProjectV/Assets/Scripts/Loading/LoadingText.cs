@@ -16,7 +16,7 @@ public class LoadingText : MonoBehaviour
         text = GetComponent<Text>();
     }
 
-    // Update is called once per frame
+    
     void FixedUpdate()
     {
         tick += Time.fixedDeltaTime;

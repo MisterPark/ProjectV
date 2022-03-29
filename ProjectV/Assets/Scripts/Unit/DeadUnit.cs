@@ -17,7 +17,7 @@ public class DeadUnit : MonoBehaviour
         cutoff = 2f;
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         cutoff -= Time.deltaTime;

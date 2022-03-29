@@ -8,7 +8,7 @@ public class GoldCoin_02 : Item
     {
         base.Start();
     }
-    // Update is called once per frame
+    
     protected override void Update()
     {
         base.Update();

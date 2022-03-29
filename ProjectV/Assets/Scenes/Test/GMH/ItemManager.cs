@@ -20,6 +20,12 @@ public class ItemManager : MonoBehaviour
     public static ItemManager Instance;
 
     [SerializeField] GameObject[] prefabs;
+    [SerializeField] private int expJewelMaxCount = 100;
+    public int expJewelCount = 0;
+    public float expAccumulate = 0;
+    [SerializeField] private float farExpJewelDeleteTime = 5f;
+    [SerializeField] private float farExpJewelDeleteTick = 0f;
+    [SerializeField] private float farExpJewelDeleteDistance = 25f;
 
     public List<GameObject> itemList = new List<GameObject>();
     private void Awake()
@@ -37,6 +43,12 @@ public class ItemManager : MonoBehaviour
     {
         
     }
+
+    private void FixedUpdate()
+    {
+        FarExpJewelDelete();
+    }
+
     public GameObject Drop(ItemType type, Vector3 position)
     {
         GameObject itemObject =ObjectPool.Instance.Allocate("ItemObject");
@@ -51,25 +63,30 @@ public class ItemManager : MonoBehaviour
         GameObject item = itemObject.transform.GetChild((int)type).gameObject;
         Item itemCom = item.GetComponent<Item>();
         item.SetActive(true);
+        item.gameObject.transform.localPosition = Vector3.zero;
         itemObjectCom.Item = itemCom;
+        itemObjectCom.LifeTime = 0;
+        itemObjectCom.SinWaveFlag = false;
 
-     
         switch (type)
         {
         case ItemType.ExpJewelBig:
                 itemObjectCom.isRotate = true;
                 itemObjectCom.isMagnetism = true;
                 itemObjectCom.isChest = false;
+                itemObjectCom.SinWaveFlag = true;
                 break;
         case ItemType.ExpJewelNormal:
                 itemObjectCom.isRotate = true;
                 itemObjectCom.isMagnetism = true;
                 itemObjectCom.isChest = false;
+                itemObjectCom.SinWaveFlag = true;
                 break;
         case ItemType.ExpJewelSmall:
                 itemObjectCom.isRotate = true;
                 itemObjectCom.isMagnetism = true;
                 itemObjectCom.isChest = false;
+                itemObjectCom.SinWaveFlag = true;
                 break;
         case ItemType.HpPotion:
                 itemObjectCom.isRotate = true;
@@ -147,11 +164,76 @@ public class ItemManager : MonoBehaviour
         //GameObject item = ObjectPool.Instance.Allocate(prefabs[(int)type].name);
         //item.transform.position = position;
         itemList.Add(itemObject);
+
+        if((int)type <= (int)ItemType.ExpJewelSmall)
+        {
+            expJewelCount++;
+            if (expJewelCount > expJewelMaxCount)
+            {
+                AdjustTheExpJewel();
+            }
+        }
         return itemObject;
     }
     public void Remove(GameObject target)
     {
         itemList.Remove(target);
         ObjectPool.Instance.Free(target);
+    }
+
+    public void AdjustTheExpJewel()
+    {
+        GameObject expJewelObj = null;
+        ExpJewel expJewel = null;
+        foreach (GameObject _item in itemList)
+        {
+            expJewel = _item.GetComponentInChildren<ExpJewel>();
+            if (expJewel != null)
+            {
+                expJewelObj = _item;
+                break;
+            }
+        }
+
+        if (expJewel == null)
+        {
+            return;
+        }
+        expJewelCount--;
+        expAccumulate += expJewel.exp;
+
+        Remove(expJewelObj);
+    }
+
+    public void FarExpJewelDelete()
+    {
+        farExpJewelDeleteTick += Time.fixedDeltaTime;
+        List<GameObject> deleteList = new List<GameObject>();
+        if (farExpJewelDeleteTick >= farExpJewelDeleteTime)
+        {
+            farExpJewelDeleteTick = 0f;
+            Vector3 playerPos = Player.Instance.transform.position;
+            foreach (GameObject _item in itemList)
+            {
+                ExpJewel expJewel = _item.GetComponentInChildren<ExpJewel>();
+                if (expJewel == null)
+                {
+                    continue;
+                }
+                float distance = Vector3.Distance(playerPos, _item.transform.position);
+                if (farExpJewelDeleteDistance <= distance)
+                {
+                    expJewelCount--;
+                    expAccumulate += expJewel.exp;
+
+                    deleteList.Add(_item);
+                }
+            }
+
+            foreach (GameObject _item in deleteList)
+            {
+                Remove(_item);
+            }
+        }
     }
 }

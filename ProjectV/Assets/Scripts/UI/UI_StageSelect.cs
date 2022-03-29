@@ -33,17 +33,10 @@ public class UI_StageSelect : UI
         //gameObject.SetActive(false);
         
     }
-    private void OnEnable()
-    {
-        //if (Event_Handle.currentSelectedGameObject == null)
-        //{
-        //    GameObject selectobject = transform.Find("Scroll View").Find("Contents").GetChild(0).gameObject;
-        //    Event_Handle.SetSelectedGameObject(selectobject);
-        //}
-    }
 
     public void OnClickStageSlot()
     {
+        DescriptionImage.color = new Color(1f, 1f, 1f, 1f);
         Event_Handle = EventSystem.current;
         GameObject selectobject = Event_Handle.currentSelectedGameObject;
         DescriptionName.text = selectobject.GetComponent<UI_StageSlot>().SlotName.text;
@@ -63,6 +56,7 @@ public class UI_StageSelect : UI
 
     void SlotInit()
     {
+        DescriptionImage.color = new Color(1f,1f,1f,0f);
         GameObject tempslot;
         for (int repeat = 0; repeat < (int)(StageKind.End); ++repeat)
         {

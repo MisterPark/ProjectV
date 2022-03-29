@@ -19,7 +19,7 @@ public class UI_CombinePanel : UI
     {
         instance = this;
     }
-    // Start is called before the first frame update
+    
     void Start()
     {
         isInit = Init();
@@ -33,14 +33,15 @@ public class UI_CombinePanel : UI
         Hide();
     }
 
-    private void OnEnable()
+    protected override void OnEnable()
     {
+        base.OnEnable();
         if (Player.Instance == null)
             return;
-        if(!isInit)
+        if (!isInit)
         {
             isInit = Init();
-            if(isInit == false)
+            if (isInit == false)
             {
                 Hide();
                 return;

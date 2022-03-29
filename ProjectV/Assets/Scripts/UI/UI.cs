@@ -7,7 +7,7 @@ public class UI : MonoBehaviour
     public bool Visible { get { return gameObject.activeSelf; } }
 
 
-    protected void OnEnable()
+    protected virtual void OnEnable()
     {
         gameObject.Localized();
     }
