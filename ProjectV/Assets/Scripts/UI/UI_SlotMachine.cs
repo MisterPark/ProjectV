@@ -209,6 +209,10 @@ public class UI_SlotMachine : UI
                 {
                     rewardsRT[i].anchoredPosition = new Vector2(0f, 0f);
                 }
+                else if(rewardQuantity % 2 == 0)
+                {
+                    rewardsRT[i].anchoredPosition = new Vector2((300f * i) - (300f * (int)(rewardQuantity / 2) - 150f), 0f);
+                }
                 else
                 {
                     rewardsRT[i].anchoredPosition = new Vector2((300f * i) - (300f * (int)(rewardQuantity/2)), 0f);
@@ -312,13 +316,13 @@ public class UI_SlotMachine : UI
                                 Reward(1);
                                 break;
                             case 1:
-                                Reward(1);
+                                Reward(2);
                                 break;
                             case 2:
                                 Reward(3);
                                 break;
                             case 3:
-                                Reward(3);
+                                Reward(4);
                                 break;
                             case 4:
                                 Reward(5);
