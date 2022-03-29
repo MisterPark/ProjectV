@@ -21,7 +21,7 @@ public class UI_PlayerHealth : MonoBehaviour
         }
         else
         {
-            height = target.GetComponent<CapsuleCollider>().height;
+            height = target.GetComponent<CapsuleCollider>().height + 0.5f;
         }
             
     }

@@ -63,7 +63,6 @@ public class ItemManager : MonoBehaviour
         GameObject item = itemObject.transform.GetChild((int)type).gameObject;
         Item itemCom = item.GetComponent<Item>();
         item.SetActive(true);
-        item.gameObject.transform.localPosition = Vector3.zero;
         itemObjectCom.Item = itemCom;
         itemObjectCom.LifeTime = 0;
         itemObjectCom.SinWaveFlag = false;
@@ -71,18 +70,21 @@ public class ItemManager : MonoBehaviour
         switch (type)
         {
         case ItemType.ExpJewelBig:
+                item.gameObject.transform.localPosition = Vector3.zero;
                 itemObjectCom.isRotate = true;
                 itemObjectCom.isMagnetism = true;
                 itemObjectCom.isChest = false;
                 itemObjectCom.SinWaveFlag = true;
                 break;
         case ItemType.ExpJewelNormal:
+                item.gameObject.transform.localPosition = Vector3.zero;
                 itemObjectCom.isRotate = true;
                 itemObjectCom.isMagnetism = true;
                 itemObjectCom.isChest = false;
                 itemObjectCom.SinWaveFlag = true;
                 break;
         case ItemType.ExpJewelSmall:
+                item.gameObject.transform.localPosition = Vector3.zero;
                 itemObjectCom.isRotate = true;
                 itemObjectCom.isMagnetism = true;
                 itemObjectCom.isChest = false;
