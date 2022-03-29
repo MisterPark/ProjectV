@@ -55,8 +55,8 @@ public class UI_PausePanel : UI
     public void OnClickCombine()
     {
         SoundManager.Instance.PlaySFXSound("ShortButton");
-        HidePanel();
-        if(UI_CombinePanel.instance.Visible)
+        UI_Settings.instance.Hide();
+        if (UI_CombinePanel.instance.Visible)
         {
             UI_CombinePanel.instance.Hide();
         }
