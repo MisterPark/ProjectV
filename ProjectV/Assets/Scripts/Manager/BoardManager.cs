@@ -19,7 +19,7 @@ public class BoardManager : MonoBehaviour
         InitializeBoard();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         CreateBoards();
         RemoveBoards();
@@ -94,8 +94,6 @@ public class BoardManager : MonoBehaviour
         if (Player.Instance == null) return;
 
         Vector3 playerPos = Player.Instance.transform.position;
-        int indexX = (int)playerPos.x / 100;
-        int indexY = (int)playerPos.z / 100;
 
         List<Board> removes = new List<Board>();
         int count = boards.Count;

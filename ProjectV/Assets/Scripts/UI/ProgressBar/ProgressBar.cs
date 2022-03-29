@@ -16,7 +16,7 @@ public class ProgressBar : MonoBehaviour
     }
 
     
-    void Update()
+    void FixedUpdate()
     {
         float progress = LoadingSceneManager.instance.Progress;
         mat.SetFloat("_FillAmount", progress);

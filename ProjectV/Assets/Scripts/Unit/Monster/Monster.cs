@@ -33,7 +33,7 @@ public class Monster : Unit
 
         Vector3 to = other.transform.position - transform.position;
         Vector3 direction = to.normalized;
-        float dist = target.capsuleCollider.radius + capsuleCollider.radius;
+        float dist = target.Radius + Radius;
         target.transform.position += direction * dist * Time.deltaTime;
     }
 

@@ -15,11 +15,6 @@ public class Skill_HeavyFireBall : Skill
         activeInterval = 0.1f;
     }
 
-    
-    void Update()
-    {
-
-    }
 
     public override void Active()
     {

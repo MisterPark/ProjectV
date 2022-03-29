@@ -18,12 +18,6 @@ public class SpawnMeteorTutScript : MonoBehaviour
         RotateTo(objVFX, endPos);
     }
 
-    
-    void Update()
-    {
-        
-    }
-
     void RotateTo(GameObject obj, Vector3 destination)
     {
         var direction = destination - obj.transform.position;

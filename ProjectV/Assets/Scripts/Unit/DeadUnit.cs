@@ -18,9 +18,9 @@ public class DeadUnit : MonoBehaviour
     }
 
     
-    void Update()
+    void FixedUpdate()
     {
-        cutoff -= Time.deltaTime;
+        cutoff -= Time.fixedDeltaTime;
         if(cutoff > 0)
         {
             material.SetFloat("_CutoffHeight", cutoff);

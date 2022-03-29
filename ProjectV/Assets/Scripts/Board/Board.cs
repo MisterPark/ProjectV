@@ -8,14 +8,6 @@ public class Board : MonoBehaviour
     public int Row { get; set; }
     public int Column { get; set; }
 
-    void Start()
-    {
-    }
-
-    void Update()
-    {
-        
-    }
 
     public bool IsFarFromThePlayer()
     {

@@ -15,11 +15,6 @@ public class Skill_Rain : Skill
     }
 
     
-    void Update()
-    {
-        
-    }
-
     public override void Active()
     {
         //GameObject nearest = null;

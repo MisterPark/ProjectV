@@ -11,7 +11,7 @@ public class TorchlightDeath : MonoBehaviour
     }
 
     
-    void Update()
+    void FixedUpdate()
     {
         ObjectPool.Instance.Free(gameObject);
     }

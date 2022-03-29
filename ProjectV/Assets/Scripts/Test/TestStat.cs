@@ -21,14 +21,5 @@ public class TestStatElement
 public class TestStat : MonoBehaviour
 {
     [SerializeField]List<TestStatElement> elements = new List<TestStatElement>();
-    void Start()
-    {
-        
-    }
 
-    
-    void Update()
-    {
-        
-    }
 }

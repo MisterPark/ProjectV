@@ -13,12 +13,6 @@ public class UnstableMagicMissile : Missile
 
     }
 
-    
-    void Update()
-    {
-        
-    }
-
     protected override void ProcessMove()
     {
 

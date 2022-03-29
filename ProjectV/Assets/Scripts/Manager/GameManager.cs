@@ -111,6 +111,7 @@ public class GameManager : MonoBehaviour
 
     void FixedUpdate()
     {
+        InitZoom();
         CountTime();
         ProcessVictory();
     }
@@ -169,7 +170,7 @@ public class GameManager : MonoBehaviour
         }
 #endif
 
-        InitZoom();
+        
 
     }
 

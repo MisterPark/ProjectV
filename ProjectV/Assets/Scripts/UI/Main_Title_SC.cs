@@ -22,7 +22,7 @@ public class Main_Title_SC : MonoBehaviour
     }
 
     
-    void Update()
+    void FixedUpdate()
     {
         Money_Text.text = DataManager.Instance.currentSaveData.currentGold.ToString();
         if (Event_Handle.sendNavigationEvents)

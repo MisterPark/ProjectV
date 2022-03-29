@@ -25,6 +25,7 @@ public class Unit : MonoBehaviour
 
     protected Animator animator;
     public CapsuleCollider capsuleCollider;
+    public float Radius { get; set; }
     
     Vector3 oldPosition;
     public Vector3 skillOffsetPosition;
@@ -60,7 +61,13 @@ public class Unit : MonoBehaviour
         if(capsuleCollider == null)
         {
             Debug.LogError("CapsuleCollider Not Found");
+            Radius = 1f;
         }
+        else
+        {
+            Radius = capsuleCollider.radius;
+        }
+
         oldPosition = transform.position;
         OnTakeDamage.AddListener(OnTakeDamageCallback);
         OnLevelUp.AddListener(OnLevelUpCallback);
@@ -74,11 +81,6 @@ public class Unit : MonoBehaviour
         ProcessKnockback();
         ProcessDamageFont();
         Animation();
-    }
-    
-    protected virtual void Update()
-    {
-        
     }
 
     /// <summary>

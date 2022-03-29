@@ -5,17 +5,6 @@ using UnityEngine;
 public class SkillObject_HeavyFireBall : SkillObject
 {
     
-    void Start()
-    {
-        
-    }
-
-    
-    void Update()
-    {
-        
-    }
-
     protected override void FixedUpdate()
     {
         tick += Time.fixedDeltaTime;

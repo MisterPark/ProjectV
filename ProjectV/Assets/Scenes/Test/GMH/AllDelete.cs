@@ -17,9 +17,9 @@ public class AllDelete : MonoBehaviour
         tick = 0;
     }
     
-    void Update()
+    void FixedUpdate()
     {
-        tick += Time.deltaTime;
+        tick += Time.fixedDeltaTime;
         if (lifeTime < tick)
         {
             tick = 0f;

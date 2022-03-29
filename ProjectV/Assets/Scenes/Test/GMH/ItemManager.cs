@@ -35,14 +35,6 @@ public class ItemManager : MonoBehaviour
             Instance = this;
         }
     }
-    void Start()
-    {
-        
-    }
-    void Update()
-    {
-        
-    }
 
     private void FixedUpdate()
     {

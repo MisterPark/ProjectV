@@ -14,11 +14,6 @@ public class Torchlight : Unit
         animator = null;
     }
 
-    protected override void Update()
-    {
-        base.Update();
-    }
-
     protected void OnTriggerStay(Collider other)
     {
         Unit target = other.gameObject.GetComponent<Unit>();
@@ -26,7 +21,7 @@ public class Torchlight : Unit
 
         Vector3 to = other.transform.position - transform.position;
         Vector3 direction = to.normalized;
-        float dist = target.capsuleCollider.radius + capsuleCollider.radius;
+        float dist = target.Radius + Radius;
         target.transform.position += direction * dist * Time.fixedDeltaTime;
     }
 

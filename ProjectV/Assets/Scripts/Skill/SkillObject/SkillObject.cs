@@ -23,10 +23,6 @@ public class SkillObject : MonoBehaviour
     }
 
     
-    void Update()
-    {
-        
-    }
 
     protected virtual void OnEnable()
     {

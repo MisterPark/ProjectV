@@ -10,8 +10,9 @@ public abstract class Item : MonoBehaviour
     {
     }
 
-    protected virtual void Update()
+    protected virtual void FixedUpdate()
     {
+
     }
 
     public abstract void Use();

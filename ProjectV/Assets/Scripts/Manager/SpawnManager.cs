@@ -59,7 +59,7 @@ public class SpawnManager : MonoBehaviour
         
     }
 
-    void Update()
+    void FixedUpdate()
     {
         
         ProcessFreeze();
@@ -100,7 +100,7 @@ public class SpawnManager : MonoBehaviour
     {
         if (Pause) return;
         if (freezeFlag) return;
-        spawnTick += Time.deltaTime;
+        spawnTick += Time.fixedDeltaTime;
         if (spawnTick < spawnDelay) return;
         
         spawnTick = 0f;
@@ -193,7 +193,7 @@ public class SpawnManager : MonoBehaviour
     private void ProcessFreeze()
     {
         if (freezeFlag == false) return;
-        freezeTick += Time.deltaTime;
+        freezeTick += Time.fixedDeltaTime;
         if(freezeTick > freezeTime)
         {
             freezeTick = 0f;

@@ -24,7 +24,7 @@ public class PropManager : MonoBehaviour
     }
 
     
-    void Update()
+    void FixedUpdate()
     {
         ProcessSpawn();
         ProcessRemove();

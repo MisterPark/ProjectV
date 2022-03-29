@@ -11,9 +11,9 @@ public class ExpJewel_03 : Item
         base.Start();
     }
     
-    protected override void Update()
+    protected override void FixedUpdate()
     {
-        base.Update();
+        base.FixedUpdate();
     }
     
     public override void Use()

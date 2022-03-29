@@ -106,12 +106,12 @@ public class CameraController : MonoBehaviour
 
     public void ZoomIn()
     {
-        zoom -= zoomSpeed * Time.deltaTime;
+        zoom -= zoomSpeed * Time.fixedDeltaTime;
     }
 
     public void ZoomOut()
     {
-        zoom += zoomSpeed * Time.deltaTime;
+        zoom += zoomSpeed * Time.fixedDeltaTime;
     }
 
 }

@@ -34,10 +34,6 @@ public class JoystickEx : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoi
         background.gameObject.SetActive(false);
     }
 
-    void Update()
-    {
-        
-    }
 
     
 
