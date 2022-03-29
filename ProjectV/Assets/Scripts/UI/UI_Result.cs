@@ -26,6 +26,7 @@ public class UI_Result : UI
         int second = total % 60;
         surviveText.text = $"{string.Format("{0:00}", minute)}:{string.Format("{0:00}", second)}";
         goldText.text = DataManager.Instance.currentGameData.gold.ToString();
+        levelText.text = DataManager.Instance.currentGameData.playerLevel.ToString();
         killcountText.text = DataManager.Instance.currentGameData.killCount.ToString();
     }
 

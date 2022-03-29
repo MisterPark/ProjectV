@@ -57,6 +57,7 @@ public class UI_SlotMachine : UI
         Init();
         ResetSize();
         Hide();
+        audioSource.volume = DataManager.Instance.Settings.SoundVolume;
     }
 
     public override void Show()
