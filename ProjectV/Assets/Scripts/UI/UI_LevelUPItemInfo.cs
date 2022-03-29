@@ -43,7 +43,7 @@ public class UI_LevelUPItemInfo : UI
         itemName.sizeDelta = new Vector2(width * 0.55f, size);
         index.sizeDelta = new Vector2(width, size);
         level.sizeDelta = new Vector2(width * 0.19f, size);
-        icon.sizeDelta = new Vector2(size, size);
+        iconMask.sizeDelta = new Vector2(size, size);
         nameText.fontSize = ((int)(size * 0.5f));
         descText.fontSize = ((int)(size * 0.5f));
         levelText.fontSize = ((int)(size * 0.5f));
