@@ -50,6 +50,7 @@ public class SoundManager : MonoBehaviour
 
     private AudioSource bgmPlayer;
     private AudioSource sfxPlayer;
+    public AudioSource slotMachinePlayer;
 
     public float masterVolumeBGM = 1f;
     public float masterVolumeSFX = 1f;
@@ -68,9 +69,15 @@ public class SoundManager : MonoBehaviour
 #endif
     [SerializeField]
     private AudioClipNode[] sfxAudioClips; //효과음들 지정
+#if UNITY_EDITOR
+    [ArrayElementTitle("clipName")]
+#endif
+    [SerializeField]
+    private AudioClipNode[] slotMachineAudioClips; //슬롯머신음 지정
 
     Dictionary<string, AudioClipNode> sfxAudioClipsDic = new Dictionary<string, AudioClipNode>(); //효과음 딕셔너리
     Dictionary<string, AudioClipNode> bgmAudioClipsDic = new Dictionary<string, AudioClipNode>(); //배경음 딕셔너리
+    Dictionary<string, AudioClipNode> slotMachineAudioClipsDic = new Dictionary<string, AudioClipNode>(); //슬롯머신 딕셔너리
     // AudioClip을 Key,Value 형태로 관리하기 위해 딕셔너리 사용
     [SerializeField] private float newBgmInterval = 600f;
     private float newBgmTick = 0f;
@@ -86,6 +93,7 @@ public class SoundManager : MonoBehaviour
 
         bgmPlayer = transform.GetChild(0).GetComponent<AudioSource>();
         sfxPlayer = transform.GetChild(1).GetComponent<AudioSource>();
+        slotMachinePlayer = transform.GetChild(2).GetComponent<AudioSource>();
 
         foreach (AudioClipNode audioclip in sfxAudioClips)
         {
@@ -100,6 +108,13 @@ public class SoundManager : MonoBehaviour
             newNode.clip = audioclip.clip;
             newNode.volume = audioclip.volume;
             bgmAudioClipsDic.Add(audioclip.clipName, newNode);
+        }
+        foreach (AudioClipNode audioclip in slotMachineAudioClips)
+        {
+            AudioClipNode newNode = new AudioClipNode();
+            newNode.clip = audioclip.clip;
+            newNode.volume = audioclip.volume;
+            slotMachineAudioClipsDic.Add(audioclip.clipName, newNode);
         }
         SceneManager.sceneLoaded += OnSceneLoad;
 
@@ -139,9 +154,30 @@ public class SoundManager : MonoBehaviour
 
     }
 
+    public void PlaySlotMachineSound(string name)
+    {
+        slotMachinePlayer.loop = true; //BGM 사운드이므로 루프설정
+
+        if (slotMachineAudioClipsDic.ContainsKey(name) == false)
+        {
+            Debug.Log(name + " is not Contained audioClipsDic");
+            return;
+        }
+        slotMachinePlayer.clip = slotMachineAudioClipsDic[name].clip;
+        slotMachinePlayer.volume = slotMachineAudioClipsDic[name].volume * masterVolumeBGM;
+        slotMachinePlayer.Play();
+        bgmPlayer.Pause();
+    }
+
     public void StopBGM()
     {
         bgmPlayer.Stop();
+    }
+
+    public void StopSlotMachineSound()
+    {
+        slotMachinePlayer.Stop();
+        bgmPlayer.Play();
     }
 
     void FixedUpdate()
