@@ -13,12 +13,15 @@ public class UI_SlotMachine : UI
     public RectTransform[] originImage;
     public Sprite goldSprite;
     public AudioClip rillSound;
-    public AudioClip stopSound;
+    public AudioClip jackpotSound;
+    public AudioClip bangSound;
 
     private bool isPlayMachine = false;
+    private bool isOnceTime = false;
     private int lineStack = 0;
     private int maxRange;
     private int sameContents;
+    private int jackpotGrade;
     private int[] jackpotNum;
     private float slotSize;
     private float maxSpeed;
@@ -60,19 +63,24 @@ public class UI_SlotMachine : UI
     {
         GameManager.Instance.Pause();
         base.Show();
+        if(!isPlayMachine)
+            isOnceTime = true;
     }
 
     public override void Hide()
     {
         base.Hide();
+        rewardPanel.gameObject.SetActive(false);
+        audioSource.enabled = false;
         GameManager.Instance.Resume();
     }
 
     private void Play()
     {
-        if (isPlayMachine == false)
+        if (isPlayMachine == false && isOnceTime)
         {
             isPlayMachine = true;
+            isOnceTime = false;
             audioSource.enabled = true;
             audioSource.clip = rillSound;
             audioSource.loop = true;
@@ -105,15 +113,15 @@ public class UI_SlotMachine : UI
     private void Result()
     {
         int percent = Random.Range(1, 100);
-        if (1 <= percent && percent < 70)
+        if (1 <= percent && percent < 50)
         {
             sameContents = 1;
         }
-        else if (70 <= percent && percent < 95)
+        else if (50 <= percent && percent < 85)
         {
             sameContents = 2;
         }
-        else if (95 <= percent && percent <= 100)
+        else if (85 <= percent && percent <= 100)
         {
             sameContents = 3;
         }
@@ -139,6 +147,8 @@ public class UI_SlotMachine : UI
         rand = new System.Random();
         index = rand.Next(0, maxRange - exclude.Count);
         numC = range.ElementAt(index);
+
+        jackpotGrade = numA;
 
         switch (sameContents)
         {
@@ -199,6 +209,10 @@ public class UI_SlotMachine : UI
                 {
                     rewardsRT[i].anchoredPosition = new Vector2(0f, 0f);
                 }
+                else if(rewardQuantity % 2 == 0)
+                {
+                    rewardsRT[i].anchoredPosition = new Vector2((300f * i) - (300f * (int)(rewardQuantity / 2) - 150f), 0f);
+                }
                 else
                 {
                     rewardsRT[i].anchoredPosition = new Vector2((300f * i) - (300f * (int)(rewardQuantity/2)), 0f);
@@ -255,7 +269,7 @@ public class UI_SlotMachine : UI
                     curSpeed = minSpeed;
                 }
                 else
-                    audioSource.pitch *= 0.95f;
+                    audioSource.pitch *= 0.97f;
             }
             for (int i = 1; i < contents.Length; i++)
             {
@@ -286,24 +300,48 @@ public class UI_SlotMachine : UI
                 lineStack--;
                 if(lineStack == 0)
                 {
-                    audioSource.clip = stopSound;
-                    audioSource.loop = false;
+                    audioSource.Stop();
                     audioSource.pitch = 1f;
-                    audioSource.Play();
+                    audioSource.loop = false;
                     isPlayMachine = false;
                     yield return new WaitForSecondsRealtime(0.15f);
                     rewardPanel.gameObject.SetActive(true);
-                    yield return new WaitForSecondsRealtime(0.25f);
-                    switch (sameContents)
+                    if (sameContents == 3)
                     {
-                        case 1: Reward(1);
-                            break;
-                        case 2: Reward(3);
-                            break;
-                        case 3: Reward(5);
-                            break;
-                        default: Reward(1);
-                            break;
+                        audioSource.clip = jackpotSound;
+                        audioSource.Play();
+                        switch (jackpotGrade)
+                        {
+                            case 0:
+                                Reward(1);
+                                break;
+                            case 1:
+                                Reward(2);
+                                break;
+                            case 2:
+                                Reward(3);
+                                break;
+                            case 3:
+                                Reward(4);
+                                break;
+                            case 4:
+                                Reward(5);
+                                break;
+                            case 5:
+                                audioSource.clip = bangSound;
+                                audioSource.Play();
+                                Reward(0);
+                                break;
+                            default:
+                                Reward(0);
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        audioSource.clip = bangSound;
+                        audioSource.Play();
+                        Reward(0);
                     }
                 }
                 break;
@@ -318,7 +356,7 @@ public class UI_SlotMachine : UI
         rectTransform = GetComponent<RectTransform>();
         linePanel = transform.GetChild(0).GetComponent<RectTransform>();
         buttonPanel = transform.GetChild(1).GetComponent<RectTransform>();
-        rewardPanel = transform.GetChild(2).GetComponent<RectTransform>();
+        rewardPanel = transform.GetChild(3).GetComponent<RectTransform>();
         contents = new RectTransform[lineCount][];
         for(int i = 0; i < contents.Length; i++)
         {
@@ -406,8 +444,6 @@ public class UI_SlotMachine : UI
 
     public void OnClickConfirm()
     {
-        rewardPanel.gameObject.SetActive(false);
-        audioSource.enabled = false;
         Hide();
     }
 }

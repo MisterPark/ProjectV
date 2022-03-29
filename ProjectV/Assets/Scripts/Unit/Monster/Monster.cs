@@ -46,6 +46,7 @@ public class Monster : Unit
         }
         else
         {
+            ItemManager.Instance.Drop(ItemType.NormalChest, transform.position);
             GameObject obj;
             ItemManager itemManager = ItemManager.Instance;
             int random = Random.Range(0, 100);
