@@ -37,6 +37,7 @@ public class Meteor : MonoBehaviour
     {
         if (other.gameObject.tag == "Board")
         {
+            Debug.Log("Ãæµ¹");
             if (!createCrater)
             {
                 GameObject obj = ObjectPool.Instance.Allocate("MeteorHit");
