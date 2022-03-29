@@ -64,31 +64,31 @@ public class ItemManager : MonoBehaviour
         Item itemCom = item.GetComponent<Item>();
         item.SetActive(true);
         itemObjectCom.Item = itemCom;
-        itemObjectCom.LifeTime = 0;
-        itemObjectCom.SinWaveFlag = false;
+        //itemObjectCom.LifeTime = 0;
+        //itemObjectCom.SinWaveFlag = false;
 
         switch (type)
         {
         case ItemType.ExpJewelBig:
-                item.gameObject.transform.localPosition = Vector3.zero;
+                //item.gameObject.transform.localPosition = Vector3.zero;
                 itemObjectCom.isRotate = true;
                 itemObjectCom.isMagnetism = true;
                 itemObjectCom.isChest = false;
-                itemObjectCom.SinWaveFlag = true;
+                //itemObjectCom.SinWaveFlag = true;
                 break;
         case ItemType.ExpJewelNormal:
-                item.gameObject.transform.localPosition = Vector3.zero;
+                //item.gameObject.transform.localPosition = Vector3.zero;
                 itemObjectCom.isRotate = true;
                 itemObjectCom.isMagnetism = true;
                 itemObjectCom.isChest = false;
-                itemObjectCom.SinWaveFlag = true;
+                //itemObjectCom.SinWaveFlag = true;
                 break;
         case ItemType.ExpJewelSmall:
-                item.gameObject.transform.localPosition = Vector3.zero;
+                //item.gameObject.transform.localPosition = Vector3.zero;
                 itemObjectCom.isRotate = true;
                 itemObjectCom.isMagnetism = true;
                 itemObjectCom.isChest = false;
-                itemObjectCom.SinWaveFlag = true;
+                //itemObjectCom.SinWaveFlag = true;
                 break;
         case ItemType.HpPotion:
                 itemObjectCom.isRotate = true;
