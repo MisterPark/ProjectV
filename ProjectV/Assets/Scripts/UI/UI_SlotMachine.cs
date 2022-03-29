@@ -89,7 +89,7 @@ public class UI_SlotMachine : UI
             {
                 if (playCoroutine[i] != null)
                     StopCoroutine(playCoroutine[i]);
-                lineSpeed[i] = maxSpeed * Random.Range(1f, 3f);
+                lineSpeed[i] = maxSpeed * Random.Range(1.5f, 4f);
                 playCoroutine[i] = StartCoroutine(PlaySlotMachine(contents[i], i, lineSpeed[i]));
             }
         }
@@ -115,15 +115,15 @@ public class UI_SlotMachine : UI
         int percent = Random.Range(1, 100);
         if (1 <= percent && percent < 50)
         {
-            sameContents = 1;
+            sameContents = 3;
         }
-        else if (50 <= percent && percent < 85)
+        else if (50 <= percent && percent < 75)
         {
             sameContents = 2;
         }
-        else if (85 <= percent && percent <= 100)
+        else if (75 <= percent && percent <= 100)
         {
-            sameContents = 3;
+            sameContents = 1;
         }
         else
             sameContents = 1;
@@ -258,18 +258,22 @@ public class UI_SlotMachine : UI
         lineStack++;
         while (true)
         {
+            curSpeed -= maxSpeed * 0.5f * Time.unscaledDeltaTime;
+            if (curSpeed <= minSpeed)
+            {
+                curSpeed = minSpeed;
+            }
+            else
+            {
+                audioSource.pitch -= 0.005f * Time.unscaledDeltaTime;
+            }
             contents[0].anchoredPosition -= new Vector2(0f, curSpeed * Time.unscaledDeltaTime);
+
             if (contents[0].anchoredPosition.y <= -slotSize)
             {
                 float gap = contents[0].anchoredPosition.y + slotSize;
                 contents[0].anchoredPosition = new Vector2(startPosX[lineNum], startPosY + gap);
-                curSpeed *= 0.7f;
-                if (curSpeed <= minSpeed)
-                {
-                    curSpeed = minSpeed;
-                }
-                else
-                    audioSource.pitch *= 0.97f;
+
             }
             for (int i = 1; i < contents.Length; i++)
             {
@@ -280,9 +284,34 @@ public class UI_SlotMachine : UI
                 }
             }
 
-            if (curSpeed == minSpeed && contents[slotNum].anchoredPosition.y <= centerPosY)
+            if (curSpeed == minSpeed && contents[slotNum].anchoredPosition.y <= centerPosY && contents[slotNum].anchoredPosition.y >= centerPosY * 0.5f)
             {
-                contents[0].anchoredPosition = new Vector2(startPosX[lineNum], centerPosY - (slotSize * slotNum));
+                while (contents[slotNum].anchoredPosition.y < centerPosY)
+                {
+                    //천천히 위로 이동
+                    contents[0].anchoredPosition += new Vector2(0f, slotSize * 0.2f * Time.unscaledDeltaTime);
+                    if(contents[slotNum].anchoredPosition.y >= centerPosY)
+                    {
+                        break;
+                    }
+                    if (contents[0].anchoredPosition.y <= -slotSize)
+                    {
+                        float gap = contents[0].anchoredPosition.y + slotSize;
+                        contents[0].anchoredPosition = new Vector2(startPosX[lineNum], startPosY + gap);
+                    }
+                    for (int i = 1; i < contents.Length; i++)
+                    {
+                        contents[i].anchoredPosition = contents[0].anchoredPosition + new Vector2(0f, (slotSize * i) - lineLength);
+                        if (contents[i].anchoredPosition.y <= -slotSize)
+                        {
+                            contents[i].anchoredPosition += new Vector2(0f, lineLength);
+                        }
+                    }
+                    yield return null;
+                }
+
+                //갑자기 이동
+                contents[0].anchoredPosition = new Vector2(startPosX[lineNum], centerPosY - (slotSize * slotNum) );
                 if (contents[0].anchoredPosition.y <= -slotSize)
                 {
                     float gap = contents[0].anchoredPosition.y + slotSize;
