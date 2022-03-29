@@ -46,6 +46,7 @@ public class Monster : Unit
         }
         else
         {
+            ItemManager.Instance.Drop(ItemType.NormalChest, transform.position);
             GameObject obj;
             int random = Random.Range(0, 100);
             int minute = (int)DataManager.Instance.currentGameData.totalPlayTime / 60;
