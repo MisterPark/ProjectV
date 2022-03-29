@@ -45,7 +45,7 @@ public class UI_Powerup : UI
         DataManager.Instance.PriceReset();
         InitPowerupTemplate();
         OnBuyButton.AddListener(ResetTemplate);
-        gameObject.SetActive(false);
+        Hide();
     }
 
     

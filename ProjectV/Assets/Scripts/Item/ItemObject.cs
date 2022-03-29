@@ -12,7 +12,7 @@ public class ItemObject : MonoBehaviour
     public bool MagnetFlag { get; set; } = false;
     public bool isChest { get; set; } = false;
     public bool SinWaveFlag { get; set; } = false;
-    public float LifeTime { get; set; }
+    //public float LifeTime { get; set; }
     void Start()
     {
         
@@ -21,17 +21,17 @@ public class ItemObject : MonoBehaviour
     
     void FixedUpdate()
     {
-        LifeTime += Time.fixedDeltaTime;
+        //LifeTime += Time.fixedDeltaTime;
 
-        if(SinWaveFlag)
-        {
-            if(Item != null)
-            {
-                Vector3 itemPos = Item.gameObject.transform.localPosition;
-                itemPos.y = (Mathf.Sin(LifeTime * 2f) + 1f) * 0.5f + 0.3f;
-                Item.gameObject.transform.localPosition = itemPos;
-            }
-        }
+        //if(SinWaveFlag)
+        //{
+        //    if(Item != null)
+        //    {
+        //        Vector3 itemPos = Item.gameObject.transform.localPosition;
+        //        itemPos.y = (Mathf.Sin(LifeTime * 2f) + 1f) * 0.5f + 0.3f;
+        //        Item.gameObject.transform.localPosition = itemPos;
+        //    }
+        //}
 
         if(isRotate)
         {

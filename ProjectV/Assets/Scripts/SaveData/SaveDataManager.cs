@@ -137,6 +137,7 @@ public class SaveDataManager : MonoBehaviour
     public void SaveDataDelete()
     {
         DataManager dataManager = DataManager.Instance;
+        SaveData temp = dataManager.currentSaveData;
         _saveData.totalKillCount = 0;
         _saveData.totalGold = 0;
         _saveData.currentGold = 0;
@@ -156,7 +157,7 @@ public class SaveDataManager : MonoBehaviour
         }
         //
         string ToJsonData = JsonUtility.ToJson(saveData);
-        string filePath = Application.persistentDataPath + GameDataFileName;
+        string filePath = Path.Combine(Application.persistentDataPath, GameDataFileName);
 
         File.WriteAllText(filePath, ToJsonData);
         //
