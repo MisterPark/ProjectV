@@ -85,6 +85,7 @@ public class UI_SlotMachine : UI
             audioSource.enabled = true;
             audioSource.clip = rillSound;
             audioSource.loop = true;
+            audioSource.volume = DataManager.Instance.Settings.SoundVolume;
             audioSource.Play();
             for (int i = 0; i < playCoroutine.Length; i++)
             {
@@ -333,6 +334,7 @@ public class UI_SlotMachine : UI
                     audioSource.Stop();
                     audioSource.pitch = 1f;
                     audioSource.loop = false;
+                    audioSource.volume = DataManager.Instance.Settings.SoundVolume;
                     isPlayMachine = false;
                     yield return new WaitForSecondsRealtime(0.15f);
                     rewardPanel.gameObject.SetActive(true);
