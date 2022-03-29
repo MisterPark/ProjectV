@@ -185,7 +185,10 @@ public class SoundManager : MonoBehaviour
         string sceneName = SceneManager.GetActiveScene().name;
         if (sceneName.Contains("Stage"))
         {
-            newBgmTick += Time.fixedDeltaTime;
+            if(bgmPlayer.isPlaying)
+            {
+                newBgmTick += Time.fixedDeltaTime;
+            }
             if(newBgmTick >= newBgmInterval)
             {
                 newBgmTick = 0f;
