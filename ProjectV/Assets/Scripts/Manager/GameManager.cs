@@ -161,6 +161,12 @@ public class GameManager : MonoBehaviour
             float hp = Player.Instance.stat.Get_FinalStat(StatType.MaxHealth);
             Player.Instance.stat.Set_FinalStat(StatType.Health, hp);
         }
+        if (Input.GetKeyUp(KeyCode.F7))
+        {
+            float timescale = Time.timeScale;
+            timescale = timescale > 0f ? 1f : 0f;
+            Time.timeScale = timescale;
+        }
 #endif
 
         InitZoom();
