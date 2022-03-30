@@ -9,7 +9,7 @@ public enum ItemType { ExpJewelBig, ExpJewelNormal, ExpJewelSmall,
                        //Level01, Level02, Level03, Level04, Level05,
                        Magnet,
                        Pentagram,
-                       FrozenOrb,
+                       IceOrb,
                        PoisonMushroom,
                        NormalChest,MagicChest,RareChest,UniqueChest,LegenderyChest,
                        ItemEnd
@@ -115,7 +115,7 @@ public class ItemManager : MonoBehaviourEx
                 itemObjectCom.isMagnetism = false;
                 itemObjectCom.isChest = false;
                 break;
-        case ItemType.FrozenOrb:
+        case ItemType.IceOrb:
                 itemObjectCom.isRotate = true;
                 itemObjectCom.isMagnetism = false;
                 itemObjectCom.isChest = false;

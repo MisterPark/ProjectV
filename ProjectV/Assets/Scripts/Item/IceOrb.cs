@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FrozenOrb : Item
+public class IceOrb : Item
 {
     
     protected override void Start()
