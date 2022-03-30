@@ -6,6 +6,7 @@ public class Skill_Magnet : Skill
 {
     protected override void Awake()
     {
+        base.Awake();
         Kind = SkillKind.Magnet;
     }
     protected override void Start()

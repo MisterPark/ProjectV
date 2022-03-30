@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class UIManager : MonoBehaviour
+public class UIManager : MonoBehaviourEx
 {
     public static UIManager Instance;
     public List<GameObject> UIObjectList; 

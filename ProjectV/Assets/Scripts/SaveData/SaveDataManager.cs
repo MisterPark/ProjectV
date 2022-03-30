@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
-public class SaveDataManager : MonoBehaviour
+public class SaveDataManager : MonoBehaviourEx
 {
     public static SaveDataManager Instance;
     public string GameDataFileName = "ProjectV.json"; 
@@ -27,8 +27,9 @@ public class SaveDataManager : MonoBehaviour
     }
 
 
-    private void Start() 
+    protected override void Start() 
     {
+        base.Start();
         //LoadGameData();
         //SaveGameData();
 

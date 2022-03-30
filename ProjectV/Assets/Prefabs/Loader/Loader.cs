@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Loader : MonoBehaviour
+public class Loader : MonoBehaviourEx
 {
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         SaveDataManager.Instance.LoadGameData();
     }
 

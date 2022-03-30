@@ -8,13 +8,15 @@ public class UI_Damaged : UI
     float tick = 0;
     float duration = 0.1f;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         instance = this;
     }
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         Canvas canvas = transform.parent.GetComponent<Canvas>();
         if(canvas == null)
         {
@@ -26,8 +28,9 @@ public class UI_Damaged : UI
         Hide();
     }
 
-    private void FixedUpdate()
+    public override void FixedUpdateEx()
     {
+        base.FixedUpdateEx();
         if (gameObject.activeSelf == false) return;
         tick += Time.fixedDeltaTime;
         if (tick > duration)

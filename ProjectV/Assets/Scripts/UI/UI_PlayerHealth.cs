@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UI_PlayerHealth : MonoBehaviour
+public class UI_PlayerHealth : MonoBehaviourEx
 {
     public GameObject target;
     public Image barImage;
@@ -12,8 +12,9 @@ public class UI_PlayerHealth : MonoBehaviour
     private float maxHp;
     private float height = 0f;
 
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         target = Player.Instance.gameObject;
         if(target == null)
         {
@@ -26,7 +27,7 @@ public class UI_PlayerHealth : MonoBehaviour
             
     }
 
-    void FixedUpdate()
+    public override void FixedUpdateEx()
     {
         float fillAmount = 0f;
         Hp = Player.Instance.stat.Get_FinalStat(StatType.Health);

@@ -14,7 +14,7 @@ public enum ItemType { ExpJewelBig, ExpJewelNormal, ExpJewelSmall,
                        NormalChest,MagicChest,RareChest,UniqueChest,LegenderyChest,
                        ItemEnd
 };
-public class ItemManager : MonoBehaviour
+public class ItemManager : MonoBehaviourEx
 {
     public ItemType type;
     public static ItemManager Instance;
@@ -28,16 +28,18 @@ public class ItemManager : MonoBehaviour
     [SerializeField] private float farExpJewelDeleteDistance = 25f;
 
     public List<GameObject> itemList = new List<GameObject>();
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         if (Instance == null)
         {
             Instance = this;
         }
     }
 
-    private void FixedUpdate()
+    public override void FixedUpdateEx()
     {
+        base.FixedUpdateEx();
         FarExpJewelDelete();
     }
 

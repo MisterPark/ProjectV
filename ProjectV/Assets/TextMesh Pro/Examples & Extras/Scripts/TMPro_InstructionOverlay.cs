@@ -5,7 +5,7 @@ using System.Collections;
 namespace TMPro.Examples
 {
     
-    public class TMPro_InstructionOverlay : MonoBehaviour
+    public class TMPro_InstructionOverlay : MonoBehaviourEx
     {
 
         public enum FpsCounterAnchorPositions { TopLeft, BottomLeft, TopRight, BottomRight };
@@ -21,7 +21,7 @@ namespace TMPro.Examples
 
         //private FpsCounterAnchorPositions last_AnchorPosition;
 
-        void Awake()
+      protected override void Awake()
         {
             if (!enabled)
                 return;

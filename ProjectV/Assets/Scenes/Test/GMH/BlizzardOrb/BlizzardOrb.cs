@@ -2,16 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BlizzardOrb : MonoBehaviour
+public class BlizzardOrb : MonoBehaviourEx
 {
     float tick;
     float angle;
     public float cooldown;
     Missile parentMissile;
     
-    void Start()
+    protected override void Start()
     {
-        
+        base.Start();
     }
 
     private void OnEnable()
@@ -23,7 +23,7 @@ public class BlizzardOrb : MonoBehaviour
         cooldown = parentMissile.Delay;
     }
     
-    void FixedUpdate()
+    public override void FixedUpdateEx()
     {
         if(cooldown<=0)
         {

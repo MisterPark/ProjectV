@@ -12,7 +12,7 @@ public enum UnitType
 }
 
 
-public class Unit : MonoBehaviour
+public class Unit : MonoBehaviourEx
 {
     public UnitType type;
 
@@ -49,16 +49,17 @@ public class Unit : MonoBehaviour
 
     public Sound[] Sounds { get; set; }
 
-    protected virtual void Start()
+    protected override void Awake()
     {
+        base.Awake();
         stat = GetComponent<Stat>();
         animator = GetComponentInChildren<Animator>();
-        if(animator == null)
+        if (animator == null)
         {
-            Debug.LogError("Animator Not Found");
+            //Debug.LogError("Animator Not Found");
         }
         capsuleCollider = GetComponentInChildren<CapsuleCollider>();
-        if(capsuleCollider == null)
+        if (capsuleCollider == null)
         {
             Debug.LogError("CapsuleCollider Not Found");
             Radius = 1f;
@@ -75,7 +76,13 @@ public class Unit : MonoBehaviour
         stat.OnTakeDamage.AddListener(OnStatTakeDamage);
     }
 
-    protected virtual void FixedUpdate()
+    protected override void Start()
+    {
+        base.Start();
+        
+    }
+
+    public override void FixedUpdateEx()
     {
         ProcessFreeze();
         ProcessKnockback();
@@ -91,8 +98,8 @@ public class Unit : MonoBehaviour
         if (freezeFlag) return;
         Vector3 to = target - transform.position;
         Vector3 direction = to.normalized;
-        
-        transform.position += stat.Get_FinalStat(StatType.MoveSpeed) * direction * Time.fixedDeltaTime;
+        float speed = stat.Get_FinalStat(StatType.MoveSpeed);
+        transform.position += speed * direction * Time.fixedDeltaTime;
         transform.LookAt(target);
     }
 
@@ -406,6 +413,11 @@ public class Unit : MonoBehaviour
         {
             stat.RecoverToFull();
         }
+    }
+
+    protected override void OnDestroy()
+    {
+        base.OnDestroy();
     }
     /// <summary>
     /// 스킬 데이터를 업데이트 합니다.

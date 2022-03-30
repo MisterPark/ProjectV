@@ -19,12 +19,14 @@ public class UI_Settings : UI
 
     public UnityEvent OnClosed = new UnityEvent();
     
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         instance = this;
     }
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         rectTransform = GetComponent<RectTransform>();
         parent = transform.parent.GetComponent<RectTransform>();
 

@@ -6,6 +6,7 @@ public class Skill_CoolDown : Skill
 {
     protected override void Awake()
     {
+        base.Awake();
         Kind = SkillKind.CoolDown;
     }
     protected override void Start()

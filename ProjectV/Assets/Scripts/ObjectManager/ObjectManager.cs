@@ -6,9 +6,8 @@ public class ObjectManager : MonoBehaviour
 {
     private static ObjectManager instance;
     public static ObjectManager Instance { get { return instance; } }
-    List<MonoBehaviourEx> behaviours = new List<MonoBehaviourEx>();
 
-    private void Awake()
+  void Awake()
     {
         if(instance == null)
         {
@@ -19,27 +18,41 @@ public class ObjectManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        foreach(var behaviour in behaviours)
+        int removeCount = MonoBehaviourEx.removes.Count;
+        for (int i = 0; i < removeCount; i++)
         {
-            behaviour.FixedUpdateEx();
+            MonoBehaviourEx.behaviours.Remove(MonoBehaviourEx.removes[i]);
         }
+        MonoBehaviourEx.removes.Clear();
+
+        int count = MonoBehaviourEx.behaviours.Count;
+        for (int i = 0; i < count; i++)
+        {
+            if (MonoBehaviourEx.behaviours[i].IsStart == false) continue;
+            if (MonoBehaviourEx.behaviours[i].gameObject.activeSelf == false) continue;
+            MonoBehaviourEx.behaviours[i].FixedUpdateEx();
+        }
+        
     }
     private void Update()
     {
-        foreach (var behaviour in behaviours)
+        int removeCount = MonoBehaviourEx.removes.Count;
+        for (int i = 0; i < removeCount; i++)
         {
-            behaviour.UpdateEx();
+            MonoBehaviourEx.behaviours.Remove(MonoBehaviourEx.removes[i]);
         }
-    }
+        MonoBehaviourEx.removes.Clear();
 
-    public void Register(MonoBehaviourEx behaviour)
-    {
-        behaviours.Add(behaviour);
-    }
+        int count = MonoBehaviourEx.behaviours.Count;
+        for (int i = 0; i < count; i++)
+        {
+            if (MonoBehaviourEx.behaviours[i].IsStart == false) continue;
+            if (MonoBehaviourEx.behaviours[i].gameObject.activeSelf == false) continue;
 
-    public void Disregister(MonoBehaviourEx behaviour)
-    {
-        behaviours.Remove(behaviour);
+            MonoBehaviourEx.behaviours[i].UpdateEx();
+        }
+
+        
     }
 
    

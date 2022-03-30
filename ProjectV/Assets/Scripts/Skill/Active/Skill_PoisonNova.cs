@@ -7,6 +7,7 @@ public class Skill_PoisonNova : Skill
 
     protected override void Awake()
     {
+        base.Awake();
         Kind = SkillKind.PoisonNova;
 
     }

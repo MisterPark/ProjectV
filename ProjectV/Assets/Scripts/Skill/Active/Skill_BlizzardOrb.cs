@@ -6,12 +6,8 @@ public class Skill_BlizzardOrb : Skill
 {
     protected override void Awake()
     {
+        base.Awake();
         Kind = SkillKind.BlizzardOrb;
-    }
-    protected override void Start()
-    {
-        Kind = SkillKind.BlizzardOrb;
-        base.Start();
 
         activeInterval = 0.25f;
     }

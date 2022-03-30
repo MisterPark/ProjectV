@@ -2,20 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MeteorHit : MonoBehaviour
+public class MeteorHit : MonoBehaviourEx
 {
 
     public float lifeTime;
     public float downSpeed;
     private float tick;
     
-    void Start()
+    protected override void Start()
     {
-        
+        base.Start();
     }
 
     
-    void FixedUpdate()
+    public override void FixedUpdateEx()
     {
         tick += Time.fixedDeltaTime;
         transform.position += new Vector3(0, downSpeed*Time.fixedDeltaTime, 0);

@@ -5,7 +5,7 @@ using System.Collections;
 namespace TMPro.Examples
 {
     
-    public class TextMeshSpawner : MonoBehaviour
+    public class TextMeshSpawner : MonoBehaviourEx
     {
 
         public int SpawnType = 0;
@@ -15,14 +15,14 @@ namespace TMPro.Examples
 
         private TextMeshProFloatingText floatingText_Script;
 
-        void Awake()
+      protected override void Awake()
         {
 
         }
 
-        void Start()
+        protected override void Start()
         {
-
+            base.Start();
             for (int i = 0; i < NumberOfNPC; i++)
             {
                 if (SpawnType == 0)

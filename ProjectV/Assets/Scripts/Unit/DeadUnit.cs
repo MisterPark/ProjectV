@@ -2,15 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DeadUnit : MonoBehaviour
+public class DeadUnit : MonoBehaviourEx
 {
     Material material;
     [SerializeField] float cutoff;
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         material = GetComponentInChildren<Renderer>().material;
         cutoff = 2f;
     }
+
+    
 
     private void OnEnable()
     {
@@ -18,7 +21,7 @@ public class DeadUnit : MonoBehaviour
     }
 
     
-    void FixedUpdate()
+    public override void FixedUpdateEx()
     {
         cutoff -= Time.fixedDeltaTime;
         if(cutoff > 0)

@@ -6,6 +6,7 @@ public class Skill_Range : Skill
 {
     protected override void Awake()
     {
+        base.Awake();
         Kind = SkillKind.Range;
     }
     protected override void Start()

@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 
 
-public abstract class Skill : MonoBehaviour
+public abstract class Skill : MonoBehaviourEx
 {
     public Sprite icon;
     public int level = 1;
@@ -34,17 +34,19 @@ public abstract class Skill : MonoBehaviour
 
     public abstract void Active();
 
-    protected virtual void Awake()
+    protected override void Awake()
     {
-
+        base.Awake();
+        
     }
-    protected virtual void Start()
+    protected override void Start()
     {
+        base.Start();
         unit = gameObject.GetComponent<Unit>();
         SetValueFromSkillData(1);
     }
 
-    void FixedUpdate()
+    public override void FixedUpdateEx()
     {
         if (Type == SkillType.Active)
         {
@@ -79,8 +81,9 @@ public abstract class Skill : MonoBehaviour
         }
     }
 
-    protected virtual void OnDestroy()
+    protected override void OnDestroy()
     {
+        base.OnDestroy();
         OnDestroyed.Invoke();
     }
     void SetValueFromSkillData(int level)

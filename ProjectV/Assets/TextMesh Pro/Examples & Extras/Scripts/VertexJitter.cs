@@ -5,7 +5,7 @@ using System.Collections;
 namespace TMPro.Examples
 {
 
-    public class VertexJitter : MonoBehaviour
+    public class VertexJitter : MonoBehaviourEx
     {
 
         public float AngleMultiplier = 1.0f;
@@ -25,7 +25,7 @@ namespace TMPro.Examples
             public float speed;
         }
 
-        void Awake()
+      protected override void Awake()
         {
             m_TextComponent = GetComponent<TMP_Text>();
         }
@@ -42,8 +42,9 @@ namespace TMPro.Examples
         }
 
 
-        void Start()
+        protected override void Start()
         {
+            base.Start();
             StartCoroutine(AnimateVertexColors());
         }
 

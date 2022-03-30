@@ -5,18 +5,23 @@ using UnityEngine;
 
 public class Monster : Unit
 {
-    protected override void Start()
+    protected override void Awake()
     {
-        base.Start();
+        base.Awake();
         stat.Init_LoadStat();
         stat.Init_FinalStat();
         type = UnitType.Monster;
         OnDead.AddListener(OnDeadCallback);
     }
-
-    protected override void FixedUpdate()
+    protected override void Start()
     {
-        base.FixedUpdate();
+        base.Start();
+        
+    }
+
+    public override void FixedUpdateEx()
+    {
+        base.FixedUpdateEx();
         MoveTo(Player.Instance.transform.position);
     }
 

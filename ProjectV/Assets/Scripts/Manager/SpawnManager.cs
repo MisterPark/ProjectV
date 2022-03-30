@@ -5,7 +5,7 @@ using System.Linq;
 using UnityEngine;
 
 
-public class SpawnManager : MonoBehaviour
+public class SpawnManager : MonoBehaviourEx
 {
     public static SpawnManager Instance;
 
@@ -46,20 +46,21 @@ public class SpawnManager : MonoBehaviour
     float freezeTime;
     bool freezeFlag = false;
 
-    private void Awake()
+    protected override void Awake()
     {
-        if(Instance == null)
+        base.Awake();
+        if (Instance == null)
         {
             Instance = this;
         }
         stageMonsterData = stageData[0].monsterData;
     }
-    void Start()
+    protected override void Start()
     {
-        
+        base.Start();
     }
 
-    void FixedUpdate()
+    public override void FixedUpdateEx()
     {
         
         ProcessFreeze();

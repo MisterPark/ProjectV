@@ -2,23 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectPool : MonoBehaviour
+public class ObjectPool : MonoBehaviourEx
 {
     private static ObjectPool _instance;
 
     public static ObjectPool Instance { get { return _instance; } }
     [SerializeField] List<GameObject> prefabs;
     Dictionary<string, Stack<GameObject>> _pools = new Dictionary<string, Stack<GameObject>>();
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         if (Instance == null)
             _instance = this;
         //Initialize();
     }
 
-    private void Start()
+    protected override void Start()
     {
-
+        base.Start();
     }
 
     public GameObject Allocate(string key)

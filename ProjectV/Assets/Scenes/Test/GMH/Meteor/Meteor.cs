@@ -2,14 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Meteor : MonoBehaviour
+public class Meteor : MonoBehaviourEx
 {
     
     bool createCrater = false;
     GameObject meteor;
     Missile parentMissile;
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         createCrater = false;
         
     }
@@ -28,7 +29,7 @@ public class Meteor : MonoBehaviour
         meteor.SetActive(true);
     }
     
-    void FixedUpdate()
+    public override void FixedUpdateEx()
     {
 
     }

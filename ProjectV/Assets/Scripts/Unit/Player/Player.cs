@@ -29,20 +29,17 @@ public class Player : Unit
         }
     }
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         Instance = this;
-    }
-    protected override void Start()
-    {
-        base.Start();
         Init_Stat();
         type = UnitType.Player;
         OnDead.AddListener(OnDeadCallback);
         OnLevelUp.AddListener(OnLevelUpCallback);
         UI_LevelUp.instance.OnSelected.AddListener(OnSelectSkill);
 
-        
+
         PlayerCharacterName charName = DataManager.Instance.currentGameData.characterName;
         PlayerCharacter data = DataManager.Instance.playerCharacterData[(int)charName].playerCharacter;
         // 캐릭터 프리펩
@@ -53,12 +50,17 @@ public class Player : Unit
         AddOrIncreaseSkill(skillKind);
         // 캐릭터 사운드
         Sounds = data.Sounds;
+    }
+    protected override void Start()
+    {
+        base.Start();
+        
 
     }
 
-    protected override void FixedUpdate()
+    public override void FixedUpdateEx()
     {
-        base.FixedUpdate();
+        base.FixedUpdateEx();
         Move();
         ProcessDamage();
     }

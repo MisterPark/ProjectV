@@ -5,7 +5,7 @@ using System.Collections;
 namespace TMPro.Examples
 {
     
-    public class Benchmark01 : MonoBehaviour
+    public class Benchmark01 : MonoBehaviourEx
     {
 
         public int BenchmarkType = 0;
@@ -110,7 +110,7 @@ namespace TMPro.Examples
 
 
         /*
-        void Update()
+        public override void UpdateEx()
         {
             if (BenchmarkType == 0)
             {

@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AllDelete : MonoBehaviour
+public class AllDelete : MonoBehaviourEx
 {
     float lifeTime=0.1f;
     float tick=0f;
     
-    void Start()
+    protected override void Start()
     {
-        
+        base.Start();
     }
 
     private void OnEnable()
@@ -17,7 +17,7 @@ public class AllDelete : MonoBehaviour
         tick = 0;
     }
     
-    void FixedUpdate()
+    public override void FixedUpdateEx()
     {
         tick += Time.fixedDeltaTime;
         if (lifeTime < tick)

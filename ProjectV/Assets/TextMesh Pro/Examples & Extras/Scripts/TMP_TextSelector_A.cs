@@ -6,7 +6,7 @@ using System.Collections;
 namespace TMPro.Examples
 {
 
-    public class TMP_TextSelector_A : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+    public class TMP_TextSelector_A : MonoBehaviourEx, IPointerEnterHandler, IPointerExitHandler
     {
         private TextMeshPro m_TextMeshPro;
 
@@ -17,7 +17,7 @@ namespace TMPro.Examples
         private int m_lastCharIndex = -1;
         private int m_lastWordIndex = -1;
 
-        void Awake()
+      protected override void Awake()
         {
             m_TextMeshPro = gameObject.GetComponent<TextMeshPro>();
             m_Camera = Camera.main;

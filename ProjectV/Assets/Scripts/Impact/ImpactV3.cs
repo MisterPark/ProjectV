@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ImpactV3 : MonoBehaviour
+public class ImpactV3 : MonoBehaviourEx
 {
     float tick = 0;
     float duration = 1f;
@@ -22,8 +22,9 @@ public class ImpactV3 : MonoBehaviour
         }
     }
 
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         tick = 0;
 
     }
@@ -33,7 +34,7 @@ public class ImpactV3 : MonoBehaviour
         tick = 0f;
     }
 
-    void FixedUpdate()
+    public override void FixedUpdateEx()
     {
         tick += Time.fixedDeltaTime;
         if(tick > duration)

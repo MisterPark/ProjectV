@@ -5,7 +5,7 @@ using System.Collections;
 namespace TMPro.Examples
 {
     
-    public class ShaderPropAnimator : MonoBehaviour
+    public class ShaderPropAnimator : MonoBehaviourEx
     {
 
         private Renderer m_Renderer;
@@ -15,7 +15,7 @@ namespace TMPro.Examples
 
         public float m_frame;
 
-        void Awake()
+      protected override void Awake()
         {
             // Cache a reference to object's renderer
             m_Renderer = GetComponent<Renderer>();
@@ -24,8 +24,9 @@ namespace TMPro.Examples
             m_Material = m_Renderer.material;
         }
 
-        void Start()
+        protected override void Start()
         {
+            base.Start();
             StartCoroutine(AnimateProperties());
         }
 

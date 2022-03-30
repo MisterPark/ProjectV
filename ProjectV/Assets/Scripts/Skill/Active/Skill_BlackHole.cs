@@ -6,13 +6,8 @@ public class Skill_BlackHole : Skill
 {
     protected override void Awake()
     {
+        base.Awake();
         Kind = SkillKind.BlackHole;
-    }
-    
-    protected override void Start() 
-    {
-        Kind = SkillKind.BlackHole;
-        base.Start();
 
         activeInterval = 0.1f;
     }

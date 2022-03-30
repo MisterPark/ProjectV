@@ -6,12 +6,8 @@ public class Skill_HeavyFireBall : Skill
 {
     protected override void Awake()
     {
+        base.Awake();
         Kind = SkillKind.HeavyFireBall;
-    }
-    protected override void Start()
-    {
-        Kind = SkillKind.HeavyFireBall;
-        base.Start();
         activeInterval = 0.1f;
     }
 

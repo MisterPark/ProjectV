@@ -14,12 +14,14 @@ public class UI_StatusPanel : UI
     private RectTransform status;
     private UI_Equipment equipmentUI;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         instance = this;
     }
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         equipmentUI = equipment.GetComponent<UI_Equipment>();
         rectTransform = GetComponent<RectTransform>();
         parent = transform.parent.GetComponent<RectTransform>();

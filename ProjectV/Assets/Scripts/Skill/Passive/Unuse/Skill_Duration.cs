@@ -6,6 +6,7 @@ public class Skill_Duration : Skill
 {
     protected override void Awake()
     {
+        base.Awake();
         //Kind = SkillKind.Duration;
     }
     protected override void Start()

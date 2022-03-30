@@ -10,9 +10,9 @@ public class FrozenOrb : Item
         base.Start();
     }
     
-    protected override void FixedUpdate()
+    public override void FixedUpdateEx()
     {
-        base.FixedUpdate();
+        base.FixedUpdateEx();
     }
 
 

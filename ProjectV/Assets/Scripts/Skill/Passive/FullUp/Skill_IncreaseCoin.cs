@@ -6,6 +6,7 @@ public class Skill_IncreaseCoin : Skill
 {
     protected override void Awake()
     {
+        base.Awake();
         Kind = SkillKind.IncreaseCoin;
     }
     protected override void Start()

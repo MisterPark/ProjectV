@@ -5,7 +5,7 @@ using UnityEngine;
 public class SkillObject_HeavyFireBall : SkillObject
 {
     
-    protected override void FixedUpdate()
+    public override void FixedUpdateEx()
     {
         tick += Time.fixedDeltaTime;
         if (tick >= duration)

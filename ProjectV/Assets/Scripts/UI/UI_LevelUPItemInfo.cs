@@ -21,7 +21,7 @@ public class UI_LevelUPItemInfo : UI
     private Image iconImage;
     private SkillKind kind;
 
-    void Awake()
+  protected override void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
         nameText = itemName.GetComponent<Text>();

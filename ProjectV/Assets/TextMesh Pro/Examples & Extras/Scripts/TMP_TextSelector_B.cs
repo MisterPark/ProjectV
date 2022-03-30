@@ -10,7 +10,7 @@ using System.Collections.Generic;
 namespace TMPro.Examples
 {
 
-    public class TMP_TextSelector_B : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler, IPointerUpHandler
+    public class TMP_TextSelector_B : MonoBehaviourEx, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler, IPointerUpHandler
     {
         public RectTransform TextPopup_Prefab_01;
 
@@ -34,7 +34,7 @@ namespace TMPro.Examples
 
         private TMP_MeshInfo[] m_cachedMeshInfoVertexData;
 
-        void Awake()
+      protected override void Awake()
         {
             m_TextMeshPro = gameObject.GetComponent<TextMeshProUGUI>();
 

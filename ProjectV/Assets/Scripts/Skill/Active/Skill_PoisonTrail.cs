@@ -4,6 +4,7 @@ public class Skill_PoisonTrail : Skill
 {
     protected override void Awake()
     {
+        base.Awake();
         Kind = SkillKind.PoisonTrail;
     }
     protected override void Start()

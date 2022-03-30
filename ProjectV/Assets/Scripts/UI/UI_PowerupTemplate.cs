@@ -22,13 +22,13 @@ public class UI_PowerupTemplate : UI
     private int MaxRankCount;
     private int RankCount;
     
-    void Start()
+    protected override void Start()
     {
-        
+        base.Start();
     }
 
     
-    void Update()
+    public override void UpdateEx()
     {
         
     }

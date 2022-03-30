@@ -10,9 +10,9 @@ public class Pentagram : Item
         base.Start();
     }
     
-    protected override void FixedUpdate()
+    public override void FixedUpdateEx()
     {
-        base.FixedUpdate();
+        base.FixedUpdateEx();
     }
     
 

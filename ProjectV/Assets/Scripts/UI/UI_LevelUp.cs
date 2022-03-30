@@ -32,13 +32,15 @@ public class UI_LevelUp : UI
 
     int count = 0;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         instance = this;
     }
 
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         rectTransform = GetComponent<RectTransform>();
         text = mainText.GetComponent<Text>();
         parentCanvas = transform.parent.GetComponent<RectTransform>();

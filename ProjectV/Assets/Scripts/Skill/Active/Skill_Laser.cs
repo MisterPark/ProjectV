@@ -8,6 +8,7 @@ public class Skill_Laser : Skill
     BoxCollider boxCollider;
     protected override void Awake()
     {
+        base.Awake();
         Kind = SkillKind.Laser;
         activeInterval = 0.25f;
     }
