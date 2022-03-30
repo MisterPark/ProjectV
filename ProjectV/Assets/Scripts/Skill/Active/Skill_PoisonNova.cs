@@ -63,6 +63,6 @@ public class Skill_PoisonNova : Skill
 
             SoundManager.Instance.PlaySFXSound("PoisonNova");
         }
-        //Ref. BlizzardOrb Script
+        //Ref. FrozenOrb Script
     }
 }

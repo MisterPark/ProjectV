@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Skill_BlizzardOrb : Skill
+public class Skill_FrozenOrb : Skill
 {
     protected override void Awake()
     {
         base.Awake();
-        Kind = SkillKind.BlizzardOrb;
+        Kind = SkillKind.FrozenOrb;
 
         activeInterval = 0.25f;
     }
@@ -28,7 +28,7 @@ public class Skill_BlizzardOrb : Skill
             Debug.LogError("스킬을 유닛만 사용가능.");
             return;
         }
-        GameObject obj = ObjectPool.Instance.Allocate("BlizzardOrb");
+        GameObject obj = ObjectPool.Instance.Allocate("FrozenOrb");
         Missile missile = obj.GetComponent<Missile>();
         missile.Initialize();
         missile.transform.position = transform.position + unit.skillOffsetPosition;
@@ -42,8 +42,8 @@ public class Skill_BlizzardOrb : Skill
         missile.Type = MissileType.Directional;
         missile.IsPenetrate = true;
         missile.SetTarget(nearest.transform.position + unit.skillOffsetPosition);
-        SoundManager.Instance.PlaySFXSound("BlizzardOrb");
-        //Ref. BlizzardOrb Script
+        SoundManager.Instance.PlaySFXSound("FrozenOrb");
+        //Ref. FrozenOrb Script
     }
 
     void OnCollisionCallback(Vector3 pos, Unit other)

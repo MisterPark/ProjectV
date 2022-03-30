@@ -19,6 +19,6 @@ public class IceOrb : Item
     public override void Use()
     {
         SpawnManager.Instance.FreezeAll(5f);
-        SoundManager.Instance.PlaySFXSound("FrozenOrb");
+        SoundManager.Instance.PlaySFXSound("IceOrb");
     }
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BlizzardOrb : MonoBehaviourEx
+public class FrozenOrb : MonoBehaviourEx
 {
     float tick;
     float angle;
