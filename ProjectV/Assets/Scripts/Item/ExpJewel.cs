@@ -11,9 +11,9 @@ public class ExpJewel : Item
         base.Start();
     }
     // Update is called once per frame
-    protected override void FixedUpdate()
+    public override void FixedUpdateEx()
     {
-        base.FixedUpdate();
+        base.FixedUpdateEx();
     }
 
     public override void Use()

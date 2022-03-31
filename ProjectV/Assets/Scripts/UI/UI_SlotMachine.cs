@@ -42,13 +42,14 @@ public class UI_SlotMachine : UI
     
     
 
-    void Awake()
+  protected override void Awake()
     {
         instance = this;
     }
 
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         Init();
         ResetSize();
         Hide();

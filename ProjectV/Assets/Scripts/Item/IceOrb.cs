@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FrozenOrb : Item
+public class IceOrb : Item
 {
     
     protected override void Start()
@@ -10,15 +10,15 @@ public class FrozenOrb : Item
         base.Start();
     }
     
-    protected override void FixedUpdate()
+    public override void FixedUpdateEx()
     {
-        base.FixedUpdate();
+        base.FixedUpdateEx();
     }
 
 
     public override void Use()
     {
         SpawnManager.Instance.FreezeAll(5f);
-        SoundManager.Instance.PlaySFXSound("FrozenOrb");
+        SoundManager.Instance.PlaySFXSound("IceOrb");
     }
 }

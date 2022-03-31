@@ -5,19 +5,20 @@ using System.Collections;
 namespace TMPro.Examples
 {
 
-    public class VertexColorCycler : MonoBehaviour
+    public class VertexColorCycler : MonoBehaviourEx
     {
 
         private TMP_Text m_TextComponent;
 
-        void Awake()
+      protected override void Awake()
         {
             m_TextComponent = GetComponent<TMP_Text>();
         }
 
 
-        void Start()
+        protected override void Start()
         {
+            base.Start();
             StartCoroutine(AnimateVertexColors());
         }
 

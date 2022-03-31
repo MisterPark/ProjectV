@@ -5,7 +5,7 @@ using System.Collections;
 namespace TMPro.Examples
 {
 
-    public class TextMeshProFloatingText : MonoBehaviour
+    public class TextMeshProFloatingText : MonoBehaviourEx
     {
         public Font TheFont;
 
@@ -34,7 +34,7 @@ namespace TMPro.Examples
             new WaitForSeconds(0.8f), new WaitForSeconds(0.85f), new WaitForSeconds(0.9f), new WaitForSeconds(0.95f), new WaitForSeconds(1.0f),
         };
 
-        void Awake()
+      protected override void Awake()
         {
             m_transform = transform;
             m_floatingText = new GameObject(this.name + " floating text");
@@ -46,8 +46,9 @@ namespace TMPro.Examples
             m_cameraTransform = Camera.main.transform;
         }
 
-        void Start()
+        protected override void Start()
         {
+            base.Start();
             if (SpawnType == 0)
             {
                 // TextMesh Pro Implementation
@@ -95,7 +96,7 @@ namespace TMPro.Examples
         }
 
 
-        //void Update()
+        //public override void UpdateEx()
         //{
         //    if (SpawnType == 0)
         //    {

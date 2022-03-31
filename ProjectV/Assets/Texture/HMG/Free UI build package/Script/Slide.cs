@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Slide : MonoBehaviour {
+public class Slide : MonoBehaviourEx {
 	Image Filler;
 	public Slider slider;
 

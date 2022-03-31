@@ -5,7 +5,7 @@ using System.Collections;
 namespace TMPro.Examples
 {
 
-    public class Benchmark02 : MonoBehaviour
+    public class Benchmark02 : MonoBehaviourEx
     {
 
         public int SpawnType = 0;
@@ -15,9 +15,9 @@ namespace TMPro.Examples
         private TextMeshProFloatingText floatingText_Script;
 
 
-        void Start()
+        protected override void Start()
         {
-
+            base.Start();
             for (int i = 0; i < NumberOfNPC; i++)
             {
 

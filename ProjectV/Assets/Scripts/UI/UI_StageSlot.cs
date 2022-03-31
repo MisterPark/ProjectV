@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UI_StageSlot : MonoBehaviour
+public class UI_StageSlot : MonoBehaviourEx
 {
     public Text SlotName;
     public Image SlotImage;
@@ -11,8 +11,9 @@ public class UI_StageSlot : MonoBehaviour
     public StageKind Stage;
     private GameObject StageSelect;
     
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         StageSelect = this.transform.root.Find("StageSelectPanel").gameObject;
         Button tempbutton = GetComponent<Button>();
         tempbutton.onClick.AddListener(StageSelect.GetComponent<UI_StageSelect>().OnClickStageSlot);

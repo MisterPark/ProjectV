@@ -12,7 +12,7 @@ public class CurrentGameData
     public int playerLevel = 1;
 }
 
-public class DataManager : MonoBehaviour
+public class DataManager : MonoBehaviourEx
 {
     public static DataManager Instance;
 
@@ -46,8 +46,9 @@ public class DataManager : MonoBehaviour
 
     public Localization Localization;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         if (Instance != null)
         {
             Destroy(gameObject);
@@ -162,7 +163,7 @@ public class DataManager : MonoBehaviour
         }
     }
 
-    private void Update()
+    public override void UpdateEx()
     {
 #if UNITY_EDITOR
         if(Input.GetKeyUp(KeyCode.Delete))

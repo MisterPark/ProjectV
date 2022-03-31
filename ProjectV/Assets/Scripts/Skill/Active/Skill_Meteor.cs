@@ -7,12 +7,8 @@ public class Skill_Meteor : Skill
     
     protected override void Awake()
     {
+        base.Awake();
         Kind = SkillKind.Meteor;
-    }
-    protected override void Start()
-    {
-        Kind = SkillKind.Meteor;
-        base.Start();
         activeInterval = 0.2f;
         
     }

@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class Main_Title_SC : MonoBehaviour
+public class Main_Title_SC : MonoBehaviourEx
 {
     public string StartScene_Name;
     public EventSystem Event_Handle;
@@ -15,14 +15,16 @@ public class Main_Title_SC : MonoBehaviour
     //private TMPro.TextMeshProUGUI Money_Text;
 
     
-    void Start()
+    protected override void Start()
     {
+        base.Start();
+        gameObject.Localized();
         UI_Settings.instance.OnClosed.AddListener(ShowCursor);
         screenRT = GetComponent<RectTransform>();
     }
 
     
-    void Update()
+    public override void UpdateEx()
     {
         Money_Text.text = DataManager.Instance.currentSaveData.currentGold.ToString();
         if (Event_Handle.sendNavigationEvents)

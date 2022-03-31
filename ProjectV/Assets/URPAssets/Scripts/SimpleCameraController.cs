@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace UnityTemplateProjects
 {
-    public class SimpleCameraController : MonoBehaviour
+    public class SimpleCameraController : MonoBehaviourEx
     {
         class CameraState
         {
@@ -86,8 +86,9 @@ namespace UnityTemplateProjects
         InputAction boostFactorAction;
         bool        mouseRightButtonPressed;
 
-        void Start()
+        protected override void Start()
         {
+        base.Start();
             var map = new InputActionMap("Simple Camera Controller");
 
             lookAction = map.AddAction("look", binding: "<Mouse>/delta");
@@ -164,7 +165,7 @@ namespace UnityTemplateProjects
             return direction;
         }
         
-        void Update()
+        public override void UpdateEx()
         {
             // Exit Sample  
 

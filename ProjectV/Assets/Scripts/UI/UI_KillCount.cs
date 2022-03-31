@@ -3,22 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UI_KillCount : MonoBehaviour
+public class UI_KillCount : MonoBehaviourEx
 {
     private RectTransform rectTransform;
     [SerializeField] private Text text;
     [SerializeField] private RectTransform imageRT;
     private RectTransform parentCanvas;
     
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         rectTransform = GetComponent<RectTransform>();
         parentCanvas = transform.parent.GetComponent<RectTransform>();
         ResetSize();
     }
 
     
-    void Update()
+    public override void UpdateEx()
     {
         text.text = DataManager.Instance.currentGameData.killCount.ToString();
     }

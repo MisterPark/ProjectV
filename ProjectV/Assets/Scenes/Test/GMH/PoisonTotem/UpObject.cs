@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UpObject : MonoBehaviour
+public class UpObject : MonoBehaviourEx
 {
     public float Default;
     public float YLimit;
@@ -15,7 +15,7 @@ public class UpObject : MonoBehaviour
     {
         transform.position =  new Vector3(transform.position.x, Default, transform.position.z);
     }
-    void FixedUpdate()
+    public override void FixedUpdateEx()
     {
 
         if (YLimit > transform.position.y)

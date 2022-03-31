@@ -5,7 +5,7 @@ using System.Collections;
 namespace TMPro.Examples
 {
     
-    public class Benchmark04 : MonoBehaviour
+    public class Benchmark04 : MonoBehaviourEx
     {
 
         public int SpawnType = 0;
@@ -19,8 +19,9 @@ namespace TMPro.Examples
         //public Material material;
 
 
-        void Start()
+        protected override void Start()
         {
+            base.Start();
             m_Transform = transform;
 
             float lineHeight = 0;

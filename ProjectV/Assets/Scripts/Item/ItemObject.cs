@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemObject : MonoBehaviour
+public class ItemObject : MonoBehaviourEx
 {
     [SerializeField] float rotationSpeed = 0f;
     float moveSpeed = 15f;
@@ -13,13 +13,13 @@ public class ItemObject : MonoBehaviour
     public bool isChest { get; set; } = false;
     public bool SinWaveFlag { get; set; } = false;
     //public float LifeTime { get; set; }
-    void Start()
+    protected override void Start()
     {
         
     }
 
     
-    void FixedUpdate()
+    public override void FixedUpdateEx()
     {
         //LifeTime += Time.fixedDeltaTime;
 

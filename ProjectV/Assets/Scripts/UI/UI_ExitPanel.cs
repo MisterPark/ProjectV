@@ -10,12 +10,13 @@ public class UI_ExitPanel : UI
 
     private RectTransform rectTransform;
     private RectTransform parent;
-    void Awake()
+  protected override void Awake()
     {
         instance = this;
     }
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         Hide();
     }
 

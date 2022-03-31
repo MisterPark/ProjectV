@@ -6,6 +6,7 @@ public class Skill_Armor : Skill
 {
     protected override void Awake()
     {
+        base.Awake();
         Kind = SkillKind.Armor;
     }
     protected override void Start()

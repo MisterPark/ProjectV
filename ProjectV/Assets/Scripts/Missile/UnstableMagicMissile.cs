@@ -19,7 +19,7 @@ public class UnstableMagicMissile : Missile
         transform.position += TargetDirection * Speed * Time.fixedDeltaTime;
     }
 
-    protected override void FixedUpdate()
+    public override void FixedUpdateEx()
     {
         movePatternTick += Time.fixedDeltaTime;
         if(movePatternTick > movePatternCoolTime)
@@ -41,6 +41,6 @@ public class UnstableMagicMissile : Missile
                 }
             }
         }
-        base.FixedUpdate();
+        base.FixedUpdateEx();
     }
 }

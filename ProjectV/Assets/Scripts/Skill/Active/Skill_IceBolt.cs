@@ -6,12 +6,8 @@ public class Skill_IceBolt : Skill
 {
     protected override void Awake()
     {
+        base.Awake();
         Kind = SkillKind.IceBolt;
-    }
-    protected override void Start()
-    {
-        Kind = SkillKind.IceBolt;
-        base.Start();
         activeInterval = 0.1f;
     }
     public override void Active()

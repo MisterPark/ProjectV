@@ -2,14 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnMeteorTutScript : MonoBehaviour
+public class SpawnMeteorTutScript : MonoBehaviourEx
 {
     public GameObject vfx;
     public Transform startPoint;
     public Transform endPoint;
     
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         var startPos = startPoint.position;
         GameObject objVFX = Instantiate(vfx,startPos,Quaternion.identity) as GameObject;
 

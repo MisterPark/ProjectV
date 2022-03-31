@@ -6,6 +6,7 @@ public class Skill_MoveSpeed : Skill
 {
     protected override void Awake()
     {
+        base.Awake();
         Kind = SkillKind.MoveSpeed;
     }
     protected override void Start()

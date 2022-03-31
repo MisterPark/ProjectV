@@ -2,7 +2,7 @@
 using System.Collections;
 using TMPro;
 
-public class EnvMapAnimator : MonoBehaviour {
+public class EnvMapAnimator : MonoBehaviourEx {
 
     //private Vector3 TranslationSpeeds;
     public Vector3 RotationSpeeds;
@@ -10,7 +10,7 @@ public class EnvMapAnimator : MonoBehaviour {
     private Material m_material;
     
 
-    void Awake()
+  protected override void Awake()
     {
         //Debug.Log("Awake() on Script called.");
         m_textMeshPro = GetComponent<TMP_Text>();

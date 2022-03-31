@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class JoystickEx : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerUpHandler
+public class JoystickEx : MonoBehaviourEx, IPointerDownHandler, IDragHandler, IPointerUpHandler
 {
     public bool IsPaused { get { return isPaused; } }
 
@@ -20,8 +20,9 @@ public class JoystickEx : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoi
     private Vector2 input = Vector2.zero;
     private bool isPaused = false;
 
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         baseRect = GetComponent<RectTransform>();
         canvas = GetComponentInParent<Canvas>();
         if (canvas == null)

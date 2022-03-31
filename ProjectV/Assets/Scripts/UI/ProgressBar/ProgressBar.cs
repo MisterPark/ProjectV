@@ -2,21 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProgressBar : MonoBehaviour
+public class ProgressBar : MonoBehaviourEx
 {
     Material mat;
 
-    private void Awake()
+    protected override void Awake()
     {
-        
+        base.Awake();
     }
-    void Start()
+    protected override void Start()
     {
         mat = GetComponent<Renderer>().material;
     }
 
     
-    void FixedUpdate()
+    public override void FixedUpdateEx()
     {
         float progress = LoadingSceneManager.instance.Progress;
         mat.SetFloat("_FillAmount", progress);

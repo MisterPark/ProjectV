@@ -8,19 +8,14 @@ public class Skill_ForceFieldBarrier : Skill
     Missile missile;
     protected override void Awake()
     {
-        Kind = SkillKind.ForceFieldBarrier;
+        base.Awake();
+       
     }
-
-    private void OnEnable()
-    {
-        
-    }
-
 
     protected override void Start()
     {
-        Kind = SkillKind.ForceFieldBarrier;
         base.Start();
+        Kind = SkillKind.ForceFieldBarrier;
         Unit unit = GetComponent<Unit>();
         if (unit == null)
         {

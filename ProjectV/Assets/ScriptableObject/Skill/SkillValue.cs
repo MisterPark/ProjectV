@@ -24,7 +24,7 @@ public enum SkillKind
     MoveSpeed,
     Magnet,
     Growth,
-    BlizzardOrb,
+    FrozenOrb,
     UnstableMagicMissile,
     HeavyFireBall,
     Meteor,

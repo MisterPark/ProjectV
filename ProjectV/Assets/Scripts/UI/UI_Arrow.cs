@@ -3,19 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UI_Arrow : MonoBehaviour
+public class UI_Arrow : MonoBehaviourEx
 {
     public Image Arrow_Image;
     private float Twinkle_Time;
     private float Twinkle_Speed;
     
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         Twinkle_Speed = 100f;
     }
 
     
-    void Update()
+    public override void UpdateEx()
     {
         Twinkle_Time += Time.deltaTime;
         if (Twinkle_Time < 0.1f)

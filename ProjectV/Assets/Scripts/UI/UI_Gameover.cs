@@ -9,12 +9,14 @@ public class UI_Gameover : UI
     public static UI_Gameover instance;
     private Image image;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         instance = this;
     }
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         image = GetComponent<Image>();
         Hide();
     }

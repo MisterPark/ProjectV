@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class JoystickSetterExample : MonoBehaviour
+public class JoystickSetterExample : MonoBehaviourEx
 {
     public VariableJoystick variableJoystick;
     public Text valueText;
@@ -59,7 +59,7 @@ public class JoystickSetterExample : MonoBehaviour
         variableJoystick.SnapY = value;
     }
 
-    private void Update()
+    void Update()
     {
         valueText.text = "Current Value: " + variableJoystick.Direction;
     }

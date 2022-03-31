@@ -6,6 +6,7 @@ public class Skill_UnstableMagicMissile : Skill
 {
     protected override void Awake()
     {
+        base.Awake();
         Kind = SkillKind.UnstableMagicMissile;
     }
     protected override void Start()

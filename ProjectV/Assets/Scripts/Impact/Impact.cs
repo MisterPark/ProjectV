@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Impact : MonoBehaviour
+public class Impact : MonoBehaviourEx
 {
     ParticleSystem particle;
     float tick = 0;
 
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         particle = GetComponent<ParticleSystem>();
     }
 
@@ -17,7 +18,7 @@ public class Impact : MonoBehaviour
         tick = 0;
     }
 
-    void FixedUpdate()
+    public override void FixedUpdateEx()
     {
         tick += Time.fixedDeltaTime;
         if(particle.isStopped)

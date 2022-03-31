@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.VFX;
 
-public class SkillObject : MonoBehaviour
+public class SkillObject : MonoBehaviourEx
 {
     public Team team;
     public float duration;
@@ -17,7 +17,7 @@ public class SkillObject : MonoBehaviour
     public float tick = 0f;
     public float cooltimeTick;
     
-    void Start()
+    protected override void Start()
     {
         transform.localScale = Vector3.one * range;
     }
@@ -35,7 +35,7 @@ public class SkillObject : MonoBehaviour
         tick = 0f;
     }
 
-    protected virtual void FixedUpdate()
+    public override void FixedUpdateEx()
     {
         tick += Time.fixedDeltaTime;
         if (tick >= duration)

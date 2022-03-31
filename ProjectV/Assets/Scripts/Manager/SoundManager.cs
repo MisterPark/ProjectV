@@ -30,7 +30,7 @@ public class AudioClipNode
     public AudioClip clip;
     public float volume = 1f;
 }
-public class SoundManager : MonoBehaviour
+public class SoundManager : MonoBehaviourEx
 {
     private static SoundManager instance;
 
@@ -81,8 +81,9 @@ public class SoundManager : MonoBehaviour
     // AudioClip을 Key,Value 형태로 관리하기 위해 딕셔너리 사용
     [SerializeField] private float newBgmInterval = 600f;
     private float newBgmTick = 0f;
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         if (instance != null)
         {
             Destroy(gameObject);
@@ -180,7 +181,7 @@ public class SoundManager : MonoBehaviour
         bgmPlayer.Play();
     }
 
-    void FixedUpdate()
+    public override void FixedUpdateEx()
     {
         string sceneName = SceneManager.GetActiveScene().name;
         if (sceneName.Contains("Stage"))

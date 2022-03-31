@@ -9,12 +9,12 @@ public enum ItemType { ExpJewelBig, ExpJewelNormal, ExpJewelSmall,
                        //Level01, Level02, Level03, Level04, Level05,
                        Magnet,
                        Pentagram,
-                       FrozenOrb,
+                       IceOrb,
                        PoisonMushroom,
                        NormalChest,MagicChest,RareChest,UniqueChest,LegenderyChest,
                        ItemEnd
 };
-public class ItemManager : MonoBehaviour
+public class ItemManager : MonoBehaviourEx
 {
     public ItemType type;
     public static ItemManager Instance;
@@ -28,16 +28,18 @@ public class ItemManager : MonoBehaviour
     [SerializeField] private float farExpJewelDeleteDistance = 25f;
 
     public List<GameObject> itemList = new List<GameObject>();
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         if (Instance == null)
         {
             Instance = this;
         }
     }
 
-    private void FixedUpdate()
+    public override void FixedUpdateEx()
     {
+        base.FixedUpdateEx();
         FarExpJewelDelete();
     }
 
@@ -113,7 +115,7 @@ public class ItemManager : MonoBehaviour
                 itemObjectCom.isMagnetism = false;
                 itemObjectCom.isChest = false;
                 break;
-        case ItemType.FrozenOrb:
+        case ItemType.IceOrb:
                 itemObjectCom.isRotate = true;
                 itemObjectCom.isMagnetism = false;
                 itemObjectCom.isChest = false;

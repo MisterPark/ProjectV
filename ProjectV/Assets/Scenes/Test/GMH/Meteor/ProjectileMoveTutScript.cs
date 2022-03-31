@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProjectileMoveTutScript : MonoBehaviour
+public class ProjectileMoveTutScript : MonoBehaviourEx
 {
 
     public float speed;
@@ -11,14 +11,16 @@ public class ProjectileMoveTutScript : MonoBehaviour
 
     private Rigidbody rb;
     
-    void Start()
+    protected override void Start()
     {
-        rb=GetComponent<Rigidbody>();
+        base.Start();
+        rb =GetComponent<Rigidbody>();
     }
 
     
-    private void FixedUpdate()
+    public override void FixedUpdateEx()
     {
+        base.FixedUpdateEx();
         if(speed!=0&&rb!=null)
         {
             rb.position+=transform.forward*(speed*Time.fixedDeltaTime);

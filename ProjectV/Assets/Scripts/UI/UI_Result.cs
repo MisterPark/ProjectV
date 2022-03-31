@@ -14,13 +14,14 @@ public class UI_Result : UI
     public Text killcountText;
     public Button doneButton;
 
-    void Awake()
+  protected override void Awake()
     {
         instance = this;
     }
 
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         int total = (int)DataManager.Instance.currentGameData.totalPlayTime;
         int minute = total / 60;
         int second = total % 60;

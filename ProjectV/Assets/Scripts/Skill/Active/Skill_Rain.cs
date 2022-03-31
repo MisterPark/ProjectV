@@ -6,6 +6,7 @@ public class Skill_Rain : Skill
 {
     protected override void Awake()
     {
+        base.Awake();
         Kind = SkillKind.Rain;
     }
     protected override void Start()

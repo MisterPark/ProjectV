@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PropManager : MonoBehaviour
+public class PropManager : MonoBehaviourEx
 {
     public static PropManager Instance;
 
@@ -11,20 +11,21 @@ public class PropManager : MonoBehaviour
     [SerializeField] List<GameObject> propPrefabs = new List<GameObject>();
 
     List<GameObject> spawnList = new List<GameObject>();
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         if (Instance == null)
         {
             Instance = this;
         }
     }
-    void Start()
+    protected override void Start()
     {
-        
+        base.Start();
     }
 
     
-    void FixedUpdate()
+    public override void FixedUpdateEx()
     {
         ProcessSpawn();
         ProcessRemove();

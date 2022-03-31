@@ -6,7 +6,8 @@ public class Skill_Greed : Skill
 {
     protected override void Awake()
     {
-       //Kind = SkillKind.Greed;
+        base.Awake();
+        //Kind = SkillKind.Greed;
     }
     protected override void Start()
     {

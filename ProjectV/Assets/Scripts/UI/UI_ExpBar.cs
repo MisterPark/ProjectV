@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UI_ExpBar : MonoBehaviour
+public class UI_ExpBar : MonoBehaviourEx
 {
 
     private float Exp;
@@ -16,8 +16,9 @@ public class UI_ExpBar : MonoBehaviour
     private Image barImage;
     private Text levelText;
     
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         barImage = transform.GetChild(1).GetComponent<Image>();
         barRT = transform.GetChild(1).GetComponent<RectTransform>();
         backRT = transform.GetChild(0).GetComponent<RectTransform>();
@@ -28,7 +29,7 @@ public class UI_ExpBar : MonoBehaviour
     }
 
     
-    void Update()
+    public override void UpdateEx()
     {
         Exp = Player.Instance.stat.Get_FinalStat(StatType.Exp);
         maxExp = Player.Instance.stat.Get_FinalStat(StatType.MaxExp); 
