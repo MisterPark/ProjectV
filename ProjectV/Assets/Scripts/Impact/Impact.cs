@@ -7,9 +7,9 @@ public class Impact : MonoBehaviourEx
     ParticleSystem particle;
     float tick = 0;
 
-    protected override void Start()
+    protected override void Awake()
     {
-        base.Start();
+        base.Awake();
         particle = GetComponent<ParticleSystem>();
     }
 
