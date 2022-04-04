@@ -72,7 +72,7 @@ public class DataManager : MonoBehaviourEx
 
     public void BuyPowerup(Powerup_DataType data)
     {
-        if ((currentSaveData.currentGold > data.CurrentPowerupPrice)
+        if ((currentSaveData.currentGold >= data.CurrentPowerupPrice)
             && (data.MaxRank > data.Rank))
         {
             int itemp = data.Rank + 1;
