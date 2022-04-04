@@ -20,6 +20,12 @@ public class Impact : MonoBehaviourEx
 
     public override void FixedUpdateEx()
     {
+        if(particle == null)
+        {
+            particle = GetComponent<ParticleSystem>();
+        }
+        if (particle == null)
+            return;
         tick += Time.fixedDeltaTime;
         if(particle.isStopped)
         {
