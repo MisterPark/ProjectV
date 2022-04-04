@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BoardManager : MonoBehaviour
+public class BoardManager : MonoBehaviourEx
 {
     public static BoardManager Instance;
     [SerializeField]List<Board> boards = new List<Board>();
@@ -10,16 +10,18 @@ public class BoardManager : MonoBehaviour
 
     private bool pauseFlag = false;
     public bool Pause { get { return pauseFlag; } set { pauseFlag = value; } }
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         Instance = this;
     }
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         InitializeBoard();
     }
 
-    void FixedUpdate()
+    public override void FixedUpdateEx()
     {
         CreateBoards();
         RemoveBoards();

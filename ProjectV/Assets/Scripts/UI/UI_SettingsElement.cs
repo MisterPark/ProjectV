@@ -9,16 +9,16 @@ public enum SettingsType
     Toggle,
 }
 
-public class UI_SettingsElement : MonoBehaviour
+public class UI_SettingsElement : MonoBehaviourEx
 {
     [SerializeField] SettingsType type;
-    void Start()
+    protected override void Start()
     {
-        
+        base.Start();
     }
 
     
-    void Update()
+    public override void UpdateEx()
     {
         
     }

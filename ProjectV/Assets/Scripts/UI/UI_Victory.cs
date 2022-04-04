@@ -9,13 +9,14 @@ public class UI_Victory : UI
     public static UI_Victory instance;
     [SerializeField] Button doneButton;
 
-    public void Awake()
+    protected override void Awake()
     {
         instance = this;
     }
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         doneButton.onClick.AddListener(OnClickDone);
         Hide();
     }

@@ -6,6 +6,7 @@ public class Skill_RecoveryHp : Skill
 {
     protected override void Awake()
     {
+        base.Awake();
         Kind = SkillKind.RecoveryHp;
     }
     protected override void Start()

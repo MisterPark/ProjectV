@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UI_Equipment : MonoBehaviour
+public class UI_Equipment : MonoBehaviourEx
 {
     public bool isTextHide = false;
     private RectTransform rectTransform;
@@ -12,8 +12,9 @@ public class UI_Equipment : MonoBehaviour
     public UI_SlotInfomation[] passiveSlot;
 
     
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         rectTransform = GetComponent<RectTransform>();
         Player.Instance.OnAddOrIncreaseSkill.AddListener(OnSkillSeletionCompleteCallback);
         HideAllSlot();

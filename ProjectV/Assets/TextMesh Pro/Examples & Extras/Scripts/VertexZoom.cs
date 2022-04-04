@@ -7,7 +7,7 @@ using System.Collections.Generic;
 namespace TMPro.Examples
 {
 
-    public class VertexZoom : MonoBehaviour
+    public class VertexZoom : MonoBehaviourEx
     {
         public float AngleMultiplier = 1.0f;
         public float SpeedMultiplier = 1.0f;
@@ -17,7 +17,7 @@ namespace TMPro.Examples
         private bool hasTextChanged;
 
 
-        void Awake()
+      protected override void Awake()
         {
             m_TextComponent = GetComponent<TMP_Text>();
         }
@@ -35,8 +35,9 @@ namespace TMPro.Examples
         }
 
 
-        void Start()
+        protected override void Start()
         {
+            base.Start();
             StartCoroutine(AnimateVertexColors());
         }
 

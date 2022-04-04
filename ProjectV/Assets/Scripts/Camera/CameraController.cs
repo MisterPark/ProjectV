@@ -10,7 +10,7 @@ public enum CameraMode
     ThirdPerson,
 }
 
-public class CameraController : MonoBehaviour
+public class CameraController : MonoBehaviourEx
 {
     public static CameraController Instance;
 
@@ -27,12 +27,14 @@ public class CameraController : MonoBehaviour
 
     public float Zoom { get { return zoom; } }
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         Instance = this;
     }
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         mode = CameraMode.TopView;
     }
 

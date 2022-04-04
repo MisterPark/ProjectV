@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Events;
 
-public class LoadingSceneManager : MonoBehaviour
+public class LoadingSceneManager : MonoBehaviourEx
 {
     public static LoadingSceneManager instance;
 
@@ -20,21 +20,23 @@ public class LoadingSceneManager : MonoBehaviour
 
     AsyncOperation operation;
 
-    private void Awake()
+    protected override void Awake()
     {
-        if(instance == null)
+        base.Awake();
+        if (instance == null)
         {
             instance = this;
             DontDestroyOnLoad(this);
         }
     }
-    void Start()
+    protected override void Start()
     {
-        
+        base.Start();
     }
 
-    private void FixedUpdate()
+    public override void FixedUpdateEx()
     {
+        base.FixedUpdateEx();
         //Debug.Log($"{NextScene} {loadingFlag} {trigger} {loadTick} / {WaitTime}");
         if (loadingFlag == false) return;
 
@@ -58,8 +60,9 @@ public class LoadingSceneManager : MonoBehaviour
 
     }
 
-    private void OnDestroy()
+    protected override void OnDestroy()
     {
+        base.OnDestroy();
         //Debug.Log("로딩씬매니저 삭제");
     }
 

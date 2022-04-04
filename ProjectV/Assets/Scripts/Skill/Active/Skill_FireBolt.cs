@@ -7,12 +7,8 @@ public class Skill_FireBolt : Skill
 
     protected override void Awake()
     {
+        base.Awake();
         Kind = SkillKind.FireBolt;
-    }
-    protected override void Start()
-    {
-        Kind = SkillKind.FireBolt;
-        base.Start();
         
         activeInterval = 0.1f;
     }

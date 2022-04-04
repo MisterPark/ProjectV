@@ -21,12 +21,14 @@ public class UI_StageSelect : UI
     [SerializeField] private float SlotYPadding;
 
     private float SlotHeight;
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         instance = this;
     }
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         //StageSelectSlot = this.transform.root.Find("CharacterSlot").gameObject;
         SlotInit();
         Hide();

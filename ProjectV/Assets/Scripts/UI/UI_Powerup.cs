@@ -34,14 +34,15 @@ public class UI_Powerup : UI
 
     public UnityEvent OnBuyButton;
 
-    void Awake()
+  protected override void Awake()
     {
         instacne = this;
     }
 
     
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         DataManager.Instance.PriceReset();
         InitPowerupTemplate();
         OnBuyButton.AddListener(ResetTemplate);
@@ -49,7 +50,7 @@ public class UI_Powerup : UI
     }
 
     
-    void Update()
+    public override void UpdateEx()
     {
     }
 
@@ -90,9 +91,9 @@ public class UI_Powerup : UI
         ResetTemplate();
         if (m_CurrentPowerupDB != null)
         {
-            m_UnderPowerupName.text = m_CurrentPowerupDB.Powerup_Name;
+            m_UnderPowerupName.text = m_CurrentPowerupDB.Powerup_Name.Localized();
             m_UnderPowerupImage.sprite = m_CurrentPowerupDB.Powerup_Image;
-            m_UnderPowerupExplan.text = m_CurrentPowerupDB.Powerup_Tip;
+            m_UnderPowerupExplan.text = m_CurrentPowerupDB.Powerup_Tip.Localized();
             m_UnderMoneyText.text = m_CurrentPowerupDB.CurrentPowerupPrice.ToString();
         }
         SoundManager.Instance.PlaySFXSound("ShortButton");

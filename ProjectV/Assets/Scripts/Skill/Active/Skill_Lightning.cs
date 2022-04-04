@@ -6,16 +6,20 @@ public class Skill_Lightning : Skill
 {
     protected override void Awake()
     {
+        base.Awake();
         Kind = SkillKind.Lightning;
     }
     protected override void Start()
     {
-        Kind = SkillKind.Lightning;
         base.Start();
+        Kind = SkillKind.Lightning;
+        UpdateSkillData();
     }
     public override void Active()
     {
-        GameObject random = SpawnManager.Instance.RandomMonster;
+        GameObject random = null;
+        SpawnManager.Instance.SpawnQueue.Dequeue(out random);
+        //random = SpawnManager.Instance.RandomMonster;
         if (random == null)
         {
             // 적이 없으면 공격 안함.

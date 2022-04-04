@@ -3,7 +3,7 @@
 
 namespace TMPro.Examples
 {
-    public class TMP_TextEventCheck : MonoBehaviour
+    public class TMP_TextEventCheck : MonoBehaviourEx
     {
 
         public TMP_TextEventHandler TextEventHandler;

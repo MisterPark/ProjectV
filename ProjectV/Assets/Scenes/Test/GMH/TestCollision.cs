@@ -2,16 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestCollision : MonoBehaviour
+public class TestCollision : MonoBehaviourEx
 {
     
-    void Start()
+    protected override void Start()
     {
-        
+        base.Start();
     }
 
     
-    void Update()
+    public override void UpdateEx()
     {
         
     }

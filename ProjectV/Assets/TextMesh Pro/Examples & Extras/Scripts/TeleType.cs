@@ -5,7 +5,7 @@ using System.Collections;
 namespace TMPro.Examples
 {
     
-    public class TeleType : MonoBehaviour
+    public class TeleType : MonoBehaviourEx
     {
 
 
@@ -19,7 +19,7 @@ namespace TMPro.Examples
         private TMP_Text m_textMeshPro;
 
 
-        void Awake()
+      protected override void Awake()
         {
             // Get Reference to TextMeshPro Component
             m_textMeshPro = GetComponent<TMP_Text>();

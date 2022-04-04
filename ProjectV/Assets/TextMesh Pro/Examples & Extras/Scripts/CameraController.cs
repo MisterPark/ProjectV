@@ -5,7 +5,7 @@ using System.Collections;
 namespace TMPro.Examples
 {
     
-    public class CameraController : MonoBehaviour
+    public class CameraController : MonoBehaviourEx
     {
         public enum CameraModes { Follow, Isometric, Free }
 
@@ -50,7 +50,7 @@ namespace TMPro.Examples
         private const string event_FollowDistance = "Slider - Camera Zoom";
 
 
-        void Awake()
+      protected override void Awake()
         {
             if (QualitySettings.vSyncCount > 0)
                 Application.targetFrameRate = 60;
@@ -66,8 +66,9 @@ namespace TMPro.Examples
 
 
         // Use this for initialization
-        void Start()
+        protected override void Start()
         {
+            base.Start();
             if (CameraTarget == null)
             {
                 // If we don't have a target (assigned by the player, create a dummy in the center of the scene).

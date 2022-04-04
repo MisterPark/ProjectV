@@ -9,8 +9,9 @@ public class UI_CharacterSelectStatus : UI
     [SerializeField] private UI_StatData[] children;
     
     static public UI_CharacterSelectStatus Instance;
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         Instance = this;
         rectTransform = GetComponent<RectTransform>();
         playerStat = DataManager.Instance.playerCharacterData[(int)(DataManager.Instance.currentGameData.characterName)].playerCharacter.statsData.stats;

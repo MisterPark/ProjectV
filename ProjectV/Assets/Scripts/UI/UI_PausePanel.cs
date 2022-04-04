@@ -6,12 +6,14 @@ public class UI_PausePanel : UI
 {
     public static UI_PausePanel instance;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         instance = this;
     }
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         Hide();
     }
 

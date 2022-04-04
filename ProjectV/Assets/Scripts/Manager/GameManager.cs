@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameManager : MonoBehaviourEx
 {
     public static GameManager Instance;
 
@@ -36,11 +36,16 @@ public class GameManager : MonoBehaviour
     private bool isPaused = false;
     public bool IsPaused { get { return isPaused; } }
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         Instance = this;
+#if UNITY_EDITOR
+        Application.targetFrameRate = 50;
+#elif UNITY_ANDROID
         // fps °íÁ¤
         Application.targetFrameRate = 50;
+#endif
         // Ä¿¼­ ¼û±è
         HideCursor();
         Random.InitState((int)System.DateTime.UtcNow.Ticks);
@@ -103,20 +108,21 @@ public class GameManager : MonoBehaviour
 
         
     }
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         cameraController = Camera.main.GetComponent<CameraController>();
         cameraController.SetTarget(Player.Instance.gameObject);
     }
 
-    void FixedUpdate()
+    public override void FixedUpdateEx()
     {
         InitZoom();
         CountTime();
         ProcessVictory();
     }
 
-    void Update()
+    public override void UpdateEx()
     {
         if (Input.GetKeyUp(KeyCode.Escape))
         {

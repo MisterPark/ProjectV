@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UI_PauseButton : MonoBehaviour
+public class UI_PauseButton : MonoBehaviourEx
 {
     public static UI_PauseButton instance;
     private float ratio;
@@ -10,12 +10,13 @@ public class UI_PauseButton : MonoBehaviour
     private RectTransform parent;
     private RectTransform button;
 
-    private void Awake()
+    protected override void Awake()
     {
         instance = this;
     }
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         rectTransform = GetComponent<RectTransform>();
         parent = transform.parent.GetComponent<RectTransform>();
         button = transform.GetChild(0).GetComponent<RectTransform>();
@@ -24,7 +25,7 @@ public class UI_PauseButton : MonoBehaviour
     }
 
     
-    void Update()
+    public override void UpdateEx()
     {
     }
 

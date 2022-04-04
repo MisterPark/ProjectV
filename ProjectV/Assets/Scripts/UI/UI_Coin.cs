@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UI_Coin : MonoBehaviour
+public class UI_Coin : MonoBehaviourEx
 {
     private RectTransform screenRT;
     private RectTransform imageRT;
     private RectTransform rectTransform;
     private Text text;
     
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         imageRT = transform.GetChild(0).GetComponent<RectTransform>();
         screenRT = transform.parent.GetComponent<RectTransform>();
         rectTransform = transform.GetComponent<RectTransform>();
@@ -20,7 +21,7 @@ public class UI_Coin : MonoBehaviour
     }
 
     
-    void Update()
+    public override void UpdateEx()
     {
         text.text = DataManager.Instance.currentGameData.gold.ToString();
     }

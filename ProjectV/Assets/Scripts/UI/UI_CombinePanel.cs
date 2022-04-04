@@ -15,13 +15,14 @@ public class UI_CombinePanel : UI
     private Color ableColor = new Color(1f, 1f, 1f, 1f);
     private UI_CombineSlot[] contents;
 
-    void Awake()
+  protected override void Awake()
     {
         instance = this;
     }
     
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         isInit = Init();
         if (Player.Instance == null || isInit == false)
         {

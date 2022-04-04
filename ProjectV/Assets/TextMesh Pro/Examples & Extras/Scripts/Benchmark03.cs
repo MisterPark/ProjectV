@@ -6,7 +6,7 @@ using UnityEngine.TextCore.LowLevel;
 namespace TMPro.Examples
 {
 
-    public class Benchmark03 : MonoBehaviour
+    public class Benchmark03 : MonoBehaviourEx
     {
         public enum BenchmarkType { TMP_SDF_MOBILE = 0, TMP_SDF__MOBILE_SSD = 1, TMP_SDF = 2, TMP_BITMAP_MOBILE = 3, TEXTMESH_BITMAP = 4 }
 
@@ -16,14 +16,15 @@ namespace TMPro.Examples
         public Font SourceFont;
 
 
-        void Awake()
+      protected override void Awake()
         {
 
         }
 
 
-        void Start()
+        protected override void Start()
         {
+            base.Start();
             TMP_FontAsset fontAsset = null;
 
             // Create Dynamic Font Asset for the given font file.

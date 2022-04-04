@@ -4,14 +4,19 @@ using UnityEngine;
 
 public class Torchlight : Unit
 {
-    protected override void Start()
+    protected override void Awake()
     {
-        base.Start();
+        base.Awake();
         stat.Init_LoadStat();
         stat.Init_FinalStat();
         type = UnitType.Prop;
         OnDead.AddListener(OnDeadCallback);
         animator = null;
+    }
+    protected override void Start()
+    {
+        base.Start();
+        
     }
 
     protected void OnTriggerStay(Collider other)

@@ -26,12 +26,14 @@ public class UI_CharacterSelect : UI
 
     private PlayerCharacterName CurrentClickPlayerCharacter;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         instance = this;
     }
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         SlotInit();
         gameObject.SetActive(false);
     }

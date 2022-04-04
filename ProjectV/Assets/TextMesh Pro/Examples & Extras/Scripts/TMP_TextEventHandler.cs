@@ -7,7 +7,7 @@ using System;
 namespace TMPro
 {
 
-    public class TMP_TextEventHandler : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+    public class TMP_TextEventHandler : MonoBehaviourEx, IPointerEnterHandler, IPointerExitHandler
     {
         [Serializable]
         public class CharacterSelectionEvent : UnityEvent<char, int> { }
@@ -96,7 +96,7 @@ namespace TMPro
         private int m_lastWordIndex = -1;
         private int m_lastLineIndex = -1;
 
-        void Awake()
+      protected override void Awake()
         {
             // Get a reference to the text component.
             m_TextComponent = gameObject.GetComponent<TMP_Text>();

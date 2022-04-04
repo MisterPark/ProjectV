@@ -6,6 +6,7 @@ public class Skill_PoisonTornado : Skill
 {
     protected override void Awake()
     {
+        base.Awake();
         Kind = SkillKind.PoisonTornado;
     }
     

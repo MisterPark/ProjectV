@@ -37,7 +37,7 @@ public class Stats
     public float final_Stat;            // 다 계산하고 난 뒤 스탯
 }
 
-public class Stat : MonoBehaviour
+public class Stat : MonoBehaviourEx
 {
     [SerializeField] private UnitStatData statsData;
 #if UNITY_EDITOR
@@ -48,8 +48,12 @@ public class Stat : MonoBehaviour
     public UnityEvent<int> OnLevelUp;
     public UnityEvent<float> OnTakeDamage;
 
-    void FixedUpdate()
+    public override void FixedUpdateEx()
     {
+        if(stats == null || stats.Length < (int)StatType.Recovery)
+        {
+            int a = 10;
+        }
         // 체젠
         if(stats[(int)StatType.Recovery].final_Stat != 0f)
         {

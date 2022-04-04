@@ -6,13 +6,8 @@ public class Skill_LavaOrb : Skill
 {
     protected override void Awake()
     {
+        base.Awake();
         Kind = SkillKind.LavaOrb;
-    }
-    
-    protected override void Start()
-    {
-        Kind = SkillKind.LavaOrb;
-        base.Start();
         activeInterval = 0.4f;
     }
 

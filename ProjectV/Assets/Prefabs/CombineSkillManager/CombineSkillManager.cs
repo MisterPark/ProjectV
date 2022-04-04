@@ -2,14 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CombineSkillManager : MonoBehaviour
+public class CombineSkillManager : MonoBehaviourEx
 {
     public static CombineSkillManager Instance;
     
     public CombineSkillDataElement[] combineSkillDatas;
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         Instance = this;
         //for (int i = 0; i < combineSkillDatas.Length; i++)
         //{

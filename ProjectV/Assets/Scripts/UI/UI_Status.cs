@@ -2,19 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UI_Status : MonoBehaviour
+public class UI_Status : MonoBehaviourEx
 {
     private Stat playerStat;
     private RectTransform rectTransform;
     [SerializeField] private UI_StatData[] children;
     
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         rectTransform = GetComponent<RectTransform>();
     }
 
     
-    void Update()
+    public override void UpdateEx()
     {
         playerStat = Player.Instance.stat;
         if (playerStat == null)

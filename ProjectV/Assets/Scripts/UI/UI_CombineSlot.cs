@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
-public class UI_CombineSlot : MonoBehaviour
+public class UI_CombineSlot : MonoBehaviourEx
 {
     public SkillKind kindA;
     public SkillKind kindB;
@@ -19,8 +19,9 @@ public class UI_CombineSlot : MonoBehaviour
     private bool isActivateB = false;
     private Button button;
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         BanIcon.gameObject.SetActive(false);
         BanSkill();
     }

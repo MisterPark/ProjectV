@@ -4,13 +4,14 @@ using UnityEngine;
 
 
 
-public abstract class Item : MonoBehaviour
+public abstract class Item : MonoBehaviourEx
 {
-    protected virtual void Start()
+    protected override void Start()
     {
+        base.Start();
     }
 
-    protected virtual void FixedUpdate()
+    public override void FixedUpdateEx()
     {
 
     }

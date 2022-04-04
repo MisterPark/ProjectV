@@ -5,7 +5,7 @@ using System.Collections;
 namespace TMPro.Examples
 {
 
-    public class WarpTextExample : MonoBehaviour
+    public class WarpTextExample : MonoBehaviourEx
     {
 
         private TMP_Text m_TextComponent;
@@ -15,14 +15,15 @@ namespace TMPro.Examples
         public float SpeedMultiplier = 1.0f;
         public float CurveScale = 1.0f;
 
-        void Awake()
+      protected override void Awake()
         {
             m_TextComponent = gameObject.GetComponent<TMP_Text>();
         }
 
 
-        void Start()
+        protected override void Start()
         {
+            base.Start();
             StartCoroutine(WarpText());
         }
 

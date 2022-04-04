@@ -11,7 +11,7 @@ public enum MissileType // ¿òÁ÷ÀÓ
     Other,
 }
 
-public class Missile : MonoBehaviour
+public class Missile : MonoBehaviourEx
 {
 
     private float duration;
@@ -62,8 +62,14 @@ public class Missile : MonoBehaviour
 
     public UnityEvent<Vector3, Unit> OnCollision;
 
-    protected virtual void Start()
+    protected override void Awake()
     {
+        base.Awake();
+    }
+
+    protected override void Start()
+    {
+        base.Start();
         transform.localScale = Vector3.one * Range;
     }
     protected virtual void OnEnable()
@@ -82,7 +88,7 @@ public class Missile : MonoBehaviour
         AttackFlag = false;
     }
 
-    protected virtual void FixedUpdate()
+    public override void FixedUpdateEx()
     {
         tick += Time.fixedDeltaTime;
         if (tick >= Duration)

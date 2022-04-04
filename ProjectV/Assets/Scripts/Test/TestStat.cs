@@ -18,7 +18,7 @@ public class TestStatElement
     public float growth;
     public float final;
 }
-public class TestStat : MonoBehaviour
+public class TestStat : MonoBehaviourEx
 {
     [SerializeField]List<TestStatElement> elements = new List<TestStatElement>();
 

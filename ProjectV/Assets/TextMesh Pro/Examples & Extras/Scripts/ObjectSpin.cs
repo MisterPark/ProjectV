@@ -5,7 +5,7 @@ using System.Collections;
 namespace TMPro.Examples
 {
     
-    public class ObjectSpin : MonoBehaviour
+    public class ObjectSpin : MonoBehaviourEx
     {
 
 #pragma warning disable 0414
@@ -24,7 +24,7 @@ namespace TMPro.Examples
         public enum MotionType { Rotation, BackAndForth, Translation };
         public MotionType Motion;
 
-        void Awake()
+      protected override void Awake()
         {
             m_transform = transform;
             m_initial_Rotation = m_transform.rotation.eulerAngles;
@@ -36,7 +36,7 @@ namespace TMPro.Examples
 
 
         
-        void Update()
+        public override void UpdateEx()
         {
             if (Motion == MotionType.Rotation)
             {

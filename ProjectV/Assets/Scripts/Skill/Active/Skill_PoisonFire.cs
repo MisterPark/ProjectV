@@ -7,6 +7,7 @@ public class Skill_PoisonFire : Skill
 
     protected override void Awake()
     {
+        base.Awake();
         Kind = SkillKind.FireBolt;
     }
     protected override void Start()

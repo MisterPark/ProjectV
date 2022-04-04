@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UI_CharacterSlot : MonoBehaviour
+public class UI_CharacterSlot : MonoBehaviourEx
 {
     [SerializeField] private Image m_CharacterImage;
     [SerializeField] private Image m_WeaponImage;
@@ -17,8 +17,9 @@ public class UI_CharacterSlot : MonoBehaviour
     public Text CharacterName => m_CharacterName;
 
     
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         m_CharacterSelect = this.transform.root.Find("CharacterSelectPanel").gameObject;
         Button tempbutton = GetComponent<Button>();
         tempbutton.onClick.AddListener(m_CharacterSelect.GetComponent<UI_CharacterSelect>().OnClickCharacterBoard);
@@ -26,7 +27,7 @@ public class UI_CharacterSlot : MonoBehaviour
     }
 
     
-    void Update()
+    public override void UpdateEx()
     {
         
     }
