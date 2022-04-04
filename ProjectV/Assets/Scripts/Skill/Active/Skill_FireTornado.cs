@@ -7,7 +7,7 @@ public class Skill_FireTornado : Skill
     protected override void Awake()
     {
         base.Awake();
-
+        Kind = SkillKind.FireTornado;
         activeInterval = 0.1f;
     }
 
