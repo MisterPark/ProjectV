@@ -7,7 +7,7 @@ using UnityEngine.Events;
 public class Player : Unit
 {
     public static Player Instance;
-    private Vector3 direction = Vector3.forward;// 주석 범인 찾기
+    private Vector3 direction = Vector3.forward;
     private float damageTick = 0f;
     private float damageDelay = 0.2f;
     private bool damageFlag = false;
@@ -262,7 +262,6 @@ public class Player : Unit
 
         if (kinds.Count == 0)
         {
-            // TODO : Make HP and Money
             kinds.Add(SkillKind.RecoveryHp);
             kinds.Add(SkillKind.IncreaseCoin);
             skillInfos.Add(new SkillInformation(SkillKind.RecoveryHp, 1));

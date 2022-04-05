@@ -62,12 +62,10 @@ public class SpawnManager : MonoBehaviourEx
 
     public override void FixedUpdateEx()
     {
-        
         ProcessFreeze();
         ProcessSpawn();
         ProcessRemove();
         PrecessSetNearestEnemy();
-        //Debug.Log($"{spawnList.Count}");
     }
 
     public void Spawn(GameObject prefab, Vector3 position)

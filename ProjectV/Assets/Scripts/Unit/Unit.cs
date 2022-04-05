@@ -10,8 +10,6 @@ public enum UnitType
     Monster,
     Prop,
 }
-
-
 public class Unit : MonoBehaviourEx
 {
     public UnitType type;
@@ -171,8 +169,6 @@ public class Unit : MonoBehaviourEx
 
         switch (kind)
         {
-
-            //case SkillKind.IceBolt: skill = gameObject.GetComponent<Skill_IceBolt>(); break;
             case SkillKind.IceBolt: skill = gameObject.GetComponent<Skill_IceBolt>(); break;
             case SkillKind.FireBolt: skill = gameObject.GetComponent<Skill_FireBolt>(); break;
             case SkillKind.ForceFieldBarrier: skill = gameObject.GetComponent<Skill_ForceFieldBarrier>(); break;

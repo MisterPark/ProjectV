@@ -7,9 +7,9 @@ public class ObjectManager : MonoBehaviour
     private static ObjectManager instance;
     public static ObjectManager Instance { get { return instance; } }
 
-  void Awake()
+    void Awake()
     {
-        if(instance == null)
+        if (instance == null)
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
@@ -32,7 +32,7 @@ public class ObjectManager : MonoBehaviour
             if (MonoBehaviourEx.behaviours[i].gameObject.activeSelf == false) continue;
             MonoBehaviourEx.behaviours[i].FixedUpdateEx();
         }
-        
+
     }
     private void Update()
     {
@@ -48,12 +48,11 @@ public class ObjectManager : MonoBehaviour
         {
             if (MonoBehaviourEx.behaviours[i].IsStart == false) continue;
             if (MonoBehaviourEx.behaviours[i].gameObject.activeSelf == false) continue;
-
             MonoBehaviourEx.behaviours[i].UpdateEx();
         }
 
-        
+
     }
 
-   
+
 }

@@ -60,16 +60,6 @@ public static class Extension
         return (SkillLevel)(level - 1);
     }
 
-
-    //public static List<T> Shuffle<T>(this List<T> list)
-    //{
-    //    List<T> result = new List<T>();
-
-    //    lis
-
-    //    return result;
-    //}
-
     public class Less : IComparer
     {
         public int Compare(object x, object y)

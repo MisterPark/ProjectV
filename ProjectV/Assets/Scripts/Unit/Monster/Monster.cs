@@ -16,7 +16,6 @@ public class Monster : Unit
     protected override void Start()
     {
         base.Start();
-        
     }
 
     public override void FixedUpdateEx()
@@ -27,14 +26,9 @@ public class Monster : Unit
 
     protected void OnTriggerStay(Collider other)
     {
-        
         Unit target = other.gameObject.GetComponent<Unit>();
         if (target == null) return;
-
-        if (target.type != UnitType.Monster)
-        {
-            return;
-        }
+        if (target.type != UnitType.Monster) return;
 
         Vector3 to = other.transform.position - transform.position;
         Vector3 direction = to.normalized;
@@ -72,9 +66,7 @@ public class Monster : Unit
                 obj.GetComponentInChildren<ExpJewel>().exp = (randomExp * 10) + itemManager.expAccumulate;
                 itemManager.expAccumulate = 0f;
             }
-
         }
-
 
         SpawnManager.Instance.Remove(gameObject);
     }

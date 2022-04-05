@@ -39,7 +39,7 @@ public class MonoBehaviourEx : MonoBehaviour
     {
         behaviours.Add(behaviour);
     }
-
+  
     public static void Disregister(MonoBehaviourEx behaviour)
     {
         removes.Add(behaviour);
