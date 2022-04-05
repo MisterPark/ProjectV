@@ -7,9 +7,9 @@ public class Impact : MonoBehaviourEx
     ParticleSystem particle;
     float tick = 0;
 
-    protected override void Start()
+    protected override void Awake()
     {
-        base.Start();
+        base.Awake();
         particle = GetComponent<ParticleSystem>();
     }
 
@@ -20,6 +20,12 @@ public class Impact : MonoBehaviourEx
 
     public override void FixedUpdateEx()
     {
+        if(particle == null)
+        {
+            particle = GetComponent<ParticleSystem>();
+        }
+        if (particle == null)
+            return;
         tick += Time.fixedDeltaTime;
         if(particle.isStopped)
         {
