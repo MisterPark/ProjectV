@@ -26,6 +26,8 @@ public class SpawnManager : MonoBehaviourEx
     private int currentMinute = -1;
     private int currentMonsterPattern = 0;
     private int currentPatternMonstersCount = 0;
+    [SerializeField] private float spawnTimeInterval = 0.1f;
+    [SerializeField] private float spawnTimeTick = 0f;
 
     private bool pauseFlag = false;
     public bool Pause { get {return pauseFlag;} set { pauseFlag = value; } }
@@ -40,8 +42,6 @@ public class SpawnManager : MonoBehaviourEx
         } 
     }
 
-    float spawnDelay = 1f;
-    float spawnTick = 0f;
     float freezeTick = 0f;
     float freezeTime;
     bool freezeFlag = false;
@@ -99,11 +99,6 @@ public class SpawnManager : MonoBehaviourEx
     {
         if (Pause) return;
         if (freezeFlag) return;
-        spawnTick += Time.fixedDeltaTime;
-        if (spawnTick < spawnDelay) return;
-        
-        spawnTick = 0f;
-
 
 
         int minute = ((int)DataManager.Instance.currentGameData.totalPlayTime / 60);
@@ -134,9 +129,10 @@ public class SpawnManager : MonoBehaviourEx
             return;
         }
 
-        int spawnCount = MaxSpawnCount - spawnList.Count;
-        for (int i = 0; i < spawnCount; i++)
-        {       
+        spawnTimeTick += Time.fixedDeltaTime;
+        if(spawnTimeTick >= spawnTimeInterval)
+        {
+            spawnTimeTick -= spawnTimeInterval;
             float angle = UnityEngine.Random.Range(-180, 180);
             float dist = 25f;
             Vector3 pos = new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle)) * dist;
@@ -152,6 +148,7 @@ public class SpawnManager : MonoBehaviourEx
                 Spawn(stageMonsterData[minute].monsterPattern[currentMonsterPattern].monsters[mons], pos);
             }
         }
+
     }
 
     private void ProcessRemove()
