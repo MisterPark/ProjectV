@@ -20,6 +20,6 @@ public class Skill_IncreaseCoin : Skill
 
     public override void Initialize()
     {
-        
+        Kind = SkillKind.IncreaseCoin;
     }
 }

@@ -21,6 +21,6 @@ public class Skill_RecoveryHp : Skill
 
     public override void Initialize()
     {
-        
+        Kind = SkillKind.RecoveryHp;
     }
 }
