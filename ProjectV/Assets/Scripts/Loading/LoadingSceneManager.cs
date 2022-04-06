@@ -32,7 +32,7 @@ public class LoadingSceneManager : MonoBehaviourEx
 
     public override void FixedUpdateEx()
     {
-        Debug.Log($"{NextScene} {loadingFlag} {trigger} {loadTick} / {WaitTime}");
+        //Debug.Log($"{NextScene} {loadingFlag} {trigger} {loadTick} / {WaitTime}");
         if (loadingFlag == false) return;
 
         if(trigger == false)
