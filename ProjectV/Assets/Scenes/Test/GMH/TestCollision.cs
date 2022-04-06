@@ -5,12 +5,6 @@ using UnityEngine;
 public class TestCollision : MonoBehaviourEx
 {
     
-    protected override void Start()
-    {
-        base.Start();
-    }
-
-    
     public override void UpdateEx()
     {
         

@@ -6,15 +6,6 @@ public class ExpJewel_03 : Item
 {
     public float exp;
     
-    protected override void Start()
-    {
-        base.Start();
-    }
-    
-    public override void FixedUpdateEx()
-    {
-        base.FixedUpdateEx();
-    }
     
     public override void Use()
     {

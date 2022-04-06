@@ -72,11 +72,13 @@ public class SoundManager : MonoBehaviourEx
     protected override void Awake()
     {
         base.Awake();
-        if (instance == null)
+        if (instance != null)
         {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
+            Destroy(gameObject);
+            return;
         }
+        instance = this;
+        DontDestroyOnLoad(gameObject);
 
         bgmPlayer = transform.GetChild(0).GetComponent<AudioSource>();
         sfxPlayer = transform.GetChild(1).GetComponent<AudioSource>();
@@ -103,8 +105,8 @@ public class SoundManager : MonoBehaviourEx
             newNode.volume = audioclip.volume;
             slotMachineAudioClipsDic.Add(audioclip.clipName, newNode);
         }
-        SceneManager.sceneLoaded += OnSceneLoad;
 
+        PlayBGMSound("8Bit Track1");
     }
 
     protected override void Start()
@@ -231,35 +233,29 @@ public class SoundManager : MonoBehaviourEx
                 PlayBGMSound("8Bit Track1");
             }
         }
+        else if (sceneName == "LoadingScene")
+        {
+            if(bgmPlayer.clip == null)
+            {
+                return;
+            }
+            if (bgmPlayer.isPlaying)
+            {
+                PlaySFXSound("LongButton");
+                StopBGM();
+                newBgmTick = newBgmInterval;
+            }
+        }
     }
 
     public void SetCurrentBgmVolume()
     {
-        string currentBgmName = bgmPlayer.clip.name;
-        bgmPlayer.volume = bgmAudioClipsDic[currentBgmName].volume * masterVolumeBGM;
-    }
-
-    void OnSceneLoad(Scene scene, LoadSceneMode mode)
-    {
-        string sceneName = SceneManager.GetActiveScene().name;
-        switch (sceneName)
+        if (bgmPlayer.clip != null)
         {
-            case "TitleScene":
-                {
-                    //PlaySFXSound("GameStart");
-                    PlayBGMSound("8Bit Track1");
-                    break;
-                }
-            case "LoadingScene":
-                {
-                    PlaySFXSound("LongButton");
-                    StopBGM();
-                    newBgmTick = newBgmInterval;
-                    break;
-                }
-            default:
-                break;
+            string currentBgmName = bgmPlayer.clip.name;
+            bgmPlayer.volume = bgmAudioClipsDic[currentBgmName].volume * masterVolumeBGM;
         }
     }
+
 
 }

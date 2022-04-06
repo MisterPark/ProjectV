@@ -9,10 +9,6 @@ public class Skill_Duration : Skill
         base.Awake();
         //Kind = SkillKind.Duration;
     }
-    protected override void Start()
-    {
-        base.Start();
-    }
     public override void Active()
     {
         Stat stat = Player.Instance.GetComponent<Stat>();

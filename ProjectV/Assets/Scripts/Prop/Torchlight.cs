@@ -13,12 +13,6 @@ public class Torchlight : Unit
         OnDead.AddListener(OnDeadCallback);
         animator = null;
     }
-    protected override void Start()
-    {
-        base.Start();
-        
-    }
-
     protected void OnTriggerStay(Collider other)
     {
         Unit target = other.gameObject.GetComponent<Unit>();
