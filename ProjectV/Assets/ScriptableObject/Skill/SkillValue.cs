@@ -38,6 +38,7 @@ public enum SkillKind
     RecoveryHp,
     IncreaseCoin,
     End,
+    //
 }
 [System.Serializable]
 public enum SkillType
