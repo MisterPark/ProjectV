@@ -30,16 +30,13 @@ public class FrozenOrb : MonoBehaviourEx
             OnEnable();
             return;
         }
+
         tick += Time.fixedDeltaTime;
         angle += 300 * Time.fixedDeltaTime;
-        //if(angle>360)
-        //{
-        //    angle = 0;
-        //}
+
         if(tick>cooldown)
         {
             tick = 0;
-
             GameObject obj = ObjectPool.Instance.Allocate("IceBolt");
             Missile missile = obj.GetComponent<Missile>();
             missile.Initialize();
@@ -58,6 +55,5 @@ public class FrozenOrb : MonoBehaviourEx
             missile.TargetDirection = (v3RotatedDirection);
             SoundManager.Instance.PlaySFXSound("IceBolt");
         }
-        
     }
 }
