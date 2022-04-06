@@ -9,10 +9,6 @@ public class Skill_Strength : Skill
         base.Awake();
         Kind = SkillKind.Strength;
     }
-    protected override void Start()
-    {
-        base.Start();
-    }
     public override void Active()
     {
         Stat stat = Player.Instance.GetComponent<Stat>();

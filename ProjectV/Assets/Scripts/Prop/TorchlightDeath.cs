@@ -5,11 +5,6 @@ using UnityEngine;
 public class TorchlightDeath : MonoBehaviourEx
 {
     
-    protected override void Start()
-    {
-        base.Start();
-    }
-
     
     public override void FixedUpdateEx()
     {

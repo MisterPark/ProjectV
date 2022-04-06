@@ -12,6 +12,7 @@ public class ProgressBar : MonoBehaviourEx
     }
     protected override void Start()
     {
+        base.Start();
         mat = GetComponent<Renderer>().material;
     }
 

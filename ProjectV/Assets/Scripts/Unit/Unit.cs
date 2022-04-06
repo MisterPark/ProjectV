@@ -74,11 +74,6 @@ public class Unit : MonoBehaviourEx
         stat.OnTakeDamage.AddListener(OnStatTakeDamage);
     }
 
-    protected override void Start()
-    {
-        base.Start();
-        
-    }
 
     public override void FixedUpdateEx()
     {

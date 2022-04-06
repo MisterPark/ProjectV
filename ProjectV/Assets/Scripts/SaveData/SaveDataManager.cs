@@ -27,13 +27,6 @@ public class SaveDataManager : MonoBehaviourEx
     }
 
 
-    protected override void Start() 
-    {
-        base.Start();
-        //LoadGameData();
-        //SaveGameData();
-
-    }
 
 
     public void LoadGameData() 

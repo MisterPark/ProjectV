@@ -9,10 +9,6 @@ public class Skill_MoveSpeed : Skill
         base.Awake();
         Kind = SkillKind.MoveSpeed;
     }
-    protected override void Start()
-    {
-        base.Start();
-    }
     public override void Active()
     {
         Stat stat = Player.Instance.GetComponent<Stat>();

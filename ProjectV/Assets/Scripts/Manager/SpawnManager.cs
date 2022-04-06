@@ -55,11 +55,6 @@ public class SpawnManager : MonoBehaviourEx
         }
         stageMonsterData = stageData[0].monsterData;
     }
-    protected override void Start()
-    {
-        base.Start();
-    }
-
     public override void FixedUpdateEx()
     {
         ProcessFreeze();

@@ -19,6 +19,7 @@ public class SkillObject : MonoBehaviourEx
     
     protected override void Start()
     {
+        base.Start();
         transform.localScale = Vector3.one * range;
     }
 

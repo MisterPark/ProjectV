@@ -29,15 +29,10 @@ public class LoadingSceneManager : MonoBehaviourEx
             DontDestroyOnLoad(this);
         }
     }
-    protected override void Start()
-    {
-        base.Start();
-    }
 
     public override void FixedUpdateEx()
     {
-        base.FixedUpdateEx();
-        //Debug.Log($"{NextScene} {loadingFlag} {trigger} {loadTick} / {WaitTime}");
+        Debug.Log($"{NextScene} {loadingFlag} {trigger} {loadTick} / {WaitTime}");
         if (loadingFlag == false) return;
 
         if(trigger == false)

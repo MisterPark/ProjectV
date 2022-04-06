@@ -9,10 +9,6 @@ public class Skill_Luck : Skill
         base.Awake();
         // Kind = SkillKind.Luck;
     }
-    protected override void Start()
-    {
-        base.Start();
-    }
     public override void Active()
     {
         Stat stat = Player.Instance.GetComponent<Stat>();
