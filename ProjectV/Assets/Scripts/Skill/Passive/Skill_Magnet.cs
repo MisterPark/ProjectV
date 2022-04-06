@@ -19,4 +19,9 @@ public class Skill_Magnet : Skill
         stat.Increase_FinalStat(StatType.Magnet);
         Player.Instance.UpdateSkillData();
     }
+
+    public override void Initialize()
+    {
+        
+    }
 }

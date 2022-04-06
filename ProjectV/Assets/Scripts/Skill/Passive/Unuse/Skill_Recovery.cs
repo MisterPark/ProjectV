@@ -19,4 +19,9 @@ public class Skill_Recovery : Skill
         stat.Increase_FinalStat(StatType.Recovery);
         Player.Instance.UpdateSkillData();
     }
+
+    public override void Initialize()
+    {
+        //Kind = SkillKind.Recovery;
+    }
 }

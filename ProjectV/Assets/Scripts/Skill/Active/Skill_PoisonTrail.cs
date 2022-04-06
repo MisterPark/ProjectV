@@ -2,15 +2,9 @@ using UnityEngine;
 
 public class Skill_PoisonTrail : Skill
 {
-    protected override void Awake()
-    {
-        base.Awake();
-        Kind = SkillKind.PoisonTrail;
-    }
-    protected override void Start()
+    public override void Initialize()
     {
         Kind = SkillKind.PoisonTrail;
-        base.Start();
         activeInterval = 0.1f;
         activeOnce = true;
     }

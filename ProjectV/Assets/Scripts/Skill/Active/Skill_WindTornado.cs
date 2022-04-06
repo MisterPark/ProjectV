@@ -4,16 +4,9 @@ using UnityEngine;
 
 public class Skill_WindTornado : Skill
 {
-    protected override void Awake()
-    {
-        base.Awake();
-        Kind = SkillKind.WindTornado;
-    }
-    
-    protected override void Start()
+    public override void Initialize()
     {
         Kind = SkillKind.WindTornado;
-        base.Start();
         activeInterval = 0.15f;
     }
 
@@ -69,4 +62,5 @@ public class Skill_WindTornado : Skill
         //GameObject impact = ObjectPool.Instance.Allocate("IceFragmentsImpact");
         //impact.transform.position = pos;
     }
+
 }

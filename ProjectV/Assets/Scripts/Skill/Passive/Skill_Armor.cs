@@ -19,4 +19,9 @@ public class Skill_Armor : Skill
         stat.Increase_FinalStat(StatType.Armor);
         Player.Instance.UpdateSkillData();
     }
+
+    public override void Initialize()
+    {
+        
+    }
 }

@@ -4,16 +4,9 @@ using UnityEngine;
 
 public class Skill_PoisonTornado : Skill
 {
-    protected override void Awake()
-    {
-        base.Awake();
-        Kind = SkillKind.PoisonTornado;
-    }
-    
-    protected override void Start()
+    public override void Initialize()
     {
         Kind = SkillKind.PoisonTornado;
-        base.Start();
         activeInterval = 0.1f;
     }
 

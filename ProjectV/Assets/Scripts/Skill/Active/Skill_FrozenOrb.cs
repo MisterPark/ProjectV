@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class Skill_FrozenOrb : Skill
 {
-    protected override void Awake()
+    public override void Initialize()
     {
-        base.Awake();
         Kind = SkillKind.FrozenOrb;
-
         activeInterval = 0.25f;
     }
     public override void Active()

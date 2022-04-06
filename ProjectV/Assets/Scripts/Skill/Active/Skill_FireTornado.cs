@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class Skill_FireTornado : Skill
 {
-    protected override void Awake()
+    public override void Initialize()
     {
-        base.Awake();
         Kind = SkillKind.FireTornado;
         activeInterval = 0.1f;
     }

@@ -19,4 +19,9 @@ public class Skill_Luck : Skill
         stat.Increase_FinalStat(StatType.Luck);
         Player.Instance.UpdateSkillData();
     }
+
+    public override void Initialize()
+    {
+        
+    }
 }

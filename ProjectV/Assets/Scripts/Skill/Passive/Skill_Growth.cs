@@ -19,4 +19,9 @@ public class Skill_Growth : Skill
         stat.Increase_FinalStat(StatType.Growth);
         Player.Instance.UpdateSkillData();
     }
+
+    public override void Initialize()
+    {
+        
+    }
 }

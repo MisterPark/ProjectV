@@ -19,4 +19,9 @@ public class Skill_MoveSpeed : Skill
         stat.Increase_FinalStat(StatType.MoveSpeed);
         Player.Instance.UpdateSkillData();
     }
+
+    public override void Initialize()
+    {
+        
+    }
 }

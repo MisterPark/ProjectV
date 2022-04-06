@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class Skill_IceTornado : Skill
 {
-    protected override void Awake()
+    public override void Initialize()
     {
-        base.Awake();
         Kind = SkillKind.IceTornado;
         activeInterval = 0.1f;
     }

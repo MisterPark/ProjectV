@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class Skill_BlackHole : Skill
 {
-    protected override void Awake()
+    public override void Initialize()
     {
-        base.Awake();
         Kind = SkillKind.BlackHole;
-
         activeInterval = 0.1f;
     }
 

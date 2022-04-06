@@ -4,27 +4,14 @@ using UnityEngine;
 
 public class Skill_Lightning : Skill
 {
-    protected override void Awake()
+    public override void Initialize()
     {
-        base.Awake();
         Kind = SkillKind.Lightning;
-    }
-    protected override void Start()
-    {
-        base.Start();
-        Kind = SkillKind.Lightning;
-        UpdateSkillData();
+        activeOnce = true;
     }
     public override void Active()
     {
-        GameObject random = null;
-        SpawnManager.Instance.SpawnQueue.Dequeue(out random);
-        //random = SpawnManager.Instance.RandomMonster;
-        if (random == null)
-        {
-            // 적이 없으면 공격 안함.
-            return;
-        }
+        
         Unit unit = GetComponent<Unit>();
         if (unit == null)
         {
@@ -32,16 +19,25 @@ public class Skill_Lightning : Skill
             return;
         }
 
-        GameObject obj = ObjectPool.Instance.Allocate("Lightning");
-        Missile missile = obj.GetComponent<Missile>();
-        missile.Initialize();
-        missile.transform.position = random.transform.position;
-        missile.Team = unit.team;
-        missile.Owner = unit;
-        missile.Duration = duration;
-        missile.Damage = damage;
-        missile.Range = range;
-        missile.SetTarget(random.transform.position);
-        SoundManager.Instance.PlaySFXSound("Lightning");
+        for (int i = 0; i < amount; i++)
+        {
+            GameObject random = null;
+            SpawnManager.Instance.SpawnQueue.Dequeue(out random);
+            if (random == null) return;
+
+            GameObject obj = ObjectPool.Instance.Allocate("Lightning");
+            Missile missile = obj.GetComponent<Missile>();
+            missile.Initialize();
+            missile.transform.position = random.transform.position;
+            missile.Team = unit.team;
+            missile.Owner = unit;
+            missile.Duration = duration;
+            missile.Damage = damage;
+            missile.Range = range;
+            missile.SetTarget(random.transform.position);
+            SoundManager.Instance.PlaySFXSound("Lightning");
+        }
+
+        
     }
 }

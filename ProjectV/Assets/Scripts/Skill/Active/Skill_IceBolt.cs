@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class Skill_IceBolt : Skill
 {
-    protected override void Awake()
+    public override void Initialize()
     {
-        base.Awake();
         Kind = SkillKind.IceBolt;
         activeInterval = 0.1f;
     }

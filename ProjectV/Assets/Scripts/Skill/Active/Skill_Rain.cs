@@ -4,18 +4,12 @@ using UnityEngine;
 
 public class Skill_Rain : Skill
 {
-    protected override void Awake()
-    {
-        base.Awake();
-        Kind = SkillKind.Rain;
-    }
-    protected override void Start()
+    public override void Initialize()
     {
         Kind = SkillKind.Rain;
-        base.Start();
     }
 
-    
+
     public override void Active()
     {
         //GameObject nearest = null;

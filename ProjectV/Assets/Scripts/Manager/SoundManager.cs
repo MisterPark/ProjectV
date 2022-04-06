@@ -34,19 +34,7 @@ public class SoundManager : MonoBehaviourEx
 {
     private static SoundManager instance;
 
-    public static SoundManager Instance
-    {
-        get
-        {
-
-            if (instance == null)
-            {
-                instance = FindObjectOfType<SoundManager>();
-            }
-
-            return instance;
-        }
-    } // Sound를 관리해주는 스크립트는 하나만 존재해야하고 instance프로퍼티로 언제 어디에서나 불러오기위해 싱글톤 사용
+    public static SoundManager Instance { get { return instance; } }
 
     private AudioSource bgmPlayer;
     private AudioSource sfxPlayer;
@@ -84,13 +72,11 @@ public class SoundManager : MonoBehaviourEx
     protected override void Awake()
     {
         base.Awake();
-        if (instance != null)
+        if (instance == null)
         {
-            Destroy(gameObject);
-            return;
+            instance = this;
+            DontDestroyOnLoad(gameObject);
         }
-        instance = this;
-        DontDestroyOnLoad(this.gameObject); //여러 씬에서 사용할 것.
 
         bgmPlayer = transform.GetChild(0).GetComponent<AudioSource>();
         sfxPlayer = transform.GetChild(1).GetComponent<AudioSource>();
@@ -121,7 +107,7 @@ public class SoundManager : MonoBehaviourEx
 
     }
 
-    public void Start()
+    protected override void Start()
     {
         masterVolumeBGM = DataManager.Instance.Settings.BGMVolume;
         masterVolumeSFX = DataManager.Instance.Settings.SoundVolume;
@@ -130,12 +116,28 @@ public class SoundManager : MonoBehaviourEx
     // 효과 사운드 재생 : 이름을 필수 매개변수, 볼륨을 선택적 매개변수로 지정
     public void PlaySFXSound(string name)
     {
+        if(string.IsNullOrEmpty(name))
+        {
+            Debug.LogError("Parameter cannont be null");
+            return;
+        }
         if (sfxAudioClipsDic.ContainsKey(name) == false)
         {
             Debug.Log(name + " is not Contained audioClipsDic");
             return;
         }
-        sfxPlayer.PlayOneShot(sfxAudioClipsDic[name].clip, sfxAudioClipsDic[name].volume * masterVolumeSFX);
+        AudioClipNode sound = sfxAudioClipsDic[name];
+        if (sound == null)
+        {
+            Debug.LogError($"Sound : [{name}] sound is null ");
+            return;
+        }
+        if (sound.clip == null)
+        {
+            Debug.LogError($"Sound : [{name}] clip is null ");
+            return;
+        }
+        sfxPlayer.PlayOneShot(sound.clip, sound.volume * masterVolumeSFX);
         
     }
 

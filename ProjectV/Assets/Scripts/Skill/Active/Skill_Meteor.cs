@@ -4,13 +4,10 @@ using UnityEngine;
 
 public class Skill_Meteor : Skill
 {
-    
-    protected override void Awake()
+    public override void Initialize()
     {
-        base.Awake();
         Kind = SkillKind.Meteor;
         activeInterval = 0.2f;
-        
     }
 
     public override void Active()

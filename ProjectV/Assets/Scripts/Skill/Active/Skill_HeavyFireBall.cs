@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class Skill_HeavyFireBall : Skill
 {
-    protected override void Awake()
+    public override void Initialize()
     {
-        base.Awake();
         Kind = SkillKind.HeavyFireBall;
         activeInterval = 0.1f;
     }
@@ -14,14 +13,6 @@ public class Skill_HeavyFireBall : Skill
 
     public override void Active()
     {
-        //GameObject nearest = null;
-        //SpawnManager.Instance.SpawnQueue.Dequeue(out nearest);
-
-        //if (nearest == null)
-        //{
-        //    // 적이 없으면 공격 안함.
-        //    return;
-        //}
         Unit unit = GetComponent<Unit>();
         if (unit == null)
         {

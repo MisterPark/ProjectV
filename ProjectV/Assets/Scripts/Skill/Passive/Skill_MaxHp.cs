@@ -19,4 +19,9 @@ public class Skill_MaxHp : Skill
         stat.Increase_FinalStat(StatType.MaxHealth);
         Player.Instance.UpdateSkillData();
     }
+
+    public override void Initialize()
+    {
+        
+    }
 }

@@ -19,4 +19,9 @@ public class Skill_Range : Skill
         stat.Increase_FinalStat(StatType.Range);
         Player.Instance.UpdateSkillData();
     }
+
+    public override void Initialize()
+    {
+        
+    }
 }

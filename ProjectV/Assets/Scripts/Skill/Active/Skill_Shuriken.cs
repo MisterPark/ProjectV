@@ -4,13 +4,11 @@ using UnityEngine;
 
 public class Skill_Shuriken : Skill
 {
-    protected override void Start()
+    public override void Initialize()
     {
         Kind = SkillKind.Shuriken;
-        base.Start();
         activeInterval = 0.25f;
     }
-
     public override void Active()
     {
 

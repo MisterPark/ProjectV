@@ -4,15 +4,9 @@ using UnityEngine;
 
 public class Skill_UnstableMagicMissile : Skill
 {
-    protected override void Awake()
-    {
-        base.Awake();
-        Kind = SkillKind.UnstableMagicMissile;
-    }
-    protected override void Start()
+    public override void Initialize()
     {
         Kind = SkillKind.UnstableMagicMissile;
-        base.Start();
         activeInterval = 0.1f;
     }
     public override void Active()

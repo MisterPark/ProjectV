@@ -19,4 +19,9 @@ public class Skill_Amount : Skill
         stat.Increase_FinalStat(StatType.Amount);
         Player.Instance.UpdateSkillData();
     }
+
+    public override void Initialize()
+    {
+        
+    }
 }

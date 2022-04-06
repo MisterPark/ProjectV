@@ -19,4 +19,9 @@ public class Skill_Strength : Skill
         stat.Increase_FinalStat(StatType.Strength);
         Player.Instance.UpdateSkillData();
     }
+
+    public override void Initialize()
+    {
+        
+    }
 }

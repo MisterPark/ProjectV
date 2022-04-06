@@ -19,4 +19,9 @@ public class Skill_Greed : Skill
         stat.Increase_FinalStat(StatType.Greed);
         Player.Instance.UpdateSkillData();
     }
+
+    public override void Initialize()
+    {
+        
+    }
 }

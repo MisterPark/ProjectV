@@ -5,11 +5,9 @@ using UnityEngine;
 public class Skill_FireBolt : Skill
 {
 
-    protected override void Awake()
+    public override void Initialize()
     {
-        base.Awake();
         Kind = SkillKind.FireBolt;
-        
         activeInterval = 0.1f;
     }
     public override void Active()

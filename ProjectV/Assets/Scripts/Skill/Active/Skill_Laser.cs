@@ -6,21 +6,12 @@ public class Skill_Laser : Skill
 {
     Vector3 size;
     BoxCollider boxCollider;
-    protected override void Awake()
+    public override void Initialize()
     {
-        base.Awake();
         Kind = SkillKind.Laser;
         activeInterval = 0.25f;
     }
-    
-    protected override void Start()
-    {
-        Kind = SkillKind.Laser;
-        
-        base.Start();
-    }
 
-    
     public override void Active()
     {
 

@@ -4,19 +4,13 @@ using UnityEngine;
 
 public class Skill_PoisonFire : Skill
 {
-
-    protected override void Awake()
-    {
-        base.Awake();
-        Kind = SkillKind.FireBolt;
-    }
-    protected override void Start()
-    {
-        base.Start();
-        Kind = SkillKind.FireBolt;
-    }
     public override void Active()
     {
-        throw new System.NotImplementedException();
+        
+    }
+
+    public override void Initialize()
+    {
+        Kind = SkillKind.FireBolt;
     }
 }

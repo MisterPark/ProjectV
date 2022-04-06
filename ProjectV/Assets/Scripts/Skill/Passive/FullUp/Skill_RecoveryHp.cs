@@ -18,4 +18,9 @@ public class Skill_RecoveryHp : Skill
         Stat stat = Player.Instance.GetComponent<Stat>();
         stat.Increase_FinalStat(StatType.Health, 30);
     }
+
+    public override void Initialize()
+    {
+        
+    }
 }

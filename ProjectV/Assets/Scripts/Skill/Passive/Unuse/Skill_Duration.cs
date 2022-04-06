@@ -19,4 +19,9 @@ public class Skill_Duration : Skill
         stat.Increase_FinalStat(StatType.Duration);
         Player.Instance.UpdateSkillData();
     }
+
+    public override void Initialize()
+    {
+        
+    }
 }

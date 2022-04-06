@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class Skill_LavaOrb : Skill
 {
-    protected override void Awake()
+    public override void Initialize()
     {
-        base.Awake();
         Kind = SkillKind.LavaOrb;
         activeInterval = 0.4f;
     }

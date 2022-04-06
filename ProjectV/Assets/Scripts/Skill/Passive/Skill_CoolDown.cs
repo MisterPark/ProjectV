@@ -19,4 +19,9 @@ public class Skill_CoolDown : Skill
         stat.Increase_FinalStat(StatType.Cooldown);
         Player.Instance.UpdateSkillData();
     }
+
+    public override void Initialize()
+    {
+        
+    }
 }

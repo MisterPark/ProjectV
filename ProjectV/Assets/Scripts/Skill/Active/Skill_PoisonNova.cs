@@ -4,20 +4,11 @@ using UnityEngine;
 
 public class Skill_PoisonNova : Skill
 {
-
-    protected override void Awake()
-    {
-        base.Awake();
-        Kind = SkillKind.PoisonNova;
-
-    }
-    protected override void Start()
+    public override void Initialize()
     {
         Kind = SkillKind.PoisonNova;
-        activeOnce = true;
-        base.Start();
-
         activeInterval = 0.5f;
+        activeOnce = true;
     }
     public override void Active()
     {
