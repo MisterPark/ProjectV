@@ -25,12 +25,12 @@ public class ObjectManager : MonoBehaviour
         }
         MonoBehaviourEx.removes.Clear();
 
-        int count = MonoBehaviourEx.behaviours.Count;
+        MonoBehaviourEx[] array = MonoBehaviourEx.behaviours.ToArray();
+        int count = array.Length;
         for (int i = 0; i < count; i++)
         {
-            if (MonoBehaviourEx.behaviours[i].IsStart == false) continue;
-            if (MonoBehaviourEx.behaviours[i].gameObject.activeSelf == false) continue;
-            MonoBehaviourEx.behaviours[i].FixedUpdateEx();
+            if (array[i].gameObject.activeSelf == false) continue;
+            array[i].FixedUpdateEx();
         }
 
     }
@@ -43,12 +43,12 @@ public class ObjectManager : MonoBehaviour
         }
         MonoBehaviourEx.removes.Clear();
 
-        int count = MonoBehaviourEx.behaviours.Count;
+        MonoBehaviourEx[] array = MonoBehaviourEx.behaviours.ToArray();
+        int count = array.Length;
         for (int i = 0; i < count; i++)
         {
-            if (MonoBehaviourEx.behaviours[i].IsStart == false) continue;
-            if (MonoBehaviourEx.behaviours[i].gameObject.activeSelf == false) continue;
-            MonoBehaviourEx.behaviours[i].UpdateEx();
+            if (array[i].gameObject.activeSelf == false) continue;
+            array[i].UpdateEx();
         }
 
 

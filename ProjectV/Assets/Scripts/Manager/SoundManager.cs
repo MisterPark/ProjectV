@@ -109,6 +109,7 @@ public class SoundManager : MonoBehaviourEx
 
     protected override void Start()
     {
+        base.Start();
         masterVolumeBGM = DataManager.Instance.Settings.BGMVolume;
         masterVolumeSFX = DataManager.Instance.Settings.SoundVolume;
     }
