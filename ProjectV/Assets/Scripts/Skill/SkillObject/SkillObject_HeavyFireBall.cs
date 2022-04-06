@@ -51,6 +51,7 @@ public class SkillObject_HeavyFireBall : SkillObject
             missile.Delay = delay;
             missile.IsPenetrate = true;
             missile.Type = MissileType.Other;
+            missile.transform.GetChild(0).gameObject.SetActive(true);
             var shape = missile.transform.GetChild(0).GetComponent<ParticleSystem>().shape;
             shape.radius = range * 0.5f;
             //missile.OnCollision.RemoveAllListeners();
