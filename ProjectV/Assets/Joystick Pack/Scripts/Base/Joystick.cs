@@ -46,6 +46,7 @@ public class Joystick : MonoBehaviourEx, IPointerDownHandler, IDragHandler, IPoi
 
     protected override void Start()
     {
+        base.Start();
         HandleRange = handleRange;
         DeadZone = deadZone;
         baseRect = GetComponent<RectTransform>();

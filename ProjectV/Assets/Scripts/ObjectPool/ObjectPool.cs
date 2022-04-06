@@ -16,12 +16,6 @@ public class ObjectPool : MonoBehaviourEx
             _instance = this;
         //Initialize();
     }
-
-    protected override void Start()
-    {
-        base.Start();
-    }
-
     public GameObject Allocate(string key)
     {
         string _key = key.Split('(')[0];

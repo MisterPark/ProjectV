@@ -7,12 +7,6 @@ public class UnstableMagicMissile : Missile
     float movePatternTick = 1f;
     float movePatternCoolTime = 1f;
     
-    protected override void Start()
-    {
-        base.Start();
-
-    }
-
     protected override void ProcessMove()
     {
 

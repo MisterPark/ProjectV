@@ -4,14 +4,6 @@ using UnityEngine;
 
 public class RareChest : Item
 {
-    protected override void Start()
-    {
-        base.Start();
-    }
-    public override void FixedUpdateEx()
-    {
-        base.FixedUpdateEx();
-    }
 
     public override void Use()
     {

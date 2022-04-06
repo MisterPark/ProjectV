@@ -8,11 +8,6 @@ public class TargetingCamera : MonoBehaviourEx
     [SerializeField] float distance = 2;
     [SerializeField] Vector3 direction;
 
-    protected override void Start()
-    {
-        base.Start();
-    }
-
     void LateUpdate()
     {
         Vector3 dir = direction.normalized;
