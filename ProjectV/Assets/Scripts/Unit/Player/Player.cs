@@ -239,7 +239,9 @@ public class Player : Unit
 
         List<SkillKind> kinds = new List<SkillKind>();
 
-        for (int index = (int)SkillKind.IceBolt; index < (int)SkillKind.RecoveryHp; index++)
+        int begin = (int)SkillKind.None + 1;
+        int end = (int)SkillKind.End;
+        for (int index = begin; index < end; index++)
         {
             SkillKind kind = (SkillKind)index;
             SkillType type = kind.GetSkillType();
@@ -250,6 +252,8 @@ public class Player : Unit
             if (type == SkillType.Passive && skill == null && passives.Count >= 6) continue;
             if (skill != null && skill.IsMaxLevel) continue;
             if (skill == null && data.grade != Grade.Normal) continue;
+            if (kind == SkillKind.RecoveryHp) continue;
+            if (kind == SkillKind.IncreaseCoin) continue;
 
             kinds.Add(kind);
             if (skill != null)
