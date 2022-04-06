@@ -5,7 +5,6 @@ using UnityEngine;
 public class Impact : MonoBehaviourEx
 {
     ParticleSystem particle;
-    float tick = 0;
 
     protected override void Awake()
     {
@@ -15,7 +14,6 @@ public class Impact : MonoBehaviourEx
 
     private void OnEnable()
     {
-        tick = 0;
     }
 
     public override void FixedUpdateEx()
@@ -26,7 +24,7 @@ public class Impact : MonoBehaviourEx
         }
         if (particle == null)
             return;
-        tick += Time.fixedDeltaTime;
+
         if(particle.isStopped)
         {
             ObjectPool.Instance.Free(gameObject);

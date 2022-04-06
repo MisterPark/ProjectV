@@ -27,7 +27,7 @@ public class Skill_Rain : Skill
             return;
         }
         Vector3 getPoint = Random.onUnitSphere;
-        getPoint = transform.position + (getPoint * 8f);
+        getPoint = transform.position + (getPoint * 6.5f);
         getPoint.y = unit.skillOffsetPosition.y;
         GameObject obj = ObjectPool.Instance.Allocate("Rain");
         Missile missile = obj.GetComponent<Missile>();

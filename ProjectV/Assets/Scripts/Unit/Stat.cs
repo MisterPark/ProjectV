@@ -32,8 +32,8 @@ public class Stats
 {
     public StatType statType;
     public float origin_Stat;           // 캐릭터 스탯
-    public float powerUp_Stat;          // 상점에서 강화하거나, 캐릭터 고유 패시브로 처음에 변경되는 origin_Stat의 스탯비율  // 누적
-    public float growth_Stat;           // 레벨업시 or 상자 획득시 증가하는 origin_Stat의 스탯비율  // 고정
+    public float powerUp_Stat;          // 상점구입통해 오른스탯
+    public float growth_Stat;           // 레벨업시 증가되는 스탯
     public float final_Stat;            // 다 계산하고 난 뒤 스탯
 }
 
@@ -50,10 +50,6 @@ public class Stat : MonoBehaviourEx
 
     public override void FixedUpdateEx()
     {
-        if(stats == null || stats.Length < (int)StatType.Recovery)
-        {
-            int a = 10;
-        }
         // 체젠
         if(stats[(int)StatType.Recovery].final_Stat != 0f)
         {
@@ -76,16 +72,14 @@ public class Stat : MonoBehaviourEx
     {
         if (statsData != null)
         {
-            // 깊은복사
             stats = new Stats[(int)StatType.END];
             for (int i = 0; i < (int)StatType.END; i++)
             {
                 stats[i] = new Stats();
                 stats[i].statType = statsData.stats[i].statType;
                 stats[i].origin_Stat = statsData.stats[i].origin_Stat;
-                //stats[i].powerUp_Stat = statsData.stats[i].powerUp_Stat;
                 stats[i].growth_Stat = statsData.stats[i].growth_Stat;
-                stats[i].final_Stat = statsData.stats[i].final_Stat;
+                stats[i].final_Stat = 0;
             }
         }
     }
@@ -167,9 +161,17 @@ public class Stat : MonoBehaviourEx
                     
                     return stats[(int)StatType.Exp].final_Stat;
                 }
+            case StatType.MoveSpeed:
+                {
+                    return stats[(int)StatType.MoveSpeed].final_Stat += (stats[(int)_statType].origin_Stat * stats[(int)_statType].growth_Stat) * _count;
+                }
+            case StatType.Magnet:
+                {
+                    return stats[(int)StatType.Magnet].final_Stat += (stats[(int)_statType].origin_Stat * stats[(int)_statType].growth_Stat) * _count;
+                }
             default:
                 {
-                    return stats[(int)_statType].final_Stat += stats[(int)_statType].growth_Stat * _count; ;
+                    return stats[(int)_statType].final_Stat += stats[(int)_statType].growth_Stat * _count;
                 }
         }
     }
@@ -205,10 +207,17 @@ public class Stat : MonoBehaviourEx
 
                     return stats[(int)StatType.Exp].final_Stat;
                 }
+            case StatType.MoveSpeed:
+                {
+                    return stats[(int)StatType.MoveSpeed].final_Stat += (stats[(int)_statType].origin_Stat * stats[(int)_statType].growth_Stat) * _count;
+                }
+            case StatType.Magnet:
+                {
+                    return stats[(int)StatType.Magnet].final_Stat += (stats[(int)_statType].origin_Stat * stats[(int)_statType].growth_Stat) * _count;
+                }
             default:
                 {
                     return stats[(int)_statType].final_Stat += stats[(int)_statType].growth_Stat * _count;
-                    //return stats[(int)_statType].final_Stat += stats[(int)_statType].origin_Stat * (stats[(int)_statType].growth_Stat * _count);
                 }
         }
     }

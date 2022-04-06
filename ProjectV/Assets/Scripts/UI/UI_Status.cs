@@ -37,12 +37,14 @@ public class UI_Status : MonoBehaviourEx
                     child.value.color = Color.yellow;
                 }
 
-                if(child.isPercent == false)
+                if (child.isPercent == false)
                 {
-                    child.value.text = value.ToString();
+                    child.value.text = (Mathf.Round(value * 10f) * 0.1f).ToString();
                 }
                 else
-                    child.value.text = (value * 100f).ToString() + "%";
+                {
+                    child.value.text = Mathf.Round((value * 100f)).ToString() + "%";
+                }
             }
 
         }
