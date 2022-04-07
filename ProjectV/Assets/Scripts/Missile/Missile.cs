@@ -13,7 +13,6 @@ public enum MissileType // ¿òÁ÷ÀÓ
 
 public class Missile : MonoBehaviourEx
 {
-
     private float duration;
     private float speed;
     private float damage;
