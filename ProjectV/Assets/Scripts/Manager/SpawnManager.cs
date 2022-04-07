@@ -99,7 +99,7 @@ public class SpawnManager : MonoBehaviourEx
         int minute = ((int)DataManager.Instance.currentGameData.totalPlayTime / 60);
         if(minute >= stageMonsterData.Count)
         {
-            return;
+            return; // 게임클리어 시간을 지났을때, 생성 막음.
         }
 
         if(currentMinute != minute)
@@ -135,7 +135,7 @@ public class SpawnManager : MonoBehaviourEx
 
             if (UnityEngine.Random.Range(0, 100) < 5f)
             {
-                Spawn(torchLight, pos);
+                Spawn(torchLight, pos); // 5% 확률로 보너스 몬스터 생성
             }
             else
             {

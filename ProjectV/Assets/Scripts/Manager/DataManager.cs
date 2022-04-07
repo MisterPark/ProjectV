@@ -23,7 +23,7 @@ public class DataManager : MonoBehaviourEx
     public PlayerCharacterData[] playerCharacterData = new PlayerCharacterData[(int)PlayerCharacterName.Knight];
 
     
-    public float[] powerUpStat = new float[(int)StatType.END];
+    public float[] powerUpStat = new float[(int)StatType.END]; // 상점에서 구입한 스탯
     [SerializeField]
     public UI_Powerup_statDB powerStatDB;
 
@@ -57,7 +57,6 @@ public class DataManager : MonoBehaviourEx
         Instance = this;
         DontDestroyOnLoad(gameObject);
         SaveDataManager.Instance = GetComponent<SaveDataManager>();
-        //UnityEngine.SceneManagement.SceneManager.sceneLoaded += OnSceneLoad;
     }
 
     public void Setting_PowerStat()
@@ -141,25 +140,6 @@ public class DataManager : MonoBehaviourEx
                     }
                 }
             }
-        }
-    }
-    void OnSceneLoad(UnityEngine.SceneManagement.Scene scene, UnityEngine.SceneManagement.LoadSceneMode mode)
-    {
-        string sceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
-        switch (sceneName)
-        {
-            case "TitleScene":
-                {
-                    SaveDataManager.Instance.LoadGameData();
-                    break;
-                }
-            case "ResultScene":
-                {
-                    SaveDataManager.Instance.SaveGameData();
-                    break;
-                }
-            default:
-                break;
         }
     }
 

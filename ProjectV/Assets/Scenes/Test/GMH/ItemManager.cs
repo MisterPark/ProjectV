@@ -183,7 +183,7 @@ public class ItemManager : MonoBehaviourEx
         ExpJewel expJewel = null;
         foreach (GameObject _item in itemList)
         {
-            expJewel = _item.GetComponentInChildren<ExpJewel>();
+            expJewel = _item.GetComponentInChildren<ExpJewel>(); // 가장 오래있는 경험치 보석 찾기
             if (expJewel != null)
             {
                 expJewelObj = _item;
