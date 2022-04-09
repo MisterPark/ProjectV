@@ -12,7 +12,7 @@ public class Skill_Lightning : Skill
     public override void Active()
     {
         
-        Unit unit = GetComponent<Unit>();
+        Unit unit = Unit.Find(gameObject);
         if (unit == null)
         {
             Debug.LogError("스킬을 유닛만 사용가능.");
@@ -26,7 +26,7 @@ public class Skill_Lightning : Skill
             if (random == null) return;
 
             GameObject obj = ObjectPool.Instance.Allocate("Lightning");
-            Missile missile = obj.GetComponent<Missile>();
+            Missile missile = Missile.Find(obj);
             missile.Initialize();
             missile.transform.position = random.transform.position;
             missile.Team = unit.team;

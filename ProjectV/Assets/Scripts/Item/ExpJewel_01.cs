@@ -8,7 +8,7 @@ public class ExpJewel_01 : Item
     
     public override void Use()
     {
-        Stat stat = Player.Instance.GetComponent<Stat>();
+        Stat stat = Stat.Find(Player.Instance.gameObject);
         stat.Increase_FinalStat(StatType.Exp, exp);
         ItemManager.Instance.expJewelCount--;
     }

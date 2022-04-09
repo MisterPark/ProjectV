@@ -8,7 +8,7 @@ public class FrozenOrb : MonoBehaviourEx
     float angle;
     public float cooldown;
     Missile parentMissile;
-    
+
     protected override void Start()
     {
         base.Start();
@@ -22,10 +22,10 @@ public class FrozenOrb : MonoBehaviourEx
         }
         cooldown = parentMissile.Delay;
     }
-    
+
     public override void FixedUpdateEx()
     {
-        if(cooldown<=0)
+        if (cooldown <= 0)
         {
             OnEnable();
             return;
@@ -34,19 +34,20 @@ public class FrozenOrb : MonoBehaviourEx
         tick += Time.fixedDeltaTime;
         angle += 300 * Time.fixedDeltaTime;
 
-        if(tick>cooldown)
+        if (tick > cooldown)
         {
             tick = 0;
             GameObject obj = ObjectPool.Instance.Allocate("IceBolt");
-            Missile missile = obj.GetComponent<Missile>();
+            Missile missile = Missile.Find(obj);
+            if (missile == null) return;
             missile.Initialize();
             missile.transform.position = parentMissile.transform.position;
             missile.Team = parentMissile.Team;
             missile.Owner = parentMissile.Owner;
             missile.Duration = parentMissile.Duration;
-            missile.Damage = parentMissile.Damage*0.75f;
+            missile.Damage = parentMissile.Damage * 0.75f;
             missile.Range = parentMissile.Range;
-            missile.Speed = parentMissile.Speed*2;
+            missile.Speed = parentMissile.Speed * 2;
             missile.Type = MissileType.Directional;
             missile.IsPull = true;
             Quaternion v3Rotation = Quaternion.Euler(0f, angle, 0f);

@@ -17,7 +17,7 @@ public class Skill_LavaOrb : Skill
         {
             return;
         }
-        Unit unit = GetComponent<Unit>();
+        Unit unit = Unit.Find(gameObject);
         if (unit == null)
         {
             Debug.LogError("스킬을 유닛만 사용가능.");
@@ -29,7 +29,7 @@ public class Skill_LavaOrb : Skill
         //float dist = Random.Range(0, 6);
         Vector3 pos = Player.Instance.transform.position + unit.skillOffsetPosition + new Vector3(0f,0f,1f);
 
-        Missile missile = obj.GetComponent<Missile>();
+        Missile missile = Missile.Find(obj);
         missile.Initialize();
         missile.transform.position = transform.position + unit.skillOffsetPosition;
         missile.Team = unit.team;

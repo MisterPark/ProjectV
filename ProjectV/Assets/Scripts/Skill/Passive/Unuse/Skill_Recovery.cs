@@ -11,7 +11,7 @@ public class Skill_Recovery : Skill
     }
     public override void Active()
     {
-        Stat stat = Player.Instance.GetComponent<Stat>();
+        Stat stat = Stat.Find(Player.Instance.gameObject);
         stat.Increase_FinalStat(StatType.Recovery);
         Player.Instance.UpdateSkillData();
     }

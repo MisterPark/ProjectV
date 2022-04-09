@@ -31,7 +31,7 @@ public class ObjectManager : MonoBehaviour
         {
             if(array[i] == null || array[i].gameObject == null)
             {
-                MonoBehaviourEx.Disregister(array[i]);
+                MonoBehaviourEx.Deregister(array[i]);
                 continue;
             }
             if (array[i].gameObject.activeSelf == false) continue;
@@ -54,7 +54,7 @@ public class ObjectManager : MonoBehaviour
         {
             if (array[i] == null || array[i].gameObject == null)
             {
-                MonoBehaviourEx.Disregister(array[i]);
+                MonoBehaviourEx.Deregister(array[i]);
                 continue;
             }
             if (array[i].gameObject.activeSelf == false) continue;

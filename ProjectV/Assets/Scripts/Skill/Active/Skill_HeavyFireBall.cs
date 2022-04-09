@@ -13,7 +13,7 @@ public class Skill_HeavyFireBall : Skill
 
     public override void Active()
     {
-        Unit unit = GetComponent<Unit>();
+        Unit unit = Unit.Find(gameObject);
         if (unit == null)
         {
             Debug.LogError("스킬을 유닛만 사용가능.");
@@ -32,14 +32,7 @@ public class Skill_HeavyFireBall : Skill
         skillObj.damage = damage;
         skillObj.speed = speed;
         skillObj.delay = delay;
-        //missile.type = MissileType.Directional;
-        //missile.isPenetrate = true;
         skillObj.range = range;
-        //skillObj.transform.GetChild(0).GetComponent<ParticleSystem>().startSize = range * 0.75f;
-        //shape.radius = 4 * range;
-        //missile.transform.GetChild(1).localScale = new Vector3(range, range, range);
-        //missile.SetTarget(nearest.transform.position + unit.skillOffsetPosition);
-
         SoundManager.Instance.PlaySFXSound("HeavyFireBall");
     }
 }

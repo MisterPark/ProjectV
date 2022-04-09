@@ -12,7 +12,7 @@ public class Skill_BlackHole : Skill
 
     public override void Active()
     {
-        Unit unit = GetComponent<Unit>();
+        Unit unit = Unit.Find(gameObject);
         if (unit == null)
         {
             Debug.LogError("스킬을 유닛만 사용가능.");
@@ -28,7 +28,7 @@ public class Skill_BlackHole : Skill
 
 
 
-        Missile missile = obj.GetComponent<Missile>();
+        Missile missile = Missile.Find(obj);
         missile.Initialize();
         
         missile.Team = unit.team;

@@ -46,7 +46,8 @@ public class ItemManager : MonoBehaviourEx
     public GameObject Drop(ItemType type, Vector3 position)
     {
         GameObject itemObject =ObjectPool.Instance.Allocate("ItemObject");
-        ItemObject itemObjectCom = itemObject.GetComponent<ItemObject>();
+        ItemObject itemObjectCom = ItemObject.Find(itemObject);
+        if (itemObjectCom == null) return null;
         itemObject.transform.position = position;
         itemObjectCom.MagnetFlag = false;
         int childCount = itemObject.transform.childCount;
@@ -55,7 +56,8 @@ public class ItemManager : MonoBehaviourEx
             itemObject.transform.GetChild(i).gameObject.SetActive(false);
         }
         GameObject item = itemObject.transform.GetChild((int)type).gameObject;
-        Item itemCom = item.GetComponent<Item>();
+        Item itemCom = Item.Find(item);
+        if(itemCom == null) return null;
         item.SetActive(true);
         itemObjectCom.Item = itemCom;
         //itemObjectCom.LifeTime = 0;

@@ -15,7 +15,8 @@ public class Torchlight : Unit
     }
     protected void OnTriggerStay(Collider other)
     {
-        Unit target = other.gameObject.GetComponent<Unit>();
+        Unit target;
+        if (Unit.Units.TryGetValue(other.gameObject, out target) == false) return;
         if (target == null) return;
 
         Vector3 to = other.transform.position - transform.position;

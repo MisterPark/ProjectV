@@ -42,7 +42,7 @@ public class SkillObject_HeavyFireBall : SkillObject
             tick = duration;
 
             GameObject obj = ObjectPool.Instance.Allocate("HeavyFireBallImpact");
-            Missile missile = obj.GetComponent<Missile>();
+            Missile missile = Missile.Find(obj);
             missile.Initialize();
             missile.transform.position = transform.position;
             missile.Team = team;

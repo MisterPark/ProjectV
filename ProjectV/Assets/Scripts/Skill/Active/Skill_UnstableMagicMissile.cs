@@ -20,14 +20,14 @@ public class Skill_UnstableMagicMissile : Skill
             // 적이 없으면 공격 안함.
             return;
         }
-        Unit unit = GetComponent<Unit>();
+        Unit unit = Unit.Find(gameObject);
         if (unit == null)
         {
             Debug.LogError("스킬을 유닛만 사용가능.");
             return;
         }
         GameObject obj = ObjectPool.Instance.Allocate("UnstableMagicMissile");
-        UnstableMagicMissile missile = obj.GetComponent<UnstableMagicMissile>();
+        Missile missile = Missile.Find(obj);
         missile.Initialize();
         missile.transform.position = transform.position + unit.skillOffsetPosition;
         missile.Team = unit.team;

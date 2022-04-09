@@ -75,14 +75,10 @@ public class Player : Unit
 
     protected void OnTriggerStay(Collider other)
     {
-
-        Unit target = other.gameObject.GetComponent<Unit>();
+        Unit target;
+        if (Unit.Units.TryGetValue(other.gameObject, out target) == false) return;
         if (target == null) return;
-
-        if (target.type != UnitType.Monster)
-        {
-            return;
-        }
+        if (target.type != UnitType.Monster) return;
 
         if(damageFlag)
         {

@@ -48,6 +48,29 @@ public class Stat : MonoBehaviourEx
     public UnityEvent<int> OnLevelUp;
     public UnityEvent<float> OnTakeDamage;
 
+    public static Dictionary<GameObject, Stat> Stats = new Dictionary<GameObject, Stat>();
+
+    protected override void Awake()
+    {
+        base.Awake();
+        Stats.Add(gameObject, this);
+    }
+
+    protected override void OnDestroy()
+    {
+        base.OnDestroy();
+        Stats.Remove(gameObject);
+    }
+    public static Stat Find(GameObject obj)
+    {
+        Stat stat;
+        if (Stats.TryGetValue(obj, out stat) == false)
+        {
+            Debug.LogError("Unregistered stat");
+        }
+        return stat;
+    }
+
     public override void FixedUpdateEx()
     {
         // Ã¼Á¨
