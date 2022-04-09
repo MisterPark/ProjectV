@@ -25,7 +25,7 @@ public class Skill_HeavyFireBall : Skill
         GameObject obj = ObjectPool.Instance.Allocate("HeavyFireBall");
         SkillObject_HeavyFireBall skillObj = obj.GetComponent<SkillObject_HeavyFireBall>();
         skillObj.Initialize();
-        skillObj.transform.position = transform.position + (unit.skillOffsetPosition * 1.6f);
+        skillObj.transform.position = transform.position + (unit.skillOffsetPosition * 2f);
         skillObj.team = unit.team;
         skillObj.owner = unit;
         skillObj.duration = duration;

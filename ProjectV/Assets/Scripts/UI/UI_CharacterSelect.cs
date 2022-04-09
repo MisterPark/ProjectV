@@ -72,7 +72,7 @@ public class UI_CharacterSelect : UI
         GameObject tempslot;
         SlotWidth = CharacterSlot.GetComponent<RectTransform>().rect.width;
         SlotHeight = CharacterSlot.GetComponent<RectTransform>().rect.height;
-        for (int repeat = 0; repeat < (int)PlayerCharacterName.Knight; ++repeat)
+        for (int repeat = 0; repeat <= (int)PlayerCharacterName.King; ++repeat)
         {
             //column = repeat % SlotColumnCount;
             //row = repeat / SlotColumnCount;

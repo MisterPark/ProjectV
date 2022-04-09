@@ -38,7 +38,7 @@ public class SoundManager : MonoBehaviourEx
 
     private AudioSource bgmPlayer;
     private AudioSource sfxPlayer;
-    public AudioSource slotMachinePlayer;
+    [HideInInspector] public AudioSource slotMachinePlayer;
 
     public float masterVolumeBGM = 1f;
     public float masterVolumeSFX = 1f;
@@ -48,15 +48,13 @@ public class SoundManager : MonoBehaviourEx
 #endif
 
     [SerializeField]
-    private AudioClipNode[] bgmAudioClips; //메인화면에서 사용할 BGM
-                                           //[SerializeField]
-                                           //private AudioClip adventureBgmAudioClip; //어드벤쳐씬에서 사용할 BGM
+    private AudioClipNode[] bgmAudioClips; // 배경음들 지정
 
 #if UNITY_EDITOR
     [ArrayElementTitle("clipName")]
 #endif
     [SerializeField]
-    private AudioClipNode[] sfxAudioClips; //효과음들 지정
+    private AudioClipNode[] sfxAudioClips; // 효과음들 지정
 #if UNITY_EDITOR
     [ArrayElementTitle("clipName")]
 #endif
@@ -116,7 +114,6 @@ public class SoundManager : MonoBehaviourEx
         masterVolumeSFX = DataManager.Instance.Settings.SoundVolume;
     }
 
-    // 효과 사운드 재생 : 이름을 필수 매개변수, 볼륨을 선택적 매개변수로 지정
     public void PlaySFXSound(string name)
     {
         if(string.IsNullOrEmpty(name))
@@ -144,7 +141,6 @@ public class SoundManager : MonoBehaviourEx
         
     }
 
-    //BGM 사운드 재생 : 볼륨을 선택적 매개변수로 지정
     public void PlayBGMSound(string name)
     {
         bgmPlayer.loop = true; //BGM 사운드이므로 루프설정

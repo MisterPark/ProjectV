@@ -60,7 +60,7 @@ public class Monster : Unit
             ItemManager itemManager = ItemManager.Instance;
             int random = Random.Range(0, 100);
             int minute = (int)DataManager.Instance.currentGameData.totalPlayTime / 60;
-            float randomExp = Random.Range(8, 13) * (1 + (minute * 0.2f));
+            float randomExp = Random.Range(8, 13) * (1 + (minute * 0.2f)); // 경험치량
             if (random < 90)
             {
                 obj = itemManager.Drop(ItemType.ExpJewelSmall, transform.position);
