@@ -39,6 +39,14 @@ public class Player : Unit
         OnLevelUp.AddListener(OnLevelUpCallback);
         UI_LevelUp.instance.OnSelected.AddListener(OnSelectSkill);
 
+        if (animator == null)
+        {
+            animator = GetComponentInChildren<Animator>();
+        }
+        if (animator != null)
+        {
+            animator.SetInteger("UnitType", (int)type);
+        }
 
         PlayerCharacterName charName = DataManager.Instance.currentGameData.characterName;
         PlayerCharacter data = DataManager.Instance.playerCharacterData[(int)charName].playerCharacter;

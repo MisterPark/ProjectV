@@ -12,6 +12,17 @@ public class Monster : Unit
         stat.Init_FinalStat();
         type = UnitType.Monster;
         OnDead.AddListener(OnDeadCallback);
+
+        
+        if (animator == null)
+        {
+            animator = GetComponentInChildren<Animator>();
+        }
+        if (animator != null)
+        {
+            animator.SetInteger("UnitType", (int)type);
+        }
+            
     }
     protected override void Start()
     {
