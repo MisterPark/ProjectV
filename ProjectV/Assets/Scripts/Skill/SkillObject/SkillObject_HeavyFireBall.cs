@@ -27,11 +27,14 @@ public class SkillObject_HeavyFireBall : SkillObject
         rigidbody.AddForce(getPoint * 1000f, ForceMode.Impulse);
         rigidbody.velocity = Vector3.zero;
 
-
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        if(tick < 1f)
+        {
+            return;
+        }
         if (other.gameObject.tag == "Board")
         {
             //GameObject obj = ObjectPool.Instance.Allocate("MeteorHit");
@@ -39,12 +42,12 @@ public class SkillObject_HeavyFireBall : SkillObject
             tick = duration;
 
             GameObject obj = ObjectPool.Instance.Allocate("HeavyFireBallImpact");
-            Missile missile = obj.GetComponent<Missile>();
+            Missile missile = Missile.Find(obj);
             missile.Initialize();
             missile.transform.position = transform.position;
             missile.Team = team;
             missile.Owner = owner;
-            missile.Duration = 0.5f;
+            missile.Duration = 0.4f;
             missile.Damage = damage;
             missile.Range = range;
             missile.Speed = speed;

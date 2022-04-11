@@ -18,7 +18,7 @@ public class Skill_Meteor : Skill
             // 적이 없으면 공격 안함.
             return;
         }
-        Unit unit = GetComponent<Unit>();
+        Unit unit = Unit.Find(gameObject);
         if (unit == null)
         {
             Debug.LogError("스킬을 유닛만 사용가능.");
@@ -31,7 +31,7 @@ public class Skill_Meteor : Skill
         pos += Player.Instance.transform.position;
 
         GameObject obj = ObjectPool.Instance.Allocate("Meteor");
-        Missile missile = obj.GetComponent<Missile>();
+        Missile missile = Missile.Find(obj);
         missile.Initialize();
         missile.transform.position = pos + new Vector3(-10f, 10f, -10f); //왼쪽
         //missile.transform.position = pos + new Vector3(10f, 10f, 10f); 

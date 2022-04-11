@@ -51,11 +51,12 @@ public class UI_CharacterSelect : UI
     {
         Event_Handle = EventSystem.current;
         GameObject selectobject = Event_Handle.currentSelectedGameObject;
-        CharacterName.text = selectobject.GetComponent<UI_CharacterSlot>().CharacterName.text;
-        CharacterImage.sprite = selectobject.GetComponent<UI_CharacterSlot>().CharacterImage.sprite;
-        WeaponImage.sprite = selectobject.GetComponent<UI_CharacterSlot>().WeaponImage.sprite;
-        DescriptionText.text = selectobject.GetComponent<UI_CharacterSlot>().m_CharacterDescription;
-        CurrentClickPlayerCharacter = selectobject.GetComponent<UI_CharacterSlot>().CharacterIndex;
+        UI_CharacterSlot slot = selectobject.GetComponent<UI_CharacterSlot>();
+        CharacterName.text = slot.CharacterName.text;
+        CharacterImage.sprite = slot.CharacterImage.sprite;
+        WeaponImage.sprite = slot.WeaponImage.sprite;
+        DescriptionText.text = slot.m_CharacterDescription;
+        CurrentClickPlayerCharacter = slot.CharacterIndex;
         
         DataManager.Instance.currentGameData.characterName = CurrentClickPlayerCharacter;
         DataManager.Instance.currentGameData.gold = 0;
@@ -74,28 +75,29 @@ public class UI_CharacterSelect : UI
         SlotHeight = CharacterSlot.GetComponent<RectTransform>().rect.height;
         for (int repeat = 0; repeat <= (int)PlayerCharacterName.King; ++repeat)
         {
-            //column = repeat % SlotColumnCount;
-            //row = repeat / SlotColumnCount;
             PlayerCharacterData character = DataManager.Instance.playerCharacterData[repeat];
 
             tempslot = Instantiate(CharacterSlot);
             tempslot.transform.SetParent(ContentsWindow.transform);
             tempslot.transform.localScale = Vector3.one;
-            
-            tempslot.GetComponent<UI_CharacterSlot>().CharacterImage.sprite = character.playerCharacter.charImage;
-            tempslot.GetComponent<UI_CharacterSlot>().CharacterName.text = character.playerCharacter.characterName.ToString();
-            tempslot.GetComponent<UI_CharacterSlot>().WeaponImage.sprite = DataManager.Instance.skillDatas[(int)character.playerCharacter.firstSkill].skillData.icon;
-            tempslot.GetComponent<UI_CharacterSlot>().m_CharacterDescription = character.playerCharacter.description;
-            tempslot.GetComponent<UI_CharacterSlot>().CharacterIndex = (PlayerCharacterName)repeat;
+
+            UI_CharacterSlot slot = tempslot.GetComponent<UI_CharacterSlot>();
+
+            slot.CharacterImage.sprite = character.playerCharacter.charImage;
+            slot.CharacterName.text = character.playerCharacter.characterName.ToString();
+            slot.WeaponImage.sprite = DataManager.Instance.skillDatas[(int)character.playerCharacter.firstSkill].skillData.icon;
+            slot.m_CharacterDescription = character.playerCharacter.description;
+            slot.CharacterIndex = (PlayerCharacterName)repeat;
         }
         {
             DataManager.Instance.currentGameData.characterName = PlayerCharacterName.Witch;
             GameObject selectobject = transform.Find("Scroll View").Find("Contents").GetChild(0).gameObject;
-            CharacterName.text = selectobject.GetComponent<UI_CharacterSlot>().CharacterName.text;
-            CharacterImage.sprite = selectobject.GetComponent<UI_CharacterSlot>().CharacterImage.sprite;
-            WeaponImage.sprite = selectobject.GetComponent<UI_CharacterSlot>().WeaponImage.sprite;
-            DescriptionText.text = selectobject.GetComponent<UI_CharacterSlot>().m_CharacterDescription;
-            CurrentClickPlayerCharacter = selectobject.GetComponent<UI_CharacterSlot>().CharacterIndex;
+            UI_CharacterSlot slot = selectobject.GetComponent<UI_CharacterSlot>();
+            CharacterName.text = slot.CharacterName.text;
+            CharacterImage.sprite = slot.CharacterImage.sprite;
+            WeaponImage.sprite = slot.WeaponImage.sprite;
+            DescriptionText.text = slot.m_CharacterDescription;
+            CurrentClickPlayerCharacter = slot.CharacterIndex;
             DataManager.Instance.Setting_PowerStat();
         }
     }

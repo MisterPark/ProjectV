@@ -49,14 +49,17 @@ public class DataManager : MonoBehaviourEx
     protected override void Awake()
     {
         base.Awake();
-        if (Instance != null)
+        if (Instance == null)
         {
-            Destroy(gameObject);
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+            SaveDataManager.Instance = GetComponent<SaveDataManager>();
             return;
         }
-        Instance = this;
-        DontDestroyOnLoad(gameObject);
-        SaveDataManager.Instance = GetComponent<SaveDataManager>();
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     public void Setting_PowerStat()

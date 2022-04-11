@@ -85,7 +85,7 @@ public class SpawnManager : MonoBehaviourEx
 
         foreach (var monster in spawnList)
         {
-            Unit unit = monster.GetComponent<Unit>();
+            Unit unit = Unit.Find(monster);
             unit.Freeze(time);
         }
     }

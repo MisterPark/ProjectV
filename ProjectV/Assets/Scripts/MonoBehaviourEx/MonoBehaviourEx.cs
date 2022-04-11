@@ -7,6 +7,7 @@ public class MonoBehaviourEx : MonoBehaviour
 {
     public static List<MonoBehaviourEx> behaviours = new List<MonoBehaviourEx>();
     public static List<MonoBehaviourEx> removes = new List<MonoBehaviourEx>();
+
     protected virtual void Awake()
     {
 
@@ -21,7 +22,7 @@ public class MonoBehaviourEx : MonoBehaviour
 
     protected virtual void OnDestroy()
     {
-        Disregister(this);
+        Deregister(this);
     }
 
     public virtual void FixedUpdateEx()
@@ -39,7 +40,7 @@ public class MonoBehaviourEx : MonoBehaviour
         behaviours.Add(behaviour);
     }
   
-    public static void Disregister(MonoBehaviourEx behaviour)
+    public static void Deregister(MonoBehaviourEx behaviour)
     {
         removes.Add(behaviour);
     }

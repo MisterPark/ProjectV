@@ -12,6 +12,17 @@ public class Monster : Unit
         stat.Init_FinalStat();
         type = UnitType.Monster;
         OnDead.AddListener(OnDeadCallback);
+
+        
+        if (animator == null)
+        {
+            animator = GetComponentInChildren<Animator>();
+        }
+        if (animator != null)
+        {
+            animator.SetInteger("UnitType", (int)type);
+        }
+            
     }
     protected override void Start()
     {
@@ -26,7 +37,8 @@ public class Monster : Unit
 
     protected void OnTriggerStay(Collider other)
     {
-        Unit target = other.gameObject.GetComponent<Unit>();
+        Unit target;
+        if (Unit.Units.TryGetValue(other.gameObject, out target) == false) return;
         if (target == null) return;
         if (target.type != UnitType.Monster) return;
 
@@ -50,22 +62,27 @@ public class Monster : Unit
             int random = Random.Range(0, 100);
             int minute = (int)DataManager.Instance.currentGameData.totalPlayTime / 60;
             float randomExp = Random.Range(8, 13) * (1 + (minute * 0.2f)); // 경험치량
+            ItemType type;
+            float finalExp;
             if (random < 90)
             {
-                obj = itemManager.Drop(ItemType.ExpJewelSmall, transform.position);
-                obj.GetComponentInChildren<ExpJewel>().exp = randomExp;
+                type = ItemType.ExpJewelSmall;
+                finalExp = randomExp;
             }
             else if (random < 99)
             {
-                obj = itemManager.Drop(ItemType.ExpJewelNormal, transform.position);
-                obj.GetComponentInChildren<ExpJewel>().exp = randomExp * 4;
+                type = ItemType.ExpJewelNormal;
+                finalExp = randomExp * 4;
             }
             else
             {
-                obj = itemManager.Drop(ItemType.ExpJewelBig, transform.position);
-                obj.GetComponentInChildren<ExpJewel>().exp = (randomExp * 10) + itemManager.expAccumulate;
+                type = ItemType.ExpJewelBig;
+                
+                finalExp = (randomExp * 10) + itemManager.expAccumulate;
                 itemManager.expAccumulate = 0f;
             }
+            obj = itemManager.Drop(type, transform.position);
+            obj.GetComponentInChildren<ExpJewel>().exp = finalExp;
         }
 
         SpawnManager.Instance.Remove(gameObject);

@@ -29,9 +29,9 @@ public class AllDelete : MonoBehaviourEx
 
     private void OnTriggerEnter(Collider other)
     {
-        Unit unit = other.gameObject.GetComponent<Unit>();
-        if (unit == null)
-        { return; }
+        Unit unit;
+        if (Unit.Units.TryGetValue(other.gameObject, out unit) == false) return;
+        if (unit == null) return;
 
         if (unit.type == UnitType.Monster)
         {

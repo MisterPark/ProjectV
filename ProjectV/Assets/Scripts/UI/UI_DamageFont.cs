@@ -13,6 +13,29 @@ public class UI_DamageFont : MonoBehaviourEx
     [SerializeField] private Text text;
     [SerializeField] private Outline outline;
 
+    public static Dictionary<GameObject, UI_DamageFont> UI_DamageFonts = new Dictionary<GameObject, UI_DamageFont>();
+
+    protected override void Awake()
+    {
+        base.Awake();
+        UI_DamageFonts.Add(gameObject, this);
+    }
+
+    protected override void OnDestroy()
+    {
+        base.OnDestroy();
+        UI_DamageFonts.Remove(gameObject);
+    }
+    public static UI_DamageFont Find(GameObject obj)
+    {
+        UI_DamageFont damageFont;
+        if (UI_DamageFonts.TryGetValue(obj, out damageFont) == false)
+        {
+            Debug.LogError("Unregistered damageFont");
+        }
+        return damageFont;
+    }
+
     protected override void Start()
     {
         base.Start();

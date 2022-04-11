@@ -29,6 +29,11 @@ public class ObjectManager : MonoBehaviour
         int count = array.Length;
         for (int i = 0; i < count; i++)
         {
+            if(array[i] == null || array[i].gameObject == null)
+            {
+                MonoBehaviourEx.Deregister(array[i]);
+                continue;
+            }
             if (array[i].gameObject.activeSelf == false) continue;
             array[i].FixedUpdateEx();
         }
@@ -47,6 +52,11 @@ public class ObjectManager : MonoBehaviour
         int count = array.Length;
         for (int i = 0; i < count; i++)
         {
+            if (array[i] == null || array[i].gameObject == null)
+            {
+                MonoBehaviourEx.Deregister(array[i]);
+                continue;
+            }
             if (array[i].gameObject.activeSelf == false) continue;
             array[i].UpdateEx();
         }
