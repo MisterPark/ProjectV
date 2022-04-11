@@ -96,7 +96,7 @@ public class Unit : MonoBehaviourEx
         Unit unit;
         if (Units.TryGetValue(obj, out unit) == false)
         {
-            Debug.LogError("Unregistered unit");
+            //Debug.LogError("Unregistered unit");
         }
         return unit;
     }

@@ -9,15 +9,15 @@ public class DeadUnit : MonoBehaviourEx
     protected override void Start()
     {
         base.Start();
-        material = GetComponentInChildren<Renderer>().material;
-        cutoff = 2f;
+        //material = GetComponentInChildren<Renderer>().material;
+        cutoff = 3f;
     }
 
     
 
     private void OnEnable()
     {
-        cutoff = 2f;
+        cutoff = 3f;
     }
 
     
@@ -26,7 +26,7 @@ public class DeadUnit : MonoBehaviourEx
         cutoff -= Time.fixedDeltaTime;
         if(cutoff > 0)
         {
-            material.SetFloat("_CutoffHeight", cutoff);
+            //material.SetFloat("_CutoffHeight", cutoff);
         }
         else
         {
