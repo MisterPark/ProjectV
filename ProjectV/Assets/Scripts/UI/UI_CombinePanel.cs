@@ -74,32 +74,6 @@ public class UI_CombinePanel : UI
 
     private void CheckSkillCombinable()
     {
-        //for(int i = 0; i< contents.Length; i++)
-        //{
-        //    if (playerSkillLevel.ContainsKey(contents[i].kindA))
-        //    {
-        //        if (playerSkillLevel[contents[i].kindA] == DataManager.Instance.skillDatas[(int)contents[i].kindA].skillData.maxLevel)
-        //        {
-        //            contents[i].ActivateSkillA(true, ableColor);
-        //        }
-        //        else
-        //            contents[i].ActivateSkillA(false, disableColor);
-        //    }
-        //    else
-        //        contents[i].ActivateSkillA(false, disableColor);
-
-        //    if (playerSkillLevel.ContainsKey(contents[i].kindB))
-        //    {
-        //        if (playerSkillLevel[contents[i].kindB] == DataManager.Instance.skillDatas[(int)contents[i].kindB].skillData.maxLevel)
-        //        {
-        //            contents[i].ActivateSkillB(true, ableColor);
-        //        }
-        //        else
-        //            contents[i].ActivateSkillB(false, disableColor);
-        //    }
-        //    else
-        //        contents[i].ActivateSkillB(false, disableColor);
-        //}
         foreach(KeyValuePair<SkillKind, int> item in playerSkillLevel)
         {
             if(item.Value == DataManager.Instance.skillDatas[((int)(item.Key))].skillData.maxLevel)
@@ -162,6 +136,8 @@ public class UI_CombinePanel : UI
         playerSkillLevel.Remove(matB);
         DisableSlot(matA);
         DisableSlot(matB);
+        SetPlayerSkillInformation(Player.Instance.Skills);
+        CheckSkillCombinable();
         SoundManager.Instance.PlaySFXSound("ShortButton");
     }
 

@@ -18,7 +18,8 @@ public class UI_Equipment : MonoBehaviourEx
         rectTransform = GetComponent<RectTransform>();
         Player.Instance.OnAddOrIncreaseSkill.AddListener(OnSkillSeletionCompleteCallback);
         HideAllSlot();
-        if(isTextHide)
+        SetSkillInfomations(Player.Instance.Skills);
+        if (isTextHide)
         {
             ResetSize();
             HideText();
