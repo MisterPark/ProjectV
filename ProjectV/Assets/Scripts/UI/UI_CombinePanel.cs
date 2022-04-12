@@ -80,6 +80,10 @@ public class UI_CombinePanel : UI
             {
                 AbleSlot(item.Key);
             }
+            else
+            {
+                DisableSlot(item.Key);
+            }
         }
     }
 

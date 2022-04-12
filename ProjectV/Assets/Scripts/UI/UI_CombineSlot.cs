@@ -43,13 +43,20 @@ public class UI_CombineSlot : MonoBehaviourEx
         if (isActivate)
         {
             isActivateA = true;
-            if(isActivateA && isActivateB)
-            {
-                ActivateSlot();
-            }
         }
         else
+        {
             isActivateA = false;
+        }
+
+        if (isActivateA && isActivateB)
+        {
+            ActivateSlot();
+        }
+        else
+        {
+            DeactivateSlot();
+        }
         skillA.color = color;
     }
 
@@ -58,13 +65,20 @@ public class UI_CombineSlot : MonoBehaviourEx
         if (isActivate)
         {
             isActivateB = true;
-            if(isActivateB && isActivateA)
-            {
-                ActivateSlot();
-            }
         }
         else
+        {
             isActivateB = false;
+        }
+
+        if (isActivateB && isActivateA)
+        {
+            ActivateSlot();
+        }
+        else
+        {
+            DeactivateSlot();
+        }
         skillB.color = color;
     }
 
@@ -72,8 +86,15 @@ public class UI_CombineSlot : MonoBehaviourEx
     {
         if (!button.interactable)
         {
+            Debug.Log(kindC.ToString() + "스킬 활성화");
             button.interactable = true;
         }
+    }
+
+    private void DeactivateSlot()
+    {
+        Debug.Log(kindC.ToString() + "스킬 비활성화");
+        button.interactable = false;
     }
 
     public void Init(Color color)
@@ -87,8 +108,8 @@ public class UI_CombineSlot : MonoBehaviourEx
     public void OnClickSlot()
     {
         button.interactable = false;
-        UI_CombinePanel.instance.OnClickSlot(kindA, kindB);
         CombineSkillManager.Instance.CombineSkill(kindC);
+        UI_CombinePanel.instance.OnClickSlot(kindA, kindB);
     }
 
 }
