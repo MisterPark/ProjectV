@@ -12,26 +12,32 @@ public class ItemObject : MonoBehaviourEx
     public bool MagnetFlag { get; set; } = false;
     public bool isChest { get; set; } = false;
     public bool SinWaveFlag { get; set; } = false;
-    //public float LifeTime { get; set; }
-    protected override void Start()
+
+    public static Dictionary<GameObject, ItemObject> ItemObjects = new Dictionary<GameObject, ItemObject>();
+
+    protected override void Awake()
     {
-        
+        base.Awake();
+        ItemObjects.Add(gameObject, this);
     }
 
-    
+    protected override void OnDestroy()
+    {
+        base.OnDestroy();
+        ItemObjects.Remove(gameObject);
+    }
+    public static ItemObject Find(GameObject obj)
+    {
+        ItemObject itemObject;
+        if (ItemObjects.TryGetValue(obj, out itemObject) == false)
+        {
+            Debug.LogError("Unregistered itemObject");
+        }
+        return itemObject;
+    }
+
     public override void FixedUpdateEx()
     {
-        //LifeTime += Time.fixedDeltaTime;
-
-        //if(SinWaveFlag)
-        //{
-        //    if(Item != null)
-        //    {
-        //        Vector3 itemPos = Item.gameObject.transform.localPosition;
-        //        itemPos.y = (Mathf.Sin(LifeTime * 2f) + 1f) * 0.5f + 0.3f;
-        //        Item.gameObject.transform.localPosition = itemPos;
-        //    }
-        //}
 
         if(isRotate)
         {

@@ -9,14 +9,15 @@ public class Skill_Speed : Skill
         base.Awake();
         Kind = SkillKind.Speed;
     }
-    protected override void Start()
-    {
-        base.Start();
-    }
     public override void Active()
     {
-        Stat stat = Player.Instance.GetComponent<Stat>();
+        Stat stat = Stat.Find(Player.Instance.gameObject);
         stat.Increase_FinalStat(StatType.Speed);
         Player.Instance.UpdateSkillData();
+    }
+
+    public override void Initialize()
+    {
+        
     }
 }

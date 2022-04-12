@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviourEx
         base.Awake();
         Instance = this;
 #if UNITY_EDITOR
-        Application.targetFrameRate = 50;
+        //Application.targetFrameRate = 50;
 #elif UNITY_ANDROID
         // fps ∞Ì¡§
         Application.targetFrameRate = 50;

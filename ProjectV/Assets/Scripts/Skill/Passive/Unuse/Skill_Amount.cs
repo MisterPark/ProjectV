@@ -9,14 +9,15 @@ public class Skill_Amount : Skill
         base.Awake();
         //Kind = SkillKind.Amount;
     }
-    protected override void Start()
-    {
-        base.Start();
-    }
     public override void Active()
     {
-        Stat stat = Player.Instance.GetComponent<Stat>();
+        Stat stat = Stat.Find(Player.Instance.gameObject);
         stat.Increase_FinalStat(StatType.Amount);
         Player.Instance.UpdateSkillData();
+    }
+
+    public override void Initialize()
+    {
+        
     }
 }

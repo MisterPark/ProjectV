@@ -7,9 +7,9 @@ public class ObjectManager : MonoBehaviour
     private static ObjectManager instance;
     public static ObjectManager Instance { get { return instance; } }
 
-  void Awake()
+    void Awake()
     {
-        if(instance == null)
+        if (instance == null)
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
@@ -25,14 +25,19 @@ public class ObjectManager : MonoBehaviour
         }
         MonoBehaviourEx.removes.Clear();
 
-        int count = MonoBehaviourEx.behaviours.Count;
+        MonoBehaviourEx[] array = MonoBehaviourEx.behaviours.ToArray();
+        int count = array.Length;
         for (int i = 0; i < count; i++)
         {
-            if (MonoBehaviourEx.behaviours[i].IsStart == false) continue;
-            if (MonoBehaviourEx.behaviours[i].gameObject.activeSelf == false) continue;
-            MonoBehaviourEx.behaviours[i].FixedUpdateEx();
+            if(array[i] == null || array[i].gameObject == null)
+            {
+                MonoBehaviourEx.Deregister(array[i]);
+                continue;
+            }
+            if (array[i].gameObject.activeSelf == false) continue;
+            array[i].FixedUpdateEx();
         }
-        
+
     }
     private void Update()
     {
@@ -43,17 +48,21 @@ public class ObjectManager : MonoBehaviour
         }
         MonoBehaviourEx.removes.Clear();
 
-        int count = MonoBehaviourEx.behaviours.Count;
+        MonoBehaviourEx[] array = MonoBehaviourEx.behaviours.ToArray();
+        int count = array.Length;
         for (int i = 0; i < count; i++)
         {
-            if (MonoBehaviourEx.behaviours[i].IsStart == false) continue;
-            if (MonoBehaviourEx.behaviours[i].gameObject.activeSelf == false) continue;
-
-            MonoBehaviourEx.behaviours[i].UpdateEx();
+            if (array[i] == null || array[i].gameObject == null)
+            {
+                MonoBehaviourEx.Deregister(array[i]);
+                continue;
+            }
+            if (array[i].gameObject.activeSelf == false) continue;
+            array[i].UpdateEx();
         }
 
-        
+
     }
 
-   
+
 }

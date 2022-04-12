@@ -26,6 +26,8 @@ public class SpawnManager : MonoBehaviourEx
     private int currentMinute = -1;
     private int currentMonsterPattern = 0;
     private int currentPatternMonstersCount = 0;
+    [SerializeField] private float spawnTimeInterval = 0.1f;
+    [SerializeField] private float spawnTimeTick = 0f;
 
     private bool pauseFlag = false;
     public bool Pause { get {return pauseFlag;} set { pauseFlag = value; } }
@@ -40,8 +42,6 @@ public class SpawnManager : MonoBehaviourEx
         } 
     }
 
-    float spawnDelay = 1f;
-    float spawnTick = 0f;
     float freezeTick = 0f;
     float freezeTime;
     bool freezeFlag = false;
@@ -55,19 +55,12 @@ public class SpawnManager : MonoBehaviourEx
         }
         stageMonsterData = stageData[0].monsterData;
     }
-    protected override void Start()
-    {
-        base.Start();
-    }
-
     public override void FixedUpdateEx()
     {
-        
         ProcessFreeze();
         ProcessSpawn();
         ProcessRemove();
         PrecessSetNearestEnemy();
-        //Debug.Log($"{spawnList.Count}");
     }
 
     public void Spawn(GameObject prefab, Vector3 position)
@@ -92,7 +85,7 @@ public class SpawnManager : MonoBehaviourEx
 
         foreach (var monster in spawnList)
         {
-            Unit unit = monster.GetComponent<Unit>();
+            Unit unit = Unit.Find(monster);
             unit.Freeze(time);
         }
     }
@@ -101,17 +94,12 @@ public class SpawnManager : MonoBehaviourEx
     {
         if (Pause) return;
         if (freezeFlag) return;
-        spawnTick += Time.fixedDeltaTime;
-        if (spawnTick < spawnDelay) return;
-        
-        spawnTick = 0f;
-
 
 
         int minute = ((int)DataManager.Instance.currentGameData.totalPlayTime / 60);
         if(minute >= stageMonsterData.Count)
         {
-            return;
+            return; // 게임클리어 시간을 지났을때, 생성 막음.
         }
 
         if(currentMinute != minute)
@@ -136,9 +124,10 @@ public class SpawnManager : MonoBehaviourEx
             return;
         }
 
-        int spawnCount = MaxSpawnCount - spawnList.Count;
-        for (int i = 0; i < spawnCount; i++)
-        {       
+        spawnTimeTick += Time.fixedDeltaTime;
+        if(spawnTimeTick >= spawnTimeInterval)
+        {
+            spawnTimeTick -= spawnTimeInterval;
             float angle = UnityEngine.Random.Range(-180, 180);
             float dist = 25f;
             Vector3 pos = new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle)) * dist;
@@ -146,7 +135,7 @@ public class SpawnManager : MonoBehaviourEx
 
             if (UnityEngine.Random.Range(0, 100) < 5f)
             {
-                Spawn(torchLight, pos);
+                Spawn(torchLight, pos); // 5% 확률로 보너스 몬스터 생성
             }
             else
             {
@@ -154,6 +143,7 @@ public class SpawnManager : MonoBehaviourEx
                 Spawn(stageMonsterData[minute].monsterPattern[currentMonsterPattern].monsters[mons], pos);
             }
         }
+
     }
 
     private void ProcessRemove()

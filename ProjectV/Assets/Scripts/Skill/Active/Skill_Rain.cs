@@ -4,18 +4,12 @@ using UnityEngine;
 
 public class Skill_Rain : Skill
 {
-    protected override void Awake()
-    {
-        base.Awake();
-        Kind = SkillKind.Rain;
-    }
-    protected override void Start()
+    public override void Initialize()
     {
         Kind = SkillKind.Rain;
-        base.Start();
     }
 
-    
+
     public override void Active()
     {
         //GameObject nearest = null;
@@ -26,17 +20,17 @@ public class Skill_Rain : Skill
         //    // 적이 없으면 공격 안함.
         //    return;
         //}
-        Unit unit = GetComponent<Unit>();
+        Unit unit = Unit.Find(gameObject);
         if (unit == null)
         {
             Debug.LogError("스킬을 유닛만 사용가능.");
             return;
         }
         Vector3 getPoint = Random.onUnitSphere;
-        getPoint = transform.position + (getPoint * 8f);
+        getPoint = transform.position + (getPoint * 6.5f);
         getPoint.y = unit.skillOffsetPosition.y;
         GameObject obj = ObjectPool.Instance.Allocate("Rain");
-        Missile missile = obj.GetComponent<Missile>();
+        Missile missile = Missile.Find(obj);
         missile.Initialize();
         missile.transform.position = getPoint;
         missile.Team = unit.team;

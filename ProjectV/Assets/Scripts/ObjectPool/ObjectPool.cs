@@ -12,16 +12,27 @@ public class ObjectPool : MonoBehaviourEx
     protected override void Awake()
     {
         base.Awake();
-        if (Instance == null)
+        if (_instance == null)
+        {
             _instance = this;
+        }
         //Initialize();
     }
-
-    protected override void Start()
+    public void Initialize()
     {
-        base.Start();
+        foreach (var prefab in prefabs)
+        {
+            prefab.name = prefab.name.Split('(')[0];
+        }
+        foreach (var prefab in prefabs)
+        {
+            if (!_pools.ContainsKey(prefab.name))
+            {
+                _pools.Add(prefab.name, new Stack<GameObject>());
+            }
+            UpSizing(prefab.name);
+        }
     }
-
     public GameObject Allocate(string key)
     {
         string _key = key.Split('(')[0];
@@ -40,7 +51,6 @@ public class ObjectPool : MonoBehaviourEx
 
         return gameObject;
     }
-
     public GameObject Allocate(string key, Vector3 position)
     {
         string _key = key.Split('(')[0];
@@ -60,7 +70,6 @@ public class ObjectPool : MonoBehaviourEx
 
         return gameObject;
     }
-
     public GameObject Allocate(string key, Vector3 position,Quaternion rotation)
     {
         string _key = key.Split('(')[0];
@@ -107,7 +116,6 @@ public class ObjectPool : MonoBehaviourEx
             _pools[key].Push(go);
         }
     }
-
     private GameObject GetPrefab(string key)
     {
         GameObject _prefab = null;
@@ -121,20 +129,5 @@ public class ObjectPool : MonoBehaviourEx
         }
         return _prefab;
     }
-
-    public void Initialize()
-    {
-        foreach (var prefab in prefabs)
-        {
-            prefab.name = prefab.name.Split('(')[0];
-        }
-        foreach (var prefab in prefabs)
-        {
-            if (!_pools.ContainsKey(prefab.name))
-            {
-                _pools.Add(prefab.name, new Stack<GameObject>());
-            }
-            UpSizing(prefab.name);
-        }
-    }
+    
 }

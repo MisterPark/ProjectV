@@ -16,7 +16,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4931608550612199041
 Transform:
@@ -57,6 +57,10 @@ MonoBehaviour:
     playerCharacter: {fileID: 11400000, guid: 705e3bc95ae641a4da22ac38e2d94fc4, type: 2}
   - name: 5
     playerCharacter: {fileID: 11400000, guid: e292e05beba2ba24d997eea9d8a91a0f, type: 2}
+  - name: 6
+    playerCharacter: {fileID: 11400000, guid: 288eda28aea72184bbccd38ea916254a, type: 2}
+  - name: 7
+    playerCharacter: {fileID: 11400000, guid: 17ae71555fa52124a8a4d0d7e59cde5b, type: 2}
   powerUpStat:
   - 0
   - 0
@@ -137,10 +141,10 @@ MonoBehaviour:
     skillData: {fileID: 11400000, guid: e245194be96e81341a1fb02476171216, type: 2}
   - kind: 28
     skillData: {fileID: 11400000, guid: 1fea9c56498c44847a4c24a678a7abd4, type: 2}
-  - kind: 30
-    skillData: {fileID: 11400000, guid: 2029fa49f04653745876eab2f7e96157, type: 2}
   - kind: 29
     skillData: {fileID: 11400000, guid: b6a703f99cb1f7440b6746aa71b9d76b, type: 2}
+  - kind: 30
+    skillData: {fileID: 11400000, guid: 2029fa49f04653745876eab2f7e96157, type: 2}
   currentSaveData:
     totalKillCount: 0
     totalGold: 0

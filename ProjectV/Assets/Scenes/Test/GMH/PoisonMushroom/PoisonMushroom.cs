@@ -4,15 +4,6 @@ using UnityEngine;
 
 public class PoisonMushroom : Item
 {
-    protected override void Start()
-    {
-        base.Start();
-    }
-    
-    public override void FixedUpdateEx()
-    {
-        base.FixedUpdateEx();
-    }
 
 
     public override void Use()
@@ -21,11 +12,11 @@ public class PoisonMushroom : Item
 
         obj.transform.position = Player.Instance.transform.position;
         obj.transform.forward = Player.Instance.transform.forward;
-        Unit unit = Player.Instance.GetComponent<Unit>();
+        Unit unit = Unit.Find(Player.Instance.gameObject);
 
         int minute = (int)DataManager.Instance.currentGameData.totalPlayTime / 60;
 
-        Missile missile = obj.GetComponent<Missile>();
+        Missile missile = Missile.Find(obj);
         missile.Initialize();
         missile.Type = MissileType.Attached;
         missile.SetTarget(Player.Instance.gameObject);

@@ -10,8 +10,6 @@ public enum UnitType
     Monster,
     Prop,
 }
-
-
 public class Unit : MonoBehaviourEx
 {
     public UnitType type;
@@ -49,9 +47,12 @@ public class Unit : MonoBehaviourEx
 
     public Sound[] Sounds { get; set; }
 
+    public static Dictionary<GameObject, Unit> Units = new Dictionary<GameObject, Unit>();
+
     protected override void Awake()
     {
         base.Awake();
+        Units.Add(gameObject, this);
         stat = GetComponent<Stat>();
         animator = GetComponentInChildren<Animator>();
         if (animator == null)
@@ -76,11 +77,30 @@ public class Unit : MonoBehaviourEx
         stat.OnTakeDamage.AddListener(OnStatTakeDamage);
     }
 
-    protected override void Start()
+    private void OnEnable()
     {
-        base.Start();
-        
+        if (stat != null)
+        {
+            stat.RecoverToFull();
+        }
     }
+
+    protected override void OnDestroy()
+    {
+        base.OnDestroy();
+        Units.Remove(gameObject);
+    }
+
+    public static Unit Find(GameObject obj)
+    {
+        Unit unit;
+        if (Units.TryGetValue(obj, out unit) == false)
+        {
+            //Debug.LogError("Unregistered unit");
+        }
+        return unit;
+    }
+
 
     public override void FixedUpdateEx()
     {
@@ -171,8 +191,6 @@ public class Unit : MonoBehaviourEx
 
         switch (kind)
         {
-
-            //case SkillKind.IceBolt: skill = gameObject.GetComponent<Skill_IceBolt>(); break;
             case SkillKind.IceBolt: skill = gameObject.GetComponent<Skill_IceBolt>(); break;
             case SkillKind.FireBolt: skill = gameObject.GetComponent<Skill_FireBolt>(); break;
             case SkillKind.ForceFieldBarrier: skill = gameObject.GetComponent<Skill_ForceFieldBarrier>(); break;
@@ -319,7 +337,7 @@ public class Unit : MonoBehaviourEx
 
                 // 폰트 띄워도 될 때
                 GameObject temp = ObjectPool.Instance.Allocate("UI_DamageFont");
-                UI_DamageFont font = temp.transform.GetChild(0).GetComponent<UI_DamageFont>();
+                UI_DamageFont font = UI_DamageFont.Find(temp.transform.GetChild(0).gameObject);
                 Color fontColor = Color.white;
                 Color outlineColor = Color.black;
 
@@ -407,18 +425,7 @@ public class Unit : MonoBehaviourEx
 
     }
 
-    private void OnEnable()
-    {
-        if(stat != null)
-        {
-            stat.RecoverToFull();
-        }
-    }
-
-    protected override void OnDestroy()
-    {
-        base.OnDestroy();
-    }
+    
     /// <summary>
     /// 스킬 데이터를 업데이트 합니다.
     /// </summary>

@@ -5,12 +5,6 @@ using UnityEngine;
 public class ExpJewel : Item
 {
     public float exp;
-    // Start is called before the first frame update
-    protected override void Start()
-    {
-        base.Start();
-    }
-    // Update is called once per frame
     public override void FixedUpdateEx()
     {
         base.FixedUpdateEx();
@@ -18,7 +12,7 @@ public class ExpJewel : Item
 
     public override void Use()
     {
-        Stat stat = Player.Instance.GetComponent<Stat>();
+        Stat stat = Stat.Find(Player.Instance.gameObject);
         stat.Increase_FinalStat(StatType.Exp, exp);
         ItemManager.Instance.expJewelCount--;
     }

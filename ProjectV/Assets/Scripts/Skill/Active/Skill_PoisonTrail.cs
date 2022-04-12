@@ -2,15 +2,9 @@ using UnityEngine;
 
 public class Skill_PoisonTrail : Skill
 {
-    protected override void Awake()
-    {
-        base.Awake();
-        Kind = SkillKind.PoisonTrail;
-    }
-    protected override void Start()
+    public override void Initialize()
     {
         Kind = SkillKind.PoisonTrail;
-        base.Start();
         activeInterval = 0.1f;
         activeOnce = true;
     }
@@ -19,7 +13,7 @@ public class Skill_PoisonTrail : Skill
     {
         GameObject obj = ObjectPool.Instance.Allocate("PoisonTrail");
 
-        Unit unit = GetComponent<Unit>();
+        Unit unit = Unit.Find(gameObject);
         if (unit == null)
         {
             Debug.LogError("스킬을 유닛만 사용가능.");
@@ -32,7 +26,7 @@ public class Skill_PoisonTrail : Skill
         Vector3 pos = Player.Instance.transform.position+ unit.skillOffsetPosition;
 
 
-        Missile missile = obj.GetComponent<Missile>();
+        Missile missile = Missile.Find(obj);
         missile.Initialize();
         
         missile.Team = unit.team;

@@ -27,13 +27,6 @@ public class SaveDataManager : MonoBehaviourEx
     }
 
 
-    protected override void Start() 
-    {
-        base.Start();
-        //LoadGameData();
-        //SaveGameData();
-
-    }
 
 
     public void LoadGameData() 
@@ -125,14 +118,6 @@ public class SaveDataManager : MonoBehaviourEx
     private void OnApplicationQuit()
     {
         SaveGameData();
-        //if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name.Contains("Stage"))
-        //{
-        //    SaveGameData();
-        //}
-        //else if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "TitleScene")
-        //{
-        //    SaveGameData();
-        //}
     }
 
     public void SaveDataDelete()

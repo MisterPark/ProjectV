@@ -12,6 +12,7 @@ public class ProgressBar : MonoBehaviourEx
     }
     protected override void Start()
     {
+        base.Start();
         mat = GetComponent<Renderer>().material;
     }
 
@@ -20,5 +21,6 @@ public class ProgressBar : MonoBehaviourEx
     {
         float progress = LoadingSceneManager.instance.Progress;
         mat.SetFloat("_FillAmount", progress);
+
     }
 }

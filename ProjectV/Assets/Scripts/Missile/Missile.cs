@@ -13,7 +13,6 @@ public enum MissileType // ¿òÁ÷ÀÓ
 
 public class Missile : MonoBehaviourEx
 {
-
     private float duration;
     private float speed;
     private float damage;
@@ -62,9 +61,12 @@ public class Missile : MonoBehaviourEx
 
     public UnityEvent<Vector3, Unit> OnCollision;
 
+    public static Dictionary<GameObject, Missile> Missiles = new Dictionary<GameObject, Missile>();
+
     protected override void Awake()
     {
         base.Awake();
+        Missile.Missiles.Add(gameObject, this);
     }
 
     protected override void Start()
@@ -86,6 +88,22 @@ public class Missile : MonoBehaviourEx
         cooltimeTick = 0;
         isWaitForFrame = false;
         AttackFlag = false;
+    }
+
+    protected override void OnDestroy()
+    {
+        base.OnDestroy();
+        Missiles.Remove(gameObject);
+    }
+
+    public static Missile Find(GameObject obj)
+    {
+        Missile missile;
+        if(Missiles.TryGetValue(obj, out missile) == false)
+        {
+            Debug.LogError("Unregistered Missile");
+        }
+        return missile;
     }
 
     public override void FixedUpdateEx()
@@ -113,7 +131,7 @@ public class Missile : MonoBehaviourEx
     protected virtual void OnTriggerStay(Collider other)
     {
         if (other.gameObject.IsPlayer()) return;
-        Unit unit = other.gameObject.GetComponent<Unit>();
+        Unit unit = Unit.Find(other.gameObject);
         if (unit != null)
         {
             if (Team != unit.team)

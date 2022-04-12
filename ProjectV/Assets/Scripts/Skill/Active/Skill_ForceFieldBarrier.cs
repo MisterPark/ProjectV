@@ -16,7 +16,7 @@ public class Skill_ForceFieldBarrier : Skill
     {
         base.Start();
         Kind = SkillKind.ForceFieldBarrier;
-        Unit unit = GetComponent<Unit>();
+        Unit unit = Unit.Find(gameObject);
         if (unit == null)
         {
             Debug.LogError("스킬을 유닛만 사용가능.");
@@ -25,7 +25,7 @@ public class Skill_ForceFieldBarrier : Skill
 
         obj = ObjectPool.Instance.Allocate("ForceFieldBarrier");
 
-        missile = obj.GetComponent<Missile>();
+        missile = Missile.Find(obj);
         missile.Initialize();
         missile.SetTarget(unit.gameObject);
 
@@ -46,6 +46,11 @@ public class Skill_ForceFieldBarrier : Skill
 
         OnLevelUp.AddListener(OnLevelUpCallback);
         unit.OnLevelUp.AddListener(OnLevelUpCallback);
+    }
+
+    public override void Initialize()
+    {
+        Kind = SkillKind.ForceFieldBarrier;
     }
 
     public override void Active()

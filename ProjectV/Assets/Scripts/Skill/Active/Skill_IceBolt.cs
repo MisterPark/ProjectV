@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class Skill_IceBolt : Skill
 {
-    protected override void Awake()
+    public override void Initialize()
     {
-        base.Awake();
         Kind = SkillKind.IceBolt;
         activeInterval = 0.1f;
     }
@@ -20,14 +19,14 @@ public class Skill_IceBolt : Skill
             // 적이 없으면 공격 안함.
             return;
         }
-        Unit unit = GetComponent<Unit>();
+        Unit unit = Unit.Find(gameObject);
         if (unit == null)
         {
             Debug.LogError("스킬을 유닛만 사용가능.");
             return;
         }
         GameObject obj = ObjectPool.Instance.Allocate("IceBolt");
-        Missile missile = obj.GetComponent<Missile>();
+        Missile missile = Missile.Find(obj);
         missile.Initialize();
         missile.transform.position = transform.position + unit.skillOffsetPosition;
         missile.Team = unit.team;

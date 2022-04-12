@@ -19,12 +19,6 @@ public class PropManager : MonoBehaviourEx
             Instance = this;
         }
     }
-    protected override void Start()
-    {
-        base.Start();
-    }
-
-    
     public override void FixedUpdateEx()
     {
         ProcessSpawn();

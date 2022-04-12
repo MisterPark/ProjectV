@@ -31,7 +31,6 @@ public class Lightning : MonoBehaviourEx
 
     private void OnEnable()
     {
-        //parentCollider = gameObject.transform.GetComponentInParent<SphereCollider>();
         transform.localScale = new Vector3(1, 0, 1);
         parentCollider.center = new Vector3(0, 20, 0);
         impactFlag = false;

@@ -9,14 +9,15 @@ public class Skill_Luck : Skill
         base.Awake();
         // Kind = SkillKind.Luck;
     }
-    protected override void Start()
-    {
-        base.Start();
-    }
     public override void Active()
     {
-        Stat stat = Player.Instance.GetComponent<Stat>();
+        Stat stat = Stat.Find(Player.Instance.gameObject);
         stat.Increase_FinalStat(StatType.Luck);
         Player.Instance.UpdateSkillData();
+    }
+
+    public override void Initialize()
+    {
+        
     }
 }

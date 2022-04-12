@@ -32,11 +32,13 @@ public abstract class Skill : MonoBehaviourEx
     Unit unit;
     float tick = 0f;
 
+    public abstract void Initialize();
     public abstract void Active();
 
     protected override void Awake()
     {
         base.Awake();
+        Initialize();
         
     }
     protected override void Start()
@@ -44,6 +46,7 @@ public abstract class Skill : MonoBehaviourEx
         base.Start();
         unit = gameObject.GetComponent<Unit>();
         SetValueFromSkillData(1);
+        Initialize();
     }
 
     public override void FixedUpdateEx()

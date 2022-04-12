@@ -34,10 +34,10 @@ public enum SkillKind
     LavaOrb,
     PoisonNova,
     CoolDown,
-    //caution : active or passive skill add on this text;
     RecoveryHp,
     IncreaseCoin,
     End,
+    //
 }
 [System.Serializable]
 public enum SkillType

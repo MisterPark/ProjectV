@@ -7,7 +7,7 @@ using UnityEngine.Events;
 public class Player : Unit
 {
     public static Player Instance;
-    private Vector3 direction = Vector3.forward;// 주석 범인 찾기
+    private Vector3 direction = Vector3.forward;
     private float damageTick = 0f;
     private float damageDelay = 0.2f;
     private bool damageFlag = false;
@@ -39,6 +39,14 @@ public class Player : Unit
         OnLevelUp.AddListener(OnLevelUpCallback);
         UI_LevelUp.instance.OnSelected.AddListener(OnSelectSkill);
 
+        if (animator == null)
+        {
+            animator = GetComponentInChildren<Animator>();
+        }
+        if (animator != null)
+        {
+            animator.SetInteger("UnitType", (int)type);
+        }
 
         PlayerCharacterName charName = DataManager.Instance.currentGameData.characterName;
         PlayerCharacter data = DataManager.Instance.playerCharacterData[(int)charName].playerCharacter;
@@ -67,14 +75,10 @@ public class Player : Unit
 
     protected void OnTriggerStay(Collider other)
     {
-
-        Unit target = other.gameObject.GetComponent<Unit>();
+        Unit target;
+        if (Unit.Units.TryGetValue(other.gameObject, out target) == false) return;
         if (target == null) return;
-
-        if (target.type != UnitType.Monster)
-        {
-            return;
-        }
+        if (target.type != UnitType.Monster) return;
 
         if(damageFlag)
         {
@@ -239,7 +243,9 @@ public class Player : Unit
 
         List<SkillKind> kinds = new List<SkillKind>();
 
-        for (int index = (int)SkillKind.IceBolt; index < (int)SkillKind.RecoveryHp; index++)
+        int begin = (int)SkillKind.None + 1;
+        int end = (int)SkillKind.End;
+        for (int index = begin; index < end; index++)
         {
             SkillKind kind = (SkillKind)index;
             SkillType type = kind.GetSkillType();
@@ -250,6 +256,8 @@ public class Player : Unit
             if (type == SkillType.Passive && skill == null && passives.Count >= 6) continue;
             if (skill != null && skill.IsMaxLevel) continue;
             if (skill == null && data.grade != Grade.Normal) continue;
+            if (kind == SkillKind.RecoveryHp) continue;
+            if (kind == SkillKind.IncreaseCoin) continue;
 
             kinds.Add(kind);
             if (skill != null)
@@ -262,7 +270,6 @@ public class Player : Unit
 
         if (kinds.Count == 0)
         {
-            // TODO : Make HP and Money
             kinds.Add(SkillKind.RecoveryHp);
             kinds.Add(SkillKind.IncreaseCoin);
             skillInfos.Add(new SkillInformation(SkillKind.RecoveryHp, 1));

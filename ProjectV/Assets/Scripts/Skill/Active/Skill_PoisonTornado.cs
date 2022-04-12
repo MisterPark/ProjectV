@@ -4,16 +4,9 @@ using UnityEngine;
 
 public class Skill_PoisonTornado : Skill
 {
-    protected override void Awake()
-    {
-        base.Awake();
-        Kind = SkillKind.PoisonTornado;
-    }
-    
-    protected override void Start()
+    public override void Initialize()
     {
         Kind = SkillKind.PoisonTornado;
-        base.Start();
         activeInterval = 0.1f;
     }
 
@@ -24,7 +17,7 @@ public class Skill_PoisonTornado : Skill
         {
             return;
         }
-        Unit unit = GetComponent<Unit>();
+        Unit unit = Unit.Find(gameObject);
         if (unit == null)
         {
             Debug.LogError("스킬을 유닛만 사용가능.");
@@ -37,7 +30,7 @@ public class Skill_PoisonTornado : Skill
         Vector3 pos = new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle)) * dist;
         pos += Player.Instance.transform.position;
 
-        Missile missile = obj.GetComponent<Missile>();
+        Missile missile = Missile.Find(obj);
         missile.Initialize();
         missile.transform.position = transform.position + unit.skillOffsetPosition;
         missile.Team = unit.team;
@@ -53,19 +46,10 @@ public class Skill_PoisonTornado : Skill
         missile.OnCollision.RemoveAllListeners();
         missile.OnCollision.AddListener(OnCollisionCallback);
 
-        //DamageObject dmgobj = obj.GetComponent<DamageObject>();
-        //dmgobj.delay = delay;
-        //dmgobj.damage = damage;
-        //dmgobj.duration = duration;
-        //dmgobj.isGuided = true;
-        //dmgobj.SetTarget(nearest.transform.position + unit.skillOffsetPosition);
         obj.transform.position = pos;
         SoundManager.Instance.PlaySFXSound("WindTornado");
     }
     void OnCollisionCallback(Vector3 pos, Unit other)
     {
-        //피격 이펙트
-        //GameObject impact = ObjectPool.Instance.Allocate("IceFragmentsImpact");
-        //impact.transform.position = pos;
     }
 }

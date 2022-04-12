@@ -36,11 +36,11 @@ public enum PlayerCharacterName
     Gypsy,
     Peasant,
     Sorcerer,
-    Knight,
     Alchemist,
     King,
     Queen,
     Rogue,
+    Knight,
     Cheater,
     END
 }
