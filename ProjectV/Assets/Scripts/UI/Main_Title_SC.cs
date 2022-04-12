@@ -44,6 +44,8 @@ public class Main_Title_SC : MonoBehaviourEx
     {
         transform.Find("Start Button").gameObject.SetActive(false);
         transform.Find("Powerup Button").gameObject.SetActive(false);
+        transform.Find("SignIn Button").gameObject.SetActive(false);
+   
         DataManager.Instance.Setting_PowerStat();
         UI_CharacterSelect.instance.Show();
         Event_Handle.SetSelectedGameObject(UI_CharacterSelect.instance.gameObject);
@@ -56,13 +58,14 @@ public class Main_Title_SC : MonoBehaviourEx
         Transform tempobject = UI_Powerup.instacne.transform;
         Transform tempobject2 = UI_CharacterSelect.instance.transform;
         Transform tempobject3 = UI_StageSelect.instance.transform;
-
+        Transform tempobject4 = UI_SignIn.instance.transform;
         if (tempobject.gameObject.activeSelf)
         {
             ShowCursor();
             tempobject.gameObject.SetActive(false);
             transform.Find("Start Button").gameObject.SetActive(true);
             transform.Find("Powerup Button").gameObject.SetActive(true);
+            transform.Find("SignIn Button").gameObject.SetActive(true);
         }
         else if (tempobject2.gameObject.activeSelf)
         {
@@ -70,12 +73,21 @@ public class Main_Title_SC : MonoBehaviourEx
             tempobject2.gameObject.SetActive(false);
             transform.Find("Start Button").gameObject.SetActive(true);
             transform.Find("Powerup Button").gameObject.SetActive(true);
+            transform.Find("SignIn Button").gameObject.SetActive(true);
         }
         else if (tempobject3.gameObject.activeSelf)
         {
             ShowCursor();
             tempobject3.gameObject.SetActive(false);
             tempobject2.gameObject.SetActive(true);
+        }
+        else if(tempobject4.gameObject.activeSelf)
+        {
+            ShowCursor();
+            tempobject4.gameObject.SetActive(false);
+            transform.Find("Start Button").gameObject.SetActive(true);
+            transform.Find("Powerup Button").gameObject.SetActive(true);
+            transform.Find("SignIn Button").gameObject.SetActive(true);
         }
         else
         {
@@ -92,14 +104,28 @@ public class Main_Title_SC : MonoBehaviourEx
     {
         UI_Settings.instance.Show();
         SoundManager.Instance.PlaySFXSound("ShortButton");
+        Transform tempobject = UI_SignIn.instance.transform;
+        if(tempobject.gameObject.activeSelf)
+        {
+            tempobject.gameObject.SetActive(false);
+        }
     }
     public void OnClickPowerup()
     {
         transform.Find("Start Button").gameObject.SetActive(false);
         transform.Find("Powerup Button").gameObject.SetActive(false);
+        transform.Find("SignIn Button").gameObject.SetActive(false);
         UI_Powerup.instacne.Show();
         Event_Handle.SetSelectedGameObject(UI_Powerup.instacne.transform.Find("Reset_Button").gameObject);
         SoundManager.Instance.PlaySFXSound("ShortButton");
     }
-
+    
+    public void OnClickSignin()
+    {
+        //transform.Find("Start Button").gameObject.SetActive(false);
+        //transform.Find("Powerup Button").gameObject.SetActive(false);
+        //transform.Find("SignIn Button").gameObject.SetActive(false);
+        UI_SignIn.instance.Show();
+        SoundManager.Instance.PlaySFXSound("ShortButton");
+    }
 }
