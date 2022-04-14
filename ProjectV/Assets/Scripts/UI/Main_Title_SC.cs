@@ -112,7 +112,9 @@ public class Main_Title_SC : MonoBehaviourEx
     }
     public void OnClickLeaderBoard()
     {
+        GPGSBinder.Inst.Login();
         GPGSBinder.Inst.ShowTargetLeaderboardUI(GPGSIds.leaderboard_kills);
+        SoundManager.Instance.PlaySFXSound("ShortButton");
     }
     public void OnClickPowerup()
     {

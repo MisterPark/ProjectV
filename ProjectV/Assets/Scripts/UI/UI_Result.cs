@@ -30,7 +30,7 @@ public class UI_Result : UI
         goldText.text = DataManager.Instance.currentGameData.gold.ToString();
         levelText.text = DataManager.Instance.currentGameData.playerLevel.ToString();
         killcountText.text = DataManager.Instance.currentGameData.killCount.ToString();
-        int kills = (int)Convert.ToInt32(killcountText.text);
+        int kills = DataManager.Instance.currentGameData.killCount;
         if(kills>=10000)
         {
             GPGSBinder.Inst.UnlockAchievement(GPGSIds.achievement_10000_kills);
