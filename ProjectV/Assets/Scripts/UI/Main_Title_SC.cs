@@ -112,7 +112,7 @@ public class Main_Title_SC : MonoBehaviourEx
     }
     public void OnClickLeaderBoard()
     {
-        GPGSBinder.Inst.LoadAllLeaderboardArray(GPGSIds.leaderboard_kills);
+        GPGSBinder.Inst.ShowTargetLeaderboardUI(GPGSIds.leaderboard_kills);
     }
     public void OnClickPowerup()
     {
