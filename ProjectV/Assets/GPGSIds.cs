@@ -24,11 +24,15 @@
 
 public static class GPGSIds
 {
-        public const string achievement_two = "CgkItN-m2agSEAIQBA"; // <GPGSID>
-        public const string achievement_one = "CgkItN-m2agSEAIQAQ"; // <GPGSID>
-        public const string leaderboard_num = "CgkItN-m2agSEAIQBg"; // <GPGSID>
+        public const string achievement_witch_master = "CgkItN-m2agSEAIQDA"; // <GPGSID>
         public const string event_event = "CgkItN-m2agSEAIQBw"; // <GPGSID>
-        public const string achievement_three = "CgkItN-m2agSEAIQBQ"; // <GPGSID>
+        public const string achievement_2 = "CgkItN-m2agSEAIQBA"; // <GPGSID>
+        public const string achievement_3 = "CgkItN-m2agSEAIQBQ"; // <GPGSID>
+        public const string achievement_10000_kills = "CgkItN-m2agSEAIQDQ"; // <GPGSID>
+        public const string achievement_1 = "CgkItN-m2agSEAIQAQ"; // <GPGSID>
+        public const string achievement_stage1_clear = "CgkItN-m2agSEAIQCw"; // <GPGSID>
+        public const string leaderboard_kills = "CgkItN-m2agSEAIQDg"; // <GPGSID>
+        public const string leaderboard_num = "CgkItN-m2agSEAIQBg"; // <GPGSID>
 
 }
 

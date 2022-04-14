@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -29,6 +30,16 @@ public class UI_Result : UI
         goldText.text = DataManager.Instance.currentGameData.gold.ToString();
         levelText.text = DataManager.Instance.currentGameData.playerLevel.ToString();
         killcountText.text = DataManager.Instance.currentGameData.killCount.ToString();
+        int kills = (int)Convert.ToInt32(killcountText.text);
+        if(kills>=10000)
+        {
+            GPGSBinder.Inst.UnlockAchievement(GPGSIds.achievement_10000_kills);
+        }
+
+        if (Convert.ToInt32(GPGSIds.leaderboard_kills) < kills)
+        {
+            GPGSBinder.Inst.ReportLeaderboard(GPGSIds.leaderboard_kills, kills);
+        }
     }
 
 

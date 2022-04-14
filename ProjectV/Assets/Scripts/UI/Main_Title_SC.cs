@@ -110,6 +110,10 @@ public class Main_Title_SC : MonoBehaviourEx
             tempobject.gameObject.SetActive(false);
         }
     }
+    public void OnClickLeaderBoard()
+    {
+        GPGSBinder.Inst.LoadAllLeaderboardArray(GPGSIds.leaderboard_kills);
+    }
     public void OnClickPowerup()
     {
         transform.Find("Start Button").gameObject.SetActive(false);

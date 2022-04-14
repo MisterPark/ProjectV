@@ -200,6 +200,11 @@ public class GameManager : MonoBehaviourEx
     {
         if (DataManager.Instance.currentGameData.totalPlayTime >= 1800f)
         {
+            GPGSBinder.Inst.UnlockAchievement(GPGSIds.achievement_stage1_clear);
+            if(DataManager.Instance.currentGameData.characterName==PlayerCharacterName.Witch)
+            {
+                GPGSBinder.Inst.UnlockAchievement(GPGSIds.achievement_witch_master);
+            }
             Pause();
             UI_Victory.instance.Show();
         }
