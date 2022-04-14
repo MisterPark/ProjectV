@@ -110,6 +110,12 @@ public class Main_Title_SC : MonoBehaviourEx
             tempobject.gameObject.SetActive(false);
         }
     }
+    public void OnClickAchivecment()
+    {
+        GPGSBinder.Inst.Login();
+        GPGSBinder.Inst.ShowAchievementUI();
+        SoundManager.Instance.PlaySFXSound("ShortButton");
+    }
     public void OnClickLeaderBoard()
     {
         GPGSBinder.Inst.Login();
