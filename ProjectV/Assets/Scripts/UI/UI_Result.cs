@@ -40,11 +40,10 @@ public class UI_Result : UI
             GPGSBinder.Inst.UnlockAchievement(GPGSIds.achievement_10000_kills);
         }
 
-        //if (Convert.ToInt32(GPGSIds.leaderboard_kills) < kills)
-        //{
-        //}
-        //GPGSBinder.Inst.ReportLeaderboard(GPGSIds.leaderboard_kills, 1);
-        GPGSBinder.Inst.ReportLeaderboard(GPGSIds.leaderboard_kills, (long)kills);
+        if (kills > 0)
+        {
+            GPGSBinder.Inst.ReportLeaderboard(GPGSIds.leaderboard_kills, kills);
+        }
 
     }
 

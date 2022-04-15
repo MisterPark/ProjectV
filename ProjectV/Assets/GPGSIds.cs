@@ -31,8 +31,7 @@ public static class GPGSIds
         public const string achievement_10000_kills = "CgkItN-m2agSEAIQDQ"; // <GPGSID>
         public const string achievement_1 = "CgkItN-m2agSEAIQAQ"; // <GPGSID>
         public const string achievement_stage1_clear = "CgkItN-m2agSEAIQCw"; // <GPGSID>
-        public const string leaderboard_kills = "CgkItN-m2agSEAIQDg"; // <GPGSID>
-        public const string leaderboard_num = "CgkItN-m2agSEAIQBg"; // <GPGSID>
+        public const string leaderboard_kills = "CgkItN-m2agSEAIQBg"; // <GPGSID>
         public const string achievement_1000_kills = "CgkItN-m2agSEAIQDw"; // <GPGSID>
 
 }
