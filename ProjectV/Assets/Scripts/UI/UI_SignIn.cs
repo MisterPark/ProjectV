@@ -45,7 +45,9 @@ public class UI_SignIn : UI
 
     public void OnClickSigninwithgoogle()
     {
-        GPGSBinder.Inst.Login();
+        
+            GPGSBinder.Inst.Login();
+        
         Hide();
     }
     public void OnClickBackGround()
