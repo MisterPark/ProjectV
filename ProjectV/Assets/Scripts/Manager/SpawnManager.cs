@@ -83,8 +83,10 @@ public class SpawnManager : MonoBehaviourEx
         freezeTime = time;
         freezeFlag = true;
 
-        foreach (var monster in spawnList)
+        GameObject[] spawnArray = spawnList.ToArray();
+        for (int i = 0; i < spawnArray.Length; i++)
         {
+            GameObject monster = spawnArray[i];
             Unit unit = Unit.Find(monster);
             unit.Freeze(time);
         }
@@ -149,8 +151,10 @@ public class SpawnManager : MonoBehaviourEx
     private void ProcessRemove()
     {
         List<GameObject> removes = new List<GameObject>();
-        foreach (var monster in spawnList)
+        GameObject[] spawnArray = spawnList.ToArray();
+        for (int i = 0; i < spawnArray.Length; i++)
         {
+            GameObject monster = spawnArray[i];
             if (monster.CompareTag("Boss")) continue;
 
             Vector3 to = Player.Instance.transform.position - monster.transform.position;
@@ -161,11 +165,15 @@ public class SpawnManager : MonoBehaviourEx
             }
         }
 
-        foreach (var monster in removes)
+        GameObject[] removeArray = removes.ToArray();
+        for (int j = 0; j < removeArray.Length; j++)
         {
+            GameObject monster = removeArray[j];
             Remove(monster);
         }
     }
+
+    
 
     private void PrecessSetNearestEnemy()
     {

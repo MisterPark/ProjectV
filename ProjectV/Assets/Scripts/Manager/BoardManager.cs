@@ -47,8 +47,10 @@ public class BoardManager : MonoBehaviourEx
 
     bool FindBoard(int row, int col)
     {
-        foreach (var board in boards)
+        var boardArray = boards.ToArray();
+        for (int i = 0; i < boardArray.Length; i++)
         {
+            Board board = boardArray[i];
             if (board.Row == row && board.Column == col)
             {
                 return true;
@@ -108,8 +110,9 @@ public class BoardManager : MonoBehaviourEx
             }
         }
 
-        foreach (Board board in removes)
+        for (int i = 0; i < removes.Count; i++)
         {
+            Board board = removes[i];
             boards.Remove(board);
             ObjectPool.Instance.Free(board.gameObject);
         }

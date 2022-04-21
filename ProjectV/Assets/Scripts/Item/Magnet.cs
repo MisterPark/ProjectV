@@ -9,8 +9,10 @@ public class Magnet : Item
     public override void Use()
     {
         var ItemList = ItemManager.Instance.itemList;
-        foreach (var item in ItemList)
+        var itemArray = ItemList.ToArray();
+        for (int i = 0; i < itemArray.Length; i++) 
         {
+            GameObject item = itemArray[i];
             ItemObject itemObject = ItemObject.Find(item);
             if(itemObject.isMagnetism)
             itemObject.MagnetFlag = true;

@@ -151,16 +151,16 @@ public class GPGSBinder
             ((PlayGamesPlatform)Social.Active).ShowLeaderboardUI(gpgsId);
         }
     }
-      
 
-    public void ReportLeaderboard(string gpgsId, long score, Action<bool> onReported = null) 
+
+    public void ReportLeaderboard(string gpgsId, long score, Action<bool> onReported = null)
     {
         if (Social.localUser.authenticated)
         {
             Social.ReportScore(score, gpgsId, success => onReported?.Invoke(success));
         }
     }
-    
+
 
     public void LoadAllLeaderboardArray(string gpgsId, Action<UnityEngine.SocialPlatforms.IScore[]> onloaded = null)
     {
@@ -169,7 +169,7 @@ public class GPGSBinder
             Social.LoadScores(gpgsId, onloaded);
         }
     }
-        
+
 
     public void LoadCustomLeaderboardArray(string gpgsId, int rowCount, LeaderboardStart leaderboardStart,
         LeaderboardTimeSpan leaderboardTimeSpan, Action<bool, LeaderboardScoreData> onloaded = null)

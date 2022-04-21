@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class CombineSkillManager : MonoBehaviourEx
@@ -20,8 +21,9 @@ public class CombineSkillManager : MonoBehaviourEx
 
     public void CombineSkill(SkillKind skillKind)
     {
-        foreach(var skill in combineSkillDatas)
+        for (int i = 0; i < combineSkillDatas.Length; i++)
         {
+            CombineSkillDataElement skill = combineSkillDatas[i];
             if(skill.combinedSkill != skillKind)
             {
                 continue;

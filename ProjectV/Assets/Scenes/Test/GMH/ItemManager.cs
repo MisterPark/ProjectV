@@ -183,8 +183,10 @@ public class ItemManager : MonoBehaviourEx
     {
         GameObject expJewelObj = null;
         ExpJewel expJewel = null;
-        foreach (GameObject _item in itemList)
+        var items = itemList.ToArray();
+        for (int i = 0; i < items.Length; i++)
         {
+            GameObject _item = items[i];
             expJewel = _item.GetComponentInChildren<ExpJewel>(); // 가장 오래있는 경험치 보석 찾기
             if (expJewel != null)
             {
@@ -211,8 +213,10 @@ public class ItemManager : MonoBehaviourEx
         {
             farExpJewelDeleteTick = 0f;
             Vector3 playerPos = Player.Instance.transform.position;
-            foreach (GameObject _item in itemList)
+            var items = itemList.ToArray();
+            for (int i = 0; i < items.Length; i++)
             {
+                GameObject _item = items[i];
                 ExpJewel expJewel = _item.GetComponentInChildren<ExpJewel>();
                 if (expJewel == null)
                 {
@@ -228,8 +232,10 @@ public class ItemManager : MonoBehaviourEx
                 }
             }
 
-            foreach (GameObject _item in deleteList)
+            GameObject[] deleteArray = deleteList.ToArray();
+            for (int i = 0; i < deleteArray.Length; i++)
             {
+                GameObject _item = deleteArray[i];
                 Remove(_item);
             }
         }
