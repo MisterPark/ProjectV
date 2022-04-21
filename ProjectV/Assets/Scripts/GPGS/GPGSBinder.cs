@@ -35,21 +35,29 @@ public class GPGSBinder
     public void Login(Action<bool, UnityEngine.SocialPlatforms.ILocalUser> onLoginSuccess = null)
     {
         Init();
-        PlayGamesPlatform.Instance.Authenticate(SignInInteractivity.CanPromptAlways, (success) =>
+        if (!Social.localUser.authenticated)
         {
-            onLoginSuccess?.Invoke(success == SignInStatus.Success, Social.localUser);
-        });
+            PlayGamesPlatform.Instance.Authenticate(SignInInteractivity.CanPromptAlways, (success) =>
+            {
+                onLoginSuccess?.Invoke(success == SignInStatus.Success, Social.localUser);
+            });
+        }
     }
 
     public void Logout()
     {
-        PlayGamesPlatform.Instance.SignOut();
+        if (Social.localUser.authenticated)
+        {
+            PlayGamesPlatform.Instance.SignOut();
+        }
     }
 
 
     public void SaveCloud(string fileName, string saveData, Action<bool> onCloudSaved = null)
     {
-        SavedGame.OpenWithAutomaticConflictResolution(fileName, DataSource.ReadCacheOrNetwork,
+        if (Social.localUser.authenticated)
+        {
+            SavedGame.OpenWithAutomaticConflictResolution(fileName, DataSource.ReadCacheOrNetwork,
             ConflictResolutionStrategy.UseLastKnownGood, (status, game) =>
             {
                 if (status == SavedGameRequestStatus.Success)
@@ -62,11 +70,14 @@ public class GPGSBinder
                     });
                 }
             });
+        }
     }
 
     public void LoadCloud(string fileName, Action<bool, string> onCloudLoaded = null)
     {
-        SavedGame.OpenWithAutomaticConflictResolution(fileName, DataSource.ReadCacheOrNetwork,
+        if (Social.localUser.authenticated)
+        {
+            SavedGame.OpenWithAutomaticConflictResolution(fileName, DataSource.ReadCacheOrNetwork,
             ConflictResolutionStrategy.UseLastKnownGood, (status, game) =>
             {
                 if (status == SavedGameRequestStatus.Success)
@@ -83,11 +94,14 @@ public class GPGSBinder
                     });
                 }
             });
+        }
     }
 
     public void DeleteCloud(string fileName, Action<bool> onCloudDeleted = null)
     {
-        SavedGame.OpenWithAutomaticConflictResolution(fileName,
+        if (Social.localUser.authenticated)
+        {
+            SavedGame.OpenWithAutomaticConflictResolution(fileName,
             DataSource.ReadCacheOrNetwork, ConflictResolutionStrategy.UseLongestPlaytime, (status, game) =>
             {
                 if (status == SavedGameRequestStatus.Success)
@@ -98,60 +112,106 @@ public class GPGSBinder
                 else
                     onCloudDeleted?.Invoke(false);
             });
+        }
     }
 
 
     public void ShowAchievementUI() =>
         Social.ShowAchievementsUI();
 
-    public void UnlockAchievement(string gpgsId, Action<bool> onUnlocked = null) =>
-        Social.ReportProgress(gpgsId, 100, success => onUnlocked?.Invoke(success));
+    public void UnlockAchievement(string gpgsId, Action<bool> onUnlocked = null)
+    {
+        if (Social.localUser.authenticated)
+        {
+            Social.ReportProgress(gpgsId, 100, success => onUnlocked?.Invoke(success));
+        }
+    }
+    public void IncrementAchievement(string gpgsId, int steps, Action<bool> onUnlocked = null)
+    {
+        if (Social.localUser.authenticated)
+        {
+            PlayGamesPlatform.Instance.IncrementAchievement(gpgsId, steps, success => onUnlocked?.Invoke(success));
+        }
+    }
 
-    public void IncrementAchievement(string gpgsId, int steps, Action<bool> onUnlocked = null) =>
-        PlayGamesPlatform.Instance.IncrementAchievement(gpgsId, steps, success => onUnlocked?.Invoke(success));
 
 
-    public void ShowAllLeaderboardUI() =>
-        Social.ShowLeaderboardUI();
+    public void ShowAllLeaderboardUI()
+    {
+        if (Social.localUser.authenticated)
+        {
+            Social.ShowLeaderboardUI();
+        }
+    }
 
-    public void ShowTargetLeaderboardUI(string gpgsId) =>
-        ((PlayGamesPlatform)Social.Active).ShowLeaderboardUI(gpgsId);
+    public void ShowTargetLeaderboardUI(string gpgsId)
+    {
+        if (Social.localUser.authenticated)
+        {
+            ((PlayGamesPlatform)Social.Active).ShowLeaderboardUI(gpgsId);
+        }
+    }
+      
 
-    public void ReportLeaderboard(string gpgsId, long score, Action<bool> onReported = null) =>
-        Social.ReportScore(score, gpgsId, success => onReported?.Invoke(success));
+    public void ReportLeaderboard(string gpgsId, long score, Action<bool> onReported = null) 
+    {
+        if (Social.localUser.authenticated)
+        {
+            Social.ReportScore(score, gpgsId, success => onReported?.Invoke(success));
+        }
+    }
+    
 
-    public void LoadAllLeaderboardArray(string gpgsId, Action<UnityEngine.SocialPlatforms.IScore[]> onloaded = null) =>
-        Social.LoadScores(gpgsId, onloaded);
+    public void LoadAllLeaderboardArray(string gpgsId, Action<UnityEngine.SocialPlatforms.IScore[]> onloaded = null)
+    {
+        if (Social.localUser.authenticated)
+        {
+            Social.LoadScores(gpgsId, onloaded);
+        }
+    }
+        
 
     public void LoadCustomLeaderboardArray(string gpgsId, int rowCount, LeaderboardStart leaderboardStart,
         LeaderboardTimeSpan leaderboardTimeSpan, Action<bool, LeaderboardScoreData> onloaded = null)
     {
-        PlayGamesPlatform.Instance.LoadScores(gpgsId, leaderboardStart, rowCount, LeaderboardCollection.Public, leaderboardTimeSpan, data =>
+        if (Social.localUser.authenticated)
+        {
+            PlayGamesPlatform.Instance.LoadScores(gpgsId, leaderboardStart, rowCount, LeaderboardCollection.Public, leaderboardTimeSpan, data =>
         {
             onloaded?.Invoke(data.Status == ResponseStatus.Success, data);
         });
+        }
     }
 
 
     public void IncrementEvent(string gpgsId, uint steps)
     {
-        Events.IncrementEvent(gpgsId, steps);
+        if (Social.localUser.authenticated)
+        {
+            Events.IncrementEvent(gpgsId, steps);
+        }
     }
 
     public void LoadEvent(string gpgsId, Action<bool, IEvent> onEventLoaded = null)
     {
-        Events.FetchEvent(DataSource.ReadCacheOrNetwork, gpgsId, (status, iEvent) =>
+        if (Social.localUser.authenticated)
+        {
+            Events.FetchEvent(DataSource.ReadCacheOrNetwork, gpgsId, (status, iEvent) =>
         {
             onEventLoaded?.Invoke(status == ResponseStatus.Success, iEvent);
         });
+        }
     }
 
     public void LoadAllEvent(Action<bool, List<IEvent>> onEventsLoaded = null)
     {
-        Events.FetchAllEvents(DataSource.ReadCacheOrNetwork, (status, events) =>
+        if (Social.localUser.authenticated)
+        {
+            Events.FetchAllEvents(DataSource.ReadCacheOrNetwork, (status, events) =>
         {
             onEventsLoaded?.Invoke(status == ResponseStatus.Success, events);
         });
+        }
     }
 
 }
