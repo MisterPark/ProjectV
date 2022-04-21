@@ -23,10 +23,7 @@ public class SaveData
     [SerializeField] public List<powerUpSave> powerUpSaves = new List<powerUpSave>();
 
     // 설정
-    public float BGMVolume = 1f;
-    public float SoundVolume = 1f;
-    public bool VisibleDamageNumbers = true;
-    public Language Language;
+    public SettingsData settingsData = new SettingsData();
 
     // 각 챕터의 잠금여부
     //public bool[] unLockCharacter = new bool[(int)PlayerCharacterName.END];

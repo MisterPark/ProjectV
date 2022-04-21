@@ -15,6 +15,7 @@ public class UI_Settings : UI
     [SerializeField] Button prevLangButton;
     [SerializeField] Button nextLangButton;
     [SerializeField] Text langText;
+    [SerializeField] Toggle shadowToggle;
     int langIndex = 0;
 
     public UnityEvent OnClosed = new UnityEvent();
@@ -33,10 +34,12 @@ public class UI_Settings : UI
         bgmSlider.onValueChanged.AddListener(OnValueChange_BGM);
         soundSlider.onValueChanged.AddListener(OnValueChange_Sound);
         damageNumberToggle.onValueChanged.AddListener(OnValueChanged_VisibleDamageNumbers);
+        shadowToggle.onValueChanged.AddListener(OnValueChanged_Shadow);
 
         bgmSlider.value = DataManager.Instance.Settings.BGMVolume;
         soundSlider.value = DataManager.Instance.Settings.SoundVolume;
         damageNumberToggle.isOn = DataManager.Instance.Settings.VisibleDamageNumbers;
+        shadowToggle.isOn = DataManager.Instance.Settings.shadowFlag;
 
         prevLangButton.onClick.AddListener(OnClickPrev);
         nextLangButton.onClick.AddListener(OnClickNext);
@@ -53,6 +56,7 @@ public class UI_Settings : UI
         bgmSlider.value = DataManager.Instance.Settings.BGMVolume;
         soundSlider.value = DataManager.Instance.Settings.SoundVolume;
         damageNumberToggle.isOn = DataManager.Instance.Settings.VisibleDamageNumbers;
+        shadowToggle.isOn = DataManager.Instance.Settings.shadowFlag;
     }
 
     public override void Show()
@@ -114,6 +118,11 @@ public class UI_Settings : UI
         SoundManager.Instance.masterVolumeSFX = _volume;
     }
 
+    public void OnValueChanged_Shadow(bool _isOn)
+    {
+        DataManager.Instance.Settings.shadowFlag = _isOn;
+        RenderManager.Instance.SetShadow(_isOn);
+    }
 
     public void UpdateLanguageText()
     {

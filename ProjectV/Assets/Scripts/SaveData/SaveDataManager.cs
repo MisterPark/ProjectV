@@ -53,10 +53,10 @@ public class SaveDataManager : MonoBehaviourEx
         //
         dataManager.currentSaveData = new SaveData();
 
-        dataManager.Settings.BGMVolume = _saveData.BGMVolume;
-        dataManager.Settings.SoundVolume = _saveData.SoundVolume;
-        dataManager.Settings.VisibleDamageNumbers = _saveData.VisibleDamageNumbers;
-        dataManager.Settings.Language = _saveData.Language;
+        dataManager.Settings.BGMVolume = _saveData.settingsData.BGMVolume;
+        dataManager.Settings.SoundVolume = _saveData.settingsData.SoundVolume;
+        dataManager.Settings.VisibleDamageNumbers = _saveData.settingsData.VisibleDamageNumbers;
+        dataManager.Settings.Language = _saveData.settingsData.Language;
 
         dataManager.currentSaveData.totalKillCount = _saveData.totalKillCount;
         dataManager.currentSaveData.totalGold = _saveData.totalGold;
@@ -90,10 +90,11 @@ public class SaveDataManager : MonoBehaviourEx
         _saveData.currentGold = currentSaveData.currentGold;
         _saveData.totalPlayTime = currentSaveData.totalPlayTime;
         //설정
-        _saveData.BGMVolume = dataManager.Settings.BGMVolume;
-        _saveData.SoundVolume = dataManager.Settings.SoundVolume;
-        _saveData.VisibleDamageNumbers = dataManager.Settings.VisibleDamageNumbers;
-        _saveData.Language = dataManager.Settings.Language;
+        _saveData.settingsData.BGMVolume = dataManager.Settings.BGMVolume;
+        _saveData.settingsData.SoundVolume = dataManager.Settings.SoundVolume;
+        _saveData.settingsData.VisibleDamageNumbers = dataManager.Settings.VisibleDamageNumbers;
+        _saveData.settingsData.Language = dataManager.Settings.Language;
+        _saveData.settingsData.shadowFlag = dataManager.Settings.shadowFlag;
         //파워업
         _saveData.powerUpSaves.Clear();
         foreach (Powerup_DataType data in dataManager.powerStatDB.Powerup_Type_List)
@@ -130,10 +131,12 @@ public class SaveDataManager : MonoBehaviourEx
         _saveData.totalPlayTime = 0f;
         _saveData.powerUpSaves.Clear();
         //설정
-        _saveData.BGMVolume = dataManager.Settings.BGMVolume;
-        _saveData.SoundVolume = dataManager.Settings.SoundVolume;
-        _saveData.VisibleDamageNumbers = dataManager.Settings.VisibleDamageNumbers;
-        _saveData.Language = dataManager.Settings.Language;
+        _saveData.settingsData.BGMVolume = dataManager.Settings.BGMVolume;
+        _saveData.settingsData.SoundVolume = dataManager.Settings.SoundVolume;
+        _saveData.settingsData.VisibleDamageNumbers = dataManager.Settings.VisibleDamageNumbers;
+        _saveData.settingsData.Language = dataManager.Settings.Language;
+        _saveData.settingsData.shadowFlag = dataManager.Settings.shadowFlag;
+
         foreach (Powerup_DataType data in dataManager.powerStatDB.Powerup_Type_List)
         {
             powerUpSave _powerUpSave = new powerUpSave();
