@@ -16,12 +16,12 @@ public class SpawnManager : MonoBehaviourEx
     [SerializeField] List<StageData> stageData = new List<StageData>();
     [SerializeField] List<MinuteMonsterNode> stageMonsterData;
 
-    List<GameObject> spawnList = new List<GameObject>();
-    List<GameObject> spawnQueue = new List<GameObject>();
+    Vector<GameObject> spawnList = new Vector<GameObject>();
+    Vector<GameObject> spawnQueue = new Vector<GameObject>();
     GameObject nearestMonster;
     public GameObject NearestMonster { get { return nearestMonster; } }
-    public List<GameObject> SpawnList{ get { return spawnList; } }
-    public List<GameObject> SpawnQueue { get { return spawnQueue; } }
+    public Vector<GameObject> SpawnList{ get { return spawnList; } }
+    public Vector<GameObject> SpawnQueue { get { return spawnQueue; } }
 
     private int currentMinute = -1;
     private int currentMonsterPattern = 0;
@@ -180,7 +180,9 @@ public class SpawnManager : MonoBehaviourEx
         spawnQueue.Clear();
         if (Player.Instance == null) return;
 
-        spawnQueue = spawnList.OrderBy(x => x.GetDistanceFromPlayer()).ToList();
+        //spawnQueue = spawnList.OrderBy(x => x.GetDistanceFromPlayer());
+        spawnList.Sort(x => x.GetDistanceFromPlayer());
+        spawnQueue = new Vector<GameObject>(spawnList);
 
         nearestMonster = null;
         if(spawnQueue.Count > 0)

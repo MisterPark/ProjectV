@@ -40,6 +40,17 @@ public static class Extension
 
     }
 
+    public static bool Dequeue<T>(this Vector<T> vector, out T data)
+    {
+        data = default(T);
+        if (vector == null) return false;
+        if (vector.Count == 0) return false;
+
+        data = vector[0];
+        vector.RemoveAt(0);
+        return true;
+    }
+
     public static SkillType GetSkillType(this SkillKind kind)
     {
         return DataManager.Instance.skillDatas[(int)kind].skillData.type;

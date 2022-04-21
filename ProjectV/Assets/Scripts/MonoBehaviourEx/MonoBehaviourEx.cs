@@ -5,13 +5,12 @@ using UnityEngine.Events;
 
 public class MonoBehaviourEx : MonoBehaviour
 {
-    public static List<MonoBehaviourEx> behaviours = new List<MonoBehaviourEx>();
-    public static List<MonoBehaviourEx> removes = new List<MonoBehaviourEx>();
+    public static Vector<MonoBehaviourEx> behaviours = new Vector<MonoBehaviourEx>();
+    public static Vector<MonoBehaviourEx> removes = new Vector<MonoBehaviourEx>();
 
     protected virtual void Awake()
     {
 
-        
     }
 
     protected virtual void Start()

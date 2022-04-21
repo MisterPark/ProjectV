@@ -7,7 +7,7 @@ public class ObjectPool : MonoBehaviourEx
     private static ObjectPool _instance;
 
     public static ObjectPool Instance { get { return _instance; } }
-    [SerializeField] List<GameObject> prefabs;
+    [SerializeField] GameObject[] prefabs;
     Dictionary<string, Stack<GameObject>> _pools = new Dictionary<string, Stack<GameObject>>();
     protected override void Awake()
     {
@@ -20,12 +20,14 @@ public class ObjectPool : MonoBehaviourEx
     }
     public void Initialize()
     {
-        foreach (var prefab in prefabs)
+        for (int i = 0; i < prefabs.Length; i++)
         {
+            GameObject prefab = prefabs[i];
             prefab.name = prefab.name.Split('(')[0];
         }
-        foreach (var prefab in prefabs)
+        for (int i = 0; i < prefabs.Length; i++)
         {
+            GameObject prefab = prefabs[i];
             if (!_pools.ContainsKey(prefab.name))
             {
                 _pools.Add(prefab.name, new Stack<GameObject>());
@@ -119,8 +121,9 @@ public class ObjectPool : MonoBehaviourEx
     private GameObject GetPrefab(string key)
     {
         GameObject _prefab = null;
-        foreach (var prefab in prefabs)
+        for (int i = 0; i < prefabs.Length; i++)
         {
+            GameObject prefab = prefabs[i];
             if (prefab.name == key)
             {
                 _prefab = prefab;
