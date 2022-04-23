@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UI_ExpBar : MonoBehaviourEx
+public class UI_ExpBar : MonoBehaviourEx, IUpdater
 {
 
     private float Exp;
@@ -29,7 +29,7 @@ public class UI_ExpBar : MonoBehaviourEx
     }
 
     
-    public override void UpdateEx()
+    public void UpdateEx()
     {
         Exp = Player.Instance.stat.Get_FinalStat(StatType.Exp);
         maxExp = Player.Instance.stat.Get_FinalStat(StatType.MaxExp); 

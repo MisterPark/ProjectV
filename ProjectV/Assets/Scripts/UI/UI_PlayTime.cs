@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UI_PlayTime : MonoBehaviourEx
+public class UI_PlayTime : MonoBehaviourEx, IUpdater
 {
     private RectTransform rectTransform;
     [SerializeField] Text text;
@@ -18,7 +18,7 @@ public class UI_PlayTime : MonoBehaviourEx
     }
 
     
-    public override void UpdateEx()
+    public void UpdateEx()
     {
         int total = (int)DataManager.Instance.currentGameData.totalPlayTime;
         int minute = total / 60;

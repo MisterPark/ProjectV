@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LoadingText : MonoBehaviourEx
+public class LoadingText : MonoBehaviourEx, IFixedUpdater
 {
     Text text;
     string txt = "Loading...";
@@ -18,7 +18,7 @@ public class LoadingText : MonoBehaviourEx
     }
 
     
-    public override void FixedUpdateEx()
+    public void FixedUpdateEx()
     {
         tick += Time.fixedDeltaTime;
         if(tick >= time)

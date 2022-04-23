@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DeadUnit : MonoBehaviourEx
+public class DeadUnit : MonoBehaviourEx, IFixedUpdater
 {
     Material material;
     [SerializeField] float cutoff;
@@ -15,13 +15,14 @@ public class DeadUnit : MonoBehaviourEx
 
     
 
-    private void OnEnable()
+    protected override void OnEnable()
     {
+        base.OnEnable();
         cutoff = 3f;
     }
 
     
-    public override void FixedUpdateEx()
+    public void FixedUpdateEx()
     {
         cutoff -= Time.fixedDeltaTime;
         if(cutoff > 0)

@@ -8,7 +8,7 @@ public class ObjectPool : MonoBehaviourEx
 
     public static ObjectPool Instance { get { return _instance; } }
     [SerializeField] GameObject[] prefabs;
-    Dictionary<string, Stack<GameObject>> _pools = new Dictionary<string, Stack<GameObject>>();
+    Dictionary<string, Vector<GameObject>> _pools = new Dictionary<string, Vector<GameObject>>();
     protected override void Awake()
     {
         base.Awake();
@@ -23,16 +23,13 @@ public class ObjectPool : MonoBehaviourEx
         for (int i = 0; i < prefabs.Length; i++)
         {
             GameObject prefab = prefabs[i];
-            prefab.name = prefab.name.Split('(')[0];
-        }
-        for (int i = 0; i < prefabs.Length; i++)
-        {
-            GameObject prefab = prefabs[i];
-            if (!_pools.ContainsKey(prefab.name))
+            string key = prefab.name.Split('(')[0];
+            prefab.name = key;
+            if (!_pools.ContainsKey(key))
             {
-                _pools.Add(prefab.name, new Stack<GameObject>());
+                _pools.Add(key, new Vector<GameObject>());
             }
-            UpSizing(prefab.name);
+            UpSizing(key);
         }
     }
     public GameObject Allocate(string key)
@@ -40,14 +37,14 @@ public class ObjectPool : MonoBehaviourEx
         string _key = key.Split('(')[0];
         if (!_pools.ContainsKey(_key))
         {
-            _pools.Add(_key, new Stack<GameObject>());
+            _pools.Add(_key, new Vector<GameObject>());
         }
 
         if (_pools[_key].Count == 0)
         {
             UpSizing(_key);
         }
-        GameObject gameObject = _pools[_key].Pop();
+        GameObject gameObject = _pools[_key].PopFront();
         gameObject.name = _key;
         gameObject.SetActive(true);
 
@@ -58,14 +55,14 @@ public class ObjectPool : MonoBehaviourEx
         string _key = key.Split('(')[0];
         if (!_pools.ContainsKey(_key))
         {
-            _pools.Add(_key, new Stack<GameObject>());
+            _pools.Add(_key, new Vector<GameObject>());
         }
 
         if (_pools[_key].Count == 0)
         {
             UpSizing(_key);
         }
-        GameObject gameObject = _pools[_key].Pop();
+        GameObject gameObject = _pools[_key].PopFront();
         gameObject.name = _key;
         gameObject.transform.position = position;
         gameObject.SetActive(true);
@@ -77,17 +74,16 @@ public class ObjectPool : MonoBehaviourEx
         string _key = key.Split('(')[0];
         if (!_pools.ContainsKey(_key))
         {
-            _pools.Add(_key, new Stack<GameObject>());
+            _pools.Add(_key, new Vector<GameObject>());
         }
 
         if (_pools[_key].Count == 0)
         {
             UpSizing(_key);
         }
-        GameObject gameObject = _pools[_key].Pop();
+        GameObject gameObject = _pools[_key].PopFront();
         gameObject.name = _key;
-        gameObject.transform.position = position;
-        gameObject.transform.rotation = rotation;
+        gameObject.transform.SetPositionAndRotation(position, rotation);
         gameObject.SetActive(true);
 
         return gameObject;
@@ -97,16 +93,16 @@ public class ObjectPool : MonoBehaviourEx
         string key = _gameObject.name.Split('(')[0];
         if (!_pools.ContainsKey(key))
         {
-            _pools.Add(key, new Stack<GameObject>());
+            _pools.Add(key, new Vector<GameObject>());
         }
         _gameObject.SetActive(false);
-        _pools[key].Push(_gameObject);
+        _pools[key].PushFront(_gameObject);
     }
     private void UpSizing(string key)
     {
         if (!_pools.ContainsKey(key))
         {
-            _pools.Add(key, new Stack<GameObject>());
+            _pools.Add(key, new Vector<GameObject>());
         }
 
         GameObject prefab = GetPrefab(key);
@@ -115,7 +111,7 @@ public class ObjectPool : MonoBehaviourEx
         {
             GameObject go = Instantiate(prefab, transform);
             go.SetActive(false);
-            _pools[key].Push(go);
+            _pools[key].Add(go);
         }
     }
     private GameObject GetPrefab(string key)

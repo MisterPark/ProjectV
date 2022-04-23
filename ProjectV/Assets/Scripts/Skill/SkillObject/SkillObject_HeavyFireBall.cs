@@ -7,6 +7,7 @@ public class SkillObject_HeavyFireBall : SkillObject
     
     public override void FixedUpdateEx()
     {
+        base.FixedUpdateEx();
         tick += Time.fixedDeltaTime;
         if (tick >= duration)
         {

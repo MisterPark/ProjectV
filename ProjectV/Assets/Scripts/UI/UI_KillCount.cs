@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UI_KillCount : MonoBehaviourEx
+public class UI_KillCount : MonoBehaviourEx, IUpdater
 {
     private RectTransform rectTransform;
     [SerializeField] private Text text;
@@ -19,7 +19,7 @@ public class UI_KillCount : MonoBehaviourEx
     }
 
     
-    public override void UpdateEx()
+    public void UpdateEx()
     {
         text.text = DataManager.Instance.currentGameData.killCount.ToString();
     }

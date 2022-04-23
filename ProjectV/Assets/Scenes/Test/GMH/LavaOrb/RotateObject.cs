@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RotateObject : MonoBehaviourEx
+public class RotateObject : MonoBehaviourEx, IFixedUpdater
 {
     
     [SerializeField] float rotationSpeed=5f;
@@ -15,7 +15,7 @@ public class RotateObject : MonoBehaviourEx
     }
 
     
-    public override void FixedUpdateEx()
+    public void FixedUpdateEx()
     {
         if (RotateX)
         { transform.Rotate(Vector3.right, rotationSpeed*Time.fixedDeltaTime, Space.World); }

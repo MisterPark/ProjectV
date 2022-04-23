@@ -27,8 +27,4 @@ public class UI_CharacterSlot : MonoBehaviourEx
     }
 
     
-    public override void UpdateEx()
-    {
-        
-    }
 }

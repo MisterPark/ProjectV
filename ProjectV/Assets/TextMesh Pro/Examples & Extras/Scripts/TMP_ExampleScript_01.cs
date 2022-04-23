@@ -7,7 +7,7 @@ using TMPro;
 namespace TMPro.Examples
 {
 
-    public class TMP_ExampleScript_01 : MonoBehaviourEx
+    public class TMP_ExampleScript_01 : MonoBehaviourEx, IUpdater
     {
         public enum objectType { TextMeshPro = 0, TextMeshProUGUI = 1 };
 
@@ -51,7 +51,7 @@ namespace TMPro.Examples
         }
 
 
-        public override void UpdateEx()
+        public void UpdateEx()
         {
             if (!isStatic)
             {

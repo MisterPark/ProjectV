@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace UnityTemplateProjects
 {
-    public class SimpleCameraController : MonoBehaviourEx
+    public class SimpleCameraController : MonoBehaviourEx, IUpdater
     {
         class CameraState
         {
@@ -165,7 +165,7 @@ namespace UnityTemplateProjects
             return direction;
         }
         
-        public override void UpdateEx()
+        public void UpdateEx()
         {
             // Exit Sample  
 

@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UI : MonoBehaviourEx
+public class UI : MonoBehaviourEx, IFixedUpdater, IUpdater
 {
     public bool Visible { get { return gameObject.activeSelf; } }
 
 
-    protected virtual void OnEnable()
+    protected override void OnEnable()
     {
+        base.OnEnable();
         gameObject.Localized();
     }
 
@@ -22,14 +23,13 @@ public class UI : MonoBehaviourEx
         base.OnDestroy();
     }
 
-    public override void FixedUpdateEx()
+    public virtual void FixedUpdateEx()
     {
-        base.FixedUpdateEx();
+        
     }
 
-    public override void UpdateEx()
+    public virtual void UpdateEx()
     {
-        base.UpdateEx();
     }
 
     public virtual void Show()

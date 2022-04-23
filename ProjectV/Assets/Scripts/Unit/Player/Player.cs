@@ -205,8 +205,10 @@ public class Player : Unit
     List<Skill> GetActiveSkills()
     {
         List<Skill> resuls = new List<Skill>();
-        foreach(Skill skill in Skills)
+        int count = Skills.Count;
+        for (int i = 0; i < count; i++)
         {
+            var skill = Skills[i];
             SkillData data = skill.SkillData;
             if(data.type == SkillType.Active)
             {
@@ -220,8 +222,10 @@ public class Player : Unit
     List<Skill> GetPassiveSkills()
     {
         List<Skill> resuls = new List<Skill>();
-        foreach (Skill skill in Skills)
+        int count = Skills.Count;
+        for (int i = 0; i < count; i++)
         {
+            var skill = Skills[i];
             SkillData data = skill.SkillData;
             if (data.type == SkillType.Passive)
             {

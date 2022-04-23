@@ -5,7 +5,7 @@ using System.Collections;
 namespace TMPro.Examples
 {
     
-    public class ObjectSpin : MonoBehaviourEx
+    public class ObjectSpin : MonoBehaviourEx, IUpdater
     {
 
 #pragma warning disable 0414
@@ -36,7 +36,7 @@ namespace TMPro.Examples
 
 
         
-        public override void UpdateEx()
+        public void UpdateEx()
         {
             if (Motion == MotionType.Rotation)
             {

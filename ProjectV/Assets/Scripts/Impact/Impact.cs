@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Impact : MonoBehaviourEx
+public class Impact : MonoBehaviourEx, IFixedUpdater
 {
     ParticleSystem particle;
 
@@ -12,11 +12,12 @@ public class Impact : MonoBehaviourEx
         particle = GetComponent<ParticleSystem>();
     }
 
-    private void OnEnable()
+    protected override void OnEnable()
     {
+        base.OnEnable();
     }
 
-    public override void FixedUpdateEx()
+    public void FixedUpdateEx()
     {
         if(particle == null)
         {

@@ -18,8 +18,4 @@ public class UI_SettingsElement : MonoBehaviourEx
     }
 
     
-    public override void UpdateEx()
-    {
-        
-    }
 }

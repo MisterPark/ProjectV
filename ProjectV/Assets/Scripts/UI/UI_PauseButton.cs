@@ -25,10 +25,6 @@ public class UI_PauseButton : MonoBehaviourEx
     }
 
     
-    public override void UpdateEx()
-    {
-    }
-
     private void ResetSize()
     {
         float width = parent.sizeDelta.x * ratio;

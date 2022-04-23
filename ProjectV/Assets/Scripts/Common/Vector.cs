@@ -2,7 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-public class Vector<T> : IList<T>, ICollection<T>, IEnumerable<T>, IEnumerable, IEnumerator
+
+public class Vector<T>
+    : IList<T>, ICollection<T>, IEnumerable<T>, IEnumerable, IEnumerator
 {
     T[] array;
     int size;
@@ -12,12 +14,18 @@ public class Vector<T> : IList<T>, ICollection<T>, IEnumerable<T>, IEnumerable, 
     {
         get
         {
-            if (count <= index) return default(T);
+            if (index < 0 || index >= count)
+            {
+                throw new IndexOutOfRangeException();
+            }
             return array[index];
         }
         set
         {
-            if (count <= index) return;
+            if (index < 0 || index >= count)
+            {
+                throw new IndexOutOfRangeException();
+            }
             array[index] = value;
         }
     }
@@ -61,6 +69,8 @@ public class Vector<T> : IList<T>, ICollection<T>, IEnumerable<T>, IEnumerable, 
             CopyTo(newArray, 0);
             array = newArray;
         }
+
+
 
         array[count] = item;
 
@@ -124,7 +134,24 @@ public class Vector<T> : IList<T>, ICollection<T>, IEnumerable<T>, IEnumerable, 
 
     public void Insert(int index, T item)
     {
-        this[index] = item;
+        if (array == null) return;
+
+        if (count + 1 >= size)
+        {
+            size = size * 2;
+            T[] newArray = new T[size];
+            CopyTo(newArray, 0);
+            array = newArray;
+        }
+
+        T[] temp = new T[size];
+        BlockCopy(array, 0, temp, 0, index);
+        BlockCopy(array, index, temp, index + 1, count - index);
+        array = temp;
+        array[index] = item;
+
+        count++;
+
     }
 
     public bool Remove(T item)
@@ -133,24 +160,10 @@ public class Vector<T> : IList<T>, ICollection<T>, IEnumerable<T>, IEnumerable, 
         int removeIndex = IndexOf(item);
         if (removeIndex == -1) return false;
 
-        if (removeIndex == count - 1)
-        {
-            count--;
-        }
-        else if (removeIndex == 0)
-        {
-            T[] newArray = new T[size];
-            BlockCopy(array, 1, newArray, 0, count - 1);
-            array = newArray;
-        }
-        else
-        {
-
-            T[] newArray = new T[size];
-            BlockCopy(array, 0, newArray, 0, removeIndex);
-            BlockCopy(array, removeIndex + 1, newArray, removeIndex, count - removeIndex - 1);
-            array = newArray;
-        }
+        T[] newArray = new T[size];
+        BlockCopy(array, 0, newArray, 0, removeIndex);
+        BlockCopy(array, removeIndex + 1, newArray, removeIndex, count - removeIndex - 1);
+        array = newArray;
 
         count--;
 
@@ -162,27 +175,11 @@ public class Vector<T> : IList<T>, ICollection<T>, IEnumerable<T>, IEnumerable, 
         if (array == null) return;
         if (count == 0) return;
         int removeIndex = index;
-        if (removeIndex < 0 || removeIndex >= count) return;
 
-
-        if (removeIndex == count - 1)
-        {
-            count--;
-        }
-        else if (removeIndex == 0)
-        {
-            T[] newArray = new T[size];
-            BlockCopy(array, 1, newArray, 0, count - 1);
-            array = newArray;
-        }
-        else
-        {
-
-            T[] newArray = new T[size];
-            BlockCopy(array, 0, newArray, 0, removeIndex);
-            BlockCopy(array, removeIndex + 1, newArray, removeIndex, count - removeIndex - 1);
-            array = newArray;
-        }
+        T[] newArray = new T[size];
+        BlockCopy(array, 0, newArray, 0, removeIndex);
+        BlockCopy(array, removeIndex + 1, newArray, removeIndex, count - removeIndex - 1);
+        array = newArray;
 
         count--;
 
@@ -215,13 +212,15 @@ public class Vector<T> : IList<T>, ICollection<T>, IEnumerable<T>, IEnumerable, 
         currentIndex = -1;
     }
 
-    public static void BlockCopy<T>(T[] src, int srcOffset, T[] dst, int dstOffset, int count)
+    public static void BlockCopy(T[] src, int srcOffset, T[] dst, int dstOffset, int count)
     {
         for (int i = 0, s = srcOffset, d = dstOffset; i < count; i++, s++, d++)
         {
             dst[d] = src[s];
         }
     }
+
+
 
     public void Sort<Tkey>(Func<T, Tkey> keySelector, bool descending = false) where Tkey : IComparable
     {
@@ -261,5 +260,27 @@ public class Vector<T> : IList<T>, ICollection<T>, IEnumerable<T>, IEnumerable, 
         array[b] = temp;
     }
 
+    public void PushFront(T item)
+    {
+        Insert(0, item);
+    }
 
+    public void PushBack(T item)
+    {
+        Add(item);
+    }
+
+    public T PopFront()
+    {
+        T temp = array[0];
+        RemoveAt(0);
+        return temp;
+    }
+
+    public T PopBack()
+    {
+        T temp = array[count - 1];
+        RemoveAt(count - 1);
+        return temp;
+    }
 }

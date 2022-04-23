@@ -15,8 +15,9 @@ public class Meteor : MonoBehaviourEx
         
     }
 
-    private void OnEnable()
+    protected override void OnEnable()
     {
+        base.OnEnable();
         if (null == meteor)
         {
             meteor = transform.GetChild(0).gameObject.transform.GetChild(0).gameObject; 
@@ -27,11 +28,6 @@ public class Meteor : MonoBehaviourEx
         }
         createCrater = false;
         meteor.SetActive(true);
-    }
-    
-    public override void FixedUpdateEx()
-    {
-
     }
 
     private void OnTriggerEnter(Collider other)

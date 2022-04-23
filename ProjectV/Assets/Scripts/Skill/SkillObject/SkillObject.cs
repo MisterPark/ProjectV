@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.VFX;
 
-public class SkillObject : MonoBehaviourEx
+public class SkillObject : MonoBehaviourEx, IFixedUpdater
 {
     public Team team;
     public float duration;
@@ -25,8 +25,9 @@ public class SkillObject : MonoBehaviourEx
 
     
 
-    protected virtual void OnEnable()
+    protected override void OnEnable()
     {
+        base.OnEnable();
         tick = 0;
         cooltimeTick = 0;
     }
@@ -36,7 +37,7 @@ public class SkillObject : MonoBehaviourEx
         tick = 0f;
     }
 
-    public override void FixedUpdateEx()
+    public virtual void FixedUpdateEx()
     {
         tick += Time.fixedDeltaTime;
         if (tick >= duration)

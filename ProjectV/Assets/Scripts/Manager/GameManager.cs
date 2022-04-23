@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviourEx
+public class GameManager : MonoBehaviourEx, IFixedUpdater, IUpdater
 {
     public static GameManager Instance;
 
@@ -115,14 +115,14 @@ public class GameManager : MonoBehaviourEx
         cameraController.SetTarget(Player.Instance.gameObject);
     }
 
-    public override void FixedUpdateEx()
+    public void FixedUpdateEx()
     {
         InitZoom();
         CountTime();
         ProcessVictory();
     }
 
-    public override void UpdateEx()
+    public void UpdateEx()
     {
         if (Input.GetKeyUp(KeyCode.Escape))
         {

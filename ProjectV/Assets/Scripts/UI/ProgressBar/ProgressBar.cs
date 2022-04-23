@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProgressBar : MonoBehaviourEx
+public class ProgressBar : MonoBehaviourEx, IFixedUpdater
 {
     Material mat;
 
@@ -17,7 +17,7 @@ public class ProgressBar : MonoBehaviourEx
     }
 
     
-    public override void FixedUpdateEx()
+    public void FixedUpdateEx()
     {
         float progress = LoadingSceneManager.instance.Progress;
         mat.SetFloat("_FillAmount", progress);

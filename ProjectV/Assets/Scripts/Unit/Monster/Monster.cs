@@ -29,6 +29,12 @@ public class Monster : Unit
         base.Start();
     }
 
+    protected override void OnDestroy()
+    {
+        base.OnDestroy();
+        SpawnManager.Instance.Erase(gameObject);
+    }
+
     public override void FixedUpdateEx()
     {
         base.FixedUpdateEx();

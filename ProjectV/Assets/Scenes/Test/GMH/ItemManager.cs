@@ -14,7 +14,7 @@ public enum ItemType { ExpJewelBig, ExpJewelNormal, ExpJewelSmall,
                        NormalChest,MagicChest,RareChest,UniqueChest,LegenderyChest,
                        ItemEnd
 };
-public class ItemManager : MonoBehaviourEx
+public class ItemManager : MonoBehaviourEx, IFixedUpdater
 {
     public ItemType type;
     public static ItemManager Instance;
@@ -37,9 +37,9 @@ public class ItemManager : MonoBehaviourEx
         }
     }
 
-    public override void FixedUpdateEx()
+    public void FixedUpdateEx()
     {
-        base.FixedUpdateEx();
+        
         FarExpJewelDelete();
     }
 

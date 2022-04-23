@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProjectileMoveTutScript : MonoBehaviourEx
+public class ProjectileMoveTutScript : MonoBehaviourEx, IFixedUpdater
 {
 
     public float speed;
@@ -18,9 +18,9 @@ public class ProjectileMoveTutScript : MonoBehaviourEx
     }
 
     
-    public override void FixedUpdateEx()
+    public void FixedUpdateEx()
     {
-        base.FixedUpdateEx();
+        
         if(speed!=0&&rb!=null)
         {
             rb.position+=transform.forward*(speed*Time.fixedDeltaTime);

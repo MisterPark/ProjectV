@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 
 
-public abstract class Skill : MonoBehaviourEx
+public abstract class Skill : MonoBehaviourEx, IFixedUpdater
 {
     public Sprite icon;
     public int level = 1;
@@ -49,7 +49,7 @@ public abstract class Skill : MonoBehaviourEx
         Initialize();
     }
 
-    public override void FixedUpdateEx()
+    public void FixedUpdateEx()
     {
         if (Type == SkillType.Active)
         {

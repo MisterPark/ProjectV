@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class Togglescript : MonoBehaviourEx {
+public class Togglescript : MonoBehaviourEx, IUpdater
+{
 
     Toggle toggle;
 
@@ -17,9 +18,8 @@ public class Togglescript : MonoBehaviourEx {
     public GameObject Slider;
 
 
-    public override void UpdateEx()
+    public void UpdateEx()
     {
-        base.UpdateEx();
         if (toggle.isOn)
         {
             Slider.SetActive(false);

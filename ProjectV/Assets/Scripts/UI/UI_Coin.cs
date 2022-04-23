@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UI_Coin : MonoBehaviourEx
+public class UI_Coin : MonoBehaviourEx, IUpdater
 {
     private RectTransform screenRT;
     private RectTransform imageRT;
@@ -21,7 +21,7 @@ public class UI_Coin : MonoBehaviourEx
     }
 
     
-    public override void UpdateEx()
+    public void UpdateEx()
     {
         text.text = DataManager.Instance.currentGameData.gold.ToString();
     }

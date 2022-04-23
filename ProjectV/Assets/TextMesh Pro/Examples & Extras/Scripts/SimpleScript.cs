@@ -5,7 +5,7 @@ using System.Collections;
 namespace TMPro.Examples
 {
     
-    public class SimpleScript : MonoBehaviourEx
+    public class SimpleScript : MonoBehaviourEx, IUpdater
     {
 
         private TextMeshPro m_textMeshPro;
@@ -49,7 +49,7 @@ namespace TMPro.Examples
         }
 
 
-        public override void UpdateEx()
+        public void UpdateEx()
         {
             m_textMeshPro.SetText(label, m_frame % 1000);
             m_frame += 1 * Time.deltaTime;

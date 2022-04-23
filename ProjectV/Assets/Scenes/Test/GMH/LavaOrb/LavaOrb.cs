@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LavaOrb : MonoBehaviourEx
+public class LavaOrb : MonoBehaviourEx, IFixedUpdater
 {
 
     public float speed;
@@ -17,12 +17,12 @@ public class LavaOrb : MonoBehaviourEx
         }
     }
 
-    private void OnEnable()
+    protected override void OnEnable()
     {
-        
+        base.OnEnable();
     }
     
-    public override void FixedUpdateEx()
+    public void FixedUpdateEx()
     {
             transform.RotateAround(target.transform.position, Vector3.up, speed * Time.fixedDeltaTime);
     }

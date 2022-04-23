@@ -15,6 +15,7 @@ public class UnstableMagicMissile : Missile
 
     public override void FixedUpdateEx()
     {
+        base.FixedUpdateEx();
         movePatternTick += Time.fixedDeltaTime;
         if(movePatternTick > movePatternCoolTime)
         {
@@ -35,6 +36,6 @@ public class UnstableMagicMissile : Missile
                 }
             }
         }
-        base.FixedUpdateEx();
+        
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class Main_Title_SC : MonoBehaviourEx
+public class Main_Title_SC : MonoBehaviourEx, IUpdater
 {
     public string StartScene_Name;
     public EventSystem Event_Handle;
@@ -24,7 +24,7 @@ public class Main_Title_SC : MonoBehaviourEx
     }
 
     
-    public override void UpdateEx()
+    public void UpdateEx()
     {
         Money_Text.text = DataManager.Instance.currentSaveData.currentGold.ToString();
         if (Event_Handle.sendNavigationEvents)

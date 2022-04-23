@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TorchlightDeath : MonoBehaviourEx
+public class TorchlightDeath : MonoBehaviourEx, IFixedUpdater
 {
     
     
-    public override void FixedUpdateEx()
+    public void FixedUpdateEx()
     {
         ObjectPool.Instance.Free(gameObject);
     }

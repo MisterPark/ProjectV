@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MeteorHit : MonoBehaviourEx
+public class MeteorHit : MonoBehaviourEx, IFixedUpdater
 {
 
     public float lifeTime;
@@ -15,7 +15,7 @@ public class MeteorHit : MonoBehaviourEx
     }
 
     
-    public override void FixedUpdateEx()
+    public void FixedUpdateEx()
     {
         tick += Time.fixedDeltaTime;
         transform.position += new Vector3(0, downSpeed*Time.fixedDeltaTime, 0);

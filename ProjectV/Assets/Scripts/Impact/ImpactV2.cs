@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.VFX;
 
-public class ImpactV2 : MonoBehaviourEx
+public class ImpactV2 : MonoBehaviourEx, IFixedUpdater
 {
     public float Duration { get; set; } = 0.2f;
     float tick = 0f;
@@ -15,13 +15,14 @@ public class ImpactV2 : MonoBehaviourEx
         effect.SetFloat("Duration", Duration);
     }
 
-    private void OnEnable()
+    protected override void OnEnable()
     {
+        base.OnEnable();
         tick = 0f;
         
     }
 
-    public override void FixedUpdateEx()
+    public void FixedUpdateEx()
     {
         tick += Time.fixedDeltaTime;
         if(tick > Duration)

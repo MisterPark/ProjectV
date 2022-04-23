@@ -86,8 +86,9 @@ public class UI_Settings : UI
         SoundManager.Instance.PlaySFXSound("ShortButton");
     }
 
-    public void OnDisable()
+    protected override void OnDisable()
     {
+        base.OnDisable();
         OnClosed.Invoke();
     }
 

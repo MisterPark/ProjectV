@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UI_Status : MonoBehaviourEx
+public class UI_Status : MonoBehaviourEx, IUpdater
 {
     private Stat playerStat;
     private RectTransform rectTransform;
@@ -15,7 +15,7 @@ public class UI_Status : MonoBehaviourEx
     }
 
     
-    public override void UpdateEx()
+    public void UpdateEx()
     {
         playerStat = Player.Instance.stat;
         if (playerStat == null)

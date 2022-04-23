@@ -28,10 +28,6 @@ public class UI_PowerupTemplate : UI
     }
 
     
-    public override void UpdateEx()
-    {
-        
-    }
 
     public void Init(Powerup_DataType data)
     {

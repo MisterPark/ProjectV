@@ -10,7 +10,7 @@ public enum UnitType
     Monster,
     Prop,
 }
-public class Unit : MonoBehaviourEx
+public class Unit : MonoBehaviourEx, IFixedUpdater
 {
     public UnitType type;
 
@@ -77,8 +77,9 @@ public class Unit : MonoBehaviourEx
         stat.OnTakeDamage.AddListener(OnStatTakeDamage);
     }
 
-    private void OnEnable()
+    protected override void OnEnable()
     {
+        base.OnEnable();
         if (stat != null)
         {
             stat.RecoverToFull();
@@ -102,7 +103,7 @@ public class Unit : MonoBehaviourEx
     }
 
 
-    public override void FixedUpdateEx()
+    public virtual void FixedUpdateEx()
     {
         ProcessFreeze();
         ProcessKnockback();
@@ -431,8 +432,10 @@ public class Unit : MonoBehaviourEx
     /// </summary>
     public void UpdateSkillData()
     {
-        foreach (var skill in skillList)
+        int count = skillList.Count;
+        for (int i = 0; i < count; i++)
         {
+            var skill = skillList[i];
             if (skill.Type == SkillType.Passive) continue;
             skill.UpdateSkillData();
         }

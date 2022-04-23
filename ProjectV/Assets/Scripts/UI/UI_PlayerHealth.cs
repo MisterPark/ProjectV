@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UI_PlayerHealth : MonoBehaviourEx
+public class UI_PlayerHealth : MonoBehaviourEx, IFixedUpdater
 {
     public GameObject target;
     public Image barImage;
@@ -27,7 +27,7 @@ public class UI_PlayerHealth : MonoBehaviourEx
             
     }
 
-    public override void FixedUpdateEx()
+    public void FixedUpdateEx()
     {
         float fillAmount = 0f;
         Hp = Player.Instance.stat.Get_FinalStat(StatType.Health);

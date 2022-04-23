@@ -37,7 +37,7 @@ public class Stats
     public float final_Stat;            // 다 계산하고 난 뒤 스탯
 }
 
-public class Stat : MonoBehaviourEx
+public class Stat : MonoBehaviourEx, IFixedUpdater
 {
     [SerializeField] private UnitStatData statsData;
 #if UNITY_EDITOR
@@ -71,7 +71,7 @@ public class Stat : MonoBehaviourEx
         return stat;
     }
 
-    public override void FixedUpdateEx()
+    public void FixedUpdateEx()
     {
         // 체젠
         if(stats[(int)StatType.Recovery].final_Stat != 0f)

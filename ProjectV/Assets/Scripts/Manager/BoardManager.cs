@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BoardManager : MonoBehaviourEx
+public class BoardManager : MonoBehaviourEx, IFixedUpdater
 {
     public static BoardManager Instance;
     [SerializeField]List<Board> boards = new List<Board>();
@@ -21,7 +21,7 @@ public class BoardManager : MonoBehaviourEx
         InitializeBoard();
     }
 
-    public override void FixedUpdateEx()
+    public void FixedUpdateEx()
     {
         CreateBoards();
         RemoveBoards();

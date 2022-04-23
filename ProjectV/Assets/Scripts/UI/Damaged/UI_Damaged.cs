@@ -30,7 +30,7 @@ public class UI_Damaged : UI
 
     public override void FixedUpdateEx()
     {
-        base.FixedUpdateEx();
+        
         if (gameObject.activeSelf == false) return;
         tick += Time.fixedDeltaTime;
         if (tick > duration)

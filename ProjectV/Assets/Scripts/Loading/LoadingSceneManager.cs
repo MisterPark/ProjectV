@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Events;
 
-public class LoadingSceneManager : MonoBehaviourEx
+public class LoadingSceneManager : MonoBehaviourEx, IFixedUpdater
 {
     public static LoadingSceneManager instance;
 
@@ -30,7 +30,7 @@ public class LoadingSceneManager : MonoBehaviourEx
         }
     }
 
-    public override void FixedUpdateEx()
+    public void FixedUpdateEx()
     {
         //Debug.Log($"{NextScene} {loadingFlag} {trigger} {loadTick} / {WaitTime}");
         if (loadingFlag == false) return;

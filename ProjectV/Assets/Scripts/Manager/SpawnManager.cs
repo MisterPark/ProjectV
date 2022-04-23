@@ -5,7 +5,7 @@ using System.Linq;
 using UnityEngine;
 
 
-public class SpawnManager : MonoBehaviourEx
+public class SpawnManager : MonoBehaviourEx, IFixedUpdater
 {
     public static SpawnManager Instance;
 
@@ -55,7 +55,7 @@ public class SpawnManager : MonoBehaviourEx
         }
         stageMonsterData = stageData[0].monsterData;
     }
-    public override void FixedUpdateEx()
+    public void FixedUpdateEx()
     {
         ProcessFreeze();
         ProcessSpawn();
@@ -75,6 +75,11 @@ public class SpawnManager : MonoBehaviourEx
     {
         spawnList.Remove(target);
         ObjectPool.Instance.Free(target);
+    }
+
+    public void Erase(GameObject target)
+    {
+        spawnList.Remove(target);
     }
 
     public void FreezeAll(float time)
@@ -150,11 +155,17 @@ public class SpawnManager : MonoBehaviourEx
 
     private void ProcessRemove()
     {
-        List<GameObject> removes = new List<GameObject>();
+        Vector<GameObject> erases = new Vector<GameObject>();
+        Vector<GameObject> removes = new Vector<GameObject>();
         GameObject[] spawnArray = spawnList.ToArray();
         for (int i = 0; i < spawnArray.Length; i++)
         {
             GameObject monster = spawnArray[i];
+            if (monster == null || monster.activeSelf == false)
+            {
+                erases.Add(monster);
+                continue;
+            }
             if (monster.CompareTag("Boss")) continue;
 
             Vector3 to = Player.Instance.transform.position - monster.transform.position;
@@ -165,12 +176,19 @@ public class SpawnManager : MonoBehaviourEx
             }
         }
 
-        GameObject[] removeArray = removes.ToArray();
-        for (int j = 0; j < removeArray.Length; j++)
+        for (int j = 0; j < erases.Count; j++)
         {
-            GameObject monster = removeArray[j];
+            GameObject monster = erases[j];
+            Erase(monster);
+        }
+        erases.Clear();
+
+        for (int j = 0; j < removes.Count; j++)
+        {
+            GameObject monster = removes[j];
             Remove(monster);
         }
+        removes.Clear();
     }
 
     

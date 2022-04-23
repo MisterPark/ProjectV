@@ -50,9 +50,6 @@ public class UI_Powerup : UI
     }
 
     
-    public override void UpdateEx()
-    {
-    }
 
     private void InitPowerupTemplate()
     {

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Lightning : MonoBehaviourEx
+public class Lightning : MonoBehaviourEx, IFixedUpdater
 {
     Camera cam;
     SphereCollider parentCollider;
@@ -29,15 +29,17 @@ public class Lightning : MonoBehaviourEx
 
     }
 
-    private void OnEnable()
+    protected override void OnEnable()
     {
+        base.OnEnable();
         transform.localScale = new Vector3(1, 0, 1);
         parentCollider.center = new Vector3(0, 20, 0);
         impactFlag = false;
     }
 
-    private void OnDisable()
+    protected override void OnDisable()
     {
+        base.OnDisable();
         if (firstDisable)
         {
             firstDisable = false;
@@ -50,7 +52,7 @@ public class Lightning : MonoBehaviourEx
         SoundManager.Instance.PlaySFXSound("Thunder");
     }
 
-    public override void FixedUpdateEx()
+    public void FixedUpdateEx()
     {
         // 스케일 키우기
         float yScale = transform.localScale.y;

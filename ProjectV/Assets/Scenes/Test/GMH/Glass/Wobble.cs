@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Wobble : MonoBehaviourEx
+public class Wobble : MonoBehaviourEx, IFixedUpdater
 {
     Renderer rend;
     Vector3 lastPos;
@@ -25,9 +25,9 @@ public class Wobble : MonoBehaviourEx
         base.Start();
         rend = GetComponent<Renderer>();
     }
-    public override void FixedUpdateEx()
+    public void FixedUpdateEx()
     {
-        base.FixedUpdateEx();
+        
         time += Time.fixedDeltaTime;
         // decrease wobble over time
         wobbleAmountToAddX = Mathf.Lerp(wobbleAmountToAddX, 0, Time.fixedDeltaTime * (Recovery));

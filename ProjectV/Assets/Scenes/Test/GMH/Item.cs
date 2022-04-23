@@ -4,7 +4,7 @@ using UnityEngine;
 
 
 
-public abstract class Item : MonoBehaviourEx
+public abstract class Item : MonoBehaviourEx, IFixedUpdater
 {
     public static Dictionary<GameObject, Item> Items = new Dictionary<GameObject, Item>();
     protected override void Start()
@@ -33,7 +33,7 @@ public abstract class Item : MonoBehaviourEx
         return itemObj;
     }
 
-    public override void FixedUpdateEx()
+    public void FixedUpdateEx()
     {
 
     }

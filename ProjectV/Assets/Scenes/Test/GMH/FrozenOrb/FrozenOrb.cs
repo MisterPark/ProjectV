@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FrozenOrb : MonoBehaviourEx
+public class FrozenOrb : MonoBehaviourEx ,IFixedUpdater
 {
     float tick;
     float angle;
@@ -14,8 +14,9 @@ public class FrozenOrb : MonoBehaviourEx
         base.Start();
     }
 
-    private void OnEnable()
+    protected override void OnEnable()
     {
+        base.OnEnable();
         if (parentMissile == null)
         {
             parentMissile = GetComponent<Missile>();
@@ -23,7 +24,7 @@ public class FrozenOrb : MonoBehaviourEx
         cooldown = parentMissile.Delay;
     }
 
-    public override void FixedUpdateEx()
+    public void FixedUpdateEx()
     {
         if (cooldown <= 0)
         {

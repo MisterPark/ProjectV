@@ -25,8 +25,9 @@ public class UI_CombineSlot : MonoBehaviourEx
         BanIcon.gameObject.SetActive(false);
         BanSkill();
     }
-    private void OnEnable()
+    protected override void OnEnable()
     {
+        base.OnEnable();
         BanIcon.gameObject.SetActive(false);
         BanSkill();
     }

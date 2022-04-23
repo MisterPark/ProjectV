@@ -5,7 +5,7 @@ using System.Collections;
 namespace TMPro.Examples
 {
     
-    public class TMP_UiFrameRateCounter : MonoBehaviourEx
+    public class TMP_UiFrameRateCounter : MonoBehaviourEx, IUpdater
     {
         public float UpdateInterval = 5.0f;
         private float m_LastInterval = 0;
@@ -57,7 +57,7 @@ namespace TMPro.Examples
         }
 
 
-        public override void UpdateEx()
+        public void UpdateEx()
         {
             if (AnchorPosition != last_AnchorPosition)
                 Set_FrameCounter_Position(AnchorPosition);

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UI_DamageFont : MonoBehaviourEx
+public class UI_DamageFont : MonoBehaviourEx, IFixedUpdater
 {
     public float duration = 0.8f;
     public float speed = 1.3f;
@@ -43,7 +43,7 @@ public class UI_DamageFont : MonoBehaviourEx
         temp.worldCamera = Camera.main;
     }
 
-    public override void FixedUpdateEx()
+    public void FixedUpdateEx()
     {
         tick += Time.fixedDeltaTime;
         if (tick >= duration)

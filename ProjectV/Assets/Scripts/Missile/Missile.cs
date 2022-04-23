@@ -11,7 +11,7 @@ public enum MissileType // ¿òÁ÷ÀÓ
     Other,
 }
 
-public class Missile : MonoBehaviourEx
+public class Missile : MonoBehaviourEx, IFixedUpdater
 {
     private float duration;
     private float speed;
@@ -74,8 +74,9 @@ public class Missile : MonoBehaviourEx
         base.Start();
         transform.localScale = Vector3.one * Range;
     }
-    protected virtual void OnEnable()
+    protected override void OnEnable()
     {
+        base.OnEnable();
         visualEffect = GetComponentInChildren<VisualEffect>();
         transform.localScale = Vector3.one * Range;
 
@@ -106,7 +107,7 @@ public class Missile : MonoBehaviourEx
         return missile;
     }
 
-    public override void FixedUpdateEx()
+    public virtual void FixedUpdateEx()
     {
         tick += Time.fixedDeltaTime;
         if (tick >= Duration)

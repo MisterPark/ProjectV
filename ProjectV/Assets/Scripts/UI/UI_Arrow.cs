@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UI_Arrow : MonoBehaviourEx
+public class UI_Arrow : MonoBehaviourEx, IUpdater
 {
     public Image Arrow_Image;
     private float Twinkle_Time;
@@ -16,7 +16,7 @@ public class UI_Arrow : MonoBehaviourEx
     }
 
     
-    public override void UpdateEx()
+    public void UpdateEx()
     {
         Twinkle_Time += Time.deltaTime;
         if (Twinkle_Time < 0.1f)

@@ -5,10 +5,6 @@ using UnityEngine;
 public class ExpJewel : Item
 {
     public float exp;
-    public override void FixedUpdateEx()
-    {
-        base.FixedUpdateEx();
-    }
 
     public override void Use()
     {

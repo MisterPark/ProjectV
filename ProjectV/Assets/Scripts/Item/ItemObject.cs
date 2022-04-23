@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemObject : MonoBehaviourEx
+public class ItemObject : MonoBehaviourEx, IFixedUpdater
 {
     [SerializeField] float rotationSpeed = 0f;
     float moveSpeed = 15f;
@@ -36,7 +36,7 @@ public class ItemObject : MonoBehaviourEx
         return itemObject;
     }
 
-    public override void FixedUpdateEx()
+    public void FixedUpdateEx()
     {
 
         if(isRotate)

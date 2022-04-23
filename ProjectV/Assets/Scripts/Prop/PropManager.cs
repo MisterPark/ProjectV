@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PropManager : MonoBehaviourEx
+public class PropManager : MonoBehaviourEx, IFixedUpdater
 {
     public static PropManager Instance;
 
     public int MaxSpawnCount = 3;
 
-    [SerializeField] List<GameObject> propPrefabs = new List<GameObject>();
+    [SerializeField] GameObject[] propPrefabs;
 
     List<GameObject> spawnList = new List<GameObject>();
     protected override void Awake()
@@ -19,7 +19,7 @@ public class PropManager : MonoBehaviourEx
             Instance = this;
         }
     }
-    public override void FixedUpdateEx()
+    public void FixedUpdateEx()
     {
         ProcessSpawn();
         ProcessRemove();
@@ -45,7 +45,7 @@ public class PropManager : MonoBehaviourEx
             return;
         }
 
-        if (propPrefabs.Count == 0)
+        if (propPrefabs.Length == 0)
         {
             return;
         }
@@ -53,7 +53,7 @@ public class PropManager : MonoBehaviourEx
         int spawnCount = MaxSpawnCount - spawnList.Count;
         for (int i = 0; i < spawnCount; i++)
         {
-            int index = UnityEngine.Random.Range(0, propPrefabs.Count - 1);
+            int index = UnityEngine.Random.Range(0, propPrefabs.Length - 1);
             float angle = UnityEngine.Random.Range(-180, 180);
             float dist = 30f;
             Vector3 pos = new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle)) * dist;
@@ -67,8 +67,10 @@ public class PropManager : MonoBehaviourEx
     private void ProcessRemove()
     {
         List<GameObject> removes = new List<GameObject>();
-        foreach (var monster in spawnList)
+        int count = spawnList.Count;
+        for (int i = 0; i < count; i++)
         {
+            GameObject monster = spawnList[i];
             Vector3 to = Player.Instance.transform.position - monster.transform.position;
             float dist = to.magnitude;
             if (dist > 35f)
@@ -77,8 +79,10 @@ public class PropManager : MonoBehaviourEx
             }
         }
 
-        foreach (var monster in removes)
+        int removeCount = removes.Count;
+        for (int i = 0; i < removeCount; i++)
         {
+            GameObject monster = removes[i];
             Remove(monster);
         }
     }

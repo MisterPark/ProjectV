@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tornado : MonoBehaviourEx
+public class Tornado : MonoBehaviourEx, IFixedUpdater
 {
     public float scale;
     public float speed = 10f;
@@ -16,12 +16,13 @@ public class Tornado : MonoBehaviourEx
         scale = missile.Range;
     }
 
-    private void OnEnable()
+    protected override void OnEnable()
     {
+        base.OnEnable();
         Start();
     }
     
-    public override void FixedUpdateEx()
+    public void FixedUpdateEx()
     {
         if (transform.localScale.x<scale)
         { transform.localScale += new Vector3(0.3f, 0.3f, 0.3f) * speed * Time.fixedDeltaTime; }

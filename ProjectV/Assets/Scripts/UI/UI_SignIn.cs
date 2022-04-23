@@ -39,9 +39,6 @@ public class UI_SignIn : UI
         base.Show(_visible);
     }
 
-    public override void UpdateEx()
-    {
-    }
 
     public void OnClickSigninwithgoogle()
     {

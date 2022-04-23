@@ -30,7 +30,7 @@ public class AudioClipNode
     public AudioClip clip;
     public float volume = 1f;
 }
-public class SoundManager : MonoBehaviourEx
+public class SoundManager : MonoBehaviourEx, IFixedUpdater
 {
     private static SoundManager instance;
 
@@ -182,7 +182,7 @@ public class SoundManager : MonoBehaviourEx
         bgmPlayer.Play();
     }
 
-    public override void FixedUpdateEx()
+    public void FixedUpdateEx()
     {
         string sceneName = SceneManager.GetActiveScene().name;
         if (sceneName.Contains("Stage"))

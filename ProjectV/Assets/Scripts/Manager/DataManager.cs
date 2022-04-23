@@ -12,7 +12,7 @@ public class CurrentGameData
     public int playerLevel = 1;
 }
 
-public class DataManager : MonoBehaviourEx
+public class DataManager : MonoBehaviourEx, IUpdater
 {
     public static DataManager Instance;
 
@@ -146,7 +146,7 @@ public class DataManager : MonoBehaviourEx
         }
     }
 
-    public override void UpdateEx()
+    public void UpdateEx()
     {
 #if UNITY_EDITOR
         if(Input.GetKeyUp(KeyCode.Delete))

@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestCollision : MonoBehaviourEx
+public class TestCollision : MonoBehaviourEx, IUpdater
 {
     
-    public override void UpdateEx()
+    public void UpdateEx()
     {
         
     }

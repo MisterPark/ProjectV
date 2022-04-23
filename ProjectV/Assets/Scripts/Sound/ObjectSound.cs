@@ -7,8 +7,9 @@ public class ObjectSound : MonoBehaviourEx
     
     private AudioSource audioSource;
     [SerializeField] float Volume;
-    private void OnEnable()
+    protected override void OnEnable()
     {
+        base.OnEnable();
         if (audioSource == null)
         {
             audioSource = GetComponent<AudioSource>();

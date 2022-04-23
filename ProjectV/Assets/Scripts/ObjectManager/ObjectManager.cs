@@ -18,45 +18,34 @@ public class ObjectManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        int removeCount = MonoBehaviourEx.removes.Count;
-        for (int i = 0; i < removeCount; i++)
-        {
-            MonoBehaviourEx.behaviours.Remove(MonoBehaviourEx.removes[i]);
-        }
-        MonoBehaviourEx.removes.Clear();
+        MonoBehaviourEx.GarbageCollect();
 
-        int count = MonoBehaviourEx.behaviours.Count;
+        int count = MonoBehaviourEx.fixedUpdaters.Count;
         for (int i = 0; i < count; i++)
         {
-            if(MonoBehaviourEx.behaviours[i] == null || MonoBehaviourEx.behaviours[i].gameObject == null)
-            {
-                MonoBehaviourEx.Deregister(MonoBehaviourEx.behaviours[i]);
-                continue;
-            }
-            if (MonoBehaviourEx.behaviours[i].gameObject.activeSelf == false) continue;
-            MonoBehaviourEx.behaviours[i].FixedUpdateEx();
+            //if (MonoBehaviourEx.fixedUpdaters[i] == null || MonoBehaviourEx.fixedUpdaters[i].gameObject == null)
+            //{
+            //    MonoBehaviourEx.Deregister(MonoBehaviourEx.fixedUpdaters[i]);
+            //    continue;
+            //}
+            MonoBehaviourEx.fixedUpdaters[i].FixedUpdateEx();
         }
 
+        Debug.Log(count);
     }
     private void Update()
     {
-        int removeCount = MonoBehaviourEx.removes.Count;
-        for (int i = 0; i < removeCount; i++)
-        {
-            MonoBehaviourEx.behaviours.Remove(MonoBehaviourEx.removes[i]);
-        }
-        MonoBehaviourEx.removes.Clear();
+        MonoBehaviourEx.GarbageCollect();
 
-        int count = MonoBehaviourEx.behaviours.Count;
+        int count = MonoBehaviourEx.updaters.Count;
         for (int i = 0; i < count; i++)
         {
-            if (MonoBehaviourEx.behaviours[i] == null || MonoBehaviourEx.behaviours[i].gameObject == null)
-            {
-                MonoBehaviourEx.Deregister(MonoBehaviourEx.behaviours[i]);
-                continue;
-            }
-            if (MonoBehaviourEx.behaviours[i].gameObject.activeSelf == false) continue;
-            MonoBehaviourEx.behaviours[i].UpdateEx();
+            //if (MonoBehaviourEx.behaviours[i] == null || MonoBehaviourEx.behaviours[i].gameObject == null)
+            //{
+            //    MonoBehaviourEx.Deregister(MonoBehaviourEx.behaviours[i]);
+            //    continue;
+            //}
+            MonoBehaviourEx.updaters[i].UpdateEx();
         }
 
 
