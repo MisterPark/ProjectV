@@ -23,11 +23,6 @@ public class ObjectManager : MonoBehaviour
         int count = MonoBehaviourEx.fixedUpdaters.Count;
         for (int i = 0; i < count; i++)
         {
-            //if (MonoBehaviourEx.fixedUpdaters[i] == null || MonoBehaviourEx.fixedUpdaters[i].gameObject == null)
-            //{
-            //    MonoBehaviourEx.Deregister(MonoBehaviourEx.fixedUpdaters[i]);
-            //    continue;
-            //}
             MonoBehaviourEx.fixedUpdaters[i].FixedUpdateEx();
         }
 
@@ -40,11 +35,6 @@ public class ObjectManager : MonoBehaviour
         int count = MonoBehaviourEx.updaters.Count;
         for (int i = 0; i < count; i++)
         {
-            //if (MonoBehaviourEx.behaviours[i] == null || MonoBehaviourEx.behaviours[i].gameObject == null)
-            //{
-            //    MonoBehaviourEx.Deregister(MonoBehaviourEx.behaviours[i]);
-            //    continue;
-            //}
             MonoBehaviourEx.updaters[i].UpdateEx();
         }
 

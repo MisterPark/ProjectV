@@ -5,11 +5,11 @@ using UnityEngine.Events;
 
 public class MonoBehaviourEx : MonoBehaviour
 {
-    public static Vector<MonoBehaviourEx> behaviours = new Vector<MonoBehaviourEx>();
-    public static Vector<MonoBehaviourEx> removes = new Vector<MonoBehaviourEx>();
-    public static Vector<IUpdater> updaters = new Vector<IUpdater>();
-    public static Vector<IFixedUpdater> fixedUpdaters = new Vector<IFixedUpdater>();
-    public static Vector<ILateUpdater> lateUpdaters = new Vector<ILateUpdater>();
+    public static List<MonoBehaviourEx> behaviours = new List<MonoBehaviourEx>();
+    public static List<MonoBehaviourEx> removes = new List<MonoBehaviourEx>();
+    public static List<IUpdater> updaters = new List<IUpdater>();
+    public static List<IFixedUpdater> fixedUpdaters = new List<IFixedUpdater>();
+    public static List<ILateUpdater> lateUpdaters = new List<ILateUpdater>();
 
     protected virtual void Awake()
     {

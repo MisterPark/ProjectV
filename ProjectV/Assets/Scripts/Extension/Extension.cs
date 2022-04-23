@@ -27,7 +27,26 @@ public static class Extension
 
         return (Player.Instance.transform.position - obj.transform.position).magnitude;
     }
-
+    public static void PushFront<T>(this List<T> list, T item)
+    {
+        list.Insert(0, item);
+    }
+    public static void PushBack<T>(this List<T> list, T item)
+    {
+        list.Add(item);
+    }
+    public static T PopFront<T>(this List<T> list)
+    {
+        T temp = list[0];
+        list.RemoveAt(0);
+        return temp;
+    }
+    public static T PopBack<T>(this List<T> list)
+    {
+        T temp = list[list.Count - 1];
+        list.RemoveAt(list.Count - 1);
+        return temp;
+    }
     public static bool Dequeue<T>(this List<T> list, out T data)
     {
         data = default(T);
@@ -87,10 +106,10 @@ public static class Extension
         var datas = DataManager.Instance.Localization.datas;
         LocalizationElement elem = null;
         int count = datas.Length;
-        for(int i = 0; i < count; i++)
+        for (int i = 0; i < count; i++)
         {
             var data = datas[i];
-            if(text == data.English ||
+            if (text == data.English ||
                 text == data.Korean)
             {
                 elem = data;
@@ -98,7 +117,7 @@ public static class Extension
             }
         }
 
-        if(elem == null)
+        if (elem == null)
         {
             return text;
         }

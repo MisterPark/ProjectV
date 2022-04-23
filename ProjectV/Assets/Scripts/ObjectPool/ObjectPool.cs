@@ -8,7 +8,7 @@ public class ObjectPool : MonoBehaviourEx
 
     public static ObjectPool Instance { get { return _instance; } }
     [SerializeField] GameObject[] prefabs;
-    Dictionary<string, Vector<GameObject>> _pools = new Dictionary<string, Vector<GameObject>>();
+    Dictionary<string, List<GameObject>> _pools = new Dictionary<string, List<GameObject>>();
     protected override void Awake()
     {
         base.Awake();
@@ -27,7 +27,7 @@ public class ObjectPool : MonoBehaviourEx
             prefab.name = key;
             if (!_pools.ContainsKey(key))
             {
-                _pools.Add(key, new Vector<GameObject>());
+                _pools.Add(key, new List<GameObject>());
             }
             UpSizing(key);
         }
@@ -37,7 +37,7 @@ public class ObjectPool : MonoBehaviourEx
         string _key = key.Split('(')[0];
         if (!_pools.ContainsKey(_key))
         {
-            _pools.Add(_key, new Vector<GameObject>());
+            _pools.Add(_key, new List<GameObject>());
         }
 
         if (_pools[_key].Count == 0)
@@ -55,7 +55,7 @@ public class ObjectPool : MonoBehaviourEx
         string _key = key.Split('(')[0];
         if (!_pools.ContainsKey(_key))
         {
-            _pools.Add(_key, new Vector<GameObject>());
+            _pools.Add(_key, new List<GameObject>());
         }
 
         if (_pools[_key].Count == 0)
@@ -74,7 +74,7 @@ public class ObjectPool : MonoBehaviourEx
         string _key = key.Split('(')[0];
         if (!_pools.ContainsKey(_key))
         {
-            _pools.Add(_key, new Vector<GameObject>());
+            _pools.Add(_key, new List<GameObject>());
         }
 
         if (_pools[_key].Count == 0)
@@ -93,7 +93,7 @@ public class ObjectPool : MonoBehaviourEx
         string key = _gameObject.name.Split('(')[0];
         if (!_pools.ContainsKey(key))
         {
-            _pools.Add(key, new Vector<GameObject>());
+            _pools.Add(key, new List<GameObject>());
         }
         _gameObject.SetActive(false);
         _pools[key].PushFront(_gameObject);
@@ -102,7 +102,7 @@ public class ObjectPool : MonoBehaviourEx
     {
         if (!_pools.ContainsKey(key))
         {
-            _pools.Add(key, new Vector<GameObject>());
+            _pools.Add(key, new List<GameObject>());
         }
 
         GameObject prefab = GetPrefab(key);
