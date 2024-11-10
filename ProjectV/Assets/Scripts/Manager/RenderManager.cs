@@ -12,7 +12,7 @@ public class RenderManager : MonoBehaviourEx
         get { return instance; }
     }
 
-    [SerializeField] private ForwardRendererData rendererData = null;
+    [SerializeField] private UniversalRendererData rendererData = null;
 
     protected override void Awake()
     {

@@ -631,7 +631,7 @@ MonoBehaviour:
     enumValues: []
     descendantCount: 0
   m_ImportDependencies: []
-  m_GraphVersion: 6
+  m_GraphVersion: 9
   m_ResourceVersion: 1
   m_SubgraphDependencies: []
   m_CategoryPath: 
@@ -1055,6 +1055,8 @@ MonoBehaviour:
   capacity: 32
   stripCapacity: 16
   particlePerStripCount: 16
+  needsComputeBounds: 0
+  boundsMode: 1
   m_Space: 0
 --- !u!114 &8926484042661614580
 MonoBehaviour:
@@ -1589,6 +1591,7 @@ MonoBehaviour:
   useAlphaClipping: 0
   generateMotionVector: 0
   excludeFromTAA: 0
+  sortingPriority: 0
   m_SubOutputs:
   - {fileID: 8926484042661615095}
   cullMode: 0
@@ -1597,14 +1600,18 @@ MonoBehaviour:
   colorMapping: 0
   uvMode: 0
   useSoftParticle: 0
-  sortPriority: 0
+  vfxSystemSortPriority: 0
   sort: 0
   indirectDraw: 0
   computeCulling: 0
   frustumCulling: 0
   castShadows: 0
   useExposureWeight: 0
+  flipbookLayout: 0
   shaderGraph: {fileID: 4333940904281232215, guid: e68eda2e00241da49aafa9f8268a899a, type: 3}
+  materialSettings:
+    m_PropertyNames: []
+    m_PropertyValues: []
   MeshCount: 1
   lod: 0
 --- !u!114 &8926484042661614643
@@ -4239,6 +4246,8 @@ MonoBehaviour:
   capacity: 32
   stripCapacity: 16
   particlePerStripCount: 16
+  needsComputeBounds: 0
+  boundsMode: 1
   m_Space: 0
 --- !u!114 &8926484042661614726
 MonoBehaviour:
@@ -4511,6 +4520,7 @@ MonoBehaviour:
   useAlphaClipping: 0
   generateMotionVector: 0
   excludeFromTAA: 0
+  sortingPriority: 0
   m_SubOutputs:
   - {fileID: 8926484042661615096}
   cullMode: 0
@@ -4519,14 +4529,18 @@ MonoBehaviour:
   colorMapping: 0
   uvMode: 0
   useSoftParticle: 0
-  sortPriority: 0
+  vfxSystemSortPriority: 0
   sort: 0
   indirectDraw: 0
   computeCulling: 0
   frustumCulling: 0
   castShadows: 0
   useExposureWeight: 0
+  flipbookLayout: 0
   shaderGraph: {fileID: 4333940904281232215, guid: e68eda2e00241da49aafa9f8268a899a, type: 3}
+  materialSettings:
+    m_PropertyNames: []
+    m_PropertyValues: []
   MeshCount: 1
   lod: 0
 --- !u!114 &8926484042661614734
@@ -6905,6 +6919,8 @@ MonoBehaviour:
   capacity: 32
   stripCapacity: 16
   particlePerStripCount: 16
+  needsComputeBounds: 0
+  boundsMode: 1
   m_Space: 0
 --- !u!114 &8926484042661614814
 MonoBehaviour:
@@ -7178,6 +7194,7 @@ MonoBehaviour:
   useAlphaClipping: 0
   generateMotionVector: 0
   excludeFromTAA: 0
+  sortingPriority: 0
   m_SubOutputs:
   - {fileID: 8926484042661615097}
   cullMode: 0
@@ -7186,14 +7203,18 @@ MonoBehaviour:
   colorMapping: 0
   uvMode: 0
   useSoftParticle: 0
-  sortPriority: 0
+  vfxSystemSortPriority: 0
   sort: 0
   indirectDraw: 0
   computeCulling: 0
   frustumCulling: 0
   castShadows: 0
   useExposureWeight: 0
+  flipbookLayout: 0
   shaderGraph: {fileID: 4333940904281232215, guid: e68eda2e00241da49aafa9f8268a899a, type: 3}
+  materialSettings:
+    m_PropertyNames: []
+    m_PropertyValues: []
   MeshCount: 1
   lod: 0
 --- !u!114 &8926484042661614822
@@ -9310,6 +9331,8 @@ MonoBehaviour:
   capacity: 32
   stripCapacity: 16
   particlePerStripCount: 16
+  needsComputeBounds: 0
+  boundsMode: 1
   m_Space: 0
 --- !u!114 &8926484042661614900
 MonoBehaviour:
@@ -9582,6 +9605,7 @@ MonoBehaviour:
   useAlphaClipping: 0
   generateMotionVector: 0
   excludeFromTAA: 0
+  sortingPriority: 0
   m_SubOutputs:
   - {fileID: 8926484042661615098}
   cullMode: 0
@@ -9590,14 +9614,18 @@ MonoBehaviour:
   colorMapping: 0
   uvMode: 0
   useSoftParticle: 0
-  sortPriority: 0
+  vfxSystemSortPriority: 0
   sort: 0
   indirectDraw: 0
   computeCulling: 0
   frustumCulling: 0
   castShadows: 0
   useExposureWeight: 0
+  flipbookLayout: 0
   shaderGraph: {fileID: 4333940904281232215, guid: e68eda2e00241da49aafa9f8268a899a, type: 3}
+  materialSettings:
+    m_PropertyNames: []
+    m_PropertyValues: []
   MeshCount: 1
   lod: 0
 --- !u!114 &8926484042661614908
@@ -12769,6 +12797,8 @@ MonoBehaviour:
   capacity: 32
   stripCapacity: 16
   particlePerStripCount: 16
+  needsComputeBounds: 0
+  boundsMode: 1
   m_Space: 0
 --- !u!114 &8926484042661615023
 MonoBehaviour:
@@ -13041,6 +13071,7 @@ MonoBehaviour:
   useAlphaClipping: 0
   generateMotionVector: 0
   excludeFromTAA: 0
+  sortingPriority: 0
   m_SubOutputs:
   - {fileID: 8926484042661615099}
   cullMode: 0
@@ -13049,14 +13080,18 @@ MonoBehaviour:
   colorMapping: 0
   uvMode: 0
   useSoftParticle: 0
-  sortPriority: 0
+  vfxSystemSortPriority: 0
   sort: 0
   indirectDraw: 0
   computeCulling: 0
   frustumCulling: 0
   castShadows: 0
   useExposureWeight: 0
+  flipbookLayout: 0
   shaderGraph: {fileID: 4333940904281232215, guid: e68eda2e00241da49aafa9f8268a899a, type: 3}
+  materialSettings:
+    m_PropertyNames: []
+    m_PropertyValues: []
   MeshCount: 1
   lod: 0
 --- !u!114 &8926484042661615031

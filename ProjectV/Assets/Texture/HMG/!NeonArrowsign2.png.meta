@@ -279,7 +279,7 @@ TextureImporter:
       213: -8547713150198067991
     second: '!NeonArrowsign2_91'
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -300,6 +300,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -338,6 +339,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -401,6 +403,18 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: WebGL
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
     maxTextureSize: 8192
     resizeAlgorithm: 0
     textureFormat: -1
@@ -2356,6 +2370,99 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      '!NeonArrowsign2_32': -2903624558753267450
+      '!NeonArrowsign2_57': 1320254045100551397
+      '!NeonArrowsign2_1': -7773306841848426936
+      '!NeonArrowsign2_81': 4086497137278560470
+      '!NeonArrowsign2_54': -8848043970506449196
+      '!NeonArrowsign2_88': -2165574160957033770
+      '!NeonArrowsign2_8': 3869244463875515602
+      '!NeonArrowsign2_87': -3019896769718493673
+      '!NeonArrowsign2_53': -6526760298387376801
+      '!NeonArrowsign2_39': -2871784710863721315
+      '!NeonArrowsign2_38': -5236400059244908161
+      '!NeonArrowsign2_2': -8571648732711353769
+      '!NeonArrowsign2_34': 4935923724271248502
+      '!NeonArrowsign2_5': -1074741010248156317
+      '!NeonArrowsign2_68': 840467071678361008
+      '!NeonArrowsign2_17': -2818312689401430936
+      '!NeonArrowsign2_21': 9223264886678216381
+      '!NeonArrowsign2_16': -2491503535898659344
+      '!NeonArrowsign2_75': -3540123314632855031
+      '!NeonArrowsign2_48': 1740369544437941670
+      '!NeonArrowsign2_65': 5649350604642488281
+      '!NeonArrowsign2_29': 3232137435197840885
+      '!NeonArrowsign2_69': -1952485131348930946
+      '!NeonArrowsign2_58': 9037419716296839779
+      '!NeonArrowsign2_91': -8547713150198067991
+      '!NeonArrowsign2_41': -3641733913182284984
+      '!NeonArrowsign2_6': 3279669330154244450
+      '!NeonArrowsign2_51': -5246441703329696633
+      '!NeonArrowsign2_63': -5649852281755013320
+      '!NeonArrowsign2_24': -5432413259671666373
+      '!NeonArrowsign2_60': -4204103711473864914
+      '!NeonArrowsign2_72': 6646157720325779553
+      '!NeonArrowsign2_11': -5525278231425225564
+      '!NeonArrowsign2_44': -8359103945251022958
+      '!NeonArrowsign2_40': -1510295631015574204
+      '!NeonArrowsign2_27': -4312279293067245932
+      '!NeonArrowsign2_36': -7394939823640086432
+      '!NeonArrowsign2_70': -3394370691838016693
+      '!NeonArrowsign2_50': 4113430597940228790
+      '!NeonArrowsign2_25': -6376409724417646830
+      '!NeonArrowsign2_28': -8100925823133038214
+      '!NeonArrowsign2_45': -6674670300736294113
+      '!NeonArrowsign2_67': -3396567607260592776
+      '!NeonArrowsign2_80': -138996696496500951
+      '!NeonArrowsign2_76': 7783922107296279824
+      '!NeonArrowsign2_84': 8448331288734253017
+      '!NeonArrowsign2_47': 7097152085355220956
+      '!NeonArrowsign2_85': 4223667860595984318
+      '!NeonArrowsign2_82': 2030064349227423664
+      '!NeonArrowsign2_12': 8535811188744368861
+      '!NeonArrowsign2_4': 3184641681820887821
+      '!NeonArrowsign2_33': 733984313035417524
+      '!NeonArrowsign2_35': -5845221488160013269
+      '!NeonArrowsign2_79': -7933223937483469111
+      '!NeonArrowsign2_59': -1502236716080700913
+      '!NeonArrowsign2_71': -3038092576779865151
+      '!NeonArrowsign2_62': -5964569583713979898
+      '!NeonArrowsign2_64': 2006839365253809401
+      '!NeonArrowsign2_89': 4876436517832815642
+      '!NeonArrowsign2_26': -2954220959769020424
+      '!NeonArrowsign2_9': -6717336625399923490
+      '!NeonArrowsign2_55': -7339631486681687495
+      '!NeonArrowsign2_30': -4770118952682138356
+      '!NeonArrowsign2_19': 7842340696593138640
+      '!NeonArrowsign2_18': -2357243151468256162
+      '!NeonArrowsign2_90': 7269731844739389479
+      '!NeonArrowsign2_77': -2245757250378684149
+      '!NeonArrowsign2_46': -1959092464533908416
+      '!NeonArrowsign2_73': 5257261636443176978
+      '!NeonArrowsign2_78': -8996644246501249564
+      '!NeonArrowsign2_20': -7831054836736227599
+      '!NeonArrowsign2_0': -6565379325510576552
+      '!NeonArrowsign2_10': 7059562112084582260
+      '!NeonArrowsign2_31': 6496978043506258186
+      '!NeonArrowsign2_15': 8856556983035476614
+      '!NeonArrowsign2_56': -1099683622131241528
+      '!NeonArrowsign2_13': 5944051399350922666
+      '!NeonArrowsign2_86': 4799389325932956954
+      '!NeonArrowsign2_22': 2200207725287746532
+      '!NeonArrowsign2_14': -3378429114997190325
+      '!NeonArrowsign2_3': 6306772846017157209
+      '!NeonArrowsign2_66': 6195333812585478598
+      '!NeonArrowsign2_43': 7624361058931957838
+      '!NeonArrowsign2_61': -9207720832007804046
+      '!NeonArrowsign2_83': -8936321507770623651
+      '!NeonArrowsign2_52': -1276094683460184146
+      '!NeonArrowsign2_7': -6129430312379258723
+      '!NeonArrowsign2_42': 7300351506971388500
+      '!NeonArrowsign2_49': 6031182548185518964
+      '!NeonArrowsign2_23': 5727567951655783495
+      '!NeonArrowsign2_37': 8891584290440493109
+      '!NeonArrowsign2_74': -4998968515061394188
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
